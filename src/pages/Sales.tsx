@@ -1,211 +1,140 @@
+
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { CheckCircle, Star, ArrowUp } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Card, CardContent } from "@/components/ui/card";
+import { Mail, Clock, Star } from "lucide-react";
 
 const Sales = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [email, setEmail] = useState("");
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
 
-  const products = [
-    {
-      id: 1,
-      title: "The Legacy Builder's Playbook",
-      price: "$97",
-      originalPrice: "$197",
-      description: "The complete blueprint for building a million-dollar business from scratch. 200+ pages of frameworks, strategies, and real case studies.",
-      features: [
-        "Complete business building framework",
-        "50+ proven strategies and templates",
-        "Real case studies from successful entrepreneurs",
-        "Access to exclusive community",
-        "Monthly live Q&A sessions",
-        "Lifetime updates"
-      ],
-      image: "/placeholder.svg",
-      popular: true
-    },
-    {
-      id: 2,
-      title: "The Mindset Mastery Course",
-      price: "$47",
-      originalPrice: "$97",
-      description: "Transform your thinking patterns and develop the psychological foundations of success. Video course with workbooks and exercises.",
-      features: [
-        "6 weeks of mindset training",
-        "20+ video lessons",
-        "Interactive workbooks",
-        "Meditation and visualization guides",
-        "Progress tracking tools",
-        "Certificate of completion"
-      ],
-      image: "/placeholder.svg",
-      popular: false
-    },
-    {
-      id: 3,
-      title: "VIP Mentorship Program",
-      price: "$497",
-      originalPrice: "$997",
-      description: "Direct access to our founders and proven entrepreneurs. Monthly group calls, personal feedback, and accelerated growth.",
-      features: [
-        "Monthly 1-on-1 mentorship calls",
-        "Weekly group mastermind sessions",
-        "Direct access via private Slack",
-        "Business plan review and feedback",
-        "Network introductions",
-        "Priority support for 6 months"
-      ],
-      image: "/placeholder.svg",
-      popular: false
-    }
-  ];
-
-  const testimonials = [
-    {
-      name: "Marcus Johnson",
-      title: "Built $2M Agency",
-      content: "The strategies in the Legacy Builder's Playbook helped me scale from freelancer to agency owner in 18 months. This is the real deal.",
-      rating: 5
-    },
-    {
-      name: "Sarah Chen",
-      title: "Tech Startup Founder",
-      content: "The mindset course completely changed how I approach challenges. I finally understand what separates successful entrepreneurs from everyone else.",
-      rating: 5
-    },
-    {
-      name: "David Rodriguez",
-      title: "Real Estate Investor",
-      content: "The mentorship program gave me the confidence and connections I needed to close my first $500K deal. Best investment I've ever made.",
-      rating: 5
-    }
-  ];
+  const handleEmailSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Handle email submission here
+    console.log("Email submitted:", email);
+    setEmail("");
+  };
 
   return (
     <div className="min-h-screen bg-brand-cream dark:bg-brand-black">
       <Navigation />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-brand-cream dark:bg-brand-black">
-        <div className="container mx-auto px-6">
+      <section className="pt-32 pb-24 bg-brand-cream dark:bg-brand-black relative overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-20 right-10 w-32 h-32 rounded-full bg-[#247EFF]/10 animate-float"></div>
+          <div className="absolute bottom-40 left-10 w-24 h-24 rounded-2xl bg-[#D4AF37]/20 animate-float" style={{ animationDelay: '2s' }}></div>
+        </div>
+
+        <div className="container mx-auto px-6 relative z-10">
           <div className={`max-w-4xl mx-auto text-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+            <div className="mb-8">
+              <div className="inline-flex items-center bg-[#247EFF]/10 rounded-full px-6 py-3 mb-6">
+                <Clock className="mr-2 h-5 w-5 text-[#247EFF]" />
+                <span className="text-lg font-semibold text-[#247EFF]">Coming Soon</span>
+              </div>
+            </div>
+            
             <h1 className="text-5xl md:text-6xl font-bold mb-6 text-[#0A0A0A] dark:text-brand-cream">
-              Build Your <span className="text-[#247EFF]">Legacy</span> Today
+              Something <span className="text-[#247EFF]">Extraordinary</span> Is Coming
             </h1>
             <p className="text-xl text-[#0A0A0A]/70 dark:text-brand-cream/70 leading-relaxed mb-8">
-              Everything you need to go from idea to income. Proven frameworks, 
-              real strategies, and direct access to entrepreneurs who've built what you want to build.
+              We're crafting something special for the Standard Thought community. 
+              Be the first to know when we launch our exclusive programs and resources.
             </p>
-            <div className="bg-[#247EFF]/10 rounded-3xl p-6 inline-block">
-              <p className="text-lg font-semibold text-[#247EFF]">
-                🔥 Limited Time: 50% Off All Programs
-              </p>
-            </div>
           </div>
         </div>
       </section>
 
-      {/* Products Section */}
+      {/* Notification Section */}
       <section className="py-24 bg-white/90 dark:bg-brand-black/80">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {products.map((product, index) => (
-              <Card 
-                key={product.id}
-                className={`relative bg-white/90 dark:bg-brand-black/90 backdrop-blur-sm border rounded-3xl overflow-hidden transition-all duration-1000 hover:scale-105 ${
-                  product.popular 
-                    ? 'border-[#247EFF] shadow-lg shadow-[#247EFF]/20' 
-                    : 'border-[#247EFF]/20'
-                } ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-                style={{ animationDelay: `${index * 0.2}s` }}
-              >
-                {product.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <div className="bg-[#247EFF] text-white px-6 py-2 rounded-full text-sm font-semibold">
-                      MOST POPULAR
-                    </div>
-                  </div>
-                )}
+          <div className="max-w-2xl mx-auto">
+            <Card className="bg-white/90 dark:bg-brand-black/90 backdrop-blur-sm border-[#247EFF]/20 rounded-3xl overflow-hidden">
+              <CardContent className="p-12 text-center">
+                <div className="mb-8">
+                  <Mail className="mx-auto h-16 w-16 text-[#247EFF] mb-4" />
+                  <h2 className="text-3xl font-bold mb-4 text-[#0A0A0A] dark:text-brand-cream">
+                    Get Early Access
+                  </h2>
+                  <p className="text-lg text-[#0A0A0A]/70 dark:text-brand-cream/70">
+                    Join our exclusive waitlist and be among the first to access our premium content, 
+                    courses, and mentorship programs when they launch.
+                  </p>
+                </div>
 
-                <CardHeader className="p-0">
-                  <img
-                    src={product.image}
-                    alt={product.title}
-                    className="w-full h-48 object-cover"
+                <form onSubmit={handleEmailSubmit} className="space-y-4">
+                  <Input
+                    type="email"
+                    placeholder="Enter your email address"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="py-4 rounded-2xl border-[#247EFF]/20 focus:border-[#247EFF] text-lg bg-white/80 dark:bg-brand-black/80 text-[#0A0A0A] dark:text-brand-cream"
+                    required
                   />
-                </CardHeader>
-
-                <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold mb-4 text-[#0A0A0A] dark:text-brand-cream">{product.title}</h3>
-                  
-                  <div className="mb-6">
-                    <div className="flex items-center space-x-2 mb-2">
-                      <span className="text-3xl font-bold text-[#247EFF]">{product.price}</span>
-                      <span className="text-lg text-[#0A0A0A]/60 dark:text-brand-cream/60 line-through">{product.originalPrice}</span>
-                    </div>
-                    <p className="text-[#0A0A0A]/70 dark:text-brand-cream/70">{product.description}</p>
-                  </div>
-
-                  <ul className="space-y-3 mb-8">
-                    {product.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-start space-x-3">
-                        <CheckCircle size={20} className="text-[#247EFF] mt-0.5 flex-shrink-0" />
-                        <span className="text-sm text-[#0A0A0A] dark:text-brand-cream">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-
                   <Button 
-                    className={`w-full py-4 rounded-2xl font-semibold transition-all duration-300 hover:scale-105 ${
-                      product.popular
-                        ? 'bg-[#247EFF] hover:bg-[#0057FF] hover:shadow-lg hover:shadow-[#D4AF37]/30 text-white'
-                        : 'bg-[#D4AF37] hover:bg-[#D4AF37]/90 hover:shadow-lg text-[#0A0A0A]'
-                    }`}
+                    type="submit"
+                    size="lg"
+                    className="w-full bg-[#247EFF] hover:bg-[#0057FF] hover:shadow-lg hover:shadow-[#D4AF37]/30 text-white font-semibold py-4 rounded-2xl transition-all duration-300 hover:scale-105"
                   >
-                    Get Access Now
-                    <ArrowUp className="ml-2 h-4 w-4 rotate-45" />
+                    Notify Me When It's Ready
                   </Button>
-                </CardContent>
-              </Card>
-            ))}
+                </form>
+
+                <p className="text-sm text-[#0A0A0A]/60 dark:text-brand-cream/60 mt-4">
+                  No spam, ever. Unsubscribe at any time.
+                </p>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
 
-      {/* Testimonials Section */}
+      {/* What's Coming Section */}
       <section className="py-24 bg-brand-cream dark:bg-brand-black">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-6 text-[#0A0A0A] dark:text-brand-cream">Success Stories</h2>
+            <h2 className="text-4xl font-bold mb-6 text-[#0A0A0A] dark:text-brand-cream">What to Expect</h2>
             <p className="text-xl text-[#0A0A0A]/70 dark:text-brand-cream/70 max-w-2xl mx-auto">
-              Don't just take our word for it. Here's what real entrepreneurs are saying about their results.
+              We're building something that will transform how you approach entrepreneurship and wealth building.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
+            {[
+              {
+                icon: "📚",
+                title: "Premium Courses",
+                description: "In-depth training programs covering everything from mindset to million-dollar strategies."
+              },
+              {
+                icon: "🎯",
+                title: "1-on-1 Mentorship",
+                description: "Direct access to successful entrepreneurs who've built what you want to build."
+              },
+              {
+                icon: "🤝",
+                title: "Exclusive Community",
+                description: "Connect with like-minded builders and access our private network of game-changers."
+              }
+            ].map((feature, index) => (
               <Card 
                 key={index}
-                className={`bg-white/90 dark:bg-brand-black/80 backdrop-blur-sm border-[#247EFF]/20 rounded-3xl p-8 transition-all duration-1000 hover:scale-105 hover:shadow-lg hover:shadow-[#247EFF]/20 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                className={`bg-white/90 dark:bg-brand-black/80 backdrop-blur-sm border-[#247EFF]/20 rounded-3xl p-8 text-center transition-all duration-1000 hover:scale-105 hover:shadow-lg hover:shadow-[#247EFF]/20 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
                 style={{ animationDelay: `${600 + index * 200}ms` }}
               >
                 <CardContent className="p-0">
-                  <div className="flex mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} size={20} className="text-[#D4AF37] fill-current" />
-                    ))}
-                  </div>
-                  <p className="text-[#0A0A0A]/70 dark:text-brand-cream/70 mb-6 italic">"{testimonial.content}"</p>
-                  <div>
-                    <div className="font-semibold text-[#0A0A0A] dark:text-brand-cream">{testimonial.name}</div>
-                    <div className="text-sm text-[#247EFF]">{testimonial.title}</div>
-                  </div>
+                  <div className="text-4xl mb-4">{feature.icon}</div>
+                  <h3 className="text-xl font-bold mb-3 text-[#0A0A0A] dark:text-brand-cream">{feature.title}</h3>
+                  <p className="text-[#0A0A0A]/70 dark:text-brand-cream/70">{feature.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -213,29 +142,37 @@ const Sales = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* Social Proof Section */}
       <section className="py-24 bg-white/90 dark:bg-brand-black/80">
         <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto text-center bg-gradient-to-r from-[#247EFF]/10 via-[#247EFF]/20 to-[#247EFF]/10 rounded-3xl p-12">
-            <h2 className="text-4xl font-bold mb-6 text-[#0A0A0A] dark:text-brand-cream">Ready to Start Building?</h2>
-            <p className="text-xl text-[#0A0A0A]/70 dark:text-brand-cream/70 mb-8">
-              Join thousands of entrepreneurs who've chosen to stop dreaming and start building. 
-              Your legacy begins with a single decision.
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-6 text-[#0A0A0A] dark:text-brand-cream">Trusted by Builders</h2>
+            <p className="text-xl text-[#0A0A0A]/70 dark:text-brand-cream/70">
+              Join thousands who are already part of the Standard Thought movement.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                size="lg"
-                className="bg-[#247EFF] hover:bg-[#0057FF] hover:shadow-lg hover:shadow-[#D4AF37]/30 text-white font-semibold px-8 py-4 rounded-3xl transition-all duration-300 hover:scale-105"
-              >
-                Get Started Today
-              </Button>
-              <Button 
-                variant="outline"
-                size="lg"
-                className="border-[#D4AF37] bg-[#D4AF37] text-[#0A0A0A] hover:bg-[#D4AF37]/90 hover:shadow-lg font-semibold px-8 py-4 rounded-3xl transition-all duration-300 hover:scale-105"
-              >
-                Schedule Call
-              </Button>
+          </div>
+
+          <div className="flex justify-center items-center space-x-8 mb-12">
+            <div className="text-center">
+              <div className="text-4xl font-bold text-[#247EFF] mb-2">5,000+</div>
+              <div className="text-[#0A0A0A]/70 dark:text-brand-cream/70">Community Members</div>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl font-bold text-[#D4AF37] mb-2">$50M+</div>
+              <div className="text-[#0A0A0A]/70 dark:text-brand-cream/70">Revenue Generated</div>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl font-bold text-[#247EFF] mb-2">98%</div>
+              <div className="text-[#0A0A0A]/70 dark:text-brand-cream/70">Success Rate</div>
+            </div>
+          </div>
+
+          <div className="flex justify-center">
+            <div className="flex items-center space-x-1">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} size={24} className="text-[#D4AF37] fill-current" />
+              ))}
+              <span className="ml-2 text-lg font-semibold text-[#0A0A0A] dark:text-brand-cream">4.9/5 from our community</span>
             </div>
           </div>
         </div>

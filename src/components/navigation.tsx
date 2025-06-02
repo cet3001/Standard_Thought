@@ -4,7 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useTheme } from "@/components/theme-provider";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
 
 const Navigation = () => {
   const { theme, setTheme } = useTheme();
@@ -23,15 +23,16 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 glass-effect border-b">
+    <nav className="fixed top-0 left-0 right-0 z-50 glass-effect border-b border-accent/20">
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          {/* Logo */}
+          {/* Logo with Glow Effect */}
           <Link 
             to="/" 
-            className="text-2xl font-bold font-satoshi hover:text-accent transition-colors"
+            className="text-2xl font-bold font-satoshi hover:text-accent transition-all duration-300 group"
           >
-            Standard<span className="text-accent">thought</span>
+            <span className="group-hover:text-shadow-glow">Standard</span>
+            <span className="text-accent">thought</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -41,29 +42,34 @@ const Navigation = () => {
                 key={item.path}
                 to={item.path}
                 className={cn(
-                  "text-sm font-medium transition-colors hover:text-accent",
+                  "text-sm font-medium transition-all duration-300 hover:text-accent relative group",
                   location.pathname === item.path
                     ? "text-accent"
                     : "text-foreground"
                 )}
               >
                 {item.label}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
               </Link>
             ))}
             
-            {/* Theme Toggle */}
+            {/* Enhanced Theme Toggle */}
             <Button
               variant="ghost"
               size="sm"
               onClick={toggleTheme}
-              className="hover:bg-accent/10"
+              className="hover:bg-accent/10 transition-all duration-300 hover:scale-110"
             >
-              {theme === "dark" ? "🌞" : "🌙"}
+              {theme === "dark" ? (
+                <Sun className="h-5 w-5 text-accent" />
+              ) : (
+                <Moon className="h-5 w-5 text-accent" />
+              )}
             </Button>
 
-            {/* CTA Button */}
+            {/* Enhanced CTA Button */}
             <Button 
-              className="bg-accent hover:bg-accent/90 text-black font-medium rounded-2xl px-6"
+              className="bg-accent hover:bg-accent/90 text-black font-medium rounded-3xl px-6 py-2 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-accent/25 glow-pulse"
             >
               Join Movement
             </Button>
@@ -75,15 +81,19 @@ const Navigation = () => {
               variant="ghost"
               size="sm"
               onClick={toggleTheme}
-              className="hover:bg-accent/10"
+              className="hover:bg-accent/10 transition-all duration-300"
             >
-              {theme === "dark" ? "🌞" : "🌙"}
+              {theme === "dark" ? (
+                <Sun className="h-5 w-5 text-accent" />
+              ) : (
+                <Moon className="h-5 w-5 text-accent" />
+              )}
             </Button>
             <Button
               variant="ghost"
               size="icon"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="hover:bg-accent/10"
+              className="hover:bg-accent/10 transition-all duration-300"
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </Button>
@@ -92,7 +102,7 @@ const Navigation = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 border-t border-border/50">
+          <div className="md:hidden mt-4 pb-4 border-t border-accent/20">
             <div className="flex flex-col space-y-4 pt-4">
               {navItems.map((item) => (
                 <Link
@@ -110,7 +120,7 @@ const Navigation = () => {
                 </Link>
               ))}
               <Button 
-                className="bg-accent hover:bg-accent/90 text-black font-medium rounded-2xl self-start"
+                className="bg-accent hover:bg-accent/90 text-black font-medium rounded-3xl self-start glow-pulse"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Join Movement

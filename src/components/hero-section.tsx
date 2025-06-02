@@ -1,45 +1,101 @@
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const heroRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
 
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (heroRef.current) {
+        const rect = heroRef.current.getBoundingClientRect();
+        setMousePosition({
+          x: (e.clientX - rect.left) / rect.width,
+          y: (e.clientY - rect.top) / rect.height,
+        });
+      }
+    };
+
+    const heroElement = heroRef.current;
+    if (heroElement) {
+      heroElement.addEventListener('mousemove', handleMouseMove);
+      return () => heroElement.removeEventListener('mousemove', handleMouseMove);
+    }
+  }, []);
+
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-background via-background to-secondary/20">
-      {/* Floating Particles */}
-      <div className="floating-particles">
-        <div className="particle"></div>
-        <div className="particle"></div>
-        <div className="particle"></div>
-        <div className="particle"></div>
-        <div className="particle"></div>
-        <div className="particle"></div>
-        <div className="particle"></div>
-        <div className="particle"></div>
-        <div className="particle"></div>
+    <section 
+      ref={heroRef}
+      className="min-h-screen flex items-center justify-center relative overflow-hidden bg-background urban-texture"
+    >
+      {/* Dynamic 3D Background Elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Animated geometric shapes */}
+        <div 
+          className="absolute w-96 h-96 rounded-full bg-gradient-to-br from-accent/10 to-accent/5 blur-3xl"
+          style={{
+            transform: `translate(${mousePosition.x * 50}px, ${mousePosition.y * 30}px)`,
+            top: '10%',
+            left: '10%',
+            animation: 'float 8s ease-in-out infinite'
+          }}
+        ></div>
+        <div 
+          className="absolute w-64 h-64 rounded-2xl bg-gradient-to-br from-accent/15 to-transparent blur-2xl rotate-45"
+          style={{
+            transform: `translate(${mousePosition.x * -30}px, ${mousePosition.y * 40}px) rotate(45deg)`,
+            bottom: '20%',
+            right: '15%',
+            animation: 'float 6s ease-in-out infinite reverse'
+          }}
+        ></div>
+        
+        {/* Urban texture overlay */}
+        <div className="absolute inset-0 opacity-20">
+          <div 
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `
+                linear-gradient(45deg, transparent 40%, rgba(212, 175, 55, 0.03) 50%, transparent 60%),
+                radial-gradient(circle at 30% 70%, rgba(212, 175, 55, 0.05) 0%, transparent 70%),
+                linear-gradient(135deg, transparent 30%, rgba(212, 175, 55, 0.02) 50%, transparent 70%)
+              `,
+              backgroundSize: '100px 100px, 200px 200px, 150px 150px'
+            }}
+          ></div>
+        </div>
       </div>
 
-      {/* Geometric Background Elements */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 left-10 w-32 h-32 rounded-full bg-accent/10 animate-float"></div>
-        <div className="absolute bottom-32 right-20 w-24 h-24 rounded-2xl bg-accent/20 animate-float" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute top-1/2 left-1/4 w-16 h-16 rounded-xl bg-accent/15 animate-float" style={{ animationDelay: '1s' }}></div>
+      {/* Floating Particles */}
+      <div className="floating-particles">
+        {[...Array(12)].map((_, i) => (
+          <div 
+            key={i}
+            className="particle"
+            style={{
+              left: `${10 + (i * 8)}%`,
+              animationDelay: `${i * 0.5}s`,
+              animationDuration: `${6 + (i % 4)}s`
+            }}
+          ></div>
+        ))}
       </div>
 
       <div className="container mx-auto px-6 text-center relative z-10">
         <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-          {/* Main Headline */}
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
+          {/* Main Headline with Enhanced Animation */}
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight text-shadow-glow">
             <span className="block kinetic-text">
               <span style={{ animationDelay: '0.1s' }}>Build</span>{' '}
               <span style={{ animationDelay: '0.2s' }}>Your</span>
             </span>
-            <span className="block kinetic-text gradient-text">
+            <span className="block kinetic-text gradient-text text-6xl md:text-8xl lg:text-9xl">
               <span style={{ animationDelay: '0.3s' }}>Legacy</span>
             </span>
             <span className="block kinetic-text text-3xl md:text-5xl lg:text-6xl">
@@ -48,55 +104,60 @@ const HeroSection = () => {
             </span>
           </h1>
 
-          {/* Mission Statement */}
+          {/* Mission Statement with Glow Effect */}
           <div className={`max-w-4xl mx-auto mb-12 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed font-light">
               Figure it out with nothing but{' '}
-              <span className="text-accent font-medium">grit</span>,{' '}
-              <span className="text-accent font-medium">instinct</span>, and{' '}
-              <span className="text-accent font-medium">dreams</span>
+              <span className="text-accent font-medium glow-pulse">grit</span>,{' '}
+              <span className="text-accent font-medium glow-pulse" style={{ animationDelay: '1s' }}>instinct</span>, and{' '}
+              <span className="text-accent font-medium glow-pulse" style={{ animationDelay: '2s' }}>dreams</span>
             </p>
           </div>
 
-          {/* CTA Buttons */}
-          <div className={`flex flex-col sm:flex-row gap-4 justify-center items-center transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          {/* Enhanced CTA Buttons */}
+          <div className={`flex flex-col sm:flex-row gap-6 justify-center items-center transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <Button 
               size="lg" 
-              className="bg-accent hover:bg-accent/90 text-black font-semibold px-8 py-4 rounded-3xl text-lg animate-pulse-glow"
+              className="bg-accent hover:bg-accent/90 text-black font-semibold px-10 py-6 rounded-3xl text-lg glow-pulse relative overflow-hidden group"
             >
-              Join the Movement
+              <span className="relative z-10">Join the Movement</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent shimmer"></div>
             </Button>
             <Button 
               variant="outline" 
               size="lg"
-              className="border-accent text-accent hover:bg-accent hover:text-black font-semibold px-8 py-4 rounded-3xl text-lg"
+              className="border-2 border-accent text-accent hover:bg-accent hover:text-black font-semibold px-10 py-6 rounded-3xl text-lg transition-all hover:scale-105 hover:shadow-lg hover:shadow-accent/25"
             >
               Explore Stories
             </Button>
           </div>
 
-          {/* Stats */}
-          <div className={`mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-2xl mx-auto transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-accent mb-2">10K+</div>
-              <div className="text-sm text-muted-foreground uppercase tracking-wide">Legacy Builders</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-accent mb-2">500+</div>
-              <div className="text-sm text-muted-foreground uppercase tracking-wide">Success Stories</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-accent mb-2">$50M+</div>
-              <div className="text-sm text-muted-foreground uppercase tracking-wide">Wealth Created</div>
-            </div>
+          {/* Enhanced Stats */}
+          <div className={`mt-20 grid grid-cols-1 md:grid-cols-3 gap-12 max-w-4xl mx-auto transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            {[
+              { number: "10K+", label: "Legacy Builders" },
+              { number: "500+", label: "Success Stories" },
+              { number: "$50M+", label: "Wealth Created" }
+            ].map((stat, index) => (
+              <div key={index} className="text-center group">
+                <div className="relative">
+                  <div className="text-4xl md:text-5xl font-bold text-accent mb-3 group-hover:scale-110 transition-transform duration-300">
+                    {stat.number}
+                  </div>
+                  <div className="absolute inset-0 bg-accent/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+                <div className="text-sm text-muted-foreground uppercase tracking-wider font-medium">{stat.label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Enhanced Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-accent rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-accent rounded-full mt-2 animate-pulse"></div>
+        <div className="w-8 h-12 border-2 border-accent rounded-full flex justify-center relative">
+          <div className="w-1 h-4 bg-accent rounded-full mt-3 animate-pulse"></div>
+          <div className="absolute -inset-2 border border-accent/30 rounded-full animate-ping"></div>
         </div>
       </div>
     </section>

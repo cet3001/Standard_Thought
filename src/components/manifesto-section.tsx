@@ -42,40 +42,49 @@ const ManifestoSection = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="py-24 bg-gradient-to-b from-secondary/10 to-background relative overflow-hidden">
-      {/* Background Pattern */}
+    <section ref={sectionRef} className="py-24 bg-gradient-to-b from-card to-background urban-texture relative overflow-hidden">
+      {/* Urban background elements */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
-          backgroundImage: `radial-gradient(circle at 25px 25px, #D4AF37 2px, transparent 0)`,
-          backgroundSize: '50px 50px'
+          backgroundImage: `
+            radial-gradient(circle at 25px 25px, #D4AF37 2px, transparent 0),
+            linear-gradient(45deg, transparent 40%, rgba(212, 175, 55, 0.1) 50%, transparent 60%)
+          `,
+          backgroundSize: '50px 50px, 100px 100px'
         }}></div>
       </div>
+
+      {/* Section separator */}
+      <div className="section-separator"></div>
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Section Header */}
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            The Standard<span className="text-accent">thought</span> Way
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-shadow-glow">
+            The Standard<span className="text-accent gradient-text">thought</span> Way
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             We're not just building businesses—we're building a movement. Here's what drives us, what defines us, and what separates us from everyone else.
           </p>
         </div>
 
-        {/* Manifesto Grid */}
+        {/* Manifesto Grid with Enhanced Design */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {manifestoPoints.map((point, index) => (
             <div 
               key={index}
-              className={`bg-card border border-border/50 rounded-3xl p-8 transition-all duration-1000 hover:border-accent/30 ${
+              className={`glass-effect border border-accent/20 rounded-3xl p-8 transition-all duration-1000 hover:border-accent/50 group relative overflow-hidden ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
               style={{ animationDelay: `${index * 0.2}s` }}
             >
-              <div className="flex items-start space-x-4">
-                <div className="w-3 h-3 bg-accent rounded-full mt-2 flex-shrink-0"></div>
+              {/* Background glow effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              
+              <div className="flex items-start space-x-4 relative z-10">
+                <div className="w-4 h-4 bg-accent rounded-full mt-2 flex-shrink-0 glow-pulse"></div>
                 <div>
-                  <h3 className="text-xl font-semibold mb-3 text-accent">
+                  <h3 className="text-xl font-semibold mb-3 text-accent group-hover:text-shadow-glow transition-all duration-300">
                     {point.title}
                   </h3>
                   <p className="text-muted-foreground leading-relaxed">
@@ -87,22 +96,25 @@ const ManifestoSection = () => {
           ))}
         </div>
 
-        {/* Bottom CTA */}
+        {/* Enhanced Bottom CTA */}
         <div className={`text-center mt-16 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="bg-gradient-to-r from-accent/10 via-accent/20 to-accent/10 rounded-3xl p-8 max-w-4xl mx-auto">
-            <h3 className="text-2xl md:text-3xl font-bold mb-4">
-              Ready to Build Your Legacy?
-            </h3>
-            <p className="text-lg text-muted-foreground mb-6">
-              This isn't for everyone. It's for the ones who see obstacles as opportunities and dreams as blueprints.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-accent hover:bg-accent/90 text-black font-semibold px-8 py-4 rounded-3xl transition-all hover:scale-105">
-                Start Your Journey
-              </button>
-              <button className="border border-accent text-accent hover:bg-accent hover:text-black font-semibold px-8 py-4 rounded-3xl transition-all">
-                Learn More
-              </button>
+          <div className="glass-effect border border-accent/30 rounded-3xl p-8 max-w-4xl mx-auto relative overflow-hidden group">
+            <div className="absolute inset-0 bg-gradient-to-r from-accent/10 via-accent/20 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="relative z-10">
+              <h3 className="text-2xl md:text-3xl font-bold mb-4 text-shadow-glow">
+                Ready to Build Your Legacy?
+              </h3>
+              <p className="text-lg text-muted-foreground mb-6">
+                This isn't for everyone. It's for the ones who see obstacles as opportunities and dreams as blueprints.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <button className="bg-accent hover:bg-accent/90 text-black font-semibold px-8 py-4 rounded-3xl transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-accent/25 glow-pulse">
+                  Start Your Journey
+                </button>
+                <button className="border-2 border-accent text-accent hover:bg-accent hover:text-black font-semibold px-8 py-4 rounded-3xl transition-all duration-300 hover:scale-105">
+                  Learn More
+                </button>
+              </div>
             </div>
           </div>
         </div>

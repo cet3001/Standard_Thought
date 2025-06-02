@@ -95,15 +95,15 @@ const Sales = () => {
       <section className="pt-32 pb-16 bg-brand-cream dark:bg-brand-black">
         <div className="container mx-auto px-6">
           <div className={`max-w-4xl mx-auto text-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 text-brand-black dark:text-brand-cream">
-              Build Your <span className="text-accent">Legacy</span> Today
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 text-[#0A0A0A] dark:text-brand-cream">
+              Build Your <span className="text-[#247EFF]">Legacy</span> Today
             </h1>
-            <p className="text-xl text-brand-black/70 dark:text-brand-cream/70 leading-relaxed mb-8">
+            <p className="text-xl text-[#0A0A0A]/70 dark:text-brand-cream/70 leading-relaxed mb-8">
               Everything you need to go from idea to income. Proven frameworks, 
               real strategies, and direct access to entrepreneurs who've built what you want to build.
             </p>
-            <div className="bg-accent/10 rounded-3xl p-6 inline-block">
-              <p className="text-lg font-semibold text-accent">
+            <div className="bg-[#247EFF]/10 rounded-3xl p-6 inline-block">
+              <p className="text-lg font-semibold text-[#247EFF]">
                 🔥 Limited Time: 50% Off All Programs
               </p>
             </div>
@@ -112,7 +112,7 @@ const Sales = () => {
       </section>
 
       {/* Products Section */}
-      <section className="py-24 bg-white/80 dark:bg-brand-black/80">
+      <section className="py-24 bg-white/90 dark:bg-brand-black/80">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {products.map((product, index) => (
@@ -120,14 +120,14 @@ const Sales = () => {
                 key={product.id}
                 className={`relative bg-white/90 dark:bg-brand-black/90 backdrop-blur-sm border rounded-3xl overflow-hidden transition-all duration-1000 hover:scale-105 ${
                   product.popular 
-                    ? 'border-accent shadow-lg shadow-accent/20' 
-                    : 'border-accent/20'
+                    ? 'border-[#247EFF] shadow-lg shadow-[#247EFF]/20' 
+                    : 'border-[#247EFF]/20'
                 } ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
                 {product.popular && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <div className="bg-accent text-black px-6 py-2 rounded-full text-sm font-semibold">
+                    <div className="bg-[#247EFF] text-white px-6 py-2 rounded-full text-sm font-semibold">
                       MOST POPULAR
                     </div>
                   </div>
@@ -142,30 +142,30 @@ const Sales = () => {
                 </CardHeader>
 
                 <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold mb-4 text-brand-black dark:text-brand-cream">{product.title}</h3>
+                  <h3 className="text-2xl font-bold mb-4 text-[#0A0A0A] dark:text-brand-cream">{product.title}</h3>
                   
                   <div className="mb-6">
                     <div className="flex items-center space-x-2 mb-2">
-                      <span className="text-3xl font-bold text-accent">{product.price}</span>
-                      <span className="text-lg text-brand-black/60 dark:text-brand-cream/60 line-through">{product.originalPrice}</span>
+                      <span className="text-3xl font-bold text-[#247EFF]">{product.price}</span>
+                      <span className="text-lg text-[#0A0A0A]/60 dark:text-brand-cream/60 line-through">{product.originalPrice}</span>
                     </div>
-                    <p className="text-brand-black/70 dark:text-brand-cream/70">{product.description}</p>
+                    <p className="text-[#0A0A0A]/70 dark:text-brand-cream/70">{product.description}</p>
                   </div>
 
                   <ul className="space-y-3 mb-8">
                     {product.features.map((feature, idx) => (
                       <li key={idx} className="flex items-start space-x-3">
-                        <CheckCircle size={20} className="text-accent mt-0.5 flex-shrink-0" />
-                        <span className="text-sm text-brand-black dark:text-brand-cream">{feature}</span>
+                        <CheckCircle size={20} className="text-[#247EFF] mt-0.5 flex-shrink-0" />
+                        <span className="text-sm text-[#0A0A0A] dark:text-brand-cream">{feature}</span>
                       </li>
                     ))}
                   </ul>
 
                   <Button 
-                    className={`w-full py-4 rounded-2xl font-semibold ${
+                    className={`w-full py-4 rounded-2xl font-semibold transition-all duration-300 hover:scale-105 ${
                       product.popular
-                        ? 'bg-accent hover:bg-accent/90 text-black'
-                        : 'bg-brand-black hover:bg-brand-black/90 text-brand-cream dark:bg-brand-cream dark:hover:bg-brand-cream/90 dark:text-brand-black'
+                        ? 'bg-[#247EFF] hover:bg-[#0057FF] hover:shadow-lg hover:shadow-[#D4AF37]/30 text-white'
+                        : 'bg-[#D4AF37] hover:bg-[#D4AF37]/90 hover:shadow-lg text-[#0A0A0A]'
                     }`}
                   >
                     Get Access Now
@@ -182,8 +182,8 @@ const Sales = () => {
       <section className="py-24 bg-brand-cream dark:bg-brand-black">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-6 text-brand-black dark:text-brand-cream">Success Stories</h2>
-            <p className="text-xl text-brand-black/70 dark:text-brand-cream/70 max-w-2xl mx-auto">
+            <h2 className="text-4xl font-bold mb-6 text-[#0A0A0A] dark:text-brand-cream">Success Stories</h2>
+            <p className="text-xl text-[#0A0A0A]/70 dark:text-brand-cream/70 max-w-2xl mx-auto">
               Don't just take our word for it. Here's what real entrepreneurs are saying about their results.
             </p>
           </div>
@@ -192,19 +192,19 @@ const Sales = () => {
             {testimonials.map((testimonial, index) => (
               <Card 
                 key={index}
-                className={`bg-white/80 dark:bg-brand-black/80 backdrop-blur-sm border-accent/20 rounded-3xl p-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                className={`bg-white/90 dark:bg-brand-black/80 backdrop-blur-sm border-[#247EFF]/20 rounded-3xl p-8 transition-all duration-1000 hover:scale-105 hover:shadow-lg hover:shadow-[#247EFF]/20 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
                 style={{ animationDelay: `${600 + index * 200}ms` }}
               >
                 <CardContent className="p-0">
                   <div className="flex mb-4">
                     {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} size={20} className="text-accent fill-current" />
+                      <Star key={i} size={20} className="text-[#D4AF37] fill-current" />
                     ))}
                   </div>
-                  <p className="text-brand-black/70 dark:text-brand-cream/70 mb-6 italic">"{testimonial.content}"</p>
+                  <p className="text-[#0A0A0A]/70 dark:text-brand-cream/70 mb-6 italic">"{testimonial.content}"</p>
                   <div>
-                    <div className="font-semibold text-brand-black dark:text-brand-cream">{testimonial.name}</div>
-                    <div className="text-sm text-accent">{testimonial.title}</div>
+                    <div className="font-semibold text-[#0A0A0A] dark:text-brand-cream">{testimonial.name}</div>
+                    <div className="text-sm text-[#247EFF]">{testimonial.title}</div>
                   </div>
                 </CardContent>
               </Card>
@@ -214,25 +214,25 @@ const Sales = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-white/80 dark:bg-brand-black/80">
+      <section className="py-24 bg-white/90 dark:bg-brand-black/80">
         <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto text-center bg-gradient-to-r from-accent/10 via-accent/20 to-accent/10 rounded-3xl p-12">
-            <h2 className="text-4xl font-bold mb-6 text-brand-black dark:text-brand-cream">Ready to Start Building?</h2>
-            <p className="text-xl text-brand-black/70 dark:text-brand-cream/70 mb-8">
+          <div className="max-w-4xl mx-auto text-center bg-gradient-to-r from-[#247EFF]/10 via-[#247EFF]/20 to-[#247EFF]/10 rounded-3xl p-12">
+            <h2 className="text-4xl font-bold mb-6 text-[#0A0A0A] dark:text-brand-cream">Ready to Start Building?</h2>
+            <p className="text-xl text-[#0A0A0A]/70 dark:text-brand-cream/70 mb-8">
               Join thousands of entrepreneurs who've chosen to stop dreaming and start building. 
               Your legacy begins with a single decision.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 size="lg"
-                className="bg-accent hover:bg-accent/90 text-black font-semibold px-8 py-4 rounded-3xl"
+                className="bg-[#247EFF] hover:bg-[#0057FF] hover:shadow-lg hover:shadow-[#D4AF37]/30 text-white font-semibold px-8 py-4 rounded-3xl transition-all duration-300 hover:scale-105"
               >
                 Get Started Today
               </Button>
               <Button 
                 variant="outline"
                 size="lg"
-                className="border-accent text-accent hover:bg-accent hover:text-black font-semibold px-8 py-4 rounded-3xl"
+                className="border-[#D4AF37] bg-[#D4AF37] text-[#0A0A0A] hover:bg-[#D4AF37]/90 hover:shadow-lg font-semibold px-8 py-4 rounded-3xl transition-all duration-300 hover:scale-105"
               >
                 Schedule Call
               </Button>

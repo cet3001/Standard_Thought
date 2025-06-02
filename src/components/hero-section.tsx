@@ -38,7 +38,7 @@ const HeroSection = () => {
       <div className="absolute inset-0 pointer-events-none">
         {/* Animated geometric shapes */}
         <div 
-          className="absolute w-96 h-96 rounded-full bg-gradient-to-br from-accent/10 to-accent/5 blur-3xl"
+          className="absolute w-96 h-96 rounded-full bg-gradient-to-br from-[#247EFF]/10 to-[#247EFF]/5 blur-3xl"
           style={{
             transform: `translate(${mousePosition.x * 50}px, ${mousePosition.y * 30}px)`,
             top: '10%',
@@ -47,7 +47,7 @@ const HeroSection = () => {
           }}
         ></div>
         <div 
-          className="absolute w-64 h-64 rounded-2xl bg-gradient-to-br from-accent/15 to-transparent blur-2xl rotate-45"
+          className="absolute w-64 h-64 rounded-2xl bg-gradient-to-br from-[#D4AF37]/15 to-transparent blur-2xl rotate-45"
           style={{
             transform: `translate(${mousePosition.x * -30}px, ${mousePosition.y * 40}px) rotate(45deg)`,
             bottom: '20%',
@@ -62,9 +62,9 @@ const HeroSection = () => {
             className="absolute inset-0"
             style={{
               backgroundImage: `
-                linear-gradient(45deg, transparent 40%, rgba(212, 175, 55, 0.03) 50%, transparent 60%),
+                linear-gradient(45deg, transparent 40%, rgba(36, 126, 255, 0.03) 50%, transparent 60%),
                 radial-gradient(circle at 30% 70%, rgba(212, 175, 55, 0.05) 0%, transparent 70%),
-                linear-gradient(135deg, transparent 30%, rgba(212, 175, 55, 0.02) 50%, transparent 70%)
+                linear-gradient(135deg, transparent 30%, rgba(36, 126, 255, 0.02) 50%, transparent 70%)
               `,
               backgroundSize: '100px 100px, 200px 200px, 150px 150px'
             }}
@@ -77,7 +77,7 @@ const HeroSection = () => {
         {[...Array(12)].map((_, i) => (
           <div 
             key={i}
-            className="particle"
+            className="particle bg-[#247EFF]"
             style={{
               left: `${10 + (i * 8)}%`,
               animationDelay: `${i * 0.5}s`,
@@ -90,12 +90,12 @@ const HeroSection = () => {
       <div className="container mx-auto px-6 text-center relative z-10">
         <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
           {/* Main Headline with Enhanced Animation */}
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight text-shadow-glow text-brand-black dark:text-brand-cream">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight text-[#0A0A0A] dark:text-brand-cream">
             <span className="block kinetic-text">
               <span style={{ animationDelay: '0.1s' }}>Build</span>{' '}
               <span style={{ animationDelay: '0.2s' }}>Your</span>
             </span>
-            <span className="block kinetic-text gradient-text text-6xl md:text-8xl lg:text-9xl">
+            <span className="block kinetic-text text-[#247EFF] text-6xl md:text-8xl lg:text-9xl">
               <span style={{ animationDelay: '0.3s' }}>Legacy</span>
             </span>
             <span className="block kinetic-text text-3xl md:text-5xl lg:text-6xl">
@@ -106,11 +106,11 @@ const HeroSection = () => {
 
           {/* Mission Statement with Glow Effect */}
           <div className={`max-w-4xl mx-auto mb-12 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <p className="text-xl md:text-2xl text-brand-black/80 dark:text-brand-cream/80 leading-relaxed font-light">
+            <p className="text-xl md:text-2xl text-[#0A0A0A]/80 dark:text-brand-cream/80 leading-relaxed font-light">
               Figure it out with nothing but{' '}
-              <span className="text-accent font-medium glow-pulse">grit</span>,{' '}
-              <span className="text-accent font-medium glow-pulse" style={{ animationDelay: '1s' }}>instinct</span>, and{' '}
-              <span className="text-accent font-medium glow-pulse" style={{ animationDelay: '2s' }}>dreams</span>
+              <span className="text-[#D4AF37] font-medium">grit</span>,{' '}
+              <span className="text-[#D4AF37] font-medium">instinct</span>, and{' '}
+              <span className="text-[#D4AF37] font-medium">dreams</span>
             </p>
           </div>
 
@@ -118,15 +118,14 @@ const HeroSection = () => {
           <div className={`flex flex-col sm:flex-row gap-6 justify-center items-center transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <Button 
               size="lg" 
-              className="bg-accent hover:bg-accent/90 text-black font-semibold px-10 py-6 rounded-3xl text-lg glow-pulse relative overflow-hidden group"
+              className="bg-[#247EFF] hover:bg-[#0057FF] hover:shadow-lg hover:shadow-[#D4AF37]/30 text-white font-semibold px-10 py-6 rounded-3xl text-lg transition-all duration-300 hover:scale-105"
             >
-              <span className="relative z-10">Join the Movement</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent shimmer"></div>
+              Join the Movement
             </Button>
             <Button 
               variant="outline" 
               size="lg"
-              className="border-2 border-accent text-accent hover:bg-accent hover:text-black font-semibold px-10 py-6 rounded-3xl text-lg transition-all hover:scale-105 hover:shadow-lg hover:shadow-accent/25"
+              className="border-2 border-[#D4AF37] bg-[#D4AF37] text-[#0A0A0A] hover:bg-[#D4AF37]/90 hover:shadow-lg hover:shadow-[#D4AF37]/20 font-semibold px-10 py-6 rounded-3xl text-lg transition-all hover:scale-105"
             >
               Explore Stories
             </Button>
@@ -141,12 +140,12 @@ const HeroSection = () => {
             ].map((stat, index) => (
               <div key={index} className="text-center group">
                 <div className="relative">
-                  <div className="text-4xl md:text-5xl font-bold text-accent mb-3 group-hover:scale-110 transition-transform duration-300">
+                  <div className="text-4xl md:text-5xl font-bold text-[#247EFF] mb-3 group-hover:scale-110 transition-transform duration-300">
                     {stat.number}
                   </div>
-                  <div className="absolute inset-0 bg-accent/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 bg-[#247EFF]/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
-                <div className="text-sm text-brand-black/60 dark:text-brand-cream/60 uppercase tracking-wider font-medium">{stat.label}</div>
+                <div className="text-sm text-[#0A0A0A]/60 dark:text-brand-cream/60 uppercase tracking-wider font-medium">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -155,9 +154,9 @@ const HeroSection = () => {
 
       {/* Enhanced Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-8 h-12 border-2 border-accent rounded-full flex justify-center relative">
-          <div className="w-1 h-4 bg-accent rounded-full mt-3 animate-pulse"></div>
-          <div className="absolute -inset-2 border border-accent/30 rounded-full animate-ping"></div>
+        <div className="w-8 h-12 border-2 border-[#247EFF] rounded-full flex justify-center relative">
+          <div className="w-1 h-4 bg-[#247EFF] rounded-full mt-3 animate-pulse"></div>
+          <div className="absolute -inset-2 border border-[#247EFF]/30 rounded-full animate-ping"></div>
         </div>
       </div>
     </section>

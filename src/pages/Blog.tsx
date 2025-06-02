@@ -89,10 +89,10 @@ const Blog = () => {
       <section className="pt-32 pb-16 bg-brand-cream dark:bg-brand-black">
         <div className="container mx-auto px-6">
           <div className={`max-w-4xl mx-auto text-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 text-brand-black dark:text-brand-cream">
-              Stories of <span className="text-accent">Legacy</span>
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 text-[#0A0A0A] dark:text-brand-cream">
+              Stories of <span className="text-[#247EFF]">Legacy</span>
             </h1>
-            <p className="text-xl text-brand-black/70 dark:text-brand-cream/70 leading-relaxed">
+            <p className="text-xl text-[#0A0A0A]/70 dark:text-brand-cream/70 leading-relaxed">
               Real insights from real builders. No theory, no fluff—just actionable wisdom 
               from entrepreneurs who've turned dreams into reality.
             </p>
@@ -101,18 +101,18 @@ const Blog = () => {
       </section>
 
       {/* Search and Filter Section */}
-      <section className="py-12 border-b border-accent/20 bg-white/80 dark:bg-brand-black/80">
+      <section className="py-12 border-b border-[#247EFF]/20 bg-white/90 dark:bg-brand-black/80">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
             {/* Search Bar */}
             <div className="relative mb-8">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-brand-black/60 dark:text-brand-cream/60 h-5 w-5" />
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[#0A0A0A]/60 dark:text-brand-cream/60 h-5 w-5" />
               <Input
                 type="text"
                 placeholder="Search articles..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-12 py-4 rounded-3xl border-accent/20 focus:border-accent text-lg bg-white/80 dark:bg-brand-black/80 text-brand-black dark:text-brand-cream"
+                className="pl-12 py-4 rounded-3xl border-[#247EFF]/20 focus:border-[#247EFF] text-lg bg-white/80 dark:bg-brand-black/80 text-[#0A0A0A] dark:text-brand-cream"
               />
             </div>
 
@@ -123,10 +123,10 @@ const Blog = () => {
                   key={category}
                   variant={selectedCategory === category ? "default" : "outline"}
                   onClick={() => setSelectedCategory(category)}
-                  className={`rounded-2xl px-6 py-2 ${
+                  className={`rounded-2xl px-6 py-2 transition-all duration-300 ${
                     selectedCategory === category
-                      ? "bg-accent hover:bg-accent/90 text-black"
-                      : "border-accent/20 text-accent hover:bg-accent hover:text-black"
+                      ? "bg-[#247EFF] hover:bg-[#0057FF] text-white"
+                      : "border-[#247EFF]/20 text-[#247EFF] hover:bg-[#247EFF] hover:text-white"
                   }`}
                 >
                   {category}
@@ -144,7 +144,7 @@ const Blog = () => {
             {filteredPosts.map((post, index) => (
               <Card 
                 key={post.id} 
-                className="card-hover bg-white/80 dark:bg-brand-black/80 backdrop-blur-sm border-accent/20 rounded-3xl overflow-hidden group"
+                className="bg-white/90 dark:bg-brand-black/80 backdrop-blur-sm border-[#247EFF]/20 rounded-3xl overflow-hidden group transition-all duration-500 hover:scale-105 hover:shadow-lg hover:shadow-[#247EFF]/20"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <CardHeader className="p-0">
@@ -155,7 +155,7 @@ const Blog = () => {
                       className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
                     />
                     <div className="absolute top-4 left-4">
-                      <span className="bg-accent text-black px-3 py-1 rounded-full text-sm font-medium">
+                      <span className="bg-[#247EFF] text-white px-3 py-1 rounded-full text-sm font-medium">
                         {post.category}
                       </span>
                     </div>
@@ -163,13 +163,13 @@ const Blog = () => {
                 </CardHeader>
                 
                 <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold mb-3 line-clamp-2 group-hover:text-accent transition-colors text-brand-black dark:text-brand-cream">
+                  <h3 className="text-xl font-semibold mb-3 line-clamp-2 group-hover:text-[#247EFF] transition-colors text-[#0A0A0A] dark:text-brand-cream">
                     {post.title}
                   </h3>
-                  <p className="text-brand-black/70 dark:text-brand-cream/70 mb-4 line-clamp-3">
+                  <p className="text-[#0A0A0A]/70 dark:text-brand-cream/70 mb-4 line-clamp-3">
                     {post.excerpt}
                   </p>
-                  <div className="flex items-center justify-between text-sm text-brand-black/60 dark:text-brand-cream/60">
+                  <div className="flex items-center justify-between text-sm text-[#0A0A0A]/60 dark:text-brand-cream/60">
                     <div className="flex items-center space-x-2">
                       <Calendar size={16} />
                       <span>{new Date(post.date).toLocaleDateString()}</span>
@@ -181,7 +181,7 @@ const Blog = () => {
                 <CardFooter className="p-6 pt-0">
                   <Button 
                     variant="ghost" 
-                    className="w-full group-hover:bg-accent group-hover:text-black transition-all rounded-2xl text-brand-black dark:text-brand-cream"
+                    className="w-full group-hover:bg-[#247EFF] group-hover:text-white transition-all rounded-2xl text-[#0A0A0A] dark:text-brand-cream"
                   >
                     Read Story
                     <ArrowUp className="ml-2 h-4 w-4 rotate-45 group-hover:translate-x-1 transition-transform" />
@@ -194,11 +194,11 @@ const Blog = () => {
           {/* No Results */}
           {filteredPosts.length === 0 && (
             <div className="text-center py-16">
-              <p className="text-xl text-brand-black/70 dark:text-brand-cream/70 mb-4">No articles found matching your criteria.</p>
+              <p className="text-xl text-[#0A0A0A]/70 dark:text-brand-cream/70 mb-4">No articles found matching your criteria.</p>
               <Button 
                 onClick={() => {setSearchTerm(""); setSelectedCategory("All");}}
                 variant="outline"
-                className="border-accent text-accent hover:bg-accent hover:text-black"
+                className="border-[#247EFF] text-[#247EFF] hover:bg-[#247EFF] hover:text-white"
               >
                 Clear Filters
               </Button>

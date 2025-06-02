@@ -26,28 +26,28 @@ const FloatingCTA = () => {
 
   return (
     <div className="floating-cta">
-      <div className="glass-effect border border-accent/30 rounded-3xl p-4 shadow-2xl relative overflow-hidden group">
-        <div className="absolute inset-0 bg-gradient-to-r from-accent/20 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      <div className="backdrop-blur-sm bg-white/90 dark:bg-brand-black/90 border border-[#247EFF]/30 rounded-3xl p-4 shadow-2xl relative overflow-hidden group">
+        <div className="absolute inset-0 bg-gradient-to-r from-[#247EFF]/20 to-[#D4AF37]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         
         <button
           onClick={handleDismiss}
-          className="absolute top-2 right-2 w-6 h-6 rounded-full bg-accent/20 hover:bg-accent/30 flex items-center justify-center transition-all duration-200 z-10"
+          className="absolute top-2 right-2 w-6 h-6 rounded-full bg-[#247EFF]/20 hover:bg-[#247EFF]/30 flex items-center justify-center transition-all duration-200 z-10"
         >
-          <X size={12} className="text-accent" />
+          <X size={12} className="text-[#247EFF]" />
         </button>
 
         <div className="relative z-10">
-          <div className="text-sm font-medium text-accent mb-2">Join the Movement</div>
+          <div className="text-sm font-medium text-[#247EFF] mb-2">Join the Movement</div>
           <Button 
             size="sm"
-            className="bg-accent hover:bg-accent/90 text-black font-medium rounded-2xl px-4 py-2 text-sm glow-pulse w-full"
+            className="bg-[#247EFF] hover:bg-[#0057FF] hover:shadow-lg hover:shadow-[#D4AF37]/30 text-white font-medium rounded-2xl px-4 py-2 text-sm w-full transition-all duration-300"
           >
             Get Started
           </Button>
         </div>
 
         {/* Pulse ring animation */}
-        <div className="absolute inset-0 rounded-3xl border-2 border-accent animate-pulse opacity-50"></div>
+        <div className="absolute inset-0 rounded-3xl border-2 border-[#247EFF] animate-pulse opacity-50"></div>
       </div>
     </div>
   );

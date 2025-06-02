@@ -35,17 +35,17 @@ const BlogShowcase = () => {
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-b from-background to-card urban-texture relative">
+    <section className="py-24 bg-brand-cream dark:bg-brand-black urban-texture relative">
       {/* Section separator */}
       <div className="section-separator"></div>
       
       <div className="container mx-auto px-6 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-shadow-glow">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-shadow-glow text-brand-black dark:text-brand-cream">
             Stories That <span className="text-accent gradient-text">Inspire</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-xl text-brand-black/70 dark:text-brand-cream/70 max-w-2xl mx-auto">
             Real insights from real builders. No fluff, no theory—just the raw truth about creating something from nothing.
           </p>
         </div>
@@ -55,7 +55,7 @@ const BlogShowcase = () => {
           {blogPosts.map((post, index) => (
             <Card 
               key={post.id} 
-              className="card-hover glass-effect border-accent/20 rounded-3xl overflow-hidden group relative"
+              className="card-hover glass-effect border-accent/20 rounded-3xl overflow-hidden group relative bg-white/10 dark:bg-black/20"
               style={{ animationDelay: `${index * 0.2}s` }}
             >
               <CardHeader className="p-0 relative">
@@ -76,13 +76,13 @@ const BlogShowcase = () => {
               
               <CardContent className="p-6 relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-b-3xl"></div>
-                <h3 className="text-xl font-semibold mb-3 line-clamp-2 group-hover:text-accent transition-colors duration-300 relative z-10">
+                <h3 className="text-xl font-semibold mb-3 line-clamp-2 group-hover:text-accent transition-colors duration-300 relative z-10 text-brand-black dark:text-brand-cream">
                   {post.title}
                 </h3>
-                <p className="text-muted-foreground mb-4 line-clamp-3 relative z-10">
+                <p className="text-brand-black/70 dark:text-brand-cream/70 mb-4 line-clamp-3 relative z-10">
                   {post.excerpt}
                 </p>
-                <div className="flex items-center justify-between text-sm text-muted-foreground relative z-10">
+                <div className="flex items-center justify-between text-sm text-brand-black/60 dark:text-brand-cream/60 relative z-10">
                   <div className="flex items-center space-x-2">
                     <Calendar size={16} />
                     <span>{new Date(post.date).toLocaleDateString()}</span>
@@ -94,7 +94,7 @@ const BlogShowcase = () => {
               <CardFooter className="p-6 pt-0">
                 <Button 
                   variant="ghost" 
-                  className="w-full group-hover:bg-accent group-hover:text-black transition-all duration-300 rounded-2xl relative overflow-hidden"
+                  className="w-full group-hover:bg-accent group-hover:text-black transition-all duration-300 rounded-2xl relative overflow-hidden text-brand-black dark:text-brand-cream"
                 >
                   <span className="relative z-10">Read Story</span>
                   <ArrowUp className="ml-2 h-4 w-4 rotate-45 group-hover:translate-x-1 transition-transform relative z-10" />

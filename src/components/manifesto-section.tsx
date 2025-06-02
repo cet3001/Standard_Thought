@@ -42,7 +42,7 @@ const ManifestoSection = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="py-24 bg-gradient-to-b from-card to-background urban-texture relative overflow-hidden">
+    <section ref={sectionRef} className="py-24 bg-brand-cream dark:bg-brand-black urban-texture relative overflow-hidden">
       {/* Urban background elements */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -60,10 +60,10 @@ const ManifestoSection = () => {
       <div className="container mx-auto px-6 relative z-10">
         {/* Section Header */}
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-shadow-glow">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-shadow-glow text-brand-black dark:text-brand-cream">
             The Standard<span className="text-accent gradient-text">thought</span> Way
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl text-brand-black/70 dark:text-brand-cream/70 max-w-3xl mx-auto">
             We're not just building businesses—we're building a movement. Here's what drives us, what defines us, and what separates us from everyone else.
           </p>
         </div>
@@ -73,7 +73,7 @@ const ManifestoSection = () => {
           {manifestoPoints.map((point, index) => (
             <div 
               key={index}
-              className={`glass-effect border border-accent/20 rounded-3xl p-8 transition-all duration-1000 hover:border-accent/50 group relative overflow-hidden ${
+              className={`glass-effect border border-accent/20 rounded-3xl p-8 transition-all duration-1000 hover:border-accent/50 group relative overflow-hidden bg-white/5 dark:bg-black/20 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
               style={{ animationDelay: `${index * 0.2}s` }}
@@ -87,7 +87,7 @@ const ManifestoSection = () => {
                   <h3 className="text-xl font-semibold mb-3 text-accent group-hover:text-shadow-glow transition-all duration-300">
                     {point.title}
                   </h3>
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="text-brand-black/70 dark:text-brand-cream/70 leading-relaxed">
                     {point.content}
                   </p>
                 </div>
@@ -98,13 +98,13 @@ const ManifestoSection = () => {
 
         {/* Enhanced Bottom CTA */}
         <div className={`text-center mt-16 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="glass-effect border border-accent/30 rounded-3xl p-8 max-w-4xl mx-auto relative overflow-hidden group">
+          <div className="glass-effect border border-accent/30 rounded-3xl p-8 max-w-4xl mx-auto relative overflow-hidden group bg-white/5 dark:bg-black/10">
             <div className="absolute inset-0 bg-gradient-to-r from-accent/10 via-accent/20 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="relative z-10">
-              <h3 className="text-2xl md:text-3xl font-bold mb-4 text-shadow-glow">
+              <h3 className="text-2xl md:text-3xl font-bold mb-4 text-shadow-glow text-brand-black dark:text-brand-cream">
                 Ready to Build Your Legacy?
               </h3>
-              <p className="text-lg text-muted-foreground mb-6">
+              <p className="text-lg text-brand-black/70 dark:text-brand-cream/70 mb-6">
                 This isn't for everyone. It's for the ones who see obstacles as opportunities and dreams as blueprints.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">

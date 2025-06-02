@@ -1,4 +1,3 @@
-
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import { useState, useEffect } from "react";
@@ -89,17 +88,17 @@ const Sales = () => {
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-brand-cream dark:bg-brand-black">
       <Navigation />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-gradient-to-br from-background via-background to-secondary/20">
+      <section className="pt-32 pb-16 bg-brand-cream dark:bg-brand-black">
         <div className="container mx-auto px-6">
           <div className={`max-w-4xl mx-auto text-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 text-brand-black dark:text-brand-cream">
               Build Your <span className="text-accent">Legacy</span> Today
             </h1>
-            <p className="text-xl text-muted-foreground leading-relaxed mb-8">
+            <p className="text-xl text-brand-black/70 dark:text-brand-cream/70 leading-relaxed mb-8">
               Everything you need to go from idea to income. Proven frameworks, 
               real strategies, and direct access to entrepreneurs who've built what you want to build.
             </p>
@@ -113,16 +112,16 @@ const Sales = () => {
       </section>
 
       {/* Products Section */}
-      <section className="py-24">
+      <section className="py-24 bg-white/80 dark:bg-brand-black/80">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {products.map((product, index) => (
               <Card 
                 key={product.id}
-                className={`relative bg-card border rounded-3xl overflow-hidden transition-all duration-1000 hover:scale-105 ${
+                className={`relative bg-white/90 dark:bg-brand-black/90 backdrop-blur-sm border rounded-3xl overflow-hidden transition-all duration-1000 hover:scale-105 ${
                   product.popular 
                     ? 'border-accent shadow-lg shadow-accent/20' 
-                    : 'border-border/50'
+                    : 'border-accent/20'
                 } ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
@@ -143,21 +142,21 @@ const Sales = () => {
                 </CardHeader>
 
                 <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold mb-4">{product.title}</h3>
+                  <h3 className="text-2xl font-bold mb-4 text-brand-black dark:text-brand-cream">{product.title}</h3>
                   
                   <div className="mb-6">
                     <div className="flex items-center space-x-2 mb-2">
                       <span className="text-3xl font-bold text-accent">{product.price}</span>
-                      <span className="text-lg text-muted-foreground line-through">{product.originalPrice}</span>
+                      <span className="text-lg text-brand-black/60 dark:text-brand-cream/60 line-through">{product.originalPrice}</span>
                     </div>
-                    <p className="text-muted-foreground">{product.description}</p>
+                    <p className="text-brand-black/70 dark:text-brand-cream/70">{product.description}</p>
                   </div>
 
                   <ul className="space-y-3 mb-8">
                     {product.features.map((feature, idx) => (
                       <li key={idx} className="flex items-start space-x-3">
                         <CheckCircle size={20} className="text-accent mt-0.5 flex-shrink-0" />
-                        <span className="text-sm">{feature}</span>
+                        <span className="text-sm text-brand-black dark:text-brand-cream">{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -166,7 +165,7 @@ const Sales = () => {
                     className={`w-full py-4 rounded-2xl font-semibold ${
                       product.popular
                         ? 'bg-accent hover:bg-accent/90 text-black'
-                        : 'bg-primary hover:bg-primary/90 text-primary-foreground'
+                        : 'bg-brand-black hover:bg-brand-black/90 text-brand-cream dark:bg-brand-cream dark:hover:bg-brand-cream/90 dark:text-brand-black'
                     }`}
                   >
                     Get Access Now
@@ -180,11 +179,11 @@ const Sales = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-24 bg-gradient-to-b from-background to-secondary/10">
+      <section className="py-24 bg-brand-cream dark:bg-brand-black">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-6">Success Stories</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <h2 className="text-4xl font-bold mb-6 text-brand-black dark:text-brand-cream">Success Stories</h2>
+            <p className="text-xl text-brand-black/70 dark:text-brand-cream/70 max-w-2xl mx-auto">
               Don't just take our word for it. Here's what real entrepreneurs are saying about their results.
             </p>
           </div>
@@ -193,7 +192,7 @@ const Sales = () => {
             {testimonials.map((testimonial, index) => (
               <Card 
                 key={index}
-                className={`bg-card border-border/50 rounded-3xl p-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                className={`bg-white/80 dark:bg-brand-black/80 backdrop-blur-sm border-accent/20 rounded-3xl p-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
                 style={{ animationDelay: `${600 + index * 200}ms` }}
               >
                 <CardContent className="p-0">
@@ -202,9 +201,9 @@ const Sales = () => {
                       <Star key={i} size={20} className="text-accent fill-current" />
                     ))}
                   </div>
-                  <p className="text-muted-foreground mb-6 italic">"{testimonial.content}"</p>
+                  <p className="text-brand-black/70 dark:text-brand-cream/70 mb-6 italic">"{testimonial.content}"</p>
                   <div>
-                    <div className="font-semibold">{testimonial.name}</div>
+                    <div className="font-semibold text-brand-black dark:text-brand-cream">{testimonial.name}</div>
                     <div className="text-sm text-accent">{testimonial.title}</div>
                   </div>
                 </CardContent>
@@ -215,11 +214,11 @@ const Sales = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24">
+      <section className="py-24 bg-white/80 dark:bg-brand-black/80">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center bg-gradient-to-r from-accent/10 via-accent/20 to-accent/10 rounded-3xl p-12">
-            <h2 className="text-4xl font-bold mb-6">Ready to Start Building?</h2>
-            <p className="text-xl text-muted-foreground mb-8">
+            <h2 className="text-4xl font-bold mb-6 text-brand-black dark:text-brand-cream">Ready to Start Building?</h2>
+            <p className="text-xl text-brand-black/70 dark:text-brand-cream/70 mb-8">
               Join thousands of entrepreneurs who've chosen to stop dreaming and start building. 
               Your legacy begins with a single decision.
             </p>

@@ -37,7 +37,7 @@ const NewsletterSection = () => {
   };
 
   return (
-    <section className="py-24 bg-brand-black dark:bg-brand-black relative overflow-hidden">
+    <section className="py-24 bg-white/90 dark:bg-brand-black/90 backdrop-blur-sm relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-10 right-10 w-20 h-20 rounded-full bg-accent/20 animate-float"></div>
@@ -50,19 +50,19 @@ const NewsletterSection = () => {
             <>
               {/* Header */}
               <div className="mb-8">
-                <h2 className="text-4xl md:text-5xl font-bold mb-4 text-brand-cream">
+                <h2 className="text-4xl md:text-5xl font-bold mb-4 text-brand-black dark:text-brand-cream">
                   Join the <span className="text-accent">Movement</span>
                 </h2>
-                <p className="text-xl text-brand-cream/80">
+                <p className="text-xl text-brand-black/80 dark:text-brand-cream/80">
                   Get exclusive insights, behind-the-scenes stories, and actionable strategies delivered to your inbox. 
                   No spam, just pure value from builders who've been where you're going.
                 </p>
               </div>
 
               {/* Incentive */}
-              <div className="bg-white/5 border border-accent/20 rounded-3xl p-6 mb-8 glass-effect">
+              <div className="bg-accent/10 border border-accent/20 rounded-3xl p-6 mb-8 glass-effect">
                 <h3 className="text-lg font-semibold mb-2 text-accent">Free Welcome Gift 🎁</h3>
-                <p className="text-brand-cream/70">
+                <p className="text-brand-black/70 dark:text-brand-cream/70">
                   Get instant access to "The Legacy Builder's Playbook" - 50 pages of strategies, frameworks, and mindset shifts from entrepreneurs who built million-dollar businesses from scratch.
                 </p>
               </div>
@@ -70,13 +70,13 @@ const NewsletterSection = () => {
               {/* Signup Form */}
               <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto mb-8">
                 <div className="flex-1 relative">
-                  <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-brand-cream/60 h-5 w-5" />
+                  <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-brand-black/60 dark:text-brand-cream/60 h-5 w-5" />
                   <Input
                     type="email"
                     placeholder="Enter your email address"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="pl-10 py-6 rounded-2xl border-accent/20 focus:border-accent bg-white/10 text-brand-cream placeholder:text-brand-cream/50"
+                    className="pl-10 py-6 rounded-2xl border-accent/20 focus:border-accent bg-white/80 dark:bg-brand-black/80 text-brand-black dark:text-brand-cream placeholder:text-brand-black/50 dark:placeholder:text-brand-cream/50"
                     required
                   />
                 </div>
@@ -90,7 +90,7 @@ const NewsletterSection = () => {
               </form>
 
               {/* Trust Indicators */}
-              <div className="flex flex-wrap justify-center items-center gap-6 text-sm text-brand-cream/60">
+              <div className="flex flex-wrap justify-center items-center gap-6 text-sm text-brand-black/60 dark:text-brand-cream/60">
                 <div className="flex items-center space-x-2">
                   <CheckCircle size={16} className="text-accent" />
                   <span>10,000+ members</span>
@@ -112,7 +112,7 @@ const NewsletterSection = () => {
                 <CheckCircle size={40} className="text-black" />
               </div>
               <h3 className="text-3xl font-bold mb-4 text-accent">Welcome to the Movement!</h3>
-              <p className="text-xl text-brand-cream/80">
+              <p className="text-xl text-brand-black/80 dark:text-brand-cream/80">
                 Check your inbox for your welcome gift. Your journey to building legacy starts now.
               </p>
             </div>

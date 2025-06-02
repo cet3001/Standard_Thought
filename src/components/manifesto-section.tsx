@@ -1,5 +1,6 @@
 
-import { useEffect, useRef, useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import { Button } from "@/components/ui/button";
 
 const ManifestoSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -22,100 +23,80 @@ const ManifestoSection = () => {
     return () => observer.disconnect();
   }, []);
 
-  const manifestoPoints = [
-    {
-      title: "We Build Different",
-      content: "While others wait for permission, we create our own opportunities. Legacy isn't inherited—it's built with intention, one decision at a time."
-    },
-    {
-      title: "Failure Is Fuel",
-      content: "Every setback is data. Every rejection is redirection. We don't fear failure; we harvest its lessons and use them as stepping stones to greatness."
-    },
-    {
-      title: "Community Over Competition",
-      content: "Rising together creates more value than climbing alone. We share knowledge, resources, and connections because abundance multiplies when shared."
-    },
-    {
-      title: "Excellence Is Non-Negotiable",
-      content: "Mediocrity is the enemy of legacy. We pursue mastery not for recognition, but because our standards define our destiny."
-    }
-  ];
-
   return (
-    <section ref={sectionRef} className="py-24 bg-brand-cream dark:bg-brand-black urban-texture relative overflow-hidden">
-      {/* Urban background elements */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `
-            radial-gradient(circle at 25px 25px, #D4AF37 2px, transparent 0),
-            linear-gradient(45deg, transparent 40%, rgba(212, 175, 55, 0.1) 50%, transparent 60%)
-          `,
-          backgroundSize: '50px 50px, 100px 100px'
-        }}></div>
+    <section 
+      ref={sectionRef}
+      className="py-24 bg-brand-cream dark:bg-brand-black relative overflow-hidden"
+    >
+      {/* Background Elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-20 left-10 w-40 h-40 rounded-full bg-accent/5 animate-float" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute bottom-20 right-20 w-32 h-32 rounded-2xl bg-accent/10 animate-float" style={{ animationDelay: '3s' }}></div>
       </div>
 
-      {/* Section separator */}
-      <div className="section-separator"></div>
-
       <div className="container mx-auto px-6 relative z-10">
-        {/* Section Header */}
-        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-shadow-glow text-brand-black dark:text-brand-cream">
-            The Standard<span className="text-accent gradient-text">thought</span> Way
-          </h2>
-          <p className="text-xl text-brand-black/70 dark:text-brand-cream/70 max-w-3xl mx-auto">
-            We're not just building businesses—we're building a movement. Here's what drives us, what defines us, and what separates us from everyone else.
-          </p>
-        </div>
+        <div className="max-w-4xl mx-auto">
+          {/* Header */}
+          <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-brand-black dark:text-brand-cream">
+              This Is Our <span className="text-accent">Standard</span>
+            </h2>
+            <p className="text-xl text-brand-black/70 dark:text-brand-cream/70">
+              We don't follow. We don't copy. We build from the ground up, 
+              with nothing but vision and relentless execution.
+            </p>
+          </div>
 
-        {/* Manifesto Grid with Enhanced Design */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {manifestoPoints.map((point, index) => (
-            <div 
-              key={index}
-              className={`glass-effect border border-accent/20 rounded-3xl p-8 transition-all duration-1000 hover:border-accent/50 group relative overflow-hidden bg-white/5 dark:bg-black/20 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
-              style={{ animationDelay: `${index * 0.2}s` }}
+          {/* Manifesto Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
+            {[
+              {
+                title: "From Nothing",
+                content: "We celebrate those who started with empty pockets but full hearts. Your background doesn't determine your destiny—your decisions do.",
+                delay: "0.2s"
+              },
+              {
+                title: "No Shortcuts",
+                content: "Real wealth is built brick by brick, relationship by relationship, decision by decision. We respect the process and trust the journey.",
+                delay: "0.4s"
+              },
+              {
+                title: "Community Over Competition",
+                content: "We rise by lifting others. Success shared is success multiplied. The movement grows when everyone wins.",
+                delay: "0.6s"
+              },
+              {
+                title: "Legacy Thinking",
+                content: "We're not building for today—we're building for generations. Every move is calculated, every decision is intentional.",
+                delay: "0.8s"
+              }
+            ].map((principle, index) => (
+              <div 
+                key={index}
+                className={`bg-white/80 dark:bg-brand-black/80 backdrop-blur-sm p-8 rounded-3xl border border-accent/20 transition-all duration-1000 hover:scale-105 hover:shadow-lg hover:shadow-accent/20 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                style={{ animationDelay: principle.delay }}
+              >
+                <h3 className="text-2xl font-bold mb-4 text-accent">{principle.title}</h3>
+                <p className="text-brand-black/80 dark:text-brand-cream/80 leading-relaxed">{principle.content}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Call to Action */}
+          <div className={`text-center bg-gradient-to-r from-accent/10 via-accent/20 to-accent/10 rounded-3xl p-12 transition-all duration-1000 delay-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <h3 className="text-3xl font-bold mb-6 text-brand-black dark:text-brand-cream">
+              Ready to Build Your Legacy?
+            </h3>
+            <p className="text-xl text-brand-black/80 dark:text-brand-cream/80 mb-8">
+              Join thousands who've chosen to stop dreaming and start building. 
+              Your story starts with a single decision.
+            </p>
+            <Button 
+              size="lg"
+              className="bg-accent hover:bg-accent/90 text-black font-semibold px-8 py-4 rounded-3xl"
             >
-              {/* Background glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              
-              <div className="flex items-start space-x-4 relative z-10">
-                <div className="w-4 h-4 bg-accent rounded-full mt-2 flex-shrink-0 glow-pulse"></div>
-                <div>
-                  <h3 className="text-xl font-semibold mb-3 text-accent group-hover:text-shadow-glow transition-all duration-300">
-                    {point.title}
-                  </h3>
-                  <p className="text-brand-black/70 dark:text-brand-cream/70 leading-relaxed">
-                    {point.content}
-                  </p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Enhanced Bottom CTA */}
-        <div className={`text-center mt-16 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="glass-effect border border-accent/30 rounded-3xl p-8 max-w-4xl mx-auto relative overflow-hidden group bg-white/5 dark:bg-black/10">
-            <div className="absolute inset-0 bg-gradient-to-r from-accent/10 via-accent/20 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            <div className="relative z-10">
-              <h3 className="text-2xl md:text-3xl font-bold mb-4 text-shadow-glow text-brand-black dark:text-brand-cream">
-                Ready to Build Your Legacy?
-              </h3>
-              <p className="text-lg text-brand-black/70 dark:text-brand-cream/70 mb-6">
-                This isn't for everyone. It's for the ones who see obstacles as opportunities and dreams as blueprints.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="bg-accent hover:bg-accent/90 text-black font-semibold px-8 py-4 rounded-3xl transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-accent/25 glow-pulse">
-                  Start Your Journey
-                </button>
-                <button className="border-2 border-accent text-accent hover:bg-accent hover:text-black font-semibold px-8 py-4 rounded-3xl transition-all duration-300 hover:scale-105">
-                  Learn More
-                </button>
-              </div>
-            </div>
+              Start Your Journey
+            </Button>
           </div>
         </div>
       </div>

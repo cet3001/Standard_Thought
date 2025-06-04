@@ -54,7 +54,7 @@ const HeroSection = () => {
           }}
         ></div>
         <div 
-          className="absolute w-64 h-64 rounded-2xl bg-gradient-to-br from-[#D4AF37]/15 to-transparent blur-2xl rotate-45"
+          className="absolute w-64 h-64 rounded-2xl bg-gradient-to-br from-[#247EFF]/15 to-transparent blur-2xl rotate-45"
           style={{
             transform: `translate(${mousePosition.x * -30}px, ${mousePosition.y * 40}px) rotate(45deg)`,
             bottom: '20%',
@@ -69,7 +69,7 @@ const HeroSection = () => {
             style={{
               backgroundImage: `
                 linear-gradient(45deg, transparent 40%, rgba(36, 126, 255, 0.03) 50%, transparent 60%),
-                radial-gradient(circle at 30% 70%, rgba(212, 175, 55, 0.05) 0%, transparent 70%),
+                radial-gradient(circle at 30% 70%, rgba(36, 126, 255, 0.05) 0%, transparent 70%),
                 linear-gradient(135deg, transparent 30%, rgba(36, 126, 255, 0.02) 50%, transparent 70%)
               `,
               backgroundSize: '100px 100px, 200px 200px, 150px 150px'
@@ -112,10 +112,10 @@ const HeroSection = () => {
           <div className={`max-w-4xl mx-auto mb-12 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <p className="text-xl md:text-2xl text-[#0A0A0A]/80 dark:text-brand-cream/80 leading-relaxed font-light">
               No handouts. No shortcuts. This is for{' '}
-              <span className="text-[#D4AF37] font-medium">hustlers</span>,{' '}
-              <span className="text-[#D4AF37] font-medium">dreamers</span>, and anyone who's tired of waiting for a seat at the table—so you built your own. If you're trying to turn{' '}
-              <span className="text-[#D4AF37] font-medium">grind</span> into{' '}
-              <span className="text-[#D4AF37] font-medium">generational change</span>, you're in the right place.
+              <span className="text-[#247EFF] font-medium">hustlers</span>,{' '}
+              <span className="text-[#247EFF] font-medium">dreamers</span>, and anyone who's tired of waiting for a seat at the table—so you built your own. If you're trying to turn{' '}
+              <span className="text-[#247EFF] font-medium">grind</span> into{' '}
+              <span className="text-[#247EFF] font-medium">generational change</span>, you're in the right place.
             </p>
           </div>
 
@@ -124,7 +124,7 @@ const HeroSection = () => {
             <Button 
               size="lg" 
               onClick={scrollToNewsletter}
-              className="bg-[#247EFF] hover:bg-[#0057FF] hover:shadow-lg hover:shadow-[#D4AF37]/30 text-white font-semibold px-10 py-6 rounded-3xl text-lg transition-all duration-300 hover:scale-105"
+              className="bg-[#247EFF] hover:bg-[#0057FF] hover:shadow-lg hover:shadow-[#247EFF]/30 text-white font-semibold px-10 py-6 rounded-3xl text-lg transition-all duration-300 hover:scale-105"
             >
               Start Building
             </Button>
@@ -132,7 +132,7 @@ const HeroSection = () => {
               variant="outline" 
               size="lg"
               asChild
-              className="border-2 border-[#D4AF37] bg-[#D4AF37] text-[#0A0A0A] hover:bg-[#D4AF37]/90 hover:shadow-lg hover:shadow-[#D4AF37]/20 font-semibold px-10 py-6 rounded-3xl text-lg transition-all hover:scale-105"
+              className="border-2 border-[#247EFF] bg-[#247EFF] text-white hover:bg-[#0057FF] hover:shadow-lg hover:shadow-[#247EFF]/20 font-semibold px-10 py-6 rounded-3xl text-lg transition-all hover:scale-105"
             >
               <Link to="/blog">See Real Stories</Link>
             </Button>
@@ -145,6 +145,7 @@ const HeroSection = () => {
             </h2>
           </div>
 
+          {/* Updated Stats Section */}
           <div className={`mt-20 grid grid-cols-1 md:grid-cols-3 gap-12 max-w-4xl mx-auto transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             {[
               { number: "500+", label: "Generations Changed" },

@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 
@@ -30,7 +31,7 @@ const ManifestoSection = () => {
       {/* Background Elements */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 left-10 w-40 h-40 rounded-full bg-[#247EFF]/5 animate-float" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute bottom-20 right-20 w-32 h-32 rounded-2xl bg-[#D4AF37]/10 animate-float" style={{ animationDelay: '3s' }}></div>
+        <div className="absolute bottom-20 right-20 w-32 h-32 rounded-2xl bg-[#247EFF]/10 animate-float" style={{ animationDelay: '3s' }}></div>
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
@@ -90,7 +91,7 @@ const ManifestoSection = () => {
             </p>
             <Button 
               size="lg"
-              className="bg-[#247EFF] hover:bg-[#0057FF] hover:shadow-lg hover:shadow-[#D4AF37]/30 text-white font-semibold px-8 py-4 rounded-3xl transition-all duration-300 hover:scale-105"
+              className="bg-[#247EFF] hover:bg-[#0057FF] hover:shadow-lg hover:shadow-[#247EFF]/30 text-white font-semibold px-8 py-4 rounded-3xl transition-all duration-300 hover:scale-105"
             >
               Let's Get It
             </Button>

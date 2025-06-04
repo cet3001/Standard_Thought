@@ -27,7 +27,7 @@ const FloatingCTA = () => {
   return (
     <div className="floating-cta">
       <div className="backdrop-blur-sm bg-white/90 dark:bg-brand-black/90 border border-[#247EFF]/30 rounded-3xl p-4 shadow-2xl relative overflow-hidden group">
-        <div className="absolute inset-0 bg-gradient-to-r from-[#247EFF]/20 to-[#D4AF37]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#247EFF]/20 to-[#247EFF]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         
         <button
           onClick={handleDismiss}
@@ -40,7 +40,7 @@ const FloatingCTA = () => {
           <div className="text-sm font-medium text-[#247EFF] mb-2">Get the blueprint, get moving.</div>
           <Button 
             size="sm"
-            className="bg-[#247EFF] hover:bg-[#0057FF] hover:shadow-lg hover:shadow-[#D4AF37]/30 text-white font-medium rounded-2xl px-4 py-2 text-sm w-full transition-all duration-300"
+            className="bg-[#247EFF] hover:bg-[#0057FF] hover:shadow-lg hover:shadow-[#247EFF]/30 text-white font-medium rounded-2xl px-4 py-2 text-sm w-full transition-all duration-300"
           >
             Let's Build
           </Button>

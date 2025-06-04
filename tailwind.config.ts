@@ -63,12 +63,11 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Brand colors
+				// Brand colors - removed gold, kept core branding
 				brand: {
 					black: '#0A0A0A',
 					cream: '#F7F6F3',
-					gray: '#E5E5E5',
-					gold: '#D4AF37'
+					gray: '#E5E5E5'
 				}
 			},
 			borderRadius: {
@@ -141,10 +140,10 @@ export default {
 				},
 				'pulse-glow': {
 					'0%, 100%': {
-						boxShadow: '0 0 20px rgba(212, 175, 55, 0.3)'
+						boxShadow: '0 0 20px rgba(36, 126, 255, 0.3)'
 					},
 					'50%': {
-						boxShadow: '0 0 40px rgba(212, 175, 55, 0.6)'
+						boxShadow: '0 0 40px rgba(36, 126, 255, 0.6)'
 					}
 				},
 				'kinetic-text': {

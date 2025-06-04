@@ -55,7 +55,7 @@ const NewsletterSection = () => {
       {/* Background Elements */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-10 right-10 w-20 h-20 rounded-full bg-[#247EFF]/20 animate-float"></div>
-        <div className="absolute bottom-20 left-20 w-16 h-16 rounded-2xl bg-[#D4AF37]/30 animate-float" style={{
+        <div className="absolute bottom-20 left-20 w-16 h-16 rounded-2xl bg-[#247EFF]/30 animate-float" style={{
           animationDelay: '1s'
         }}></div>
       </div>
@@ -98,7 +98,7 @@ const NewsletterSection = () => {
                   type="submit" 
                   size="lg" 
                   disabled={isLoading}
-                  className="bg-[#247EFF] hover:bg-[#0057FF] hover:shadow-lg hover:shadow-[#D4AF37]/30 text-white font-semibold px-8 py-6 rounded-2xl whitespace-nowrap transition-all duration-300 hover:scale-105 disabled:opacity-70"
+                  className="bg-[#247EFF] hover:bg-[#0057FF] hover:shadow-lg hover:shadow-[#247EFF]/30 text-white font-semibold px-8 py-6 rounded-2xl whitespace-nowrap transition-all duration-300 hover:scale-105 disabled:opacity-70"
                 >
                   {isLoading ? "Joining..." : "Get the Playbook"}
                 </Button>

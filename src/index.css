@@ -24,8 +24,8 @@
     --muted: 229 229 229; /* #E5E5E5 - Gray */
     --muted-foreground: 115 115 115;
 
-    --accent: 212 175 55; /* #D4AF37 - Gold */
-    --accent-foreground: 10 10 10;
+    --accent: 36 126 255; /* Changed from gold to blue */
+    --accent-foreground: 255 255 255; /* White text on blue */
 
     --destructive: 239 68 68;
     --destructive-foreground: 247 246 243;
@@ -65,8 +65,8 @@
     --muted: 42 42 42;
     --muted-foreground: 163 163 163;
 
-    --accent: 212 175 55; /* #D4AF37 - Gold */
-    --accent-foreground: 10 10 10;
+    --accent: 36 126 255; /* Changed from gold to blue */
+    --accent-foreground: 255 255 255; /* White text on blue */
 
     --destructive: 239 68 68;
     --destructive-foreground: 247 246 243;

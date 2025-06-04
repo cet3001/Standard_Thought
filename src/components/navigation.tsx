@@ -106,7 +106,7 @@ const Navigation = () => {
             ) : (
               <Button 
                 onClick={() => navigate("/auth")}
-                className="bg-[#247EFF] hover:bg-[#0057FF] hover:shadow-lg hover:shadow-[#D4AF37]/30 text-white font-medium rounded-3xl px-6 py-2 transition-all duration-300 hover:scale-105"
+                className="bg-[#247EFF] hover:bg-[#0057FF] hover:shadow-lg hover:shadow-[#247EFF]/30 text-white font-medium rounded-3xl px-6 py-2 transition-all duration-300 hover:scale-105"
               >
                 Join Movement
               </Button>

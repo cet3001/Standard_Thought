@@ -9,7 +9,7 @@ const Footer = () => {
     <footer className="bg-brand-black dark:bg-brand-black text-brand-cream relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 pointer-events-none opacity-5">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#247EFF]/20 via-transparent to-[#D4AF37]/10"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-[#247EFF]/20 via-transparent to-[#247EFF]/10"></div>
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
@@ -32,7 +32,7 @@ const Footer = () => {
                   key={index}
                   variant="ghost"
                   size="sm"
-                  className="p-2 text-[#247EFF] hover:text-[#D4AF37] hover:bg-[#247EFF]/10 transition-colors rounded-xl"
+                  className="p-2 text-[#247EFF] hover:text-[#247EFF] hover:bg-[#247EFF]/10 transition-colors rounded-xl"
                   asChild
                 >
                   <a href={social.href} target="_blank" rel="noopener noreferrer">
@@ -45,7 +45,7 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold mb-6 text-[#D4AF37]">Quick Links</h4>
+            <h4 className="text-lg font-semibold mb-6 text-[#247EFF]">Quick Links</h4>
             <ul className="space-y-4">
               {[
                 { label: "About", href: "/about" },
@@ -68,7 +68,7 @@ const Footer = () => {
 
           {/* Resources */}
           <div>
-            <h4 className="text-lg font-semibold mb-6 text-[#D4AF37]">Resources</h4>
+            <h4 className="text-lg font-semibold mb-6 text-[#247EFF]">Resources</h4>
             <ul className="space-y-4">
               {[
                 { label: "Free Playbook", href: "#" },
@@ -91,7 +91,7 @@ const Footer = () => {
 
           {/* Newsletter Signup */}
           <div>
-            <h4 className="text-lg font-semibold mb-6 text-[#D4AF37]">Stay Connected</h4>
+            <h4 className="text-lg font-semibold mb-6 text-[#247EFF]">Stay Connected</h4>
             <p className="text-brand-cream/70 mb-4">
               Get the real—no spam, just street-smart insights and game-changing strategy, every week.
             </p>
@@ -105,7 +105,7 @@ const Footer = () => {
                 />
               </div>
               <Button 
-                className="bg-[#247EFF] hover:bg-[#0057FF] hover:shadow-lg hover:shadow-[#D4AF37]/30 text-white font-semibold rounded-xl transition-all duration-300"
+                className="bg-[#247EFF] hover:bg-[#0057FF] hover:shadow-lg hover:shadow-[#247EFF]/30 text-white font-semibold rounded-xl transition-all duration-300"
               >
                 Tap In
               </Button>

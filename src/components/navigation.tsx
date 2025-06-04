@@ -13,6 +13,7 @@ const Navigation = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSigningOut, setIsSigningOut] = useState(false);
 
   const navItems = [
     { label: "Home", path: "/" },
@@ -26,8 +27,20 @@ const Navigation = () => {
   };
 
   const handleSignOut = async () => {
-    await signOut();
-    navigate("/");
+    if (isSigningOut) return; // Prevent multiple calls
+    
+    setIsSigningOut(true);
+    console.log('Navigation: Starting sign out...');
+    
+    try {
+      await signOut();
+      console.log('Navigation: Sign out completed, navigating to home...');
+      navigate("/");
+    } catch (error) {
+      console.error('Navigation: Sign out error:', error);
+    } finally {
+      setIsSigningOut(false);
+    }
   };
 
   return (
@@ -96,11 +109,13 @@ const Navigation = () => {
                 </div>
                 <Button
                   onClick={handleSignOut}
+                  disabled={isSigningOut}
                   variant="ghost"
                   size="sm"
-                  className="hover:bg-red-100 text-red-600 hover:text-red-700 transition-all duration-300"
+                  className="hover:bg-red-100 text-red-600 hover:text-red-700 transition-all duration-300 disabled:opacity-50"
                 >
                   <LogOut className="h-4 w-4" />
+                  {isSigningOut && <span className="ml-1">...</span>}
                 </Button>
               </div>
             ) : (
@@ -182,12 +197,13 @@ const Navigation = () => {
                       handleSignOut();
                       setIsMenuOpen(false);
                     }}
+                    disabled={isSigningOut}
                     variant="ghost"
                     size="sm"
-                    className="text-red-600 hover:text-red-700 self-start transition-all duration-300"
+                    className="text-red-600 hover:text-red-700 self-start transition-all duration-300 disabled:opacity-50"
                   >
                     <LogOut className="mr-2 h-4 w-4" />
-                    Sign Out
+                    {isSigningOut ? 'Signing Out...' : 'Sign Out'}
                   </Button>
                 </>
               ) : (

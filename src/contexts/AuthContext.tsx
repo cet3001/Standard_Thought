@@ -44,45 +44,46 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     // Set up auth state listener
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       async (event, session) => {
-        console.log('Auth state changed:', event, session);
+        console.log('Auth state changed:', event, session?.user?.email || 'no user');
         setSession(session);
         setUser(session?.user ?? null);
 
         if (session?.user) {
           // Fetch user profile
-          try {
-            console.log('Fetching profile for user:', session.user.id);
-            const { data: profileData, error } = await supabase
-              .from('profiles')
-              .select('*')
-              .eq('id', session.user.id)
-              .single();
-            
-            if (error) {
-              console.error('Error fetching profile:', error);
-              // For new users, the profile might not exist yet due to async trigger
-              // Let's wait a moment and try again
-              if (error.code === 'PGRST116') {
-                setTimeout(async () => {
-                  const { data: retryData, error: retryError } = await supabase
-                    .from('profiles')
-                    .select('*')
-                    .eq('id', session.user.id)
-                    .single();
-                  
-                  if (!retryError && retryData) {
-                    console.log('Profile fetched on retry:', retryData);
-                    setProfile(retryData);
-                  }
-                }, 1000);
+          setTimeout(async () => {
+            try {
+              console.log('Fetching profile for user:', session.user.id);
+              const { data: profileData, error } = await supabase
+                .from('profiles')
+                .select('*')
+                .eq('id', session.user.id)
+                .single();
+              
+              if (error) {
+                console.error('Error fetching profile:', error);
+                // For new users, the profile might not exist yet due to async trigger
+                if (error.code === 'PGRST116') {
+                  setTimeout(async () => {
+                    const { data: retryData, error: retryError } = await supabase
+                      .from('profiles')
+                      .select('*')
+                      .eq('id', session.user.id)
+                      .single();
+                    
+                    if (!retryError && retryData) {
+                      console.log('Profile fetched on retry:', retryData);
+                      setProfile(retryData);
+                    }
+                  }, 1000);
+                }
+              } else {
+                console.log('Profile fetched:', profileData);
+                setProfile(profileData);
               }
-            } else {
-              console.log('Profile fetched:', profileData);
-              setProfile(profileData);
+            } catch (err) {
+              console.error('Profile fetch error:', err);
             }
-          } catch (err) {
-            console.error('Profile fetch error:', err);
-          }
+          }, 0);
           setLoading(false);
         } else {
           setProfile(null);
@@ -93,7 +94,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     // Get initial session
     supabase.auth.getSession().then(({ data: { session }, error }) => {
-      console.log('Initial session:', session, 'Error:', error);
+      console.log('Initial session:', session?.user?.email || 'no user', 'Error:', error);
       if (error) {
         console.error('Error getting initial session:', error);
       }
@@ -147,8 +148,22 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const signOut = async () => {
-    console.log('Signing out user');
-    await supabase.auth.signOut();
+    console.log('Signing out user...');
+    try {
+      const { error } = await supabase.auth.signOut();
+      if (error) {
+        console.error('Sign out error:', error);
+      } else {
+        console.log('Sign out successful');
+        // Clear local state immediately
+        setUser(null);
+        setSession(null);
+        setProfile(null);
+        setLoading(false);
+      }
+    } catch (err) {
+      console.error('Sign out error:', err);
+    }
   };
 
   const isAdmin = profile?.role === 'admin';

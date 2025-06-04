@@ -1,13 +1,17 @@
+
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useTheme } from "@/components/theme-provider";
+import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Menu, X, Sun, Moon } from "lucide-react";
+import { Menu, X, Sun, Moon, LogOut, User } from "lucide-react";
 
 const Navigation = () => {
   const { theme, setTheme } = useTheme();
+  const { user, signOut, isAdmin } = useAuth();
   const location = useLocation();
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
@@ -19,6 +23,11 @@ const Navigation = () => {
 
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
+  };
+
+  const handleSignOut = async () => {
+    await signOut();
+    navigate("/");
   };
 
   return (
@@ -66,12 +75,42 @@ const Navigation = () => {
               )}
             </Button>
 
-            {/* Enhanced CTA Button */}
-            <Button 
-              className="bg-[#247EFF] hover:bg-[#0057FF] hover:shadow-lg hover:shadow-[#D4AF37]/30 text-white font-medium rounded-3xl px-6 py-2 transition-all duration-300 hover:scale-105"
-            >
-              Join Movement
-            </Button>
+            {/* Authentication Section */}
+            {user ? (
+              <div className="flex items-center space-x-4">
+                {isAdmin && (
+                  <Button
+                    onClick={() => navigate("/create-post")}
+                    variant="outline"
+                    size="sm"
+                    className="border-[#247EFF] text-[#247EFF] hover:bg-[#247EFF] hover:text-white transition-all duration-300"
+                  >
+                    Create Story
+                  </Button>
+                )}
+                <div className="flex items-center space-x-2">
+                  <User className="h-4 w-4 text-[#247EFF]" />
+                  <span className="text-sm text-[#0A0A0A] dark:text-brand-cream">
+                    {user.email?.split('@')[0]}
+                  </span>
+                </div>
+                <Button
+                  onClick={handleSignOut}
+                  variant="ghost"
+                  size="sm"
+                  className="hover:bg-red-100 text-red-600 hover:text-red-700 transition-all duration-300"
+                >
+                  <LogOut className="h-4 w-4" />
+                </Button>
+              </div>
+            ) : (
+              <Button 
+                onClick={() => navigate("/auth")}
+                className="bg-[#247EFF] hover:bg-[#0057FF] hover:shadow-lg hover:shadow-[#D4AF37]/30 text-white font-medium rounded-3xl px-6 py-2 transition-all duration-300 hover:scale-105"
+              >
+                Join Movement
+              </Button>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -118,12 +157,50 @@ const Navigation = () => {
                   {item.label}
                 </Link>
               ))}
-              <Button 
-                className="bg-[#247EFF] hover:bg-[#0057FF] text-white font-medium rounded-3xl self-start transition-all duration-300"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Join Movement
-              </Button>
+              
+              {user ? (
+                <>
+                  <div className="flex items-center space-x-2 text-sm text-[#0A0A0A] dark:text-brand-cream">
+                    <User className="h-4 w-4 text-[#247EFF]" />
+                    <span>{user.email?.split('@')[0]}</span>
+                  </div>
+                  {isAdmin && (
+                    <Button
+                      onClick={() => {
+                        navigate("/create-post");
+                        setIsMenuOpen(false);
+                      }}
+                      variant="outline"
+                      size="sm"
+                      className="border-[#247EFF] text-[#247EFF] hover:bg-[#247EFF] hover:text-white self-start transition-all duration-300"
+                    >
+                      Create Story
+                    </Button>
+                  )}
+                  <Button
+                    onClick={() => {
+                      handleSignOut();
+                      setIsMenuOpen(false);
+                    }}
+                    variant="ghost"
+                    size="sm"
+                    className="text-red-600 hover:text-red-700 self-start transition-all duration-300"
+                  >
+                    <LogOut className="mr-2 h-4 w-4" />
+                    Sign Out
+                  </Button>
+                </>
+              ) : (
+                <Button 
+                  onClick={() => {
+                    navigate("/auth");
+                    setIsMenuOpen(false);
+                  }}
+                  className="bg-[#247EFF] hover:bg-[#0057FF] text-white font-medium rounded-3xl self-start transition-all duration-300"
+                >
+                  Join Movement
+                </Button>
+              )}
             </div>
           </div>
         )}

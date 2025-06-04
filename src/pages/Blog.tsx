@@ -2,85 +2,63 @@
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/contexts/AuthContext";
+import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Search, Calendar, Clock, ArrowUp, Plus, Edit } from "lucide-react";
 
+interface BlogPost {
+  id: string;
+  title: string;
+  excerpt: string;
+  image_url: string | null;
+  category: string;
+  tags: string[];
+  featured: boolean;
+  published: boolean;
+  created_at: string;
+}
+
 const Blog = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [isVisible, setIsVisible] = useState(false);
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
+  const [loading, setLoading] = useState(true);
+  const { isAdmin } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsVisible(true);
+    fetchBlogPosts();
   }, []);
 
-  const categories = ["All", "Mindset", "Hustle", "Network", "Gameplan", "Money Moves", "Leadership"];
+  const fetchBlogPosts = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('blog_posts')
+        .select('*')
+        .eq('published', true)
+        .order('created_at', { ascending: false });
 
-  const blogPosts = [
-    {
-      id: 1,
-      title: "From Zero to CEO: The Mindset Shift That Changes Everything",
-      excerpt: "The psychological frameworks that separate those who dream from those who build. It's not about what you have—it's about how you think.",
-      image: "/placeholder.svg",
-      date: "2024-01-15",
-      category: "Mindset",
-      readTime: "5 min read",
-      featured: true
-    },
-    {
-      id: 2,
-      title: "The $1M Revenue Blueprint: Building Without Venture Capital",
-      excerpt: "How three entrepreneurs built million-dollar businesses using nothing but creativity, hustle, and strategic partnerships. No investors required.",
-      image: "/placeholder.svg",
-      date: "2024-01-12",
-      category: "Gameplan",
-      readTime: "8 min read",
-      featured: false
-    },
-    {
-      id: 3,
-      title: "Network Like Your Life Depends On It (Because It Does)",
-      excerpt: "The relationships you build today become the opportunities you'll have tomorrow. Master the art of authentic connection in the digital age.",
-      image: "/placeholder.svg",
-      date: "2024-01-10",
-      category: "Network",
-      readTime: "6 min read",
-      featured: true
-    },
-    {
-      id: 4,
-      title: "The Psychology of Wealth: Why Most People Stay Broke",
-      excerpt: "It's not about income—it's about mindset. Understand the mental models that create and maintain wealth across generations.",
-      image: "/placeholder.svg",
-      date: "2024-01-08",
-      category: "Money Moves",
-      readTime: "7 min read",
-      featured: false
-    },
-    {
-      id: 5,
-      title: "Leading Through Uncertainty: Lessons from Crisis",
-      excerpt: "When everything is unclear, true leaders emerge. How to make decisions, inspire teams, and drive growth when the future is uncertain.",
-      image: "/placeholder.svg",
-      date: "2024-01-05",
-      category: "Leadership",
-      readTime: "6 min read",
-      featured: false
-    },
-    {
-      id: 6,
-      title: "Building Systems That Scale: The Operations Advantage",
-      excerpt: "Great ideas don't scale—great systems do. Learn how to build operational frameworks that grow with your vision.",
-      image: "/placeholder.svg",
-      date: "2024-01-03",
-      category: "Gameplan",
-      readTime: "9 min read",
-      featured: true
+      if (error) {
+        console.error('Error fetching blog posts:', error);
+      } else {
+        setBlogPosts(data || []);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    } finally {
+      setLoading(false);
     }
-  ];
+  };
+
+  // Get unique categories from posts
+  const categories = ["All", ...Array.from(new Set(blogPosts.map(post => post.category)))];
 
   const filteredPosts = blogPosts.filter(post => {
     const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -88,6 +66,13 @@ const Blog = () => {
     const matchesCategory = selectedCategory === "All" || post.category === selectedCategory;
     return matchesSearch && matchesCategory;
   });
+
+  const getReadTime = (content: string) => {
+    const wordsPerMinute = 200;
+    const wordCount = content.split(' ').length;
+    const readTime = Math.ceil(wordCount / wordsPerMinute);
+    return `${readTime} min read`;
+  };
 
   return (
     <div className="min-h-screen bg-brand-cream dark:bg-brand-black">
@@ -120,12 +105,15 @@ const Blog = () => {
           <div className="max-w-4xl mx-auto">
             <div className="flex justify-between items-center mb-8">
               <h2 className="text-2xl font-semibold text-[#0A0A0A] dark:text-brand-cream">Find Your Game</h2>
-              <Button
-                className="bg-[#247EFF] hover:bg-[#0057FF] text-white font-medium rounded-2xl px-6 py-2 transition-all duration-300"
-              >
-                <Plus className="mr-2 h-4 w-4" />
-                Create Story
-              </Button>
+              {isAdmin && (
+                <Button
+                  onClick={() => navigate("/create-post")}
+                  className="bg-[#247EFF] hover:bg-[#0057FF] text-white font-medium rounded-2xl px-6 py-2 transition-all duration-300"
+                >
+                  <Plus className="mr-2 h-4 w-4" />
+                  Create Story
+                </Button>
+              )}
             </div>
 
             {/* Search Bar */}
@@ -164,75 +152,83 @@ const Blog = () => {
       {/* Blog Grid */}
       <section className="py-24 bg-brand-cream dark:bg-brand-black">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredPosts.map((post, index) => (
-              <Card 
-                key={post.id} 
-                className="bg-white/90 dark:bg-brand-black/80 backdrop-blur-sm border-[#247EFF]/20 rounded-3xl overflow-hidden group transition-all duration-500 hover:scale-105 hover:shadow-lg hover:shadow-[#247EFF]/20 relative"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <CardHeader className="p-0">
-                  <div className="relative overflow-hidden rounded-t-3xl">
-                    <img
-                      src={post.image}
-                      alt={post.title}
-                      className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                    <div className="absolute top-4 left-4 flex gap-2">
-                      <Badge className="bg-[#247EFF] text-white px-3 py-1 rounded-full text-sm font-medium hover:bg-[#247EFF]">
-                        {post.category}
-                      </Badge>
-                      {post.featured && (
-                        <Badge className="bg-[#D4AF37] text-black px-3 py-1 rounded-full text-sm font-medium hover:bg-[#D4AF37]">
-                          Featured
+          {loading ? (
+            <div className="text-center">
+              <div className="text-xl text-[#0A0A0A]/70 dark:text-brand-cream/70">Loading stories...</div>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredPosts.map((post, index) => (
+                <Card 
+                  key={post.id} 
+                  className="bg-white/90 dark:bg-brand-black/80 backdrop-blur-sm border-[#247EFF]/20 rounded-3xl overflow-hidden group transition-all duration-500 hover:scale-105 hover:shadow-lg hover:shadow-[#247EFF]/20 relative"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <CardHeader className="p-0">
+                    <div className="relative overflow-hidden rounded-t-3xl">
+                      <img
+                        src={post.image_url || "/placeholder.svg"}
+                        alt={post.title}
+                        className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      <div className="absolute top-4 left-4 flex gap-2">
+                        <Badge className="bg-[#247EFF] text-white px-3 py-1 rounded-full text-sm font-medium hover:bg-[#247EFF]">
+                          {post.category}
                         </Badge>
+                        {post.featured && (
+                          <Badge className="bg-[#D4AF37] text-black px-3 py-1 rounded-full text-sm font-medium hover:bg-[#D4AF37]">
+                            Featured
+                          </Badge>
+                        )}
+                      </div>
+                      {isAdmin && (
+                        <div className="absolute top-4 right-4">
+                          <Button
+                            size="sm"
+                            variant="ghost"
+                            className="w-8 h-8 p-0 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-sm"
+                          >
+                            <Edit className="h-4 w-4 text-white" />
+                          </Button>
+                        </div>
                       )}
                     </div>
-                    <div className="absolute top-4 right-4">
-                      <Button
-                        size="sm"
-                        variant="ghost"
-                        className="w-8 h-8 p-0 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-sm"
-                      >
-                        <Edit className="h-4 w-4 text-white" />
-                      </Button>
+                  </CardHeader>
+                  
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-semibold mb-3 line-clamp-2 group-hover:text-[#247EFF] transition-colors text-[#0A0A0A] dark:text-brand-cream">
+                      {post.title}
+                    </h3>
+                    <p className="text-[#0A0A0A]/70 dark:text-brand-cream/70 mb-4 line-clamp-3">
+                      {post.excerpt}
+                    </p>
+                    <div className="flex items-center justify-between text-sm text-[#0A0A0A]/60 dark:text-brand-cream/60">
+                      <div className="flex items-center space-x-2">
+                        <Calendar size={16} />
+                        <span>{new Date(post.created_at).toLocaleDateString()}</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <Clock size={16} />
+                        <span>{getReadTime(post.excerpt)}</span>
+                      </div>
                     </div>
-                  </div>
-                </CardHeader>
-                
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold mb-3 line-clamp-2 group-hover:text-[#247EFF] transition-colors text-[#0A0A0A] dark:text-brand-cream">
-                    {post.title}
-                  </h3>
-                  <p className="text-[#0A0A0A]/70 dark:text-brand-cream/70 mb-4 line-clamp-3">
-                    {post.excerpt}
-                  </p>
-                  <div className="flex items-center justify-between text-sm text-[#0A0A0A]/60 dark:text-brand-cream/60">
-                    <div className="flex items-center space-x-2">
-                      <Calendar size={16} />
-                      <span>{new Date(post.date).toLocaleDateString()}</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <Clock size={16} />
-                      <span>{post.readTime}</span>
-                    </div>
-                  </div>
-                </CardContent>
-                
-                <CardFooter className="p-6 pt-0">
-                  <Button 
-                    className="w-full bg-[#247EFF] hover:bg-[#0057FF] text-white transition-all rounded-2xl font-medium"
-                  >
-                    Read Story
-                    <ArrowUp className="ml-2 h-4 w-4 rotate-45 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                </CardFooter>
-              </Card>
-            ))}
-          </div>
+                  </CardContent>
+                  
+                  <CardFooter className="p-6 pt-0">
+                    <Button 
+                      className="w-full bg-[#247EFF] hover:bg-[#0057FF] text-white transition-all rounded-2xl font-medium"
+                    >
+                      Read Story
+                      <ArrowUp className="ml-2 h-4 w-4 rotate-45 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                  </CardFooter>
+                </Card>
+              ))}
+            </div>
+          )}
 
           {/* No Results */}
-          {filteredPosts.length === 0 && (
+          {!loading && filteredPosts.length === 0 && (
             <div className="text-center py-16">
               <p className="text-xl text-[#0A0A0A]/70 dark:text-brand-cream/70 mb-4">No stories found matching your search.</p>
               <Button 

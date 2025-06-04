@@ -155,29 +155,31 @@ const CreatePost = () => {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <Label htmlFor="title">Title</Label>
+                    <Label htmlFor="title" className="text-[#0A0A0A] dark:text-brand-cream">Title</Label>
                     <Input
                       id="title"
                       value={formData.title}
                       onChange={(e) => setFormData({...formData, title: e.target.value})}
                       placeholder="Enter post title"
                       required
+                      className="bg-brand-cream/50 dark:bg-brand-black/50 border-[#E5E5E5] dark:border-[#2A2A2A] focus:border-[#247EFF] text-[#0A0A0A] dark:text-brand-cream"
                     />
                   </div>
                   <div>
-                    <Label htmlFor="category">Category</Label>
+                    <Label htmlFor="category" className="text-[#0A0A0A] dark:text-brand-cream">Category</Label>
                     <Input
                       id="category"
                       value={formData.category}
                       onChange={(e) => setFormData({...formData, category: e.target.value})}
                       placeholder="e.g., Mindset, Hustle, Network"
                       required
+                      className="bg-brand-cream/50 dark:bg-brand-black/50 border-[#E5E5E5] dark:border-[#2A2A2A] focus:border-[#247EFF] text-[#0A0A0A] dark:text-brand-cream"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <Label htmlFor="excerpt">Excerpt</Label>
+                  <Label htmlFor="excerpt" className="text-[#0A0A0A] dark:text-brand-cream">Excerpt</Label>
                   <Textarea
                     id="excerpt"
                     value={formData.excerpt}
@@ -185,11 +187,12 @@ const CreatePost = () => {
                     placeholder="Brief description of your post"
                     rows={3}
                     required
+                    className="bg-brand-cream/50 dark:bg-brand-black/50 border-[#E5E5E5] dark:border-[#2A2A2A] focus:border-[#247EFF] text-[#0A0A0A] dark:text-brand-cream"
                   />
                 </div>
 
                 <div>
-                  <Label htmlFor="content">Content</Label>
+                  <Label htmlFor="content" className="text-[#0A0A0A] dark:text-brand-cream">Content</Label>
                   <Textarea
                     id="content"
                     value={formData.content}
@@ -197,21 +200,23 @@ const CreatePost = () => {
                     placeholder="Write your story here..."
                     rows={10}
                     required
+                    className="bg-brand-cream/50 dark:bg-brand-black/50 border-[#E5E5E5] dark:border-[#2A2A2A] focus:border-[#247EFF] text-[#0A0A0A] dark:text-brand-cream"
                   />
                 </div>
 
                 <div>
-                  <Label htmlFor="tags">Tags</Label>
+                  <Label htmlFor="tags" className="text-[#0A0A0A] dark:text-brand-cream">Tags</Label>
                   <Input
                     id="tags"
                     value={formData.tags}
                     onChange={(e) => setFormData({...formData, tags: e.target.value})}
                     placeholder="Enter tags separated by commas"
+                    className="bg-brand-cream/50 dark:bg-brand-black/50 border-[#E5E5E5] dark:border-[#2A2A2A] focus:border-[#247EFF] text-[#0A0A0A] dark:text-brand-cream"
                   />
                 </div>
 
                 <div>
-                  <Label htmlFor="image">Featured Image</Label>
+                  <Label htmlFor="image" className="text-[#0A0A0A] dark:text-brand-cream">Featured Image</Label>
                   <div className="mt-2">
                     {imagePreview ? (
                       <div className="relative">
@@ -234,7 +239,7 @@ const CreatePost = () => {
                         </Button>
                       </div>
                     ) : (
-                      <div className="border-2 border-dashed border-[#247EFF]/20 rounded-lg p-8 text-center">
+                      <div className="border-2 border-dashed border-[#247EFF]/20 rounded-lg p-8 text-center bg-brand-cream/30 dark:bg-brand-black/30">
                         <Upload className="mx-auto h-12 w-12 text-[#247EFF] mb-4" />
                         <div className="text-[#0A0A0A] dark:text-brand-cream mb-2">
                           Click to upload an image
@@ -264,7 +269,7 @@ const CreatePost = () => {
                       checked={formData.featured}
                       onCheckedChange={(checked) => setFormData({...formData, featured: checked})}
                     />
-                    <Label htmlFor="featured">Featured Post</Label>
+                    <Label htmlFor="featured" className="text-[#0A0A0A] dark:text-brand-cream">Featured Post</Label>
                   </div>
                   <div className="flex items-center space-x-2">
                     <Switch
@@ -272,7 +277,7 @@ const CreatePost = () => {
                       checked={formData.published}
                       onCheckedChange={(checked) => setFormData({...formData, published: checked})}
                     />
-                    <Label htmlFor="published">Publish Immediately</Label>
+                    <Label htmlFor="published" className="text-[#0A0A0A] dark:text-brand-cream">Publish Immediately</Label>
                   </div>
                 </div>
 

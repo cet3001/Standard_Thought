@@ -14,30 +14,30 @@ const BlogShowcase = () => {
   const blogPosts = [
     {
       id: 1,
-      title: "From Zero to CEO: The Mindset That Changes Everything",
-      excerpt: "How three entrepreneurs built empires using nothing but street smarts and relentless vision. The psychology behind breakthrough success.",
+      title: "From the Mud to Momentum",
+      excerpt: "How one builder went from \"nobody\" to owning every room. The moves, the missteps, and what finally clicked.",
       image: "/placeholder.svg",
       date: "2024-01-15",
       readTime: "5 min read",
-      category: "Mindset"
+      category: "Hustle"
     },
     {
       id: 2,
-      title: "The Million-Dollar Network: Building Relationships That Pay",
-      excerpt: "Your network determines your net worth. Learn the underground strategies successful people use to build powerful connections.",
+      title: "No Blueprint? No Problem.",
+      excerpt: "Turning chaos into strategy when you've got zero safety net. The scrappy way to level up and last.",
       image: "/placeholder.svg",
       date: "2024-01-12",
       readTime: "8 min read",
-      category: "Networking"
+      category: "Gameplan"
     },
     {
       id: 3,
-      title: "The Art of the Hustle: When Passion Meets Strategy",
-      excerpt: "Raw talent isn't enough. Discover how to channel your drive into systematic wealth-building that lasts generations.",
+      title: "Plugged In: Building Connections When You Know No One",
+      excerpt: "How first-gens, outsiders, and solo strivers build their own table—and never look back.",
       image: "/placeholder.svg",
       date: "2024-01-10",
       readTime: "6 min read",
-      category: "Strategy"
+      category: "Network"
     }
   ];
 
@@ -53,11 +53,10 @@ const BlogShowcase = () => {
         {/* Section Header */}
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-brand-black dark:text-brand-cream">
-            Stories of <span className="text-accent">Legacy</span>
+            Real Stories. Real Struggle. <span className="text-accent">Real Wins.</span>
           </h2>
           <p className="text-xl text-brand-black/70 dark:text-brand-cream/70 max-w-3xl mx-auto">
-            Real insights from real builders. No theory, no fluff—just raw wisdom from entrepreneurs 
-            who turned dreams into generational wealth.
+            No gurus. No gatekeepers. Just hustlers, dreamers, and builders who started with nothing but grit—and turned it into legacy. Your story's next.
           </p>
         </div>
 
@@ -109,7 +108,7 @@ const BlogShowcase = () => {
                   variant="ghost" 
                   className="w-full group-hover:bg-accent group-hover:text-black transition-all rounded-2xl text-brand-black dark:text-brand-cream"
                 >
-                  Read Story
+                  Read Story | Coming Soon
                   <ArrowUp className="ml-2 h-4 w-4 rotate-45 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </CardFooter>

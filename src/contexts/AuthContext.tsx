@@ -43,37 +43,47 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     
     // Set up auth state listener
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (event, session) => {
+      async (event, session) => {
         console.log('Auth state changed:', event, session);
         setSession(session);
         setUser(session?.user ?? null);
 
         if (session?.user) {
-          // Fetch user profile with slight delay to avoid deadlock
-          setTimeout(async () => {
-            try {
-              console.log('Fetching profile for user:', session.user.id);
-              const { data: profileData, error } = await supabase
-                .from('profiles')
-                .select('*')
-                .eq('id', session.user.id)
-                .single();
-              
-              if (error) {
-                console.error('Error fetching profile:', error);
-                // Profile might not exist yet, which is normal for new users
-                if (error.code !== 'PGRST116') {
-                  console.error('Unexpected profile fetch error:', error);
-                }
-              } else {
-                console.log('Profile fetched:', profileData);
-                setProfile(profileData);
+          // Fetch user profile
+          try {
+            console.log('Fetching profile for user:', session.user.id);
+            const { data: profileData, error } = await supabase
+              .from('profiles')
+              .select('*')
+              .eq('id', session.user.id)
+              .single();
+            
+            if (error) {
+              console.error('Error fetching profile:', error);
+              // For new users, the profile might not exist yet due to async trigger
+              // Let's wait a moment and try again
+              if (error.code === 'PGRST116') {
+                setTimeout(async () => {
+                  const { data: retryData, error: retryError } = await supabase
+                    .from('profiles')
+                    .select('*')
+                    .eq('id', session.user.id)
+                    .single();
+                  
+                  if (!retryError && retryData) {
+                    console.log('Profile fetched on retry:', retryData);
+                    setProfile(retryData);
+                  }
+                }, 1000);
               }
-            } catch (err) {
-              console.error('Profile fetch error:', err);
+            } else {
+              console.log('Profile fetched:', profileData);
+              setProfile(profileData);
             }
-            setLoading(false);
-          }, 100);
+          } catch (err) {
+            console.error('Profile fetch error:', err);
+          }
+          setLoading(false);
         } else {
           setProfile(null);
           setLoading(false);
@@ -115,6 +125,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     
     if (error) {
       console.error('Sign up error:', error);
+    } else {
+      console.log('Sign up successful, trigger should create profile');
     }
     
     return { error };

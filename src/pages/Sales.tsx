@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
-import { Mail, Clock, Star } from "lucide-react";
+import { Lock, Zap, Users } from "lucide-react";
 
 const Sales = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -38,43 +38,43 @@ const Sales = () => {
           <div className={`max-w-4xl mx-auto text-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
             <div className="mb-8">
               <div className="inline-flex items-center bg-[#247EFF]/10 rounded-full px-6 py-3 mb-6">
-                <Clock className="mr-2 h-5 w-5 text-[#247EFF]" />
-                <span className="text-lg font-semibold text-[#247EFF]">Coming Soon</span>
+                <Lock className="mr-2 h-5 w-5 text-[#247EFF]" />
+                <span className="text-lg font-semibold text-[#247EFF]">Builders Only</span>
               </div>
             </div>
             
             <h1 className="text-5xl md:text-6xl font-bold mb-6 text-[#0A0A0A] dark:text-brand-cream">
-              Something <span className="text-[#247EFF]">Extraordinary</span> Is Coming
+              The Real <span className="text-[#247EFF]">Blueprint</span> Is Coming
             </h1>
             <p className="text-xl text-[#0A0A0A]/70 dark:text-brand-cream/70 leading-relaxed mb-8">
-              We're crafting something special for the Standard Thought community. 
-              Be the first to know when we launch our exclusive programs and resources.
+              For the ones who grind while others sleep. If you're tired of free game that don't hit, 
+              we're building something different. First come, first served—no handouts, just results.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Notification Section */}
+      {/* Lock In Your Spot Section */}
       <section className="py-24 bg-white/90 dark:bg-brand-black/80">
         <div className="container mx-auto px-6">
           <div className="max-w-2xl mx-auto">
             <Card className="bg-white/90 dark:bg-brand-black/90 backdrop-blur-sm border-[#247EFF]/20 rounded-3xl overflow-hidden">
               <CardContent className="p-12 text-center">
                 <div className="mb-8">
-                  <Mail className="mx-auto h-16 w-16 text-[#247EFF] mb-4" />
+                  <Zap className="mx-auto h-16 w-16 text-[#247EFF] mb-4" />
                   <h2 className="text-3xl font-bold mb-4 text-[#0A0A0A] dark:text-brand-cream">
-                    Get Early Access
+                    Lock In Your Spot
                   </h2>
                   <p className="text-lg text-[#0A0A0A]/70 dark:text-brand-cream/70">
-                    Join our exclusive waitlist and be among the first to access our premium content, 
-                    courses, and mentorship programs when they launch.
+                    Don't wait—tap in now. When we drop the real blueprint, mentorship, and community access, 
+                    you'll be first in line. This isn't for everyone, and that's the point.
                   </p>
                 </div>
 
                 <form onSubmit={handleEmailSubmit} className="space-y-4">
                   <Input
                     type="email"
-                    placeholder="Enter your email address"
+                    placeholder="Your email (no spam, just the drop)"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="py-4 rounded-2xl border-[#247EFF]/20 focus:border-[#247EFF] text-lg bg-white/80 dark:bg-brand-black/80 text-[#0A0A0A] dark:text-brand-cream"
@@ -85,12 +85,12 @@ const Sales = () => {
                     size="lg"
                     className="w-full bg-[#247EFF] hover:bg-[#0057FF] hover:shadow-lg hover:shadow-[#D4AF37]/30 text-white font-semibold py-4 rounded-2xl transition-all duration-300 hover:scale-105"
                   >
-                    Notify Me When It's Ready
+                    Get the Drop First
                   </Button>
                 </form>
 
                 <p className="text-sm text-[#0A0A0A]/60 dark:text-brand-cream/60 mt-4">
-                  No spam, ever. Unsubscribe at any time.
+                  Real builders only. We don't do spam or fake hype.
                 </p>
               </CardContent>
             </Card>
@@ -98,32 +98,32 @@ const Sales = () => {
         </div>
       </section>
 
-      {/* What's Coming Section */}
+      {/* What's Coming for the Real Ones Section */}
       <section className="py-24 bg-brand-cream dark:bg-brand-black">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-6 text-[#0A0A0A] dark:text-brand-cream">What to Expect</h2>
+            <h2 className="text-4xl font-bold mb-6 text-[#0A0A0A] dark:text-brand-cream">What's Coming for the Real Ones</h2>
             <p className="text-xl text-[#0A0A0A]/70 dark:text-brand-cream/70 max-w-2xl mx-auto">
-              We're building something that will transform how you approach entrepreneurship and wealth building.
+              No theory, no fluff. Just the exact blueprint, connections, and mindset that turn grind into generational wealth.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                icon: "📚",
-                title: "Premium Courses",
-                description: "In-depth training programs covering everything from mindset to million-dollar strategies."
-              },
-              {
-                icon: "🎯",
-                title: "1-on-1 Mentorship",
-                description: "Direct access to successful entrepreneurs who've built what you want to build."
+                icon: "🔥",
+                title: "The Real Blueprint",
+                description: "Step-by-step playbooks from people who actually built from nothing. No guessing, no theory—just what works."
               },
               {
                 icon: "🤝",
-                title: "Exclusive Community",
-                description: "Connect with like-minded builders and access our private network of game-changers."
+                title: "Direct Access",
+                description: "1-on-1 time with builders who've been where you're going. Real mentorship, not just motivational talks."
+              },
+              {
+                icon: "⚡",
+                title: "Inner Circle",
+                description: "Connect with serious builders, share real strategies, and get put on to opportunities before they go public."
               }
             ].map((feature, index) => (
               <Card 
@@ -142,37 +142,35 @@ const Sales = () => {
         </div>
       </section>
 
-      {/* Social Proof Section */}
+      {/* Why Get In Early Section */}
       <section className="py-24 bg-white/90 dark:bg-brand-black/80">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-6 text-[#0A0A0A] dark:text-brand-cream">Trusted by Builders</h2>
-            <p className="text-xl text-[#0A0A0A]/70 dark:text-brand-cream/70">
-              Join thousands who are already part of the Standard Thought movement.
-            </p>
-          </div>
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-4xl font-bold mb-8 text-[#0A0A0A] dark:text-brand-cream">Why Get In Early?</h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+              <div className="text-left">
+                <h3 className="text-2xl font-bold mb-4 text-[#247EFF]">First Access, Best Price</h3>
+                <p className="text-[#0A0A0A]/70 dark:text-brand-cream/70">
+                  Early builders get everything at the lowest price it'll ever be. Once we prove what we're building, prices go up.
+                </p>
+              </div>
+              <div className="text-left">
+                <h3 className="text-2xl font-bold mb-4 text-[#D4AF37]">Shape What We Build</h3>
+                <p className="text-[#0A0A0A]/70 dark:text-brand-cream/70">
+                  Your input matters. Help us build exactly what real entrepreneurs need, not what sounds good in theory.
+                </p>
+              </div>
+            </div>
 
-          <div className="flex justify-center items-center space-x-8 mb-12">
-            <div className="text-center">
-              <div className="text-4xl font-bold text-[#247EFF] mb-2">5,000+</div>
-              <div className="text-[#0A0A0A]/70 dark:text-brand-cream/70">Community Members</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-[#D4AF37] mb-2">$50M+</div>
-              <div className="text-[#0A0A0A]/70 dark:text-brand-cream/70">Revenue Generated</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-[#247EFF] mb-2">98%</div>
-              <div className="text-[#0A0A0A]/70 dark:text-brand-cream/70">Success Rate</div>
-            </div>
-          </div>
-
-          <div className="flex justify-center">
-            <div className="flex items-center space-x-1">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} size={24} className="text-[#D4AF37] fill-current" />
-              ))}
-              <span className="ml-2 text-lg font-semibold text-[#0A0A0A] dark:text-brand-cream">4.9/5 from our community</span>
+            <div className="bg-[#247EFF]/5 rounded-3xl p-8 border border-[#247EFF]/20">
+              <Users className="mx-auto h-12 w-12 text-[#247EFF] mb-4" />
+              <h3 className="text-2xl font-bold mb-4 text-[#0A0A0A] dark:text-brand-cream">
+                "I went from broke to six figures in 8 months using these exact strategies."
+              </h3>
+              <p className="text-[#0A0A0A]/70 dark:text-brand-cream/70">
+                - Marcus, First-Gen Builder
+              </p>
             </div>
           </div>
         </div>

@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useTheme } from "@/components/theme-provider";
@@ -14,8 +13,8 @@ const Navigation = () => {
   const navItems = [
     { label: "Home", path: "/" },
     { label: "About", path: "/about" },
-    { label: "Blog", path: "/blog" },
-    { label: "Sales", path: "/sales" },
+    { label: "Stories", path: "/blog" },
+    { label: "Builder Access", path: "/sales" },
   ];
 
   const toggleTheme = () => {

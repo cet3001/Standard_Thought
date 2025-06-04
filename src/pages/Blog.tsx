@@ -123,26 +123,28 @@ const Blog = () => {
         <section className="py-12 border-b border-[#247EFF]/20 bg-white/90 dark:bg-brand-black/80">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto">
-              <div className="flex justify-between items-center mb-8">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
                 <h2 className="text-2xl font-semibold text-[#0A0A0A] dark:text-brand-cream">Find Your Game</h2>
-                {!authLoading && user && isAdmin && (
-                  <Button
-                    onClick={() => navigate("/create-post")}
-                    className="bg-[#247EFF] hover:bg-[#0057FF] text-white font-medium rounded-2xl px-6 py-2 transition-all duration-300"
-                  >
-                    <Plus className="mr-2 h-4 w-4" />
-                    Create Story
-                  </Button>
-                )}
-                {!authLoading && !user && (
-                  <Button
-                    onClick={() => navigate("/auth")}
-                    variant="outline"
-                    className="border-[#247EFF] text-[#247EFF] hover:bg-[#247EFF] hover:text-white rounded-2xl px-6 py-2 transition-all duration-300"
-                  >
-                    Sign In to Create
-                  </Button>
-                )}
+                <div className="flex flex-col sm:flex-row gap-2">
+                  {!authLoading && user && isAdmin && (
+                    <Button
+                      onClick={() => navigate("/create-post")}
+                      className="bg-[#247EFF] hover:bg-[#0057FF] text-white font-medium rounded-2xl px-6 py-2 transition-all duration-300 flex items-center"
+                    >
+                      <Plus className="mr-2 h-4 w-4" />
+                      Create Story
+                    </Button>
+                  )}
+                  {!authLoading && !user && (
+                    <Button
+                      onClick={() => navigate("/auth")}
+                      variant="outline"
+                      className="border-[#247EFF] text-[#247EFF] hover:bg-[#247EFF] hover:text-white rounded-2xl px-6 py-2 transition-all duration-300"
+                    >
+                      Sign In to Create
+                    </Button>
+                  )}
+                </div>
               </div>
 
               {/* Search Bar */}

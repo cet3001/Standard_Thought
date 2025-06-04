@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { User, Session } from '@supabase/supabase-js';
 import { supabase } from '@/integrations/supabase/client';
@@ -38,6 +37,34 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [profile, setProfile] = useState<Profile | null>(null);
   const [loading, setLoading] = useState(true);
 
+  const fetchProfile = async (userId: string, retryCount = 0) => {
+    try {
+      console.log(`Fetching profile for user: ${userId} (attempt ${retryCount + 1})`);
+      const { data: profileData, error } = await supabase
+        .from('profiles')
+        .select('*')
+        .eq('id', userId)
+        .single();
+      
+      if (error) {
+        console.error('Error fetching profile:', error);
+        // For new users, the profile might not exist yet due to async trigger
+        if (error.code === 'PGRST116' && retryCount < 3) {
+          console.log('Profile not found, retrying in 1 second...');
+          setTimeout(() => {
+            fetchProfile(userId, retryCount + 1);
+          }, 1000);
+          return;
+        }
+      } else {
+        console.log('Profile fetched successfully:', profileData);
+        setProfile(profileData);
+      }
+    } catch (err) {
+      console.error('Profile fetch error:', err);
+    }
+  };
+
   useEffect(() => {
     console.log('Setting up auth state listener...');
     
@@ -49,41 +76,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         setUser(session?.user ?? null);
 
         if (session?.user) {
-          // Fetch user profile
-          setTimeout(async () => {
-            try {
-              console.log('Fetching profile for user:', session.user.id);
-              const { data: profileData, error } = await supabase
-                .from('profiles')
-                .select('*')
-                .eq('id', session.user.id)
-                .single();
-              
-              if (error) {
-                console.error('Error fetching profile:', error);
-                // For new users, the profile might not exist yet due to async trigger
-                if (error.code === 'PGRST116') {
-                  setTimeout(async () => {
-                    const { data: retryData, error: retryError } = await supabase
-                      .from('profiles')
-                      .select('*')
-                      .eq('id', session.user.id)
-                      .single();
-                    
-                    if (!retryError && retryData) {
-                      console.log('Profile fetched on retry:', retryData);
-                      setProfile(retryData);
-                    }
-                  }, 1000);
-                }
-              } else {
-                console.log('Profile fetched:', profileData);
-                setProfile(profileData);
-              }
-            } catch (err) {
-              console.error('Profile fetch error:', err);
-            }
-          }, 0);
+          // Fetch user profile with immediate call
+          fetchProfile(session.user.id);
           setLoading(false);
         } else {
           setProfile(null);
@@ -101,7 +95,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       setSession(session);
       setUser(session?.user ?? null);
       
-      if (!session) {
+      if (session?.user) {
+        fetchProfile(session.user.id);
+      } else {
         setLoading(false);
       }
     });
@@ -172,7 +168,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     user: user?.email, 
     profile: profile?.role, 
     isAdmin, 
-    loading 
+    loading,
+    profileData: profile
   });
 
   const value = {

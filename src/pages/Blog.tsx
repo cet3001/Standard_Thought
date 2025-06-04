@@ -31,7 +31,7 @@ const Blog = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
-  const { isAdmin, user, loading: authLoading } = useAuth();
+  const { isAdmin, user, loading: authLoading, profile } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -78,8 +78,14 @@ const Blog = () => {
     return `${readTime} min read`;
   };
 
-  console.log('Auth state:', { user, isAdmin, authLoading });
-  console.log('Should show create button?', !authLoading && user && isAdmin);
+  // Enhanced debugging for admin state
+  console.log('Blog page auth state:', { 
+    user: user?.email, 
+    isAdmin, 
+    authLoading, 
+    profile: profile?.role,
+    shouldShowButton: !authLoading && user && isAdmin
+  });
 
   return (
     <>
@@ -127,8 +133,8 @@ const Blog = () => {
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
                 <h2 className="text-2xl font-semibold text-[#0A0A0A] dark:text-brand-cream">Find Your Game</h2>
                 
-                {/* Admin Create Button - Always visible for testing */}
-                {user && isAdmin && (
+                {/* Admin Create Button - Show when user is admin and not loading */}
+                {!authLoading && user && isAdmin && (
                   <Button
                     onClick={() => navigate("/create-post")}
                     className="bg-[#247EFF] hover:bg-[#0057FF] text-white font-medium rounded-2xl px-6 py-2 transition-all duration-300 flex items-center"
@@ -138,8 +144,15 @@ const Blog = () => {
                   </Button>
                 )}
                 
+                {/* Show loading state */}
+                {authLoading && (
+                  <div className="text-sm text-[#0A0A0A]/60 dark:text-brand-cream/60">
+                    Loading...
+                  </div>
+                )}
+                
                 {/* Sign In Button for non-authenticated users */}
-                {!user && (
+                {!authLoading && !user && (
                   <Button
                     onClick={() => navigate("/auth")}
                     variant="outline"
@@ -199,7 +212,7 @@ const Blog = () => {
                   <p className="text-[#0A0A0A]/70 dark:text-brand-cream/70 mb-6">
                     Be the first to share your builder journey. Every legend starts with someone brave enough to go first.
                   </p>
-                  {user && isAdmin ? (
+                  {!authLoading && user && isAdmin ? (
                     <Button
                       onClick={() => navigate("/create-post")}
                       className="bg-[#247EFF] hover:bg-[#0057FF] text-white font-medium rounded-2xl px-8 py-3 transition-all duration-300"

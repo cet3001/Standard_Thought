@@ -1,4 +1,3 @@
-
 import { useEffect, useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -40,7 +39,7 @@ const HeroSection = () => {
   return (
     <section 
       ref={heroRef}
-      className="min-h-screen flex items-center justify-center relative overflow-hidden bg-brand-cream dark:bg-brand-black urban-texture"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden bg-brand-cream dark:bg-brand-black urban-texture pt-24"
     >
       {/* Dynamic 3D Background Elements */}
       <div className="absolute inset-0 pointer-events-none">
@@ -119,7 +118,6 @@ const HeroSection = () => {
             </p>
           </div>
 
-          {/* Enhanced CTA Buttons */}
           <div className={`flex flex-col sm:flex-row gap-6 justify-center items-center transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <Button 
               size="lg" 
@@ -138,14 +136,12 @@ const HeroSection = () => {
             </Button>
           </div>
 
-          {/* New Headline */}
           <div className={`mt-16 transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0A0A0A] dark:text-brand-cream">
               From Rock Bottom to Run-It-Up
             </h2>
           </div>
 
-          {/* Updated Stats Section */}
           <div className={`mt-20 grid grid-cols-1 md:grid-cols-3 gap-12 max-w-4xl mx-auto transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             {[
               { number: "500+", label: "Generations Changed" },
@@ -166,7 +162,6 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Enhanced Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
         <div className="w-8 h-12 border-2 border-[#247EFF] rounded-full flex justify-center relative">
           <div className="w-1 h-4 bg-[#247EFF] rounded-full mt-3 animate-pulse"></div>

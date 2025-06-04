@@ -29,7 +29,7 @@ const Blog = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
-  const { isAdmin } = useAuth();
+  const { isAdmin, user, loading: authLoading } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -39,6 +39,7 @@ const Blog = () => {
 
   const fetchBlogPosts = async () => {
     try {
+      console.log('Fetching blog posts...');
       const { data, error } = await supabase
         .from('blog_posts')
         .select('*')
@@ -48,6 +49,7 @@ const Blog = () => {
       if (error) {
         console.error('Error fetching blog posts:', error);
       } else {
+        console.log('Blog posts fetched:', data);
         setBlogPosts(data || []);
       }
     } catch (error) {
@@ -73,6 +75,8 @@ const Blog = () => {
     const readTime = Math.ceil(wordCount / wordsPerMinute);
     return `${readTime} min read`;
   };
+
+  console.log('Auth state:', { user, isAdmin, authLoading });
 
   return (
     <div className="min-h-screen bg-brand-cream dark:bg-brand-black">
@@ -105,13 +109,22 @@ const Blog = () => {
           <div className="max-w-4xl mx-auto">
             <div className="flex justify-between items-center mb-8">
               <h2 className="text-2xl font-semibold text-[#0A0A0A] dark:text-brand-cream">Find Your Game</h2>
-              {isAdmin && (
+              {!authLoading && user && isAdmin && (
                 <Button
                   onClick={() => navigate("/create-post")}
                   className="bg-[#247EFF] hover:bg-[#0057FF] text-white font-medium rounded-2xl px-6 py-2 transition-all duration-300"
                 >
                   <Plus className="mr-2 h-4 w-4" />
                   Create Story
+                </Button>
+              )}
+              {!authLoading && !user && (
+                <Button
+                  onClick={() => navigate("/auth")}
+                  variant="outline"
+                  className="border-[#247EFF] text-[#247EFF] hover:bg-[#247EFF] hover:text-white rounded-2xl px-6 py-2 transition-all duration-300"
+                >
+                  Sign In to Create
                 </Button>
               )}
             </div>
@@ -152,9 +165,36 @@ const Blog = () => {
       {/* Blog Grid */}
       <section className="py-24 bg-brand-cream dark:bg-brand-black">
         <div className="container mx-auto px-6">
-          {loading ? (
+          {loading || authLoading ? (
             <div className="text-center">
               <div className="text-xl text-[#0A0A0A]/70 dark:text-brand-cream/70">Loading stories...</div>
+            </div>
+          ) : blogPosts.length === 0 ? (
+            <div className="text-center py-16">
+              <div className="max-w-md mx-auto">
+                <h3 className="text-2xl font-semibold text-[#0A0A0A] dark:text-brand-cream mb-4">
+                  No Stories Yet
+                </h3>
+                <p className="text-[#0A0A0A]/70 dark:text-brand-cream/70 mb-6">
+                  Be the first to share your builder journey. Every legend starts with someone brave enough to go first.
+                </p>
+                {user && isAdmin ? (
+                  <Button
+                    onClick={() => navigate("/create-post")}
+                    className="bg-[#247EFF] hover:bg-[#0057FF] text-white font-medium rounded-2xl px-8 py-3 transition-all duration-300"
+                  >
+                    <Plus className="mr-2 h-5 w-5" />
+                    Create First Story
+                  </Button>
+                ) : (
+                  <Button
+                    onClick={() => navigate("/auth")}
+                    className="bg-[#247EFF] hover:bg-[#0057FF] text-white font-medium rounded-2xl px-8 py-3 transition-all duration-300"
+                  >
+                    Join Movement
+                  </Button>
+                )}
+              </div>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -228,7 +268,7 @@ const Blog = () => {
           )}
 
           {/* No Results */}
-          {!loading && filteredPosts.length === 0 && (
+          {!loading && !authLoading && blogPosts.length > 0 && filteredPosts.length === 0 && (
             <div className="text-center py-16">
               <p className="text-xl text-[#0A0A0A]/70 dark:text-brand-cream/70 mb-4">No stories found matching your search.</p>
               <Button 

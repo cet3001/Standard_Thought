@@ -37,12 +37,12 @@ const FloatingCTA = () => {
         </button>
 
         <div className="relative z-10">
-          <div className="text-sm font-medium text-[#247EFF] mb-2">Join the Movement</div>
+          <div className="text-sm font-medium text-[#247EFF] mb-2">Get the blueprint, get moving.</div>
           <Button 
             size="sm"
             className="bg-[#247EFF] hover:bg-[#0057FF] hover:shadow-lg hover:shadow-[#D4AF37]/30 text-white font-medium rounded-2xl px-4 py-2 text-sm w-full transition-all duration-300"
           >
-            Get Started
+            Let's Build
           </Button>
         </div>
 

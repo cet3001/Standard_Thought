@@ -19,8 +19,7 @@ const Footer = () => {
           <div className="lg:col-span-1">
             <h3 className="text-2xl font-bold mb-4 text-[#247EFF]">Standardthought</h3>
             <p className="text-brand-cream/70 mb-6 leading-relaxed">
-              Building legacy from nothing. Join the movement of entrepreneurs 
-              who refuse to accept limitations.
+              From the mud to momentum. For the ones who weren't handed anything—welcome home.
             </p>
             <div className="flex space-x-4">
               {[
@@ -94,7 +93,7 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-6 text-[#D4AF37]">Stay Connected</h4>
             <p className="text-brand-cream/70 mb-4">
-              Get weekly insights and strategies delivered to your inbox.
+              Get the real—no spam, just street-smart insights and game-changing strategy, every week.
             </p>
             <div className="flex flex-col space-y-3">
               <div className="relative">
@@ -108,7 +107,7 @@ const Footer = () => {
               <Button 
                 className="bg-[#247EFF] hover:bg-[#0057FF] hover:shadow-lg hover:shadow-[#D4AF37]/30 text-white font-semibold rounded-xl transition-all duration-300"
               >
-                Subscribe
+                Tap In
               </Button>
             </div>
           </div>
@@ -118,7 +117,7 @@ const Footer = () => {
 
         {/* Bottom Footer */}
         <div className="py-8 flex flex-col md:flex-row justify-between items-center text-sm text-brand-cream/60">
-          <p>&copy; 2024 Standardthought. All rights reserved.</p>
+          <p>&copy; 2024 Standardthought. Built from nothing, made for builders.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a href="#" className="hover:text-[#247EFF] transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-[#247EFF] transition-colors">Terms of Service</a>

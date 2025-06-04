@@ -92,14 +92,14 @@ const HeroSection = () => {
           {/* Main Headline with Enhanced Animation */}
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight text-[#0A0A0A] dark:text-brand-cream">
             <span className="block kinetic-text">
-              <span style={{ animationDelay: '0.1s' }}>Build</span>{' '}
-              <span style={{ animationDelay: '0.2s' }}>Your</span>
+              <span style={{ animationDelay: '0.1s' }}>Make</span>{' '}
+              <span style={{ animationDelay: '0.2s' }}>Something</span>
             </span>
             <span className="block kinetic-text text-[#247EFF] text-6xl md:text-8xl lg:text-9xl">
-              <span style={{ animationDelay: '0.3s' }}>Legacy</span>
+              <span style={{ animationDelay: '0.3s' }}>Out</span>{' '}
+              <span style={{ animationDelay: '0.4s' }}>of</span>
             </span>
             <span className="block kinetic-text text-3xl md:text-5xl lg:text-6xl">
-              <span style={{ animationDelay: '0.4s' }}>From</span>{' '}
               <span style={{ animationDelay: '0.5s' }}>Nothing</span>
             </span>
           </h1>
@@ -107,10 +107,11 @@ const HeroSection = () => {
           {/* Mission Statement with Glow Effect */}
           <div className={`max-w-4xl mx-auto mb-12 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <p className="text-xl md:text-2xl text-[#0A0A0A]/80 dark:text-brand-cream/80 leading-relaxed font-light">
-              Figure it out with nothing but{' '}
-              <span className="text-[#D4AF37] font-medium">grit</span>,{' '}
-              <span className="text-[#D4AF37] font-medium">instinct</span>, and{' '}
-              <span className="text-[#D4AF37] font-medium">dreams</span>
+              No handouts. No shortcuts. This is for{' '}
+              <span className="text-[#D4AF37] font-medium">hustlers</span>,{' '}
+              <span className="text-[#D4AF37] font-medium">dreamers</span>, and anyone who's tired of waiting for a seat at the table—so you built your own. If you're trying to turn{' '}
+              <span className="text-[#D4AF37] font-medium">grind</span> into{' '}
+              <span className="text-[#D4AF37] font-medium">generational change</span>, you're in the right place.
             </p>
           </div>
 
@@ -120,14 +121,14 @@ const HeroSection = () => {
               size="lg" 
               className="bg-[#247EFF] hover:bg-[#0057FF] hover:shadow-lg hover:shadow-[#D4AF37]/30 text-white font-semibold px-10 py-6 rounded-3xl text-lg transition-all duration-300 hover:scale-105"
             >
-              Join the Movement
+              Start Building
             </Button>
             <Button 
               variant="outline" 
               size="lg"
               className="border-2 border-[#D4AF37] bg-[#D4AF37] text-[#0A0A0A] hover:bg-[#D4AF37]/90 hover:shadow-lg hover:shadow-[#D4AF37]/20 font-semibold px-10 py-6 rounded-3xl text-lg transition-all hover:scale-105"
             >
-              Explore Stories
+              See Real Stories
             </Button>
           </div>
 

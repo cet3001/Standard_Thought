@@ -1,16 +1,17 @@
 
 import { supabase } from '@/integrations/supabase/client'
-import type { NewsletterSignup } from '@/integrations/supabase/types'
+import type { Tables } from '@/integrations/supabase/types'
 
-export const subscribeToNewsletter = async (email: string, source: NewsletterSignup['source']) => {
+type SubscriberInsert = Tables<'Subscribers'>['Insert']
+
+export const subscribeToNewsletter = async (email: string, name?: string) => {
   try {
     const { data, error } = await supabase
-      .from('newsletter_signups')
+      .from('Subscribers')
       .insert([
         {
           email: email.trim().toLowerCase(),
-          source,
-          is_active: true
+          name: name || null
         }
       ])
       .select()

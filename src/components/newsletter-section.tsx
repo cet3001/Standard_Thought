@@ -26,7 +26,7 @@ const NewsletterSection = () => {
     setIsLoading(true);
     
     try {
-      await subscribeToNewsletter(email, 'newsletter');
+      await subscribeToNewsletter(email);
       
       setIsSubmitted(true);
       setEmail("");

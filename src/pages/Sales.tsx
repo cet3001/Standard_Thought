@@ -1,4 +1,3 @@
-
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import { useState, useEffect } from "react";
@@ -33,7 +32,7 @@ const Sales = () => {
     setIsLoading(true);
     
     try {
-      await subscribeToNewsletter(email, 'builder-access');
+      await subscribeToNewsletter(email);
       
       setEmail("");
       toast({

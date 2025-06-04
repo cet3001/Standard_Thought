@@ -1,8 +1,8 @@
 
 import { supabase } from '@/integrations/supabase/client'
-import type { Tables } from '@/integrations/supabase/types'
+import type { Database } from '@/integrations/supabase/types'
 
-type SubscriberInsert = Tables<'Subscribers'>['Insert']
+type SubscriberInsert = Database['public']['Tables']['Subscribers']['Insert']
 
 export const subscribeToNewsletter = async (email: string, name?: string) => {
   try {

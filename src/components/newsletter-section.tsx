@@ -4,13 +4,15 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, CheckCircle } from "lucide-react";
+import { subscribeToNewsletter } from "@/lib/email-utils";
 
 const NewsletterSection = () => {
   const [email, setEmail] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) {
       toast({
@@ -21,18 +23,31 @@ const NewsletterSection = () => {
       return;
     }
 
-    // Simulate newsletter signup
-    setIsSubmitted(true);
-    setEmail("");
-    toast({
-      title: "Welcome to the Movement! 🎉",
-      description: "You'll receive exclusive insights and stories from the Standard Thought community."
-    });
+    setIsLoading(true);
+    
+    try {
+      await subscribeToNewsletter(email, 'newsletter');
+      
+      setIsSubmitted(true);
+      setEmail("");
+      toast({
+        title: "Welcome to the Movement! 🎉",
+        description: "You'll receive exclusive insights and stories from the Standard Thought community."
+      });
 
-    // Reset after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-    }, 3000);
+      // Reset after 3 seconds
+      setTimeout(() => {
+        setIsSubmitted(false);
+      }, 3000);
+    } catch (error) {
+      toast({
+        title: "Something went wrong",
+        description: error instanceof Error ? error.message : "Please try again later",
+        variant: "destructive"
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -76,14 +91,16 @@ const NewsletterSection = () => {
                     onChange={(e) => setEmail(e.target.value)} 
                     className="pl-10 py-6 rounded-2xl border-[#247EFF]/20 focus:border-[#247EFF] bg-white/80 dark:bg-brand-black/80 text-[#0A0A0A] dark:text-brand-cream placeholder:text-[#0A0A0A]/50 dark:placeholder:text-brand-cream/50" 
                     required 
+                    disabled={isLoading}
                   />
                 </div>
                 <Button 
                   type="submit" 
                   size="lg" 
-                  className="bg-[#247EFF] hover:bg-[#0057FF] hover:shadow-lg hover:shadow-[#D4AF37]/30 text-white font-semibold px-8 py-6 rounded-2xl whitespace-nowrap transition-all duration-300 hover:scale-105"
+                  disabled={isLoading}
+                  className="bg-[#247EFF] hover:bg-[#0057FF] hover:shadow-lg hover:shadow-[#D4AF37]/30 text-white font-semibold px-8 py-6 rounded-2xl whitespace-nowrap transition-all duration-300 hover:scale-105 disabled:opacity-70"
                 >
-                  Get the Playbook
+                  {isLoading ? "Joining..." : "Get the Playbook"}
                 </Button>
               </form>
 

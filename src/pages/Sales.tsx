@@ -6,20 +6,49 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import { Lock, Zap, Users } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
+import { subscribeToNewsletter } from "@/lib/email-utils";
 
 const Sales = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [email, setEmail] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
 
-  const handleEmailSubmit = (e: React.FormEvent) => {
+  const handleEmailSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle email submission here
-    console.log("Email submitted:", email);
-    setEmail("");
+    if (!email) {
+      toast({
+        title: "Email required",
+        description: "Please enter your email address",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    setIsLoading(true);
+    
+    try {
+      await subscribeToNewsletter(email, 'builder-access');
+      
+      setEmail("");
+      toast({
+        title: "You're locked in! 🔥",
+        description: "You'll be first to know when we drop the real blueprint. Check your email for confirmation."
+      });
+    } catch (error) {
+      toast({
+        title: "Something went wrong",
+        description: error instanceof Error ? error.message : "Please try again later",
+        variant: "destructive"
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -79,13 +108,15 @@ const Sales = () => {
                     onChange={(e) => setEmail(e.target.value)}
                     className="py-4 rounded-2xl border-[#247EFF]/20 focus:border-[#247EFF] text-lg bg-white/80 dark:bg-brand-black/80 text-[#0A0A0A] dark:text-brand-cream"
                     required
+                    disabled={isLoading}
                   />
                   <Button 
                     type="submit"
                     size="lg"
-                    className="w-full bg-[#247EFF] hover:bg-[#0057FF] hover:shadow-lg hover:shadow-[#D4AF37]/30 text-white font-semibold py-4 rounded-2xl transition-all duration-300 hover:scale-105"
+                    disabled={isLoading}
+                    className="w-full bg-[#247EFF] hover:bg-[#0057FF] hover:shadow-lg hover:shadow-[#D4AF37]/30 text-white font-semibold py-4 rounded-2xl transition-all duration-300 hover:scale-105 disabled:opacity-70"
                   >
-                    Get the Drop First
+                    {isLoading ? "Locking You In..." : "Get the Drop First"}
                   </Button>
                 </form>
 
@@ -142,7 +173,6 @@ const Sales = () => {
         </div>
       </section>
 
-      {/* Why Get In Early Section */}
       <section className="py-24 bg-white/90 dark:bg-brand-black/80">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center">

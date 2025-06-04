@@ -1,6 +1,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -29,6 +30,13 @@ const HeroSection = () => {
     }
   }, []);
 
+  const scrollToNewsletter = () => {
+    const newsletterSection = document.querySelector('[data-section="newsletter"]');
+    if (newsletterSection) {
+      newsletterSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section 
       ref={heroRef}
@@ -36,7 +44,6 @@ const HeroSection = () => {
     >
       {/* Dynamic 3D Background Elements */}
       <div className="absolute inset-0 pointer-events-none">
-        {/* Animated geometric shapes */}
         <div 
           className="absolute w-96 h-96 rounded-full bg-gradient-to-br from-[#247EFF]/10 to-[#247EFF]/5 blur-3xl"
           style={{
@@ -56,7 +63,6 @@ const HeroSection = () => {
           }}
         ></div>
         
-        {/* Urban texture overlay */}
         <div className="absolute inset-0 opacity-20">
           <div 
             className="absolute inset-0"
@@ -72,7 +78,6 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Floating Particles */}
       <div className="floating-particles">
         {[...Array(12)].map((_, i) => (
           <div 
@@ -104,7 +109,6 @@ const HeroSection = () => {
             </span>
           </h1>
 
-          {/* Mission Statement with Glow Effect */}
           <div className={`max-w-4xl mx-auto mb-12 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <p className="text-xl md:text-2xl text-[#0A0A0A]/80 dark:text-brand-cream/80 leading-relaxed font-light">
               No handouts. No shortcuts. This is for{' '}
@@ -119,6 +123,7 @@ const HeroSection = () => {
           <div className={`flex flex-col sm:flex-row gap-6 justify-center items-center transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <Button 
               size="lg" 
+              onClick={scrollToNewsletter}
               className="bg-[#247EFF] hover:bg-[#0057FF] hover:shadow-lg hover:shadow-[#D4AF37]/30 text-white font-semibold px-10 py-6 rounded-3xl text-lg transition-all duration-300 hover:scale-105"
             >
               Start Building
@@ -126,9 +131,10 @@ const HeroSection = () => {
             <Button 
               variant="outline" 
               size="lg"
+              asChild
               className="border-2 border-[#D4AF37] bg-[#D4AF37] text-[#0A0A0A] hover:bg-[#D4AF37]/90 hover:shadow-lg hover:shadow-[#D4AF37]/20 font-semibold px-10 py-6 rounded-3xl text-lg transition-all hover:scale-105"
             >
-              See Real Stories
+              <Link to="/blog">See Real Stories</Link>
             </Button>
           </div>
 
@@ -139,7 +145,6 @@ const HeroSection = () => {
             </h2>
           </div>
 
-          {/* Enhanced Stats */}
           <div className={`mt-20 grid grid-cols-1 md:grid-cols-3 gap-12 max-w-4xl mx-auto transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             {[
               { number: "500+", label: "Generations Changed" },

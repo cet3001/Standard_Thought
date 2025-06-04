@@ -1,6 +1,6 @@
 
-import { supabase } from './supabase'
-import type { NewsletterSignup } from './supabase'
+import { supabase } from '@/integrations/supabase/client'
+import type { NewsletterSignup } from '@/integrations/supabase/types'
 
 export const subscribeToNewsletter = async (email: string, source: NewsletterSignup['source']) => {
   try {

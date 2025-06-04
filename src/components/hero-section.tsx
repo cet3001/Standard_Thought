@@ -132,12 +132,19 @@ const HeroSection = () => {
             </Button>
           </div>
 
+          {/* New Headline */}
+          <div className={`mt-16 transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0A0A0A] dark:text-brand-cream">
+              From Rock Bottom to Run-It-Up
+            </h2>
+          </div>
+
           {/* Enhanced Stats */}
           <div className={`mt-20 grid grid-cols-1 md:grid-cols-3 gap-12 max-w-4xl mx-auto transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             {[
-              { number: "10K+", label: "Legacy Builders" },
-              { number: "500+", label: "Success Stories" },
-              { number: "$50M+", label: "Wealth Created" }
+              { number: "500+", label: "Generations Changed" },
+              { number: "10,000+", label: "First-Gen Builders" },
+              { number: "Everyday", label: "New Blueprints Written" }
             ].map((stat, index) => (
               <div key={index} className="text-center group">
                 <div className="relative">

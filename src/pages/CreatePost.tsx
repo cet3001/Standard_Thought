@@ -52,24 +52,32 @@ const CreatePost = () => {
   const uploadImage = async (): Promise<string | null> => {
     if (!imageFile) return null;
 
-    const fileExt = imageFile.name.split('.').pop();
-    const fileName = `${Date.now()}.${fileExt}`;
-    const filePath = `blog-images/${fileName}`;
+    try {
+      const fileExt = imageFile.name.split('.').pop();
+      const fileName = `${Date.now()}.${fileExt}`;
+      const filePath = `blog-images/${fileName}`;
 
-    const { error } = await supabase.storage
-      .from('blog-images')
-      .upload(filePath, imageFile);
+      console.log('Uploading image to:', filePath);
 
-    if (error) {
-      console.error('Error uploading image:', error);
+      const { error } = await supabase.storage
+        .from('blog-images')
+        .upload(filePath, imageFile);
+
+      if (error) {
+        console.error('Error uploading image:', error);
+        return null;
+      }
+
+      const { data } = supabase.storage
+        .from('blog-images')
+        .getPublicUrl(filePath);
+
+      console.log('Image uploaded successfully:', data.publicUrl);
+      return data.publicUrl;
+    } catch (error) {
+      console.error('Image upload error:', error);
       return null;
     }
-
-    const { data } = supabase.storage
-      .from('blog-images')
-      .getPublicUrl(filePath);
-
-    return data.publicUrl;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -77,14 +85,20 @@ const CreatePost = () => {
     setSubmitting(true);
 
     try {
+      console.log('Starting post creation...');
+      console.log('User ID:', user?.id);
+      console.log('Form data:', formData);
+
       let imageUrl = null;
       if (imageFile) {
+        console.log('Uploading image...');
         imageUrl = await uploadImage();
         if (!imageUrl) {
           toast.error("Failed to upload image");
           setSubmitting(false);
           return;
         }
+        console.log('Image upload successful:', imageUrl);
       }
 
       const tagsArray = formData.tags
@@ -92,32 +106,38 @@ const CreatePost = () => {
         .map(tag => tag.trim())
         .filter(tag => tag.length > 0);
 
-      const { error } = await supabase
+      const postData = {
+        title: formData.title,
+        excerpt: formData.excerpt,
+        content: formData.content,
+        category: formData.category,
+        tags: tagsArray,
+        meta_description: formData.metaDescription || formData.excerpt,
+        meta_keywords: formData.metaKeywords,
+        featured: formData.featured,
+        published: formData.published,
+        image_url: imageUrl,
+        author_id: user?.id,
+      };
+
+      console.log('Inserting post data:', postData);
+
+      const { data, error } = await supabase
         .from('blog_posts')
-        .insert({
-          title: formData.title,
-          excerpt: formData.excerpt,
-          content: formData.content,
-          category: formData.category,
-          tags: tagsArray,
-          meta_description: formData.metaDescription || formData.excerpt,
-          meta_keywords: formData.metaKeywords,
-          featured: formData.featured,
-          published: formData.published,
-          image_url: imageUrl,
-          author_id: user?.id,
-        });
+        .insert(postData)
+        .select();
 
       if (error) {
-        toast.error("Failed to create post");
         console.error('Error creating post:', error);
+        toast.error(`Failed to create post: ${error.message}`);
       } else {
+        console.log('Post created successfully:', data);
         toast.success("Post created successfully!");
         navigate("/blog");
       }
     } catch (error) {
+      console.error('Unexpected error:', error);
       toast.error("An unexpected error occurred");
-      console.error('Error:', error);
     } finally {
       setSubmitting(false);
     }

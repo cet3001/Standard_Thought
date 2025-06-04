@@ -1,10 +1,12 @@
+
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
-import { Search, Calendar, ArrowUp } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Search, Calendar, Clock, ArrowUp, Plus, Edit } from "lucide-react";
 
 const Blog = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -15,17 +17,18 @@ const Blog = () => {
     setIsVisible(true);
   }, []);
 
-  const categories = ["All", "Mindset", "Strategy", "Networking", "Finance", "Leadership"];
+  const categories = ["All", "Mindset", "Hustle", "Network", "Gameplan", "Money Moves", "Leadership"];
 
   const blogPosts = [
     {
       id: 1,
       title: "From Zero to CEO: The Mindset Shift That Changes Everything",
-      excerpt: "Discover the psychological frameworks that separate those who dream from those who build. It's not about what you have—it's about how you think.",
+      excerpt: "The psychological frameworks that separate those who dream from those who build. It's not about what you have—it's about how you think.",
       image: "/placeholder.svg",
       date: "2024-01-15",
       category: "Mindset",
-      readTime: "5 min read"
+      readTime: "5 min read",
+      featured: true
     },
     {
       id: 2,
@@ -33,8 +36,9 @@ const Blog = () => {
       excerpt: "How three entrepreneurs built million-dollar businesses using nothing but creativity, hustle, and strategic partnerships. No investors required.",
       image: "/placeholder.svg",
       date: "2024-01-12",
-      category: "Strategy",
-      readTime: "8 min read"
+      category: "Gameplan",
+      readTime: "8 min read",
+      featured: false
     },
     {
       id: 3,
@@ -42,8 +46,9 @@ const Blog = () => {
       excerpt: "The relationships you build today become the opportunities you'll have tomorrow. Master the art of authentic connection in the digital age.",
       image: "/placeholder.svg",
       date: "2024-01-10",
-      category: "Networking",
-      readTime: "6 min read"
+      category: "Network",
+      readTime: "6 min read",
+      featured: true
     },
     {
       id: 4,
@@ -51,8 +56,9 @@ const Blog = () => {
       excerpt: "It's not about income—it's about mindset. Understand the mental models that create and maintain wealth across generations.",
       image: "/placeholder.svg",
       date: "2024-01-08",
-      category: "Finance",
-      readTime: "7 min read"
+      category: "Money Moves",
+      readTime: "7 min read",
+      featured: false
     },
     {
       id: 5,
@@ -61,7 +67,8 @@ const Blog = () => {
       image: "/placeholder.svg",
       date: "2024-01-05",
       category: "Leadership",
-      readTime: "6 min read"
+      readTime: "6 min read",
+      featured: false
     },
     {
       id: 6,
@@ -69,8 +76,9 @@ const Blog = () => {
       excerpt: "Great ideas don't scale—great systems do. Learn how to build operational frameworks that grow with your vision.",
       image: "/placeholder.svg",
       date: "2024-01-03",
-      category: "Strategy",
-      readTime: "9 min read"
+      category: "Gameplan",
+      readTime: "9 min read",
+      featured: true
     }
   ];
 
@@ -90,12 +98,18 @@ const Blog = () => {
         <div className="container mx-auto px-6">
           <div className={`max-w-4xl mx-auto text-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
             <h1 className="text-5xl md:text-6xl font-bold mb-6 text-[#0A0A0A] dark:text-brand-cream">
-              Stories of <span className="text-[#247EFF]">Legacy</span>
+              Out the <span className="text-[#247EFF]">Mud</span>: Builder Stories
             </h1>
-            <p className="text-xl text-[#0A0A0A]/70 dark:text-brand-cream/70 leading-relaxed">
-              Real insights from real builders. No theory, no fluff—just actionable wisdom 
-              from entrepreneurs who've turned dreams into reality.
+            <p className="text-xl text-[#0A0A0A]/70 dark:text-brand-cream/70 leading-relaxed mb-6">
+              Raw game from people who actually built something. No theory, no fluff—just real blueprints 
+              from builders who started with nothing but grit and refused to stay there.
             </p>
+            <div className="bg-white/80 dark:bg-brand-black/80 backdrop-blur-sm border border-[#247EFF]/20 rounded-3xl p-6 max-w-2xl mx-auto">
+              <p className="text-[#0A0A0A]/80 dark:text-brand-cream/80">
+                Every story here comes from someone who had to figure it out with their own two hands. 
+                These aren't case studies—they're battle-tested strategies from the trenches.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -104,12 +118,22 @@ const Blog = () => {
       <section className="py-12 border-b border-[#247EFF]/20 bg-white/90 dark:bg-brand-black/80">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
+            <div className="flex justify-between items-center mb-8">
+              <h2 className="text-2xl font-semibold text-[#0A0A0A] dark:text-brand-cream">Find Your Game</h2>
+              <Button
+                className="bg-[#247EFF] hover:bg-[#0057FF] text-white font-medium rounded-2xl px-6 py-2 transition-all duration-300"
+              >
+                <Plus className="mr-2 h-4 w-4" />
+                Create Story
+              </Button>
+            </div>
+
             {/* Search Bar */}
             <div className="relative mb-8">
               <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[#0A0A0A]/60 dark:text-brand-cream/60 h-5 w-5" />
               <Input
                 type="text"
-                placeholder="Search articles..."
+                placeholder="Search stories..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="pl-12 py-4 rounded-3xl border-[#247EFF]/20 focus:border-[#247EFF] text-lg bg-white/80 dark:bg-brand-black/80 text-[#0A0A0A] dark:text-brand-cream"
@@ -144,7 +168,7 @@ const Blog = () => {
             {filteredPosts.map((post, index) => (
               <Card 
                 key={post.id} 
-                className="bg-white/90 dark:bg-brand-black/80 backdrop-blur-sm border-[#247EFF]/20 rounded-3xl overflow-hidden group transition-all duration-500 hover:scale-105 hover:shadow-lg hover:shadow-[#247EFF]/20"
+                className="bg-white/90 dark:bg-brand-black/80 backdrop-blur-sm border-[#247EFF]/20 rounded-3xl overflow-hidden group transition-all duration-500 hover:scale-105 hover:shadow-lg hover:shadow-[#247EFF]/20 relative"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <CardHeader className="p-0">
@@ -154,10 +178,24 @@ const Blog = () => {
                       alt={post.title}
                       className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
                     />
-                    <div className="absolute top-4 left-4">
-                      <span className="bg-[#247EFF] text-white px-3 py-1 rounded-full text-sm font-medium">
+                    <div className="absolute top-4 left-4 flex gap-2">
+                      <Badge className="bg-[#247EFF] text-white px-3 py-1 rounded-full text-sm font-medium hover:bg-[#247EFF]">
                         {post.category}
-                      </span>
+                      </Badge>
+                      {post.featured && (
+                        <Badge className="bg-[#D4AF37] text-black px-3 py-1 rounded-full text-sm font-medium hover:bg-[#D4AF37]">
+                          Featured
+                        </Badge>
+                      )}
+                    </div>
+                    <div className="absolute top-4 right-4">
+                      <Button
+                        size="sm"
+                        variant="ghost"
+                        className="w-8 h-8 p-0 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-sm"
+                      >
+                        <Edit className="h-4 w-4 text-white" />
+                      </Button>
                     </div>
                   </div>
                 </CardHeader>
@@ -174,14 +212,16 @@ const Blog = () => {
                       <Calendar size={16} />
                       <span>{new Date(post.date).toLocaleDateString()}</span>
                     </div>
-                    <span>{post.readTime}</span>
+                    <div className="flex items-center space-x-2">
+                      <Clock size={16} />
+                      <span>{post.readTime}</span>
+                    </div>
                   </div>
                 </CardContent>
                 
                 <CardFooter className="p-6 pt-0">
                   <Button 
-                    variant="ghost" 
-                    className="w-full group-hover:bg-[#247EFF] group-hover:text-white transition-all rounded-2xl text-[#0A0A0A] dark:text-brand-cream"
+                    className="w-full bg-[#247EFF] hover:bg-[#0057FF] text-white transition-all rounded-2xl font-medium"
                   >
                     Read Story
                     <ArrowUp className="ml-2 h-4 w-4 rotate-45 group-hover:translate-x-1 transition-transform" />
@@ -194,11 +234,11 @@ const Blog = () => {
           {/* No Results */}
           {filteredPosts.length === 0 && (
             <div className="text-center py-16">
-              <p className="text-xl text-[#0A0A0A]/70 dark:text-brand-cream/70 mb-4">No articles found matching your criteria.</p>
+              <p className="text-xl text-[#0A0A0A]/70 dark:text-brand-cream/70 mb-4">No stories found matching your search.</p>
               <Button 
                 onClick={() => {setSearchTerm(""); setSelectedCategory("All");}}
                 variant="outline"
-                className="border-[#247EFF] text-[#247EFF] hover:bg-[#247EFF] hover:text-white"
+                className="border-[#247EFF] text-[#247EFF] hover:bg-[#247EFF] hover:text-white rounded-2xl"
               >
                 Clear Filters
               </Button>

@@ -22,8 +22,8 @@ const About = () => {
               Why <span className="text-[#247EFF]">Standard</span>thought?
             </h1>
             <p className="text-xl text-[#0A0A0A]/70 dark:text-brand-cream/70 leading-relaxed">
-              Because standard thinking gets standard results. We're here to challenge conventions, 
-              break limitations, and build something extraordinary from the ground up.
+              Because we're not here for average. This is for the ones who had to figure it out with nothing but hustle, 
+              grit, and their own two hands. If you've ever felt like you had to make your own playbook—this is your home.
             </p>
           </div>
         </div>
@@ -44,19 +44,16 @@ const About = () => {
               <h2 className="text-4xl font-bold mb-6 text-[#0A0A0A] dark:text-brand-cream">Our Story</h2>
               <div className="space-y-4 text-[#0A0A0A]/70 dark:text-brand-cream/70">
                 <p>
-                  Standardthought was born from a simple observation: the most successful people 
-                  didn't follow standard advice. They created their own path, questioned everything, 
-                  and built something meaningful from nothing.
+                  Standardthought was built by outsiders and underdogs—people who were tired of playing by someone else's rules. 
+                  We came up with empty pockets, big dreams, and nobody handing us a roadmap. Every win was earned. Every lesson was paid for in sweat.
                 </p>
                 <p>
-                  We started as a community of entrepreneurs, creators, and visionaries who refused 
-                  to accept limitations. Today, we're a movement that empowers thousands to break 
-                  free from conventional thinking and build their <span className="text-[#247EFF] font-medium">legacy</span>.
+                  This isn't a guru brand. It's a real community for the ones who had to build their own table, teach themselves the game, 
+                  and turn setbacks into strategy. If you've ever had to make a way out of no way, you're one of us.
                 </p>
                 <p>
-                  This isn't about get-rich-quick schemes or overnight success. It's about the 
-                  long game—building something that lasts, something that matters, something that 
-                  creates value for generations.
+                  We're here for the long haul—creating a <span className="text-[#247EFF] font-medium">legacy</span>, not just a payday. 
+                  Everything we do is for those who came from nothing and refuse to let that define them.
                 </p>
               </div>
             </div>
@@ -70,24 +67,24 @@ const About = () => {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-6 text-[#0A0A0A] dark:text-brand-cream">What We Stand For</h2>
             <p className="text-xl text-[#0A0A0A]/70 dark:text-brand-cream/70 max-w-2xl mx-auto">
-              These aren't just words on a wall. They're the principles that guide every decision, 
-              every piece of content, and every interaction in our community.
+              These aren't just words on a wall. They're the rules we live by, the code we built from scratch, 
+              and the promises we make to those coming up behind us.
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                title: "Authentic Growth",
-                description: "Real success comes from genuine value creation, not shortcuts or manipulation."
+                title: "Real Growth Only",
+                description: "We don't fake wins or flex for clout. Everything here is built from scratch—no shortcuts, no overnight hype."
               },
               {
-                title: "Community First",
-                description: "We succeed together. Individual wins that don't lift others aren't true victories."
+                title: "Put Each Other On",
+                description: "No gatekeeping. If I learn, you learn. We celebrate wins, share game, and pull each other up. That's how we all get ahead."
               },
               {
-                title: "Long-term Thinking",
-                description: "Legacy isn't built in quarters or years. We think in decades and generations."
+                title: "Legacy Moves",
+                description: "We're not here for the quick flip. Every decision is made with the next generation in mind. We're building for people who aren't even here yet."
               }
             ].map((value, index) => (
               <div 

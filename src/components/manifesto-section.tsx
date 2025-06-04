@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 
@@ -84,17 +83,16 @@ const ManifestoSection = () => {
           {/* Call to Action */}
           <div className={`text-center bg-gradient-to-r from-[#247EFF]/10 via-[#247EFF]/20 to-[#247EFF]/10 rounded-3xl p-12 transition-all duration-1000 delay-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <h3 className="text-3xl font-bold mb-6 text-[#0A0A0A] dark:text-brand-cream">
-              Ready to Build Your Legacy?
+              Tired of Watching? Start Building.
             </h3>
             <p className="text-xl text-[#0A0A0A]/80 dark:text-brand-cream/80 mb-8">
-              Join thousands who've chosen to stop dreaming and start building. 
-              Your story starts with a single decision.
+              The only thing between you and your story is one real decision. If you're about action, we're about you.
             </p>
             <Button 
               size="lg"
               className="bg-[#247EFF] hover:bg-[#0057FF] hover:shadow-lg hover:shadow-[#D4AF37]/30 text-white font-semibold px-8 py-4 rounded-3xl transition-all duration-300 hover:scale-105"
             >
-              Start Your Journey
+              Let's Get It
             </Button>
           </div>
         </div>

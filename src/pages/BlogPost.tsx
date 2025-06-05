@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
@@ -9,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, Calendar, Clock, Share2, Facebook, Twitter, Linkedin } from "lucide-react";
 import { Helmet } from "react-helmet";
 import { toast } from "sonner";
+import { trackBlogRead, trackSocialShare } from "@/components/analytics";
 
 interface BlogPost {
   id: string;
@@ -62,6 +62,9 @@ const BlogPost = () => {
       }
 
       setPost(data);
+      
+      // Track blog read
+      trackBlogRead(data.title, data.slug);
     } catch (error) {
       console.error('Unexpected error:', error);
       setError('An unexpected error occurred');
@@ -80,6 +83,9 @@ const BlogPost = () => {
   const sharePost = async (platform: string) => {
     const url = window.location.href;
     const title = post?.title || '';
+    
+    // Track social share
+    trackSocialShare(platform, title);
     
     let shareUrl = '';
     

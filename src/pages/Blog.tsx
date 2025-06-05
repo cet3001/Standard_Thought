@@ -11,6 +11,8 @@ import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge";
 import { Search, Calendar, Clock, ArrowUp, Plus, Edit } from "lucide-react";
 import { Helmet } from "react-helmet";
+import { BlogGridSkeleton } from "@/components/blog-skeleton";
+import { trackBlogRead } from "@/components/analytics";
 
 interface BlogPost {
   id: string;
@@ -23,6 +25,7 @@ interface BlogPost {
   featured: boolean;
   published: boolean;
   created_at: string;
+  slug: string;
 }
 
 const Blog = () => {
@@ -31,6 +34,7 @@ const Blog = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const { isAdmin, user, loading: authLoading, profile } = useAuth();
   const navigate = useNavigate();
 
@@ -42,6 +46,7 @@ const Blog = () => {
   const fetchBlogPosts = async () => {
     try {
       console.log('Fetching blog posts...');
+      setError(null);
       const { data, error } = await supabase
         .from('blog_posts')
         .select('*')
@@ -50,12 +55,14 @@ const Blog = () => {
 
       if (error) {
         console.error('Error fetching blog posts:', error);
+        setError('Failed to load stories. Please try again.');
       } else {
         console.log('Blog posts fetched:', data);
         setBlogPosts(data || []);
       }
     } catch (error) {
       console.error('Error:', error);
+      setError('An unexpected error occurred. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -76,6 +83,11 @@ const Blog = () => {
     const wordCount = content.split(' ').length;
     const readTime = Math.ceil(wordCount / wordsPerMinute);
     return `${readTime} min read`;
+  };
+
+  const handleReadStory = (post: BlogPost) => {
+    trackBlogRead(post.title, post.slug);
+    navigate(`/blog/${post.slug}`);
   };
 
   // Enhanced debugging for admin state
@@ -144,13 +156,6 @@ const Blog = () => {
                   </Button>
                 )}
                 
-                {/* Show loading state */}
-                {authLoading && (
-                  <div className="text-sm text-[#0A0A0A]/60 dark:text-brand-cream/60">
-                    Loading...
-                  </div>
-                )}
-                
                 {/* Sign In Button for non-authenticated users */}
                 {!authLoading && !user && (
                   <Button
@@ -199,9 +204,24 @@ const Blog = () => {
         {/* Blog Grid */}
         <section className="py-24 bg-brand-cream dark:bg-brand-black">
           <div className="container mx-auto px-6">
-            {loading || authLoading ? (
-              <div className="text-center">
-                <div className="text-xl text-[#0A0A0A]/70 dark:text-brand-cream/70">Loading stories...</div>
+            {loading ? (
+              <BlogGridSkeleton />
+            ) : error ? (
+              <div className="text-center py-16">
+                <div className="max-w-md mx-auto">
+                  <h3 className="text-2xl font-semibold text-[#0A0A0A] dark:text-brand-cream mb-4">
+                    Something Went Wrong
+                  </h3>
+                  <p className="text-[#0A0A0A]/70 dark:text-brand-cream/70 mb-6">
+                    {error}
+                  </p>
+                  <Button
+                    onClick={fetchBlogPosts}
+                    className="bg-[#247EFF] hover:bg-[#0057FF] text-white font-medium rounded-2xl px-8 py-3 transition-all duration-300"
+                  >
+                    Try Again
+                  </Button>
+                </div>
               </div>
             ) : blogPosts.length === 0 ? (
               <div className="text-center py-16">
@@ -244,6 +264,7 @@ const Blog = () => {
                           src={post.image_url || "/placeholder.svg"}
                           alt={post.title}
                           className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
+                          loading="lazy"
                         />
                         <div className="absolute top-4 left-4 flex gap-2">
                           <Badge className="bg-[#247EFF] text-white px-3 py-1 rounded-full text-sm font-medium hover:bg-[#247EFF]">
@@ -290,6 +311,7 @@ const Blog = () => {
                     
                     <CardFooter className="p-6 pt-0">
                       <Button 
+                        onClick={() => handleReadStory(post)}
                         className="w-full bg-[#247EFF] hover:bg-[#0057FF] text-white transition-all rounded-2xl font-medium"
                       >
                         Read Story
@@ -302,7 +324,7 @@ const Blog = () => {
             )}
 
             {/* No Results */}
-            {!loading && !authLoading && blogPosts.length > 0 && filteredPosts.length === 0 && (
+            {!loading && !error && blogPosts.length > 0 && filteredPosts.length === 0 && (
               <div className="text-center py-16">
                 <p className="text-xl text-[#0A0A0A]/70 dark:text-brand-cream/70 mb-4">No stories found matching your search.</p>
                 <Button 

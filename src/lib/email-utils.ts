@@ -1,6 +1,7 @@
 
 import { supabase } from '@/integrations/supabase/client'
 import type { Database } from '@/integrations/supabase/types'
+import { trackNewsletterSignup, trackPlaybookDownload } from '@/components/analytics'
 
 type SubscriberInsert = Database['public']['Tables']['Subscribers']['Insert']
 
@@ -33,14 +34,19 @@ export const subscribeToNewsletter = async (email: string, name?: string) => {
       throw new Error(error.message)
     }
 
-    // Send welcome email after successful subscription
+    // Track newsletter signup
+    trackNewsletterSignup(email)
+    trackPlaybookDownload(email)
+
+    // Send welcome email with playbook after successful subscription
     try {
-      console.log('Triggering welcome email for:', email)
+      console.log('Triggering welcome email with playbook for:', email)
       const { data: emailData, error: emailError } = await supabase.functions.invoke('send-welcome-email', {
         body: { 
           email: email.trim().toLowerCase(),
           name: name || undefined,
-          unsubscribe_token: tokenData
+          unsubscribe_token: tokenData,
+          include_playbook: true
         }
       })
 
@@ -48,7 +54,7 @@ export const subscribeToNewsletter = async (email: string, name?: string) => {
         console.error('Welcome email error:', emailError)
         // Don't throw here - subscription was successful, email is just a bonus
       } else {
-        console.log('Welcome email sent successfully:', emailData)
+        console.log('Welcome email with playbook sent successfully:', emailData)
       }
     } catch (emailError) {
       console.error('Failed to send welcome email:', emailError)

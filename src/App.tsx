@@ -6,9 +6,11 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/components/theme-provider";
 import { AuthProvider } from "@/contexts/AuthContext";
+import Analytics from "@/components/analytics";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 import Sales from "./pages/Sales";
 import Auth from "./pages/Auth";
 import CreatePost from "./pages/CreatePost";
@@ -25,6 +27,7 @@ const App = () => (
     <ThemeProvider defaultTheme="light" storageKey="standardthought-ui-theme">
       <AuthProvider>
         <TooltipProvider>
+          <Analytics />
           <Toaster />
           <Sonner />
           <BrowserRouter>
@@ -32,6 +35,7 @@ const App = () => (
               <Route path="/" element={<Index />} />
               <Route path="/about" element={<About />} />
               <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:slug" element={<BlogPost />} />
               <Route path="/sales" element={<Sales />} />
               <Route path="/auth" element={<Auth />} />
               <Route path="/create-post" element={<CreatePost />} />

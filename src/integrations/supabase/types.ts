@@ -22,6 +22,7 @@ export type Database = {
           meta_description: string | null
           meta_keywords: string | null
           published: boolean | null
+          slug: string | null
           tags: string[] | null
           title: string
           updated_at: string
@@ -38,6 +39,7 @@ export type Database = {
           meta_description?: string | null
           meta_keywords?: string | null
           published?: boolean | null
+          slug?: string | null
           tags?: string[] | null
           title: string
           updated_at?: string
@@ -54,6 +56,7 @@ export type Database = {
           meta_description?: string | null
           meta_keywords?: string | null
           published?: boolean | null
+          slug?: string | null
           tags?: string[] | null
           title?: string
           updated_at?: string
@@ -116,6 +119,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      generate_slug: {
+        Args: { title: string }
+        Returns: string
+      }
       generate_unsubscribe_token: {
         Args: Record<PropertyKey, never>
         Returns: string

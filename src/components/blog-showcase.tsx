@@ -1,9 +1,12 @@
 
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowUp, Calendar, Clock } from "lucide-react";
+import { BlogGridSkeleton } from "@/components/blog-skeleton";
+import { trackBlogRead } from "@/components/analytics";
 
 interface BlogPost {
   id: string;
@@ -13,12 +16,14 @@ interface BlogPost {
   category: string;
   featured: boolean;
   created_at: string;
+  slug: string;
 }
 
 const BlogShowcase = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [featuredPosts, setFeaturedPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsVisible(true);
@@ -59,7 +64,8 @@ const BlogShowcase = () => {
       image_url: "/placeholder.svg",
       created_at: "2024-01-15",
       category: "Hustle",
-      featured: true
+      featured: true,
+      slug: "from-the-mud-to-momentum"
     },
     {
       id: "2",
@@ -68,7 +74,8 @@ const BlogShowcase = () => {
       image_url: "/placeholder.svg",
       created_at: "2024-01-12",
       category: "Gameplan",
-      featured: true
+      featured: true,
+      slug: "no-blueprint-no-problem"
     },
     {
       id: "3",
@@ -77,7 +84,8 @@ const BlogShowcase = () => {
       image_url: "/placeholder.svg",
       created_at: "2024-01-10",
       category: "Network",
-      featured: true
+      featured: true,
+      slug: "plugged-in-building-connections"
     }
   ];
 
@@ -86,6 +94,11 @@ const BlogShowcase = () => {
     const wordCount = excerpt.split(' ').length;
     const readTime = Math.ceil(wordCount / wordsPerMinute);
     return `${readTime} min read`;
+  };
+
+  const handleReadStory = (post: BlogPost) => {
+    trackBlogRead(post.title, post.slug);
+    navigate(`/blog/${post.slug}`);
   };
 
   const postsToShow = featuredPosts.length > 0 ? featuredPosts : fallbackPosts;
@@ -111,8 +124,25 @@ const BlogShowcase = () => {
 
         {/* Blog Grid */}
         {loading ? (
-          <div className="text-center">
-            <div className="text-lg text-brand-black/70 dark:text-brand-cream/70">Loading featured stories...</div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            {[...Array(3)].map((_, index) => (
+              <div key={index} className="bg-white/80 dark:bg-brand-black/80 backdrop-blur-sm border border-accent/20 rounded-3xl overflow-hidden animate-pulse">
+                <div className="h-48 bg-gradient-to-r from-accent/10 via-accent/20 to-accent/10 bg-[length:200%_100%]"></div>
+                <div className="p-6">
+                  <div className="h-6 bg-accent/20 rounded mb-3 w-3/4"></div>
+                  <div className="space-y-2 mb-4">
+                    <div className="h-4 bg-accent/20 rounded"></div>
+                    <div className="h-4 bg-accent/20 rounded w-5/6"></div>
+                    <div className="h-4 bg-accent/20 rounded w-4/6"></div>
+                  </div>
+                  <div className="flex justify-between mb-4">
+                    <div className="h-4 w-24 bg-accent/20 rounded"></div>
+                    <div className="h-4 w-20 bg-accent/20 rounded"></div>
+                  </div>
+                  <div className="h-10 bg-accent/20 rounded-2xl"></div>
+                </div>
+              </div>
+            ))}
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
@@ -128,6 +158,7 @@ const BlogShowcase = () => {
                       src={post.image_url || "/placeholder.svg"}
                       alt={post.title}
                       className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
+                      loading="lazy"
                     />
                     <div className="absolute top-4 left-4">
                       <span className="bg-accent text-black px-3 py-1 rounded-full text-sm font-medium">
@@ -159,6 +190,7 @@ const BlogShowcase = () => {
                 
                 <CardFooter className="p-6 pt-0">
                   <Button 
+                    onClick={() => handleReadStory(post)}
                     variant="ghost" 
                     className="w-full group-hover:bg-accent group-hover:text-black transition-all rounded-2xl text-brand-black dark:text-brand-cream"
                   >
@@ -176,7 +208,7 @@ const BlogShowcase = () => {
           <Button 
             size="lg"
             className="bg-accent hover:bg-accent/90 text-black font-semibold px-8 py-4 rounded-3xl"
-            onClick={() => window.location.href = '/blog'}
+            onClick={() => navigate('/blog')}
           >
             Explore All Stories
             <ArrowUp className="ml-2 h-5 w-5 rotate-45" />

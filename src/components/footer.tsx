@@ -89,9 +89,7 @@ const Footer = () => {
               {[
                 { label: "About", href: "/about" },
                 { label: "Blog", href: "/blog" },
-                { label: "Sales", href: "/sales" },
-                { label: "Community", href: "#" },
-                { label: "Contact", href: "#" }
+                { label: "Sales", href: "/sales" }
               ].map((link, index) => (
                 <li key={index}>
                   <a 
@@ -105,16 +103,13 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Resources */}
+          {/* Resources & Contact */}
           <div>
             <h4 className="text-lg font-semibold mb-6 text-[#247EFF]">Resources</h4>
-            <ul className="space-y-4">
+            <ul className="space-y-4 mb-8">
               {[
                 { label: "Free Playbook", href: "#" },
-                { label: "Success Stories", href: "#" },
-                { label: "Podcast", href: "#" },
-                { label: "Mentorship", href: "#" },
-                { label: "Events", href: "#" }
+                { label: "Mentorship", href: "#" }
               ].map((link, index) => (
                 <li key={index}>
                   <a 
@@ -126,13 +121,21 @@ const Footer = () => {
                 </li>
               ))}
             </ul>
+            
+            <h4 className="text-lg font-semibold mb-4 text-[#247EFF]">Contact</h4>
+            <a 
+              href="mailto:cet3001@gmail.com"
+              className="text-brand-cream/70 hover:text-[#247EFF] transition-colors"
+            >
+              cet3001@gmail.com
+            </a>
           </div>
 
           {/* Newsletter Signup */}
           <div>
             <h4 className="text-lg font-semibold mb-6 text-[#247EFF]">Stay Connected</h4>
             <p className="text-brand-cream/70 mb-4">
-              Get the real—no spam, just street-smart insights and game-changing strategy, every week.
+              Get the real—no spam, just street-smart insights, game-changing strategy, and your free playbook delivered weekly.
             </p>
             <form onSubmit={handleEmailSubmit} className="flex flex-col space-y-3">
               <div className="relative">
@@ -152,7 +155,7 @@ const Footer = () => {
                 disabled={isLoading}
                 className="bg-[#247EFF] hover:bg-[#0057FF] hover:shadow-lg hover:shadow-[#247EFF]/30 text-white font-semibold rounded-xl transition-all duration-300 disabled:opacity-70"
               >
-                {isLoading ? "Joining..." : "Tap In"}
+                {isLoading ? "Joining..." : "Get Free Playbook"}
               </Button>
             </form>
           </div>

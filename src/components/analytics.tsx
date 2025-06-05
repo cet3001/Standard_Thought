@@ -1,4 +1,3 @@
-
 import { useEffect } from 'react';
 
 declare global {
@@ -15,7 +14,7 @@ const Analytics = () => {
     }
 
     // Google Analytics 4
-    const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX'; // Replace with your actual GA4 Measurement ID
+    const GA_MEASUREMENT_ID = 'G-PT7T8CDJZS';
     
     // Load gtag script
     const script = document.createElement('script');
@@ -30,7 +29,7 @@ const Analytics = () => {
         (window.gtag as any).q.push(arguments);
       };
       
-      window.gtag('js', new Date().toISOString());
+      window.gtag('js', new Date());
       window.gtag('config', GA_MEASUREMENT_ID, {
         page_title: document.title,
         page_location: window.location.href,

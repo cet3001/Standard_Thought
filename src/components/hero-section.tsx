@@ -1,3 +1,4 @@
+
 import { useEffect, useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -159,13 +160,6 @@ const HeroSection = () => {
               </div>
             ))}
           </div>
-        </div>
-      </div>
-
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-8 h-12 border-2 border-[#247EFF] rounded-full flex justify-center relative">
-          <div className="w-1 h-4 bg-[#247EFF] rounded-full mt-3 animate-pulse"></div>
-          <div className="absolute -inset-2 border border-[#247EFF]/30 rounded-full animate-ping"></div>
         </div>
       </div>
     </section>

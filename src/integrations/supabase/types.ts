@@ -90,18 +90,24 @@ export type Database = {
           email: string | null
           id: number
           name: string | null
+          unsubscribe_token: string | null
+          unsubscribed: boolean | null
         }
         Insert: {
           created_at?: string
           email?: string | null
           id?: number
           name?: string | null
+          unsubscribe_token?: string | null
+          unsubscribed?: boolean | null
         }
         Update: {
           created_at?: string
           email?: string | null
           id?: number
           name?: string | null
+          unsubscribe_token?: string | null
+          unsubscribed?: boolean | null
         }
         Relationships: []
       }
@@ -110,7 +116,14 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      generate_unsubscribe_token: {
+        Args: Record<PropertyKey, never>
+        Returns: string
+      }
+      unsubscribe_user: {
+        Args: { token: string }
+        Returns: boolean
+      }
     }
     Enums: {
       user_role: "admin" | "user"

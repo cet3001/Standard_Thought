@@ -6,12 +6,22 @@ type SubscriberInsert = Database['public']['Tables']['Subscribers']['Insert']
 
 export const subscribeToNewsletter = async (email: string, name?: string) => {
   try {
+    // Generate unsubscribe token
+    const { data: tokenData, error: tokenError } = await supabase.rpc('generate_unsubscribe_token')
+    
+    if (tokenError) {
+      console.error('Token generation error:', tokenError)
+      throw new Error('Failed to generate unsubscribe token')
+    }
+
     const { data, error } = await supabase
       .from('Subscribers')
       .insert([
         {
           email: email.trim().toLowerCase(),
-          name: name || null
+          name: name || null,
+          unsubscribe_token: tokenData,
+          unsubscribed: false
         }
       ])
       .select()
@@ -29,7 +39,8 @@ export const subscribeToNewsletter = async (email: string, name?: string) => {
       const { data: emailData, error: emailError } = await supabase.functions.invoke('send-welcome-email', {
         body: { 
           email: email.trim().toLowerCase(),
-          name: name || undefined
+          name: name || undefined,
+          unsubscribe_token: tokenData
         }
       })
 

@@ -3,8 +3,47 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { Mail, Twitter, Instagram, Linkedin, Youtube } from "lucide-react";
+import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
+import { subscribeToNewsletter } from "@/lib/email-utils";
 
 const Footer = () => {
+  const [email, setEmail] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
+
+  const handleEmailSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) {
+      toast({
+        title: "Email required",
+        description: "Please enter your email address",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    setIsLoading(true);
+    
+    try {
+      await subscribeToNewsletter(email);
+      
+      setEmail("");
+      toast({
+        title: "Welcome to the Movement! 🎉",
+        description: "Check your inbox for your welcome email with exclusive insights and next steps."
+      });
+    } catch (error) {
+      toast({
+        title: "Something went wrong",
+        description: error instanceof Error ? error.message : "Please try again later",
+        variant: "destructive"
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <footer className="bg-brand-black dark:bg-brand-black text-brand-cream relative overflow-hidden">
       {/* Background Pattern */}
@@ -95,21 +134,27 @@ const Footer = () => {
             <p className="text-brand-cream/70 mb-4">
               Get the real—no spam, just street-smart insights and game-changing strategy, every week.
             </p>
-            <div className="flex flex-col space-y-3">
+            <form onSubmit={handleEmailSubmit} className="flex flex-col space-y-3">
               <div className="relative">
                 <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-brand-cream/60 h-4 w-4" />
                 <Input
                   type="email"
                   placeholder="Your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="pl-10 bg-brand-cream/10 border-[#247EFF]/20 focus:border-[#247EFF] text-brand-cream placeholder:text-brand-cream/50 rounded-xl"
+                  required
+                  disabled={isLoading}
                 />
               </div>
               <Button 
-                className="bg-[#247EFF] hover:bg-[#0057FF] hover:shadow-lg hover:shadow-[#247EFF]/30 text-white font-semibold rounded-xl transition-all duration-300"
+                type="submit"
+                disabled={isLoading}
+                className="bg-[#247EFF] hover:bg-[#0057FF] hover:shadow-lg hover:shadow-[#247EFF]/30 text-white font-semibold rounded-xl transition-all duration-300 disabled:opacity-70"
               >
-                Tap In
+                {isLoading ? "Joining..." : "Tap In"}
               </Button>
-            </div>
+            </form>
           </div>
         </div>
 
@@ -119,9 +164,9 @@ const Footer = () => {
         <div className="py-8 flex flex-col md:flex-row justify-between items-center text-sm text-brand-cream/60">
           <p>&copy; 2024 Standardthought. Built from nothing, made for builders.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="#" className="hover:text-[#247EFF] transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-[#247EFF] transition-colors">Terms of Service</a>
-            <a href="#" className="hover:text-[#247EFF] transition-colors">Cookie Policy</a>
+            <a href="/privacy-policy" className="hover:text-[#247EFF] transition-colors">Privacy Policy</a>
+            <a href="/terms-of-service" className="hover:text-[#247EFF] transition-colors">Terms of Service</a>
+            <a href="/cookie-policy" className="hover:text-[#247EFF] transition-colors">Cookie Policy</a>
           </div>
         </div>
       </div>

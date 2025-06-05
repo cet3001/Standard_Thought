@@ -27,7 +27,7 @@ const Navigation = () => {
   };
 
   const handleSignOut = async () => {
-    if (isSigningOut) return; // Prevent multiple calls
+    if (isSigningOut) return;
     
     setIsSigningOut(true);
     console.log('Navigation: Starting sign out...');
@@ -47,13 +47,22 @@ const Navigation = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm bg-brand-cream/90 dark:bg-brand-black/90 border-b border-[#247EFF]/20">
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          {/* Logo with Glow Effect */}
+          {/* Logo with ST Crown */}
           <Link 
             to="/" 
-            className="text-2xl font-bold font-satoshi hover:text-[#247EFF] transition-all duration-300 group"
+            className="flex items-center space-x-3 hover:text-[#247EFF] transition-all duration-300 group"
           >
-            <span className="text-[#0A0A0A] dark:text-brand-cream group-hover:text-[#247EFF]">Standard</span>
-            <span className="text-[#247EFF]">thought</span>
+            <div className="w-8 h-8 flex-shrink-0">
+              <img 
+                src="/lovable-uploads/5316a53a-9afb-4437-8f49-d3b521d18e44.png" 
+                alt="ST Logo" 
+                className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
+              />
+            </div>
+            <div className="text-2xl font-bold font-satoshi">
+              <span className="text-[#0A0A0A] dark:text-brand-cream group-hover:text-[#247EFF]">Standard</span>
+              <span className="text-[#247EFF]">thought</span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}

@@ -54,9 +54,18 @@ const Footer = () => {
       <div className="container mx-auto px-6 relative z-10">
         {/* Main Footer Content */}
         <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Brand Column */}
+          {/* Brand Column with Logo */}
           <div className="lg:col-span-1">
-            <h3 className="text-2xl font-bold mb-4 text-[#247EFF]">Standardthought</h3>
+            <div className="flex items-center space-x-3 mb-4">
+              <div className="w-8 h-8 opacity-80">
+                <img 
+                  src="/lovable-uploads/5316a53a-9afb-4437-8f49-d3b521d18e44.png" 
+                  alt="ST Logo" 
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <h3 className="text-2xl font-bold text-[#247EFF]">Standardthought</h3>
+            </div>
             <p className="text-brand-cream/70 mb-6 leading-relaxed">
               From the mud to momentum. For the ones who weren't handed anything—welcome home.
             </p>
@@ -163,8 +172,15 @@ const Footer = () => {
 
         <Separator className="bg-[#247EFF]/20" />
 
-        {/* Bottom Footer */}
-        <div className="py-8 flex flex-col md:flex-row justify-between items-center text-sm text-brand-cream/60">
+        {/* Bottom Footer with subtle logo watermark */}
+        <div className="py-8 flex flex-col md:flex-row justify-between items-center text-sm text-brand-cream/60 relative">
+          <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-5 pointer-events-none">
+            <img 
+              src="/lovable-uploads/5316a53a-9afb-4437-8f49-d3b521d18e44.png" 
+              alt="ST Watermark" 
+              className="w-24 h-24 object-contain"
+            />
+          </div>
           <p>&copy; 2024 Standardthought. Built from nothing, made for builders.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a href="/privacy-policy" className="hover:text-[#247EFF] transition-colors">Privacy Policy</a>

@@ -37,7 +37,7 @@ const Sales = () => {
       setEmail("");
       toast({
         title: "You're locked in! 🔥",
-        description: "You'll be first to know when we drop the real blueprint. Check your email for confirmation."
+        description: "Check your inbox for your welcome email and be first to know when we drop the real blueprint."
       });
     } catch (error) {
       toast({
@@ -94,15 +94,14 @@ const Sales = () => {
                     Lock In Your Spot
                   </h2>
                   <p className="text-lg text-[#0A0A0A]/70 dark:text-brand-cream/70">
-                    Don't wait—tap in now. When we drop the real blueprint, mentorship, and community access, 
-                    you'll be first in line. This isn't for everyone, and that's the point.
+                    Don't wait—tap in now. You'll get an instant welcome email plus be first in line when we drop the real blueprint, mentorship, and community access.
                   </p>
                 </div>
 
                 <form onSubmit={handleEmailSubmit} className="space-y-4">
                   <Input
                     type="email"
-                    placeholder="Your email (no spam, just the drop)"
+                    placeholder="Your email (instant welcome email + first access)"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="py-4 rounded-2xl border-[#247EFF]/20 focus:border-[#247EFF] text-lg bg-white/80 dark:bg-brand-black/80 text-[#0A0A0A] dark:text-brand-cream"
@@ -120,7 +119,7 @@ const Sales = () => {
                 </form>
 
                 <p className="text-sm text-[#0A0A0A]/60 dark:text-brand-cream/60 mt-4">
-                  Real builders only. We don't do spam or fake hype.
+                  Real builders only. Instant welcome email, then first access to everything.
                 </p>
               </CardContent>
             </Card>

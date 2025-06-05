@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -32,7 +31,7 @@ const NewsletterSection = () => {
       setEmail("");
       toast({
         title: "Welcome to the Movement! 🎉",
-        description: "You'll receive exclusive insights and stories from the Standard Thought community."
+        description: "Check your inbox for your welcome email with exclusive insights and next steps."
       });
 
       // Reset after 3 seconds
@@ -74,9 +73,9 @@ const NewsletterSection = () => {
 
               {/* Incentive */}
               <div className="bg-[#247EFF]/10 border border-[#247EFF]/20 rounded-3xl p-6 mb-8 backdrop-blur-sm">
-                <h3 className="text-lg font-semibold mb-2 text-[#247EFF]">Weekly Hustle Notes:</h3>
+                <h3 className="text-lg font-semibold mb-2 text-[#247EFF]">Weekly Hustle Notes + Welcome Email:</h3>
                 <p className="text-[#0A0A0A]/70 dark:text-brand-cream/70">
-                  "Get the weekly 'Hustle Note'—raw lessons, builder interviews, and real-life playbooks you won't find anywhere else."
+                  Get your instant welcome email with exclusive insights, plus weekly "Hustle Notes"—raw lessons, builder interviews, and real-life playbooks you won't find anywhere else.
                 </p>
               </div>
 
@@ -112,7 +111,7 @@ const NewsletterSection = () => {
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle size={16} className="text-[#247EFF]" />
-                  <span>Zero fluff, zero spam—just real</span>
+                  <span>Instant welcome email</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle size={16} className="text-[#247EFF]" />
@@ -127,8 +126,11 @@ const NewsletterSection = () => {
                 <CheckCircle size={40} className="text-white" />
               </div>
               <h3 className="text-3xl font-bold mb-4 text-[#247EFF]">Welcome to the Movement!</h3>
-              <p className="text-xl text-[#0A0A0A]/80 dark:text-brand-cream/80">
-                Check your inbox for your welcome gift. Your journey to building legacy starts now.
+              <p className="text-xl text-[#0A0A0A]/80 dark:text-brand-cream/80 mb-4">
+                Check your inbox for your welcome email with exclusive insights and your first Hustle Note.
+              </p>
+              <p className="text-lg text-[#0A0A0A]/60 dark:text-brand-cream/60">
+                Your journey to building legacy starts now. 🔥
               </p>
             </div>
           )}

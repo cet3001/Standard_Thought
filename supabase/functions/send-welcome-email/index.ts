@@ -257,7 +257,7 @@ serve(async (req) => {
 
     // Prepare email payload
     const emailPayload = {
-      from: 'Standardthought <noreply@standardthought.com>',
+      from: 'Standardthought <noreply@resend.dev>',
       to: [email],
       subject: '🔥 Welcome to the Movement - Your Playbook is Attached!',
       html: emailContent,

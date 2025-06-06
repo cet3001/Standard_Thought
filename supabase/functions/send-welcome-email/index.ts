@@ -74,7 +74,7 @@ serve(async (req) => {
     }
 
     const unsubscribeUrl = `https://zedewynjmeyhbjysnxld.supabase.co/functions/v1/unsubscribe/${unsubscribe_token}`
-    const websiteUnsubscribeUrl = `https://standardthought.com/unsubscribe/${unsubscribe_token}`
+    const websiteUnsubscribeUrl = `https://www.standardthought.com/unsubscribe/${unsubscribe_token}`
 
     const emailContent = `
 <!DOCTYPE html>
@@ -233,7 +233,7 @@ serve(async (req) => {
             
             <p><strong>Real talk:</strong> We're not here to waste your time with fluff. Every email you get from us will have something you can use immediately. If it doesn't, hit reply and call us out.</p>
             
-            <a href="https://standardthought.com/blog" class="cta-button">Check Out Our Latest Stories</a>
+            <a href="https://www.standardthought.com/blog" class="cta-button">Check Out Our Latest Stories</a>
             
             <p>Stay hungry,<br>
             <strong>The Standardthought Team</strong></p>

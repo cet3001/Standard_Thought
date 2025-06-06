@@ -24,6 +24,55 @@ serve(async (req) => {
       throw new Error('RESEND_API_KEY is not set')
     }
 
+    // Initialize Supabase client to fetch playbook
+    const supabase = createClient(
+      Deno.env.get('SUPABASE_URL') ?? '',
+      Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
+    )
+
+    // Try to fetch the playbook PDF from storage
+    let playbookAttachment = null
+    try {
+      console.log('Attempting to fetch playbook from storage...')
+      const { data: files, error: listError } = await supabase.storage
+        .from('playbooks')
+        .list()
+
+      if (listError) {
+        console.error('Error listing playbooks:', listError)
+      } else if (files && files.length > 0) {
+        // Get the first PDF file found
+        const pdfFile = files.find(file => file.name.toLowerCase().endsWith('.pdf'))
+        
+        if (pdfFile) {
+          console.log('Found playbook file:', pdfFile.name)
+          const { data: fileData, error: downloadError } = await supabase.storage
+            .from('playbooks')
+            .download(pdfFile.name)
+
+          if (downloadError) {
+            console.error('Error downloading playbook:', downloadError)
+          } else if (fileData) {
+            const arrayBuffer = await fileData.arrayBuffer()
+            const base64Content = btoa(String.fromCharCode(...new Uint8Array(arrayBuffer)))
+            
+            playbookAttachment = {
+              filename: pdfFile.name,
+              content: base64Content,
+              content_type: 'application/pdf'
+            }
+            console.log('Playbook attachment prepared successfully')
+          }
+        } else {
+          console.log('No PDF files found in playbooks bucket')
+        }
+      } else {
+        console.log('No files found in playbooks bucket')
+      }
+    } catch (storageError) {
+      console.error('Storage error (continuing without attachment):', storageError)
+    }
+
     const unsubscribeUrl = `https://zedewynjmeyhbjysnxld.supabase.co/functions/v1/unsubscribe/${unsubscribe_token}`
     const websiteUnsubscribeUrl = `https://your-domain.com/unsubscribe/${unsubscribe_token}`
 
@@ -33,7 +82,7 @@ serve(async (req) => {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to the Movement - Standardthought</title>
+    <title>Welcome to the Movement - Your Playbook is Here!</title>
     <style>
         body { 
             font-family: 'Helvetica Neue', Arial, sans-serif; 
@@ -79,6 +128,27 @@ serve(async (req) => {
             margin-bottom: 16px; 
             font-size: 16px; 
             line-height: 1.7; 
+        }
+        .playbook-cta { 
+            background: linear-gradient(135deg, #247EFF 0%, #0057FF 100%);
+            border: none;
+            border-radius: 12px; 
+            padding: 20px 40px; 
+            margin: 30px 0;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(36, 126, 255, 0.3);
+        }
+        .playbook-cta h3 { 
+            color: white; 
+            margin: 0 0 10px 0; 
+            font-size: 20px; 
+            font-weight: bold;
+        }
+        .playbook-cta p { 
+            color: white; 
+            margin: 0; 
+            font-size: 14px; 
+            opacity: 0.9;
         }
         .highlight-box { 
             background: #f0f7ff; 
@@ -132,13 +202,25 @@ serve(async (req) => {
     <div class="container">
         <div class="header">
             <h1>🔥 Welcome to the Movement!</h1>
-            <p>You just joined 10,000+ builders who refuse to settle</p>
+            <p>Your playbook is attached - time to level up</p>
         </div>
         
         <div class="content">
             <h2>What's good, ${name ? name.split(' ')[0] : 'Builder'}!</h2>
             
             <p>You just tapped into something real. While others are still talking, you're already moving. That's the difference between dreamers and builders.</p>
+            
+            ${playbookAttachment ? `
+            <div class="playbook-cta">
+                <h3>📖 Your Free Playbook is Attached!</h3>
+                <p>Check your attachments for the complete playbook PDF. This is the same guide that's helped thousands of builders turn their hustle into generational wealth.</p>
+            </div>
+            ` : `
+            <div class="playbook-cta">
+                <h3>📖 Your Free Playbook is Coming!</h3>
+                <p>We're preparing your exclusive playbook. You'll receive it within 24 hours with strategies that have helped thousands build generational wealth.</p>
+            </div>
+            `}
             
             <div class="highlight-box">
                 <h3>🎯 Here's What You're Getting:</h3>
@@ -173,18 +255,26 @@ serve(async (req) => {
 </html>
     `
 
+    // Prepare email payload
+    const emailPayload = {
+      from: 'Standardthought <hello@resend.dev>',
+      to: [email],
+      subject: '🔥 Welcome to the Movement - Your Playbook is Attached!',
+      html: emailContent,
+    }
+
+    // Add attachment if playbook was found
+    if (playbookAttachment) {
+      emailPayload.attachments = [playbookAttachment]
+    }
+
     const res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${RESEND_API_KEY}`,
       },
-      body: JSON.stringify({
-        from: 'Standardthought <hello@resend.dev>',
-        to: [email],
-        subject: '🔥 Welcome to the Movement - Your First Move Starts Now',
-        html: emailContent,
-      }),
+      body: JSON.stringify(emailPayload),
     })
 
     if (!res.ok) {
@@ -197,7 +287,7 @@ serve(async (req) => {
     console.log('Email sent successfully:', data)
 
     return new Response(
-      JSON.stringify({ success: true, data }),
+      JSON.stringify({ success: true, data, has_attachment: !!playbookAttachment }),
       { 
         headers: { 
           ...corsHeaders, 

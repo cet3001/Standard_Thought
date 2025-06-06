@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
@@ -30,8 +29,8 @@ const Footer = () => {
       
       setEmail("");
       toast({
-        title: "Welcome to the Movement! 🎉",
-        description: "Check your inbox for your welcome email with exclusive insights and next steps."
+        title: "Playbook Sent! 🎉",
+        description: "Check your inbox for your welcome email with the FREE playbook PDF attached!"
       });
     } catch (error) {
       toast({
@@ -140,18 +139,18 @@ const Footer = () => {
             </a>
           </div>
 
-          {/* Newsletter Signup */}
+          {/* Enhanced Newsletter Signup */}
           <div>
-            <h4 className="text-lg font-semibold mb-6 text-[#247EFF]">Stay Connected</h4>
+            <h4 className="text-lg font-semibold mb-6 text-[#247EFF]">Get Your Free Playbook</h4>
             <p className="text-brand-cream/70 mb-4">
-              Get the real—no spam, just street-smart insights, game-changing strategy, and your free playbook delivered weekly.
+              Get the complete playbook PDF delivered instantly + weekly "Hustle Notes" with real builder strategies and behind-the-scenes insights.
             </p>
             <form onSubmit={handleEmailSubmit} className="flex flex-col space-y-3">
               <div className="relative">
                 <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-brand-cream/60 h-4 w-4" />
                 <Input
                   type="email"
-                  placeholder="Your email"
+                  placeholder="Your email for instant access"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="pl-10 bg-brand-cream/10 border-[#247EFF]/20 focus:border-[#247EFF] text-brand-cream placeholder:text-brand-cream/50 rounded-xl"
@@ -164,9 +163,12 @@ const Footer = () => {
                 disabled={isLoading}
                 className="bg-[#247EFF] hover:bg-[#0057FF] hover:shadow-lg hover:shadow-[#247EFF]/30 text-white font-semibold rounded-xl transition-all duration-300 disabled:opacity-70"
               >
-                {isLoading ? "Joining..." : "Get Free Playbook"}
+                {isLoading ? "Sending..." : "Get Free Playbook PDF"}
               </Button>
             </form>
+            <p className="text-xs text-brand-cream/50 mt-2">
+              📧 Playbook PDF delivered instantly to your inbox
+            </p>
           </div>
         </div>
 

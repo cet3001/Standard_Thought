@@ -74,7 +74,7 @@ serve(async (req) => {
     }
 
     const unsubscribeUrl = `https://zedewynjmeyhbjysnxld.supabase.co/functions/v1/unsubscribe/${unsubscribe_token}`
-    const websiteUnsubscribeUrl = `https://your-domain.com/unsubscribe/${unsubscribe_token}`
+    const websiteUnsubscribeUrl = `https://standardthought.app/unsubscribe/${unsubscribe_token}`
 
     const emailContent = `
 <!DOCTYPE html>
@@ -257,7 +257,7 @@ serve(async (req) => {
 
     // Prepare email payload
     const emailPayload = {
-      from: 'Standardthought <hello@resend.dev>',
+      from: 'Standardthought <noreply@standardthought.app>',
       to: [email],
       subject: '🔥 Welcome to the Movement - Your Playbook is Attached!',
       html: emailContent,

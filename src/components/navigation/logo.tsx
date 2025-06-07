@@ -5,7 +5,7 @@ const Logo = () => {
   return (
     <Link 
       to="/" 
-      className="flex items-center space-x-3 hover:text-[#247EFF] transition-all duration-300 group"
+      className="flex items-center space-x-3 hover:text-[#007cba] transition-all duration-300 group"
     >
       <div className="w-8 h-8 flex-shrink-0">
         <img 
@@ -14,9 +14,9 @@ const Logo = () => {
           className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
         />
       </div>
-      <div className="text-2xl font-bold font-satoshi">
-        <span className="text-[#0A0A0A] dark:text-brand-cream group-hover:text-[#247EFF]">Standard</span>
-        <span className="text-[#247EFF]">thought</span>
+      <div className="font-inter text-logo md:text-logo-lg">
+        <span className="text-typography-primary group-hover:text-[#007cba]">Standard</span>
+        <span className="text-[#007cba]">thought</span>
       </div>
     </Link>
   );

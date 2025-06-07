@@ -1,6 +1,5 @@
 
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Satoshi:wght@300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -14,7 +13,7 @@
     --card-foreground: 0 0% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 3.9%;
-    --primary: 221 83% 53%;
+    --primary: 200 100% 37%;
     --primary-foreground: 0 0% 98%;
     --secondary: 0 0% 96.1%;
     --secondary-foreground: 0 0% 9%;
@@ -26,13 +25,19 @@
     --destructive-foreground: 0 0% 98%;
     --border: 0 0% 89.8%;
     --input: 0 0% 89.8%;
-    --ring: 221 83% 53%;
+    --ring: 200 100% 37%;
     --chart-1: 12 76% 61%;
     --chart-2: 173 58% 39%;
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
-    --radius: 0.5rem;
+    --radius: 0.375rem;
+
+    /* Typography Colors */
+    --text-primary: #101828;
+    --text-secondary: #222c36;
+    --text-muted: #64748b;
+    --text-brand: #007cba;
   }
 
   .dark {
@@ -42,7 +47,7 @@
     --card-foreground: 0 0% 98%;
     --popover: 0 0% 3.9%;
     --popover-foreground: 0 0% 98%;
-    --primary: 221 83% 53%;
+    --primary: 200 100% 37%;
     --primary-foreground: 0 0% 98%;
     --secondary: 0 0% 14.9%;
     --secondary-foreground: 0 0% 98%;
@@ -54,12 +59,18 @@
     --destructive-foreground: 0 0% 98%;
     --border: 0 0% 14.9%;
     --input: 0 0% 14.9%;
-    --ring: 221 83% 53%;
+    --ring: 200 100% 37%;
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+
+    /* Dark mode typography adjustments */
+    --text-primary: #f8fafc;
+    --text-secondary: #e2e8f0;
+    --text-muted: #94a3b8;
+    --text-brand: #38bdf8;
   }
 }
 
@@ -67,19 +78,192 @@
   * {
     @apply border-border;
   }
+  
   body {
     @apply bg-background text-foreground;
-    font-family: "Inter", sans-serif;
+    font-family: "Inter", system-ui, sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
   }
-  .font-satoshi {
-    font-family: "Satoshi", sans-serif;
+
+  /* Site Title / Main Logo */
+  .logo-text {
+    font-family: "Inter", system-ui, sans-serif;
+    font-weight: 900;
+    font-size: 2.25rem;
+    letter-spacing: -1px;
+    color: var(--text-primary);
+    line-height: 1.1;
+  }
+
+  /* H1 - Main Page Title/Section Hero */
+  h1 {
+    font-family: "Inter", system-ui, sans-serif;
+    font-weight: 800;
+    font-size: 2rem;
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+    color: var(--text-primary);
+    margin-bottom: 0.75em;
+  }
+
+  /* H2 - Section Headers */
+  h2 {
+    font-family: "Inter", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 1.2;
+    color: var(--text-secondary);
+    margin-bottom: 0.5em;
+  }
+
+  /* H3 - Subsection/Feature Headings */
+  h3 {
+    font-family: "Inter", system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 1.15rem;
+    line-height: 1.3;
+    color: var(--text-secondary);
+    margin-bottom: 0.5em;
+  }
+
+  /* H4-H6 */
+  h4, h5, h6 {
+    font-family: "Inter", system-ui, sans-serif;
+    font-weight: 600;
+    color: var(--text-secondary);
+    line-height: 1.3;
+  }
+
+  /* Body Text */
+  p {
+    font-family: "Inter", system-ui, sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-bottom: 1em;
+  }
+
+  /* Lists */
+  ul, ol {
+    font-family: "Inter", system-ui, sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+
+  ul li::marker {
+    color: var(--text-brand);
+  }
+
+  ol li::marker {
+    color: var(--text-brand);
+    font-weight: 600;
+  }
+
+  /* Blockquotes and Testimonials */
+  blockquote {
+    font-family: "IBM Plex Sans", system-ui, sans-serif;
+    font-weight: 500;
+    font-size: 1.125rem;
+    color: var(--text-brand);
+    font-style: italic;
+    line-height: 1.5;
+    padding: 1rem;
+    border-left: 4px solid var(--text-brand);
+    margin: 1.5rem 0;
+  }
+
+  /* Small/Helper Text */
+  .text-small {
+    font-family: "Inter", system-ui, sans-serif;
+    font-weight: 400;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    letter-spacing: 0.25px;
+  }
+
+  /* Navigation */
+  .nav-text {
+    font-family: "Inter", system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--text-primary);
+  }
+
+  /* Footer */
+  .footer-text {
+    font-family: "Inter", system-ui, sans-serif;
+    font-weight: 400;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+  }
+
+  /* Button Text */
+  .btn-text {
+    font-family: "Inter", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  /* Responsive Typography */
+  @media (min-width: 768px) {
+    .logo-text {
+      font-size: 3rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+    }
+
+    p {
+      font-size: 1.125rem;
+    }
+  }
+
+  /* Brand Highlight Class */
+  .text-brand-highlight {
+    color: var(--text-brand);
+  }
+
+  /* Links */
+  a {
+    color: var(--text-brand);
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  a:hover {
+    opacity: 0.8;
+  }
+
+  .font-inter {
+    font-family: "Inter", system-ui, sans-serif;
+  }
+
+  .font-ibm-plex {
+    font-family: "IBM Plex Sans", system-ui, sans-serif;
   }
 }
 
 :root {
   --brand-cream: #FDF6E3;
   --brand-black: #0A0A0A;
-  --brand-blue: #247EFF;
+  --brand-blue: #007cba;
 }
 
 .bg-brand-cream {
@@ -116,12 +300,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #247EFF;
+  background: var(--brand-blue);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #0057FF;
+  background: #005a8b;
 }
 
 /* Smooth scrolling */
@@ -131,12 +315,12 @@ html {
 
 /* Selection styling */
 ::selection {
-  background-color: rgba(36, 126, 255, 0.2);
+  background-color: rgba(0, 124, 186, 0.2);
   color: inherit;
 }
 
 /* Focus visible for better accessibility */
 .focus-visible\:outline-none:focus-visible {
-  outline: 2px solid #247EFF;
+  outline: 2px solid var(--brand-blue);
   outline-offset: 2px;
 }

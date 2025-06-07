@@ -63,11 +63,19 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Brand colors - removed gold, kept core branding
+				// Brand colors updated to match typography system
 				brand: {
 					black: '#0A0A0A',
 					cream: '#F7F6F3',
-					gray: '#E5E5E5'
+					gray: '#E5E5E5',
+					blue: '#007cba'
+				},
+				// Typography colors
+				typography: {
+					primary: 'var(--text-primary)',
+					secondary: 'var(--text-secondary)',
+					muted: 'var(--text-muted)',
+					brand: 'var(--text-brand)'
 				}
 			},
 			borderRadius: {
@@ -79,9 +87,33 @@ export default {
 				'4xl': '32px'
 			},
 			fontFamily: {
-				'satoshi': ['Satoshi', 'Inter', 'system-ui', 'sans-serif'],
 				'inter': ['Inter', 'system-ui', 'sans-serif'],
+				'ibm-plex': ['IBM Plex Sans', 'system-ui', 'sans-serif'],
+				'satoshi': ['Satoshi', 'Inter', 'system-ui', 'sans-serif'],
 				'space-grotesk': ['Space Grotesk', 'system-ui', 'sans-serif']
+			},
+			fontSize: {
+				'logo': ['2.25rem', { lineHeight: '1.1', letterSpacing: '-1px', fontWeight: '900' }],
+				'logo-lg': ['3rem', { lineHeight: '1.1', letterSpacing: '-1px', fontWeight: '900' }],
+				'h1': ['2rem', { lineHeight: '1.1', letterSpacing: '-0.5px', fontWeight: '800' }],
+				'h1-lg': ['2.5rem', { lineHeight: '1.1', letterSpacing: '-0.5px', fontWeight: '800' }],
+				'h2': ['1.5rem', { lineHeight: '1.2', fontWeight: '700' }],
+				'h2-lg': ['2rem', { lineHeight: '1.2', fontWeight: '700' }],
+				'h3': ['1.15rem', { lineHeight: '1.3', fontWeight: '600' }],
+				'h3-lg': ['1.25rem', { lineHeight: '1.3', fontWeight: '600' }],
+				'body': ['1rem', { lineHeight: '1.6', fontWeight: '400' }],
+				'body-lg': ['1.125rem', { lineHeight: '1.6', fontWeight: '400' }],
+				'small': ['0.85rem', { lineHeight: '1.4', letterSpacing: '0.25px', fontWeight: '400' }],
+				'nav': ['1rem', { fontWeight: '600' }],
+				'footer': ['0.95rem', { fontWeight: '400' }],
+				'btn': ['1rem', { letterSpacing: '0.5px', fontWeight: '700' }],
+				'quote': ['1.125rem', { lineHeight: '1.5', fontWeight: '500' }]
+			},
+			letterSpacing: {
+				'logo': '-1px',
+				'h1': '-0.5px',
+				'btn': '0.5px',
+				'small': '0.25px'
 			},
 			keyframes: {
 				'accordion-down': {
@@ -140,10 +172,10 @@ export default {
 				},
 				'pulse-glow': {
 					'0%, 100%': {
-						boxShadow: '0 0 20px rgba(36, 126, 255, 0.3)'
+						boxShadow: '0 0 20px rgba(0, 124, 186, 0.3)'
 					},
 					'50%': {
-						boxShadow: '0 0 40px rgba(36, 126, 255, 0.6)'
+						boxShadow: '0 0 40px rgba(0, 124, 186, 0.6)'
 					}
 				},
 				'kinetic-text': {

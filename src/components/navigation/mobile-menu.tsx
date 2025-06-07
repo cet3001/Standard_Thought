@@ -29,13 +29,17 @@ const MobileMenu = ({ isOpen, onToggle, onClose }: MobileMenuProps) => {
 
       {/* Mobile Menu Content */}
       {isOpen && (
-        <div className="md:hidden mt-4 pb-4 border-t border-[#247EFF]/20">
-          <div className="flex flex-col space-y-4 pt-4">
-            <NavItems 
-              onItemClick={onClose}
-              className="flex flex-col space-y-4"
-            />
-            <AuthSection onAction={onClose} />
+        <div className="md:hidden absolute top-full left-0 right-0 bg-brand-cream/95 dark:bg-brand-black/95 backdrop-blur-sm border-t border-[#247EFF]/20 shadow-lg">
+          <div className="container mx-auto px-6 py-6">
+            <div className="flex flex-col space-y-6">
+              <NavItems 
+                onItemClick={onClose}
+                className="flex flex-col space-y-4"
+              />
+              <div className="pt-4 border-t border-[#247EFF]/20">
+                <AuthSection onAction={onClose} />
+              </div>
+            </div>
           </div>
         </div>
       )}

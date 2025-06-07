@@ -3,10 +3,10 @@ import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  { label: "Home", path: "/" },
-  { label: "About", path: "/about" },
-  { label: "Stories", path: "/blog" },
-  { label: "Builder Access", path: "/sales" },
+  { label: "Start Here", path: "/" },
+  { label: "Builder Stories", path: "/blog" },
+  { label: "Mindset Tools", path: "/about" },
+  { label: "Success Strategies", path: "/sales" },
 ];
 
 interface NavItemsProps {

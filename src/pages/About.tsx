@@ -6,14 +6,9 @@ import { useEffect, useState } from "react";
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
 
-  console.log('About component rendering...');
-
   useEffect(() => {
-    console.log('About component mounted, setting isVisible to true');
     setIsVisible(true);
   }, []);
-
-  console.log('About component render, isVisible:', isVisible);
 
   return (
     <div className="min-h-screen bg-brand-cream dark:bg-brand-black">
@@ -43,8 +38,6 @@ const About = () => {
                 src="/lovable-uploads/94cc6adb-cf25-4c3e-b059-ee67f8401562.png" 
                 alt="Our story" 
                 className="w-full h-96 object-cover rounded-3xl shadow-lg"
-                onLoad={() => console.log('Image loaded successfully')}
-                onError={(e) => console.error('Image failed to load:', e)}
               />
             </div>
             <div className={`transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}>

@@ -1,4 +1,3 @@
-
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import { useEffect, useState } from "react";
@@ -35,7 +34,7 @@ const About = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className={`transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
               <img 
-                src="https://drive.google.com/uc?export=view&id=1B8FahChQNrjH3msG8AfKO7Cvd7ZvaER4" 
+                src="/lovable-uploads/94cc6adb-cf25-4c3e-b059-ee67f8401562.png" 
                 alt="Our story" 
                 className="w-full h-96 object-cover rounded-3xl shadow-lg"
               />

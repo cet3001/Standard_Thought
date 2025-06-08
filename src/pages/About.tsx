@@ -32,12 +32,12 @@ const About = () => {
       {/* Story Section */}
       <section className="py-24 bg-white/90 dark:bg-brand-black/80">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <div className={`transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
               <img 
                 src="/lovable-uploads/a8faab87-8319-4fa0-ae53-35597c6f8fc5.png" 
                 alt="Looking up at the crown - building your own legacy" 
-                className="w-full h-96 object-cover rounded-3xl shadow-lg"
+                className="w-full h-[500px] object-cover rounded-3xl shadow-lg"
               />
             </div>
             <div className={`transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}>

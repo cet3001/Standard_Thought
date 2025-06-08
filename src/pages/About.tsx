@@ -35,8 +35,8 @@ const About = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className={`transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
               <img 
-                src="/lovable-uploads/94cc6adb-cf25-4c3e-b059-ee67f8401562.png" 
-                alt="Our story" 
+                src="/lovable-uploads/a8faab87-8319-4fa0-ae53-35597c6f8fc5.png" 
+                alt="Looking up at the crown - building your own legacy" 
                 className="w-full h-96 object-cover rounded-3xl shadow-lg"
               />
             </div>

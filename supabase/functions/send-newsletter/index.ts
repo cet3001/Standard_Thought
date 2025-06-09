@@ -1,3 +1,4 @@
+
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { Resend } from "npm:resend@4.0.0";
@@ -107,24 +108,24 @@ const handler = async (req: Request): Promise<Response> => {
             body { font-family: 'Inter', Arial, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; background-color: #f7f6f3; }
             .container { max-width: 600px; margin: 0 auto; background-color: #ffffff; }
             .header { text-align: center; padding: 40px 20px 30px; border-bottom: 1px solid #e5e5e5; }
-            .banner { width: 100%; max-width: 500px; height: auto; margin: 0 auto; display: block; }
+            .banner { width: 100%; max-width: 750px; height: auto; margin: 0 auto; display: block; }
             .content { padding: 40px 30px; }
             .greeting { font-size: 18px; margin-bottom: 20px; color: #0a0a0a; }
             .subject-line { font-size: 24px; font-weight: 700; margin-bottom: 24px; color: #0a0a0a; line-height: 1.2; }
             .message { font-size: 16px; line-height: 1.6; color: #333; margin-bottom: 30px; white-space: pre-wrap; }
             .footer { background-color: #f7f6f3; padding: 30px 20px; text-align: center; border-top: 1px solid #e5e5e5; }
             .footer-text { font-size: 14px; color: #666; margin-bottom: 10px; }
-            .footer-links a { color: #007cba; text-decoration: none; margin: 0 10px; }
+            .footer-links a { color: #1e40af; text-decoration: none; margin: 0 10px; }
             .footer-links a:hover { text-decoration: underline; }
             .unsubscribe { font-size: 12px; color: #999; margin-top: 15px; }
-            .unsubscribe a { color: #007cba; text-decoration: none; }
+            .unsubscribe a { color: #1e40af; text-decoration: none; }
             .unsubscribe a:hover { text-decoration: underline; }
           </style>
         </head>
         <body>
           <div class="container">
             <div class="header">
-              <img src="https://zedewynjmeyhbjysnxld.supabase.co/storage/v1/object/public/assets/a8faab87-8319-4fa0-ae53-35597c6f8fc5.png" alt="Standard Thought - Real Wisdom. Real Results." class="banner" />
+              <img src="https://zedewynjmeyhbjysnxld.supabase.co/storage/v1/object/public/assets/21728a70-c6c7-4f2f-8689-d74741cb605b.png" alt="Standard Thought - Real Wisdom. Real Results." class="banner" />
             </div>
             
             <div class="content">
@@ -230,3 +231,4 @@ const handler = async (req: Request): Promise<Response> => {
 };
 
 serve(handler);
+

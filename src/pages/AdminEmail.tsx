@@ -1,4 +1,5 @@
 
+
 import React, { useState } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { supabase } from '@/integrations/supabase/client';
@@ -196,12 +197,13 @@ const AdminEmail = () => {
             <CardContent>
               <div className="bg-muted p-6 rounded-lg">
                 <div className="bg-white p-8 rounded-lg shadow-sm max-w-2xl mx-auto">
-                  {/* Header with new banner */}
+                  {/* Header with professional banner */}
                   <div className="text-center mb-6 pb-6 border-b">
                     <img 
-                      src="/lovable-uploads/a8faab87-8319-4fa0-ae53-35597c6f8fc5.png" 
+                      src="/lovable-uploads/21728a70-c6c7-4f2f-8689-d74741cb605b.png" 
                       alt="Standard Thought - Real Wisdom. Real Results." 
-                      className="w-full max-w-md mx-auto h-auto"
+                      className="w-full max-w-2xl mx-auto h-auto"
+                      style={{ maxHeight: '200px', width: 'auto' }}
                     />
                   </div>
 
@@ -224,20 +226,20 @@ const AdminEmail = () => {
                       Keep building. Keep grinding. Your story matters.
                     </p>
                     <p className="mb-2">
-                      <a href="#" className="text-brand-blue hover:underline mx-2">
+                      <a href="https://standardthought.com" className="text-blue-600 hover:underline mx-2">
                         Visit Website
                       </a>
-                      <a href="#" className="text-brand-blue hover:underline mx-2">
+                      <a href="https://standardthought.com/blog" className="text-blue-600 hover:underline mx-2">
                         Read Blog
                       </a>
                     </p>
                     <p className="text-xs">
                       You're receiving this email because you subscribed to our newsletter.
                       <br />
-                      <a href="#" className="text-brand-blue hover:underline">
+                      <a href="#" className="text-blue-600 hover:underline">
                         Unsubscribe
                       </a> | 
-                      <a href="https://standardthought.com/privacy-policy" className="text-brand-blue hover:underline">
+                      <a href="https://standardthought.com/privacy-policy" className="text-blue-600 hover:underline">
                         Privacy Policy
                       </a>
                     </p>
@@ -253,3 +255,4 @@ const AdminEmail = () => {
 };
 
 export default AdminEmail;
+

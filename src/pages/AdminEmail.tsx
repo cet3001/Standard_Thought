@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { supabase } from '@/integrations/supabase/client';
@@ -134,7 +133,7 @@ const AdminEmail = () => {
               <CardHeader>
                 <CardTitle>Compose Email</CardTitle>
                 <CardDescription>
-                  Create your newsletter content. Your logo and branding will be automatically included.
+                  Create your newsletter content. Your professional banner will be automatically included.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -196,20 +195,18 @@ const AdminEmail = () => {
             <CardContent>
               <div className="bg-muted p-6 rounded-lg">
                 <div className="bg-white p-8 rounded-lg shadow-sm max-w-2xl mx-auto">
-                  {/* Header */}
+                  {/* Header with new banner */}
                   <div className="text-center mb-6 pb-6 border-b">
                     <img 
-                      src="/lovable-uploads/5316a53a-9afb-4437-8f49-d3b521d18e44.png" 
-                      alt="Standardthought Logo" 
-                      className="w-12 h-12 mx-auto mb-3"
+                      src="/lovable-uploads/a8faab87-8319-4fa0-ae53-35597c6f8fc5.png" 
+                      alt="Standard Thought - Real Wisdom. Real Results." 
+                      className="w-full max-w-md mx-auto h-auto"
                     />
-                    <h1 className="text-2xl font-bold text-brand-black">
-                      Standard<span className="text-brand-blue">thought</span>
-                    </h1>
                   </div>
 
                   {/* Content */}
                   <div className="mb-6">
+                    <div className="text-lg mb-4 text-gray-800">Hey Subscriber,</div>
                     {subject && (
                       <h2 className="text-xl font-semibold mb-4 text-gray-800">
                         {subject}
@@ -223,14 +220,23 @@ const AdminEmail = () => {
                   {/* Footer */}
                   <div className="border-t pt-6 text-center text-sm text-gray-500">
                     <p className="mb-2">
-                      You're receiving this email because you subscribed to our newsletter.
+                      Keep building. Keep grinding. Your story matters.
                     </p>
-                    <p>
+                    <p className="mb-2">
+                      <a href="#" className="text-brand-blue hover:underline mx-2">
+                        Visit Website
+                      </a>
+                      <a href="#" className="text-brand-blue hover:underline mx-2">
+                        Read Blog
+                      </a>
+                    </p>
+                    <p className="text-xs">
+                      You're receiving this email because you subscribed to our newsletter.<br>
                       <a href="#" className="text-brand-blue hover:underline">
                         Unsubscribe
-                      </a> | Visit our{" "}
-                      <a href="https://standardthought.com" className="text-brand-blue hover:underline">
-                        website
+                      </a> | 
+                      <a href="https://standardthought.com/privacy-policy" className="text-brand-blue hover:underline">
+                        Privacy Policy
                       </a>
                     </p>
                   </div>

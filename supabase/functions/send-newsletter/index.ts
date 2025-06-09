@@ -1,4 +1,3 @@
-
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { Resend } from "npm:resend@4.0.0";
@@ -108,10 +107,7 @@ const handler = async (req: Request): Promise<Response> => {
             body { font-family: 'Inter', Arial, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; background-color: #f7f6f3; }
             .container { max-width: 600px; margin: 0 auto; background-color: #ffffff; }
             .header { text-align: center; padding: 40px 20px 30px; border-bottom: 1px solid #e5e5e5; }
-            .logo { width: 48px; height: 48px; margin: 0 auto 16px; }
-            .brand { font-size: 28px; font-weight: 900; letter-spacing: -1px; }
-            .brand-standard { color: #0a0a0a; }
-            .brand-thought { color: #007cba; }
+            .banner { width: 100%; max-width: 500px; height: auto; margin: 0 auto; display: block; }
             .content { padding: 40px 30px; }
             .greeting { font-size: 18px; margin-bottom: 20px; color: #0a0a0a; }
             .subject-line { font-size: 24px; font-weight: 700; margin-bottom: 24px; color: #0a0a0a; line-height: 1.2; }
@@ -128,10 +124,7 @@ const handler = async (req: Request): Promise<Response> => {
         <body>
           <div class="container">
             <div class="header">
-              <img src="https://zedewynjmeyhbjysnxld.supabase.co/storage/v1/object/public/assets/5316a53a-9afb-4437-8f49-d3b521d18e44.png" alt="Standardthought Logo" class="logo" />
-              <div class="brand">
-                <span class="brand-standard">Standard</span><span class="brand-thought">thought</span>
-              </div>
+              <img src="https://zedewynjmeyhbjysnxld.supabase.co/storage/v1/object/public/assets/a8faab87-8319-4fa0-ae53-35597c6f8fc5.png" alt="Standard Thought - Real Wisdom. Real Results." class="banner" />
             </div>
             
             <div class="content">

@@ -1,9 +1,9 @@
-
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { ArrowUp, Calendar, Clock } from "lucide-react";
 import { BlogGridSkeleton } from "@/components/blog-skeleton";
 import { trackBlogRead } from "@/components/analytics";
@@ -154,12 +154,14 @@ const BlogShowcase = () => {
               >
                 <CardHeader className="p-0">
                   <div className="relative overflow-hidden rounded-t-3xl">
-                    <img
-                      src={post.image_url || "/placeholder.svg"}
-                      alt={post.title}
-                      className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
-                      loading="lazy"
-                    />
+                    <AspectRatio ratio={16/9} className="bg-gray-50 dark:bg-gray-900">
+                      <img
+                        src={post.image_url || "/placeholder.svg"}
+                        alt={post.title}
+                        className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
+                        loading="lazy"
+                      />
+                    </AspectRatio>
                     <div className="absolute top-4 left-4">
                       <span className="bg-accent text-black px-3 py-1 rounded-full text-sm font-medium">
                         {post.category}

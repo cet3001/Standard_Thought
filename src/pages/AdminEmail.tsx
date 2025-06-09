@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { supabase } from '@/integrations/supabase/client';
@@ -158,7 +159,7 @@ const AdminEmail = () => {
                     className="mt-1 min-h-[300px]"
                   />
                   <p className="text-sm text-muted-foreground mt-1">
-                    Tip: You can use basic HTML tags like &lt;strong&gt;, &lt;em&gt;, &lt;br&gt;, and &lt;p&gt; for formatting.
+                    Tip: You can use basic HTML tags like &lt;strong&gt;, &lt;em&gt;, &lt;br /&gt;, and &lt;p&gt; for formatting.
                   </p>
                 </div>
 
@@ -231,7 +232,8 @@ const AdminEmail = () => {
                       </a>
                     </p>
                     <p className="text-xs">
-                      You're receiving this email because you subscribed to our newsletter.<br>
+                      You're receiving this email because you subscribed to our newsletter.
+                      <br />
                       <a href="#" className="text-brand-blue hover:underline">
                         Unsubscribe
                       </a> | 

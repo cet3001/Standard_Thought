@@ -1,0 +1,8 @@
+
+# Netlify redirects file
+/sitemap.xml /sitemap.xml 200
+/googlea59634ea3ae6e4ed.html /googlea59634ea3ae6e4ed.html 200
+/robots.txt /robots.txt 200
+
+# Fallback for SPA routing
+/* /index.html 200

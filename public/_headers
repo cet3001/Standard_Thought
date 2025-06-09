@@ -1,0 +1,10 @@
+
+# Netlify headers file
+/sitemap.xml
+  Content-Type: application/xml
+
+/googlea59634ea3ae6e4ed.html
+  Content-Type: text/html
+
+/robots.txt
+  Content-Type: text/plain

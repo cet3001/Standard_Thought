@@ -1,0 +1,26 @@
+
+{
+  "routes": [
+    {
+      "src": "/sitemap.xml",
+      "dest": "/sitemap.xml",
+      "headers": {
+        "Content-Type": "application/xml"
+      }
+    },
+    {
+      "src": "/googlea59634ea3ae6e4ed.html",
+      "dest": "/googlea59634ea3ae6e4ed.html",
+      "headers": {
+        "Content-Type": "text/html"
+      }
+    },
+    {
+      "src": "/robots.txt",
+      "dest": "/robots.txt",
+      "headers": {
+        "Content-Type": "text/plain"
+      }
+    }
+  ]
+}

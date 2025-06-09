@@ -1,12 +1,13 @@
+
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
+import SEO from "@/components/seo";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, Calendar, Clock, Share2, Facebook, Twitter, Linkedin } from "lucide-react";
-import { Helmet } from "react-helmet";
 import { toast } from "sonner";
 import { trackBlogRead, trackSocialShare } from "@/components/analytics";
 
@@ -142,6 +143,11 @@ const BlogPost = () => {
   if (error || !post) {
     return (
       <div className="min-h-screen bg-brand-cream dark:bg-brand-black">
+        <SEO 
+          title={error === 'Blog post not found' ? 'Story Not Found' : 'Error Loading Story'}
+          description="The story you're looking for doesn't exist or encountered an error loading."
+          url={`https://standardthought.com/blog/${slug}`}
+        />
         <Navigation />
         <div className="pt-32 pb-16">
           <div className="container mx-auto px-6 max-w-4xl">
@@ -183,39 +189,17 @@ const BlogPost = () => {
 
   return (
     <>
-      <Helmet>
-        <title>{post.title} | Standardthought</title>
-        <meta name="description" content={post.meta_description || post.excerpt} />
-        <meta name="keywords" content={post.meta_keywords || post.tags.join(', ')} />
-        <meta property="og:title" content={post.title} />
-        <meta property="og:description" content={post.meta_description || post.excerpt} />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content={window.location.href} />
-        {post.image_url && <meta property="og:image" content={post.image_url} />}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={post.title} />
-        <meta name="twitter:description" content={post.meta_description || post.excerpt} />
-        {post.image_url && <meta name="twitter:image" content={post.image_url} />}
-        <link rel="canonical" href={window.location.href} />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            "headline": post.title,
-            "description": post.meta_description || post.excerpt,
-            "image": post.image_url,
-            "datePublished": post.created_at,
-            "author": {
-              "@type": "Organization",
-              "name": "Standardthought"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "Standardthought"
-            }
-          })}
-        </script>
-      </Helmet>
+      <SEO 
+        title={post.title}
+        description={post.meta_description || post.excerpt}
+        keywords={post.meta_keywords || post.tags.join(', ')}
+        image={post.image_url || undefined}
+        url={`https://standardthought.com/blog/${post.slug}`}
+        type="article"
+        publishedTime={post.created_at}
+        category={post.category}
+        tags={post.tags}
+      />
 
       <div className="min-h-screen bg-brand-cream dark:bg-brand-black">
         <Navigation />

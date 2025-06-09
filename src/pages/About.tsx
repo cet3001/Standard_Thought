@@ -1,6 +1,7 @@
 
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
+import SEO from "@/components/seo";
 import { useEffect, useState } from "react";
 
 const About = () => {
@@ -12,6 +13,12 @@ const About = () => {
 
   return (
     <div className="min-h-screen bg-brand-cream dark:bg-brand-black">
+      <SEO 
+        title="About Standardthought - Why We're Here"
+        description="Learn about Standardthought's mission to help entrepreneurs build legacy from nothing. Founded by outsiders and underdogs who earned every win through hustle and grit."
+        keywords="about standardthought, entrepreneur community, business legacy, startup founders, underdog entrepreneurs, business mentorship"
+        url="https://standardthought.com/about"
+      />
       <Navigation />
       
       {/* Hero Section */}

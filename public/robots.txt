@@ -1,14 +1,38 @@
-User-agent: Googlebot
+
+User-agent: *
 Allow: /
 
+# Sitemap
+Sitemap: https://standardthought.com/sitemap.xml
+Sitemap: https://www.standardthought.com/sitemap.xml
+
+# Specific bot directives
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
 User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 1
+
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: facebookexternalhit
 Allow: /
 
 User-agent: Twitterbot
 Allow: /
 
-User-agent: facebookexternalhit
-Allow: /
+# Disallow admin and auth pages from indexing
+Disallow: /auth
+Disallow: /admin
+Disallow: /unsubscribe
 
-User-agent: *
-Allow: /
+# Host directive
+Host: https://standardthought.com

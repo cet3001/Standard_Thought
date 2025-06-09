@@ -1,0 +1,43 @@
+
+import { useEffect } from 'react';
+
+const SitemapGenerator = () => {
+  useEffect(() => {
+    // Generate sitemap.xml content
+    const generateSitemap = () => {
+      const baseUrl = 'https://standardthought.com';
+      const currentDate = new Date().toISOString().split('T')[0];
+      
+      const pages = [
+        { url: '', changefreq: 'weekly', priority: '1.0' },
+        { url: '/about', changefreq: 'monthly', priority: '0.8' },
+        { url: '/blog', changefreq: 'daily', priority: '0.9' },
+        { url: '/sales', changefreq: 'monthly', priority: '0.7' },
+        { url: '/auth', changefreq: 'yearly', priority: '0.3' },
+        { url: '/privacy-policy', changefreq: 'yearly', priority: '0.2' },
+        { url: '/terms-of-service', changefreq: 'yearly', priority: '0.2' },
+        { url: '/cookie-policy', changefreq: 'yearly', priority: '0.2' },
+      ];
+
+      const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${pages.map(page => `  <url>
+    <loc>${baseUrl}${page.url}</loc>
+    <lastmod>${currentDate}</lastmod>
+    <changefreq>${page.changefreq}</changefreq>
+    <priority>${page.priority}</priority>
+  </url>`).join('\n')}
+</urlset>`;
+
+      // Log sitemap for manual creation
+      console.log('Generated sitemap.xml content:');
+      console.log(sitemap);
+    };
+
+    generateSitemap();
+  }, []);
+
+  return null;
+};
+
+export default SitemapGenerator;

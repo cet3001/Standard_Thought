@@ -1,10 +1,10 @@
-
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import SEO from "@/components/seo";
+import CommentsSection from "@/components/comments-section";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, Calendar, Clock, Share2, Facebook, Twitter, Linkedin } from "lucide-react";
@@ -24,6 +24,7 @@ interface BlogPost {
   meta_description: string | null;
   meta_keywords: string | null;
   slug: string;
+  comments_enabled: boolean;
 }
 
 const BlogPost = () => {
@@ -356,6 +357,12 @@ const BlogPost = () => {
                 </Button>
               </div>
             </div>
+
+            {/* Comments Section */}
+            <CommentsSection 
+              blogPostId={post.id} 
+              commentsEnabled={post.comments_enabled || false} 
+            />
           </div>
         </article>
 

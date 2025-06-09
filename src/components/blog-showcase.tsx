@@ -1,12 +1,11 @@
+
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
-import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { AspectRatio } from "@/components/ui/aspect-ratio";
-import { ArrowUp, Calendar, Clock } from "lucide-react";
-import { BlogGridSkeleton } from "@/components/blog-skeleton";
-import { trackBlogRead } from "@/components/analytics";
+import { ArrowUp } from "lucide-react";
+import BlogShowcaseHeader from "./blog-showcase-header";
+import BlogShowcaseGrid from "./blog-showcase-grid";
 
 interface BlogPost {
   id: string;
@@ -89,18 +88,6 @@ const BlogShowcase = () => {
     }
   ];
 
-  const getReadTime = (excerpt: string) => {
-    const wordsPerMinute = 200;
-    const wordCount = excerpt.split(' ').length;
-    const readTime = Math.ceil(wordCount / wordsPerMinute);
-    return `${readTime} min read`;
-  };
-
-  const handleReadStory = (post: BlogPost) => {
-    trackBlogRead(post.title, post.slug);
-    navigate(`/blog/${post.slug}`);
-  };
-
   const postsToShow = featuredPosts.length > 0 ? featuredPosts : fallbackPosts;
 
   return (
@@ -112,99 +99,9 @@ const BlogShowcase = () => {
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        {/* Section Header */}
-        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-brand-black dark:text-brand-cream">
-            Real Stories. Real Struggle. <span className="text-accent">Real Wins.</span>
-          </h2>
-          <p className="text-xl text-brand-black/70 dark:text-brand-cream/70 max-w-3xl mx-auto">
-            No gurus. No gatekeepers. Just hustlers, dreamers, and builders who started with nothing but grit—and turned it into legacy. Your story's next.
-          </p>
-        </div>
-
-        {/* Blog Grid */}
-        {loading ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {[...Array(3)].map((_, index) => (
-              <div key={index} className="bg-white/80 dark:bg-brand-black/80 backdrop-blur-sm border border-accent/20 rounded-3xl overflow-hidden animate-pulse">
-                <div className="h-48 bg-gradient-to-r from-accent/10 via-accent/20 to-accent/10 bg-[length:200%_100%]"></div>
-                <div className="p-6">
-                  <div className="h-6 bg-accent/20 rounded mb-3 w-3/4"></div>
-                  <div className="space-y-2 mb-4">
-                    <div className="h-4 bg-accent/20 rounded"></div>
-                    <div className="h-4 bg-accent/20 rounded w-5/6"></div>
-                    <div className="h-4 bg-accent/20 rounded w-4/6"></div>
-                  </div>
-                  <div className="flex justify-between mb-4">
-                    <div className="h-4 w-24 bg-accent/20 rounded"></div>
-                    <div className="h-4 w-20 bg-accent/20 rounded"></div>
-                  </div>
-                  <div className="h-10 bg-accent/20 rounded-2xl"></div>
-                </div>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {postsToShow.map((post, index) => (
-              <Card 
-                key={post.id}
-                className={`card-hover bg-white/80 dark:bg-brand-black/80 backdrop-blur-sm border border-accent/20 rounded-3xl overflow-hidden group transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-                style={{ animationDelay: `${0.2 + index * 0.1}s` }}
-              >
-                <CardHeader className="p-0">
-                  <div className="relative overflow-hidden rounded-t-3xl">
-                    <AspectRatio ratio={16/9} className="bg-gray-50 dark:bg-gray-900">
-                      <img
-                        src={post.image_url || "/placeholder.svg"}
-                        alt={post.title}
-                        className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
-                        loading="lazy"
-                      />
-                    </AspectRatio>
-                    <div className="absolute top-4 left-4">
-                      <span className="bg-accent text-black px-3 py-1 rounded-full text-sm font-medium">
-                        {post.category}
-                      </span>
-                    </div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  </div>
-                </CardHeader>
-                
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold mb-3 line-clamp-2 group-hover:text-accent transition-colors text-brand-black dark:text-brand-cream">
-                    {post.title}
-                  </h3>
-                  <p className="text-brand-black/70 dark:text-brand-cream/70 mb-4 line-clamp-3">
-                    {post.excerpt}
-                  </p>
-                  <div className="flex items-center justify-between text-sm text-brand-black/60 dark:text-brand-cream/60">
-                    <div className="flex items-center space-x-2">
-                      <Calendar size={16} />
-                      <span>{new Date(post.created_at).toLocaleDateString()}</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <Clock size={16} />
-                      <span>{getReadTime(post.excerpt)}</span>
-                    </div>
-                  </div>
-                </CardContent>
-                
-                <CardFooter className="p-6 pt-0">
-                  <Button 
-                    onClick={() => handleReadStory(post)}
-                    variant="ghost" 
-                    className="w-full group-hover:bg-accent group-hover:text-black transition-all rounded-2xl text-brand-black dark:text-brand-cream"
-                  >
-                    Read Story
-                    <ArrowUp className="ml-2 h-4 w-4 rotate-45 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                </CardFooter>
-              </Card>
-            ))}
-          </div>
-        )}
-
+        <BlogShowcaseHeader isVisible={isVisible} />
+        <BlogShowcaseGrid posts={postsToShow} loading={loading} isVisible={isVisible} />
+        
         {/* View All Button */}
         <div className={`text-center transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <Button 

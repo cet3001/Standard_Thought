@@ -5,6 +5,14 @@ import SEO from "@/components/seo";
 import { Button } from "@/components/ui/button";
 import { Star } from "lucide-react";
 import { useEffect, useState } from "react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -18,26 +26,56 @@ const About = () => {
       quote: "I was stuck in the same cycle for years—good job, empty bank account, no real direction. Calvin's approach isn't about quick fixes or overnight miracles. It's about building something real from the ground up. Six months later, I launched my consulting practice and hit $15K in my first quarter. This isn't just motivation—it's a blueprint.",
       name: "Marcus Johnson",
       title: "Former Corporate Manager → Business Owner",
-      initials: "MJ"
+      category: "Business",
+      initials: "MJ",
+      categoryColor: "bg-blue-500"
     },
     {
       quote: "As a Black woman in tech, I was tired of playing it safe and still getting overlooked. Standard Thought showed me how to build my own table instead of waiting for a seat at theirs. I went from side hustle to full-time entrepreneur in 8 months. Calvin gets the cultural pieces that other 'gurus' completely miss.",
       name: "Jasmine Williams", 
       title: "Software Developer → Tech Consultant",
-      initials: "JW"
+      category: "Career",
+      initials: "JW",
+      categoryColor: "bg-green-500"
     },
     {
       quote: "Real talk—I was skeptical about another 'mindset' program. But this hit different. It's not about toxic positivity or fake motivation. It's about strategic thinking, cultural awareness, and building generational wealth. My investment portfolio grew 40% this year, and I finally have a plan that makes sense for my family's future.",
       name: "Derek Thompson",
       title: "Teacher → Real Estate Investor", 
-      initials: "DT"
+      category: "Wealth",
+      initials: "DT",
+      categoryColor: "bg-[#f4d03f]"
+    },
+    {
+      quote: "I used to think success meant grinding 24/7 and burning myself out. Standard Thought taught me how to work with intention, not just intensity. I doubled my income while working fewer hours and finally have time for my family. This isn't about hustle culture—it's about smart culture.",
+      name: "Keisha Martinez",
+      title: "Marketing Manager → Digital Agency Owner",
+      category: "Mindset",
+      initials: "KM",
+      categoryColor: "bg-purple-500"
+    },
+    {
+      quote: "Calvin doesn't just talk about lifting as you climb—he shows you how. After implementing his community-building strategies, I launched a mentorship program that's helped 50+ young professionals in my city. Success isn't just personal anymore—it's generational.",
+      name: "Anthony Davis",
+      title: "Non-Profit Director → Community Leader",
+      category: "Legacy",
+      initials: "AD",
+      categoryColor: "bg-orange-500"
+    },
+    {
+      quote: "As an artist, I thought business and creativity were opposites. Standard Thought showed me how to monetize my art without selling my soul. I went from broke creative to six-figure art business owner in 18 months. Now I create on my terms AND pay my bills.",
+      name: "Maya Patel",
+      title: "Freelance Artist → Art Business Owner",
+      category: "Creative",
+      initials: "MP",
+      categoryColor: "bg-teal-500"
     }
   ];
 
   const StarRating = () => (
-    <div className="flex space-x-1 mb-4">
+    <div className="flex justify-center space-x-1 mb-6">
       {[...Array(5)].map((_, i) => (
-        <Star key={i} className="w-4 h-4 fill-[#f4d03f] text-[#f4d03f]" />
+        <Star key={i} className="w-5 h-5 fill-[#f4d03f] text-[#f4d03f]" />
       ))}
     </div>
   );
@@ -138,7 +176,7 @@ const About = () => {
         </div>
       </section>
 
-      {/* Testimonials Section */}
+      {/* Testimonials Carousel Section */}
       <section className="py-24 bg-[#1a1a2e] relative overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 pointer-events-none opacity-10">
@@ -158,30 +196,58 @@ const About = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            {testimonials.map((testimonial, index) => (
-              <div 
-                key={index}
-                className={`bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 transition-all duration-1000 hover:transform hover:scale-105 hover:bg-white/15 hover:shadow-2xl hover:shadow-[#247EFF]/20 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-                style={{ animationDelay: `${800 + index * 200}ms` }}
-              >
-                <blockquote className="text-white/90 text-lg leading-relaxed italic mb-6">
-                  "{testimonial.quote}"
-                </blockquote>
-                
-                <StarRating />
-                
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-[#247EFF] rounded-full flex items-center justify-center text-white font-bold text-sm">
-                    {testimonial.initials}
-                  </div>
-                  <div>
-                    <div className="font-bold text-white text-base">{testimonial.name}</div>
-                    <div className="text-[#f4d03f] text-sm font-medium">{testimonial.title}</div>
-                  </div>
-                </div>
-              </div>
-            ))}
+          <div className="max-w-4xl mx-auto mb-16">
+            <Carousel
+              opts={{
+                align: "center",
+                loop: true,
+              }}
+              plugins={[
+                Autoplay({
+                  delay: 8000,
+                  stopOnInteraction: true,
+                  stopOnMouseEnter: true,
+                }),
+              ]}
+              className="w-full"
+            >
+              <CarouselContent>
+                {testimonials.map((testimonial, index) => (
+                  <CarouselItem key={index}>
+                    <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 mx-4 text-center min-h-[400px] flex flex-col justify-between">
+                      {/* Category Tag */}
+                      <div className="flex justify-center mb-6">
+                        <span className={`${testimonial.categoryColor} text-white px-4 py-2 rounded-full text-sm font-semibold`}>
+                          {testimonial.category}
+                        </span>
+                      </div>
+
+                      {/* Quote */}
+                      <blockquote className="text-white/90 text-xl md:text-2xl leading-relaxed italic mb-8 flex-grow flex items-center">
+                        "{testimonial.quote}"
+                      </blockquote>
+                      
+                      <div>
+                        <StarRating />
+                        
+                        {/* Profile */}
+                        <div className="flex items-center justify-center space-x-4">
+                          <div className="w-20 h-20 bg-[#247EFF] rounded-full flex items-center justify-center text-white font-bold text-lg">
+                            {testimonial.initials}
+                          </div>
+                          <div className="text-left">
+                            <div className="font-bold text-white text-lg">{testimonial.name}</div>
+                            <div className="text-[#f4d03f] text-sm font-medium">{testimonial.title}</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="bg-white/10 border-white/20 text-[#f4d03f] hover:bg-[#f4d03f] hover:text-black -left-12" />
+              <CarouselNext className="bg-white/10 border-white/20 text-[#f4d03f] hover:bg-[#f4d03f] hover:text-black -right-12" />
+            </Carousel>
           </div>
 
           <div className="text-center">

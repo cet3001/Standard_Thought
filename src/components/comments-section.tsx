@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
-import { MessageCircle, User, Calendar } from "lucide-react";
+import { MessageCircle, User, Calendar, Trash2 } from "lucide-react";
 
 interface Comment {
   id: string;
@@ -27,6 +27,7 @@ const CommentsSection = ({ blogPostId, commentsEnabled }: CommentsSectionProps) 
   const [comments, setComments] = useState<Comment[]>([]);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
   const [formData, setFormData] = useState({
     authorName: "",
     authorEmail: "",
@@ -36,8 +37,22 @@ const CommentsSection = ({ blogPostId, commentsEnabled }: CommentsSectionProps) 
   useEffect(() => {
     if (commentsEnabled) {
       fetchComments();
+      checkAdminStatus();
     }
   }, [blogPostId, commentsEnabled]);
+
+  const checkAdminStatus = async () => {
+    const { data: { user } } = await supabase.auth.getUser();
+    if (user) {
+      const { data: profile } = await supabase
+        .from('profiles')
+        .select('role')
+        .eq('id', user.id)
+        .single();
+      
+      setIsAdmin(profile?.role === 'admin');
+    }
+  };
 
   const fetchComments = async () => {
     try {
@@ -73,7 +88,8 @@ const CommentsSection = ({ blogPostId, commentsEnabled }: CommentsSectionProps) 
           blog_post_id: blogPostId,
           author_name: formData.authorName,
           author_email: formData.authorEmail,
-          content: formData.content
+          content: formData.content,
+          approved: true // Auto-approve comments
         });
 
       if (error) {
@@ -82,13 +98,37 @@ const CommentsSection = ({ blogPostId, commentsEnabled }: CommentsSectionProps) 
         return;
       }
 
-      toast.success("Comment submitted for review!");
+      toast.success("Comment posted successfully!");
       setFormData({ authorName: "", authorEmail: "", content: "" });
+      fetchComments(); // Refresh comments
     } catch (error) {
       console.error('Unexpected error:', error);
       toast.error("An unexpected error occurred");
     } finally {
       setSubmitting(false);
+    }
+  };
+
+  const handleDeleteComment = async (commentId: string) => {
+    if (!isAdmin) return;
+
+    try {
+      const { error } = await supabase
+        .from('comments')
+        .delete()
+        .eq('id', commentId);
+
+      if (error) {
+        console.error('Error deleting comment:', error);
+        toast.error("Failed to delete comment");
+        return;
+      }
+
+      toast.success("Comment deleted successfully");
+      fetchComments(); // Refresh comments
+    } catch (error) {
+      console.error('Unexpected error:', error);
+      toast.error("An unexpected error occurred");
     }
   };
 
@@ -120,21 +160,33 @@ const CommentsSection = ({ blogPostId, commentsEnabled }: CommentsSectionProps) 
           {comments.map((comment) => (
             <Card key={comment.id} className="bg-white/50 dark:bg-brand-black/50 border-[#247EFF]/20">
               <CardContent className="pt-4">
-                <div className="flex items-center gap-2 mb-2">
-                  <User className="h-4 w-4 text-[#247EFF]" />
-                  <span className="font-medium text-[#0A0A0A] dark:text-brand-cream">
-                    {comment.author_name}
-                  </span>
-                  <Calendar className="h-4 w-4 text-[#0A0A0A]/50 dark:text-brand-cream/50 ml-2" />
-                  <span className="text-sm text-[#0A0A0A]/70 dark:text-brand-cream/70">
-                    {new Date(comment.created_at).toLocaleDateString('en-US', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric',
-                      hour: '2-digit',
-                      minute: '2-digit'
-                    })}
-                  </span>
+                <div className="flex items-center justify-between mb-2">
+                  <div className="flex items-center gap-2">
+                    <User className="h-4 w-4 text-[#247EFF]" />
+                    <span className="font-medium text-[#0A0A0A] dark:text-brand-cream">
+                      {comment.author_name}
+                    </span>
+                    <Calendar className="h-4 w-4 text-[#0A0A0A]/50 dark:text-brand-cream/50 ml-2" />
+                    <span className="text-sm text-[#0A0A0A]/70 dark:text-brand-cream/70">
+                      {new Date(comment.created_at).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit'
+                      })}
+                    </span>
+                  </div>
+                  {isAdmin && (
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => handleDeleteComment(comment.id)}
+                      className="text-red-500 hover:text-red-700 hover:bg-red-50"
+                    >
+                      <Trash2 className="h-4 w-4" />
+                    </Button>
+                  )}
                 </div>
                 <p className="text-[#0A0A0A]/80 dark:text-brand-cream/80 leading-relaxed">
                   {comment.content}
@@ -202,16 +254,13 @@ const CommentsSection = ({ blogPostId, commentsEnabled }: CommentsSectionProps) 
                 className="bg-brand-cream/50 dark:bg-brand-black/50 border-[#E5E5E5] dark:border-[#2A2A2A] focus:border-[#247EFF] text-[#0A0A0A] dark:text-brand-cream"
               />
             </div>
-            <div className="flex justify-between items-center">
-              <p className="text-sm text-[#0A0A0A]/60 dark:text-brand-cream/60">
-                Comments are reviewed before being published.
-              </p>
+            <div className="flex justify-end">
               <Button
                 type="submit"
                 disabled={submitting}
                 className="bg-[#247EFF] hover:bg-[#0057FF] text-white"
               >
-                {submitting ? "Submitting..." : "Submit Comment"}
+                {submitting ? "Posting..." : "Post Comment"}
               </Button>
             </div>
           </form>

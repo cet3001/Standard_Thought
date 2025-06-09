@@ -232,6 +232,9 @@ const AdminEmail = () => {
                       <a href="https://standardthought.com/blog" className="text-blue-600 hover:underline mx-2">
                         Read Blog
                       </a>
+                      <a href="https://instagram.com/standard_thought" className="text-blue-600 hover:underline mx-2">
+                        Follow @standard_thought
+                      </a>
                     </p>
                     <p className="text-xs">
                       You're receiving this email because you subscribed to our newsletter.
@@ -255,4 +258,3 @@ const AdminEmail = () => {
 };
 
 export default AdminEmail;
-

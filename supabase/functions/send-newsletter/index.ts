@@ -141,6 +141,7 @@ const handler = async (req: Request): Promise<Response> => {
               <div class="footer-links">
                 <a href="https://standardthought.com">Visit Website</a>
                 <a href="https://standardthought.com/blog">Read Blog</a>
+                <a href="https://instagram.com/standard_thought">Follow @standard_thought</a>
               </div>
               <div class="unsubscribe">
                 You're receiving this because you subscribed to our newsletter.<br>
@@ -231,4 +232,3 @@ const handler = async (req: Request): Promise<Response> => {
 };
 
 serve(handler);
-

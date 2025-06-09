@@ -244,6 +244,11 @@ serve(async (req) => {
         <div class="footer">
             <p>© 2024 Standardthought. Built from nothing, made for builders.</p>
             <p>From the mud to momentum. For the ones who weren't handed anything—welcome home.</p>
+            <p>
+                <a href="https://standardthought.com">Visit Website</a> | 
+                <a href="https://standardthought.com/blog">Read Blog</a> | 
+                <a href="https://instagram.com/standard_thought">Follow @standard_thought</a>
+            </p>
             
             <div class="unsubscribe">
                 <p>Don't want to receive these emails? <a href="${websiteUnsubscribeUrl}">Unsubscribe here</a></p>

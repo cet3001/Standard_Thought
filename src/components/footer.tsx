@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
@@ -70,8 +71,8 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               {[
+                { icon: Instagram, href: "https://instagram.com/standard_thought" },
                 { icon: Twitter, href: "#" },
-                { icon: Instagram, href: "#" },
                 { icon: Linkedin, href: "#" },
                 { icon: Youtube, href: "#" }
               ].map((social, index) => (

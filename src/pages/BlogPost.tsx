@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
@@ -297,7 +298,7 @@ const BlogPost = () => {
                 <img
                   src={post.image_url}
                   alt={post.title}
-                  className="w-full h-64 md:h-96 object-cover rounded-3xl"
+                  className="w-full max-h-[600px] object-contain rounded-3xl bg-gray-50 dark:bg-gray-900"
                   loading="lazy"
                 />
               </div>

@@ -20,7 +20,7 @@ const SEO = ({
   title = "Standardthought - Build Your Legacy From Nothing",
   description = "Join the movement of entrepreneurs building legacy from nothing. Get frameworks, strategies, and community support to turn your dreams into reality.",
   keywords = "entrepreneurship, business strategy, legacy building, startup advice, business growth, entrepreneur community, self-made success",
-  image = "https://lovable.dev/opengraph-image-p98pqg.png",
+  image = "/lovable-uploads/a8faab87-8319-4fa0-ae53-35597c6f8fc5.png",
   url = "https://standardthought.com",
   type = "website",
   publishedTime,
@@ -97,6 +97,8 @@ const SEO = ({
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="og:image:alt" content={fullTitle} />
+      <meta property="og:image:type" content="image/png" />
+      <meta property="og:image:secure_url" content={fullImageUrl} />
       <meta property="og:url" content={fullUrl} />
       <meta property="og:site_name" content="Standardthought" />
       <meta property="og:locale" content="en_US" />
@@ -110,6 +112,17 @@ const SEO = ({
       <meta name="twitter:image" content={fullImageUrl} />
       <meta name="twitter:image:alt" content={fullTitle} />
       <meta name="twitter:domain" content="standardthought.com" />
+
+      {/* Mobile App Meta Tags */}
+      <meta name="apple-mobile-web-app-capable" content="yes" />
+      <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+      <meta name="apple-mobile-web-app-title" content="Standardthought" />
+      <meta name="mobile-web-app-capable" content="yes" />
+      
+      {/* Apple Touch Icons for Mobile Link Previews */}
+      <meta name="apple-touch-icon" content={fullImageUrl} />
+      <link rel="apple-touch-icon" href={fullImageUrl} />
+      <link rel="apple-touch-icon-precomposed" href={fullImageUrl} />
 
       {/* Article specific meta tags */}
       {type === "article" && publishedTime && (
@@ -148,11 +161,6 @@ const SEO = ({
       
       {/* Social Media Verification */}
       <meta name="twitter:dnt" content="on" />
-      
-      {/* Mobile App Meta */}
-      <meta name="apple-mobile-web-app-capable" content="yes" />
-      <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-      <meta name="apple-mobile-web-app-title" content="Standardthought" />
     </Helmet>
   );
 };

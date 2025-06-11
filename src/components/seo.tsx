@@ -14,6 +14,7 @@ interface SEOProps {
   category?: string;
   tags?: string[];
   twitterHandle?: string;
+  noIndex?: boolean;
 }
 
 const SEO = ({ 
@@ -28,11 +29,17 @@ const SEO = ({
   author = "Standardthought",
   category,
   tags = [],
-  twitterHandle = "@standardthought"
+  twitterHandle = "@standardthought",
+  noIndex = false
 }: SEOProps) => {
   const fullTitle = title.includes("Standardthought") ? title : `${title} | Standardthought`;
   const fullUrl = url.startsWith('http') ? url : `https://standardthought.com${url}`;
   const fullImageUrl = image.startsWith('http') ? image : `https://standardthought.com${image}`;
+
+  // Generate robots directive based on noIndex prop
+  const robotsContent = noIndex 
+    ? "noindex, nofollow" 
+    : "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1";
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -88,6 +95,11 @@ const SEO = ({
       <meta name="keywords" content={keywords} />
       <meta name="author" content={author} />
       <link rel="canonical" href={fullUrl} />
+
+      {/* Robots directive - critical for indexing */}
+      <meta name="robots" content={robotsContent} />
+      <meta name="googlebot" content={robotsContent} />
+      <meta name="bingbot" content={robotsContent} />
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={type} />
@@ -146,11 +158,6 @@ const SEO = ({
         {JSON.stringify(structuredData)}
       </script>
 
-      {/* Additional SEO Meta Tags */}
-      <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-      <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-      <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-      
       {/* Favicon and Icons */}
       <link rel="icon" type="image/x-icon" href="/favicon.ico" />
       <meta name="theme-color" content="#247EFF" />
@@ -161,6 +168,9 @@ const SEO = ({
       
       {/* Social Media Verification */}
       <meta name="twitter:dnt" content="on" />
+
+      {/* Prevent soft 404s by ensuring content is present */}
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     </Helmet>
   );
 };

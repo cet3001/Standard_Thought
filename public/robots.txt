@@ -2,11 +2,7 @@
 User-agent: *
 Allow: /
 
-# Sitemap
-Sitemap: https://standardthought.com/sitemap.xml
-Sitemap: https://www.standardthought.com/sitemap.xml
-
-# Specific bot directives
+# Allow all major search engine bots
 User-agent: Googlebot
 Allow: /
 Crawl-delay: 1
@@ -29,10 +25,22 @@ Allow: /
 User-agent: Twitterbot
 Allow: /
 
-# Disallow admin and auth pages from indexing
-Disallow: /auth
-Disallow: /admin
-Disallow: /unsubscribe
+# Only disallow sensitive pages that should not be indexed
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /.*
+
+# Allow but deprioritize auth and legal pages
+Allow: /auth
+Allow: /privacy-policy
+Allow: /terms-of-service
+Allow: /cookie-policy
+Allow: /unsubscribe
+
+# Sitemap locations
+Sitemap: https://standardthought.com/sitemap.xml
+Sitemap: https://www.standardthought.com/sitemap.xml
 
 # Host directive
 Host: https://standardthought.com

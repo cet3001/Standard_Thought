@@ -17,15 +17,18 @@ const Index = () => {
         description="Join the movement of entrepreneurs building legacy from nothing. Get frameworks, strategies, and community support to turn your dreams into reality."
         keywords="entrepreneurship, business strategy, legacy building, startup advice, business growth, entrepreneur community, self-made success, business frameworks"
         url="https://standardthought.com"
+        noIndex={false}
       />
       <SitemapGenerator />
       <Navigation />
-      <HeroSection />
-      <BlogShowcase />
-      <ManifestoSection />
-      <div data-section="newsletter">
-        <NewsletterSection />
-      </div>
+      <main role="main">
+        <HeroSection />
+        <BlogShowcase />
+        <ManifestoSection />
+        <section data-section="newsletter">
+          <NewsletterSection />
+        </section>
+      </main>
       <Footer />
       <FloatingCTA />
     </div>

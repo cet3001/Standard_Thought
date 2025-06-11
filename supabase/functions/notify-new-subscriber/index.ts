@@ -10,17 +10,11 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
-interface WebhookPayload {
-  type: 'INSERT';
-  table: string;
-  record: {
-    id: number;
-    email: string;
-    name: string | null;
-    created_at: string;
-  };
-  schema: string;
-  old_record: null;
+interface NotificationRequest {
+  subscriberId: number;
+  email: string;
+  name?: string;
+  created_at: string;
 }
 
 const handler = async (req: Request): Promise<Response> => {
@@ -30,21 +24,11 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
-    const payload: WebhookPayload = await req.json();
-    console.log('Received webhook payload:', payload);
+    const { subscriberId, email, name, created_at }: NotificationRequest = await req.json();
+    console.log('Processing new subscriber notification:', { subscriberId, email, name });
 
-    // Only process INSERT events for the Subscribers table
-    if (payload.type !== 'INSERT' || payload.table !== 'Subscribers') {
-      return new Response('Not a subscriber insert event', { 
-        status: 200,
-        headers: corsHeaders 
-      });
-    }
-
-    const { record } = payload;
-    const subscriberName = record.name || 'Anonymous';
-    const subscriberEmail = record.email;
-    const signupTime = new Date(record.created_at).toLocaleString();
+    const subscriberName = name || 'Anonymous';
+    const signupTime = new Date(created_at).toLocaleString();
 
     // Send notification email to you (the admin)
     const emailResponse = await resend.emails.send({
@@ -58,8 +42,9 @@ const handler = async (req: Request): Promise<Response> => {
           <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
             <h3 style="margin-top: 0; color: #333;">Subscriber Details:</h3>
             <p><strong>Name:</strong> ${subscriberName}</p>
-            <p><strong>Email:</strong> ${subscriberEmail}</p>
+            <p><strong>Email:</strong> ${email}</p>
             <p><strong>Signed up:</strong> ${signupTime}</p>
+            <p><strong>Subscriber ID:</strong> #${subscriberId}</p>
           </div>
           
           <p style="color: #666;">
@@ -76,7 +61,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     console.log('Notification email sent successfully:', emailResponse);
 
-    return new Response(JSON.stringify({ success: true, emailResponse }), {
+    return new Response(JSON.stringify({ success: true, emailId: emailResponse.data?.id }), {
       status: 200,
       headers: {
         "Content-Type": "application/json",

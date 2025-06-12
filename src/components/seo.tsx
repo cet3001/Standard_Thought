@@ -22,7 +22,7 @@ const SEO = ({
   description = "Urban personal development for builders who started with nothing. Get frameworks, strategies, and community support to turn your dreams into reality through grit and determination.",
   keywords = "urban personal development, entrepreneurship, build from nothing, legacy building, startup advice, mindset shift, business growth, entrepreneur community, self-made success, business frameworks, hustle mentality",
   image = "/lovable-uploads/a8faab87-8319-4fa0-ae53-35597c6f8fc5.png",
-  url = "https://standardthought.com",
+  url = "https://www.standardthought.com",
   type = "website",
   publishedTime,
   modifiedTime,
@@ -33,8 +33,8 @@ const SEO = ({
   noIndex = false
 }: SEOProps) => {
   const fullTitle = title.includes("Standardthought") ? title : `${title} | Standardthought`;
-  const fullUrl = url.startsWith('http') ? url : `https://standardthought.com${url}`;
-  const fullImageUrl = image.startsWith('http') ? image : `https://standardthought.com${image}`;
+  const fullUrl = url.startsWith('http') ? url : `https://www.standardthought.com${url}`;
+  const fullImageUrl = image.startsWith('http') ? image : `https://www.standardthought.com${image}`;
 
   // Generate robots directive based on noIndex prop
   const robotsContent = noIndex 
@@ -47,10 +47,10 @@ const SEO = ({
     ...(type === "website" ? {
       "name": "Standardthought",
       "description": description,
-      "url": "https://standardthought.com",
+      "url": "https://www.standardthought.com",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://standardthought.com/favicon.ico"
+        "url": "https://www.standardthought.com/favicon.ico"
       },
       "sameAs": [
         "https://twitter.com/standardthought"
@@ -75,7 +75,7 @@ const SEO = ({
         "name": "Standardthought",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://standardthought.com/favicon.ico"
+          "url": "https://www.standardthought.com/favicon.ico"
         }
       },
       "mainEntityOfPage": {
@@ -123,7 +123,7 @@ const SEO = ({
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={fullImageUrl} />
       <meta name="twitter:image:alt" content={fullTitle} />
-      <meta name="twitter:domain" content="standardthought.com" />
+      <meta name="twitter:domain" content="www.standardthought.com" />
 
       {/* Mobile App Meta Tags */}
       <meta name="apple-mobile-web-app-capable" content="yes" />

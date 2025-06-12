@@ -5,7 +5,7 @@ const SitemapGenerator = () => {
   useEffect(() => {
     // Generate sitemap.xml content
     const generateSitemap = () => {
-      const baseUrl = 'https://standardthought.com';
+      const baseUrl = 'https://www.standardthought.com';
       const currentDate = new Date().toISOString().split('T')[0];
       
       const pages = [

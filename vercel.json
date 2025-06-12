@@ -5,7 +5,16 @@
       "src": "/sitemap.xml",
       "dest": "/sitemap.xml",
       "headers": {
-        "Content-Type": "application/xml"
+        "Content-Type": "application/xml",
+        "Cache-Control": "public, max-age=3600"
+      }
+    },
+    {
+      "src": "/robots.txt",
+      "dest": "/robots.txt",
+      "headers": {
+        "Content-Type": "text/plain",
+        "Cache-Control": "public, max-age=3600"
       }
     },
     {
@@ -14,13 +23,19 @@
       "headers": {
         "Content-Type": "text/html"
       }
-    },
+    }
+  ],
+  "redirects": [
     {
-      "src": "/robots.txt",
-      "dest": "/robots.txt",
-      "headers": {
-        "Content-Type": "text/plain"
-      }
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "standardthought.com"
+        }
+      ],
+      "destination": "https://www.standardthought.com/:path*",
+      "permanent": true
     }
   ]
 }

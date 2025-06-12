@@ -2,32 +2,4 @@
 User-agent: *
 Allow: /
 
-# Allow all major search engine bots
-User-agent: Googlebot
-Allow: /
-Crawl-delay: 1
-
-User-agent: Bingbot
-Allow: /
-Crawl-delay: 1
-
-User-agent: Slurp
-Allow: /
-Crawl-delay: 1
-
-User-agent: DuckDuckBot
-Allow: /
-Crawl-delay: 1
-
-User-agent: facebookexternalhit
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-# Sitemap locations
-Sitemap: https://standardthought.com/sitemap.xml
 Sitemap: https://www.standardthought.com/sitemap.xml
-
-# Host directive
-Host: https://standardthought.com

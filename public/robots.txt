@@ -25,19 +25,6 @@ Allow: /
 User-agent: Twitterbot
 Allow: /
 
-# Only disallow sensitive pages that should not be indexed
-Disallow: /admin/
-Disallow: /api/
-Disallow: /_next/
-Disallow: /.*
-
-# Allow but deprioritize auth and legal pages
-Allow: /auth
-Allow: /privacy-policy
-Allow: /terms-of-service
-Allow: /cookie-policy
-Allow: /unsubscribe
-
 # Sitemap locations
 Sitemap: https://standardthought.com/sitemap.xml
 Sitemap: https://www.standardthought.com/sitemap.xml

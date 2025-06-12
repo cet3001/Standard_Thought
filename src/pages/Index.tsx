@@ -14,8 +14,8 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <SEO 
         title="Standardthought - Build Your Legacy From Nothing"
-        description="Join the movement of entrepreneurs building legacy from nothing. Get frameworks, strategies, and community support to turn your dreams into reality."
-        keywords="entrepreneurship, business strategy, legacy building, startup advice, business growth, entrepreneur community, self-made success, business frameworks"
+        description="Urban personal development for builders who started with nothing. Get frameworks, strategies, and community support to turn your dreams into reality through grit and determination."
+        keywords="urban personal development, entrepreneurship, build from nothing, legacy building, startup advice, mindset shift, business growth, entrepreneur community, self-made success, business frameworks, hustle mentality, builders community, from the mud"
         url="https://standardthought.com"
         noIndex={false}
       />

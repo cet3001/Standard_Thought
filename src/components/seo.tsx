@@ -19,8 +19,8 @@ interface SEOProps {
 
 const SEO = ({ 
   title = "Standardthought - Build Your Legacy From Nothing",
-  description = "Join the movement of entrepreneurs building legacy from nothing. Get frameworks, strategies, and community support to turn your dreams into reality.",
-  keywords = "entrepreneurship, business strategy, legacy building, startup advice, business growth, entrepreneur community, self-made success",
+  description = "Urban personal development for builders who started with nothing. Get frameworks, strategies, and community support to turn your dreams into reality through grit and determination.",
+  keywords = "urban personal development, entrepreneurship, build from nothing, legacy building, startup advice, mindset shift, business growth, entrepreneur community, self-made success, business frameworks, hustle mentality",
   image = "/lovable-uploads/a8faab87-8319-4fa0-ae53-35597c6f8fc5.png",
   url = "https://standardthought.com",
   type = "website",
@@ -168,6 +168,13 @@ const SEO = ({
       
       {/* Social Media Verification */}
       <meta name="twitter:dnt" content="on" />
+
+      {/* Enhanced SEO Meta Tags */}
+      <meta name="geo.region" content="US" />
+      <meta name="geo.placename" content="United States" />
+      <meta name="distribution" content="global" />
+      <meta name="rating" content="general" />
+      <meta name="revisit-after" content="1 days" />
 
       {/* Prevent soft 404s by ensuring content is present */}
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />

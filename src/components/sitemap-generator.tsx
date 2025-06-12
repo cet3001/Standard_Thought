@@ -29,8 +29,8 @@ ${pages.map(page => `  <url>
   </url>`).join('\n')}
 </urlset>`;
 
-      // Log sitemap for manual creation
-      console.log('Generated sitemap.xml content:');
+      // Log sitemap for manual verification
+      console.log('Generated sitemap.xml content for SEO compliance:');
       console.log(sitemap);
     };
 

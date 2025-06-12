@@ -5,8 +5,8 @@ import { cn } from "@/lib/utils";
 const navItems = [
   { label: "Start Here", path: "/" },
   { label: "Builder Stories", path: "/blog" },
-  { label: "Mindset Tools", path: "/about" },
-  { label: "Success Strategies", path: "/sales" },
+  { label: "About Us", path: "/about" },
+  { label: "Get Early Access", path: "/sales" },
 ];
 
 interface NavItemsProps {

@@ -109,6 +109,14 @@ const HeroSection = () => {
             </span>
           </h1>
 
+          {/* AEO Quick Answer */}
+          <div className={`max-w-3xl mx-auto mb-8 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <p className="text-lg md:text-xl text-[#0A0A0A]/90 dark:text-brand-cream/90 leading-relaxed font-medium">
+              Standard Thought is an urban-minded personal-development hub that turns street smarts into scalable wealth. 
+              We're the blueprint for builders who started with nothing and refuse to stay there.
+            </p>
+          </div>
+
           <div className={`max-w-4xl mx-auto mb-12 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <p className="text-xl md:text-2xl text-[#0A0A0A]/80 dark:text-brand-cream/80 leading-relaxed font-light">
               No handouts. No shortcuts. This is for{' '}
@@ -125,7 +133,7 @@ const HeroSection = () => {
               onClick={scrollToNewsletter}
               className="bg-[#247EFF] hover:bg-[#0057FF] hover:shadow-lg hover:shadow-[#247EFF]/30 text-white font-semibold px-10 py-6 rounded-3xl text-lg transition-all duration-300 hover:scale-105"
             >
-              Start Building
+              Get Free Playbook PDF
             </Button>
             <Button 
               variant="outline" 

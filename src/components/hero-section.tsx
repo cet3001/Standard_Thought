@@ -1,3 +1,4 @@
+
 import { useEffect, useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -32,14 +33,30 @@ const HeroSection = () => {
   const scrollToNewsletter = () => {
     const newsletterSection = document.querySelector('[data-section="newsletter"]');
     if (newsletterSection) {
-      // Scroll to show the signup form properly, with more offset for mobile to ensure form is visible
-      const offsetTop = newsletterSection.getBoundingClientRect().top + window.pageYOffset;
-      const offset = window.innerWidth < 768 ? 200 : 150; // Increased mobile offset to show signup form
+      // Calculate proper scroll position to show the actual signup form
+      const sectionRect = newsletterSection.getBoundingClientRect();
+      const formElement = newsletterSection.querySelector('form');
       
-      window.scrollTo({
-        top: offsetTop - offset,
-        behavior: 'smooth'
-      });
+      if (formElement) {
+        const formRect = formElement.getBoundingClientRect();
+        const targetPosition = window.pageYOffset + formRect.top;
+        // Ensure form is centered in viewport with extra space for mobile keyboards
+        const offset = window.innerWidth < 768 ? window.innerHeight * 0.3 : 100;
+        
+        window.scrollTo({
+          top: targetPosition - offset,
+          behavior: 'smooth'
+        });
+      } else {
+        // Fallback if form not found
+        const offsetTop = sectionRect.top + window.pageYOffset;
+        const offset = window.innerWidth < 768 ? 300 : 150;
+        
+        window.scrollTo({
+          top: offsetTop - offset,
+          behavior: 'smooth'
+        });
+      }
     }
   };
 

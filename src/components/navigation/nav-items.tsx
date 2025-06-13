@@ -14,7 +14,29 @@ const NavItems = ({ className = "", onItemClick, showButton = false }: NavItemsP
   const scrollToNewsletter = () => {
     const newsletterSection = document.querySelector('[data-section="newsletter"]');
     if (newsletterSection) {
-      newsletterSection.scrollIntoView({ behavior: 'smooth' });
+      // Find the actual form element for precise scrolling
+      const formElement = newsletterSection.querySelector('form');
+      
+      if (formElement) {
+        const formRect = formElement.getBoundingClientRect();
+        const targetPosition = window.pageYOffset + formRect.top;
+        // Center form in viewport with extra space for mobile
+        const offset = window.innerWidth < 768 ? window.innerHeight * 0.3 : 100;
+        
+        window.scrollTo({
+          top: targetPosition - offset,
+          behavior: 'smooth'
+        });
+      } else {
+        // Fallback if form not found
+        const offsetTop = newsletterSection.getBoundingClientRect().top + window.pageYOffset;
+        const offset = window.innerWidth < 768 ? 300 : 150;
+        
+        window.scrollTo({
+          top: offsetTop - offset,
+          behavior: 'smooth'
+        });
+      }
     }
     if (onItemClick) {
       onItemClick();

@@ -9,14 +9,29 @@ const ManifestoSection = () => {
   const scrollToNewsletter = () => {
     const newsletterSection = document.querySelector('[data-section="newsletter"]');
     if (newsletterSection) {
-      // Improved scroll behavior for mobile - ensure signup form is fully visible
-      const offsetTop = newsletterSection.getBoundingClientRect().top + window.pageYOffset;
-      const offset = window.innerWidth < 768 ? 200 : 150; // Increased mobile offset to ensure form is visible
+      // Find the actual form element for precise scrolling
+      const formElement = newsletterSection.querySelector('form');
       
-      window.scrollTo({
-        top: offsetTop - offset,
-        behavior: 'smooth'
-      });
+      if (formElement) {
+        const formRect = formElement.getBoundingClientRect();
+        const targetPosition = window.pageYOffset + formRect.top;
+        // Center form in viewport with extra space for mobile
+        const offset = window.innerWidth < 768 ? window.innerHeight * 0.3 : 100;
+        
+        window.scrollTo({
+          top: targetPosition - offset,
+          behavior: 'smooth'
+        });
+      } else {
+        // Fallback if form not found
+        const offsetTop = newsletterSection.getBoundingClientRect().top + window.pageYOffset;
+        const offset = window.innerWidth < 768 ? 300 : 150;
+        
+        window.scrollTo({
+          top: offsetTop - offset,
+          behavior: 'smooth'
+        });
+      }
     }
   };
 

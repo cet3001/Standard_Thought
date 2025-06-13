@@ -32,7 +32,7 @@ const MobileMenu = ({ isOpen, onToggle, onClose }: MobileMenuProps) => {
 
       {/* Mobile Menu Content - Show when open */}
       {isOpen && (
-        <div className="fixed inset-x-0 top-[120px] bg-brand-cream/98 dark:bg-brand-black/98 backdrop-blur-md border-t border-[#247EFF]/20 shadow-2xl z-[60] min-h-[50vh] lg:hidden">
+        <div className="fixed inset-x-0 top-[80px] bg-brand-cream dark:bg-brand-black backdrop-blur-md border-t border-[#247EFF]/20 shadow-2xl z-[60] min-h-[50vh] lg:hidden">
           <div className="container mx-auto px-4 sm:px-6 py-8 w-full">
             <div className="flex flex-col space-y-8">
               <NavItems

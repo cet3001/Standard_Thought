@@ -95,7 +95,12 @@ const LeadMagnetPopup = () => {
     }
   };
 
-  const handleClose = () => {
+  const handleClose = (e?: React.MouseEvent) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    console.log("Popup closing"); // Debug log
     setIsVisible(false);
     sessionStorage.setItem('leadMagnetShown', 'true');
   };
@@ -114,10 +119,12 @@ const LeadMagnetPopup = () => {
       onClick={handleBackgroundClick}
     >
       <div className="bg-white dark:bg-brand-black max-w-md w-full rounded-2xl shadow-2xl border border-[#247EFF]/20 relative overflow-hidden">
-        {/* Close button */}
+        {/* Close button with improved positioning and click handling */}
         <button
+          type="button"
           onClick={handleClose}
-          className="absolute top-4 right-4 text-[#0A0A0A]/60 dark:text-brand-cream/60 hover:text-[#0A0A0A] dark:hover:text-brand-cream transition-colors z-10"
+          className="absolute top-4 right-4 z-20 w-8 h-8 flex items-center justify-center text-[#0A0A0A]/60 dark:text-brand-cream/60 hover:text-[#0A0A0A] dark:hover:text-brand-cream hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-all duration-200"
+          aria-label="Close popup"
         >
           <X size={20} />
         </button>

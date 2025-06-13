@@ -24,10 +24,10 @@ const MobileMenu = ({ isOpen, onToggle, onClose }: MobileMenuProps) => {
           console.log('Mobile menu button clicked, current isOpen:', isOpen);
           onToggle();
         }}
-        className="hover:bg-[#247EFF]/10 text-[#0A0A0A] dark:text-brand-cream transition-all duration-300 flex-shrink-0"
+        className="hover:bg-[#247EFF]/10 text-[#0A0A0A] dark:text-brand-cream transition-all duration-300 flex-shrink-0 h-12 w-12 p-2"
         aria-label="Toggle navigation menu"
       >
-        {isOpen ? <X size={24} /> : <Menu size={24} />}
+        {isOpen ? <X size={32} /> : <Menu size={32} />}
       </Button>
 
       {/* Mobile Menu Content - Show when open */}

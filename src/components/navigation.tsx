@@ -17,11 +17,7 @@ const Navigation = () => {
         {/* Mobile/Tablet Layout - Simple single row */}
         <div className="lg:hidden">
           <div className="flex items-center justify-between">
-            <div className="flex-shrink-0 min-w-0">
-              <Logo />
-            </div>
             <div className="flex items-center space-x-3 flex-shrink-0">
-              <ThemeToggle />
               <MobileMenu 
                 isOpen={isMenuOpen}
                 onToggle={() => {
@@ -33,6 +29,12 @@ const Navigation = () => {
                   setIsMenuOpen(false);
                 }}
               />
+            </div>
+            <div className="flex-1 flex justify-center min-w-0">
+              <Logo />
+            </div>
+            <div className="flex items-center space-x-3 flex-shrink-0">
+              <ThemeToggle />
             </div>
           </div>
         </div>

@@ -19,7 +19,7 @@ const Navigation = () => {
             <Logo />
           </div>
 
-          {/* Desktop Navigation - Only show on large screens (1024px+) */}
+          {/* Desktop Navigation - hidden everywhere, shows ≥ 1024px */}
           <div className="hidden lg:flex items-center space-x-12">
             <NavItems className="flex items-center space-x-10" />
             <div className="flex items-center space-x-6 ml-8">
@@ -28,7 +28,7 @@ const Navigation = () => {
             </div>
           </div>
 
-          {/* Mobile Menu - Show on screens smaller than lg (1024px) */}
+          {/* Mobile Menu - shows everywhere, hides ≥ 1024px */}
           <MobileMenu 
             isOpen={isMenuOpen}
             onToggle={() => {

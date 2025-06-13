@@ -9,20 +9,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-
-interface PostFormData {
-  title: string;
-  excerpt: string;
-  content: string;
-  category: string;
-  tags: string;
-  image_url?: string;
-  meta_description?: string;
-  meta_keywords?: string;
-  featured: boolean;
-  published: boolean;
-  comments_enabled: boolean;
-}
+import { type PostFormData } from "./types";
 
 interface EditPostFormFieldsProps {
   form: UseFormReturn<PostFormData>;

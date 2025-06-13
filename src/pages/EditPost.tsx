@@ -1,9 +1,7 @@
-
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
 import Navigation from "@/components/navigation";
@@ -14,24 +12,9 @@ import { Form } from "@/components/ui/form";
 import EditPostFormFields from "@/components/edit-post/edit-post-form-fields";
 import EditPostMetaFields from "@/components/edit-post/edit-post-meta-fields";
 import EditPostToggles from "@/components/edit-post/edit-post-toggles";
+import { postSchema, type PostFormData } from "@/components/edit-post/types";
 import { ArrowLeft, Save } from "lucide-react";
 import { toast } from "sonner";
-
-const postSchema = z.object({
-  title: z.string().min(1, "Title is required"),
-  excerpt: z.string().min(1, "Excerpt is required"),
-  content: z.string().min(1, "Content is required"),
-  category: z.string().min(1, "Category is required"),
-  tags: z.string(),
-  image_url: z.string().optional(),
-  meta_description: z.string().optional(),
-  meta_keywords: z.string().optional(),
-  featured: z.boolean().default(false),
-  published: z.boolean().default(false),
-  comments_enabled: z.boolean().default(true),
-});
-
-type PostFormData = z.infer<typeof postSchema>;
 
 interface BlogPost {
   id: string;

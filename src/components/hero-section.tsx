@@ -1,4 +1,3 @@
-
 import { useEffect, useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -33,7 +32,14 @@ const HeroSection = () => {
   const scrollToNewsletter = () => {
     const newsletterSection = document.querySelector('[data-section="newsletter"]');
     if (newsletterSection) {
-      newsletterSection.scrollIntoView({ behavior: 'smooth' });
+      // Scroll to show the signup form properly, accounting for mobile viewport
+      const offsetTop = newsletterSection.getBoundingClientRect().top + window.pageYOffset;
+      const offset = window.innerWidth < 768 ? 100 : 150; // More offset for mobile
+      
+      window.scrollTo({
+        top: offsetTop - offset,
+        behavior: 'smooth'
+      });
     }
   };
 
@@ -44,7 +50,7 @@ const HeroSection = () => {
       role="banner"
       aria-label="Standardthought hero section - Build your legacy from nothing"
     >
-      {/* Dynamic 3D Background Elements */}
+      {/* Background Elements */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div 
           className="absolute w-96 h-96 rounded-full bg-gradient-to-br from-[#247EFF]/10 to-[#247EFF]/5 blur-3xl"

@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 
@@ -8,7 +9,14 @@ const ManifestoSection = () => {
   const scrollToNewsletter = () => {
     const newsletterSection = document.querySelector('[data-section="newsletter"]');
     if (newsletterSection) {
-      newsletterSection.scrollIntoView({ behavior: 'smooth' });
+      // Improved scroll behavior for mobile - ensure signup form is fully visible
+      const offsetTop = newsletterSection.getBoundingClientRect().top + window.pageYOffset;
+      const offset = window.innerWidth < 768 ? 100 : 150; // More offset for mobile
+      
+      window.scrollTo({
+        top: offsetTop - offset,
+        behavior: 'smooth'
+      });
     }
   };
 
@@ -52,7 +60,6 @@ const ManifestoSection = () => {
             </p>
           </div>
 
-          {/* Manifesto Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
             {[
               {

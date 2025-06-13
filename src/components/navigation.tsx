@@ -17,8 +17,8 @@ const Navigation = () => {
             <Logo />
           </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-12">
+          {/* Desktop Navigation - Only show on large screens */}
+          <div className="hidden lg:flex items-center space-x-12">
             <NavItems className="flex items-center space-x-10" />
             <div className="flex items-center space-x-6 ml-8">
               <ThemeToggle />
@@ -26,7 +26,7 @@ const Navigation = () => {
             </div>
           </div>
 
-          {/* Mobile Menu */}
+          {/* Mobile Menu - Show on tablet and phone */}
           <MobileMenu 
             isOpen={isMenuOpen}
             onToggle={() => setIsMenuOpen(!isMenuOpen)}

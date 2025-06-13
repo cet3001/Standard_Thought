@@ -22,15 +22,16 @@ const MobileMenu = ({ isOpen, onToggle, onClose }: MobileMenuProps) => {
           size="icon"
           onClick={onToggle}
           className="hover:bg-[#247EFF]/10 text-[#0A0A0A] dark:text-brand-cream transition-all duration-300 flex-shrink-0"
+          aria-label="Toggle navigation menu"
         >
-          {isOpen ? <X size={20} /> : <Menu size={20} />}
+          {isOpen ? <X size={24} /> : <Menu size={24} />}
         </Button>
       </div>
 
-      {/* Mobile Menu Content */}
+      {/* Mobile Menu Content - Fixed positioning and z-index */}
       {isOpen && (
-        <div className="lg:hidden absolute top-full left-0 right-0 bg-brand-cream/95 dark:bg-brand-black/95 backdrop-blur-sm border-t border-[#247EFF]/20 shadow-lg z-50">
-          <div className="container mx-auto px-4 py-8">
+        <div className="lg:hidden fixed top-[80px] left-0 right-0 bg-brand-cream/98 dark:bg-brand-black/98 backdrop-blur-md border-t border-[#247EFF]/20 shadow-2xl z-[60] min-h-[50vh]">
+          <div className="container mx-auto px-6 py-8">
             <div className="flex flex-col space-y-8">
               <NavItems
                 onItemClick={onClose}

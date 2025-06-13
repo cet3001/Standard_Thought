@@ -97,12 +97,22 @@ const LeadMagnetPopup = () => {
 
   const handleClose = () => {
     setIsVisible(false);
+    sessionStorage.setItem('leadMagnetShown', 'true');
+  };
+
+  const handleBackgroundClick = (e: React.MouseEvent) => {
+    if (e.target === e.currentTarget) {
+      handleClose();
+    }
   };
 
   if (!isVisible) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div 
+      className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+      onClick={handleBackgroundClick}
+    >
       <div className="bg-white dark:bg-brand-black max-w-md w-full rounded-2xl shadow-2xl border border-[#247EFF]/20 relative overflow-hidden">
         {/* Close button */}
         <button

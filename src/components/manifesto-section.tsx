@@ -1,10 +1,16 @@
-
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 
 const ManifestoSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
+
+  const scrollToNewsletter = () => {
+    const newsletterSection = document.querySelector('[data-section="newsletter"]');
+    if (newsletterSection) {
+      newsletterSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -91,6 +97,7 @@ const ManifestoSection = () => {
             </p>
             <Button 
               size="lg"
+              onClick={scrollToNewsletter}
               className="bg-[#247EFF] hover:bg-[#0057FF] hover:shadow-lg hover:shadow-[#247EFF]/30 text-white font-semibold px-8 py-4 rounded-3xl transition-all duration-300 hover:scale-105"
             >
               Let's Get It

@@ -22,7 +22,7 @@ const Index = () => {
       />
       <SitemapGenerator />
       <Navigation />
-      <main role="main">
+      <main role="main" className="pt-24 lg:pt-20">
         <HeroSection />
         <BlogShowcase />
         <ManifestoSection />

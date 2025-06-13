@@ -45,7 +45,7 @@ const NavItems = ({ onItemClick, className }: NavItemsProps) => {
       ))}
       <button
         onClick={scrollToNewsletter}
-        className="bg-[#247EFF] hover:bg-[#0057FF] text-white font-semibold px-6 py-2 rounded-xl text-sm transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#247EFF]/30 ml-4"
+        className="bg-[#247EFF] hover:bg-[#0057FF] text-white font-semibold px-4 py-2 rounded-xl text-sm transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#247EFF]/30"
       >
         Get Free Playbook
       </button>

@@ -28,9 +28,10 @@ const NavItems = ({ className = "", onItemClick, showButton = false }: NavItemsP
   };
 
   const navItems = [
-    { label: "About", href: "/about" },
-    { label: "Blog", href: "/blog" },
-    { label: "Sales", href: "/sales" }
+    { label: "Start Here", href: "/" },
+    { label: "Builder Stories", href: "/blog" },
+    { label: "Mindset Tools", href: "/about" },
+    { label: "Success Strategies", href: "/sales" }
   ];
 
   return (

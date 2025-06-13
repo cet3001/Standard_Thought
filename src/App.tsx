@@ -14,6 +14,7 @@ import BlogPost from "./pages/BlogPost";
 import Sales from "./pages/Sales";
 import Auth from "./pages/Auth";
 import CreatePost from "./pages/CreatePost";
+import EditPost from "./pages/EditPost";
 import AdminEmail from "./pages/AdminEmail";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
@@ -40,6 +41,7 @@ const App = () => (
               <Route path="/sales" element={<Sales />} />
               <Route path="/auth" element={<Auth />} />
               <Route path="/create-post" element={<CreatePost />} />
+              <Route path="/edit-post/:slug" element={<EditPost />} />
               <Route path="/admin-email" element={<AdminEmail />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="/terms-of-service" element={<TermsOfService />} />

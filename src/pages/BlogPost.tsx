@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
@@ -119,6 +118,10 @@ const BlogPost = () => {
     }
   };
 
+  const handlePostDeleted = () => {
+    navigate("/blog");
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen bg-brand-cream dark:bg-brand-black">
@@ -210,14 +213,24 @@ const BlogPost = () => {
         <article className="pt-32 pb-16">
           <div className="container mx-auto px-6 max-w-4xl">
             {/* Back Navigation */}
-            <Button
-              variant="ghost"
-              onClick={() => navigate("/blog")}
-              className="text-[#247EFF] hover:text-[#0057FF] mb-8 p-0"
-            >
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Stories
-            </Button>
+            <div className="flex items-center justify-between mb-8">
+              <Button
+                variant="ghost"
+                onClick={() => navigate("/blog")}
+                className="text-[#247EFF] hover:text-[#0057FF] p-0"
+              >
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Back to Stories
+              </Button>
+              
+              {/* Admin Actions */}
+              <BlogPostActions
+                postId={post.id}
+                postTitle={post.title}
+                postSlug={post.slug}
+                onDelete={handlePostDeleted}
+              />
+            </div>
 
             {/* Article Header */}
             <header className="mb-12">

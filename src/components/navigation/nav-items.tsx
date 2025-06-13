@@ -1,21 +1,14 @@
 
+import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router-dom";
-import { cn } from "@/lib/utils";
-
-const navItems = [
-  { label: "Start Here", path: "/" },
-  { label: "Builder Stories", path: "/blog" },
-  { label: "Mindset Tools", path: "/about" },
-  { label: "Success Strategies", path: "/sales" },
-];
 
 interface NavItemsProps {
-  onItemClick?: () => void;
   className?: string;
+  onItemClick?: () => void;
   showButton?: boolean;
 }
 
-const NavItems = ({ onItemClick, className, showButton = true }: NavItemsProps) => {
+const NavItems = ({ className = "", onItemClick, showButton = false }: NavItemsProps) => {
   const location = useLocation();
 
   const scrollToNewsletter = () => {
@@ -23,34 +16,43 @@ const NavItems = ({ onItemClick, className, showButton = true }: NavItemsProps) 
     if (newsletterSection) {
       newsletterSection.scrollIntoView({ behavior: 'smooth' });
     }
-    if (onItemClick) onItemClick();
+    if (onItemClick) {
+      onItemClick();
+    }
   };
+
+  const handleNavClick = () => {
+    if (onItemClick) {
+      onItemClick();
+    }
+  };
+
+  const navItems = [
+    { label: "About", href: "/about" },
+    { label: "Blog", href: "/blog" },
+    { label: "Sales", href: "/sales" }
+  ];
 
   return (
     <div className={className}>
       {navItems.map((item) => (
         <Link
-          key={item.path}
-          to={item.path}
-          onClick={onItemClick}
-          className={cn(
-            "text-sm font-medium transition-all duration-300 hover:text-[#247EFF] relative group px-2 py-1",
-            location.pathname === item.path
-              ? "text-[#247EFF]"
-              : "text-[#0A0A0A] dark:text-brand-cream"
-          )}
+          key={item.label}
+          to={item.href}
+          onClick={handleNavClick}
+          className="text-[#0A0A0A] dark:text-brand-cream hover:text-[#247EFF] dark:hover:text-[#247EFF] transition-colors duration-300 font-medium"
         >
           {item.label}
-          <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#247EFF] transition-all duration-300 group-hover:w-full"></span>
         </Link>
       ))}
+      
       {showButton && (
-        <button
+        <Button 
           onClick={scrollToNewsletter}
-          className="bg-[#247EFF] hover:bg-[#0057FF] text-white font-semibold px-4 py-2 rounded-xl text-sm transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#247EFF]/30"
+          className="bg-[#247EFF] hover:bg-[#0057FF] hover:shadow-lg hover:shadow-[#247EFF]/30 text-white font-semibold px-6 py-2 rounded-2xl transition-all duration-300 hover:scale-105"
         >
           Get Free Playbook
-        </button>
+        </Button>
       )}
     </div>
   );

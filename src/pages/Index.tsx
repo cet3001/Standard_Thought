@@ -5,7 +5,6 @@ import BlogShowcase from "@/components/blog-showcase";
 import { NewsletterSection } from "@/components/newsletter-section";
 import ManifestoSection from "@/components/manifesto-section";
 import Footer from "@/components/footer";
-import FloatingCTA from "@/components/floating-cta";
 import SEO from "@/components/seo";
 import SitemapGenerator from "@/components/sitemap-generator";
 import LeadMagnetPopup from "@/components/lead-magnet-popup";
@@ -31,7 +30,6 @@ const Index = () => {
         </section>
       </main>
       <Footer />
-      <FloatingCTA />
       <LeadMagnetPopup />
     </div>
   );

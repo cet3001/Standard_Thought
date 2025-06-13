@@ -1,4 +1,3 @@
-
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import { useState, useEffect } from "react";
@@ -13,6 +12,7 @@ import { Search, Calendar, Clock, ArrowUp, Plus, Edit } from "lucide-react";
 import { Helmet } from "react-helmet";
 import { BlogGridSkeleton } from "@/components/blog-skeleton";
 import { trackBlogRead } from "@/components/analytics";
+import BlogPostActions from "@/components/blog-post-actions";
 
 interface BlogPost {
   id: string;
@@ -88,6 +88,10 @@ const Blog = () => {
   const handleReadStory = (post: BlogPost) => {
     trackBlogRead(post.title, post.slug);
     navigate(`/blog/${post.slug}`);
+  };
+
+  const handlePostDeleted = () => {
+    fetchBlogPosts(); // Refresh the list after deletion
   };
 
   // Enhanced debugging for admin state
@@ -276,17 +280,6 @@ const Blog = () => {
                             </Badge>
                           )}
                         </div>
-                        {isAdmin && (
-                          <div className="absolute top-4 right-4">
-                            <Button
-                              size="sm"
-                              variant="ghost"
-                              className="w-8 h-8 p-0 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-sm"
-                            >
-                              <Edit className="h-4 w-4 text-white" />
-                            </Button>
-                          </div>
-                        )}
                       </div>
                     </CardHeader>
                     
@@ -309,7 +302,7 @@ const Blog = () => {
                       </div>
                     </CardContent>
                     
-                    <CardFooter className="p-6 pt-0">
+                    <CardFooter className="p-6 pt-0 space-y-3">
                       <Button 
                         onClick={() => handleReadStory(post)}
                         className="w-full bg-[#247EFF] hover:bg-[#0057FF] text-white transition-all rounded-2xl font-medium"
@@ -317,6 +310,15 @@ const Blog = () => {
                         Read Story
                         <ArrowUp className="ml-2 h-4 w-4 rotate-45 group-hover:translate-x-1 transition-transform" />
                       </Button>
+                      
+                      {isAdmin && (
+                        <BlogPostActions
+                          postId={post.id}
+                          postTitle={post.title}
+                          postSlug={post.slug}
+                          onDelete={handlePostDeleted}
+                        />
+                      )}
                     </CardFooter>
                   </Card>
                 ))}

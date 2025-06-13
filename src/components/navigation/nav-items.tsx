@@ -33,7 +33,7 @@ const NavItems = ({ onItemClick, className }: NavItemsProps) => {
           to={item.path}
           onClick={onItemClick}
           className={cn(
-            "text-sm font-medium transition-all duration-300 hover:text-[#247EFF] relative group",
+            "text-sm font-medium transition-all duration-300 hover:text-[#247EFF] relative group px-2 py-1",
             location.pathname === item.path
               ? "text-[#247EFF]"
               : "text-[#0A0A0A] dark:text-brand-cream"
@@ -45,7 +45,7 @@ const NavItems = ({ onItemClick, className }: NavItemsProps) => {
       ))}
       <button
         onClick={scrollToNewsletter}
-        className="bg-[#247EFF] hover:bg-[#0057FF] text-white font-semibold px-4 py-2 rounded-xl text-sm transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#247EFF]/30"
+        className="bg-[#247EFF] hover:bg-[#0057FF] text-white font-semibold px-6 py-2 rounded-xl text-sm transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#247EFF]/30 ml-4"
       >
         Get Free Playbook
       </button>

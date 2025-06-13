@@ -15,7 +15,7 @@ const MobileMenu = ({ isOpen, onToggle, onClose }: MobileMenuProps) => {
   return (
     <>
       {/* Mobile Menu Button */}
-      <div className="md:hidden flex items-center space-x-2">
+      <div className="md:hidden flex items-center space-x-4">
         <ThemeToggle />
         <Button
           variant="ghost"
@@ -30,13 +30,13 @@ const MobileMenu = ({ isOpen, onToggle, onClose }: MobileMenuProps) => {
       {/* Mobile Menu Content */}
       {isOpen && (
         <div className="md:hidden absolute top-full left-0 right-0 bg-brand-cream/95 dark:bg-brand-black/95 backdrop-blur-sm border-t border-[#247EFF]/20 shadow-lg z-50">
-          <div className="container mx-auto px-4 py-6">
-            <div className="flex flex-col space-y-6">
+          <div className="container mx-auto px-4 py-8">
+            <div className="flex flex-col space-y-8">
               <NavItems
                 onItemClick={onClose}
-                className="flex flex-col space-y-4"
+                className="flex flex-col space-y-6"
               />
-              <div className="pt-4 border-t border-[#247EFF]/20">
+              <div className="pt-6 border-t border-[#247EFF]/20">
                 <AuthSection onAction={onClose} />
               </div>
             </div>

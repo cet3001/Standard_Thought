@@ -13,15 +13,17 @@ const Navigation = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm bg-brand-cream/90 dark:bg-brand-black/90 border-b border-[#247EFF]/20">
       <div className="container mx-auto px-4 sm:px-6 py-4">
         <div className="flex items-center justify-between">
-          <div className="flex-shrink-0">
+          <div className="flex-shrink-0 mr-8">
             <Logo />
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            <NavItems className="flex items-center space-x-8" />
-            <ThemeToggle />
-            <AuthSection />
+          <div className="hidden md:flex items-center space-x-12">
+            <NavItems className="flex items-center space-x-10" />
+            <div className="flex items-center space-x-6 ml-8">
+              <ThemeToggle />
+              <AuthSection />
+            </div>
           </div>
 
           {/* Mobile Menu */}

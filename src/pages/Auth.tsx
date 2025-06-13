@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
@@ -49,7 +48,7 @@ const Auth = () => {
   };
 
   return (
-    <div className="min-h-screen bg-brand-cream dark:bg-brand-black flex items-center justify-center p-6">
+    <div className="min-h-screen bg-brand-cream dark:bg-brand-black flex items-center justify-center p-6 pt-24 lg:pt-20">
       <Card className="w-full max-w-md bg-white/90 dark:bg-brand-black/80 backdrop-blur-sm border-[#247EFF]/20">
         <CardHeader className="text-center">
           <Link to="/" className="text-2xl font-bold mb-4 inline-block">

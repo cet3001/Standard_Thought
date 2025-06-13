@@ -35,12 +35,22 @@ const SEO = ({
   // Ensure unique titles - don't duplicate "Standardthought" if already present
   const fullTitle = title.includes("Standardthought") ? title : `${title} | Standardthought`;
   
-  // Handle URL properly - ensure it starts with the base domain
-  const fullUrl = url.startsWith('http') ? url : `https://www.standardthought.com${url}`;
-  const fullImageUrl = image.startsWith('http') ? image : `https://www.standardthought.com${image}`;
+  // CRITICAL: Always ensure canonical URLs point to www version for domain consistency
+  const normalizeUrl = (inputUrl: string) => {
+    // If it's a relative URL, make it absolute with preferred domain
+    if (inputUrl.startsWith('/')) {
+      return `https://www.standardthought.com${inputUrl}`;
+    }
+    
+    // If it already has a domain, ensure it's the preferred www version
+    return inputUrl
+      .replace('://standardthought.com', '://www.standardthought.com')
+      .replace('://http://standardthought.com', '://www.standardthought.com')
+      .replace('://http://www.standardthought.com', '://www.standardthought.com');
+  };
 
-  // Ensure canonical URL always points to the preferred www version
-  const canonicalUrl = fullUrl.replace('://standardthought.com', '://www.standardthought.com');
+  const canonicalUrl = normalizeUrl(url);
+  const fullImageUrl = image.startsWith('http') ? image : `https://www.standardthought.com${image}`;
 
   // Ensure description is optimal length (150-160 characters) and unique
   const optimizedDescription = description.length > 160 
@@ -106,7 +116,7 @@ const SEO = ({
       <meta name="keywords" content={keywords} />
       <meta name="author" content={author} />
       
-      {/* Canonical Tag - Always point to preferred www version */}
+      {/* CRITICAL: Canonical Tag - Always point to preferred www version */}
       <link rel="canonical" href={canonicalUrl} />
 
       {/* Robots directive - critical for indexing */}

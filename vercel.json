@@ -27,37 +27,60 @@
   ],
   "redirects": [
     {
-      "source": "/:path*",
+      "source": "/(.*)",
       "has": [
         {
           "type": "host",
           "value": "standardthought.com"
         }
       ],
-      "destination": "https://www.standardthought.com/:path*",
+      "destination": "https://www.standardthought.com/$1",
       "permanent": true
     },
     {
-      "source": "/:path*",
+      "source": "/(.*)",
       "has": [
         {
           "type": "host",
           "value": "http://standardthought.com"
         }
       ],
-      "destination": "https://www.standardthought.com/:path*",
+      "destination": "https://www.standardthought.com/$1",
       "permanent": true
     },
     {
-      "source": "/:path*",
+      "source": "/(.*)",
       "has": [
         {
           "type": "host",
           "value": "http://www.standardthought.com"
         }
       ],
-      "destination": "https://www.standardthought.com/:path*",
+      "destination": "https://www.standardthought.com/$1",
       "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
     }
   ]
 }

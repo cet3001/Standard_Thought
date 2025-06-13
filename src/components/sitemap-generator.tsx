@@ -29,9 +29,19 @@ ${pages.map(page => `  <url>
   </url>`).join('\n')}
 </urlset>`;
 
-      // Log sitemap for manual verification
-      console.log('Generated sitemap.xml content for SEO compliance:');
+      const sitemapIndex = `<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>${baseUrl}/sitemap.xml</loc>
+    <lastmod>${currentDate}</lastmod>
+  </sitemap>
+</sitemapindex>`;
+
+      // Log both sitemap files for SEO compliance
+      console.log('Generated sitemap.xml content:');
       console.log(sitemap);
+      console.log('\nGenerated sitemap_index.xml content:');
+      console.log(sitemapIndex);
     };
 
     generateSitemap();

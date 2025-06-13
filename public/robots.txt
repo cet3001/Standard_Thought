@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.standardthought.com/sitemap.xml
+Sitemap: https://www.standardthought.com/sitemap_index.xml

@@ -32,12 +32,20 @@ const SEO = ({
   twitterHandle = "@standardthought",
   noIndex = false
 }: SEOProps) => {
+  // Ensure unique titles - don't duplicate "Standardthought" if already present
   const fullTitle = title.includes("Standardthought") ? title : `${title} | Standardthought`;
+  
+  // Handle URL properly - ensure it starts with the base domain
   const fullUrl = url.startsWith('http') ? url : `https://www.standardthought.com${url}`;
   const fullImageUrl = image.startsWith('http') ? image : `https://www.standardthought.com${image}`;
 
   // Ensure canonical URL always points to the preferred www version
   const canonicalUrl = fullUrl.replace('://standardthought.com', '://www.standardthought.com');
+
+  // Ensure description is optimal length (150-160 characters) and unique
+  const optimizedDescription = description.length > 160 
+    ? `${description.slice(0, 157)}...` 
+    : description;
 
   // Generate robots directive based on noIndex prop
   const robotsContent = noIndex 
@@ -49,7 +57,7 @@ const SEO = ({
     "@type": type === "article" ? "Article" : "Organization",
     ...(type === "website" ? {
       "name": "Standardthought",
-      "description": description,
+      "description": optimizedDescription,
       "url": "https://www.standardthought.com",
       "logo": {
         "@type": "ImageObject",
@@ -65,7 +73,7 @@ const SEO = ({
       }
     } : {
       "headline": title,
-      "description": description,
+      "description": optimizedDescription,
       "image": fullImageUrl,
       "datePublished": publishedTime,
       "dateModified": modifiedTime || publishedTime,
@@ -92,9 +100,9 @@ const SEO = ({
 
   return (
     <Helmet>
-      {/* Basic Meta Tags */}
+      {/* Basic Meta Tags - Ensure unique titles and descriptions */}
       <title>{fullTitle}</title>
-      <meta name="description" content={description} />
+      <meta name="description" content={optimizedDescription} />
       <meta name="keywords" content={keywords} />
       <meta name="author" content={author} />
       
@@ -109,7 +117,7 @@ const SEO = ({
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={type} />
       <meta property="og:title" content={fullTitle} />
-      <meta property="og:description" content={description} />
+      <meta property="og:description" content={optimizedDescription} />
       <meta property="og:image" content={fullImageUrl} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
@@ -125,7 +133,7 @@ const SEO = ({
       <meta name="twitter:site" content="@standardthought" />
       <meta name="twitter:creator" content={twitterHandle} />
       <meta name="twitter:title" content={fullTitle} />
-      <meta name="twitter:description" content={description} />
+      <meta name="twitter:description" content={optimizedDescription} />
       <meta name="twitter:image" content={fullImageUrl} />
       <meta name="twitter:image:alt" content={fullTitle} />
       <meta name="twitter:domain" content="www.standardthought.com" />

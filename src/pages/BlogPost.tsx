@@ -99,18 +99,28 @@ const BlogPost = () => {
     return <BlogPostError error={error || 'Unknown error'} slug={slug} />;
   }
 
+  // Generate unique meta description and keywords for the blog post
+  const metaDescription = post.meta_description || 
+    `${post.excerpt.slice(0, 140)}... | Read this ${post.category.toLowerCase()} story on Standardthought - Building legacy from nothing.`;
+  
+  const metaKeywords = post.meta_keywords || 
+    `${post.tags.join(', ')}, ${post.category.toLowerCase()}, standardthought blog, urban entrepreneurship`;
+
+  const pageTitle = `${post.title} | Standardthought Blog`;
+
   return (
     <>
       <SEO 
-        title={post.title}
-        description={post.meta_description || post.excerpt}
-        keywords={post.meta_keywords || post.tags.join(', ')}
+        title={pageTitle}
+        description={metaDescription}
+        keywords={metaKeywords}
         image={post.image_url || undefined}
-        url={`https://standardthought.com/blog/${post.slug}`}
+        url={`/blog/${post.slug}`}
         type="article"
         publishedTime={post.created_at}
         category={post.category}
         tags={post.tags}
+        author="Standardthought"
       />
 
       <div className="min-h-screen bg-brand-cream dark:bg-brand-black">

@@ -32,9 +32,9 @@ const HeroSection = () => {
   const scrollToNewsletter = () => {
     const newsletterSection = document.querySelector('[data-section="newsletter"]');
     if (newsletterSection) {
-      // Scroll to show the signup form properly, accounting for mobile viewport
+      // Scroll to show the signup form properly, with more offset for mobile to ensure form is visible
       const offsetTop = newsletterSection.getBoundingClientRect().top + window.pageYOffset;
-      const offset = window.innerWidth < 768 ? 100 : 150; // More offset for mobile
+      const offset = window.innerWidth < 768 ? 200 : 150; // Increased mobile offset to show signup form
       
       window.scrollTo({
         top: offsetTop - offset,

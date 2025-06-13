@@ -11,7 +11,7 @@ const ManifestoSection = () => {
     if (newsletterSection) {
       // Improved scroll behavior for mobile - ensure signup form is fully visible
       const offsetTop = newsletterSection.getBoundingClientRect().top + window.pageYOffset;
-      const offset = window.innerWidth < 768 ? 100 : 150; // More offset for mobile
+      const offset = window.innerWidth < 768 ? 200 : 150; // Increased mobile offset to ensure form is visible
       
       window.scrollTo({
         top: offsetTop - offset,

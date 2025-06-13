@@ -19,8 +19,8 @@ interface SEOProps {
 
 const SEO = ({ 
   title = "Standardthought - Build Your Legacy From Nothing",
-  description = "Urban personal development for builders who started with nothing. Get frameworks, strategies, and community support to turn your dreams into reality through grit and determination.",
-  keywords = "urban personal development, entrepreneurship, build from nothing, legacy building, startup advice, mindset shift, business growth, entrepreneur community, self-made success, business frameworks, hustle mentality",
+  description = "Join 1000+ urban entrepreneurs building generational wealth from scratch. Get proven frameworks, actionable strategies, and community support to turn your hustle into a legacy business. No safety net required.",
+  keywords = "urban entrepreneurship, build from nothing, legacy building, startup frameworks, hustle mentality, first generation wealth, entrepreneur community, business growth strategies, mindset shift, self-made success, urban personal development, generational wealth building",
   image = "/lovable-uploads/a8faab87-8319-4fa0-ae53-35597c6f8fc5.png",
   url = "https://www.standardthought.com",
   type = "website",
@@ -35,6 +35,9 @@ const SEO = ({
   const fullTitle = title.includes("Standardthought") ? title : `${title} | Standardthought`;
   const fullUrl = url.startsWith('http') ? url : `https://www.standardthought.com${url}`;
   const fullImageUrl = image.startsWith('http') ? image : `https://www.standardthought.com${image}`;
+
+  // Ensure canonical URL always points to the preferred www version
+  const canonicalUrl = fullUrl.replace('://standardthought.com', '://www.standardthought.com');
 
   // Generate robots directive based on noIndex prop
   const robotsContent = noIndex 
@@ -80,7 +83,7 @@ const SEO = ({
       },
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": fullUrl
+        "@id": canonicalUrl
       },
       ...(category && { "articleSection": category }),
       ...(tags.length > 0 && { "keywords": tags.join(", ") })
@@ -94,7 +97,9 @@ const SEO = ({
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords} />
       <meta name="author" content={author} />
-      <link rel="canonical" href={fullUrl} />
+      
+      {/* Canonical Tag - Always point to preferred www version */}
+      <link rel="canonical" href={canonicalUrl} />
 
       {/* Robots directive - critical for indexing */}
       <meta name="robots" content={robotsContent} />
@@ -111,7 +116,7 @@ const SEO = ({
       <meta property="og:image:alt" content={fullTitle} />
       <meta property="og:image:type" content="image/png" />
       <meta property="og:image:secure_url" content={fullImageUrl} />
-      <meta property="og:url" content={fullUrl} />
+      <meta property="og:url" content={canonicalUrl} />
       <meta property="og:site_name" content="Standardthought" />
       <meta property="og:locale" content="en_US" />
 

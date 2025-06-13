@@ -36,6 +36,28 @@
       ],
       "destination": "https://www.standardthought.com/:path*",
       "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "http://standardthought.com"
+        }
+      ],
+      "destination": "https://www.standardthought.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "http://www.standardthought.com"
+        }
+      ],
+      "destination": "https://www.standardthought.com/:path*",
+      "permanent": true
     }
   ]
 }

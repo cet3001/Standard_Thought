@@ -41,9 +41,11 @@ const HeroSection = () => {
     <section 
       ref={heroRef}
       className="min-h-screen flex items-center justify-center relative overflow-hidden bg-brand-cream dark:bg-brand-black urban-texture pt-24"
+      role="banner"
+      aria-label="Standardthought hero section - Build your legacy from nothing"
     >
       {/* Dynamic 3D Background Elements */}
-      <div className="absolute inset-0 pointer-events-none">
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div 
           className="absolute w-96 h-96 rounded-full bg-gradient-to-br from-[#247EFF]/10 to-[#247EFF]/5 blur-3xl"
           style={{
@@ -78,7 +80,7 @@ const HeroSection = () => {
         </div>
       </div>
 
-      <div className="floating-particles">
+      <div className="floating-particles" aria-hidden="true">
         {[...Array(12)].map((_, i) => (
           <div 
             key={i}
@@ -109,11 +111,13 @@ const HeroSection = () => {
             </span>
           </h1>
 
-          {/* AEO Quick Answer */}
+          {/* Enhanced SEO Quick Answer with Internal Links */}
           <div className={`max-w-3xl mx-auto mb-8 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <p className="text-lg md:text-xl text-[#0A0A0A]/90 dark:text-brand-cream/90 leading-relaxed font-medium">
               Standard Thought is an urban-minded personal-development hub that turns street smarts into scalable wealth. 
-              We're the blueprint for builders who started with nothing and refuse to stay there.
+              We're the blueprint for builders who started with nothing and refuse to stay there. Read our{' '}
+              <Link to="/blog" className="text-[#247EFF] hover:underline font-semibold">success stories</Link>{' '}
+              and join our <a href="#newsletter" className="text-[#247EFF] hover:underline font-semibold">growing community</a>.
             </p>
           </div>
 
@@ -132,6 +136,7 @@ const HeroSection = () => {
               size="lg" 
               onClick={scrollToNewsletter}
               className="bg-[#247EFF] hover:bg-[#0057FF] hover:shadow-lg hover:shadow-[#247EFF]/30 text-white font-semibold px-10 py-6 rounded-3xl text-lg transition-all duration-300 hover:scale-105"
+              aria-label="Get free playbook PDF to start building your legacy"
             >
               Get Free Playbook PDF
             </Button>
@@ -140,6 +145,7 @@ const HeroSection = () => {
               size="lg"
               asChild
               className="border-2 border-[#247EFF] bg-[#247EFF] text-white hover:bg-[#0057FF] hover:shadow-lg hover:shadow-[#247EFF]/20 font-semibold px-10 py-6 rounded-3xl text-lg transition-all hover:scale-105"
+              aria-label="Read real success stories from urban entrepreneurs"
             >
               <Link to="/blog">See Real Stories</Link>
             </Button>

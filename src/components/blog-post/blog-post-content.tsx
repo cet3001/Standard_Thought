@@ -1,5 +1,6 @@
 
 import { Badge } from "@/components/ui/badge";
+import { Link } from "react-router-dom";
 
 interface BlogPostContentProps {
   content: string;
@@ -9,6 +10,11 @@ interface BlogPostContentProps {
 }
 
 const BlogPostContent = ({ content, imageUrl, title, tags }: BlogPostContentProps) => {
+  // Generate SEO-rich ALT text for the featured image
+  const imageAlt = imageUrl 
+    ? `${title} - Featured image for this Standardthought article on building legacy from nothing`
+    : '';
+
   return (
     <>
       {/* Featured Image */}
@@ -16,7 +22,7 @@ const BlogPostContent = ({ content, imageUrl, title, tags }: BlogPostContentProp
         <div className="mb-12">
           <img
             src={imageUrl}
-            alt={title}
+            alt={imageAlt}
             className="w-full max-h-[600px] object-contain rounded-3xl bg-gray-50 dark:bg-gray-900"
             loading="lazy"
           />
@@ -27,6 +33,39 @@ const BlogPostContent = ({ content, imageUrl, title, tags }: BlogPostContentProp
       <div className="prose prose-lg max-w-none text-[#0A0A0A] dark:text-brand-cream">
         <div className="whitespace-pre-wrap leading-relaxed text-lg">
           {content}
+        </div>
+        
+        {/* Internal Links Section - Building Site Authority */}
+        <div className="mt-8 p-6 bg-gray-50 dark:bg-gray-800 rounded-2xl border-l-4 border-[#247EFF]">
+          <h3 className="text-lg font-semibold text-[#0A0A0A] dark:text-brand-cream mb-4">
+            Continue Your Journey
+          </h3>
+          <div className="space-y-2">
+            <p className="text-sm text-[#0A0A0A]/80 dark:text-brand-cream/80">
+              Ready to build your legacy? Check out our <Link to="/blog" className="text-[#247EFF] hover:underline font-medium">complete story collection</Link> for more proven frameworks.
+            </p>
+            <p className="text-sm text-[#0A0A0A]/80 dark:text-brand-cream/80">
+              Get started with our <Link to="/#newsletter" className="text-[#247EFF] hover:underline font-medium">free playbook PDF</Link> and join 1000+ urban entrepreneurs building generational wealth.
+            </p>
+          </div>
+        </div>
+
+        {/* Outbound Links Section - Trust & Authority */}
+        <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+          <h4 className="text-md font-medium text-[#0A0A0A] dark:text-brand-cream mb-3">
+            Recommended Resources
+          </h4>
+          <div className="text-sm space-y-1">
+            <p>
+              📚 <a href="https://www.entrepreneur.com/starting-a-business" target="_blank" rel="noopener noreferrer" className="text-[#247EFF] hover:underline">Entrepreneur.com Starting a Business Guide</a>
+            </p>
+            <p>
+              💡 <a href="https://hbr.org/topic/entrepreneurship" target="_blank" rel="noopener noreferrer" className="text-[#247EFF] hover:underline">Harvard Business Review: Entrepreneurship</a>
+            </p>
+            <p>
+              🎯 <a href="https://www.sba.gov/business-guide" target="_blank" rel="noopener noreferrer" className="text-[#247EFF] hover:underline">SBA Business Guide</a>
+            </p>
+          </div>
         </div>
       </div>
 

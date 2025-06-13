@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { ArrowUp } from "lucide-react";
@@ -91,9 +91,9 @@ const BlogShowcase = () => {
   const postsToShow = featuredPosts.length > 0 ? featuredPosts : fallbackPosts;
 
   return (
-    <section className="py-24 bg-brand-cream dark:bg-brand-black relative overflow-hidden">
+    <section className="py-24 bg-brand-cream dark:bg-brand-black relative overflow-hidden" aria-labelledby="blog-showcase-heading">
       {/* Background Elements */}
-      <div className="absolute inset-0 pointer-events-none">
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div className="absolute top-20 right-10 w-32 h-32 rounded-full bg-accent/10 animate-float"></div>
         <div className="absolute bottom-40 left-10 w-24 h-24 rounded-2xl bg-accent/20 animate-float" style={{ animationDelay: '2s' }}></div>
       </div>
@@ -102,12 +102,19 @@ const BlogShowcase = () => {
         <BlogShowcaseHeader isVisible={isVisible} />
         <BlogShowcaseGrid posts={postsToShow} loading={loading} isVisible={isVisible} />
         
-        {/* View All Button */}
+        {/* Enhanced Internal Linking and CTA Section */}
         <div className={`text-center transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="max-w-2xl mx-auto mb-8">
+            <p className="text-lg text-[#0A0A0A]/80 dark:text-brand-cream/80 mb-6">
+              Ready to dive deeper? Our <Link to="/blog" className="text-[#247EFF] hover:underline font-semibold">complete story collection</Link> has everything you need to turn your hustle into generational wealth. From <strong>mindset shifts</strong> to <strong>actionable frameworks</strong>, we've got the blueprint.
+            </p>
+          </div>
+          
           <Button 
             size="lg"
             className="bg-accent hover:bg-accent/90 text-black font-semibold px-8 py-4 rounded-3xl"
             onClick={() => navigate('/blog')}
+            aria-label="Explore all success stories and business frameworks"
           >
             Explore All Stories
             <ArrowUp className="ml-2 h-5 w-5 rotate-45" />

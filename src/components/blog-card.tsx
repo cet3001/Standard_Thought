@@ -39,6 +39,11 @@ const BlogCard = ({ post, index, isVisible }: BlogCardProps) => {
     navigate(`/blog/${post.slug}`);
   };
 
+  // Generate SEO-rich ALT text
+  const imageAlt = post.image_url 
+    ? `${post.title} - ${post.category} story on Standardthought: Building legacy from nothing`
+    : `Standardthought ${post.category} article placeholder`;
+
   return (
     <Card 
       className={`card-hover bg-white/80 dark:bg-brand-black/80 backdrop-blur-sm border border-accent/20 rounded-3xl overflow-hidden group transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -49,7 +54,7 @@ const BlogCard = ({ post, index, isVisible }: BlogCardProps) => {
           <AspectRatio ratio={16/9} className="bg-gray-50 dark:bg-gray-900">
             <img
               src={post.image_url || "/placeholder.svg"}
-              alt={post.title}
+              alt={imageAlt}
               className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
               loading="lazy"
             />

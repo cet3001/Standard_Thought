@@ -14,7 +14,7 @@ interface MobileMenuProps {
 const MobileMenu = ({ isOpen, onToggle, onClose }: MobileMenuProps) => {
   return (
     <>
-      {/* Mobile Menu Button - Show on tablet and phone */}
+      {/* Mobile Menu Button - Show on tablet and phone (below lg breakpoint) */}
       <div className="lg:hidden flex items-center space-x-4">
         <ThemeToggle />
         <Button
@@ -28,7 +28,7 @@ const MobileMenu = ({ isOpen, onToggle, onClose }: MobileMenuProps) => {
         </Button>
       </div>
 
-      {/* Mobile Menu Content - Fixed positioning and z-index */}
+      {/* Mobile Menu Content - Show on all screen sizes below lg */}
       {isOpen && (
         <div className="lg:hidden fixed top-[80px] left-0 right-0 bg-brand-cream/98 dark:bg-brand-black/98 backdrop-blur-md border-t border-[#247EFF]/20 shadow-2xl z-[60] min-h-[50vh]">
           <div className="container mx-auto px-6 py-8">

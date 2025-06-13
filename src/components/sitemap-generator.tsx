@@ -19,7 +19,7 @@ const SitemapGenerator = () => {
         { url: '/cookie-policy', changefreq: 'yearly', priority: '0.2' },
       ];
 
-      const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+      const pageSitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${pages.map(page => `  <url>
     <loc>${baseUrl}${page.url}</loc>
@@ -32,14 +32,22 @@ ${pages.map(page => `  <url>
       const sitemapIndex = `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
-    <loc>${baseUrl}/sitemap.xml</loc>
+    <loc>${baseUrl}/page-sitemap.xml</loc>
+    <lastmod>${currentDate}</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>${baseUrl}/post-sitemap.xml</loc>
+    <lastmod>${currentDate}</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>${baseUrl}/category-sitemap.xml</loc>
     <lastmod>${currentDate}</lastmod>
   </sitemap>
 </sitemapindex>`;
 
-      // Log both sitemap files for SEO compliance
-      console.log('Generated sitemap.xml content:');
-      console.log(sitemap);
+      // Log sitemap files for SEO compliance
+      console.log('Generated page-sitemap.xml content:');
+      console.log(pageSitemap);
       console.log('\nGenerated sitemap_index.xml content:');
       console.log(sitemapIndex);
     };

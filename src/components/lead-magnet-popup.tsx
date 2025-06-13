@@ -95,20 +95,24 @@ const LeadMagnetPopup = () => {
     }
   };
 
-  const handleClose = (e?: React.MouseEvent) => {
-    if (e) {
-      e.preventDefault();
-      e.stopPropagation();
-    }
-    console.log("Popup closing"); // Debug log
+  const handleClose = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    console.log("Close button clicked"); // Debug log
     setIsVisible(false);
     sessionStorage.setItem('leadMagnetShown', 'true');
   };
 
   const handleBackgroundClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
-      handleClose();
+      console.log("Background clicked"); // Debug log
+      setIsVisible(false);
+      sessionStorage.setItem('leadMagnetShown', 'true');
     }
+  };
+
+  const handlePopupClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
   };
 
   if (!isVisible) return null;
@@ -118,15 +122,18 @@ const LeadMagnetPopup = () => {
       className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
       onClick={handleBackgroundClick}
     >
-      <div className="bg-white dark:bg-brand-black max-w-md w-full rounded-2xl shadow-2xl border border-[#247EFF]/20 relative overflow-hidden">
-        {/* Close button with improved positioning and click handling */}
+      <div 
+        className="bg-white dark:bg-brand-black max-w-md w-full rounded-2xl shadow-2xl border border-[#247EFF]/20 relative overflow-hidden"
+        onClick={handlePopupClick}
+      >
+        {/* Close button - positioned outside the content area */}
         <button
           type="button"
           onClick={handleClose}
-          className="absolute top-4 right-4 z-20 w-8 h-8 flex items-center justify-center text-[#0A0A0A]/60 dark:text-brand-cream/60 hover:text-[#0A0A0A] dark:hover:text-brand-cream hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-all duration-200"
+          className="absolute -top-2 -right-2 z-30 w-10 h-10 bg-white dark:bg-brand-black border border-[#247EFF]/20 rounded-full flex items-center justify-center text-[#0A0A0A] dark:text-brand-cream hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-red-600 dark:hover:text-red-400 transition-all duration-200 shadow-lg"
           aria-label="Close popup"
         >
-          <X size={20} />
+          <X size={18} />
         </button>
 
         {/* Background pattern */}

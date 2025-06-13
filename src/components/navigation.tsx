@@ -14,8 +14,8 @@ const Navigation = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm bg-brand-cream/90 dark:bg-brand-black/90 border-b border-[#247EFF]/20">
       <div className="container mx-auto px-4 sm:px-6 py-4">
-        <div className="flex items-center justify-between">
-          <div className="flex-shrink-0 mr-8">
+        <div className="flex items-center justify-between min-w-0">
+          <div className="flex-shrink-0 mr-4 lg:mr-8 min-w-0">
             <Logo />
           </div>
 
@@ -29,17 +29,19 @@ const Navigation = () => {
           </div>
 
           {/* Mobile Menu - shows everywhere, hides ≥ 1024px */}
-          <MobileMenu 
-            isOpen={isMenuOpen}
-            onToggle={() => {
-              console.log('Toggle called, current state:', isMenuOpen);
-              setIsMenuOpen(!isMenuOpen);
-            }}
-            onClose={() => {
-              console.log('Close called');
-              setIsMenuOpen(false);
-            }}
-          />
+          <div className="flex lg:hidden flex-shrink-0">
+            <MobileMenu 
+              isOpen={isMenuOpen}
+              onToggle={() => {
+                console.log('Toggle called, current state:', isMenuOpen);
+                setIsMenuOpen(!isMenuOpen);
+              }}
+              onClose={() => {
+                console.log('Close called');
+                setIsMenuOpen(false);
+              }}
+            />
+          </div>
         </div>
       </div>
     </nav>

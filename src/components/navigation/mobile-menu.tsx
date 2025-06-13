@@ -16,28 +16,26 @@ const MobileMenu = ({ isOpen, onToggle, onClose }: MobileMenuProps) => {
   
   return (
     <>
-      {/* Mobile Menu Button - shows everywhere, hides ≥ 1024px */}
-      <div className="flex lg:hidden">
-        <div className="flex items-center space-x-4">
-          <ThemeToggle />
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => {
-              console.log('Mobile menu button clicked, current isOpen:', isOpen);
-              onToggle();
-            }}
-            className="hover:bg-[#247EFF]/10 text-[#0A0A0A] dark:text-brand-cream transition-all duration-300 flex-shrink-0 z-[9999]"
-            aria-label="Toggle navigation menu"
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </Button>
-        </div>
+      {/* Mobile Menu Controls - ensure they're always visible and clickable */}
+      <div className="flex items-center space-x-4 z-[60]">
+        <ThemeToggle />
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={() => {
+            console.log('Mobile menu button clicked, current isOpen:', isOpen);
+            onToggle();
+          }}
+          className="hover:bg-[#247EFF]/10 text-[#0A0A0A] dark:text-brand-cream transition-all duration-300 flex-shrink-0 z-[70] bg-transparent border-2 border-[#247EFF]/20"
+          aria-label="Toggle navigation menu"
+        >
+          {isOpen ? <X size={24} /> : <Menu size={24} />}
+        </Button>
       </div>
 
-      {/* Mobile Menu Content - Show when open, hides ≥ 1024px */}
+      {/* Mobile Menu Content - Show when open */}
       {isOpen && (
-        <div className="flex lg:hidden fixed inset-x-0 top-[80px] bg-brand-cream/98 dark:bg-brand-black/98 backdrop-blur-md border-t border-[#247EFF]/20 shadow-2xl z-[9999] min-h-[50vh]">
+        <div className="fixed inset-x-0 top-[80px] bg-brand-cream/98 dark:bg-brand-black/98 backdrop-blur-md border-t border-[#247EFF]/20 shadow-2xl z-[60] min-h-[50vh] lg:hidden">
           <div className="container mx-auto px-4 sm:px-6 py-8 w-full">
             <div className="flex flex-col space-y-8">
               <NavItems

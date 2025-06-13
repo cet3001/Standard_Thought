@@ -35,14 +35,6 @@ ${pages.map(page => `  <url>
     <loc>${baseUrl}/page-sitemap.xml</loc>
     <lastmod>${currentDate}</lastmod>
   </sitemap>
-  <sitemap>
-    <loc>${baseUrl}/post-sitemap.xml</loc>
-    <lastmod>${currentDate}</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>${baseUrl}/category-sitemap.xml</loc>
-    <lastmod>${currentDate}</lastmod>
-  </sitemap>
 </sitemapindex>`;
 
       // Log sitemap files for SEO compliance

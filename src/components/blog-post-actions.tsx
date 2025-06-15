@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
@@ -33,7 +32,7 @@ const BlogPostActions = ({ postId, postTitle, postSlug, onDelete }: BlogPostActi
   if (!isAdmin) return null;
 
   const handleEdit = () => {
-    navigate(`/edit-post/${postSlug}`);
+    navigate(`/edit-post/${postId}`); // Changed from postSlug to postId
   };
 
   const handleDelete = async () => {

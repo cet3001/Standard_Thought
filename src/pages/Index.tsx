@@ -11,9 +11,25 @@ import SitemapGenerator from "@/components/sitemap-generator";
 import LeadMagnetPopup from "@/components/lead-magnet-popup";
 import { usePerformance } from "@/hooks/use-performance";
 import BreadcrumbSchema from "@/components/seo/breadcrumb-schema";
+import FAQSchema from "@/components/seo/faq-schema";
 
 const Index = () => {
   usePerformance();
+
+  const homepageFAQs = [
+    {
+      question: "How can I start building wealth with no money?",
+      answer: "Start with free AI side hustles, credit hacks, and digital income streams. StandardThought breaks it down step-by-step for the culture."
+    },
+    {
+      question: "What are the best AI side hustles in 2025?",
+      answer: "Content creation, print-on-demand, and automated digital services—check our free guides to get started with zero up-front bread."
+    },
+    {
+      question: "How do I fix my credit from scratch?",
+      answer: "We teach you how to build credit with no cosigner, no family help, and no cap—real talk, real results."
+    }
+  ];
 
   return (
     <div className="min-h-screen bg-background">
@@ -25,6 +41,9 @@ const Index = () => {
         type="website"
         noIndex={false}
       />
+      
+      {/* FAQ Schema for homepage */}
+      <FAQSchema faqs={homepageFAQs} />
       
       {/* Breadcrumb Schema for homepage navigation */}
       <BreadcrumbSchema />

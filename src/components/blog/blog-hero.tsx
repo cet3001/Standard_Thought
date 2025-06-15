@@ -15,11 +15,21 @@ const BlogHero = ({ isVisible }: BlogHeroProps) => {
             Raw game from people who actually built something from nothing. No theory, no fluff—just real blueprints 
             for <strong>securing the bag</strong> and <strong>leveling up financially</strong> from people who refused to stay stuck.
           </p>
-          <div className="bg-white/80 dark:bg-brand-black/80 backdrop-blur-sm border border-[#247EFF]/20 rounded-3xl p-6 max-w-2xl mx-auto">
+          <div className="bg-white/80 dark:bg-brand-black/80 backdrop-blur-sm border border-[#247EFF]/20 rounded-3xl p-6 max-w-2xl mx-auto mb-8">
             <p className="text-[#0A0A0A]/80 dark:text-brand-cream/80">
               Every story here comes from someone who had to figure it out with their own hands and hustle. 
               These aren't case studies—they're battle-tested strategies for <strong>building generational wealth</strong>.
             </p>
+          </div>
+          
+          {/* Quick access to pillar content */}
+          <div className="flex flex-wrap gap-4 justify-center">
+            <a href="/blog/ai-side-hustles-guide" className="px-6 py-2 bg-[#247EFF] text-white rounded-2xl hover:bg-[#0057FF] transition-colors font-medium">
+              AI Side Hustles Guide
+            </a>
+            <a href="/blog/free-investing-guide" className="px-6 py-2 bg-[#247EFF] text-white rounded-2xl hover:bg-[#0057FF] transition-colors font-medium">
+              Free Investing Guide
+            </a>
           </div>
         </div>
       </div>

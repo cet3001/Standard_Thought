@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -58,23 +59,30 @@ const EditPost = () => {
   });
 
   useEffect(() => {
+    console.log('EditPost - useEffect triggered', { slug, isAdmin, authLoading });
+    
     if (!authLoading && !isAdmin) {
+      console.log('EditPost - User is not admin, redirecting');
       navigate("/");
       return;
     }
 
-    if (slug && isAdmin) {
+    if (slug && isAdmin && !authLoading) {
+      console.log('EditPost - Fetching post for slug:', slug);
       fetchPost();
     }
   }, [slug, isAdmin, authLoading, navigate]);
 
   const fetchPost = async () => {
+    console.log('EditPost - fetchPost called for slug:', slug);
     try {
       const { data, error } = await supabase
         .from('blog_posts')
         .select('*')
         .eq('slug', slug)
         .single();
+
+      console.log('EditPost - Supabase response:', { data, error });
 
       if (error) {
         console.error('Error fetching post:', error);
@@ -83,14 +91,15 @@ const EditPost = () => {
         return;
       }
 
+      console.log('EditPost - Setting post data:', data);
       setPost(data);
       
       // Populate form with existing data
-      form.reset({
-        title: data.title,
-        excerpt: data.excerpt,
-        content: data.content,
-        category: data.category,
+      const formData = {
+        title: data.title || '',
+        excerpt: data.excerpt || '',
+        content: data.content || '',
+        category: data.category || '',
         tags: data.tags?.join(', ') || '',
         image_url: data.image_url || '',
         meta_description: data.meta_description || '',
@@ -98,7 +107,11 @@ const EditPost = () => {
         featured: data.featured || false,
         published: data.published || false,
         comments_enabled: data.comments_enabled ?? true,
-      });
+      };
+      
+      console.log('EditPost - Form data to reset:', formData);
+      form.reset(formData);
+      
     } catch (error) {
       console.error('Error:', error);
       toast.error('An unexpected error occurred');
@@ -111,34 +124,40 @@ const EditPost = () => {
   const onSubmit = async (data: PostFormData) => {
     if (!post) return;
 
+    console.log('EditPost - onSubmit called with data:', data);
     setSaving(true);
     try {
       const tagsArray = data.tags 
         ? data.tags.split(',').map(tag => tag.trim()).filter(tag => tag.length > 0)
         : [];
 
+      const updateData = {
+        title: data.title,
+        excerpt: data.excerpt,
+        content: data.content,
+        category: data.category,
+        tags: tagsArray,
+        image_url: data.image_url || null,
+        meta_description: data.meta_description || null,
+        meta_keywords: data.meta_keywords || null,
+        featured: data.featured,
+        published: data.published,
+        comments_enabled: data.comments_enabled,
+        updated_at: new Date().toISOString(),
+      };
+
+      console.log('EditPost - Updating post with data:', updateData);
+
       const { error } = await supabase
         .from('blog_posts')
-        .update({
-          title: data.title,
-          excerpt: data.excerpt,
-          content: data.content,
-          category: data.category,
-          tags: tagsArray,
-          image_url: data.image_url || null,
-          meta_description: data.meta_description || null,
-          meta_keywords: data.meta_keywords || null,
-          featured: data.featured,
-          published: data.published,
-          comments_enabled: data.comments_enabled,
-          updated_at: new Date().toISOString(),
-        })
+        .update(updateData)
         .eq('id', post.id);
 
       if (error) {
         console.error('Error updating post:', error);
         toast.error('Failed to update post');
       } else {
+        console.log('EditPost - Post updated successfully');
         toast.success('Post updated successfully!');
         navigate(`/blog/${slug}`);
       }
@@ -150,7 +169,12 @@ const EditPost = () => {
     }
   };
 
+  // Debug: Log current form values
+  const watchedValues = form.watch();
+  console.log('EditPost - Current form values:', watchedValues);
+
   if (authLoading || loading) {
+    console.log('EditPost - Still loading...', { authLoading, loading });
     return (
       <div className="min-h-screen bg-brand-cream dark:bg-brand-black">
         <Navigation />
@@ -172,8 +196,11 @@ const EditPost = () => {
   }
 
   if (!isAdmin) {
+    console.log('EditPost - User is not admin, not rendering form');
     return null;
   }
+
+  console.log('EditPost - Rendering form with post:', post);
 
   return (
     <div className="min-h-screen bg-brand-cream dark:bg-brand-black">
@@ -199,7 +226,7 @@ const EditPost = () => {
           </div>
 
           <h1 className="text-4xl font-bold text-[#0A0A0A] dark:text-brand-cream mb-8">
-            Edit Story
+            Edit Story: {post?.title || 'Loading...'}
           </h1>
 
           {/* Form */}

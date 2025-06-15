@@ -9,6 +9,7 @@ interface OptimizedImageProps {
   height?: number;
   priority?: boolean;
   placeholder?: string;
+  mobileOptimized?: boolean;
 }
 
 const OptimizedImage = ({ 
@@ -18,7 +19,8 @@ const OptimizedImage = ({
   width, 
   height, 
   priority = false,
-  placeholder = "/placeholder.svg"
+  placeholder = "/placeholder.svg",
+  mobileOptimized = true
 }: OptimizedImageProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isInView, setIsInView] = useState(priority);
@@ -37,7 +39,7 @@ const OptimizedImage = ({
       },
       { 
         threshold: 0.1,
-        rootMargin: '50px'
+        rootMargin: mobileOptimized && window.innerWidth < 768 ? '100px' : '50px'
       }
     );
 
@@ -46,13 +48,22 @@ const OptimizedImage = ({
     }
 
     return () => observer.disconnect();
-  }, [priority]);
+  }, [priority, mobileOptimized]);
 
   useEffect(() => {
     if (isInView && imgSrc === placeholder) {
-      setImgSrc(src);
+      // Generate responsive image src for mobile
+      let optimizedSrc = src;
+      
+      if (mobileOptimized && window.innerWidth < 768) {
+        // For mobile devices, we could add URL parameters for smaller images
+        // This is a placeholder for image optimization service integration
+        optimizedSrc = src;
+      }
+      
+      setImgSrc(optimizedSrc);
     }
-  }, [isInView, src, imgSrc, placeholder]);
+  }, [isInView, src, imgSrc, placeholder, mobileOptimized]);
 
   const handleLoad = () => {
     setIsLoaded(true);
@@ -77,13 +88,14 @@ const OptimizedImage = ({
         onError={handleError}
         className={`transition-opacity duration-300 ${
           isLoaded ? 'opacity-100' : 'opacity-0'
-        } w-full h-full object-cover`}
+        } w-full h-full object-cover gpu-accelerated`}
         style={{
-          aspectRatio: width && height ? `${width}/${height}` : undefined
+          aspectRatio: width && height ? `${width}/${height}` : undefined,
+          imageRendering: mobileOptimized ? '-webkit-optimize-contrast' : undefined
         }}
       />
       {!isLoaded && (
-        <div className="absolute inset-0 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 animate-pulse" />
+        <div className="absolute inset-0 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 loading-skeleton" />
       )}
     </div>
   );

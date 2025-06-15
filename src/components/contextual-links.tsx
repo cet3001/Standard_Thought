@@ -110,18 +110,18 @@ const ContextualLinks = ({ context, className = "" }: ContextualLinksProps) => {
   if (links.length === 0) return null;
 
   return (
-    <div className={`contextual-links ${className}`}>
+    <span className={`contextual-links ${className}`}>
       {links.map((link, index) => (
         <Link
           key={index}
           to={link.href}
-          className="text-[#247EFF] hover:text-[#0057FF] underline decoration-dotted underline-offset-4 hover:decoration-solid transition-all duration-300"
+          className="text-[#247EFF] hover:text-[#0057FF] underline decoration-dotted underline-offset-4 hover:decoration-solid transition-all duration-300 touch-manipulation"
           title={`Learn more about ${link.context}`}
         >
           {link.text}
         </Link>
       ))}
-    </div>
+    </span>
   );
 };
 

@@ -1,6 +1,7 @@
 
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
+import SemanticContentEnhancer from "../seo/semantic-content-enhancer";
 
 interface BlogPostContentProps {
   content: string;
@@ -15,8 +16,37 @@ const BlogPostContent = ({ content, imageUrl, title, tags }: BlogPostContentProp
     ? `${title} - Featured image for this Standardthought article on building legacy from nothing`
     : '';
 
+  // Determine semantic context based on content and tags
+  const getSemanticContext = () => {
+    const contentLower = content.toLowerCase();
+    const tagsLower = tags.join(' ').toLowerCase();
+    
+    if (contentLower.includes('invest') || tagsLower.includes('invest')) {
+      return { context: 'investing' as const, voiceSearch: 'investing' as const };
+    }
+    if (contentLower.includes('credit') || tagsLower.includes('credit')) {
+      return { context: 'credit-building' as const, voiceSearch: 'credit' as const };
+    }
+    if (contentLower.includes('ai') || tagsLower.includes('ai')) {
+      return { context: 'ai-hustles' as const, voiceSearch: 'ai-hustles' as const };
+    }
+    if (contentLower.includes('financial') || tagsLower.includes('financial')) {
+      return { context: 'financial-literacy' as const, voiceSearch: 'wealth-building' as const };
+    }
+    return { context: 'entrepreneurship' as const, voiceSearch: 'entrepreneurship' as const };
+  };
+
+  const semanticData = getSemanticContext();
+
   return (
     <>
+      {/* Enhanced SEO with targeted keywords */}
+      <SemanticContentEnhancer
+        primaryKeyword={`${title} - urban entrepreneurship strategies`}
+        context={semanticData.context}
+        voiceSearchTopic={semanticData.voiceSearch}
+      />
+
       {/* Featured Image */}
       {imageUrl && (
         <div className="mb-12">
@@ -42,10 +72,10 @@ const BlogPostContent = ({ content, imageUrl, title, tags }: BlogPostContentProp
           </h3>
           <div className="space-y-2">
             <p className="text-sm text-[#0A0A0A]/80 dark:text-brand-cream/80">
-              Ready to build your legacy? Check out our <Link to="/blog" className="text-[#247EFF] hover:underline font-medium">complete story collection</Link> for more proven frameworks.
+              Ready to master <strong>hood financial literacy</strong> and <strong>urban investing strategies</strong>? Check out our <Link to="/blog" className="text-[#247EFF] hover:underline font-medium">complete story collection</Link> for more proven frameworks.
             </p>
             <p className="text-sm text-[#0A0A0A]/80 dark:text-brand-cream/80">
-              Get started with our <Link to="/#newsletter" className="text-[#247EFF] hover:underline font-medium">free playbook PDF</Link> and join 1000+ urban entrepreneurs building generational wealth.
+              Get started with our <Link to="/#newsletter" className="text-[#247EFF] hover:underline font-medium">free playbook PDF</Link> and join 1000+ urban entrepreneurs building <strong>generational wealth from scratch</strong>.
             </p>
           </div>
         </div>
@@ -53,7 +83,7 @@ const BlogPostContent = ({ content, imageUrl, title, tags }: BlogPostContentProp
         {/* Outbound Links Section - Trust & Authority */}
         <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl">
           <h4 className="text-md font-medium text-[#0A0A0A] dark:text-brand-cream mb-3">
-            Recommended Resources
+            Recommended Resources for <strong>Generational Wealth Building for Beginners</strong>
           </h4>
           <div className="text-sm space-y-1">
             <p>

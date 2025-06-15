@@ -5,6 +5,7 @@ import { ArrowUp } from "lucide-react";
 import ContextualLinks from "./contextual-links";
 import LSIContent from "./lsi-content";
 import SiteNavigationHub from "./site-navigation-hub";
+import SemanticContentEnhancer from "./seo/semantic-content-enhancer";
 
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -43,6 +44,13 @@ const HeroSection = () => {
     <section className="py-24 bg-brand-cream dark:bg-brand-black relative overflow-hidden">
       <LSIContent primaryKeyword="entrepreneurship" context="entrepreneurship" />
       
+      {/* Enhanced SEO with targeted keywords */}
+      <SemanticContentEnhancer
+        primaryKeyword="urban entrepreneurship and generational wealth building for beginners"
+        context="entrepreneurship"
+        voiceSearchTopic="wealth-building"
+      />
+      
       {/* Background Elements */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div className="absolute top-20 right-10 w-32 h-32 rounded-full bg-accent/10 animate-float"></div>
@@ -58,8 +66,8 @@ const HeroSection = () => {
             </h1>
             
             <p className="text-xl md:text-2xl text-[#0A0A0A]/70 dark:text-brand-cream/70 leading-relaxed mb-8 max-w-4xl mx-auto">
-              Join 1000+ urban entrepreneurs turning hustle into generational wealth. Get access to{" "}
-              <ContextualLinks context="hero" className="inline" />, build your network, and create lasting impact—no safety net required.
+              Join 1000+ urban entrepreneurs mastering <strong>hood financial literacy</strong> and <strong>street smart money moves</strong>. Get access to{" "}
+              <ContextualLinks context="hero" className="inline" />, build your network with proven <strong>urban investing strategies</strong>, and create lasting impact through <strong>generational wealth building for beginners</strong>—no safety net required.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
@@ -74,20 +82,20 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Social Proof */}
+          {/* Social Proof with enhanced keywords */}
           <div className={`bg-white/90 dark:bg-brand-black/80 backdrop-blur-sm border border-[#247EFF]/20 rounded-3xl p-8 mb-16 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
               <div>
                 <div className="text-3xl font-bold text-[#247EFF] mb-2">1000+</div>
-                <div className="text-[#0A0A0A]/80 dark:text-brand-cream/80">Builders in our community developing wealth creation strategies</div>
+                <div className="text-[#0A0A0A]/80 dark:text-brand-cream/80">Builders mastering <strong>urban investing strategies</strong> and wealth creation</div>
               </div>
               <div>
                 <div className="text-3xl font-bold text-[#247EFF] mb-2">$10M+</div>
-                <div className="text-[#0A0A0A]/80 dark:text-brand-cream/80">Generated through our business development frameworks</div>
+                <div className="text-[#0A0A0A]/80 dark:text-brand-cream/80">Generated through <strong>street smart money moves</strong> and business development</div>
               </div>
               <div>
                 <div className="text-3xl font-bold text-[#247EFF] mb-2">95%</div>
-                <div className="text-[#0A0A0A]/80 dark:text-brand-cream/80">Success rate with our entrepreneurial mentorship programs</div>
+                <div className="text-[#0A0A0A]/80 dark:text-brand-cream/80">Success rate with our <strong>hood financial literacy</strong> programs</div>
               </div>
             </div>
           </div>

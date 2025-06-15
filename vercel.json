@@ -36,28 +36,6 @@
       ],
       "destination": "https://www.standardthought.com/$1",
       "permanent": true
-    },
-    {
-      "source": "/(.*)",
-      "has": [
-        {
-          "type": "host",
-          "value": "http://standardthought.com"
-        }
-      ],
-      "destination": "https://www.standardthought.com/$1",
-      "permanent": true
-    },
-    {
-      "source": "/(.*)",
-      "has": [
-        {
-          "type": "host",
-          "value": "http://www.standardthought.com"
-        }
-      ],
-      "destination": "https://www.standardthought.com/$1",
-      "permanent": true
     }
   ],
   "headers": [

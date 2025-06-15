@@ -1,7 +1,12 @@
 
 import { Link, useLocation } from "react-router-dom";
 
-const NavItems = () => {
+interface NavItemsProps {
+  className?: string;
+  showButton?: boolean;
+}
+
+const NavItems = ({ className = "hidden lg:flex space-x-8", showButton = false }: NavItemsProps) => {
   const location = useLocation();
 
   const navItems = [
@@ -12,7 +17,7 @@ const NavItems = () => {
   ];
 
   return (
-    <div className="hidden lg:flex space-x-8">
+    <div className={className}>
       {navItems.map((item) => (
         <Link
           key={item.href}

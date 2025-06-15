@@ -4,7 +4,13 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 
-const MobileMenu = () => {
+interface MobileMenuProps {
+  isOpen?: boolean;
+  onToggle?: () => void;
+  onClose?: () => void;
+}
+
+const MobileMenu = ({ isOpen, onToggle, onClose }: MobileMenuProps) => {
   const navItems = [
     { href: "/", label: "Home" },
     { href: "/about", label: "About" },

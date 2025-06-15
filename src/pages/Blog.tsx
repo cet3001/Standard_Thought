@@ -1,159 +1,96 @@
-
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
-import { useState, useEffect } from "react";
-import { supabase } from "@/integrations/supabase/client";
-import { Helmet } from "react-helmet";
-import { BlogGridSkeleton } from "@/components/blog-skeleton";
-import BreadcrumbNavigation from "@/components/breadcrumb-navigation";
+import SEO from "@/components/seo";
 import BlogHero from "@/components/blog/blog-hero";
 import BlogSearchFilter from "@/components/blog/blog-search-filter";
 import BlogGrid from "@/components/blog/blog-grid";
-import BlogEmptyState from "@/components/blog/blog-empty-state";
-import BlogErrorState from "@/components/blog/blog-error-state";
-
-interface BlogPost {
-  id: string;
-  title: string;
-  excerpt: string;
-  content: string;
-  image_url: string | null;
-  category: string;
-  tags: string[];
-  featured: boolean;
-  published: boolean;
-  created_at: string;
-  slug: string;
-}
+import { useState, useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { getPosts, getCategories } from "@/lib/api";
+import { Post } from "@/lib/types";
+import Loading from "@/components/ui/loading";
+import ErrorMessage from "@/components/ui/error-message";
+import Empty from "@/components/ui/empty";
+import BlogFeaturedQuestions from "@/components/blog/blog-featured-questions";
 
 const Blog = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("All");
-  const [isVisible, setIsVisible] = useState(false);
-  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [filteredPosts, setFilteredPosts] = useState<Post[] | null>(null);
+
+  const {
+    data: posts,
+    isLoading: isPostsLoading,
+    isError: isPostsError,
+    error: postsError,
+  } = useQuery("posts", getPosts);
+
+  const {
+    data: categories,
+    isLoading: isCategoriesLoading,
+    isError: isCategoriesError,
+    error: categoriesError,
+  } = useQuery("categories", getCategories);
 
   useEffect(() => {
-    setIsVisible(true);
-    fetchBlogPosts();
-  }, []);
-
-  const fetchBlogPosts = async () => {
-    try {
-      console.log('Fetching blog posts...');
-      setError(null);
-      const { data, error } = await supabase
-        .from('blog_posts')
-        .select('*')
-        .eq('published', true)
-        .order('created_at', { ascending: false });
-
-      if (error) {
-        console.error('Error fetching blog posts:', error);
-        setError('Failed to load stories. Please try again.');
-      } else {
-        console.log('Blog posts fetched:', data);
-        setBlogPosts(data || []);
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      setError('An unexpected error occurred. Please try again.');
-    } finally {
-      setLoading(false);
+    if (posts) {
+      const filtered = posts.filter((post) => {
+        const searchRegex = new RegExp(searchTerm, "i");
+        const categoryMatch = selectedCategory
+          ? post.category === selectedCategory
+          : true;
+        return (
+          searchRegex.test(post.title) &&
+          categoryMatch
+        );
+      });
+      setFilteredPosts(filtered);
     }
-  };
+  }, [posts, searchTerm, selectedCategory]);
 
-  const handlePostDeleted = () => {
-    fetchBlogPosts();
-  };
+  if (isPostsLoading || isCategoriesLoading) return <Loading />;
+  if (isPostsError || isCategoriesError)
+    return <ErrorMessage error={postsError || categoriesError} />;
 
-  const handleClearFilters = () => {
-    setSearchTerm("");
-    setSelectedCategory("All");
-  };
-
-  // Get unique categories from posts
-  const categories = ["All", ...Array.from(new Set(blogPosts.map(post => post.category)))];
-
-  const filteredPosts = blogPosts.filter(post => {
-    const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         post.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesCategory = selectedCategory === "All" || post.category === selectedCategory;
-    return matchesSearch && matchesCategory;
-  });
+  const hasPosts = filteredPosts && filteredPosts.length > 0;
 
   return (
-    <>
-      <Helmet>
-        <title>Builder Stories: Real Success From Nothing | Standardthought</title>
-        <meta name="description" content="Raw blueprints from entrepreneurs who built generational wealth from scratch. No theory, just proven strategies from people who made it out the struggle." />
-        <meta name="keywords" content="builder stories, entrepreneurship success stories, urban entrepreneur journeys, wealth building strategies, business building blueprints, startup success stories, hustle mentality, self-made millionaires, generational wealth creation, entrepreneur motivation" />
-        
-        {/* Open Graph Tags */}
-        <meta property="og:title" content="Builder Stories: Real Success From Nothing | Standardthought" />
-        <meta property="og:description" content="Raw blueprints from entrepreneurs who built generational wealth from scratch. No theory, just proven strategies from people who made it out the struggle." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.standardthought.com/blog" />
-        <meta property="og:image" content="https://www.standardthought.com/lovable-uploads/a8faab87-8319-4fa0-ae53-35597c6f8fc5.png" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="Builder Stories - Real Success From Nothing" />
-        <meta property="og:site_name" content="Standardthought" />
-        
-        {/* Twitter Card Tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@standardthought" />
-        <meta name="twitter:title" content="Builder Stories: Real Success From Nothing" />
-        <meta name="twitter:description" content="Raw blueprints from entrepreneurs who built generational wealth from scratch. Proven strategies from people who made it out the struggle." />
-        <meta name="twitter:image" content="https://www.standardthought.com/lovable-uploads/a8faab87-8319-4fa0-ae53-35597c6f8fc5.png" />
-        <meta name="twitter:image:alt" content="Builder Stories - Real Success From Nothing" />
-        
-        {/* Additional Meta Tags */}
-        <link rel="canonical" href="https://www.standardthought.com/blog" />
-        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
-      </Helmet>
+    <div className="min-h-screen bg-brand-cream dark:bg-brand-black">
+      <SEO
+        title="Urban Financial Literacy Blog | Standardthought"
+        description="Insights on urban investing, AI side hustles, and credit building. Generational wealth building for beginners with street-smart money strategies."
+        keywords="hood financial literacy, urban investing strategies, street smart money moves, generational wealth building for beginners, AI side hustles, urban entrepreneurship, credit building strategies, wealth creation resources, financial education, business development tools"
+        url="/blog"
+        type="website"
+      />
 
-      <div className="min-h-screen bg-brand-cream dark:bg-brand-black">
-        <Navigation />
-        
-        {/* Breadcrumb Navigation */}
-        <div className="pt-24">
-          <BreadcrumbNavigation />
+      <Navigation />
+
+      <main className="pt-24 pb-16">
+        <div className="container mx-auto px-6 max-w-7xl">
+          <BlogHero />
+          
+          {/* Featured Questions Section */}
+          <BlogFeaturedQuestions />
+          
+          <BlogSearchFilter
+            searchTerm={searchTerm}
+            selectedCategory={selectedCategory}
+            onSearchChange={setSearchTerm}
+            onCategoryChange={setSelectedCategory}
+            categories={categories}
+          />
+
+          {!hasPosts ? (
+            <Empty message="No posts found." />
+          ) : (
+            <BlogGrid posts={filteredPosts} />
+          )}
         </div>
-        
-        {/* Hero Section */}
-        <BlogHero isVisible={isVisible} />
+      </main>
 
-        {/* Search and Filter Section */}
-        <BlogSearchFilter
-          searchTerm={searchTerm}
-          setSearchTerm={setSearchTerm}
-          selectedCategory={selectedCategory}
-          setSelectedCategory={setSelectedCategory}
-          categories={categories}
-        />
-
-        {/* Blog Grid */}
-        <section className="py-24 bg-brand-cream dark:bg-brand-black">
-          <div className="container mx-auto px-6">
-            {loading ? (
-              <BlogGridSkeleton />
-            ) : error ? (
-              <BlogErrorState error={error} onRetry={fetchBlogPosts} />
-            ) : blogPosts.length === 0 ? (
-              <BlogEmptyState />
-            ) : filteredPosts.length === 0 ? (
-              <BlogEmptyState isFiltered onClearFilters={handleClearFilters} />
-            ) : (
-              <BlogGrid posts={filteredPosts} onPostDeleted={handlePostDeleted} />
-            )}
-          </div>
-        </section>
-
-        <Footer />
-      </div>
-    </>
+      <Footer />
+    </div>
   );
 };
 

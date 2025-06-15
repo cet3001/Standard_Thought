@@ -1,4 +1,3 @@
-
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import SEO from "@/components/seo";
@@ -9,6 +8,8 @@ import ResourcesHero from "@/components/resources/resources-hero";
 import ResourceCategory from "@/components/resources/resource-category";
 import FeaturedGuides from "@/components/resources/featured-guides";
 import ResourcesCTA from "@/components/resources/resources-cta";
+import ResourcesQASection from "@/components/resources/resources-qa-section";
+import UrbanFinanceFAQs from "@/components/faq/urban-finance-faqs";
 import { TrendingUp, CreditCard, Bot, Building, BookOpen } from "lucide-react";
 
 const Resources = () => {
@@ -104,6 +105,9 @@ const Resources = () => {
         <div className="container mx-auto px-6 max-w-7xl">
           <ResourcesHero />
 
+          {/* New Q&A Section */}
+          <ResourcesQASection />
+
           {/* Resource Categories */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
             {resourceCategories.map((category, index) => (
@@ -120,6 +124,10 @@ const Resources = () => {
           </div>
 
           <FeaturedGuides />
+          
+          {/* Comprehensive FAQ Section */}
+          <UrbanFinanceFAQs />
+          
           <ResourcesCTA />
         </div>
       </main>

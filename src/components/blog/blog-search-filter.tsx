@@ -66,6 +66,13 @@ const BlogSearchFilter = ({
               )}
             </div>
 
+            {/* New sentence above filter bar */}
+            <div className="text-center mb-6">
+              <p className="text-lg text-[#0A0A0A]/80 dark:text-brand-cream/80 font-medium">
+                Pick your lane—stories, mindset, or strategies. Whatever you need to level up, we got it.
+              </p>
+            </div>
+
             {/* Search Bar */}
             <div className="relative mb-8">
               <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[#0A0A0A]/60 dark:text-brand-cream/60 h-5 w-5" />

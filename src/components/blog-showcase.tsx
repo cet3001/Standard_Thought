@@ -22,7 +22,6 @@ const BlogShowcase = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [featuredPosts, setFeaturedPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -42,16 +41,13 @@ const BlogShowcase = () => {
 
       if (error) {
         console.error('Error fetching featured posts:', error);
-        setError(error.message || "Could not fetch featured posts. Please check Supabase configuration and permissions.");
         // Fallback to hardcoded posts if no featured posts exist
         setFeaturedPosts(fallbackPosts);
       } else {
         setFeaturedPosts(data || fallbackPosts);
-        setError(null);
       }
     } catch (error: any) {
       console.error('Fetch error:', error);
-      setError(error.message || "Could not fetch blog posts due to a network error.");
       setFeaturedPosts(fallbackPosts);
     } finally {
       setLoading(false);
@@ -104,13 +100,6 @@ const BlogShowcase = () => {
 
       <div className="container mx-auto px-6 relative z-10">
         <BlogShowcaseHeader isVisible={isVisible} />
-
-        {error && (
-          <div className="p-4 mb-6 rounded-xl bg-red-50 border border-red-300 text-red-700 text-center">
-            {error}
-            <div className="text-xs mt-2 italic">Please check Supabase project, keys, permissions, and that the table <code>blog_posts</code> exists and is readable.</div>
-          </div>
-        )}
 
         <BlogShowcaseGrid posts={postsToShow} loading={loading} isVisible={isVisible} />
         

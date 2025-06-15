@@ -1,4 +1,3 @@
-
 import Navigation from "@/components/navigation";
 import HeroSection from "@/components/hero-section";
 import BlogShowcase from "@/components/blog-showcase";
@@ -9,6 +8,7 @@ import SEO from "@/components/seo";
 import SitemapGenerator from "@/components/sitemap-generator";
 import LeadMagnetPopup from "@/components/lead-magnet-popup";
 import { usePerformance } from "@/hooks/use-performance";
+import BreadcrumbSchema from "@/components/seo/breadcrumb-schema";
 
 const Index = () => {
   usePerformance();

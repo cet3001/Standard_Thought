@@ -15,7 +15,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { trackBlogRead } from "@/components/analytics";
 import BreadcrumbNavigation from "@/components/breadcrumb-navigation";
-import BreadcrumbSchema from "@/components/breadcrumb-schema";
+import BreadcrumbSchema from "@/components/seo/breadcrumb-schema";
 
 interface BlogPost {
   id: string;

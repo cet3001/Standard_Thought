@@ -4,6 +4,7 @@ import HeroSection from "@/components/hero-section";
 import BlogShowcase from "@/components/blog-showcase";
 import { NewsletterSection } from "@/components/newsletter-section";
 import ManifestoSection from "@/components/manifesto-section";
+import TrustBadgeSection from "@/components/trust-badge-section";
 import Footer from "@/components/footer";
 import SEO from "@/components/seo";
 import SitemapGenerator from "@/components/sitemap-generator";
@@ -38,6 +39,7 @@ const Index = () => {
           <NewsletterSection />
         </section>
       </main>
+      <TrustBadgeSection />
       <Footer />
       <LeadMagnetPopup />
     </div>

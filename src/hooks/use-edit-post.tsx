@@ -49,6 +49,10 @@ export const useEditPost = () => {
     },
   });
 
+  // Watch form values for debugging
+  const watchedValues = form.watch();
+  console.log('useEditPost - Form values:', watchedValues);
+
   useEffect(() => {
     console.log('useEditPost - useEffect triggered', { slug, isAdmin, authLoading });
     
@@ -63,6 +67,35 @@ export const useEditPost = () => {
       fetchPost();
     }
   }, [slug, isAdmin, authLoading, navigate]);
+
+  // Separate useEffect to handle form population after post is fetched
+  useEffect(() => {
+    if (post) {
+      console.log('useEditPost - Post data available, populating form:', post);
+      
+      const formData: PostFormData = {
+        title: post.title || '',
+        excerpt: post.excerpt || '',
+        content: post.content || '',
+        category: post.category || '',
+        tags: Array.isArray(post.tags) ? post.tags.join(', ') : '',
+        image_url: post.image_url || '',
+        meta_description: post.meta_description || '',
+        meta_keywords: post.meta_keywords || '',
+        featured: Boolean(post.featured),
+        published: Boolean(post.published),
+        comments_enabled: post.comments_enabled !== false,
+      };
+      
+      console.log('useEditPost - Resetting form with data:', formData);
+      
+      // Use setTimeout to ensure form is ready
+      setTimeout(() => {
+        form.reset(formData);
+        console.log('useEditPost - Form reset completed');
+      }, 100);
+    }
+  }, [post, form]);
 
   const fetchPost = async () => {
     console.log('useEditPost - fetchPost called for slug:', slug);
@@ -84,24 +117,6 @@ export const useEditPost = () => {
 
       console.log('useEditPost - Setting post data:', data);
       setPost(data);
-      
-      // Populate form with existing data
-      const formData = {
-        title: data.title || '',
-        excerpt: data.excerpt || '',
-        content: data.content || '',
-        category: data.category || '',
-        tags: data.tags?.join(', ') || '',
-        image_url: data.image_url || '',
-        meta_description: data.meta_description || '',
-        meta_keywords: data.meta_keywords || '',
-        featured: data.featured || false,
-        published: data.published || false,
-        comments_enabled: data.comments_enabled ?? true,
-      };
-      
-      console.log('useEditPost - Form data to reset:', formData);
-      form.reset(formData);
       
     } catch (error) {
       console.error('Error:', error);

@@ -88,6 +88,29 @@ export const NewsletterSection = () => {
                 Get Your Free Wealth Building Blueprint
               </h2>
             </div>
+            
+            {/* New bulleted list */}
+            <div className="max-w-2xl mx-auto mb-8">
+              <ul className="text-left text-lg text-[#0A0A0A]/80 dark:text-brand-cream/80 space-y-3">
+                <li className="flex items-start">
+                  <CheckCircle className="w-5 h-5 text-[#247EFF] mr-3 mt-0.5 flex-shrink-0" />
+                  Step-by-step AI side hustle guide for beginners
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="w-5 h-5 text-[#247EFF] mr-3 mt-0.5 flex-shrink-0" />
+                  Credit building moves that actually work
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="w-5 h-5 text-[#247EFF] mr-3 mt-0.5 flex-shrink-0" />
+                  Blueprint for turning small wins into generational progress
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="w-5 h-5 text-[#247EFF] mr-3 mt-0.5 flex-shrink-0" />
+                  Weekly "Level Up Notes" direct to your inbox
+                </li>
+              </ul>
+            </div>
+            
             <p className="text-xl md:text-2xl text-[#0A0A0A]/80 dark:text-brand-cream/80 mb-8 leading-relaxed">
               The same blueprint that helped 500+ people go from broke to <strong>securing the bag</strong> consistently. 
               <span className="text-[#247EFF] font-semibold block mt-2">Instant PDF delivery + weekly "Level Up Notes"</span>

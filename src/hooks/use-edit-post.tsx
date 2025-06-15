@@ -25,7 +25,7 @@ interface BlogPost {
 }
 
 export const useEditPost = () => {
-  const { slug } = useParams();
+  const { id } = useParams(); // Changed from slug to id to match the route
   const navigate = useNavigate();
   const { isAdmin, loading: authLoading } = useAuth();
   const [loading, setLoading] = useState(true);
@@ -54,7 +54,7 @@ export const useEditPost = () => {
   console.log('useEditPost - Form values:', watchedValues);
 
   useEffect(() => {
-    console.log('useEditPost - useEffect triggered', { slug, isAdmin, authLoading });
+    console.log('useEditPost - useEffect triggered', { id, isAdmin, authLoading });
     
     if (authLoading) return; // still waiting on AuthContext
 
@@ -66,15 +66,15 @@ export const useEditPost = () => {
     }
 
     // EDITING EXISTING POST
-    if (slug) {
-      console.log('useEditPost - Fetching post for slug:', slug);
+    if (id) {
+      console.log('useEditPost - Fetching post for id:', id);
       fetchPost(); // fetchPost will handle setLoading(false) in finally block
     } else {
       // CREATING NEW POST - nothing to fetch, so drop the skeleton
       console.log('useEditPost - New post creation, clearing loading');
       setLoading(false);
     }
-  }, [slug, isAdmin, authLoading, navigate]);
+  }, [id, isAdmin, authLoading, navigate]);
 
   // Separate useEffect to handle form population after post is fetched
   useEffect(() => {
@@ -102,12 +102,12 @@ export const useEditPost = () => {
   }, [post, form]);
 
   const fetchPost = async () => {
-    console.log('useEditPost - fetchPost called for slug:', slug);
+    console.log('useEditPost - fetchPost called for id:', id);
     try {
       const { data, error } = await supabase
         .from('blog_posts')
         .select('*')
-        .eq('slug', slug)
+        .eq('id', id) // Changed from slug to id
         .single();
 
       console.log('useEditPost - Supabase response:', { data, error });
@@ -170,7 +170,7 @@ export const useEditPost = () => {
       } else {
         console.log('useEditPost - Post updated successfully');
         toast.success('Post updated successfully!');
-        navigate(`/blog/${slug}`);
+        navigate(`/blog/${post.slug}`); // Navigate using the post's slug
       }
     } catch (error) {
       console.error('Error:', error);

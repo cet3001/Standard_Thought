@@ -23,6 +23,8 @@ import TermsOfService from "@/pages/TermsOfService";
 import CookiePolicy from "@/pages/CookiePolicy";
 import AISideHustlesGuide from "@/pages/AISideHustlesGuide";
 import FreeInvestingGuide from "@/pages/FreeInvestingGuide";
+import WealthBuildingStrategies from "@/pages/WealthBuildingStrategies";
+import FinancialEducationGuide from "@/pages/FinancialEducationGuide";
 
 const queryClient = new QueryClient();
 
@@ -41,6 +43,8 @@ const App = () => (
               <Route path="/blog/:slug" element={<BlogPost />} />
               <Route path="/blog/ai-side-hustles-guide" element={<AISideHustlesGuide />} />
               <Route path="/blog/free-investing-guide" element={<FreeInvestingGuide />} />
+              <Route path="/wealth-building-strategies" element={<WealthBuildingStrategies />} />
+              <Route path="/financial-education-guide" element={<FinancialEducationGuide />} />
               <Route path="/resources" element={<Resources />} />
               <Route path="/sales" element={<Sales />} />
               <Route path="/auth" element={<Auth />} />

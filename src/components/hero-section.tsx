@@ -1,11 +1,11 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowUp } from "lucide-react";
+import { ArrowUp, ArrowRight } from "lucide-react";
 import ContextualLinks from "./contextual-links";
 import LSIContent from "./lsi-content";
 import SiteNavigationHub from "./site-navigation-hub";
 import SemanticContentEnhancer from "./seo/semantic-content-enhancer";
+import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -106,18 +106,30 @@ const HeroSection = () => {
               <h3 className="text-2xl font-bold mb-4 text-[#0A0A0A] dark:text-brand-cream">
                 From Survival Mode to <span className="text-[#247EFF]">Wealth Mode</span>
               </h3>
-              <p className="text-[#0A0A0A]/80 dark:text-brand-cream/80 leading-relaxed">
+              <p className="text-[#0A0A0A]/80 dark:text-brand-cream/80 leading-relaxed mb-6">
                 We know what it's like when every dollar matters and money stress is real. Our approach helps you break free from living check to check and start <strong>securing the bag</strong> with assets that work for you—not against you.
               </p>
+              <Link to="/wealth-building-strategies">
+                <Button variant="outline" className="w-full border-[#247EFF] text-[#247EFF] hover:bg-[#247EFF] hover:text-white">
+                  Learn More
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
             </div>
             
             <div className="bg-gradient-to-br from-green-50/80 to-emerald-100/20 dark:from-green-900/20 dark:to-emerald-900/20 rounded-3xl p-8 border border-green-500/20">
               <h3 className="text-2xl font-bold mb-4 text-[#0A0A0A] dark:text-brand-cream">
                 <span className="text-green-600 dark:text-green-400">Keep It 100</span> Financial Education
               </h3>
-              <p className="text-[#0A0A0A]/80 dark:text-brand-cream/80 leading-relaxed">
+              <p className="text-[#0A0A0A]/80 dark:text-brand-cream/80 leading-relaxed mb-6">
                 Learn <strong>street-smart money moves</strong> and investment strategies in language that makes sense. No corporate jargon, no code-switching—just real talk about <strong>leveling up financially</strong>.
               </p>
+              <Link to="/financial-education-guide">
+                <Button variant="outline" className="w-full border-green-500 text-green-600 dark:text-green-400 hover:bg-green-500 hover:text-white">
+                  Learn More
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
             </div>
           </div>
 

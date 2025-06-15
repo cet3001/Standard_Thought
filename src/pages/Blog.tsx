@@ -1,3 +1,4 @@
+
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import SEO from "@/components/seo";
@@ -23,22 +24,29 @@ const Blog = () => {
     isLoading: isPostsLoading,
     isError: isPostsError,
     error: postsError,
-  } = useQuery("posts", getPosts);
+    refetch: refetchPosts,
+  } = useQuery({
+    queryKey: ['posts'],
+    queryFn: getPosts,
+  });
 
   const {
     data: categories,
     isLoading: isCategoriesLoading,
     isError: isCategoriesError,
     error: categoriesError,
-  } = useQuery("categories", getCategories);
+  } = useQuery({
+    queryKey: ['categories'],
+    queryFn: getCategories,
+  });
 
   useEffect(() => {
     if (posts) {
       const filtered = posts.filter((post) => {
         const searchRegex = new RegExp(searchTerm, "i");
-        const categoryMatch = selectedCategory
-          ? post.category === selectedCategory
-          : true;
+        const categoryMatch = selectedCategory === "All" || selectedCategory === ""
+          ? true
+          : post.category === selectedCategory;
         return (
           searchRegex.test(post.title) &&
           categoryMatch
@@ -50,7 +58,7 @@ const Blog = () => {
 
   if (isPostsLoading || isCategoriesLoading) return <Loading />;
   if (isPostsError || isCategoriesError)
-    return <ErrorMessage error={postsError || categoriesError} />;
+    return <ErrorMessage error={postsError || categoriesError} onRetry={() => refetchPosts()} />;
 
   const hasPosts = filteredPosts && filteredPosts.length > 0;
 
@@ -68,23 +76,23 @@ const Blog = () => {
 
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-6 max-w-7xl">
-          <BlogHero />
+          <BlogHero isVisible={true} />
           
           {/* Featured Questions Section */}
           <BlogFeaturedQuestions />
           
           <BlogSearchFilter
             searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
             selectedCategory={selectedCategory}
-            onSearchChange={setSearchTerm}
-            onCategoryChange={setSelectedCategory}
-            categories={categories}
+            setSelectedCategory={setSelectedCategory}
+            categories={categories || []}
           />
 
           {!hasPosts ? (
             <Empty message="No posts found." />
           ) : (
-            <BlogGrid posts={filteredPosts} />
+            <BlogGrid posts={filteredPosts} onPostDeleted={() => refetchPosts()} />
           )}
         </div>
       </main>

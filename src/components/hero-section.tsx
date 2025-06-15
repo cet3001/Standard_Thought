@@ -62,12 +62,12 @@ const HeroSection = () => {
           {/* Main Hero Content */}
           <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
             <h1 className="text-5xl md:text-7xl font-bold mb-8 text-[#0A0A0A] dark:text-brand-cream leading-tight">
-              Build Your <span className="text-[#247EFF]">Legacy</span> From Nothing
+              Break the Cycle. <span className="text-[#247EFF]">Build Your Legacy</span>
             </h1>
             
             <p className="text-xl md:text-2xl text-[#0A0A0A]/70 dark:text-brand-cream/70 leading-relaxed mb-8 max-w-4xl mx-auto">
-              Join 1000+ urban entrepreneurs mastering <strong>hood financial literacy</strong> and <strong>street smart money moves</strong>. Get access to{" "}
-              <ContextualLinks context="hero" className="inline" />, build your network with proven <strong>urban investing strategies</strong>, and create lasting impact through <strong>generational wealth building for beginners</strong>—no safety net required.
+              We get it—the system wasn't built for us. But that doesn't mean we can't win. Join 1000+ people who came from nothing and are building something real through{" "}
+              <ContextualLinks context="hero" className="inline" />. Learn <strong>hood financial literacy</strong> that actually makes sense, master <strong>street smart money moves</strong> that work in the real world, and start your <strong>generational wealth building journey</strong>—even if banks, credit, and investing feel foreign right now.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
@@ -82,26 +82,47 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Social Proof with enhanced keywords */}
+          {/* Enhanced Social Proof with authentic community metrics */}
           <div className={`bg-white/90 dark:bg-brand-black/80 backdrop-blur-sm border border-[#247EFF]/20 rounded-3xl p-8 mb-16 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
               <div>
                 <div className="text-3xl font-bold text-[#247EFF] mb-2">1000+</div>
-                <div className="text-[#0A0A0A]/80 dark:text-brand-cream/80">Builders mastering <strong>urban investing strategies</strong> and wealth creation</div>
+                <div className="text-[#0A0A0A]/80 dark:text-brand-cream/80">People who started with no connections, bad credit, or zero business experience—now building real wealth</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-[#247EFF] mb-2">$10M+</div>
-                <div className="text-[#0A0A0A]/80 dark:text-brand-cream/80">Generated through <strong>street smart money moves</strong> and business development</div>
+                <div className="text-3xl font-bold text-[#247EFF] mb-2">$500→$50K</div>
+                <div className="text-[#0A0A0A]/80 dark:text-brand-cream/80">Average first-year business growth using our <strong>street smart money moves</strong> and practical frameworks</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-[#247EFF] mb-2">95%</div>
-                <div className="text-[#0A0A0A]/80 dark:text-brand-cream/80">Success rate with our <strong>hood financial literacy</strong> programs</div>
+                <div className="text-3xl font-bold text-[#247EFF] mb-2">Real Results</div>
+                <div className="text-[#0A0A0A]/80 dark:text-brand-cream/80">No fake guru promises—just people who look like you, came from where you're from, making it happen</div>
               </div>
             </div>
           </div>
 
+          {/* Value Props addressing systemic barriers */}
+          <div className={`grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div className="bg-gradient-to-br from-[#247EFF]/10 to-blue-100/20 dark:from-[#247EFF]/20 dark:to-blue-900/20 rounded-3xl p-8 border border-[#247EFF]/20">
+              <h3 className="text-2xl font-bold mb-4 text-[#0A0A0A] dark:text-brand-cream">
+                From Survival Mode to <span className="text-[#247EFF]">Wealth Mode</span>
+              </h3>
+              <p className="text-[#0A0A0A]/80 dark:text-brand-cream/80 leading-relaxed">
+                We know what it's like when every dollar matters and financial anxiety is real. Our <strong>hood financial literacy</strong> approach helps you break free from living paycheck to paycheck and start building assets that work for you—not against you.
+              </p>
+            </div>
+            
+            <div className="bg-gradient-to-br from-green-50/80 to-emerald-100/20 dark:from-green-900/20 dark:to-emerald-900/20 rounded-3xl p-8 border border-green-500/20">
+              <h3 className="text-2xl font-bold mb-4 text-[#0A0A0A] dark:text-brand-cream">
+                <span className="text-green-600 dark:text-green-400">No Code-Switching</span> Required
+              </h3>
+              <p className="text-[#0A0A0A]/80 dark:text-brand-cream/80 leading-relaxed">
+                Learn <strong>urban investing strategies</strong> and business development in language that makes sense. No corporate jargon, no pretending to be someone you're not—just real talk about real money moves.
+              </p>
+            </div>
+          </div>
+
           {/* Navigation Hub */}
-          <div className={`transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className={`transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <SiteNavigationHub />
           </div>
         </div>

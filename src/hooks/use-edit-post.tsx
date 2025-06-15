@@ -25,7 +25,7 @@ interface BlogPost {
 }
 
 export const useEditPost = () => {
-  const { id } = useParams(); // Changed from slug to id to match the route
+  const { id } = useParams();
   const navigate = useNavigate();
   const { isAdmin, loading: authLoading } = useAuth();
   const [loading, setLoading] = useState(true);
@@ -61,19 +61,22 @@ export const useEditPost = () => {
     if (!isAdmin) {
       console.log('useEditPost - User is not admin, redirecting');
       navigate("/");
-      setLoading(false); // Clear loading flag before redirecting
+      setLoading(false);
+      return;
+    }
+
+    // Check if we have an ID parameter
+    if (!id) {
+      console.log('useEditPost - No ID parameter found');
+      toast.error("No post ID provided");
+      navigate("/blog");
+      setLoading(false);
       return;
     }
 
     // EDITING EXISTING POST
-    if (id) {
-      console.log('useEditPost - Fetching post for id:', id);
-      fetchPost(); // fetchPost will handle setLoading(false) in finally block
-    } else {
-      // CREATING NEW POST - nothing to fetch, so drop the skeleton
-      console.log('useEditPost - New post creation, clearing loading');
-      setLoading(false);
-    }
+    console.log('useEditPost - Fetching post for id:', id);
+    fetchPost(); // fetchPost will handle setLoading(false) in finally block
   }, [id, isAdmin, authLoading, navigate]);
 
   // Separate useEffect to handle form population after post is fetched
@@ -102,12 +105,17 @@ export const useEditPost = () => {
   }, [post, form]);
 
   const fetchPost = async () => {
+    if (!id) {
+      setLoading(false);
+      return;
+    }
+
     console.log('useEditPost - fetchPost called for id:', id);
     try {
       const { data, error } = await supabase
         .from('blog_posts')
         .select('*')
-        .eq('id', id) // Changed from slug to id
+        .eq('id', id)
         .single();
 
       console.log('useEditPost - Supabase response:', { data, error });

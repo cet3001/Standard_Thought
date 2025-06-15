@@ -1,129 +1,100 @@
 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowUp } from "lucide-react";
-import ContextualLinks from "./contextual-links";
-import LSIContent from "./lsi-content";
-import SiteNavigationHub from "./site-navigation-hub";
-import SemanticContentEnhancer from "./seo/semantic-content-enhancer";
+import { ArrowRight, Sparkles, TrendingUp, Target } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
 
-  const scrollToNewsletter = () => {
-    const newsletterSection = document.querySelector('[data-section="newsletter"]');
-    if (newsletterSection) {
-      const formElement = newsletterSection.querySelector('form');
-      
-      if (formElement) {
-        const formRect = formElement.getBoundingClientRect();
-        const targetPosition = window.pageYOffset + formRect.top;
-        const offset = window.innerWidth < 768 ? window.innerHeight * 0.3 : 100;
-        
-        window.scrollTo({
-          top: targetPosition - offset,
-          behavior: 'smooth'
-        });
-      } else {
-        const offsetTop = newsletterSection.getBoundingClientRect().top + window.pageYOffset;
-        const offset = window.innerWidth < 768 ? 300 : 150;
-        
-        window.scrollTo({
-          top: offsetTop - offset,
-          behavior: 'smooth'
-        });
-      }
-    }
-  };
-
   return (
-    <section className="py-24 bg-brand-cream dark:bg-brand-black relative overflow-hidden">
-      <LSIContent primaryKeyword="entrepreneurship" context="entrepreneurship" />
-      
-      {/* Enhanced SEO with targeted keywords */}
-      <SemanticContentEnhancer
-        primaryKeyword="urban entrepreneurship and generational wealth building for beginners"
-        context="entrepreneurship"
-        voiceSearchTopic="wealth-building"
-      />
-      
-      {/* Background Elements */}
+    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-brand-cream via-brand-cream to-white dark:from-brand-black dark:via-brand-black dark:to-gray-900 overflow-hidden">
+      {/* Enhanced Background Elements */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-        <div className="absolute top-20 right-10 w-32 h-32 rounded-full bg-accent/10 animate-float"></div>
-        <div className="absolute bottom-40 left-10 w-24 h-24 rounded-2xl bg-accent/20 animate-float" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-20 right-20 w-72 h-72 rounded-full bg-gradient-to-r from-[#247EFF]/20 to-[#007cba]/20 animate-float blur-3xl"></div>
+        <div className="absolute bottom-20 left-20 w-96 h-96 rounded-full bg-gradient-to-r from-accent/30 to-[#247EFF]/20 animate-float blur-2xl" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-gradient-to-r from-transparent via-[#247EFF]/5 to-transparent animate-pulse"></div>
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-6xl mx-auto">
-          {/* Main Hero Content */}
-          <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-            <h1 className="text-5xl md:text-7xl font-bold mb-8 text-[#0A0A0A] dark:text-brand-cream leading-tight">
-              From Nothing to <span className="text-[#247EFF]">Generational Wealth</span>
-            </h1>
-            
-            <p className="text-xl md:text-2xl text-[#0A0A0A]/70 dark:text-brand-cream/70 leading-relaxed mb-8 max-w-4xl mx-auto">
-              Real talk—the system wasn't built for us, but that don't mean we can't secure the bag. Join 1000+ people who started from the bottom and are now <strong>leveling up financially</strong> through{" "}
-              <ContextualLinks context="hero" className="inline" />. Master <strong>street-smart money moves</strong> that actually work, learn to <strong>build generational wealth from scratch</strong>, and start your legacy—even if traditional finance feels like a foreign language right now.
-            </p>
+        <div className="max-w-6xl mx-auto text-center">
+          {/* Enhanced Main Headline */}
+          <div className={`transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+            <div className="flex items-center justify-center gap-4 mb-8">
+              <Sparkles className="w-12 h-12 text-[#247EFF] animate-pulse" />
+              <h1 className="text-6xl md:text-8xl font-bold text-brand-black dark:text-brand-cream leading-tight">
+                Build Legacy From{" "}
+                <span className="relative">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#247EFF] to-[#007cba] animate-pulse">
+                    Nothing
+                  </span>
+                  <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-[#247EFF] to-[#007cba] animate-pulse"></div>
+                </span>
+              </h1>
+              <TrendingUp className="w-12 h-12 text-[#247EFF] animate-bounce" />
+            </div>
+          </div>
 
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
+          {/* Enhanced Subtitle */}
+          <div className={`transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <p className="text-2xl md:text-3xl text-brand-black/80 dark:text-brand-cream/80 mb-8 max-w-4xl mx-auto leading-relaxed">
+              Join <strong className="text-[#247EFF] animate-pulse">1000+ urban entrepreneurs</strong> building generational wealth from scratch. 
+              Get proven frameworks, actionable strategies, and community support.{" "}
+              <span className="text-[#247EFF] font-bold">No safety net required.</span>
+            </p>
+          </div>
+
+          {/* Enhanced Value Props */}
+          <div className={`transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 max-w-5xl mx-auto">
+              {[
+                { icon: Target, text: "Zero to Hero Blueprints", color: "text-red-500" },
+                { icon: TrendingUp, text: "Real Success Stories", color: "text-green-500" },
+                { icon: Sparkles, text: "No Fluff, Just Results", color: "text-[#247EFF]" }
+              ].map((item, index) => (
+                <div 
+                  key={index}
+                  className={`bg-white/90 dark:bg-brand-black/90 backdrop-blur-sm border border-[#247EFF]/20 rounded-3xl p-8 hover:scale-105 hover:shadow-2xl transition-all duration-300 animate-fade-in`}
+                  style={{ animationDelay: `${index * 200 + 800}ms` }}
+                >
+                  <item.icon className={`w-16 h-16 ${item.color} mx-auto mb-4 animate-bounce`} style={{ animationDelay: `${index * 100}ms` }} />
+                  <p className="text-lg font-semibold text-brand-black dark:text-brand-cream">{item.text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Enhanced CTA Section */}
+          <div className={`transition-all duration-1000 delay-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-8">
               <Button 
                 size="lg"
-                onClick={scrollToNewsletter}
-                className="bg-[#247EFF] hover:bg-[#0057FF] hover:shadow-lg hover:shadow-[#247EFF]/30 text-white font-semibold px-8 py-4 rounded-3xl transition-all duration-300 hover:scale-105"
+                className="bg-gradient-to-r from-[#247EFF] to-[#007cba] hover:from-[#007cba] hover:to-[#247EFF] text-white font-bold px-12 py-6 rounded-3xl text-xl shadow-2xl hover:shadow-[#247EFF]/25 hover:scale-110 transition-all duration-300 animate-pulse"
+                onClick={() => navigate('/blog')}
               >
-                Get Your Free Blueprint
-                <ArrowUp className="ml-2 h-5 w-5 rotate-45" />
+                Start Building Today
+                <ArrowRight className="ml-3 h-8 w-8 animate-bounce" />
+              </Button>
+              
+              <Button 
+                variant="outline"
+                size="lg"
+                className="border-2 border-[#247EFF] text-[#247EFF] hover:bg-[#247EFF] hover:text-white font-bold px-12 py-6 rounded-3xl text-xl hover:scale-105 transition-all duration-300"
+                onClick={() => navigate('/resources')}
+              >
+                Free Resources
+                <Sparkles className="ml-3 h-8 w-8" />
               </Button>
             </div>
-          </div>
-
-          {/* Enhanced Social Proof with authentic community metrics */}
-          <div className={`bg-white/90 dark:bg-brand-black/80 backdrop-blur-sm border border-[#247EFF]/20 rounded-3xl p-8 mb-16 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-              <div>
-                <div className="text-3xl font-bold text-[#247EFF] mb-2">1000+</div>
-                <div className="text-[#0A0A0A]/80 dark:text-brand-cream/80">People who came up with no connections, bad credit, or business knowledge—now <strong>securing the bag</strong> and building real wealth</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-[#247EFF] mb-2">$500→$50K</div>
-                <div className="text-[#0A0A0A]/80 dark:text-brand-cream/80">Average first-year growth using our <strong>street-smart financial strategies</strong> and proven frameworks for <strong>leveling up financially</strong></div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-[#247EFF] mb-2">Real Results</div>
-                <div className="text-[#0A0A0A]/80 dark:text-brand-cream/80">No cap, no fake guru promises—just people who look like you, came from where you're from, now <strong>building generational wealth</strong></div>
-              </div>
-            </div>
-          </div>
-
-          {/* Value Props addressing systemic barriers */}
-          <div className={`grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <div className="bg-gradient-to-br from-[#247EFF]/10 to-blue-100/20 dark:from-[#247EFF]/20 dark:to-blue-900/20 rounded-3xl p-8 border border-[#247EFF]/20">
-              <h3 className="text-2xl font-bold mb-4 text-[#0A0A0A] dark:text-brand-cream">
-                From Survival Mode to <span className="text-[#247EFF]">Wealth Mode</span>
-              </h3>
-              <p className="text-[#0A0A0A]/80 dark:text-brand-cream/80 leading-relaxed">
-                We know what it's like when every dollar matters and money stress is real. Our approach helps you break free from living check to check and start <strong>securing the bag</strong> with assets that work for you—not against you.
-              </p>
-            </div>
             
-            <div className="bg-gradient-to-br from-green-50/80 to-emerald-100/20 dark:from-green-900/20 dark:to-emerald-900/20 rounded-3xl p-8 border border-green-500/20">
-              <h3 className="text-2xl font-bold mb-4 text-[#0A0A0A] dark:text-brand-cream">
-                <span className="text-green-600 dark:text-green-400">Keep It 100</span> Financial Education
-              </h3>
-              <p className="text-[#0A0A0A]/80 dark:text-brand-cream/80 leading-relaxed">
-                Learn <strong>street-smart money moves</strong> and investment strategies in language that makes sense. No corporate jargon, no code-switching—just real talk about <strong>leveling up financially</strong>.
-              </p>
-            </div>
-          </div>
-
-          {/* Navigation Hub */}
-          <div className={`transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <SiteNavigationHub />
+            <p className="text-lg text-brand-black/60 dark:text-brand-cream/60 animate-fade-in" style={{ animationDelay: '1200ms' }}>
+              No credit card. No gimmicks. Just real game from real builders.
+            </p>
           </div>
         </div>
       </div>

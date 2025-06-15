@@ -80,6 +80,7 @@ const BlogPost = () => {
         <BlogPostContent
           content={post.content}
           imageUrl={post.image_url}
+          imageMetaDescription={post.image_meta_description}
           title={post.title}
           tags={post.tags}
         />

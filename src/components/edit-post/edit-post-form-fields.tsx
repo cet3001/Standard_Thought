@@ -129,6 +129,26 @@ const EditPostFormFields = ({ form }: EditPostFormFieldsProps) => {
           </FormItem>
         )}
       />
+
+      {/* Image Meta Description */}
+      <FormField
+        control={form.control}
+        name="image_meta_description"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel className="text-[#0A0A0A] dark:text-brand-cream">Image Alt Text / Description</FormLabel>
+            <FormControl>
+              <Textarea 
+                {...field}
+                rows={2}
+                placeholder="Descriptive alt text for the featured image (helps with SEO and accessibility)"
+                className="border-[#247EFF]/20 focus:border-[#247EFF] text-[#0A0A0A] dark:text-brand-cream bg-white dark:bg-brand-black"
+              />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
     </>
   );
 };

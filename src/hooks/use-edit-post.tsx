@@ -14,6 +14,7 @@ interface BlogPost {
   excerpt: string;
   content: string;
   image_url: string | null;
+  image_meta_description: string | null;
   category: string;
   tags: string[];
   featured: boolean;
@@ -41,6 +42,7 @@ export const useEditPost = () => {
       category: "",
       tags: "",
       image_url: "",
+      image_meta_description: "",
       meta_description: "",
       meta_keywords: "",
       featured: false,
@@ -56,7 +58,7 @@ export const useEditPost = () => {
   useEffect(() => {
     console.log('useEditPost - useEffect triggered', { id, isAdmin, authLoading });
     
-    if (authLoading) return; // still waiting on AuthContext
+    if (authLoading) return;
 
     if (!isAdmin) {
       console.log('useEditPost - User is not admin, redirecting');
@@ -65,7 +67,6 @@ export const useEditPost = () => {
       return;
     }
 
-    // Check if we have an ID parameter
     if (!id) {
       console.log('useEditPost - No ID parameter found');
       toast.error("No post ID provided");
@@ -74,12 +75,10 @@ export const useEditPost = () => {
       return;
     }
 
-    // EDITING EXISTING POST
     console.log('useEditPost - Fetching post for id:', id);
-    fetchPost(); // fetchPost will handle setLoading(false) in finally block
+    fetchPost();
   }, [id, isAdmin, authLoading, navigate]);
 
-  // Separate useEffect to handle form population after post is fetched
   useEffect(() => {
     if (post) {
       console.log('useEditPost - Post data available, populating form:', post);
@@ -91,6 +90,7 @@ export const useEditPost = () => {
         category: post.category || '',
         tags: Array.isArray(post.tags) ? post.tags.join(', ') : '',
         image_url: post.image_url || '',
+        image_meta_description: post.image_meta_description || '',
         meta_description: post.meta_description || '',
         meta_keywords: post.meta_keywords || '',
         featured: Boolean(post.featured),
@@ -135,7 +135,6 @@ export const useEditPost = () => {
       toast.error('An unexpected error occurred');
       navigate("/blog");
     } finally {
-      // ALWAYS clear loading flag, regardless of success or error
       setLoading(false);
     }
   };
@@ -157,6 +156,7 @@ export const useEditPost = () => {
         category: data.category,
         tags: tagsArray,
         image_url: data.image_url || null,
+        image_meta_description: data.image_meta_description || null,
         meta_description: data.meta_description || null,
         meta_keywords: data.meta_keywords || null,
         featured: data.featured,
@@ -178,7 +178,7 @@ export const useEditPost = () => {
       } else {
         console.log('useEditPost - Post updated successfully');
         toast.success('Post updated successfully!');
-        navigate(`/blog/${post.slug}`); // Navigate using the post's slug
+        navigate(`/blog/${post.slug}`);
       }
     } catch (error) {
       console.error('Error:', error);

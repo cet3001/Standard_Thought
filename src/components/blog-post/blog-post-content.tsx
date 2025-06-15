@@ -1,4 +1,3 @@
-
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
 import SemanticContentEnhancer from "../seo/semantic-content-enhancer";
@@ -8,15 +7,16 @@ import HeaderHierarchy from "../content-structure/header-hierarchy";
 interface BlogPostContentProps {
   content: string;
   imageUrl?: string | null;
+  imageMetaDescription?: string | null;
   title: string;
   tags: string[];
 }
 
-const BlogPostContent = ({ content, imageUrl, title, tags }: BlogPostContentProps) => {
-  // Generate SEO-rich ALT text for the featured image
-  const imageAlt = imageUrl 
+const BlogPostContent = ({ content, imageUrl, imageMetaDescription, title, tags }: BlogPostContentProps) => {
+  // Use custom image meta description if available, otherwise generate SEO-rich ALT text
+  const imageAlt = imageMetaDescription || (imageUrl 
     ? `${title} - Featured image for this Standardthought article on building legacy from nothing`
-    : '';
+    : '');
 
   // Determine semantic context based on content and tags
   const getSemanticContext = () => {

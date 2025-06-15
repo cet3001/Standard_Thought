@@ -8,6 +8,7 @@ export const postSchema = z.object({
   category: z.string().min(1, "Category is required"),
   tags: z.string(),
   image_url: z.string().optional(),
+  image_meta_description: z.string().optional(),
   meta_description: z.string().optional(),
   meta_keywords: z.string().optional(),
   featured: z.boolean().default(false),

@@ -14,7 +14,6 @@ interface BlogPost {
   excerpt: string;
   content: string;
   image_url: string | null;
-  image_meta_description: string | null;
   category: string;
   tags: string[];
   featured: boolean;
@@ -90,7 +89,7 @@ export const useEditPost = () => {
         category: post.category || '',
         tags: Array.isArray(post.tags) ? post.tags.join(', ') : '',
         image_url: post.image_url || '',
-        image_meta_description: post.image_meta_description || '',
+        image_meta_description: '',
         meta_description: post.meta_description || '',
         meta_keywords: post.meta_keywords || '',
         featured: Boolean(post.featured),
@@ -156,7 +155,6 @@ export const useEditPost = () => {
         category: data.category,
         tags: tagsArray,
         image_url: data.image_url || null,
-        image_meta_description: data.image_meta_description || null,
         meta_description: data.meta_description || null,
         meta_keywords: data.meta_keywords || null,
         featured: data.featured,

@@ -1,9 +1,8 @@
-
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
-import { ArrowUp } from "lucide-react";
+import { ArrowUp, PenTool } from "lucide-react";
 import BlogShowcaseHeader from "./blog-showcase-header";
 import BlogShowcaseGrid from "./blog-showcase-grid";
 
@@ -102,6 +101,26 @@ const BlogShowcase = () => {
         <BlogShowcaseHeader isVisible={isVisible} />
 
         <BlogShowcaseGrid posts={postsToShow} loading={loading} isVisible={isVisible} />
+        
+        {/* Submit Your Story Section */}
+        <div className={`text-center mb-12 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="max-w-2xl mx-auto mb-8">
+            <p className="text-lg text-[#0A0A0A]/80 dark:text-brand-cream/80 mb-6">
+              Your grind matters—share how you flipped your circumstances and inspire the next hustler.
+            </p>
+          </div>
+          
+          <Button 
+            size="lg"
+            variant="outline"
+            className="bg-transparent border-2 border-[#247EFF] text-[#247EFF] hover:bg-[#247EFF] hover:text-white font-semibold px-8 py-4 rounded-3xl mb-8"
+            onClick={() => navigate('/submit-story')}
+            aria-label="Submit your success story"
+          >
+            <PenTool className="mr-2 h-5 w-5" />
+            Submit Your Story
+          </Button>
+        </div>
         
         {/* Enhanced Internal Linking and CTA Section */}
         <div className={`text-center transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>

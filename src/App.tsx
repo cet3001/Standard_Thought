@@ -25,6 +25,7 @@ import AISideHustlesGuide from "@/pages/AISideHustlesGuide";
 import FreeInvestingGuide from "@/pages/FreeInvestingGuide";
 import WealthBuildingStrategies from "@/pages/WealthBuildingStrategies";
 import FinancialEducationGuide from "@/pages/FinancialEducationGuide";
+import SubmitStory from "@/pages/SubmitStory";
 
 const queryClient = new QueryClient();
 
@@ -52,6 +53,7 @@ const App = () => (
               <Route path="/edit-post/:id" element={<EditPost />} />
               <Route path="/admin/email" element={<AdminEmail />} />
               <Route path="/unsubscribe" element={<Unsubscribe />} />
+              <Route path="/submit-story" element={<SubmitStory />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="/terms-of-service" element={<TermsOfService />} />
               <Route path="/cookie-policy" element={<CookiePolicy />} />

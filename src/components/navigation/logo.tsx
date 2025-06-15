@@ -7,7 +7,7 @@ const Logo = () => {
       to="/" 
       className="flex items-center space-x-3 hover:text-[#007cba] transition-all duration-300 group"
     >
-      <div className="w-8 h-8 flex-shrink-0">
+      <div className="w-10 h-10 md:w-12 md:h-12 flex-shrink-0">
         <img 
           src="/lovable-uploads/5316a53a-9afb-4437-8f49-d3b521d18e44.png" 
           alt="ST Logo" 

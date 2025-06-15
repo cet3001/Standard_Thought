@@ -1,82 +1,31 @@
 
-import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router-dom";
 
-interface NavItemsProps {
-  className?: string;
-  onItemClick?: () => void;
-  showButton?: boolean;
-}
-
-const NavItems = ({ className = "", onItemClick, showButton = false }: NavItemsProps) => {
+const NavItems = () => {
   const location = useLocation();
 
-  const scrollToNewsletter = () => {
-    const newsletterSection = document.querySelector('[data-section="newsletter"]');
-    if (newsletterSection) {
-      // Find the actual form element for precise scrolling
-      const formElement = newsletterSection.querySelector('form');
-      
-      if (formElement) {
-        const formRect = formElement.getBoundingClientRect();
-        const targetPosition = window.pageYOffset + formRect.top;
-        // Center form in viewport with extra space for mobile
-        const offset = window.innerWidth < 768 ? window.innerHeight * 0.3 : 100;
-        
-        window.scrollTo({
-          top: targetPosition - offset,
-          behavior: 'smooth'
-        });
-      } else {
-        // Fallback if form not found
-        const offsetTop = newsletterSection.getBoundingClientRect().top + window.pageYOffset;
-        const offset = window.innerWidth < 768 ? 300 : 150;
-        
-        window.scrollTo({
-          top: offsetTop - offset,
-          behavior: 'smooth'
-        });
-      }
-    }
-    if (onItemClick) {
-      onItemClick();
-    }
-  };
-
-  const handleNavClick = () => {
-    if (onItemClick) {
-      onItemClick();
-    }
-  };
-
   const navItems = [
-    { label: "Start Here", href: "/" },
-    { label: "Builder Stories", href: "/blog" },
-    { label: "Mindset Tools", href: "/about" },
-    { label: "Success Strategies", href: "/sales" }
+    { href: "/", label: "Home" },
+    { href: "/about", label: "About" },
+    { href: "/blog", label: "Stories" },
+    { href: "/resources", label: "Resources" },
   ];
 
   return (
-    <div className={className}>
+    <div className="hidden lg:flex space-x-8">
       {navItems.map((item) => (
         <Link
-          key={item.label}
+          key={item.href}
           to={item.href}
-          onClick={handleNavClick}
-          className="text-[#0A0A0A] dark:text-brand-cream hover:text-[#247EFF] dark:hover:text-[#247EFF] transition-colors duration-300 font-medium"
+          className={`transition-colors font-medium ${
+            location.pathname === item.href
+              ? "text-[#247EFF] border-b-2 border-[#247EFF] pb-1"
+              : "text-[#0A0A0A] dark:text-brand-cream hover:text-[#247EFF] dark:hover:text-[#247EFF]"
+          }`}
         >
           {item.label}
         </Link>
       ))}
-      
-      {showButton && (
-        <Button 
-          onClick={scrollToNewsletter}
-          className="bg-[#247EFF] hover:bg-[#0057FF] hover:shadow-lg hover:shadow-[#247EFF]/30 text-white font-semibold px-6 py-2 rounded-2xl transition-all duration-300 hover:scale-105"
-        >
-          Get Free Playbook
-        </Button>
-      )}
     </div>
   );
 };

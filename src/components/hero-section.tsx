@@ -76,7 +76,7 @@ const HeroSection = () => {
                 onClick={scrollToNewsletter}
                 className="bg-[#247EFF] hover:bg-[#0057FF] hover:shadow-lg hover:shadow-[#247EFF]/30 text-white font-semibold px-8 py-4 rounded-3xl transition-all duration-300 hover:scale-105"
               >
-                Get Your Free Blueprint
+                Start Flipping Your Circumstances
                 <ArrowUp className="ml-2 h-5 w-5 rotate-45" />
               </Button>
             </div>
@@ -87,15 +87,15 @@ const HeroSection = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
               <div>
                 <div className="text-3xl font-bold text-[#247EFF] mb-2">1000+</div>
-                <div className="text-[#0A0A0A]/80 dark:text-brand-cream/80">People who came up with no connections, bad credit, or business knowledge—now <strong>securing the bag</strong> and building real wealth</div>
+                <div className="text-[#0A0A0A]/80 dark:text-brand-cream/80">Hustlers flipped struggle into progress</div>
               </div>
               <div>
                 <div className="text-3xl font-bold text-[#247EFF] mb-2">$500→$50K</div>
-                <div className="text-[#0A0A0A]/80 dark:text-brand-cream/80">Average first-year growth using our <strong>street-smart financial strategies</strong> and proven frameworks for <strong>leveling up financially</strong></div>
+                <div className="text-[#0A0A0A]/80 dark:text-brand-cream/80">From $500 side hustles to $50K legit businesses—real bag secured</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-[#247EFF] mb-2">Real Results</div>
-                <div className="text-[#0A0A0A]/80 dark:text-brand-cream/80">No cap, no fake guru promises—just people who look like you, came from where you're from, now <strong>building generational wealth</strong></div>
+                <div className="text-3xl font-bold text-[#247EFF] mb-2">No Cap Results</div>
+                <div className="text-[#0A0A0A]/80 dark:text-brand-cream/80">Real People, Real Progress</div>
               </div>
             </div>
           </div>

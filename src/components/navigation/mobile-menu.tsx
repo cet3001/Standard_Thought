@@ -14,7 +14,7 @@ const MobileMenu = ({ isOpen, onToggle, onClose }: MobileMenuProps) => {
   const navItems = [
     { href: "/", label: "Home" },
     { href: "/about", label: "About" },
-    { href: "/blog", label: "Stories" },
+    { href: "/blog", label: "Blog" },
     { href: "/resources", label: "Resources" },
   ];
 

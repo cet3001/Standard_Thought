@@ -60,7 +60,7 @@ export const NewsletterSection = () => {
         // Don't show error to user as subscription was successful
       }
 
-      toast.success("Playbook sent! Check your email for your free PDF.");
+      toast.success("Blueprint sent! Check your email for your free PDF.");
       setEmail("");
       setName("");
     } catch (error) {
@@ -85,21 +85,21 @@ export const NewsletterSection = () => {
             <div className="flex items-center justify-center mb-4">
               <Download className="w-8 h-8 text-[#247EFF] mr-3" />
               <h2 className="text-4xl md:text-5xl font-bold text-[#0A0A0A] dark:text-brand-cream">
-                Get Your Free Builder's Playbook
+                Get Your Free Wealth Building Blueprint
               </h2>
             </div>
             <p className="text-xl md:text-2xl text-[#0A0A0A]/80 dark:text-brand-cream/80 mb-8 leading-relaxed">
-              The exact blueprint that helped 500+ first-gen builders turn nothing into something. 
-              <span className="text-[#247EFF] font-semibold block mt-2">Instant PDF delivery + weekly "Hustle Notes"</span>
+              The same blueprint that helped 500+ people go from broke to <strong>securing the bag</strong> consistently. 
+              <span className="text-[#247EFF] font-semibold block mt-2">Instant PDF delivery + weekly "Level Up Notes"</span>
             </p>
           </div>
 
           {/* Value Props */}
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             {[
-              { icon: "💰", title: "Money Mindset Reset", desc: "Break poverty programming that keeps you stuck" },
-              { icon: "🎯", title: "Goal Stacking System", desc: "Turn big dreams into daily wins that compound" },
-              { icon: "📈", title: "Wealth Building Roadmap", desc: "Step-by-step path from survival to abundance" }
+              { icon: "💰", title: "Money Mindset Shift", desc: "Break the broke mentality that keeps you stuck in survival mode" },
+              { icon: "🎯", title: "Goal Stacking Framework", desc: "Turn big dreams into daily wins that build momentum" },
+              { icon: "📈", title: "Wealth Building Roadmap", desc: "Step-by-step path from paycheck to paycheck to generational wealth" }
             ].map((item, index) => (
               <div key={index} className="bg-white/50 dark:bg-brand-black/30 backdrop-blur-sm p-6 rounded-2xl border border-[#247EFF]/10 hover:border-[#247EFF]/30 transition-all duration-300">
                 <div className="text-3xl mb-3">{item.icon}</div>
@@ -125,7 +125,7 @@ export const NewsletterSection = () => {
                 <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#0A0A0A]/60 dark:text-brand-cream/60 h-5 w-5" />
                 <Input
                   type="email"
-                  placeholder="Enter your email for instant access"
+                  placeholder="Enter your email to start leveling up"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -141,12 +141,12 @@ export const NewsletterSection = () => {
                 {isLoading ? (
                   <div className="flex items-center">
                     <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                    Sending PDF...
+                    Sending Blueprint...
                   </div>
                 ) : (
                   <div className="flex items-center">
                     <Download className="w-5 h-5 mr-2" />
-                    Get Free Playbook PDF
+                    Get Free Blueprint
                   </div>
                 )}
               </Button>
@@ -159,7 +159,7 @@ export const NewsletterSection = () => {
               </div>
               <div className="flex items-center">
                 <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                No spam, ever
+                No spam, just game
               </div>
               <div className="flex items-center">
                 <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
@@ -171,7 +171,7 @@ export const NewsletterSection = () => {
           {/* Social Proof */}
           <div className="mt-12 text-center">
             <p className="text-[#0A0A0A]/60 dark:text-brand-cream/60 text-sm mb-4">
-              Join 10,000+ builders who've already downloaded the playbook
+              Join 10,000+ builders who are already leveling up financially
             </p>
             <div className="flex justify-center items-center space-x-2">
               <div className="flex -space-x-2">
@@ -181,7 +181,7 @@ export const NewsletterSection = () => {
                   </div>
                 ))}
               </div>
-              <span className="text-[#0A0A0A]/60 dark:text-brand-cream/60 text-sm">and thousands more...</span>
+              <span className="text-[#0A0A0A]/60 dark:text-brand-cream/60 text-sm">and thousands more securing the bag...</span>
             </div>
           </div>
         </div>

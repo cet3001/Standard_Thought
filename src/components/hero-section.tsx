@@ -62,12 +62,12 @@ const HeroSection = () => {
           {/* Main Hero Content */}
           <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
             <h1 className="text-5xl md:text-7xl font-bold mb-8 text-[#0A0A0A] dark:text-brand-cream leading-tight">
-              Break the Cycle. <span className="text-[#247EFF]">Build Your Legacy</span>
+              From Nothing to <span className="text-[#247EFF]">Generational Wealth</span>
             </h1>
             
             <p className="text-xl md:text-2xl text-[#0A0A0A]/70 dark:text-brand-cream/70 leading-relaxed mb-8 max-w-4xl mx-auto">
-              We get it—the system wasn't built for us. But that doesn't mean we can't win. Join 1000+ people who came from nothing and are building something real through{" "}
-              <ContextualLinks context="hero" className="inline" />. Learn <strong>hood financial literacy</strong> that actually makes sense, master <strong>street smart money moves</strong> that work in the real world, and start your <strong>generational wealth building journey</strong>—even if banks, credit, and investing feel foreign right now.
+              Real talk—the system wasn't built for us, but that don't mean we can't secure the bag. Join 1000+ people who started from the bottom and are now <strong>leveling up financially</strong> through{" "}
+              <ContextualLinks context="hero" className="inline" />. Master <strong>street-smart money moves</strong> that actually work, learn to <strong>build generational wealth from scratch</strong>, and start your legacy—even if traditional finance feels like a foreign language right now.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
@@ -76,7 +76,7 @@ const HeroSection = () => {
                 onClick={scrollToNewsletter}
                 className="bg-[#247EFF] hover:bg-[#0057FF] hover:shadow-lg hover:shadow-[#247EFF]/30 text-white font-semibold px-8 py-4 rounded-3xl transition-all duration-300 hover:scale-105"
               >
-                Get Your Free Playbook
+                Get Your Free Blueprint
                 <ArrowUp className="ml-2 h-5 w-5 rotate-45" />
               </Button>
             </div>
@@ -87,15 +87,15 @@ const HeroSection = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
               <div>
                 <div className="text-3xl font-bold text-[#247EFF] mb-2">1000+</div>
-                <div className="text-[#0A0A0A]/80 dark:text-brand-cream/80">People who started with no connections, bad credit, or zero business experience—now building real wealth</div>
+                <div className="text-[#0A0A0A]/80 dark:text-brand-cream/80">People who came up with no connections, bad credit, or business knowledge—now <strong>securing the bag</strong> and building real wealth</div>
               </div>
               <div>
                 <div className="text-3xl font-bold text-[#247EFF] mb-2">$500→$50K</div>
-                <div className="text-[#0A0A0A]/80 dark:text-brand-cream/80">Average first-year business growth using our <strong>street smart money moves</strong> and practical frameworks</div>
+                <div className="text-[#0A0A0A]/80 dark:text-brand-cream/80">Average first-year growth using our <strong>street-smart financial strategies</strong> and proven frameworks for <strong>leveling up financially</strong></div>
               </div>
               <div>
                 <div className="text-3xl font-bold text-[#247EFF] mb-2">Real Results</div>
-                <div className="text-[#0A0A0A]/80 dark:text-brand-cream/80">No fake guru promises—just people who look like you, came from where you're from, making it happen</div>
+                <div className="text-[#0A0A0A]/80 dark:text-brand-cream/80">No cap, no fake guru promises—just people who look like you, came from where you're from, now <strong>building generational wealth</strong></div>
               </div>
             </div>
           </div>
@@ -107,16 +107,16 @@ const HeroSection = () => {
                 From Survival Mode to <span className="text-[#247EFF]">Wealth Mode</span>
               </h3>
               <p className="text-[#0A0A0A]/80 dark:text-brand-cream/80 leading-relaxed">
-                We know what it's like when every dollar matters and financial anxiety is real. Our <strong>hood financial literacy</strong> approach helps you break free from living paycheck to paycheck and start building assets that work for you—not against you.
+                We know what it's like when every dollar matters and money stress is real. Our approach helps you break free from living check to check and start <strong>securing the bag</strong> with assets that work for you—not against you.
               </p>
             </div>
             
             <div className="bg-gradient-to-br from-green-50/80 to-emerald-100/20 dark:from-green-900/20 dark:to-emerald-900/20 rounded-3xl p-8 border border-green-500/20">
               <h3 className="text-2xl font-bold mb-4 text-[#0A0A0A] dark:text-brand-cream">
-                <span className="text-green-600 dark:text-green-400">No Code-Switching</span> Required
+                <span className="text-green-600 dark:text-green-400">Keep It 100</span> Financial Education
               </h3>
               <p className="text-[#0A0A0A]/80 dark:text-brand-cream/80 leading-relaxed">
-                Learn <strong>urban investing strategies</strong> and business development in language that makes sense. No corporate jargon, no pretending to be someone you're not—just real talk about real money moves.
+                Learn <strong>street-smart money moves</strong> and investment strategies in language that makes sense. No corporate jargon, no code-switching—just real talk about <strong>leveling up financially</strong>.
               </p>
             </div>
           </div>

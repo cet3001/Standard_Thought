@@ -1,4 +1,3 @@
-
 import { Helmet } from "react-helmet";
 import { DEFAULTS } from "./defaults";
 import { normalizeUrl, getFullImageUrl, optimizeDescription } from "./helpers";
@@ -41,8 +40,14 @@ const SEO = ({
   noIndex = false,
   wordCount
 }: SEOProps) => {
-  // Title logic
-  const fullTitle = title.includes("Standardthought") ? title : `${title} | Standardthought`;
+  // Title optimization - keep under 60 characters
+  const optimizedTitle = title.length > 60 
+    ? title.substring(0, 57) + "..." 
+    : title;
+  
+  const fullTitle = optimizedTitle.includes("Standardthought") 
+    ? optimizedTitle 
+    : `${optimizedTitle} | Standardthought`;
 
   const canonicalUrl = normalizeUrl(url);
   const fullImageUrl = getFullImageUrl(image);
@@ -101,7 +106,7 @@ const SEO = ({
       <meta name="googlebot" content={robotsContent} />
       <meta name="bingbot" content={robotsContent} />
       
-      {/* Open Graph */}
+      {/* Enhanced Open Graph Tags */}
       <meta property="og:type" content={type} />
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={optimizedDescription} />
@@ -115,7 +120,7 @@ const SEO = ({
       <meta property="og:site_name" content="Standardthought" />
       <meta property="og:locale" content="en_US" />
       
-      {/* Twitter Card */}
+      {/* Enhanced Twitter Card Tags */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content="@standardthought" />
       <meta name="twitter:creator" content={twitterHandle} />
@@ -124,6 +129,8 @@ const SEO = ({
       <meta name="twitter:image" content={fullImageUrl} />
       <meta name="twitter:image:alt" content={fullTitle} />
       <meta name="twitter:domain" content="www.standardthought.com" />
+      <meta name="twitter:label1" content="Reading time" />
+      <meta name="twitter:data1" content={wordCount ? `${Math.ceil(wordCount / 200)} min read` : "Quick read"} />
       
       {/* Mobile & App */}
       <meta name="apple-mobile-web-app-capable" content="yes" />

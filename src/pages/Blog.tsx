@@ -107,16 +107,32 @@ const Blog = () => {
   return (
     <>
       <Helmet>
-        <title>Out the Mud: Builder Stories | Standardthought</title>
-        <meta name="description" content="Raw game from people who actually built something. No theory, no fluff—just real blueprints from builders who started with nothing but grit and refused to stay there." />
-        <meta name="keywords" content="builder stories, entrepreneurship, startup stories, business building, hustle, mindset, success stories, wealth creation strategies, business development, entrepreneurial journeys, success psychology" />
-        <meta property="og:title" content="Out the Mud: Builder Stories | Standardthought" />
-        <meta property="og:description" content="Raw game from people who actually built something. Real blueprints from builders who started with nothing but grit." />
+        <title>Builder Stories: Real Success From Nothing | Standardthought</title>
+        <meta name="description" content="Raw blueprints from entrepreneurs who built generational wealth from scratch. No theory, just proven strategies from people who made it out the struggle." />
+        <meta name="keywords" content="builder stories, entrepreneurship success stories, urban entrepreneur journeys, wealth building strategies, business building blueprints, startup success stories, hustle mentality, self-made millionaires, generational wealth creation, entrepreneur motivation" />
+        
+        {/* Open Graph Tags */}
+        <meta property="og:title" content="Builder Stories: Real Success From Nothing | Standardthought" />
+        <meta property="og:description" content="Raw blueprints from entrepreneurs who built generational wealth from scratch. No theory, just proven strategies from people who made it out the struggle." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={window.location.href} />
+        <meta property="og:url" content="https://www.standardthought.com/blog" />
+        <meta property="og:image" content="https://www.standardthought.com/lovable-uploads/a8faab87-8319-4fa0-ae53-35597c6f8fc5.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Builder Stories - Real Success From Nothing" />
+        <meta property="og:site_name" content="Standardthought" />
+        
+        {/* Twitter Card Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Out the Mud: Builder Stories | Standardthought" />
-        <meta name="twitter:description" content="Raw game from people who actually built something. Real blueprints from builders who started with nothing but grit." />
+        <meta name="twitter:site" content="@standardthought" />
+        <meta name="twitter:title" content="Builder Stories: Real Success From Nothing" />
+        <meta name="twitter:description" content="Raw blueprints from entrepreneurs who built generational wealth from scratch. Proven strategies from people who made it out the struggle." />
+        <meta name="twitter:image" content="https://www.standardthought.com/lovable-uploads/a8faab87-8319-4fa0-ae53-35597c6f8fc5.png" />
+        <meta name="twitter:image:alt" content="Builder Stories - Real Success From Nothing" />
+        
+        {/* Additional Meta Tags */}
+        <link rel="canonical" href="https://www.standardthought.com/blog" />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
       </Helmet>
 
       <div className="min-h-screen bg-brand-cream dark:bg-brand-black">

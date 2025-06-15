@@ -87,9 +87,9 @@ const Resources = () => {
   return (
     <div className="min-h-screen bg-brand-cream dark:bg-brand-black">
       <SEO 
-        title="Resources - Complete Guide to Urban Entrepreneurship & Wealth Building"
-        description="Comprehensive resources for hood financial literacy, urban investing strategies, AI side hustles, and generational wealth building for beginners. Master street smart money moves."
-        keywords="hood financial literacy, urban investing strategies, street smart money moves, generational wealth building for beginners, AI side hustles, urban entrepreneurship, credit building strategies"
+        title="Wealth Building Resources: Hood Financial Literacy"
+        description="Master urban investing, AI side hustles, and credit building. Complete guide to generational wealth building for beginners with street-smart money strategies."
+        keywords="hood financial literacy, urban investing strategies, street smart money moves, generational wealth building for beginners, AI side hustles, urban entrepreneurship, credit building strategies, wealth creation resources, financial education, business development tools"
         url="/resources"
         type="website"
       />

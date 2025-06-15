@@ -1,0 +1,12 @@
+
+/* Selection styling */
+::selection {
+  background-color: rgba(0, 124, 186, 0.2);
+  color: inherit;
+}
+
+/* Focus visible for better accessibility */
+.focus-visible\:outline-none:focus-visible {
+  outline: 2px solid var(--brand-blue);
+  outline-offset: 2px;
+}

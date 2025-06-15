@@ -1,0 +1,24 @@
+
+:root {
+  --brand-cream: #FDF6E3;
+  --brand-black: #0A0A0A;
+  --brand-blue: #007cba;
+}
+.bg-brand-cream {
+  background-color: var(--brand-cream);
+}
+.bg-brand-black {
+  background-color: var(--brand-black);
+}
+.text-brand-cream {
+  color: var(--brand-cream);
+}
+.text-brand-black {
+  color: var(--brand-black);
+}
+.border-brand-cream {
+  border-color: var(--brand-cream);
+}
+.border-brand-black {
+  border-color: var(--brand-black);
+}

@@ -1,0 +1,61 @@
+
+/* Logo and App-specific styles */
+.logo-text {
+  font-family: "Inter", system-ui, sans-serif;
+  font-weight: 900;
+  font-size: 2.25rem;
+  letter-spacing: -1px;
+  color: var(--text-primary);
+  line-height: 1.1;
+}
+/* Responsive Typography */
+@media (min-width: 768px) {
+  .logo-text {
+    font-size: 3rem;
+  }
+}
+.nav-text {
+  font-family: "Inter", system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+/* Button Text */
+.btn-text {
+  font-family: "Inter", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+/* Footer */
+.footer-text {
+  font-family: "Inter", system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+/* Small/Helper Text */
+.text-small {
+  font-family: "Inter", system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  letter-spacing: 0.25px;
+}
+
+.font-inter {
+  font-family: "Inter", system-ui, sans-serif;
+}
+.font-ibm-plex {
+  font-family: "IBM Plex Sans", system-ui, sans-serif;
+}
+.text-brand-highlight {
+  color: var(--text-brand);
+}
+/* Responsive Typography for paragraphs */
+@media (min-width: 768px) {
+  p {
+    font-size: 1.125rem;
+  }
+}

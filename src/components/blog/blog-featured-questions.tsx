@@ -1,5 +1,6 @@
 
 import QuestionAnswerContent from "../content-structure/question-answer-content";
+import SnippetOptimizedContent from "../seo/snippet-optimized-content";
 import HeaderHierarchy from "../content-structure/header-hierarchy";
 
 const BlogFeaturedQuestions = () => {
@@ -25,6 +26,32 @@ const BlogFeaturedQuestions = () => {
       <HeaderHierarchy level={2} className="text-center mb-12">
         Featured Questions from Our Community
       </HeaderHierarchy>
+      
+      {/* Snippet-optimized low-capital business content */}
+      <SnippetOptimizedContent
+        title="Low-Capital Business Ideas for Urban Entrepreneurs"
+        definition="Low-capital businesses are ventures that can be started with minimal upfront investment (typically under $1000) while still generating significant income potential."
+        summary="You can start a profitable business with $500 or less by focusing on service-based models that leverage your existing skills and require minimal equipment or inventory."
+        steps={[
+          "Identify a skill you already have (writing, cleaning, tutoring, cooking)",
+          "Research local demand for this service using Facebook groups and Nextdoor",
+          "Create simple marketing materials using Canva (free)",
+          "Set competitive pricing by researching 3-5 local competitors",
+          "Start with friends and family to build initial testimonials",
+          "Use free social media platforms to promote your services",
+          "Reinvest first profits into better tools and marketing",
+          "Scale by hiring others or expanding service offerings"
+        ]}
+        bulletPoints={[
+          "Content creation services: $25-100 per project, requires only a computer",
+          "Local cleaning services: $20-40 per hour, minimal cleaning supplies needed",
+          "Tutoring or coaching: $30-75 per hour, can be done virtually",
+          "Meal prep business: $10-15 per meal, use your own kitchen",
+          "Social media management: $500-2000 per client monthly",
+          "Handyman services: $25-50 per hour, use tools you already own"
+        ]}
+        className="mb-12"
+      />
       
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {featuredQuestions.map((qa, index) => (

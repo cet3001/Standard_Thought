@@ -15,6 +15,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { trackBlogRead } from "@/components/analytics";
 import BreadcrumbNavigation from "@/components/breadcrumb-navigation";
+import BreadcrumbSchema from "@/components/breadcrumb-schema";
 
 interface BlogPost {
   id: string;
@@ -87,6 +88,10 @@ const BlogPost = () => {
     return `${readTime} min read`;
   };
 
+  const getWordCount = (content: string) => {
+    return content.split(' ').length;
+  };
+
   const handlePostDeleted = () => {
     navigate("/blog");
   };
@@ -107,6 +112,7 @@ const BlogPost = () => {
     `${post.tags.join(', ')}, ${post.category.toLowerCase()}, standardthought blog, urban entrepreneurship`;
 
   const pageTitle = `${post.title} | Standardthought Blog`;
+  const wordCount = getWordCount(post.content);
 
   return (
     <>
@@ -118,10 +124,15 @@ const BlogPost = () => {
         url={`/blog/${post.slug}`}
         type="article"
         publishedTime={post.created_at}
+        modifiedTime={post.created_at}
         category={post.category}
         tags={post.tags}
         author="Standardthought"
+        wordCount={wordCount}
       />
+
+      {/* Breadcrumb Schema */}
+      <BreadcrumbSchema />
 
       <div className="min-h-screen bg-brand-cream dark:bg-brand-black">
         <Navigation />

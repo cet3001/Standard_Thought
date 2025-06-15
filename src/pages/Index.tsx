@@ -20,8 +20,13 @@ const Index = () => {
         description="Join 1000+ urban entrepreneurs building generational wealth from scratch. Get proven frameworks, actionable strategies, and community support to turn your hustle into a legacy business. No safety net required."
         keywords="urban entrepreneurship, build from nothing, legacy building, startup frameworks, hustle mentality, first generation wealth, entrepreneur community, business growth strategies, mindset shift, self-made success, urban personal development, generational wealth building, business development, wealth creation strategies, entrepreneurial mentorship, success psychology, revenue optimization"
         url="https://www.standardthought.com"
+        type="website"
         noIndex={false}
       />
+      
+      {/* Breadcrumb Schema for homepage navigation */}
+      <BreadcrumbSchema />
+      
       <SitemapGenerator />
       <Navigation />
       <main role="main" className="pt-24 lg:pt-20">

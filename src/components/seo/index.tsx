@@ -2,7 +2,11 @@
 import { Helmet } from "react-helmet";
 import { DEFAULTS } from "./defaults";
 import { normalizeUrl, getFullImageUrl, optimizeDescription } from "./helpers";
-import { generateStructuredData } from "./structuredData";
+import { 
+  generateOrganizationSchema, 
+  generateArticleSchema, 
+  generateWebSiteSchema 
+} from "./schemas";
 
 interface SEOProps {
   title?: string;
@@ -18,6 +22,7 @@ interface SEOProps {
   tags?: string[];
   twitterHandle?: string;
   noIndex?: boolean;
+  wordCount?: number;
 }
 
 const SEO = ({
@@ -33,7 +38,8 @@ const SEO = ({
   category,
   tags = [],
   twitterHandle = DEFAULTS.twitterHandle,
-  noIndex = false
+  noIndex = false,
+  wordCount
 }: SEOProps) => {
   // Title logic
   const fullTitle = title.includes("Standardthought") ? title : `${title} | Standardthought`;
@@ -47,19 +53,42 @@ const SEO = ({
     ? "noindex, nofollow"
     : "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1";
 
-  // Structured Data
-  const structuredData = generateStructuredData({
-    type,
-    title: fullTitle,
-    description: optimizedDescription,
-    image: fullImageUrl,
-    url: canonicalUrl,
-    publishedTime,
-    modifiedTime,
-    author,
-    category,
-    tags
-  });
+  // Generate appropriate schema based on type
+  let structuredData;
+  
+  if (type === 'website') {
+    // For homepage and main pages, use Organization + WebSite schema
+    const organizationSchema = generateOrganizationSchema({
+      name: "Standardthought",
+      url: canonicalUrl,
+      title: fullTitle,
+      description: optimizedDescription,
+      logo: fullImageUrl,
+      contactEmail: "hello@standardthought.com",
+      socialMedia: [
+        "https://twitter.com/standardthought",
+        "https://www.linkedin.com/company/standardthought"
+      ]
+    });
+
+    const webSiteSchema = generateWebSiteSchema(canonicalUrl);
+    
+    structuredData = [organizationSchema, webSiteSchema];
+  } else {
+    // For articles, use Article schema
+    structuredData = generateArticleSchema({
+      title: fullTitle,
+      description: optimizedDescription,
+      url: canonicalUrl,
+      image: fullImageUrl,
+      author: author || "Standardthought",
+      publishedTime: publishedTime || new Date().toISOString(),
+      modifiedTime,
+      category: category || "Business",
+      tags,
+      wordCount
+    });
+  }
 
   return (
     <Helmet>
@@ -71,6 +100,8 @@ const SEO = ({
       <meta name="robots" content={robotsContent} />
       <meta name="googlebot" content={robotsContent} />
       <meta name="bingbot" content={robotsContent} />
+      
+      {/* Open Graph */}
       <meta property="og:type" content={type} />
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={optimizedDescription} />
@@ -83,6 +114,8 @@ const SEO = ({
       <meta property="og:url" content={canonicalUrl} />
       <meta property="og:site_name" content="Standardthought" />
       <meta property="og:locale" content="en_US" />
+      
+      {/* Twitter Card */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content="@standardthought" />
       <meta name="twitter:creator" content={twitterHandle} />
@@ -91,6 +124,8 @@ const SEO = ({
       <meta name="twitter:image" content={fullImageUrl} />
       <meta name="twitter:image:alt" content={fullTitle} />
       <meta name="twitter:domain" content="www.standardthought.com" />
+      
+      {/* Mobile & App */}
       <meta name="apple-mobile-web-app-capable" content="yes" />
       <meta name="apple-mobile-web-app-status-bar-style" content="default" />
       <meta name="apple-mobile-web-app-title" content="Standardthought" />
@@ -98,6 +133,8 @@ const SEO = ({
       <meta name="apple-touch-icon" content={fullImageUrl} />
       <link rel="apple-touch-icon" href={fullImageUrl} />
       <link rel="apple-touch-icon-precomposed" href={fullImageUrl} />
+      
+      {/* Article specific meta tags */}
       {type === "article" && publishedTime && (
         <meta property="article:published_time" content={publishedTime} />
       )}
@@ -115,9 +152,13 @@ const SEO = ({
         tags.map(tag => (
           <meta key={tag} property="article:tag" content={tag} />
         ))}
+      
+      {/* Structured Data */}
       <script type="application/ld+json">
-        {JSON.stringify(structuredData)}
+        {JSON.stringify(Array.isArray(structuredData) ? structuredData : [structuredData])}
       </script>
+      
+      {/* Additional Meta */}
       <link rel="icon" type="image/x-icon" href="/favicon.ico" />
       <meta name="theme-color" content="#247EFF" />
       <meta httpEquiv="X-UA-Compatible" content="IE=edge" />

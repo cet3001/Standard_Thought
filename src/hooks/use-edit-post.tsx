@@ -56,15 +56,23 @@ export const useEditPost = () => {
   useEffect(() => {
     console.log('useEditPost - useEffect triggered', { slug, isAdmin, authLoading });
     
-    if (!authLoading && !isAdmin) {
+    if (authLoading) return; // still waiting on AuthContext
+
+    if (!isAdmin) {
       console.log('useEditPost - User is not admin, redirecting');
       navigate("/");
+      setLoading(false); // Clear loading flag before redirecting
       return;
     }
 
-    if (slug && isAdmin && !authLoading) {
+    // EDITING EXISTING POST
+    if (slug) {
       console.log('useEditPost - Fetching post for slug:', slug);
-      fetchPost();
+      fetchPost(); // fetchPost will handle setLoading(false) in finally block
+    } else {
+      // CREATING NEW POST - nothing to fetch, so drop the skeleton
+      console.log('useEditPost - New post creation, clearing loading');
+      setLoading(false);
     }
   }, [slug, isAdmin, authLoading, navigate]);
 
@@ -88,12 +96,8 @@ export const useEditPost = () => {
       };
       
       console.log('useEditPost - Resetting form with data:', formData);
-      
-      // Use setTimeout to ensure form is ready
-      setTimeout(() => {
-        form.reset(formData);
-        console.log('useEditPost - Form reset completed');
-      }, 100);
+      form.reset(formData);
+      console.log('useEditPost - Form reset completed');
     }
   }, [post, form]);
 
@@ -108,9 +112,9 @@ export const useEditPost = () => {
 
       console.log('useEditPost - Supabase response:', { data, error });
 
-      if (error) {
+      if (error || !data) {
         console.error('Error fetching post:', error);
-        toast.error('Failed to load post');
+        toast.error('Post not found');
         navigate("/blog");
         return;
       }
@@ -123,6 +127,7 @@ export const useEditPost = () => {
       toast.error('An unexpected error occurred');
       navigate("/blog");
     } finally {
+      // ALWAYS clear loading flag, regardless of success or error
       setLoading(false);
     }
   };

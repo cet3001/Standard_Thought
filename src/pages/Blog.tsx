@@ -13,6 +13,7 @@ import { Helmet } from "react-helmet";
 import { BlogGridSkeleton } from "@/components/blog-skeleton";
 import { trackBlogRead } from "@/components/analytics";
 import BlogPostActions from "@/components/blog-post-actions";
+import BreadcrumbNavigation from "@/components/breadcrumb-navigation";
 
 interface BlogPost {
   id: string;
@@ -108,7 +109,7 @@ const Blog = () => {
       <Helmet>
         <title>Out the Mud: Builder Stories | Standardthought</title>
         <meta name="description" content="Raw game from people who actually built something. No theory, no fluff—just real blueprints from builders who started with nothing but grit and refused to stay there." />
-        <meta name="keywords" content="builder stories, entrepreneurship, startup stories, business building, hustle, mindset, success stories" />
+        <meta name="keywords" content="builder stories, entrepreneurship, startup stories, business building, hustle, mindset, success stories, wealth creation strategies, business development, entrepreneurial journeys, success psychology" />
         <meta property="og:title" content="Out the Mud: Builder Stories | Standardthought" />
         <meta property="og:description" content="Raw game from people who actually built something. Real blueprints from builders who started with nothing but grit." />
         <meta property="og:type" content="website" />
@@ -121,8 +122,13 @@ const Blog = () => {
       <div className="min-h-screen bg-brand-cream dark:bg-brand-black">
         <Navigation />
         
+        {/* Breadcrumb Navigation */}
+        <div className="pt-24">
+          <BreadcrumbNavigation />
+        </div>
+        
         {/* Hero Section */}
-        <section className="pt-32 pb-16 bg-brand-cream dark:bg-brand-black">
+        <section className="pb-16 bg-brand-cream dark:bg-brand-black">
           <div className="container mx-auto px-6">
             <div className={`max-w-4xl mx-auto text-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
               <h1 className="text-5xl md:text-6xl font-bold mb-6 text-[#0A0A0A] dark:text-brand-cream">

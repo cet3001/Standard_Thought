@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
@@ -15,6 +14,7 @@ import BlogPostError from "@/components/blog-post/blog-post-error";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { trackBlogRead } from "@/components/analytics";
+import BreadcrumbNavigation from "@/components/breadcrumb-navigation";
 
 interface BlogPost {
   id: string;
@@ -126,7 +126,12 @@ const BlogPost = () => {
       <div className="min-h-screen bg-brand-cream dark:bg-brand-black">
         <Navigation />
         
-        <article className="pt-32 pb-16">
+        {/* Breadcrumb Navigation */}
+        <div className="pt-24">
+          <BreadcrumbNavigation />
+        </div>
+        
+        <article className="pb-16">
           <div className="container mx-auto px-6 max-w-4xl">
             {/* Back Navigation */}
             <div className="flex items-center justify-between mb-8">

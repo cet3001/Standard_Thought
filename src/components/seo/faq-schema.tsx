@@ -12,9 +12,10 @@ interface FAQSchemaProps {
 }
 
 const FAQSchema = ({ faqs }: FAQSchemaProps) => {
-  if (!faqs || faqs.length === 0) return null;
-
   const schema = generateFAQSchema({ faqs });
+  
+  // Don't render anything if schema is null or empty
+  if (!schema) return null;
 
   return (
     <Helmet>

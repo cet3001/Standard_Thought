@@ -223,18 +223,22 @@ export const generateCourseSchema = ({
   inLanguage: "en-US"
 });
 
-export const generateFAQSchema = ({ faqs }: FAQSchemaProps) => ({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqs.map(faq => ({
-    "@type": "Question",
-    name: faq.question,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: faq.answer
-    }
-  }))
-});
+export const generateFAQSchema = ({ faqs }: FAQSchemaProps) => {
+  if (!faqs || faqs.length === 0) return null;
+  
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map(faq => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer
+      }
+    }))
+  };
+};
 
 export const generateWebSiteSchema = (url: string) => ({
   "@context": "https://schema.org",

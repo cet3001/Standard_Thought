@@ -265,9 +265,9 @@ serve(async (req) => {
 </html>
     `
 
-    // Prepare email payload
+    // Prepare email payload - using the default Resend testing sender
     const emailPayload = {
-      from: 'Standardthought <cet3001@gmail.com>',
+      from: 'Standardthought <onboarding@resend.dev>',
       to: [email],
       subject: '🔥 Welcome to the Movement - Your Playbook is Attached!',
       html: emailContent,

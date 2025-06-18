@@ -7,7 +7,7 @@ import { toast } from "sonner";
 import { manualSendPlaybook } from "@/lib/manual-email-utils";
 
 export const ManualSendPlaybook = () => {
-  const [email, setEmail] = useState("idalmcclure@gmail.com");
+  const [email, setEmail] = useState("cet3001@gmail.com");
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSend = async (e: React.FormEvent) => {
@@ -22,7 +22,7 @@ export const ManualSendPlaybook = () => {
     try {
       await manualSendPlaybook(email);
       toast.success(`Playbook sent successfully to ${email}!`);
-      setEmail("");
+      setEmail("cet3001@gmail.com");
     } catch (error: any) {
       console.error("Manual send error:", error);
       toast.error(error.message || "Failed to send playbook");

@@ -1,3 +1,4 @@
+
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts'
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
 
@@ -266,7 +267,7 @@ serve(async (req) => {
 
     // Prepare email payload
     const emailPayload = {
-      from: 'Standardthought <noreply@resend.dev>',
+      from: 'Standardthought <cet3001@gmail.com>',
       to: [email],
       subject: '🔥 Welcome to the Movement - Your Playbook is Attached!',
       html: emailContent,

@@ -7,9 +7,6 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 }
 
-// Helper function to add delay between attempts
-const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
-
 serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return new Response('ok', { headers: corsHeaders })
@@ -268,7 +265,6 @@ serve(async (req) => {
 </html>
     `
 
-    // Start with the most reliable sender - Resend's default
     const emailPayload = {
       from: 'onboarding@resend.dev',
       to: [email],
@@ -299,6 +295,12 @@ serve(async (req) => {
         statusText: res.statusText,
         error: errorText
       })
+      
+      // Check if it's the sandbox limitation error
+      if (res.status === 403 && errorText.includes('You can only send testing emails')) {
+        throw new Error(`RESEND SANDBOX LIMITATION: Your Resend account can only send emails to verified addresses. To send to ${email}, either: 1) Verify a domain at resend.com/domains, or 2) Add ${email} as a verified recipient in your Resend dashboard.`)
+      }
+      
       throw new Error(`Failed to send email: ${res.status} ${errorText}`)
     }
 

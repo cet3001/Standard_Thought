@@ -265,58 +265,83 @@ serve(async (req) => {
 </html>
     `
 
-    // Prepare email payload - using the default Resend testing sender
-    const emailPayload = {
-      from: 'Standardthought <onboarding@resend.dev>',
-      to: [email],
-      subject: '🔥 Welcome to the Movement - Your Playbook is Attached!',
-      html: emailContent,
-    }
+    // Try different sender configurations based on what's available
+    const senderConfigs = [
+      'Standardthought <newsletter@standardthought.com>',
+      'Standardthought <hello@standardthought.com>',
+      'Standardthought <noreply@standardthought.com>',
+      'Standard Thought <onboarding@resend.dev>',
+      'onboarding@resend.dev'
+    ];
 
-    // Add attachment if playbook was found
-    if (playbookAttachment) {
-      emailPayload.attachments = [playbookAttachment]
-    }
+    let emailSent = false;
+    let lastError = null;
 
-    console.log(`[EDGE FUNCTION DEBUG] Sending email to ${email} via Resend API...`)
-    console.log(`[EDGE FUNCTION DEBUG] Email payload for ${email}:`, {
-      from: emailPayload.from,
-      to: emailPayload.to,
-      subject: emailPayload.subject,
-      hasAttachment: !!playbookAttachment
-    })
+    // Try each sender configuration until one works
+    for (const fromAddress of senderConfigs) {
+      try {
+        const emailPayload = {
+          from: fromAddress,
+          to: [email],
+          subject: '🔥 Welcome to the Movement - Your Playbook is Attached!',
+          html: emailContent,
+        }
 
-    const res = await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${RESEND_API_KEY}`,
-      },
-      body: JSON.stringify(emailPayload),
-    })
+        // Add attachment if playbook was found
+        if (playbookAttachment) {
+          emailPayload.attachments = [playbookAttachment]
+        }
 
-    if (!res.ok) {
-      const errorText = await res.text()
-      console.error(`[EDGE FUNCTION DEBUG] Resend API error for ${email}:`, {
-        status: res.status,
-        statusText: res.statusText,
-        error: errorText
-      })
-      throw new Error(`Failed to send email: ${res.status} ${errorText}`)
-    }
+        console.log(`[EDGE FUNCTION DEBUG] Trying to send email from ${fromAddress} to ${email}...`)
 
-    const data = await res.json()
-    console.log(`[EDGE FUNCTION DEBUG] Email sent successfully to ${email}:`, data)
+        const res = await fetch('https://api.resend.com/emails', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${RESEND_API_KEY}`,
+          },
+          body: JSON.stringify(emailPayload),
+        })
 
-    return new Response(
-      JSON.stringify({ success: true, data, has_attachment: !!playbookAttachment }),
-      { 
-        headers: { 
-          ...corsHeaders, 
-          'Content-Type': 'application/json' 
-        } 
+        if (res.ok) {
+          const data = await res.json()
+          console.log(`[EDGE FUNCTION DEBUG] Email sent successfully from ${fromAddress} to ${email}:`, data)
+          emailSent = true;
+          
+          return new Response(
+            JSON.stringify({ success: true, data, has_attachment: !!playbookAttachment, sender: fromAddress }),
+            { 
+              headers: { 
+                ...corsHeaders, 
+                'Content-Type': 'application/json' 
+              } 
+            }
+          )
+        } else {
+          const errorText = await res.text()
+          lastError = `${res.status} ${errorText}`
+          console.log(`[EDGE FUNCTION DEBUG] Failed to send from ${fromAddress}: ${lastError}`)
+          
+          // If it's a 403 error about domain verification, try the next sender
+          if (res.status === 403) {
+            continue;
+          } else {
+            // For other errors, break and return the error
+            break;
+          }
+        }
+      } catch (senderError) {
+        console.error(`[EDGE FUNCTION DEBUG] Error trying sender ${fromAddress}:`, senderError)
+        lastError = senderError.message;
+        continue;
       }
-    )
+    }
+
+    // If we get here, none of the senders worked
+    if (!emailSent) {
+      console.error(`[EDGE FUNCTION DEBUG] All sender configurations failed for ${email}. Last error:`, lastError)
+      throw new Error(`Failed to send email after trying multiple senders. Last error: ${lastError}`)
+    }
 
   } catch (error) {
     console.error(`[EDGE FUNCTION DEBUG] Error sending welcome email:`, error)

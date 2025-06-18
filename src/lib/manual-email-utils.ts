@@ -5,18 +5,24 @@ export const manualSendPlaybook = async (email: string) => {
   try {
     console.log(`[MANUAL EMAIL] Starting manual playbook send for: ${email}`)
     
-    // Check if user exists in subscribers
-    const { data: subscriber, error: subscriberError } = await supabase
+    // Check if user exists in subscribers - get the first one if multiple exist
+    const { data: subscribers, error: subscriberError } = await supabase
       .from('Subscribers')
       .select('*')
       .eq('email', email.trim().toLowerCase())
-      .single()
+      .limit(1)
 
-    if (subscriberError || !subscriber) {
-      console.error(`[MANUAL EMAIL] Subscriber not found for ${email}:`, subscriberError)
+    if (subscriberError) {
+      console.error(`[MANUAL EMAIL] Database error for ${email}:`, subscriberError)
+      throw new Error(`Database error: ${subscriberError.message}`)
+    }
+
+    if (!subscribers || subscribers.length === 0) {
+      console.error(`[MANUAL EMAIL] No subscriber found for ${email}`)
       throw new Error('Subscriber not found. Please make sure they are subscribed first.')
     }
 
+    const subscriber = subscribers[0]
     console.log(`[MANUAL EMAIL] Found subscriber for ${email}:`, subscriber)
 
     // Send welcome email with playbook

@@ -21,7 +21,7 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
-    console.log("Newsletter send request received");
+    console.log("[NEWSLETTER DEBUG] Newsletter send request received");
 
     // Create Supabase client
     const supabaseClient = createClient(
@@ -60,7 +60,7 @@ const handler = async (req: Request): Promise<Response> => {
       throw new Error("Subject and content are required");
     }
 
-    console.log("Fetching active subscribers...");
+    console.log("[NEWSLETTER DEBUG] Fetching active subscribers...");
 
     // Get all active subscribers
     const { data: subscribers, error: subscribersError } = await supabaseClient
@@ -70,11 +70,11 @@ const handler = async (req: Request): Promise<Response> => {
       .not("email", "is", null);
 
     if (subscribersError) {
-      console.error("Error fetching subscribers:", subscribersError);
+      console.error("[NEWSLETTER DEBUG] Error fetching subscribers:", subscribersError);
       throw new Error("Failed to fetch subscribers");
     }
 
-    console.log(`Found ${subscribers?.length || 0} active subscribers`);
+    console.log(`[NEWSLETTER DEBUG] Found ${subscribers?.length || 0} active subscribers`);
 
     if (!subscribers || subscribers.length === 0) {
       return new Response(
@@ -155,7 +155,7 @@ const handler = async (req: Request): Promise<Response> => {
       `;
     };
 
-    console.log("Sending emails...");
+    console.log("[NEWSLETTER DEBUG] Sending emails...");
     
     // Send emails in batches to avoid rate limits
     const batchSize = 10;
@@ -167,6 +167,7 @@ const handler = async (req: Request): Promise<Response> => {
       
       const emailPromises = batch.map(async (subscriber) => {
         try {
+          console.log(`[NEWSLETTER DEBUG] Preparing email for: ${subscriber.email}`)
           const emailHtml = createEmailHtml(subscriber.name, subscriber.unsubscribe_token);
           
           const emailResponse = await resend.emails.send({
@@ -176,10 +177,10 @@ const handler = async (req: Request): Promise<Response> => {
             html: emailHtml,
           });
 
-          console.log(`Email sent to ${subscriber.email}:`, emailResponse);
+          console.log(`[NEWSLETTER DEBUG] Email sent successfully to ${subscriber.email}:`, emailResponse);
           return { success: true, email: subscriber.email };
         } catch (error) {
-          console.error(`Failed to send email to ${subscriber.email}:`, error);
+          console.error(`[NEWSLETTER DEBUG] Failed to send email to ${subscriber.email}:`, error);
           return { success: false, email: subscriber.email, error };
         }
       });
@@ -200,7 +201,7 @@ const handler = async (req: Request): Promise<Response> => {
       }
     }
 
-    console.log(`Newsletter sending completed. Sent: ${sentCount}, Failed: ${failedCount}`);
+    console.log(`[NEWSLETTER DEBUG] Newsletter sending completed. Sent: ${sentCount}, Failed: ${failedCount}`);
 
     return new Response(
       JSON.stringify({ 
@@ -217,7 +218,7 @@ const handler = async (req: Request): Promise<Response> => {
     );
 
   } catch (error: any) {
-    console.error("Error in send-newsletter function:", error);
+    console.error("[NEWSLETTER DEBUG] Error in send-newsletter function:", error);
     return new Response(
       JSON.stringify({ 
         error: error.message || "Failed to send newsletter",

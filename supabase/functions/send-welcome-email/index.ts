@@ -1,4 +1,3 @@
-
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts'
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
 
@@ -15,14 +14,19 @@ serve(async (req) => {
   try {
     const { email, name, unsubscribe_token } = await req.json()
 
+    console.log(`[EDGE FUNCTION DEBUG] Processing welcome email for: ${email}`)
+
     if (!email) {
       throw new Error('Email is required')
     }
 
     const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY')
     if (!RESEND_API_KEY) {
+      console.error('[EDGE FUNCTION DEBUG] RESEND_API_KEY not found')
       throw new Error('RESEND_API_KEY is not set')
     }
+
+    console.log(`[EDGE FUNCTION DEBUG] RESEND_API_KEY found, proceeding with email for: ${email}`)
 
     // Initialize Supabase client to fetch playbook
     const supabase = createClient(
@@ -33,25 +37,25 @@ serve(async (req) => {
     // Try to fetch the playbook PDF from storage
     let playbookAttachment = null
     try {
-      console.log('Attempting to fetch playbook from storage...')
+      console.log(`[EDGE FUNCTION DEBUG] Attempting to fetch playbook from storage for: ${email}`)
       const { data: files, error: listError } = await supabase.storage
         .from('playbooks')
         .list()
 
       if (listError) {
-        console.error('Error listing playbooks:', listError)
+        console.error(`[EDGE FUNCTION DEBUG] Error listing playbooks for ${email}:`, listError)
       } else if (files && files.length > 0) {
         // Get the first PDF file found
         const pdfFile = files.find(file => file.name.toLowerCase().endsWith('.pdf'))
         
         if (pdfFile) {
-          console.log('Found playbook file:', pdfFile.name)
+          console.log(`[EDGE FUNCTION DEBUG] Found playbook file for ${email}:`, pdfFile.name)
           const { data: fileData, error: downloadError } = await supabase.storage
             .from('playbooks')
             .download(pdfFile.name)
 
           if (downloadError) {
-            console.error('Error downloading playbook:', downloadError)
+            console.error(`[EDGE FUNCTION DEBUG] Error downloading playbook for ${email}:`, downloadError)
           } else if (fileData) {
             const arrayBuffer = await fileData.arrayBuffer()
             const base64Content = btoa(String.fromCharCode(...new Uint8Array(arrayBuffer)))
@@ -61,16 +65,16 @@ serve(async (req) => {
               content: base64Content,
               content_type: 'application/pdf'
             }
-            console.log('Playbook attachment prepared successfully')
+            console.log(`[EDGE FUNCTION DEBUG] Playbook attachment prepared successfully for: ${email}`)
           }
         } else {
-          console.log('No PDF files found in playbooks bucket')
+          console.log(`[EDGE FUNCTION DEBUG] No PDF files found in playbooks bucket for: ${email}`)
         }
       } else {
-        console.log('No files found in playbooks bucket')
+        console.log(`[EDGE FUNCTION DEBUG] No files found in playbooks bucket for: ${email}`)
       }
     } catch (storageError) {
-      console.error('Storage error (continuing without attachment):', storageError)
+      console.error(`[EDGE FUNCTION DEBUG] Storage error for ${email} (continuing without attachment):`, storageError)
     }
 
     const unsubscribeUrl = `https://zedewynjmeyhbjysnxld.supabase.co/functions/v1/unsubscribe/${unsubscribe_token}`
@@ -273,6 +277,14 @@ serve(async (req) => {
       emailPayload.attachments = [playbookAttachment]
     }
 
+    console.log(`[EDGE FUNCTION DEBUG] Sending email to ${email} via Resend API...`)
+    console.log(`[EDGE FUNCTION DEBUG] Email payload for ${email}:`, {
+      from: emailPayload.from,
+      to: emailPayload.to,
+      subject: emailPayload.subject,
+      hasAttachment: !!playbookAttachment
+    })
+
     const res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
@@ -284,12 +296,16 @@ serve(async (req) => {
 
     if (!res.ok) {
       const errorText = await res.text()
-      console.error('Resend API error:', errorText)
+      console.error(`[EDGE FUNCTION DEBUG] Resend API error for ${email}:`, {
+        status: res.status,
+        statusText: res.statusText,
+        error: errorText
+      })
       throw new Error(`Failed to send email: ${res.status} ${errorText}`)
     }
 
     const data = await res.json()
-    console.log('Email sent successfully:', data)
+    console.log(`[EDGE FUNCTION DEBUG] Email sent successfully to ${email}:`, data)
 
     return new Response(
       JSON.stringify({ success: true, data, has_attachment: !!playbookAttachment }),
@@ -302,7 +318,7 @@ serve(async (req) => {
     )
 
   } catch (error) {
-    console.error('Error sending welcome email:', error)
+    console.error(`[EDGE FUNCTION DEBUG] Error sending welcome email:`, error)
     return new Response(
       JSON.stringify({ 
         error: error.message,

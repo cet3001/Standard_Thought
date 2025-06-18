@@ -7,6 +7,8 @@ type SubscriberInsert = Database['public']['Tables']['Subscribers']['Insert']
 
 export const subscribeToNewsletter = async (email: string, name?: string) => {
   try {
+    console.log(`[EMAIL DEBUG] Starting subscription process for: ${email}`)
+    
     // Generate unsubscribe token
     const { data: tokenData, error: tokenError } = await supabase.rpc('generate_unsubscribe_token')
     
@@ -14,6 +16,8 @@ export const subscribeToNewsletter = async (email: string, name?: string) => {
       console.error('Token generation error:', tokenError)
       throw new Error('Failed to generate unsubscribe token')
     }
+
+    console.log(`[EMAIL DEBUG] Generated unsubscribe token for ${email}:`, tokenData)
 
     const { data, error } = await supabase
       .from('Subscribers')
@@ -28,11 +32,14 @@ export const subscribeToNewsletter = async (email: string, name?: string) => {
       .select()
 
     if (error) {
+      console.error(`[EMAIL DEBUG] Database error for ${email}:`, error)
       if (error.code === '23505') { // Unique constraint violation
         throw new Error('This email is already subscribed!')
       }
       throw new Error(error.message)
     }
+
+    console.log(`[EMAIL DEBUG] Successfully inserted ${email} into database:`, data)
 
     // Track newsletter signup
     trackNewsletterSignup(email)
@@ -40,7 +47,7 @@ export const subscribeToNewsletter = async (email: string, name?: string) => {
 
     // Send welcome email with playbook after successful subscription
     try {
-      console.log('Triggering welcome email with playbook for:', email)
+      console.log(`[EMAIL DEBUG] Triggering welcome email for: ${email}`)
       const { data: emailData, error: emailError } = await supabase.functions.invoke('send-welcome-email', {
         body: { 
           email: email.trim().toLowerCase(),
@@ -51,19 +58,19 @@ export const subscribeToNewsletter = async (email: string, name?: string) => {
       })
 
       if (emailError) {
-        console.error('Welcome email error:', emailError)
+        console.error(`[EMAIL DEBUG] Welcome email error for ${email}:`, emailError)
         // Don't throw here - subscription was successful, email is just a bonus
       } else {
-        console.log('Welcome email with playbook sent successfully:', emailData)
+        console.log(`[EMAIL DEBUG] Welcome email sent successfully for ${email}:`, emailData)
       }
     } catch (emailError) {
-      console.error('Failed to send welcome email:', emailError)
+      console.error(`[EMAIL DEBUG] Failed to send welcome email for ${email}:`, emailError)
       // Don't throw here - subscription was successful
     }
 
     return data
   } catch (error) {
-    console.error('Newsletter subscription error:', error)
+    console.error(`[EMAIL DEBUG] Newsletter subscription error for ${email}:`, error)
     throw error
   }
 }

@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+
+import { useState, useEffect, useCallback } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 
@@ -11,6 +12,7 @@ export const useLeadMagnetPopup = () => {
   const [brickTextureUrl, setBrickTextureUrl] = useState<string>("");
   const [isGeneratingTexture, setIsGeneratingTexture] = useState(false);
 
+  // Optimize trigger setup to prevent excessive re-renders
   useEffect(() => {
     console.log("LeadMagnetPopup: Setting up triggers");
     
@@ -34,7 +36,6 @@ export const useLeadMagnetPopup = () => {
       if (scrollTriggered || hasTriggered) return;
       
       const scrollPercentage = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-      console.log("LeadMagnetPopup: Scroll percentage:", scrollPercentage);
       
       if (scrollPercentage >= 60) {
         console.log("LeadMagnetPopup: Scroll trigger activated!");
@@ -48,8 +49,6 @@ export const useLeadMagnetPopup = () => {
     // Exit intent trigger (desktop only)
     const handleMouseLeave = (e: MouseEvent) => {
       if (exitTriggered || hasTriggered || window.innerWidth < 768) return;
-      
-      console.log("LeadMagnetPopup: Mouse leave detected, clientY:", e.clientY);
       
       if (e.clientY <= 0) {
         console.log("LeadMagnetPopup: Exit intent trigger activated!");
@@ -71,7 +70,7 @@ export const useLeadMagnetPopup = () => {
     }, 500);
 
     console.log("LeadMagnetPopup: Adding event listeners");
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     document.addEventListener('mouseleave', handleMouseLeave);
 
     return () => {
@@ -80,7 +79,7 @@ export const useLeadMagnetPopup = () => {
       document.removeEventListener('mouseleave', handleMouseLeave);
       clearTimeout(timeoutTrigger);
     };
-  }, [hasTriggered]);
+  }, []); // Remove hasTriggered dependency to prevent re-setup
 
   // Generate enhanced brick texture when popup becomes visible (background process)
   useEffect(() => {
@@ -98,7 +97,7 @@ export const useLeadMagnetPopup = () => {
       // Enhanced gritty urban brick prompt for more realistic texture
       const prompt = "Ultra-realistic weathered urban brick wall texture, dark burgundy and brown aged bricks with deep mortar lines, street graffiti stains, rust streaks, concrete dust patches, peeling paint, urban decay, gritty inner city aesthetic, high contrast shadows, worn industrial texture, close-up detailed pattern, street photography style, natural lighting";
       
-      console.log("🧱 Calling Supabase function with enhanced prompt:", prompt);
+      console.log("🧱 Calling Supabase function with enhanced prompt");
       
       const { data, error } = await supabase.functions.invoke('generate-image', {
         body: { 
@@ -108,9 +107,6 @@ export const useLeadMagnetPopup = () => {
         }
       });
 
-      console.log("🧱 Supabase function response:");
-      console.table({ error, data });
-
       if (error) {
         console.error("🧱 Supabase function error:", error);
         throw error;
@@ -119,20 +115,10 @@ export const useLeadMagnetPopup = () => {
       if (data && data.imageUrl) {
         setBrickTextureUrl(data.imageUrl);
         console.log("🧱 Enhanced brick texture generated successfully:", data.imageUrl);
-        
-        // Test if URL is accessible
-        const testImg = new Image();
-        testImg.onload = () => console.log("✅ Enhanced brick image URL is accessible and loaded");
-        testImg.onerror = () => console.error("❌ Enhanced brick image URL failed to load");
-        testImg.src = data.imageUrl;
-      } else {
-        console.error("🧱 No image URL in response:", data);
-        throw new Error("No image URL received from function");
       }
     } catch (error) {
       console.error("🧱 Error generating enhanced brick texture:", error);
       console.log("🧱 Will continue using immediate SVG fallback");
-      // Don't set fallback here - component already has immediate fallback
     } finally {
       setIsGeneratingTexture(false);
     }
@@ -178,13 +164,13 @@ export const useLeadMagnetPopup = () => {
     }
   };
 
-  const handleClose = (e: React.MouseEvent) => {
+  const handleClose = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    console.log("Close button clicked");
+    console.log("Closing popup and setting session storage");
     setIsVisible(false);
     sessionStorage.setItem('leadMagnetShown', 'true');
-  };
+  }, []);
 
   return {
     isVisible,

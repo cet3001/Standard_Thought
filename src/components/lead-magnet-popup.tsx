@@ -1,162 +1,22 @@
 
-import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { X, Download, Mail, Book } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
-import { generateImage } from "@/lib/api";
-import { toast } from "sonner";
+import { X } from "lucide-react";
+import { useLeadMagnetPopup } from "@/hooks/use-lead-magnet-popup";
+import LeadMagnetContent from "./lead-magnet/lead-magnet-content";
 
 const LeadMagnetPopup = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [hasTriggered, setHasTriggered] = useState(false);
-  const [brickTextureUrl, setBrickTextureUrl] = useState<string>("");
-  const [isGeneratingTexture, setIsGeneratingTexture] = useState(false);
-
-  useEffect(() => {
-    console.log("LeadMagnetPopup: Setting up triggers");
-    
-    // Clear session storage for testing - remove this line in production
-    sessionStorage.removeItem('leadMagnetShown');
-    
-    // Check if user has already seen popup this session
-    const hasSeenPopup = sessionStorage.getItem('leadMagnetShown');
-    console.log("LeadMagnetPopup: Has seen popup before?", hasSeenPopup);
-    
-    if (hasSeenPopup) {
-      console.log("LeadMagnetPopup: Popup already shown this session, skipping");
-      return;
-    }
-
-    let scrollTriggered = false;
-    let exitTriggered = false;
-
-    // Scroll trigger (60% of page)
-    const handleScroll = () => {
-      if (scrollTriggered || hasTriggered) return;
-      
-      const scrollPercentage = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-      console.log("LeadMagnetPopup: Scroll percentage:", scrollPercentage);
-      
-      if (scrollPercentage >= 60) {
-        console.log("LeadMagnetPopup: Scroll trigger activated!");
-        scrollTriggered = true;
-        setHasTriggered(true);
-        setIsVisible(true);
-        sessionStorage.setItem('leadMagnetShown', 'true');
-      }
-    };
-
-    // Exit intent trigger (desktop only)
-    const handleMouseLeave = (e: MouseEvent) => {
-      if (exitTriggered || hasTriggered || window.innerWidth < 768) return;
-      
-      console.log("LeadMagnetPopup: Mouse leave detected, clientY:", e.clientY);
-      
-      if (e.clientY <= 0) {
-        console.log("LeadMagnetPopup: Exit intent trigger activated!");
-        exitTriggered = true;
-        setHasTriggered(true);
-        setIsVisible(true);
-        sessionStorage.setItem('leadMagnetShown', 'true');
-      }
-    };
-
-    // Add a timeout trigger for testing (1 second for immediate testing)
-    const timeoutTrigger = setTimeout(() => {
-      if (!hasTriggered && !hasSeenPopup) {
-        console.log("LeadMagnetPopup: Timeout trigger activated (1 second)!");
-        setHasTriggered(true);
-        setIsVisible(true);
-        sessionStorage.setItem('leadMagnetShown', 'true');
-      }
-    }, 1000);
-
-    console.log("LeadMagnetPopup: Adding event listeners");
-    window.addEventListener('scroll', handleScroll);
-    document.addEventListener('mouseleave', handleMouseLeave);
-
-    return () => {
-      console.log("LeadMagnetPopup: Cleaning up event listeners");
-      window.removeEventListener('scroll', handleScroll);
-      document.removeEventListener('mouseleave', handleMouseLeave);
-      clearTimeout(timeoutTrigger);
-    };
-  }, [hasTriggered]);
-
-  // Generate brick texture when popup becomes visible
-  useEffect(() => {
-    if (isVisible && !brickTextureUrl && !isGeneratingTexture) {
-      generateBrickTexture();
-    }
-  }, [isVisible, brickTextureUrl, isGeneratingTexture]);
-
-  const generateBrickTexture = async () => {
-    setIsGeneratingTexture(true);
-    try {
-      const prompt = "Urban brick wall texture, weathered red and brown bricks with white mortar lines, close-up pattern, realistic texture, high contrast, street photography style, gritty urban aesthetic";
-      
-      const imageUrl = await generateImage(prompt);
-      setBrickTextureUrl(imageUrl);
-      console.log("Brick texture generated:", imageUrl);
-    } catch (error) {
-      console.error("Error generating brick texture:", error);
-      // Fallback to no background if generation fails
-    } finally {
-      setIsGeneratingTexture(false);
-    }
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email) {
-      toast.error("Please enter your email address");
-      return;
-    }
-
-    setIsLoading(true);
-    
-    try {
-      const { data: subscriber, error } = await supabase
-        .from("Subscribers")
-        .insert([
-          {
-            email: email,
-            name: name || null,
-            unsubscribe_token: crypto.randomUUID(),
-          },
-        ])
-        .select()
-        .single();
-
-      if (error) {
-        console.error("Subscription error:", error);
-        toast.error("Failed to subscribe. Please try again.");
-        return;
-      }
-
-      toast.success("Playbook sent! Check your email for your free PDF.");
-      setIsVisible(false);
-      setEmail("");
-      setName("");
-    } catch (error) {
-      console.error("Unexpected error:", error);
-      toast.error("An unexpected error occurred. Please try again.");
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const handleClose = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    console.log("Close button clicked");
-    setIsVisible(false);
-    sessionStorage.setItem('leadMagnetShown', 'true');
-  };
+  const {
+    isVisible,
+    email,
+    setEmail,
+    name,
+    setName,
+    isLoading,
+    brickTextureUrl,
+    isGeneratingTexture,
+    handleSubmit,
+    handleClose,
+    setIsVisible
+  } = useLeadMagnetPopup();
 
   const handleBackgroundClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
@@ -170,7 +30,7 @@ const LeadMagnetPopup = () => {
     e.stopPropagation();
   };
 
-  console.log("LeadMagnetPopup: Render - isVisible:", isVisible, "hasTriggered:", hasTriggered);
+  console.log("LeadMagnetPopup: Render - isVisible:", isVisible);
 
   if (!isVisible) return null;
 
@@ -214,75 +74,14 @@ const LeadMagnetPopup = () => {
         )}
 
         {/* Content */}
-        <div className="p-8 relative z-10 bg-white/95 dark:bg-brand-black/95 backdrop-blur-sm rounded-3xl">
-          {/* Header with playbook icon */}
-          <div className="text-center mb-6">
-            <div className="w-20 h-20 bg-gradient-to-br from-[#247EFF] to-[#0057FF] rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
-              <Book className="w-10 h-10 text-white" />
-            </div>
-            <h3 className="text-2xl font-bold text-[#0A0A0A] dark:text-brand-cream mb-3">
-              Unlock the Blueprint to Generational Wealth
-            </h3>
-            <p className="text-[#0A0A0A]/70 dark:text-brand-cream/70 text-lg leading-relaxed">
-              Join 500+ hustlers who started with nothing and are now building legacy. Drop your email below and get the playbook that's helping our community level up—no fluff, just real strategies.
-            </p>
-          </div>
-
-          {/* Form */}
-          <form onSubmit={handleSubmit} className="space-y-4 mb-6">
-            <Input
-              type="text"
-              placeholder="First name (optional)"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className="w-full h-12 border-[#247EFF]/20 focus:border-[#247EFF] rounded-xl bg-brand-cream/30 dark:bg-brand-black/30"
-            />
-            <div className="relative">
-              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#0A0A0A]/60 dark:text-brand-cream/60 h-5 w-5" />
-              <Input
-                type="email"
-                placeholder="Email address"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="w-full h-12 pl-12 border-[#247EFF]/20 focus:border-[#247EFF] rounded-xl bg-brand-cream/30 dark:bg-brand-black/30"
-                disabled={isLoading}
-              />
-            </div>
-            <Button 
-              type="submit" 
-              className="w-full h-12 bg-gradient-to-r from-[#247EFF] to-[#0057FF] hover:from-[#0057FF] hover:to-[#247EFF] text-white font-bold rounded-xl transition-all duration-300 disabled:opacity-70 shadow-lg hover:shadow-xl"
-              disabled={isLoading}
-            >
-              {isLoading ? (
-                <div className="flex items-center">
-                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                  Sending Your Playbook...
-                </div>
-              ) : (
-                <>
-                  <Download className="w-5 h-5 mr-2" />
-                  Unlock My Free Playbook
-                </>
-              )}
-            </Button>
-          </form>
-
-          {/* Testimonial */}
-          <div className="bg-[#247EFF]/10 rounded-2xl p-4 mb-4 border border-[#247EFF]/20">
-            <p className="text-sm italic text-[#0A0A0A]/80 dark:text-brand-cream/80 mb-2">
-              "This playbook gave me the first steps I needed to level up."
-            </p>
-            <p className="text-xs font-semibold text-[#247EFF]">
-              – Marcus, Atlanta
-            </p>
-          </div>
-
-          {/* Trust signals */}
-          <p className="text-xs text-[#0A0A0A]/60 dark:text-brand-cream/60 text-center">
-            ⚡ Instant delivery • 🚫 No spam, no games—just real value • ✉️ Unsubscribe anytime
-          </p>
-        </div>
+        <LeadMagnetContent
+          email={email}
+          setEmail={setEmail}
+          name={name}
+          setName={setName}
+          isLoading={isLoading}
+          onSubmit={handleSubmit}
+        />
       </div>
     </div>
   );

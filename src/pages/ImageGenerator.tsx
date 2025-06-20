@@ -8,9 +8,9 @@ const ImageGeneratorPage = () => {
   return (
     <>
       <SEO
-        title="AI Image Generator & Stock Photos | Standardthought"
-        description="Generate custom AI images with DALL-E or search high-quality stock photos from Unsplash. Perfect for content creation, blog posts, and marketing materials."
-        keywords="AI image generator, DALL-E, stock photos, Unsplash, content creation, blog images, marketing visuals"
+        title="AI Image Generator | Standardthought"
+        description="Generate custom AI images with DALL-E for your wealth-building content, blog posts, and marketing materials."
+        keywords="AI image generator, DALL-E, content creation, blog images, marketing visuals, wealth building"
         url="/image-generator"
         type="website"
       />

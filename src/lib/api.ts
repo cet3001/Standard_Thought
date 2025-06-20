@@ -44,3 +44,16 @@ export const getCategories = async (): Promise<string[]> => {
   const categories = [...new Set(data?.map(post => post.category) || [])];
   return ['All', ...categories];
 };
+
+export const generateImage = async (prompt: string): Promise<string> => {
+  const { data, error } = await supabase.functions.invoke('generate-image', {
+    body: { prompt }
+  });
+
+  if (error) {
+    console.error('Error generating image:', error);
+    throw new Error('Failed to generate image');
+  }
+
+  return data.imageUrl;
+};

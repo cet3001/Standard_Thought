@@ -82,35 +82,34 @@ export const useLeadMagnetPopup = () => {
     };
   }, [hasTriggered]);
 
-  // Generate brick texture when popup becomes visible
+  // Generate enhanced brick texture when popup becomes visible (background process)
   useEffect(() => {
     if (isVisible && !brickTextureUrl && !isGeneratingTexture) {
+      // Start generation in background without blocking the UI
       generateBrickTexture();
     }
   }, [isVisible, brickTextureUrl, isGeneratingTexture]);
 
   const generateBrickTexture = async () => {
     setIsGeneratingTexture(true);
-    console.log("🧱 Starting gritty urban brick texture generation...");
+    console.log("🧱 Starting enhanced gritty urban brick texture generation...");
     
     try {
-      // More detailed, gritty urban brick prompt
-      const prompt = "Weathered urban brick wall texture, dark red and brown aged bricks with deep mortar lines, street graffiti stains, peeling paint patches, concrete dust, rust streaks, weathered urban decay, gritty inner city aesthetic, high contrast shadows, realistic worn texture, close-up detailed pattern, industrial atmosphere";
+      // Enhanced gritty urban brick prompt for more realistic texture
+      const prompt = "Ultra-realistic weathered urban brick wall texture, dark burgundy and brown aged bricks with deep mortar lines, street graffiti stains, rust streaks, concrete dust patches, peeling paint, urban decay, gritty inner city aesthetic, high contrast shadows, worn industrial texture, close-up detailed pattern, street photography style, natural lighting";
       
-      console.log("🧱 Calling Supabase function with gritty urban prompt:", prompt);
+      console.log("🧱 Calling Supabase function with enhanced prompt:", prompt);
       
       const { data, error } = await supabase.functions.invoke('generate-image', {
         body: { 
           prompt,
           quality: 'hd',
-          style: 'natural' // More realistic, less stylized
+          style: 'natural'
         }
       });
 
       console.log("🧱 Supabase function response:");
       console.table({ error, data });
-      console.log("🧱 Full response data:", JSON.stringify(data, null, 2));
-      console.log("🧱 Full error details:", JSON.stringify(error, null, 2));
 
       if (error) {
         console.error("🧱 Supabase function error:", error);
@@ -119,56 +118,21 @@ export const useLeadMagnetPopup = () => {
 
       if (data && data.imageUrl) {
         setBrickTextureUrl(data.imageUrl);
-        console.log("🧱 Gritty brick texture generated successfully:", data.imageUrl);
+        console.log("🧱 Enhanced brick texture generated successfully:", data.imageUrl);
         
         // Test if URL is accessible
         const testImg = new Image();
-        testImg.onload = () => console.log("✅ Gritty brick image URL is accessible and loaded");
-        testImg.onerror = () => console.error("❌ Gritty brick image URL failed to load");
+        testImg.onload = () => console.log("✅ Enhanced brick image URL is accessible and loaded");
+        testImg.onerror = () => console.error("❌ Enhanced brick image URL failed to load");
         testImg.src = data.imageUrl;
       } else {
         console.error("🧱 No image URL in response:", data);
         throw new Error("No image URL received from function");
       }
     } catch (error) {
-      console.error("🧱 Error generating gritty brick texture:", error);
-      console.log("🧱 Setting enhanced gritty SVG fallback...");
-      
-      // Create a more robust gritty brick pattern SVG
-      const svgString = `<svg width="200" height="120" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <pattern id="grittybrick" patternUnits="userSpaceOnUse" width="40" height="30">
-            <!-- Base brick with weathered effect -->
-            <rect width="40" height="30" fill="#8B2E23"/>
-            <rect width="38" height="28" x="1" y="1" fill="#A0342E"/>
-            <rect width="36" height="26" x="2" y="2" fill="#7A1F1A"/>
-            
-            <!-- Weathered patches and stains -->
-            <rect width="8" height="4" x="5" y="8" fill="#654832" opacity="0.7"/>
-            <rect width="6" height="3" x="25" y="15" fill="#4A4A4A" opacity="0.6"/>
-            <rect width="4" height="6" x="32" y="5" fill="#2D2D2D" opacity="0.5"/>
-            
-            <!-- Mortar lines with depth -->
-            <rect width="40" height="1" y="0" fill="#E0E0E0"/>
-            <rect width="40" height="1" y="29" fill="#C0C0C0"/>
-            <rect width="1" height="30" x="0" fill="#D0D0D0"/>
-            <rect width="1" height="30" x="39" fill="#B0B0B0"/>
-            
-            <!-- Gritty texture overlay -->
-            <circle cx="10" cy="10" r="0.5" fill="#000" opacity="0.3"/>
-            <circle cx="20" cy="20" r="0.3" fill="#666" opacity="0.4"/>
-            <circle cx="30" cy="8" r="0.4" fill="#333" opacity="0.5"/>
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#grittybrick)"/>
-        <!-- Overall weathered overlay -->
-        <rect width="100%" height="100%" fill="#000" opacity="0.1"/>
-      </svg>`;
-      
-      const encodedSvg = encodeURIComponent(svgString.trim());
-      const fallbackUrl = `data:image/svg+xml,${encodedSvg}`;
-      setBrickTextureUrl(fallbackUrl);
-      console.log("🧱 Enhanced gritty SVG fallback set:", fallbackUrl);
+      console.error("🧱 Error generating enhanced brick texture:", error);
+      console.log("🧱 Will continue using immediate SVG fallback");
+      // Don't set fallback here - component already has immediate fallback
     } finally {
       setIsGeneratingTexture(false);
     }

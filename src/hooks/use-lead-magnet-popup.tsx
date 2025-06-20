@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
@@ -14,9 +13,6 @@ export const useLeadMagnetPopup = () => {
 
   useEffect(() => {
     console.log("LeadMagnetPopup: Setting up triggers");
-    
-    // Clear session storage for testing - remove this line in production
-    sessionStorage.removeItem('leadMagnetShown');
     
     // Check if user has already seen popup this session
     const hasSeenPopup = sessionStorage.getItem('leadMagnetShown');
@@ -115,8 +111,10 @@ export const useLeadMagnetPopup = () => {
       }
     } catch (error) {
       console.error("Error generating brick texture:", error);
-      // Set a fallback CSS gradient pattern that looks like bricks
-      setBrickTextureUrl("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23B85450' fill-opacity='0.3'%3E%3Crect width='11' height='4' x='0' y='0'/%3E%3Crect width='11' height='4' x='15' y='0'/%3E%3Crect width='11' height='4' x='30' y='0'/%3E%3Crect width='11' height='4' x='45' y='0'/%3E%3Crect width='11' height='4' x='7.5' y='6'/%3E%3Crect width='11' height='4' x='22.5' y='6'/%3E%3Crect width='11' height='4' x='37.5' y='6'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      // Set a properly encoded SVG fallback pattern that looks like bricks
+      const svgString = `<svg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'><g fill='none' fill-rule='evenodd'><g fill='#B85450' fill-opacity='0.4'><rect width='11' height='4' x='0' y='0'/><rect width='11' height='4' x='15' y='0'/><rect width='11' height='4' x='30' y='0'/><rect width='11' height='4' x='45' y='0'/><rect width='11' height='4' x='7.5' y='6'/><rect width='11' height='4' x='22.5' y='6'/><rect width='11' height='4' x='37.5' y='6'/><rect width='11' height='4' x='0' y='12'/><rect width='11' height='4' x='15' y='12'/><rect width='11' height='4' x='30' y='12'/><rect width='11' height='4' x='45' y='12'/></g></g></svg>`;
+      const encodedSvg = encodeURIComponent(svgString.trim());
+      setBrickTextureUrl(`data:image/svg+xml,${encodedSvg}`);
     } finally {
       setIsGeneratingTexture(false);
     }

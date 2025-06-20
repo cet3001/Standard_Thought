@@ -44,7 +44,9 @@ const LeadMagnetPopup = () => {
         className="bg-white dark:bg-brand-black max-w-lg w-full rounded-3xl shadow-2xl border border-[#247EFF]/20 relative overflow-hidden"
         onClick={handlePopupClick}
         style={{
-          backgroundImage: brickTextureUrl ? `url(${brickTextureUrl})` : undefined,
+          backgroundImage: brickTextureUrl 
+            ? `linear-gradient(rgba(0,0,0,.25), rgba(0,0,0,.45)), url(${brickTextureUrl})`
+            : undefined,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat'
@@ -60,18 +62,15 @@ const LeadMagnetPopup = () => {
           <X size={18} />
         </button>
 
-        {/* Dark overlay to ensure text readability over the brick background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-black/20 to-black/50 pointer-events-none rounded-3xl"></div>
-
         {/* Loading state for texture generation */}
         {isGeneratingTexture && (
-          <div className="absolute inset-0 bg-gradient-to-br from-[#B85450]/20 to-[#A0342E]/20 pointer-events-none animate-pulse rounded-3xl flex items-center justify-center">
+          <div className="absolute inset-0 bg-[#B85450]/30 animate-pulse rounded-3xl flex items-center justify-center z-20">
             <div className="text-white font-semibold">Generating street texture...</div>
           </div>
         )}
 
         {/* Content */}
-        <div className="relative z-10">
+        <div className="relative z-30">
           <LeadMagnetContent
             email={email}
             setEmail={setEmail}

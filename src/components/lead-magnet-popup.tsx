@@ -47,6 +47,14 @@ const LeadMagnetPopup = () => {
 
   if (!isVisible) return null;
 
+  // Create background style object
+  const backgroundStyle = brickTextureUrl ? {
+    backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url("${brickTextureUrl}")`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat'
+  } : {};
+
   return (
     <div 
       className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
@@ -54,17 +62,13 @@ const LeadMagnetPopup = () => {
     >
       <div 
         data-lead-magnet
-        className="bg-white dark:bg-brand-black max-w-lg w-full rounded-3xl shadow-2xl border border-[#247EFF]/20 relative overflow-hidden min-h-[420px]"
+        className="max-w-lg w-full rounded-3xl shadow-2xl border border-[#247EFF]/20 relative overflow-hidden min-h-[420px]"
         onClick={handlePopupClick}
-        style={{
-          backgroundImage: brickTextureUrl 
-            ? `linear-gradient(rgba(0,0,0,.15), rgba(0,0,0,.35)), url("${brickTextureUrl}")`
-            : undefined,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat'
-        }}
+        style={backgroundStyle}
       >
+        {/* Background overlay for better text readability */}
+        <div className="absolute inset-0 bg-white/95 dark:bg-brand-black/95 backdrop-blur-sm rounded-3xl" />
+
         {/* Close button */}
         <button
           type="button"

@@ -15,6 +15,9 @@ export const useLeadMagnetPopup = () => {
   useEffect(() => {
     console.log("LeadMagnetPopup: Setting up triggers");
     
+    // TEMPORARILY CLEAR SESSION STORAGE FOR TESTING
+    sessionStorage.removeItem('leadMagnetShown');
+    
     // Check if user has already seen popup this session
     const hasSeenPopup = sessionStorage.getItem('leadMagnetShown');
     console.log("LeadMagnetPopup: Has seen popup before?", hasSeenPopup);
@@ -58,15 +61,15 @@ export const useLeadMagnetPopup = () => {
       }
     };
 
-    // Add a timeout trigger for testing (1 second for immediate testing)
+    // IMMEDIATE TRIGGER FOR TESTING (reduced to 500ms)
     const timeoutTrigger = setTimeout(() => {
       if (!hasTriggered && !hasSeenPopup) {
-        console.log("LeadMagnetPopup: Timeout trigger activated (1 second)!");
+        console.log("LeadMagnetPopup: Timeout trigger activated (500ms)!");
         setHasTriggered(true);
         setIsVisible(true);
         sessionStorage.setItem('leadMagnetShown', 'true');
       }
-    }, 1000);
+    }, 500);
 
     console.log("LeadMagnetPopup: Adding event listeners");
     window.addEventListener('scroll', handleScroll);
@@ -89,58 +92,63 @@ export const useLeadMagnetPopup = () => {
 
   const generateBrickTexture = async () => {
     setIsGeneratingTexture(true);
-    console.log("Starting brick texture generation...");
+    console.log("🧱 Starting brick texture generation...");
     
     try {
       const prompt = "Urban brick wall texture, weathered red and brown bricks with white mortar lines, close-up pattern, realistic texture, high contrast, street photography style, gritty urban aesthetic";
+      
+      console.log("🧱 Calling Supabase function with prompt:", prompt);
       
       const { data, error } = await supabase.functions.invoke('generate-image', {
         body: { prompt }
       });
 
-      // Add comprehensive debugging
+      // COMPREHENSIVE DEBUGGING
+      console.log("🧱 Supabase function response:");
       console.table({ error, data });
-      console.log("Full response data:", JSON.stringify(data, null, 2));
-      console.log("Full error details:", JSON.stringify(error, null, 2));
+      console.log("🧱 Full response data:", JSON.stringify(data, null, 2));
+      console.log("🧱 Full error details:", JSON.stringify(error, null, 2));
 
       if (error) {
-        console.error("Supabase function error:", error);
+        console.error("🧱 Supabase function error:", error);
         throw error;
       }
 
       if (data && data.imageUrl) {
         setBrickTextureUrl(data.imageUrl);
-        console.log("Brick texture generated successfully:", data.imageUrl);
+        console.log("🧱 Brick texture generated successfully:", data.imageUrl);
         
         // Test if URL is accessible
         const testImg = new Image();
-        testImg.onload = () => console.log("✅ Image URL is accessible");
+        testImg.onload = () => console.log("✅ Image URL is accessible and loaded");
         testImg.onerror = () => console.error("❌ Image URL failed to load");
         testImg.src = data.imageUrl;
       } else {
-        console.error("No image URL in response:", data);
-        throw new Error("No image URL received");
+        console.error("🧱 No image URL in response:", data);
+        throw new Error("No image URL received from function");
       }
     } catch (error) {
-      console.error("Error generating brick texture:", error);
-      console.log("Setting fallback SVG pattern...");
+      console.error("🧱 Error generating brick texture:", error);
+      console.log("🧱 Setting enhanced SVG fallback...");
       
-      // Create a more robust brick pattern SVG
+      // Create a more robust brick pattern SVG with proper encoding
       const svgString = `<svg width="120" height="80" viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <pattern id="brick" patternUnits="userSpaceOnUse" width="30" height="20">
             <rect width="30" height="20" fill="#B85450"/>
             <rect width="28" height="18" x="1" y="1" fill="#A0342E"/>
             <rect width="26" height="16" x="2" y="2" fill="#8B2E23"/>
+            <rect width="24" height="14" x="3" y="3" fill="#7A1F1A"/>
           </pattern>
         </defs>
         <rect width="100%" height="100%" fill="url(#brick)"/>
       </svg>`;
       
+      // Properly encode the SVG
       const encodedSvg = encodeURIComponent(svgString.trim());
       const fallbackUrl = `data:image/svg+xml,${encodedSvg}`;
       setBrickTextureUrl(fallbackUrl);
-      console.log("Fallback SVG set:", fallbackUrl);
+      console.log("🧱 Enhanced SVG fallback set:", fallbackUrl);
     } finally {
       setIsGeneratingTexture(false);
     }

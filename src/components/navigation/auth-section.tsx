@@ -1,3 +1,4 @@
+
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
@@ -48,7 +49,7 @@ const AuthSection = ({ onAction }: AuthSectionProps) => {
         className="bg-gradient-to-r from-[#247EFF] to-[#0057FF] hover:from-[#0057FF] hover:to-[#003ACC] hover:shadow-lg hover:shadow-[#247EFF]/40 text-white font-bold rounded-full px-8 py-3 transition-all duration-300 hover:scale-105 animate-pulse hover:animate-none border-2 border-transparent hover:border-white/20"
         aria-label="Join the wealth building movement - Sign up or login"
       >
-        🚀 Join Movement
+        Join Movement
       </Button>
     );
   }

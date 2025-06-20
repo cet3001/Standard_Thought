@@ -1,0 +1,152 @@
+
+/* Mobile-first performance optimizations */
+
+/* Viewport and layout optimizations */
+@media (max-width: 768px) {
+  * {
+    /* Reduce animation complexity on mobile */
+    animation-duration: 0.2s !important;
+    transition-duration: 0.2s !important;
+  }
+
+  /* Optimize typography for mobile readability */
+  body {
+    font-size: 16px; /* Prevent iOS zoom */
+    line-height: 1.6;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* Touch-friendly interactive elements */
+  button, a, input, textarea, select, [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Optimize form inputs */
+  input, textarea {
+    font-size: 16px; /* Prevent zoom on iOS */
+    border-radius: 0.5rem; /* Consistent with design */
+    -webkit-appearance: none;
+  }
+
+  /* Container spacing optimization */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Reduce backdrop blur for performance */
+  .backdrop-blur-sm,
+  .backdrop-blur {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* Replace with solid backgrounds */
+  .backdrop-blur-sm {
+    background: rgba(255, 255, 255, 0.95);
+  }
+
+  .dark .backdrop-blur-sm {
+    background: rgba(10, 10, 10, 0.95);
+  }
+
+  /* Optimize scroll performance */
+  .scroll-smooth {
+    scroll-behavior: auto;
+  }
+
+  /* Reduce expensive transforms */
+  .hover\:scale-105:hover {
+    transform: none;
+  }
+
+  /* Optimize navigation for mobile */
+  nav {
+    position: fixed;
+    transform: translateZ(0);
+    will-change: transform;
+  }
+
+  /* Image optimization */
+  img {
+    max-width: 100%;
+    height: auto;
+    image-rendering: -webkit-optimize-contrast;
+  }
+
+  /* Grid optimizations */
+  .grid {
+    gap: 1rem; /* Reduce grid gaps on mobile */
+  }
+
+  /* Text optimization */
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.75rem; }
+  h3 { font-size: 1.5rem; }
+  
+  /* Spacing adjustments */
+  .py-16 { padding-top: 3rem; padding-bottom: 3rem; }
+  .py-12 { padding-top: 2rem; padding-bottom: 2rem; }
+  .py-8 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+}
+
+/* Ultra-small screens (iPhone SE, etc.) */
+@media (max-width: 375px) {
+  .container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  h1 { font-size: 1.75rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.25rem; }
+
+  .text-xl { font-size: 1.125rem; }
+  .text-lg { font-size: 1rem; }
+}
+
+/* Landscape mobile optimization */
+@media (max-height: 500px) and (orientation: landscape) {
+  .py-16 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+  .py-12 { padding-top: 1rem; padding-bottom: 1rem; }
+  
+  /* Optimize hero for landscape */
+  .hero-section {
+    min-height: auto;
+  }
+}
+
+/* Performance critical styles */
+.critical-path {
+  contain: layout style paint;
+}
+
+.gpu-layer {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Loading states optimization */
+.loading-skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1s infinite;
+}
+
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Reduce motion for accessibility and performance */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

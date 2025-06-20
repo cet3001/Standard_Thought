@@ -1,6 +1,7 @@
 
 import Analytics from "@/components/analytics";
 import FloatingCTA from "@/components/floating-cta";
+import MobileFloatingCTA from "@/components/mobile-floating-cta";
 import HeroSection from "@/components/hero-section";
 import LeadMagnetPopup from "@/components/lead-magnet-popup";
 import ManifestoSection from "@/components/manifesto-section";
@@ -10,8 +11,13 @@ import SEO from "@/components/seo";
 import KeywordOptimization from "@/components/seo/keyword-optimization";
 import VoiceSearchOptimization from "@/components/seo/voice-search-optimization";
 import FeaturedSnippets from "@/components/seo/featured-snippets";
+import { useMobilePerformance } from "@/hooks/use-mobile-performance";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const Index = () => {
+  const isMobile = useIsMobile();
+  useMobilePerformance();
+
   const breadcrumbs = [
     { name: "Home", url: "https://www.standardthought.com", position: 1 }
   ];
@@ -37,19 +43,21 @@ const Index = () => {
       <Analytics />
 
       {/* Hero */}
-      <HeroSection />
+      <main>
+        <HeroSection />
 
-      {/* Newsletter */}
-      <NewsletterSection />
+        {/* Newsletter */}
+        <NewsletterSection />
 
-      {/* Manifesto */}
-      <ManifestoSection />
+        {/* Manifesto */}
+        <ManifestoSection />
 
-      {/* Trust Badge */}
-      <TrustBadgeSection />
+        {/* Trust Badge */}
+        <TrustBadgeSection />
+      </main>
 
-      {/* Floating CTA */}
-      <FloatingCTA />
+      {/* Conditional CTA based on device */}
+      {isMobile ? <MobileFloatingCTA /> : <FloatingCTA />}
 
       {/* Lead Magnet Popup */}
       <LeadMagnetPopup />

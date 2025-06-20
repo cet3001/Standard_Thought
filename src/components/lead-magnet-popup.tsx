@@ -33,6 +33,17 @@ const LeadMagnetPopup = () => {
   console.log("LeadMagnetPopup: Render - isVisible:", isVisible);
   console.log("LeadMagnetPopup: brickTextureUrl:", brickTextureUrl);
 
+  // Add debugging for the background image
+  useEffect(() => {
+    if (brickTextureUrl) {
+      console.log("🎨 Background image URL set:", brickTextureUrl);
+      const element = document.querySelector('[data-lead-magnet]') as HTMLElement;
+      if (element) {
+        console.log("🎨 Applied background style:", element.style.backgroundImage);
+      }
+    }
+  }, [brickTextureUrl]);
+
   if (!isVisible) return null;
 
   return (
@@ -41,11 +52,12 @@ const LeadMagnetPopup = () => {
       onClick={handleBackgroundClick}
     >
       <div 
-        className="bg-white dark:bg-brand-black max-w-lg w-full rounded-3xl shadow-2xl border border-[#247EFF]/20 relative overflow-hidden"
+        data-lead-magnet
+        className="bg-white dark:bg-brand-black max-w-lg w-full rounded-3xl shadow-2xl border border-[#247EFF]/20 relative overflow-hidden min-h-[420px]"
         onClick={handlePopupClick}
         style={{
           backgroundImage: brickTextureUrl 
-            ? `linear-gradient(rgba(0,0,0,.25), rgba(0,0,0,.45)), url(${brickTextureUrl})`
+            ? `linear-gradient(rgba(0,0,0,.15), rgba(0,0,0,.35)), url("${brickTextureUrl}")`
             : undefined,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
@@ -56,7 +68,7 @@ const LeadMagnetPopup = () => {
         <button
           type="button"
           onClick={handleClose}
-          className="absolute -top-2 -right-2 z-30 w-10 h-10 bg-white dark:bg-brand-black border border-[#247EFF]/20 rounded-full flex items-center justify-center text-[#0A0A0A] dark:text-brand-cream hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-red-600 dark:hover:text-red-400 transition-all duration-200 shadow-lg"
+          className="absolute -top-2 -right-2 z-40 w-10 h-10 bg-white dark:bg-brand-black border border-[#247EFF]/20 rounded-full flex items-center justify-center text-[#0A0A0A] dark:text-brand-cream hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-red-600 dark:hover:text-red-400 transition-all duration-200 shadow-lg"
           aria-label="Close popup"
         >
           <X size={18} />

@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
@@ -97,6 +98,11 @@ export const useLeadMagnetPopup = () => {
         body: { prompt }
       });
 
+      // Add comprehensive debugging
+      console.table({ error, data });
+      console.log("Full response data:", JSON.stringify(data, null, 2));
+      console.log("Full error details:", JSON.stringify(error, null, 2));
+
       if (error) {
         console.error("Supabase function error:", error);
         throw error;
@@ -105,16 +111,36 @@ export const useLeadMagnetPopup = () => {
       if (data && data.imageUrl) {
         setBrickTextureUrl(data.imageUrl);
         console.log("Brick texture generated successfully:", data.imageUrl);
+        
+        // Test if URL is accessible
+        const testImg = new Image();
+        testImg.onload = () => console.log("✅ Image URL is accessible");
+        testImg.onerror = () => console.error("❌ Image URL failed to load");
+        testImg.src = data.imageUrl;
       } else {
         console.error("No image URL in response:", data);
         throw new Error("No image URL received");
       }
     } catch (error) {
       console.error("Error generating brick texture:", error);
-      // Set a properly encoded SVG fallback pattern that looks like bricks
-      const svgString = `<svg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'><g fill='none' fill-rule='evenodd'><g fill='#B85450' fill-opacity='0.4'><rect width='11' height='4' x='0' y='0'/><rect width='11' height='4' x='15' y='0'/><rect width='11' height='4' x='30' y='0'/><rect width='11' height='4' x='45' y='0'/><rect width='11' height='4' x='7.5' y='6'/><rect width='11' height='4' x='22.5' y='6'/><rect width='11' height='4' x='37.5' y='6'/><rect width='11' height='4' x='0' y='12'/><rect width='11' height='4' x='15' y='12'/><rect width='11' height='4' x='30' y='12'/><rect width='11' height='4' x='45' y='12'/></g></g></svg>`;
+      console.log("Setting fallback SVG pattern...");
+      
+      // Create a more robust brick pattern SVG
+      const svgString = `<svg width="120" height="80" viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="brick" patternUnits="userSpaceOnUse" width="30" height="20">
+            <rect width="30" height="20" fill="#B85450"/>
+            <rect width="28" height="18" x="1" y="1" fill="#A0342E"/>
+            <rect width="26" height="16" x="2" y="2" fill="#8B2E23"/>
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#brick)"/>
+      </svg>`;
+      
       const encodedSvg = encodeURIComponent(svgString.trim());
-      setBrickTextureUrl(`data:image/svg+xml,${encodedSvg}`);
+      const fallbackUrl = `data:image/svg+xml,${encodedSvg}`;
+      setBrickTextureUrl(fallbackUrl);
+      console.log("Fallback SVG set:", fallbackUrl);
     } finally {
       setIsGeneratingTexture(false);
     }

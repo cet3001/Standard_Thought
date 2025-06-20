@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowUp, ArrowRight } from "lucide-react";
@@ -41,7 +42,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="py-24 bg-brand-cream dark:bg-brand-black relative overflow-hidden">
+    <section className="pt-32 pb-24 bg-brand-cream dark:bg-brand-black relative overflow-hidden">
       <LSIContent primaryKeyword="entrepreneurship" context="entrepreneurship" />
       
       {/* Enhanced SEO with targeted keywords */}

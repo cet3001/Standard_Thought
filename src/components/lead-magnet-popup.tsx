@@ -47,10 +47,10 @@ const LeadMagnetPopup = () => {
 
   if (!isVisible) return null;
 
-  /* brick + a *very* light darkening so white text never clashes */
+  // Subtle gritty brick background with stronger overlay for readability
   const bg = brickTextureUrl
-    ? `linear-gradient(rgba(0,0,0,.15),rgba(0,0,0,.25)),url("${brickTextureUrl}")`
-    : undefined;
+    ? `linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.6)),url("${brickTextureUrl}")`
+    : `linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.6))`;
 
   return (
     <div 
@@ -65,6 +65,7 @@ const LeadMagnetPopup = () => {
           backgroundImage: bg,
           backgroundSize: "cover",
           backgroundPosition: "center",
+          backgroundBlendMode: "multiply", // Blends the brick with the gradient for subtle effect
         }}
       >
         {/* Close button */}
@@ -80,13 +81,13 @@ const LeadMagnetPopup = () => {
         {/* Loading state for texture generation */}
         {isGeneratingTexture && (
           <div className="absolute inset-0 z-30 bg-[#B85450]/30 animate-pulse rounded-3xl flex items-center justify-center">
-            <div className="text-white font-semibold">Generating street texture...</div>
+            <div className="text-white font-semibold">Generating gritty street texture...</div>
           </div>
         )}
 
         {/* ---------- CONTENT CARD ---------- */}
         <div className="relative z-30 p-6 sm:p-8">
-          <div className="mx-auto w-full max-w-md rounded-2xl bg-white/80 p-6 shadow-lg backdrop-blur-sm dark:bg-brand-black/75">
+          <div className="mx-auto w-full max-w-md rounded-2xl bg-white/90 p-6 shadow-lg backdrop-blur-md dark:bg-brand-black/85">
             <LeadMagnetContent
               email={email}
               setEmail={setEmail}

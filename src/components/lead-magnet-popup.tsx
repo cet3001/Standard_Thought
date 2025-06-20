@@ -85,8 +85,8 @@ const LeadMagnetPopup = () => {
         )}
 
         {/* ---------- CONTENT CARD ---------- */}
-        <div className="relative z-30 p-8">
-          <div className="rounded-2xl bg-white/85 p-6 backdrop-blur-sm dark:bg-brand-black/75">
+        <div className="relative z-30 p-6 sm:p-8">
+          <div className="mx-auto w-full max-w-md rounded-2xl bg-white/80 p-6 shadow-lg backdrop-blur-sm dark:bg-brand-black/75">
             <LeadMagnetContent
               email={email}
               setEmail={setEmail}

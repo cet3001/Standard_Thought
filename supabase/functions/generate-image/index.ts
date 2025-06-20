@@ -35,8 +35,9 @@ serve(async (req) => {
       });
     }
 
-    console.log("🎨 Making request to OpenAI DALL-E API...");
-    const response = await fetch('https://api.openai.com/v1/images/generations', {
+    // First try DALL-E 3
+    console.log("🎨 Trying DALL-E 3 first...");
+    const dalle3Response = await fetch('https://api.openai.com/v1/images/generations', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${openAIApiKey}`,
@@ -52,75 +53,89 @@ serve(async (req) => {
       }),
     });
 
-    console.log("📊 OpenAI Response Status:", response.status);
-    console.log("📊 OpenAI Response Headers:", Object.fromEntries(response.headers.entries()));
+    console.log("📊 DALL-E 3 Response Status:", dalle3Response.status);
+    const dalle3Data = await dalle3Response.json();
+    console.log("📊 DALL-E 3 Response Data:", JSON.stringify(dalle3Data, null, 2));
 
-    const data = await response.json();
-    console.log("📊 OpenAI Response Data:", JSON.stringify(data, null, 2));
-    
-    if (!response.ok) {
-      console.error("❌ OpenAI API Error:", data);
+    // If DALL-E 3 works, return the result
+    if (dalle3Response.ok && dalle3Data.data && dalle3Data.data[0] && dalle3Data.data[0].url) {
+      console.log("✅ DALL-E 3 image generated successfully:", dalle3Data.data[0].url);
+      return new Response(JSON.stringify({ 
+        imageUrl: dalle3Data.data[0].url,
+        revisedPrompt: dalle3Data.data[0].revised_prompt,
+        model: 'dall-e-3'
+      }), {
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
+
+    // If DALL-E 3 fails with user error, try DALL-E 2
+    if (dalle3Data.error?.type === 'image_generation_user_error') {
+      console.log("⚠️ DALL-E 3 not available, trying DALL-E 2 fallback...");
       
-      // Handle the specific "image_generation_user_error" with no message
-      if (data.error?.type === 'image_generation_user_error' && !data.error.message) {
+      const dalle2Response = await fetch('https://api.openai.com/v1/images/generations', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${openAIApiKey}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          model: 'dall-e-2',
+          prompt: prompt,
+          n: 1,
+          size: size === "1024x1024" ? "1024x1024" : "512x512", // DALL-E 2 has limited sizes
+        }),
+      });
+
+      console.log("📊 DALL-E 2 Response Status:", dalle2Response.status);
+      const dalle2Data = await dalle2Response.json();
+      console.log("📊 DALL-E 2 Response Data:", JSON.stringify(dalle2Data, null, 2));
+
+      if (dalle2Response.ok && dalle2Data.data && dalle2Data.data[0] && dalle2Data.data[0].url) {
+        console.log("✅ DALL-E 2 image generated successfully:", dalle2Data.data[0].url);
         return new Response(JSON.stringify({ 
-          error: 'OpenAI Image Generation Access Issue',
-          details: {
-            status: response.status,
-            type: data.error.type,
-            possibleCauses: [
-              'Your OpenAI account may not have access to DALL-E image generation',
-              'Your API key may not have image generation permissions',
-              'Your account may have insufficient credits for DALL-E',
-              'You may need to upgrade your OpenAI plan to access image generation'
-            ],
-            solution: 'Check your OpenAI account at https://platform.openai.com/account/usage and https://platform.openai.com/account/billing',
-            raw_error: data
-          }
+          imageUrl: dalle2Data.data[0].url,
+          revisedPrompt: dalle2Data.data[0].revised_prompt || prompt,
+          model: 'dall-e-2'
         }), {
-          status: 402, // Payment Required - indicates billing/access issue
           headers: { ...corsHeaders, 'Content-Type': 'application/json' },
         });
       }
-      
-      // Return detailed error information for other errors
-      const errorMessage = data.error?.message || `OpenAI API returned status ${response.status}`;
-      const errorType = data.error?.type || 'unknown';
-      const errorCode = data.error?.code || 'unknown';
-      
+
+      // If DALL-E 2 also fails, return that error
+      console.error("❌ DALL-E 2 also failed:", dalle2Data);
       return new Response(JSON.stringify({ 
-        error: `OpenAI API Error: ${errorMessage}`,
+        error: 'Both DALL-E 3 and DALL-E 2 failed',
         details: {
-          status: response.status,
-          type: errorType,
-          code: errorCode,
-          raw_error: data
+          dalle3_error: dalle3Data,
+          dalle2_error: dalle2Data,
+          message: 'Your OpenAI account may not have image generation access enabled. Please contact OpenAI support or check your account settings.'
         }
       }), {
-        status: response.status,
+        status: 402,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       });
     }
 
-    if (!data.data || !data.data[0] || !data.data[0].url) {
-      console.error("❌ Unexpected response format:", data);
-      return new Response(JSON.stringify({ 
-        error: 'Unexpected response format from OpenAI',
-        details: data
-      }), {
-        status: 500,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-      });
-    }
-
-    console.log("✅ Image generated successfully:", data.data[0].url);
-
+    // Handle other DALL-E 3 errors
+    console.error("❌ DALL-E 3 Error:", dalle3Data);
+    const errorMessage = dalle3Data.error?.message || `OpenAI API returned status ${dalle3Response.status}`;
+    const errorType = dalle3Data.error?.type || 'unknown';
+    const errorCode = dalle3Data.error?.code || 'unknown';
+    
     return new Response(JSON.stringify({ 
-      imageUrl: data.data[0].url,
-      revisedPrompt: data.data[0].revised_prompt 
+      error: `OpenAI API Error: ${errorMessage}`,
+      details: {
+        status: dalle3Response.status,
+        type: errorType,
+        code: errorCode,
+        raw_error: dalle3Data
+      }
     }), {
+      status: dalle3Response.status,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });
+
   } catch (error) {
     console.error('❌ Unexpected error in generate-image function:', error);
     return new Response(JSON.stringify({ 

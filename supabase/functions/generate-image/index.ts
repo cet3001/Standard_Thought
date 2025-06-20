@@ -1,4 +1,5 @@
 
+
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
@@ -35,8 +36,46 @@ serve(async (req) => {
       });
     }
 
+    // Try gpt-image-1 first (newest model)
+    console.log("🎨 Trying gpt-image-1 first...");
+    const gptImageResponse = await fetch('https://api.openai.com/v1/images/generations', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${openAIApiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: 'gpt-image-1',
+        prompt: prompt,
+        size: size,
+        quality: quality === 'hd' ? 'high' : 'auto',
+        output_format: 'png',
+      }),
+    });
+
+    console.log("📊 gpt-image-1 Response Status:", gptImageResponse.status);
+    const gptImageData = await gptImageResponse.json();
+    console.log("📊 gpt-image-1 Response Data:", JSON.stringify(gptImageData, null, 2));
+
+    // If gpt-image-1 works, return the result
+    if (gptImageResponse.ok && gptImageData.data && gptImageData.data[0]) {
+      const imageData = gptImageData.data[0];
+      console.log("✅ gpt-image-1 image generated successfully");
+      
+      // gpt-image-1 returns base64, convert to data URL
+      const imageUrl = imageData.b64_json ? `data:image/png;base64,${imageData.b64_json}` : imageData.url;
+      
+      return new Response(JSON.stringify({ 
+        imageUrl: imageUrl,
+        revisedPrompt: imageData.revised_prompt || prompt,
+        model: 'gpt-image-1'
+      }), {
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
+
     // First try DALL-E 3
-    console.log("🎨 Trying DALL-E 3 first...");
+    console.log("🎨 Trying DALL-E 3 fallback...");
     const dalle3Response = await fetch('https://api.openai.com/v1/images/generations', {
       method: 'POST',
       headers: {
@@ -102,14 +141,15 @@ serve(async (req) => {
         });
       }
 
-      // If DALL-E 2 also fails, return that error
-      console.error("❌ DALL-E 2 also failed:", dalle2Data);
+      // If DALL-E 2 also fails, return comprehensive error
+      console.error("❌ All models failed:", { gptImageData, dalle3Data, dalle2Data });
       return new Response(JSON.stringify({ 
-        error: 'Both DALL-E 3 and DALL-E 2 failed',
+        error: 'All image generation models failed',
         details: {
+          gpt_image_error: gptImageData,
           dalle3_error: dalle3Data,
           dalle2_error: dalle2Data,
-          message: 'Your OpenAI account may not have image generation access enabled. Please contact OpenAI support or check your account settings.'
+          message: 'Your OpenAI account may not have image generation access enabled, or there may be a temporary issue with OpenAI\'s image generation service. Please check your OpenAI account settings and try again.'
         }
       }), {
         status: 402,
@@ -148,3 +188,4 @@ serve(async (req) => {
     });
   }
 });
+

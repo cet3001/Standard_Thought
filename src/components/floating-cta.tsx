@@ -44,7 +44,7 @@ const FloatingCTA = () => {
         </button>
 
         <div className="relative z-10">
-          <div className="text-sm font-medium text-[#247EFF] mb-2" role="heading" aria-level="3">
+          <div className="text-sm font-medium text-[#247EFF] mb-2" role="heading" aria-level={3}>
             Get the blueprint, get moving.
           </div>
           <Button 

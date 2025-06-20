@@ -16,90 +16,90 @@ interface ContextualLinksProps {
 const contextualLinks: Record<string, ContextualLink[]> = {
   hero: [
     {
-      text: "proven business frameworks",
+      text: "proven wealth building frameworks",
       href: "/blog",
       context: "entrepreneurship strategies",
       lsiKeywords: ["startup methodologies", "business building", "entrepreneurial systems"]
     },
     {
-      text: "mindset transformation tools",
+      text: "hood financial literacy tools",
       href: "/about",
-      context: "personal development",
-      lsiKeywords: ["growth mindset", "mental resilience", "success psychology"]
+      context: "financial education",
+      lsiKeywords: ["street smart money moves", "urban finance", "generational wealth building"]
     },
     {
-      text: "strategic success playbooks",
-      href: "/sales",
-      context: "business growth",
-      lsiKeywords: ["revenue optimization", "scaling strategies", "market expansion"]
+      text: "AI side hustle strategies",
+      href: "/blog/ai-side-hustles-guide",
+      context: "income generation",
+      lsiKeywords: ["artificial intelligence income", "automated revenue", "tech hustles"]
     }
   ],
   blog: [
     {
-      text: "foundational mindset principles",
+      text: "foundational mindset tools",
       href: "/about",
-      context: "personal development foundation",
-      lsiKeywords: ["core beliefs", "mental frameworks", "success principles"]
+      context: "wealth building psychology",
+      lsiKeywords: ["success mindset", "financial mindset", "entrepreneur psychology"]
     },
     {
-      text: "revenue generation strategies",
-      href: "/sales",
-      context: "monetization tactics",
-      lsiKeywords: ["income streams", "profit maximization", "business models"]
+      text: "credit building strategies",
+      href: "/blog",
+      context: "financial rehabilitation",
+      lsiKeywords: ["credit repair", "credit score improvement", "financial recovery"]
     },
     {
-      text: "community-driven growth",
-      href: "/",
-      context: "network building",
-      lsiKeywords: ["peer support", "collaborative success", "mentorship"]
+      text: "urban investing guide",
+      href: "/blog/free-investing-guide",
+      context: "investment education",
+      lsiKeywords: ["street smart investing", "urban portfolio building", "beginner investing"]
     }
   ],
   manifesto: [
     {
-      text: "real-world success stories",
+      text: "real wealth building stories",
       href: "/blog",
-      context: "practical examples",
-      lsiKeywords: ["case studies", "implementation examples", "proven results"]
+      context: "success examples",
+      lsiKeywords: ["entrepreneur journeys", "wealth creation stories", "business success cases"]
     },
     {
-      text: "actionable business strategies",
-      href: "/sales",
+      text: "actionable financial strategies",
+      href: "/resources",
       context: "implementation guides",
-      lsiKeywords: ["tactical approaches", "execution plans", "results-driven methods"]
+      lsiKeywords: ["money management tactics", "wealth building steps", "financial action plans"]
     }
   ],
   newsletter: [
     {
-      text: "comprehensive business education",
+      text: "comprehensive financial education",
       href: "/about",
       context: "learning foundation",
-      lsiKeywords: ["entrepreneurial knowledge", "skill development", "expertise building"]
+      lsiKeywords: ["financial literacy", "money management education", "wealth building knowledge"]
     },
     {
-      text: "exclusive success insights",
+      text: "exclusive wealth insights",
       href: "/blog",
-      context: "premium content",
-      lsiKeywords: ["insider knowledge", "advanced strategies", "expert perspectives"]
+      context: "premium financial content",
+      lsiKeywords: ["insider financial knowledge", "advanced money strategies", "wealth building secrets"]
     }
   ],
   footer: [
     {
-      text: "wealth building fundamentals",
+      text: "generational wealth fundamentals",
       href: "/about",
-      context: "financial education",
-      lsiKeywords: ["asset creation", "investment strategies", "financial literacy"]
+      context: "long-term financial planning",
+      lsiKeywords: ["legacy building", "multi-generational finance", "family wealth creation"]
     },
     {
-      text: "entrepreneurial journey documentation",
+      text: "urban entrepreneur documentation",
       href: "/blog",
       context: "business chronicles",
-      lsiKeywords: ["startup experiences", "business evolution", "growth documentation"]
+      lsiKeywords: ["startup experiences", "business evolution", "entrepreneur stories"]
     },
     {
-      text: "revenue optimization techniques",
-      href: "/sales",
-      context: "profit enhancement",
-      lsiKeywords: ["income maximization", "monetization strategies", "financial growth"]
+      text: "income optimization techniques",
+      href: "/resources",
+      context: "revenue enhancement",
+      lsiKeywords: ["income maximization", "revenue strategies", "profit building"]
     }
   ]
 };
@@ -115,8 +115,8 @@ const ContextualLinks = ({ context, className = "" }: ContextualLinksProps) => {
         <Link
           key={index}
           to={link.href}
-          className="text-[#247EFF] hover:text-[#0057FF] underline decoration-dotted underline-offset-4 hover:decoration-solid transition-all duration-300 touch-manipulation"
-          title={`Learn more about ${link.context}`}
+          className="text-[#247EFF] hover:text-[#0057FF] underline decoration-dotted underline-offset-4 hover:decoration-solid transition-all duration-300 touch-manipulation font-medium"
+          title={`Learn more about ${link.context} - ${link.lsiKeywords?.slice(0, 2).join(', ')}`}
         >
           {link.text}
         </Link>

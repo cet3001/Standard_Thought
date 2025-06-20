@@ -4,7 +4,8 @@ import { normalizeUrl, getFullImageUrl, optimizeDescription } from "./helpers";
 import { 
   generateOrganizationSchema, 
   generateArticleSchema, 
-  generateWebSiteSchema 
+  generateWebSiteSchema,
+  generateBreadcrumbSchema 
 } from "./schemas";
 
 interface SEOProps {
@@ -22,6 +23,11 @@ interface SEOProps {
   twitterHandle?: string;
   noIndex?: boolean;
   wordCount?: number;
+  breadcrumbs?: Array<{
+    name: string;
+    url: string;
+    position: number;
+  }>;
 }
 
 const SEO = ({
@@ -38,9 +44,10 @@ const SEO = ({
   tags = [],
   twitterHandle = DEFAULTS.twitterHandle,
   noIndex = false,
-  wordCount
+  wordCount,
+  breadcrumbs
 }: SEOProps) => {
-  // Title optimization - keep under 60 characters
+  // Enhanced title optimization - keep under 60 characters but make it compelling
   const optimizedTitle = title.length > 60 
     ? title.substring(0, 57) + "..." 
     : title;
@@ -53,13 +60,13 @@ const SEO = ({
   const fullImageUrl = getFullImageUrl(image);
   const optimizedDescription = optimizeDescription(description);
 
-  // Robots content
+  // Enhanced robots content with additional directives
   const robotsContent = noIndex
     ? "noindex, nofollow"
     : "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1";
 
   // Generate appropriate schema based on type
-  let structuredData;
+  let structuredData = [];
   
   if (type === 'website') {
     // For homepage and main pages, use Organization + WebSite schema
@@ -81,7 +88,7 @@ const SEO = ({
     structuredData = [organizationSchema, webSiteSchema];
   } else {
     // For articles, use Article schema
-    structuredData = generateArticleSchema({
+    const articleSchema = generateArticleSchema({
       title: fullTitle,
       description: optimizedDescription,
       url: canonicalUrl,
@@ -93,6 +100,14 @@ const SEO = ({
       tags,
       wordCount
     });
+    
+    structuredData = [articleSchema];
+  }
+
+  // Add breadcrumb schema if provided
+  if (breadcrumbs && breadcrumbs.length > 0) {
+    const breadcrumbSchema = generateBreadcrumbSchema({ items: breadcrumbs });
+    structuredData.push(breadcrumbSchema);
   }
 
   return (
@@ -132,7 +147,7 @@ const SEO = ({
       <meta name="twitter:label1" content="Reading time" />
       <meta name="twitter:data1" content={wordCount ? `${Math.ceil(wordCount / 200)} min read` : "Quick read"} />
       
-      {/* Mobile & App */}
+      {/* Enhanced Mobile & App Tags */}
       <meta name="apple-mobile-web-app-capable" content="yes" />
       <meta name="apple-mobile-web-app-status-bar-style" content="default" />
       <meta name="apple-mobile-web-app-title" content="Standardthought" />
@@ -160,12 +175,12 @@ const SEO = ({
           <meta key={tag} property="article:tag" content={tag} />
         ))}
       
-      {/* Structured Data */}
+      {/* Enhanced Structured Data */}
       <script type="application/ld+json">
-        {JSON.stringify(Array.isArray(structuredData) ? structuredData : [structuredData])}
+        {JSON.stringify(structuredData)}
       </script>
       
-      {/* Additional Meta */}
+      {/* Additional SEO Meta Tags */}
       <link rel="icon" type="image/x-icon" href="/favicon.ico" />
       <meta name="theme-color" content="#247EFF" />
       <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
@@ -177,6 +192,16 @@ const SEO = ({
       <meta name="rating" content="general" />
       <meta name="revisit-after" content="1 days" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      
+      {/* Enhanced SEO Tags */}
+      <meta name="language" content="en-US" />
+      <meta name="copyright" content="Standardthought" />
+      <meta name="category" content="Business, Finance, Education" />
+      <meta name="coverage" content="Worldwide" />
+      <meta name="reply-to" content="hello@standardthought.com" />
+      <meta name="target" content="all" />
+      <meta name="HandheldFriendly" content="True" />
+      <meta name="MobileOptimized" content="320" />
     </Helmet>
   );
 };

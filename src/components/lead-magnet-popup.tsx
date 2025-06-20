@@ -74,7 +74,7 @@ const LeadMagnetPopup = () => {
     >
       <div 
         data-lead-magnet
-        className="relative max-w-xl w-full max-h-[90vh] overflow-y-auto rounded-2xl border border-[#247EFF]/20 shadow-2xl"
+        className="relative max-w-md w-full max-h-[85vh] flex flex-col rounded-2xl border border-[#247EFF]/20 shadow-2xl"
         onClick={(e) => e.stopPropagation()}
         style={{
           backgroundImage: bg,
@@ -103,9 +103,9 @@ const LeadMagnetPopup = () => {
           </div>
         )}
 
-        {/* Content card - properly sized to show all content */}
-        <div className="relative z-30 p-6 sm:p-8">
-          <div className="mx-auto w-full rounded-2xl bg-white/95 p-6 sm:p-8 shadow-lg backdrop-blur-md dark:bg-brand-black/90">
+        {/* Content card - sized to fit without scrolling */}
+        <div className="relative z-30 p-4 flex-1 overflow-hidden">
+          <div className="h-full rounded-2xl bg-white/95 p-4 shadow-lg backdrop-blur-md dark:bg-brand-black/90 overflow-y-auto">
             <LeadMagnetContent
               email={email}
               setEmail={setEmail}

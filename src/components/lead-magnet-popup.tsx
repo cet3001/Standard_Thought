@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -14,9 +13,16 @@ const LeadMagnetPopup = () => {
   const [hasTriggered, setHasTriggered] = useState(false);
 
   useEffect(() => {
+    console.log("LeadMagnetPopup: Setting up triggers");
+    
     // Check if user has already seen popup this session
     const hasSeenPopup = sessionStorage.getItem('leadMagnetShown');
-    if (hasSeenPopup) return;
+    console.log("LeadMagnetPopup: Has seen popup before?", hasSeenPopup);
+    
+    if (hasSeenPopup) {
+      console.log("LeadMagnetPopup: Popup already shown this session, skipping");
+      return;
+    }
 
     let scrollTriggered = false;
     let exitTriggered = false;
@@ -26,7 +32,10 @@ const LeadMagnetPopup = () => {
       if (scrollTriggered || hasTriggered) return;
       
       const scrollPercentage = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+      console.log("LeadMagnetPopup: Scroll percentage:", scrollPercentage);
+      
       if (scrollPercentage >= 60) {
+        console.log("LeadMagnetPopup: Scroll trigger activated!");
         scrollTriggered = true;
         setHasTriggered(true);
         setIsVisible(true);
@@ -38,7 +47,10 @@ const LeadMagnetPopup = () => {
     const handleMouseLeave = (e: MouseEvent) => {
       if (exitTriggered || hasTriggered || window.innerWidth < 768) return;
       
+      console.log("LeadMagnetPopup: Mouse leave detected, clientY:", e.clientY);
+      
       if (e.clientY <= 0) {
+        console.log("LeadMagnetPopup: Exit intent trigger activated!");
         exitTriggered = true;
         setHasTriggered(true);
         setIsVisible(true);
@@ -46,12 +58,25 @@ const LeadMagnetPopup = () => {
       }
     };
 
+    // Add a timeout trigger for testing (5 seconds)
+    const timeoutTrigger = setTimeout(() => {
+      if (!hasTriggered && !hasSeenPopup) {
+        console.log("LeadMagnetPopup: Timeout trigger activated (5 seconds)!");
+        setHasTriggered(true);
+        setIsVisible(true);
+        sessionStorage.setItem('leadMagnetShown', 'true');
+      }
+    }, 5000);
+
+    console.log("LeadMagnetPopup: Adding event listeners");
     window.addEventListener('scroll', handleScroll);
     document.addEventListener('mouseleave', handleMouseLeave);
 
     return () => {
+      console.log("LeadMagnetPopup: Cleaning up event listeners");
       window.removeEventListener('scroll', handleScroll);
       document.removeEventListener('mouseleave', handleMouseLeave);
+      clearTimeout(timeoutTrigger);
     };
   }, [hasTriggered]);
 
@@ -114,6 +139,8 @@ const LeadMagnetPopup = () => {
   const handlePopupClick = (e: React.MouseEvent) => {
     e.stopPropagation();
   };
+
+  console.log("LeadMagnetPopup: Render - isVisible:", isVisible, "hasTriggered:", hasTriggered);
 
   if (!isVisible) return null;
 

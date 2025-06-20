@@ -1,4 +1,5 @@
 
+
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -167,17 +168,29 @@ const LeadMagnetPopup = () => {
           <X size={18} />
         </button>
 
-        {/* Urban texture background */}
-        <div className="absolute inset-0 opacity-5 pointer-events-none">
+        {/* Urban brick texture background */}
+        <div className="absolute inset-0 opacity-[0.08] pointer-events-none">
           <div 
-            className="w-full h-full opacity-20"
+            className="w-full h-full"
             style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+              backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill='%23000000' fill-opacity='0.4'%3E%3Cpath d='M0 0h20v20H0V0zm20 20h20v20H20V20z'/%3E%3Cpath d='M0 20h20v20H0V20zm20-20h20v20H20V0z' fill='%23000000' fill-opacity='0.2'/%3E%3C/g%3E%3C/svg%3E")`,
+              backgroundSize: '32px 32px'
             }}
           />
         </div>
 
-        {/* Main gradient background */}
+        {/* Secondary texture layer for depth */}
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
+          <div 
+            className="w-full h-full"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='none' stroke='%23000000' stroke-width='1' stroke-opacity='0.3'%3E%3Cpath d='M0 0h60v20H0V0zm0 20h20v20H0V20zm20 0h20v20H20V20zm20 0h20v20H40V20zm-40 20h20v20H0V40zm20 0h20v20H20V40zm20 0h20v20H40V40z'/%3E%3C/g%3E%3C/svg%3E")`,
+              backgroundSize: '48px 48px'
+            }}
+          />
+        </div>
+
+        {/* Main gradient overlay to blend the textures */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#247EFF]/5 via-transparent to-[#D4AF37]/5 pointer-events-none"></div>
 
         <div className="p-8 relative z-10">
@@ -255,3 +268,4 @@ const LeadMagnetPopup = () => {
 };
 
 export default LeadMagnetPopup;
+

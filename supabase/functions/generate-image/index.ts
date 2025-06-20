@@ -61,7 +61,29 @@ serve(async (req) => {
     if (!response.ok) {
       console.error("❌ OpenAI API Error:", data);
       
-      // Return detailed error information
+      // Handle the specific "image_generation_user_error" with no message
+      if (data.error?.type === 'image_generation_user_error' && !data.error.message) {
+        return new Response(JSON.stringify({ 
+          error: 'OpenAI Image Generation Access Issue',
+          details: {
+            status: response.status,
+            type: data.error.type,
+            possibleCauses: [
+              'Your OpenAI account may not have access to DALL-E image generation',
+              'Your API key may not have image generation permissions',
+              'Your account may have insufficient credits for DALL-E',
+              'You may need to upgrade your OpenAI plan to access image generation'
+            ],
+            solution: 'Check your OpenAI account at https://platform.openai.com/account/usage and https://platform.openai.com/account/billing',
+            raw_error: data
+          }
+        }), {
+          status: 402, // Payment Required - indicates billing/access issue
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        });
+      }
+      
+      // Return detailed error information for other errors
       const errorMessage = data.error?.message || `OpenAI API returned status ${response.status}`;
       const errorType = data.error?.type || 'unknown';
       const errorCode = data.error?.code || 'unknown';

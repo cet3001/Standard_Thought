@@ -47,13 +47,10 @@ const LeadMagnetPopup = () => {
 
   if (!isVisible) return null;
 
-  // Create background style object
-  const backgroundStyle = brickTextureUrl ? {
-    backgroundImage: `url("${brickTextureUrl}")`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat'
-  } : {};
+  // One-liner: brick + subtle dark gradient so text never clashes
+  const bg = brickTextureUrl
+    ? `linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.45)),url("${brickTextureUrl}")`
+    : "linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.45))";
 
   return (
     <div 
@@ -62,15 +59,19 @@ const LeadMagnetPopup = () => {
     >
       <div 
         data-lead-magnet
-        className="max-w-lg w-full rounded-3xl shadow-2xl border border-[#247EFF]/20 relative overflow-hidden min-h-[420px]"
+        className="relative max-w-lg w-full min-h-[420px] overflow-hidden rounded-3xl border border-[#247EFF]/20 shadow-2xl"
         onClick={handlePopupClick}
-        style={backgroundStyle}
+        style={{
+          backgroundImage: bg,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
       >
         {/* Close button */}
         <button
           type="button"
           onClick={handleClose}
-          className="absolute -top-2 -right-2 z-50 w-10 h-10 bg-white dark:bg-brand-black border border-[#247EFF]/20 rounded-full flex items-center justify-center text-[#0A0A0A] dark:text-brand-cream hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-red-600 dark:hover:text-red-400 transition-all duration-200 shadow-lg"
+          className="absolute -top-2 -right-2 z-40 w-10 h-10 bg-white dark:bg-brand-black border border-[#247EFF]/20 rounded-full flex items-center justify-center text-[#0A0A0A] dark:text-brand-cream hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-red-600 dark:hover:text-red-400 transition-all duration-200 shadow-lg"
           aria-label="Close popup"
         >
           <X size={18} />
@@ -78,23 +79,24 @@ const LeadMagnetPopup = () => {
 
         {/* Loading state for texture generation */}
         {isGeneratingTexture && (
-          <div className="absolute inset-0 bg-[#B85450]/30 animate-pulse rounded-3xl flex items-center justify-center z-20">
+          <div className="absolute inset-0 z-30 bg-[#B85450]/30 animate-pulse rounded-3xl flex items-center justify-center">
             <div className="text-white font-semibold">Generating street texture...</div>
           </div>
         )}
 
-        {/* Content with semi-transparent background to show brick texture */}
-        <div className="relative z-30 p-2">
-          <div className="bg-white/80 dark:bg-brand-black/80 backdrop-blur-md rounded-3xl">
-            <LeadMagnetContent
-              email={email}
-              setEmail={setEmail}
-              name={name}
-              setName={setName}
-              isLoading={isLoading}
-              onSubmit={handleSubmit}
-            />
-          </div>
+        {/* Translucent sheet for readability */}
+        <div className="pointer-events-none absolute inset-0 z-20 rounded-3xl bg-white/80 backdrop-blur-md dark:bg-brand-black/80" />
+
+        {/* Actual form/content */}
+        <div className="relative z-30 p-8">
+          <LeadMagnetContent
+            email={email}
+            setEmail={setEmail}
+            name={name}
+            setName={setName}
+            isLoading={isLoading}
+            onSubmit={handleSubmit}
+          />
         </div>
       </div>
     </div>

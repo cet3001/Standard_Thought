@@ -7,6 +7,8 @@ import LeadMagnetPopup from "@/components/lead-magnet-popup";
 import ManifestoSection from "@/components/manifesto-section";
 import { NewsletterSection } from "@/components/newsletter-section";
 import TrustBadgeSection from "@/components/trust-badge-section";
+import Navigation from "@/components/navigation";
+import Footer from "@/components/footer";
 import SEO from "@/components/seo";
 import KeywordOptimization from "@/components/seo/keyword-optimization";
 import VoiceSearchOptimization from "@/components/seo/voice-search-optimization";
@@ -42,6 +44,9 @@ const Index = () => {
       {/* Analytics */}
       <Analytics />
 
+      {/* Navigation Header */}
+      <Navigation />
+
       {/* Hero */}
       <main>
         <HeroSection />
@@ -55,6 +60,9 @@ const Index = () => {
         {/* Trust Badge */}
         <TrustBadgeSection />
       </main>
+
+      {/* Footer */}
+      <Footer />
 
       {/* Conditional CTA based on device */}
       {isMobile ? <MobileFloatingCTA /> : <FloatingCTA />}

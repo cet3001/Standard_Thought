@@ -66,9 +66,6 @@ const LeadMagnetPopup = () => {
         onClick={handlePopupClick}
         style={backgroundStyle}
       >
-        {/* Overlay for better text readability - but let brick texture show through */}
-        <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-black/20 to-black/60 rounded-3xl" />
-
         {/* Close button */}
         <button
           type="button"
@@ -86,9 +83,9 @@ const LeadMagnetPopup = () => {
           </div>
         )}
 
-        {/* Content with its own background */}
-        <div className="relative z-30">
-          <div className="bg-white/95 dark:bg-brand-black/95 backdrop-blur-sm rounded-3xl m-2">
+        {/* Content with semi-transparent background to show brick texture */}
+        <div className="relative z-30 p-2">
+          <div className="bg-white/80 dark:bg-brand-black/80 backdrop-blur-md rounded-3xl">
             <LeadMagnetContent
               email={email}
               setEmail={setEmail}

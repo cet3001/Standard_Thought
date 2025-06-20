@@ -1,5 +1,4 @@
 
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -168,31 +167,46 @@ const LeadMagnetPopup = () => {
           <X size={18} />
         </button>
 
-        {/* Urban brick texture background */}
-        <div className="absolute inset-0 opacity-[0.08] pointer-events-none">
+        {/* Primary brick texture - more visible */}
+        <div className="absolute inset-0 opacity-20 pointer-events-none">
           <div 
             className="w-full h-full"
             style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill='%23000000' fill-opacity='0.4'%3E%3Cpath d='M0 0h20v20H0V0zm20 20h20v20H20V20z'/%3E%3Cpath d='M0 20h20v20H0V20zm20-20h20v20H20V0z' fill='%23000000' fill-opacity='0.2'/%3E%3C/g%3E%3C/svg%3E")`,
-              backgroundSize: '32px 32px'
+              backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='20' viewBox='0 0 40 20'%3E%3Cg fill='%23000000' fill-opacity='0.6'%3E%3Crect x='0' y='0' width='20' height='10'/%3E%3Crect x='20' y='10' width='20' height='10'/%3E%3C/g%3E%3Cg fill='%23000000' fill-opacity='0.3'%3E%3Crect x='0' y='10' width='20' height='10'/%3E%3Crect x='20' y='0' width='20' height='10'/%3E%3C/g%3E%3C/svg%3E")`,
+              backgroundSize: '40px 20px',
+              backgroundRepeat: 'repeat'
             }}
           />
         </div>
 
-        {/* Secondary texture layer for depth */}
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
+        {/* Secondary concrete texture layer */}
+        <div className="absolute inset-0 opacity-15 pointer-events-none">
           <div 
             className="w-full h-full"
             style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='none' stroke='%23000000' stroke-width='1' stroke-opacity='0.3'%3E%3Cpath d='M0 0h60v20H0V0zm0 20h20v20H0V20zm20 0h20v20H20V20zm20 0h20v20H40V20zm-40 20h20v20H0V40zm20 0h20v20H20V40zm20 0h20v20H40V40z'/%3E%3C/g%3E%3C/svg%3E")`,
-              backgroundSize: '48px 48px'
+              backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='none' stroke='%23000000' stroke-width='0.5' stroke-opacity='0.4'%3E%3Cpath d='M0 0h20v20H0V0zm20 0h20v20H20V0zm20 0h20v20H40V0zM0 20h20v20H0V20zm20 20h20v20H20V20zm20-20h20v20H40V20zM0 40h20v20H0V40zm20 0h20v20H20V40zm20 0h20v20H40V40z'/%3E%3C/g%3E%3C/svg%3E")`,
+              backgroundSize: '30px 30px',
+              backgroundRepeat: 'repeat'
             }}
           />
         </div>
 
-        {/* Main gradient overlay to blend the textures */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#247EFF]/5 via-transparent to-[#D4AF37]/5 pointer-events-none"></div>
+        {/* Subtle noise texture for urban grit */}
+        <div className="absolute inset-0 opacity-10 pointer-events-none">
+          <div 
+            className="w-full h-full"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill='%23000000' fill-opacity='0.5'%3E%3Ccircle cx='10' cy='10' r='1'/%3E%3Ccircle cx='30' cy='25' r='0.5'/%3E%3Ccircle cx='50' cy='15' r='1'/%3E%3Ccircle cx='70' cy='35' r='0.5'/%3E%3Ccircle cx='90' cy='20' r='1'/%3E%3Ccircle cx='20' cy='45' r='0.5'/%3E%3Ccircle cx='40' cy='55' r='1'/%3E%3Ccircle cx='60' cy='75' r='0.5'/%3E%3Ccircle cx='80' cy='65' r='1'/%3E%3Ccircle cx='15' cy='85' r='0.5'/%3E%3C/g%3E%3C/svg%3E")`,
+              backgroundSize: '50px 50px',
+              backgroundRepeat: 'repeat'
+            }}
+          />
+        </div>
 
+        {/* Brand gradient overlay to blend everything together */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#247EFF]/8 via-transparent to-[#D4AF37]/8 pointer-events-none"></div>
+
+        {/* Content */}
         <div className="p-8 relative z-10">
           {/* Header with playbook icon */}
           <div className="text-center mb-6">
@@ -268,4 +282,3 @@ const LeadMagnetPopup = () => {
 };
 
 export default LeadMagnetPopup;
-

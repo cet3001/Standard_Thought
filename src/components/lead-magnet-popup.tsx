@@ -1,5 +1,6 @@
 
 import { X } from "lucide-react";
+import { useEffect } from "react";
 import { useLeadMagnetPopup } from "@/hooks/use-lead-magnet-popup";
 import LeadMagnetContent from "./lead-magnet/lead-magnet-content";
 
@@ -33,7 +34,7 @@ const LeadMagnetPopup = () => {
   console.log("LeadMagnetPopup: Render - isVisible:", isVisible);
   console.log("LeadMagnetPopup: brickTextureUrl:", brickTextureUrl);
 
-  // Add debugging for the background image
+  // Debug background image application
   useEffect(() => {
     if (brickTextureUrl) {
       console.log("🎨 Background image URL set:", brickTextureUrl);
@@ -68,7 +69,7 @@ const LeadMagnetPopup = () => {
         <button
           type="button"
           onClick={handleClose}
-          className="absolute -top-2 -right-2 z-40 w-10 h-10 bg-white dark:bg-brand-black border border-[#247EFF]/20 rounded-full flex items-center justify-center text-[#0A0A0A] dark:text-brand-cream hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-red-600 dark:hover:text-red-400 transition-all duration-200 shadow-lg"
+          className="absolute -top-2 -right-2 z-50 w-10 h-10 bg-white dark:bg-brand-black border border-[#247EFF]/20 rounded-full flex items-center justify-center text-[#0A0A0A] dark:text-brand-cream hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-red-600 dark:hover:text-red-400 transition-all duration-200 shadow-lg"
           aria-label="Close popup"
         >
           <X size={18} />

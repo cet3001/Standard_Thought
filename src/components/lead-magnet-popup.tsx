@@ -47,10 +47,10 @@ const LeadMagnetPopup = () => {
 
   if (!isVisible) return null;
 
-  // One-liner: brick + subtle dark gradient so text never clashes
+  /* brick + a *very* light darkening so white text never clashes */
   const bg = brickTextureUrl
-    ? `linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.45)),url("${brickTextureUrl}")`
-    : "linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.45))";
+    ? `linear-gradient(rgba(0,0,0,.15),rgba(0,0,0,.25)),url("${brickTextureUrl}")`
+    : undefined;
 
   return (
     <div 
@@ -84,19 +84,18 @@ const LeadMagnetPopup = () => {
           </div>
         )}
 
-        {/* Translucent sheet for readability */}
-        <div className="pointer-events-none absolute inset-0 z-20 rounded-3xl bg-white/80 backdrop-blur-md dark:bg-brand-black/80" />
-
-        {/* Actual form/content */}
+        {/* ---------- CONTENT CARD ---------- */}
         <div className="relative z-30 p-8">
-          <LeadMagnetContent
-            email={email}
-            setEmail={setEmail}
-            name={name}
-            setName={setName}
-            isLoading={isLoading}
-            onSubmit={handleSubmit}
-          />
+          <div className="rounded-2xl bg-white/85 p-6 backdrop-blur-sm dark:bg-brand-black/75">
+            <LeadMagnetContent
+              email={email}
+              setEmail={setEmail}
+              name={name}
+              setName={setName}
+              isLoading={isLoading}
+              onSubmit={handleSubmit}
+            />
+          </div>
         </div>
       </div>
     </div>

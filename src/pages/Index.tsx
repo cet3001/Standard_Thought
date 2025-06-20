@@ -1,4 +1,3 @@
-
 import Analytics from "@/components/analytics";
 import FloatingCTA from "@/components/floating-cta";
 import MobileFloatingCTA from "@/components/mobile-floating-cta";
@@ -7,6 +6,7 @@ import LeadMagnetPopup from "@/components/lead-magnet-popup";
 import ManifestoSection from "@/components/manifesto-section";
 import { NewsletterSection } from "@/components/newsletter-section";
 import TrustBadgeSection from "@/components/trust-badge-section";
+import AIChat from "@/components/ai-chat";
 import SEO from "@/components/seo";
 import KeywordOptimization from "@/components/seo/keyword-optimization";
 import VoiceSearchOptimization from "@/components/seo/voice-search-optimization";
@@ -45,6 +45,22 @@ const Index = () => {
       {/* Hero */}
       <main>
         <HeroSection />
+
+        {/* AI Financial Advisor */}
+        <section className="py-16 bg-white/50 dark:bg-brand-black/50">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-brand-black dark:text-brand-cream mb-4">
+                Get Real Financial Advice
+              </h2>
+              <p className="text-lg text-brand-black/70 dark:text-brand-cream/70 max-w-2xl mx-auto">
+                Chat with our AI financial advisor trained on street-smart wealth building strategies. 
+                Get personalized advice for your money moves.
+              </p>
+            </div>
+            <AIChat />
+          </div>
+        </section>
 
         {/* Newsletter */}
         <NewsletterSection />

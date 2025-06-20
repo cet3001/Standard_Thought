@@ -75,22 +75,23 @@ const HeroSection = () => {
                 size="lg"
                 onClick={scrollToNewsletter}
                 className="bg-[#247EFF] hover:bg-[#0057FF] hover:shadow-lg hover:shadow-[#247EFF]/30 text-white font-semibold px-8 py-4 rounded-3xl transition-all duration-300 hover:scale-105"
+                aria-label="Start building wealth - Scroll to newsletter signup"
               >
                 Start Flipping Your Circumstances
-                <ArrowUp className="ml-2 h-5 w-5 rotate-45" />
+                <ArrowUp className="ml-2 h-5 w-5 rotate-45" aria-hidden="true" />
               </Button>
             </div>
           </div>
 
           {/* Enhanced Social Proof with authentic community metrics */}
           <div className={`bg-white/90 dark:bg-brand-black/80 backdrop-blur-sm border border-[#247EFF]/20 rounded-3xl p-8 mb-16 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center" role="group" aria-label="Success metrics and social proof">
               <div>
-                <div className="text-3xl font-bold text-[#247EFF] mb-2">1000+</div>
+                <div className="text-3xl font-bold text-[#247EFF] mb-2" aria-label="Over 1000 members">1000+</div>
                 <div className="text-[#0A0A0A]/80 dark:text-brand-cream/80">Hustlers flipped struggle into progress</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-[#247EFF] mb-2">$500→$50K</div>
+                <div className="text-3xl font-bold text-[#247EFF] mb-2" aria-label="Success range from 500 to 50,000 dollars">$500→$50K</div>
                 <div className="text-[#0A0A0A]/80 dark:text-brand-cream/80">From $500 side hustles to $50K legit businesses—real bag secured</div>
               </div>
               <div>
@@ -110,9 +111,13 @@ const HeroSection = () => {
                 We know what it's like when every dollar matters and money stress is real. Our approach helps you break free from living check to check and start <strong>securing the bag</strong> with assets that work for you—not against you.
               </p>
               <Link to="/wealth-building-strategies">
-                <Button variant="outline" className="w-full border-[#247EFF] text-[#247EFF] hover:bg-[#247EFF] hover:text-white">
+                <Button 
+                  variant="outline" 
+                  className="w-full border-[#247EFF] text-[#247EFF] hover:bg-[#247EFF] hover:text-white"
+                  aria-label="Learn more about wealth building strategies"
+                >
                   Learn More
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
                 </Button>
               </Link>
             </div>
@@ -125,9 +130,13 @@ const HeroSection = () => {
                 Learn <strong>street-smart money moves</strong> and investment strategies in language that makes sense. No corporate jargon, no code-switching—just real talk about <strong>leveling up financially</strong>.
               </p>
               <Link to="/financial-education-guide">
-                <Button variant="outline" className="w-full border-green-500 text-green-600 dark:text-green-400 hover:bg-green-500 hover:text-white">
+                <Button 
+                  variant="outline" 
+                  className="w-full border-green-500 text-green-600 dark:text-green-400 hover:bg-green-500 hover:text-white"
+                  aria-label="Learn more about financial education guide"
+                >
                   Learn More
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
                 </Button>
               </Link>
             </div>

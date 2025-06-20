@@ -21,17 +21,29 @@ const MobileMenu = ({ isOpen, onToggle, onClose }: MobileMenuProps) => {
   return (
     <Sheet>
       <SheetTrigger asChild className="lg:hidden">
-        <Button variant="ghost" size="icon">
-          <Menu className="h-6 w-6" />
+        <Button 
+          variant="ghost" 
+          size="icon"
+          aria-label="Open mobile navigation menu"
+          aria-expanded={isOpen}
+          aria-controls="mobile-navigation-menu"
+        >
+          <Menu className="h-6 w-6" aria-hidden="true" />
         </Button>
       </SheetTrigger>
-      <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-        <nav className="flex flex-col space-y-4 mt-8">
+      <SheetContent 
+        side="right" 
+        className="w-[300px] sm:w-[400px]"
+        aria-label="Mobile navigation menu"
+        id="mobile-navigation-menu"
+      >
+        <nav className="flex flex-col space-y-4 mt-8" role="navigation" aria-label="Main navigation">
           {navItems.map((item) => (
             <Link
               key={item.href}
               to={item.href}
               className="text-lg font-medium text-[#0A0A0A] dark:text-brand-cream hover:text-[#247EFF] dark:hover:text-[#247EFF] transition-colors"
+              aria-label={`Navigate to ${item.label} page`}
             >
               {item.label}
             </Link>

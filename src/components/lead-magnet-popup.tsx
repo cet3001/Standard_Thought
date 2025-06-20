@@ -74,7 +74,7 @@ const LeadMagnetPopup = () => {
     >
       <div 
         data-lead-magnet
-        className="relative max-w-md w-full max-h-[90vh] overflow-hidden rounded-2xl border border-[#247EFF]/20 shadow-2xl"
+        className="relative max-w-lg w-full max-h-[85vh] overflow-hidden rounded-2xl border border-[#247EFF]/20 shadow-2xl"
         onClick={(e) => e.stopPropagation()}
         style={{
           backgroundImage: bg,
@@ -87,25 +87,25 @@ const LeadMagnetPopup = () => {
         <button
           type="button"
           onClick={handleCloseClick}
-          className="absolute top-3 right-3 z-50 w-8 h-8 bg-white/90 hover:bg-white rounded-full flex items-center justify-center text-gray-700 hover:text-red-600 transition-all duration-200 shadow-lg"
+          className="absolute top-4 right-4 z-50 w-10 h-10 bg-white/95 hover:bg-white rounded-full flex items-center justify-center text-gray-700 hover:text-red-600 transition-all duration-200 shadow-lg hover:shadow-xl"
           aria-label="Close popup"
         >
-          <X size={16} />
+          <X size={18} />
         </button>
 
         {/* Subtle loading indicator for texture generation */}
         {isGeneratingTexture && !brickTextureUrl && (
-          <div className="absolute top-3 left-3 z-30 px-2 py-1 bg-black/20 backdrop-blur-sm rounded-full">
-            <div className="text-white/80 text-xs font-medium flex items-center gap-1">
-              <div className="w-1.5 h-1.5 bg-[#247EFF] rounded-full animate-pulse"></div>
+          <div className="absolute top-4 left-4 z-30 px-3 py-1.5 bg-black/20 backdrop-blur-sm rounded-full">
+            <div className="text-white/80 text-sm font-medium flex items-center gap-2">
+              <div className="w-2 h-2 bg-[#247EFF] rounded-full animate-pulse"></div>
               Enhancing...
             </div>
           </div>
         )}
 
-        {/* Content card - made more compact */}
-        <div className="relative z-30 p-4 sm:p-6">
-          <div className="mx-auto w-full rounded-xl bg-white/95 p-4 sm:p-6 shadow-lg backdrop-blur-md dark:bg-brand-black/90">
+        {/* Content card - properly sized */}
+        <div className="relative z-30 p-6 sm:p-8">
+          <div className="mx-auto w-full rounded-2xl bg-white/95 p-6 sm:p-8 shadow-lg backdrop-blur-md dark:bg-brand-black/90">
             <LeadMagnetContent
               email={email}
               setEmail={setEmail}

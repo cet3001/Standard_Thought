@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -14,6 +15,9 @@ const LeadMagnetPopup = () => {
 
   useEffect(() => {
     console.log("LeadMagnetPopup: Setting up triggers");
+    
+    // Clear session storage for testing - remove this line in production
+    sessionStorage.removeItem('leadMagnetShown');
     
     // Check if user has already seen popup this session
     const hasSeenPopup = sessionStorage.getItem('leadMagnetShown');
@@ -58,15 +62,15 @@ const LeadMagnetPopup = () => {
       }
     };
 
-    // Add a timeout trigger for testing (5 seconds)
+    // Add a timeout trigger for testing (1 second for immediate testing)
     const timeoutTrigger = setTimeout(() => {
       if (!hasTriggered && !hasSeenPopup) {
-        console.log("LeadMagnetPopup: Timeout trigger activated (5 seconds)!");
+        console.log("LeadMagnetPopup: Timeout trigger activated (1 second)!");
         setHasTriggered(true);
         setIsVisible(true);
         sessionStorage.setItem('leadMagnetShown', 'true');
       }
-    }, 5000);
+    }, 1000);
 
     console.log("LeadMagnetPopup: Adding event listeners");
     window.addEventListener('scroll', handleScroll);

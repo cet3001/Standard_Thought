@@ -31,6 +31,7 @@ const LeadMagnetPopup = () => {
   };
 
   console.log("LeadMagnetPopup: Render - isVisible:", isVisible);
+  console.log("LeadMagnetPopup: brickTextureUrl:", brickTextureUrl);
 
   if (!isVisible) return null;
 
@@ -42,6 +43,12 @@ const LeadMagnetPopup = () => {
       <div 
         className="bg-white dark:bg-brand-black max-w-lg w-full rounded-3xl shadow-2xl border border-[#247EFF]/20 relative overflow-hidden"
         onClick={handlePopupClick}
+        style={{
+          backgroundImage: brickTextureUrl ? `url(${brickTextureUrl})` : undefined,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
       >
         {/* Close button */}
         <button
@@ -53,35 +60,27 @@ const LeadMagnetPopup = () => {
           <X size={18} />
         </button>
 
-        {/* Generated brick texture background */}
-        {brickTextureUrl && (
-          <div 
-            className="absolute inset-0 opacity-40 pointer-events-none bg-cover bg-center bg-no-repeat"
-            style={{
-              backgroundImage: `url(${brickTextureUrl})`,
-              backgroundSize: 'cover',
-              backgroundRepeat: 'no-repeat'
-            }}
-          />
-        )}
-
-        {/* Dark overlay to ensure text readability */}
-        <div className="absolute inset-0 bg-gradient-to-br from-black/20 via-transparent to-black/30 pointer-events-none"></div>
+        {/* Dark overlay to ensure text readability over the brick background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-black/20 to-black/50 pointer-events-none rounded-3xl"></div>
 
         {/* Loading state for texture generation */}
         {isGeneratingTexture && (
-          <div className="absolute inset-0 bg-gradient-to-br from-[#B85450]/20 to-[#A0342E]/20 pointer-events-none animate-pulse"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-[#B85450]/20 to-[#A0342E]/20 pointer-events-none animate-pulse rounded-3xl flex items-center justify-center">
+            <div className="text-white font-semibold">Generating street texture...</div>
+          </div>
         )}
 
         {/* Content */}
-        <LeadMagnetContent
-          email={email}
-          setEmail={setEmail}
-          name={name}
-          setName={setName}
-          isLoading={isLoading}
-          onSubmit={handleSubmit}
-        />
+        <div className="relative z-10">
+          <LeadMagnetContent
+            email={email}
+            setEmail={setEmail}
+            name={name}
+            setName={setName}
+            isLoading={isLoading}
+            onSubmit={handleSubmit}
+          />
+        </div>
       </div>
     </div>
   );

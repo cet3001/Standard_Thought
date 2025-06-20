@@ -1,7 +1,6 @@
 
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { generateImage } from "@/lib/api";
 import { toast } from "sonner";
 
 export const useLeadMagnetPopup = () => {
@@ -93,15 +92,31 @@ export const useLeadMagnetPopup = () => {
 
   const generateBrickTexture = async () => {
     setIsGeneratingTexture(true);
+    console.log("Starting brick texture generation...");
+    
     try {
       const prompt = "Urban brick wall texture, weathered red and brown bricks with white mortar lines, close-up pattern, realistic texture, high contrast, street photography style, gritty urban aesthetic";
       
-      const imageUrl = await generateImage(prompt);
-      setBrickTextureUrl(imageUrl);
-      console.log("Brick texture generated:", imageUrl);
+      const { data, error } = await supabase.functions.invoke('generate-image', {
+        body: { prompt }
+      });
+
+      if (error) {
+        console.error("Supabase function error:", error);
+        throw error;
+      }
+
+      if (data && data.imageUrl) {
+        setBrickTextureUrl(data.imageUrl);
+        console.log("Brick texture generated successfully:", data.imageUrl);
+      } else {
+        console.error("No image URL in response:", data);
+        throw new Error("No image URL received");
+      }
     } catch (error) {
       console.error("Error generating brick texture:", error);
-      // Fallback to no background if generation fails
+      // Set a fallback CSS gradient pattern that looks like bricks
+      setBrickTextureUrl("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23B85450' fill-opacity='0.3'%3E%3Crect width='11' height='4' x='0' y='0'/%3E%3Crect width='11' height='4' x='15' y='0'/%3E%3Crect width='11' height='4' x='30' y='0'/%3E%3Crect width='11' height='4' x='45' y='0'/%3E%3Crect width='11' height='4' x='7.5' y='6'/%3E%3Crect width='11' height='4' x='22.5' y='6'/%3E%3Crect width='11' height='4' x='37.5' y='6'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     } finally {
       setIsGeneratingTexture(false);
     }

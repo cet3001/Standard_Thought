@@ -1,6 +1,5 @@
 
 import { X } from "lucide-react";
-import { useEffect } from "react";
 import { useLeadMagnetPopup } from "@/hooks/use-lead-magnet-popup";
 import LeadMagnetContent from "./lead-magnet/lead-magnet-content";
 
@@ -15,31 +14,22 @@ const LeadMagnetPopup = () => {
     brickTextureUrl,
     isGeneratingTexture,
     handleSubmit,
-    handleClose,
-    setIsVisible
+    handleClose
   } = useLeadMagnetPopup();
+
+  if (!isVisible) return null;
 
   const handleBackgroundClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
-      console.log("Background clicked - closing popup");
-      handleClose(e);
+      handleClose();
     }
-  };
-
-  const handlePopupClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
   };
 
   const handleCloseClick = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    console.log("Close button clicked - closing popup");
-    handleClose(e);
+    handleClose();
   };
-
-  console.log("LeadMagnetPopup: Render - isVisible:", isVisible);
-
-  if (!isVisible) return null;
 
   // Immediate gritty brick SVG pattern - always ready
   const immediateBrickSvg = `<svg width="200" height="120" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
@@ -84,8 +74,8 @@ const LeadMagnetPopup = () => {
     >
       <div 
         data-lead-magnet
-        className="relative max-w-lg w-full min-h-[420px] overflow-hidden rounded-3xl border border-[#247EFF]/20 shadow-2xl"
-        onClick={handlePopupClick}
+        className="relative max-w-md w-full max-h-[90vh] overflow-hidden rounded-2xl border border-[#247EFF]/20 shadow-2xl"
+        onClick={(e) => e.stopPropagation()}
         style={{
           backgroundImage: bg,
           backgroundSize: "cover",
@@ -93,29 +83,29 @@ const LeadMagnetPopup = () => {
           backgroundBlendMode: "multiply",
         }}
       >
-        {/* Fixed Close button with proper event handling */}
+        {/* Close button with proper positioning and functionality */}
         <button
           type="button"
           onClick={handleCloseClick}
-          className="absolute -top-2 -right-2 z-50 w-10 h-10 bg-white dark:bg-brand-black border border-[#247EFF]/20 rounded-full flex items-center justify-center text-[#0A0A0A] dark:text-brand-cream hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-red-600 dark:hover:text-red-400 transition-all duration-200 shadow-lg cursor-pointer"
+          className="absolute top-3 right-3 z-50 w-8 h-8 bg-white/90 hover:bg-white rounded-full flex items-center justify-center text-gray-700 hover:text-red-600 transition-all duration-200 shadow-lg"
           aria-label="Close popup"
         >
-          <X size={18} />
+          <X size={16} />
         </button>
 
         {/* Subtle loading indicator for texture generation */}
         {isGeneratingTexture && !brickTextureUrl && (
-          <div className="absolute top-4 left-4 z-30 px-3 py-1 bg-black/20 backdrop-blur-sm rounded-full">
-            <div className="text-white/80 text-xs font-medium flex items-center gap-2">
-              <div className="w-2 h-2 bg-[#247EFF] rounded-full animate-pulse"></div>
-              Enhancing texture...
+          <div className="absolute top-3 left-3 z-30 px-2 py-1 bg-black/20 backdrop-blur-sm rounded-full">
+            <div className="text-white/80 text-xs font-medium flex items-center gap-1">
+              <div className="w-1.5 h-1.5 bg-[#247EFF] rounded-full animate-pulse"></div>
+              Enhancing...
             </div>
           </div>
         )}
 
-        {/* Content card */}
-        <div className="relative z-30 p-6 sm:p-8">
-          <div className="mx-auto w-full max-w-md rounded-2xl bg-white/95 p-6 shadow-lg backdrop-blur-md dark:bg-brand-black/90">
+        {/* Content card - made more compact */}
+        <div className="relative z-30 p-4 sm:p-6">
+          <div className="mx-auto w-full rounded-xl bg-white/95 p-4 sm:p-6 shadow-lg backdrop-blur-md dark:bg-brand-black/90">
             <LeadMagnetContent
               email={email}
               setEmail={setEmail}

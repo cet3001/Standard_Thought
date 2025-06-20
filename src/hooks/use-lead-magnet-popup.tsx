@@ -164,9 +164,7 @@ export const useLeadMagnetPopup = () => {
     }
   };
 
-  const handleClose = useCallback((e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
+  const handleClose = useCallback(() => {
     console.log("Closing popup and setting session storage");
     setIsVisible(false);
     sessionStorage.setItem('leadMagnetShown', 'true');
@@ -182,7 +180,6 @@ export const useLeadMagnetPopup = () => {
     brickTextureUrl,
     isGeneratingTexture,
     handleSubmit,
-    handleClose,
-    setIsVisible
+    handleClose
   };
 };

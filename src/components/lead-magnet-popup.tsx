@@ -49,7 +49,7 @@ const LeadMagnetPopup = () => {
 
   // Create background style object
   const backgroundStyle = brickTextureUrl ? {
-    backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url("${brickTextureUrl}")`,
+    backgroundImage: `url("${brickTextureUrl}")`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat'
@@ -66,8 +66,8 @@ const LeadMagnetPopup = () => {
         onClick={handlePopupClick}
         style={backgroundStyle}
       >
-        {/* Background overlay for better text readability */}
-        <div className="absolute inset-0 bg-white/95 dark:bg-brand-black/95 backdrop-blur-sm rounded-3xl" />
+        {/* Overlay for better text readability - but let brick texture show through */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-black/20 to-black/60 rounded-3xl" />
 
         {/* Close button */}
         <button
@@ -86,16 +86,18 @@ const LeadMagnetPopup = () => {
           </div>
         )}
 
-        {/* Content */}
+        {/* Content with its own background */}
         <div className="relative z-30">
-          <LeadMagnetContent
-            email={email}
-            setEmail={setEmail}
-            name={name}
-            setName={setName}
-            isLoading={isLoading}
-            onSubmit={handleSubmit}
-          />
+          <div className="bg-white/95 dark:bg-brand-black/95 backdrop-blur-sm rounded-3xl m-2">
+            <LeadMagnetContent
+              email={email}
+              setEmail={setEmail}
+              name={name}
+              setName={setName}
+              isLoading={isLoading}
+              onSubmit={handleSubmit}
+            />
+          </div>
         </div>
       </div>
     </div>

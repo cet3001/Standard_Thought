@@ -1,8 +1,10 @@
+
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { X, Download, Mail, Book } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import { generateImage } from "@/lib/api";
 import { toast } from "sonner";
 
 const LeadMagnetPopup = () => {
@@ -11,6 +13,8 @@ const LeadMagnetPopup = () => {
   const [name, setName] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [hasTriggered, setHasTriggered] = useState(false);
+  const [brickTextureUrl, setBrickTextureUrl] = useState<string>("");
+  const [isGeneratingTexture, setIsGeneratingTexture] = useState(false);
 
   useEffect(() => {
     console.log("LeadMagnetPopup: Setting up triggers");
@@ -83,6 +87,29 @@ const LeadMagnetPopup = () => {
     };
   }, [hasTriggered]);
 
+  // Generate brick texture when popup becomes visible
+  useEffect(() => {
+    if (isVisible && !brickTextureUrl && !isGeneratingTexture) {
+      generateBrickTexture();
+    }
+  }, [isVisible, brickTextureUrl, isGeneratingTexture]);
+
+  const generateBrickTexture = async () => {
+    setIsGeneratingTexture(true);
+    try {
+      const prompt = "Urban brick wall texture, weathered red and brown bricks with white mortar lines, close-up pattern, realistic texture, high contrast, street photography style, gritty urban aesthetic";
+      
+      const imageUrl = await generateImage(prompt);
+      setBrickTextureUrl(imageUrl);
+      console.log("Brick texture generated:", imageUrl);
+    } catch (error) {
+      console.error("Error generating brick texture:", error);
+      // Fallback to no background if generation fails
+    } finally {
+      setIsGeneratingTexture(false);
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) {
@@ -126,14 +153,14 @@ const LeadMagnetPopup = () => {
   const handleClose = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    console.log("Close button clicked"); // Debug log
+    console.log("Close button clicked");
     setIsVisible(false);
     sessionStorage.setItem('leadMagnetShown', 'true');
   };
 
   const handleBackgroundClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
-      console.log("Background clicked"); // Debug log
+      console.log("Background clicked");
       setIsVisible(false);
       sessionStorage.setItem('leadMagnetShown', 'true');
     }
@@ -166,33 +193,28 @@ const LeadMagnetPopup = () => {
           <X size={18} />
         </button>
 
-        {/* Urban brick texture background */}
-        <div 
-          className="absolute inset-0 opacity-30 pointer-events-none bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='100' viewBox='0 0 200 100'%3E%3Cdefs%3E%3Cpattern id='brick' patternUnits='userSpaceOnUse' width='40' height='20'%3E%3Crect width='40' height='20' fill='%23B85450'/%3E%3Crect width='18' height='8' x='1' y='1' fill='%23A0342E'/%3E%3Crect width='18' height='8' x='21' y='1' fill='%23A0342E'/%3E%3Crect width='18' height='8' x='1' y='11' fill='%23A0342E'/%3E%3Crect width='18' height='8' x='21' y='11' fill='%23A0342E'/%3E%3Cline x1='0' y1='10' x2='40' y2='10' stroke='%23E8E8E8' stroke-width='2'/%3E%3Cline x1='0' y1='20' x2='40' y2='20' stroke='%23E8E8E8' stroke-width='2'/%3E%3Cline x1='20' y1='0' x2='20' y2='10' stroke='%23E8E8E8' stroke-width='2'/%3E%3Cline x1='0' y1='10' x2='0' y2='20' stroke='%23E8E8E8' stroke-width='1'/%3E%3Cline x1='40' y1='10' x2='40' y2='20' stroke='%23E8E8E8' stroke-width='1'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='200' height='100' fill='url(%23brick)'/%3E%3C/svg%3E")`,
-            backgroundSize: '80px 40px',
-            backgroundRepeat: 'repeat'
-          }}
-        />
-
-        {/* Weathering and grit overlay */}
-        <div className="absolute inset-0 opacity-20 pointer-events-none">
+        {/* Generated brick texture background */}
+        {brickTextureUrl && (
           <div 
-            className="w-full h-full"
+            className="absolute inset-0 opacity-40 pointer-events-none bg-cover bg-center bg-no-repeat"
             style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill='%23000000' fill-opacity='0.3'%3E%3Ccircle cx='10' cy='10' r='1'/%3E%3Ccircle cx='30' cy='25' r='0.8'/%3E%3Ccircle cx='50' cy='15' r='1.2'/%3E%3Ccircle cx='70' cy='35' r='0.6'/%3E%3Ccircle cx='90' cy='20' r='1'/%3E%3Ccircle cx='20' cy='45' r='0.7'/%3E%3Ccircle cx='40' cy='55' r='1.1'/%3E%3Ccircle cx='60' cy='75' r='0.9'/%3E%3Ccircle cx='80' cy='65' r='1.3'/%3E%3Ccircle cx='15' cy='85' r='0.5'/%3E%3Crect x='5' y='30' width='2' height='8' fill='%23000000' fill-opacity='0.2'/%3E%3Crect x='25' y='60' width='3' height='5' fill='%23000000' fill-opacity='0.15'/%3E%3Crect x='75' y='40' width='1' height='12' fill='%23000000' fill-opacity='0.25'/%3E%3C/g%3E%3C/svg%3E")`,
-              backgroundSize: '60px 60px',
-              backgroundRepeat: 'repeat'
+              backgroundImage: `url(${brickTextureUrl})`,
+              backgroundSize: 'cover',
+              backgroundRepeat: 'no-repeat'
             }}
           />
-        </div>
+        )}
 
         {/* Dark overlay to ensure text readability */}
-        <div className="absolute inset-0 bg-gradient-to-br from-black/10 via-transparent to-black/15 pointer-events-none"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-black/20 via-transparent to-black/30 pointer-events-none"></div>
+
+        {/* Loading state for texture generation */}
+        {isGeneratingTexture && (
+          <div className="absolute inset-0 bg-gradient-to-br from-[#B85450]/20 to-[#A0342E]/20 pointer-events-none animate-pulse"></div>
+        )}
 
         {/* Content */}
-        <div className="p-8 relative z-10 bg-white/90 dark:bg-brand-black/90 backdrop-blur-sm rounded-3xl">
+        <div className="p-8 relative z-10 bg-white/95 dark:bg-brand-black/95 backdrop-blur-sm rounded-3xl">
           {/* Header with playbook icon */}
           <div className="text-center mb-6">
             <div className="w-20 h-20 bg-gradient-to-br from-[#247EFF] to-[#0057FF] rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">

@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { X, Download, Mail } from "lucide-react";
+import { X, Download, Mail, Book } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 
@@ -119,14 +119,14 @@ const LeadMagnetPopup = () => {
 
   return (
     <div 
-      className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+      className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
       onClick={handleBackgroundClick}
     >
       <div 
-        className="bg-white dark:bg-brand-black max-w-md w-full rounded-2xl shadow-2xl border border-[#247EFF]/20 relative overflow-hidden"
+        className="bg-white dark:bg-brand-black max-w-lg w-full rounded-3xl shadow-2xl border border-[#247EFF]/20 relative overflow-hidden"
         onClick={handlePopupClick}
       >
-        {/* Close button - positioned outside the content area */}
+        {/* Close button */}
         <button
           type="button"
           onClick={handleClose}
@@ -136,62 +136,81 @@ const LeadMagnetPopup = () => {
           <X size={18} />
         </button>
 
-        {/* Background pattern */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#247EFF]/5 to-transparent pointer-events-none"></div>
+        {/* Urban texture background */}
+        <div className="absolute inset-0 opacity-5 pointer-events-none">
+          <div className="w-full h-full bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23000" fill-opacity="0.1"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
+        </div>
+
+        {/* Main gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#247EFF]/5 via-transparent to-[#D4AF37]/5 pointer-events-none"></div>
 
         <div className="p-8 relative z-10">
-          {/* Header */}
+          {/* Header with playbook icon */}
           <div className="text-center mb-6">
-            <div className="w-16 h-16 bg-[#247EFF] rounded-full flex items-center justify-center mx-auto mb-4">
-              <Download className="w-8 h-8 text-white" />
+            <div className="w-20 h-20 bg-gradient-to-br from-[#247EFF] to-[#0057FF] rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+              <Book className="w-10 h-10 text-white" />
             </div>
-            <h3 className="text-2xl font-bold text-[#0A0A0A] dark:text-brand-cream mb-2">
-              Wait! Get Your Free Playbook
+            <h3 className="text-2xl font-bold text-[#0A0A0A] dark:text-brand-cream mb-3">
+              Unlock the Blueprint to Generational Wealth
             </h3>
-            <p className="text-[#0A0A0A]/70 dark:text-brand-cream/70">
-              Before you go, grab the blueprint that's helped 500+ builders turn nothing into generational wealth.
+            <p className="text-[#0A0A0A]/70 dark:text-brand-cream/70 text-lg leading-relaxed">
+              Join 500+ hustlers who started with nothing and are now building legacy. Drop your email below and get the playbook that's helping our community level up—no fluff, just real strategies.
             </p>
           </div>
 
           {/* Form */}
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-4 mb-6">
             <Input
               type="text"
-              placeholder="Your first name (optional)"
+              placeholder="First name (optional)"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full h-11 border-[#247EFF]/20 focus:border-[#247EFF] rounded-xl"
+              className="w-full h-12 border-[#247EFF]/20 focus:border-[#247EFF] rounded-xl bg-brand-cream/30 dark:bg-brand-black/30"
             />
             <div className="relative">
-              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#0A0A0A]/60 dark:text-brand-cream/60 h-4 w-4" />
+              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#0A0A0A]/60 dark:text-brand-cream/60 h-5 w-5" />
               <Input
                 type="email"
-                placeholder="Enter your email for instant access"
+                placeholder="Email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="w-full h-11 pl-11 border-[#247EFF]/20 focus:border-[#247EFF] rounded-xl"
+                className="w-full h-12 pl-12 border-[#247EFF]/20 focus:border-[#247EFF] rounded-xl bg-brand-cream/30 dark:bg-brand-black/30"
                 disabled={isLoading}
               />
             </div>
             <Button 
               type="submit" 
-              className="w-full h-11 bg-[#247EFF] hover:bg-[#0057FF] text-white font-semibold rounded-xl transition-all duration-300 disabled:opacity-70"
+              className="w-full h-12 bg-gradient-to-r from-[#247EFF] to-[#0057FF] hover:from-[#0057FF] hover:to-[#247EFF] text-white font-bold rounded-xl transition-all duration-300 disabled:opacity-70 shadow-lg hover:shadow-xl"
               disabled={isLoading}
             >
               {isLoading ? (
                 <div className="flex items-center">
-                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                  Sending...
+                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                  Sending Your Playbook...
                 </div>
               ) : (
-                "Get Free Playbook PDF"
+                <>
+                  <Download className="w-5 h-5 mr-2" />
+                  Unlock My Free Playbook
+                </>
               )}
             </Button>
           </form>
 
-          <p className="text-xs text-[#0A0A0A]/50 dark:text-brand-cream/50 text-center mt-4">
-            📧 Instant delivery • No spam • Unsubscribe anytime
+          {/* Testimonial */}
+          <div className="bg-[#247EFF]/10 rounded-2xl p-4 mb-4 border border-[#247EFF]/20">
+            <p className="text-sm italic text-[#0A0A0A]/80 dark:text-brand-cream/80 mb-2">
+              "This playbook gave me the first steps I needed to level up."
+            </p>
+            <p className="text-xs font-semibold text-[#247EFF]">
+              – Marcus, Atlanta
+            </p>
+          </div>
+
+          {/* Trust signals */}
+          <p className="text-xs text-[#0A0A0A]/60 dark:text-brand-cream/60 text-center">
+            ⚡ Instant delivery • 🚫 No spam, no games—just real value • ✉️ Unsubscribe anytime
           </p>
         </div>
       </div>

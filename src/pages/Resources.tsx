@@ -43,18 +43,18 @@ const Resources = () => {
       
       <Navigation />
       
-      <main className="pt-32 pb-16">
-        <div className="container mx-auto px-6 max-w-7xl">
+      <main className="pt-24 md:pt-32 pb-12 md:pb-16">
+        <div className="container mx-auto px-4 md:px-6 max-w-7xl">
           <ResourcesHero />
 
           {/* Tag Filter Display */}
           {selectedTag && (
-            <div className="mb-8 p-4 bg-[#247EFF]/10 rounded-lg" role="status" aria-live="polite">
+            <div className="mb-6 md:mb-8 p-3 md:p-4 bg-[#247EFF]/10 rounded-lg mx-4 md:mx-0" role="status" aria-live="polite">
               <p className="text-sm text-[#247EFF]">
                 Showing resources tagged with: <strong>{selectedTag}</strong>
                 <button 
                   onClick={() => setSelectedTag(null)}
-                  className="ml-2 text-xs underline hover:no-underline focus:outline-none focus:ring-1 focus:ring-[#247EFF]"
+                  className="ml-2 text-xs underline hover:no-underline focus:outline-none focus:ring-1 focus:ring-[#247EFF] touch-manipulation min-h-[28px] min-w-[28px]"
                   aria-label={`Clear filter for ${selectedTag}`}
                 >
                   Clear filter
@@ -63,10 +63,12 @@ const Resources = () => {
             </div>
           )}
 
-          <CreditBuildingSection selectedTag={selectedTag} onTagClick={handleTagClick} />
-          <InvestingSection selectedTag={selectedTag} onTagClick={handleTagClick} />
-          <AIHustlesSection selectedTag={selectedTag} onTagClick={handleTagClick} />
-          <FoundationSection selectedTag={selectedTag} onTagClick={handleTagClick} />
+          <div className="space-y-16 md:space-y-20">
+            <CreditBuildingSection selectedTag={selectedTag} onTagClick={handleTagClick} />
+            <InvestingSection selectedTag={selectedTag} onTagClick={handleTagClick} />
+            <AIHustlesSection selectedTag={selectedTag} onTagClick={handleTagClick} />
+            <FoundationSection selectedTag={selectedTag} onTagClick={handleTagClick} />
+          </div>
 
           <ResourcesTestimonial />
 

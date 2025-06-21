@@ -31,59 +31,61 @@ const ResourceCategory = ({
   onTagClick 
 }: ResourceCategoryProps) => {
   return (
-    <Card className="border-[#247EFF]/20 hover:border-[#247EFF]/40 transition-colors relative" role="article" aria-labelledby={`resource-${title.replace(/\s+/g, '-').toLowerCase()}`}>
+    <Card className="border-[#247EFF]/20 hover:border-[#247EFF]/40 transition-colors relative mx-4 md:mx-0" role="article" aria-labelledby={`resource-${title.replace(/\s+/g, '-').toLowerCase()}`}>
       {featured && (
-        <div className="absolute top-4 right-4 z-10">
+        <div className="absolute top-3 md:top-4 right-3 md:right-4 z-10">
           <StoryBadge type={featured} />
         </div>
       )}
       
-      <CardHeader>
-        <div className="flex items-center gap-4 mb-4">
-          <div role="img" aria-label={`${title} resource icon`} className="text-[#247EFF]">
+      <CardHeader className="p-4 md:p-6">
+        <div className="flex items-start md:items-center gap-3 md:gap-4 mb-3 md:mb-4">
+          <div role="img" aria-label={`${title} resource icon`} className="text-[#247EFF] flex-shrink-0 mt-1 md:mt-0">
             {icon}
           </div>
-          <div className="flex-1">
+          <div className="flex-1 min-w-0">
             <CardTitle className="text-[#0A0A0A] dark:text-brand-cream">
-              <HeaderHierarchy level={2} className="mb-0" id={`resource-${title.replace(/\s+/g, '-').toLowerCase()}`}>
+              <HeaderHierarchy level={2} className="mb-0 text-lg md:text-xl leading-tight" id={`resource-${title.replace(/\s+/g, '-').toLowerCase()}`}>
                 {title}
               </HeaderHierarchy>
             </CardTitle>
           </div>
         </div>
-        <CardDescription className="text-[#0A0A0A]/70 dark:text-brand-cream/70 text-base">
+        <CardDescription className="text-[#0A0A0A]/70 dark:text-brand-cream/70 text-sm md:text-base leading-relaxed">
           {description}
         </CardDescription>
         
         {tags.length > 0 && (
-          <div className="flex flex-wrap gap-2 mt-4" role="list" aria-label="Resource tags">
-            {tags.map((tag, index) => (
-              <div key={index} role="listitem">
-                <ThemeTag 
-                  tag={tag} 
-                  onClick={() => onTagClick?.(tag)}
-                />
-              </div>
-            ))}
+          <div className="flex flex-wrap gap-2 mt-3 md:mt-4 overflow-x-auto pb-2" role="list" aria-label="Resource tags">
+            <div className="flex gap-2 min-w-max">
+              {tags.map((tag, index) => (
+                <div key={index} role="listitem">
+                  <ThemeTag 
+                    tag={tag} 
+                    onClick={() => onTagClick?.(tag)}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         )}
       </CardHeader>
       
-      <CardContent>
-        <HeaderHierarchy level={3} className="mb-4">
+      <CardContent className="p-4 md:p-6 pt-0">
+        <HeaderHierarchy level={3} className="mb-3 md:mb-4 text-base md:text-lg">
           What You'll Master:
         </HeaderHierarchy>
         
-        <ul className="space-y-3 mb-6" role="list">
+        <ul className="space-y-2 md:space-y-3 mb-6 md:mb-8" role="list">
           {topics.map((topic, topicIndex) => (
-            <li key={topicIndex} className="flex items-start gap-3 text-[#0A0A0A]/80 dark:text-brand-cream/80" role="listitem">
+            <li key={topicIndex} className="flex items-start gap-3 text-[#0A0A0A]/80 dark:text-brand-cream/80 text-sm md:text-base" role="listitem">
               <div className="w-2 h-2 bg-[#247EFF] rounded-full mt-2 flex-shrink-0" aria-hidden="true"></div>
-              <span>{topic}</span>
+              <span className="leading-relaxed">{topic}</span>
             </li>
           ))}
         </ul>
         
-        <Button asChild className="w-full bg-[#247EFF] hover:bg-[#0057FF] text-white" aria-label={`${ctaText} for ${title}`}>
+        <Button asChild className="w-full bg-[#247EFF] hover:bg-[#0057FF] text-white min-h-[44px] touch-manipulation" aria-label={`${ctaText} for ${title}`}>
           <Link to={ctaLink}>
             {ctaText}
           </Link>

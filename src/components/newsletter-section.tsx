@@ -74,11 +74,11 @@ export const NewsletterSection = () => {
   return (
     <section 
       data-section="newsletter" 
-      className="py-16 sm:py-20 bg-gradient-to-b from-accent/10 to-white dark:from-accent/20 dark:to-brand-black"
+      className="py-16 sm:py-20 bg-gradient-to-b from-accent/10 to-brand-cream dark:from-accent/20 dark:to-brand-black"
     >
       <div className="container mx-auto px-4 sm:px-6 max-w-4xl">
         <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <Card className="bg-white/90 dark:bg-brand-black/90 backdrop-blur-sm border-accent/30 shadow-2xl">
+          <Card className="bg-brand-cream/90 dark:bg-brand-black/90 backdrop-blur-sm border-accent/30 shadow-2xl">
             <CardHeader className="text-center p-6 sm:p-8">
               <div className="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Mail className="h-8 w-8 text-accent" aria-label="Email newsletter icon" />
@@ -100,7 +100,7 @@ export const NewsletterSection = () => {
                     placeholder="Enter your email to start building..."
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="flex-1 px-4 py-3 sm:py-4 text-sm sm:text-base border-accent/30 focus:border-accent bg-white dark:bg-brand-black/50 text-brand-black dark:text-brand-cream rounded-2xl"
+                    className="flex-1 px-4 py-3 sm:py-4 text-sm sm:text-base border-accent/30 focus:border-accent bg-brand-cream dark:bg-brand-black/50 text-brand-black dark:text-brand-cream rounded-2xl"
                     required
                     disabled={isSubmitting}
                   />

@@ -28,7 +28,7 @@ const ManifestoSection = () => {
   return (
     <section 
       data-section="manifesto"
-      className="py-24 bg-gradient-to-b from-accent/5 to-white dark:from-accent/10 dark:to-brand-black relative overflow-hidden"
+      className="py-24 bg-gradient-to-b from-accent/5 to-brand-cream dark:from-accent/10 dark:to-brand-black relative overflow-hidden"
     >
       {/* Background Elements */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">

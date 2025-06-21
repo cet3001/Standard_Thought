@@ -40,7 +40,7 @@ const ManifestoSection = () => {
         <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-black mb-8 text-black dark:text-brand-cream">
-              The Real About <span className="text-accent">Building Wealth</span>
+              The Real About <span className="dark:text-accent">Building Wealth</span>
             </h2>
           </div>
 
@@ -61,7 +61,7 @@ const ManifestoSection = () => {
               <strong>We're building different.</strong> Not just for ourselves, but for our families, our communities, and generations that haven't been born yet. Every dollar we make, every system we build, every story we tell is part of something bigger.
             </p>
 
-            <p className="text-xl font-bold text-accent">
+            <p className="text-xl font-bold dark:text-accent">
               Legacy isn't inherited. It's built.
             </p>
           </div>

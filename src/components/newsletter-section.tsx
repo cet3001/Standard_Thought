@@ -84,7 +84,7 @@ export const NewsletterSection = () => {
                 <Mail className="h-8 w-8 text-accent" aria-label="Email newsletter icon" />
               </div>
               <CardTitle className="text-2xl sm:text-3xl font-black text-black dark:text-brand-cream mb-4">
-                Get the <span className="text-accent">Urban Wealth Blueprint</span>
+                Get the <span className="dark:text-accent">Urban Wealth Blueprint</span>
               </CardTitle>
               <CardDescription className="text-base sm:text-lg text-black dark:text-brand-cream max-w-2xl mx-auto">
                 Join 1000+ first-gen entrepreneurs getting weekly strategies for building generational wealth, 

@@ -1,7 +1,5 @@
 
-import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { TrendingUp, UserCheck, Brain, ArrowRight, Star } from "lucide-react";
+import { TrendingUp, UserCheck, Brain, Star } from "lucide-react";
 
 interface SuccessStoriesSectionProps {
   isVisible: boolean;
@@ -76,29 +74,6 @@ const SuccessStoriesSection = ({ isVisible }: SuccessStoriesSectionProps) => {
             — J. Rivera, Bronx
           </cite>
         </div>
-      </div>
-
-      <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-        <Link to="/blog">
-          <Button 
-            variant="outline" 
-            className="bg-gradient-to-r from-accent to-[#FFD700] text-black font-bold hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg px-6 py-3 rounded-3xl border-0"
-            aria-label="Read more success stories"
-          >
-            See More Stories
-            <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-          </Button>
-        </Link>
-        <Link to="/submit-story">
-          <Button 
-            variant="outline" 
-            className="bg-gradient-to-r from-accent to-[#FFD700] text-black font-bold hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg px-6 py-3 rounded-3xl border-0"
-            aria-label="Share your success story"
-          >
-            Share Your Win
-            <UserCheck className="ml-2 h-4 w-4" aria-hidden="true" />
-          </Button>
-        </Link>
       </div>
     </div>
   );

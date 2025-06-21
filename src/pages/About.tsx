@@ -106,7 +106,7 @@ const About = () => {
         </div>
       </section>
 
-      {/* Story Section */}
+      {/* Why Mindset First Section */}
       <section className="py-24 bg-white/90 dark:bg-brand-black/80">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
@@ -118,19 +118,19 @@ const About = () => {
               />
             </div>
             <div className={`transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}>
-              <h2 className="text-4xl font-bold mb-6 text-[#0A0A0A] dark:text-brand-cream">Our Story</h2>
+              <h2 className="text-4xl font-bold mb-6 text-[#0A0A0A] dark:text-brand-cream">Why Mindset First?</h2>
               <div className="space-y-4 text-[#0A0A0A]/70 dark:text-brand-cream/70">
                 <p>
-                  Standardthought was built by outsiders and underdogs—people who were tired of playing by someone else's rules. 
-                  We came up with empty pockets, big dreams, and nobody handing us a roadmap. Every win was earned. Every lesson was paid for in sweat.
+                  Every wealth move starts in your head. StandardThought was built for those who had to teach themselves 
+                  how to think bigger, push past doubt, and turn setbacks into setups.
                 </p>
                 <p>
-                  This isn't a guru brand. It's a real community for the ones who had to build their own table, teach themselves the game, 
-                  and turn setbacks into strategy. If you've ever had to make a way out of no way, you're one of us.
+                  We know what it's like to rewire your brain from survival mode to growth mode. To go from "I can't afford it" 
+                  to "How can I afford it?" That mental shift isn't just motivation—it's the foundation everything else is built on.
                 </p>
                 <p>
-                  We're here for the long haul—creating a <span className="text-[#247EFF] font-medium">legacy</span>, not just a payday. 
-                  Everything we do is for those who came from nothing and refuse to let that define them.
+                  We're here for the long haul—helping you build the mental foundation for <span className="text-[#247EFF] font-medium">generational progress</span>. 
+                  Because when your mindset is right, the money moves follow.
                 </p>
               </div>
             </div>

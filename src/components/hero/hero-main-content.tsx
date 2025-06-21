@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Zap } from "lucide-react";
@@ -28,8 +29,8 @@ const HeroMainContent = ({ scrollToNewsletter }: HeroMainContentProps) => {
     <div className="text-center mb-16">
       <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black mb-6 sm:mb-8 leading-tight text-brand-black dark:text-brand-cream">
-          Build <span className="text-accent">Legacy</span><br />
-          From <span className="text-accent">Nothing</span>
+          Build <span className="text-[#FFD700]">Legacy</span><br />
+          From <span className="text-[#FFD700]">Nothing</span>
         </h1>
         
         <p className="text-lg sm:text-xl md:text-2xl mb-8 sm:mb-12 max-w-4xl mx-auto text-brand-black/80 dark:text-brand-cream/80 leading-relaxed px-4">

@@ -19,7 +19,7 @@ const HomepageHero = ({ scrollToNewsletter }: HomepageHeroProps) => {
   }, []);
 
   return (
-    <section className="pt-32 pb-24 bg-brand-cream dark:bg-brand-black relative overflow-hidden">
+    <section className="pt-40 pb-24 bg-brand-cream dark:bg-brand-black relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div className="absolute top-20 right-10 w-32 h-32 rounded-full bg-accent/10 animate-float"></div>

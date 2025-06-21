@@ -3,7 +3,7 @@ import HeaderHierarchy from "@/components/content-structure/header-hierarchy";
 
 const ResourcesHero = () => {
   return (
-    <div className="text-center mb-12 md:mb-16 px-4 md:px-0">
+    <div className="text-center mb-12 md:mb-16 px-4 md:px-0 pt-8">
       <HeaderHierarchy level={1} className="max-w-4xl mx-auto text-2xl md:text-4xl lg:text-5xl leading-tight">
         Step-by-Step Wealth Building <span className="text-[#247EFF]">Blueprints</span>
       </HeaderHierarchy>

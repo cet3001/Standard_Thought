@@ -11,6 +11,7 @@ import CreatePost from "@/pages/CreatePost";
 import EditPost from "@/pages/EditPost";
 import Auth from "@/pages/Auth";
 import About from "@/pages/About";
+import Resources from "@/pages/Resources";
 import PrivacyPolicy from "@/pages/PrivacyPolicy";
 import TermsOfService from "@/pages/TermsOfService";
 import { AuthProvider } from "./contexts/AuthContext";
@@ -37,6 +38,7 @@ function App() {
                 <Route path="/create-post" element={<CreatePost />} />
                 <Route path="/edit-post/:id" element={<EditPost />} />
                 <Route path="/auth" element={<Auth />} />
+                <Route path="/resources" element={<Resources />} />
                 <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                 <Route path="/terms-of-service" element={<TermsOfService />} />
                 <Route path="/image-generator" element={<ImageGeneratorPage />} />

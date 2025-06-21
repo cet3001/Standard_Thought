@@ -24,10 +24,10 @@ const BlogHero = ({ isVisible }: BlogHeroProps) => {
           
           {/* Quick access to pillar content */}
           <div className="flex flex-wrap gap-4 justify-center">
-            <a href="/blog/ai-side-hustles-guide" className="px-6 py-2 bg-[#247EFF] text-white rounded-2xl hover:bg-[#0057FF] transition-colors font-medium">
+            <a href="/blog/ai-side-hustles-guide" className="px-6 py-2 bg-gradient-to-r from-accent to-[#FFD700] text-black rounded-2xl hover:scale-105 transition-all duration-300 font-bold">
               AI Side Hustles Guide
             </a>
-            <a href="/blog/free-investing-guide" className="px-6 py-2 bg-[#247EFF] text-white rounded-2xl hover:bg-[#0057FF] transition-colors font-medium">
+            <a href="/blog/free-investing-guide" className="px-6 py-2 bg-gradient-to-r from-accent to-[#FFD700] text-black rounded-2xl hover:scale-105 transition-all duration-300 font-bold">
               Free Investing Guide
             </a>
           </div>

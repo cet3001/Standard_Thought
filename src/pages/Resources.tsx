@@ -1,3 +1,4 @@
+
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import SEO from "@/components/seo";
@@ -12,16 +13,55 @@ import InvestingSection from "@/components/resources/sections/investing-section"
 import AIHustlesSection from "@/components/resources/sections/ai-hustles-section";
 import FoundationSection from "@/components/resources/sections/foundation-section";
 import { faqGroups } from "@/components/resources/faq-data";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ResourcesTestimonial from "@/components/resources/resources-testimonial";
+import { useMobilePerformance } from "@/hooks/use-mobile-performance";
 
 const Resources = () => {
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
+  
+  // Apply mobile performance optimizations
+  useMobilePerformance();
 
   const handleTagClick = (tag: string) => {
     setSelectedTag(selectedTag === tag ? null : tag);
     console.log(`Filter by tag: ${tag}`);
   };
+
+  // Optimize horizontal scroll areas on component mount
+  useEffect(() => {
+    const optimizeHorizontalScroll = () => {
+      // Add scroll indicators to horizontal scroll areas
+      const scrollAreas = document.querySelectorAll('.overflow-x-auto');
+      scrollAreas.forEach(area => {
+        const el = area as HTMLElement;
+        
+        // Add smooth scrolling
+        el.style.scrollBehavior = 'smooth';
+        
+        // Add scroll snap for better UX on mobile
+        if (window.innerWidth <= 768) {
+          el.style.scrollSnapType = 'x proximity';
+          
+          // Add scroll snap to direct children
+          Array.from(el.children).forEach(child => {
+            (child as HTMLElement).style.scrollSnapAlign = 'start';
+          });
+        }
+      });
+    };
+
+    // Run on initial load
+    optimizeHorizontalScroll();
+    
+    // Run on window resize
+    const handleResize = () => {
+      setTimeout(optimizeHorizontalScroll, 100);
+    };
+    
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return (
     <div className="min-h-screen bg-brand-cream dark:bg-brand-black">

@@ -37,6 +37,72 @@
     padding-right: 1rem;
   }
 
+  /* Horizontal scroll optimizations */
+  .overflow-x-auto {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+  }
+
+  .overflow-x-auto::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+
+  /* Tag containers horizontal scroll */
+  [role="list"][aria-label="Resource tags"] {
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  [role="list"][aria-label="Resource tags"]::-webkit-scrollbar {
+    display: none;
+  }
+
+  [role="list"][aria-label="Resource tags"] > div {
+    min-width: max-content;
+  }
+
+  /* Carousel optimizations */
+  .carousel-container {
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    touch-action: pan-x;
+  }
+
+  .carousel-item {
+    scroll-snap-align: start;
+    flex-shrink: 0;
+  }
+
+  /* Grid to horizontal scroll conversion for very small screens */
+  @media (max-width: 480px) {
+    .mobile-horizontal-scroll {
+      display: flex;
+      overflow-x: auto;
+      gap: 1rem;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .mobile-horizontal-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .mobile-horizontal-scroll > * {
+      flex-shrink: 0;
+      scroll-snap-align: start;
+      min-width: 280px;
+      max-width: 320px;
+    }
+  }
+
   /* Reduce backdrop blur for performance */
   .backdrop-blur-sm,
   .backdrop-blur {
@@ -55,12 +121,12 @@
 
   /* Optimize scroll performance */
   .scroll-smooth {
-    scroll-behavior: auto;
+    scroll-behavior: smooth;
   }
 
   /* Reduce expensive transforms */
   .hover\:scale-105:hover {
-    transform: none;
+    transform: scale(1.02);
   }
 
   /* Optimize navigation for mobile */
@@ -114,6 +180,22 @@
   /* Further reduce padding on very small screens */
   .py-16 { padding-top: 2rem; padding-bottom: 2rem; }
   .py-12 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+
+  /* Convert complex layouts to horizontal scroll */
+  .ultra-small-horizontal {
+    display: flex;
+    overflow-x: auto;
+    gap: 0.75rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.5rem;
+  }
+
+  .ultra-small-horizontal > * {
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    min-width: 260px;
+  }
 }
 
 /* Landscape mobile optimization */
@@ -157,6 +239,10 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+  
+  .overflow-x-auto {
+    scroll-behavior: auto !important;
+  }
 }
 
 /* Optimize for better mobile performance */
@@ -168,12 +254,43 @@
 
   /* Simplify gradients */
   .bg-gradient-to-r, .bg-gradient-to-b {
-    background: var(--accent-color, #FFD700);
+    background: var(--accent-color, #247EFF);
   }
 
   /* Optimize hover states */
   .hover\:shadow-lg:hover,
   .hover\:shadow-xl:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* Horizontal scroll indicators */
+.scroll-indicator {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.25rem;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.scroll-indicator-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(36, 126, 255, 0.3);
+  transition: background-color 0.2s ease;
+}
+
+.scroll-indicator-dot.active {
+  background: #247EFF;
+}
+
+/* Smooth horizontal scrolling for touch devices */
+@supports (-webkit-overflow-scrolling: touch) {
+  .overflow-x-auto {
+    -webkit-overflow-scrolling: touch;
   }
 }

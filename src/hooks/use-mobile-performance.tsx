@@ -30,6 +30,64 @@ export const useMobilePerformance = () => {
         el.style.touchAction = 'manipulation';
       });
 
+      // Optimize horizontal scroll areas for mobile
+      const horizontalScrollAreas = document.querySelectorAll('[class*="overflow-x-auto"], [class*="flex-wrap"], .carousel-container');
+      horizontalScrollAreas.forEach(area => {
+        const el = area as HTMLElement;
+        
+        // Enable smooth scrolling with momentum
+        el.style.webkitOverflowScrolling = 'touch';
+        el.style.scrollBehavior = 'smooth';
+        
+        // Add scroll snap for better UX
+        if (el.classList.contains('flex') && !el.classList.contains('flex-wrap')) {
+          el.style.scrollSnapType = 'x mandatory';
+          
+          // Add scroll snap to children
+          const children = el.children;
+          Array.from(children).forEach(child => {
+            (child as HTMLElement).style.scrollSnapAlign = 'start';
+          });
+        }
+        
+        // Ensure proper touch handling
+        el.style.touchAction = 'pan-x';
+        
+        // Add visual scroll indicators
+        if (!el.querySelector('.scroll-indicator')) {
+          const indicator = document.createElement('div');
+          indicator.className = 'scroll-indicator absolute bottom-2 left-1/2 transform -translate-x-1/2 flex gap-1 pointer-events-none';
+          indicator.style.display = 'none'; // Hide by default, show on scroll
+          el.style.position = 'relative';
+          el.appendChild(indicator);
+        }
+      });
+
+      // Optimize tag containers specifically
+      const tagContainers = document.querySelectorAll('[role="list"][aria-label="Resource tags"]');
+      tagContainers.forEach(container => {
+        const el = container as HTMLElement;
+        
+        // Ensure tags don't wrap on mobile for better scroll UX
+        el.style.flexWrap = 'nowrap';
+        el.style.overflowX = 'auto';
+        el.style.webkitOverflowScrolling = 'touch';
+        el.style.scrollbarWidth = 'none'; // Firefox
+        el.style.msOverflowStyle = 'none'; // IE/Edge
+        
+        // Hide scrollbar for webkit browsers
+        const style = document.createElement('style');
+        style.textContent = `
+          [role="list"][aria-label="Resource tags"]::-webkit-scrollbar {
+            display: none;
+          }
+        `;
+        if (!document.head.querySelector('style[data-mobile-tags]')) {
+          style.setAttribute('data-mobile-tags', 'true');
+          document.head.appendChild(style);
+        }
+      });
+
       // Optimize images for mobile viewport
       const images = document.querySelectorAll('img');
       images.forEach(img => {
@@ -75,7 +133,7 @@ export const useMobilePerformance = () => {
       scrollElements.forEach(element => {
         const el = element as HTMLElement;
         if (window.innerWidth < 768) {
-          el.style.scrollBehavior = 'auto';
+          el.style.scrollBehavior = 'smooth';
         }
       });
     };

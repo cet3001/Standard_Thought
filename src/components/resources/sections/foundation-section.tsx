@@ -27,6 +27,7 @@ const FoundationSection = ({ selectedTag, onTagClick }: FoundationSectionProps) 
       ctaLink: "/blog",
       tags: ["Cash Flow", "Side Hustle", "Beginner", "Automation", "Irregular Income", "Tax Strategy"],
       internalLinks: [
+        { text: "Financial Education Guide", link: "/financial-education-guide" },
         { text: "See Builder Stories: Side Hustle Success", link: "/blog" },
         { text: "Master the Hustle Mindset", link: "/about" }
       ]

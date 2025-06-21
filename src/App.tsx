@@ -14,6 +14,10 @@ import About from "@/pages/About";
 import Resources from "@/pages/Resources";
 import PrivacyPolicy from "@/pages/PrivacyPolicy";
 import TermsOfService from "@/pages/TermsOfService";
+import AISideHustlesGuide from "@/pages/AISideHustlesGuide";
+import FreeInvestingGuide from "@/pages/FreeInvestingGuide";
+import FinancialEducationGuide from "@/pages/FinancialEducationGuide";
+import WealthBuildingStrategies from "@/pages/WealthBuildingStrategies";
 import { AuthProvider } from "./contexts/AuthContext";
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/toaster"
@@ -35,10 +39,14 @@ function App() {
                 <Route path="/about" element={<About />} />
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/blog/:slug" element={<BlogPost />} />
+                <Route path="/blog/ai-side-hustles-guide" element={<AISideHustlesGuide />} />
                 <Route path="/create-post" element={<CreatePost />} />
                 <Route path="/edit-post/:id" element={<EditPost />} />
                 <Route path="/auth" element={<Auth />} />
                 <Route path="/resources" element={<Resources />} />
+                <Route path="/free-investing-guide" element={<FreeInvestingGuide />} />
+                <Route path="/financial-education-guide" element={<FinancialEducationGuide />} />
+                <Route path="/wealth-building-strategies" element={<WealthBuildingStrategies />} />
                 <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                 <Route path="/terms-of-service" element={<TermsOfService />} />
                 <Route path="/image-generator" element={<ImageGeneratorPage />} />

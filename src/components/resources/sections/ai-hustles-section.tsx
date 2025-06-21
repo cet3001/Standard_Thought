@@ -1,3 +1,4 @@
+
 import HeaderHierarchy from "@/components/content-structure/header-hierarchy";
 import SnippetOptimizedContent from "@/components/seo/snippet-optimized-content";
 import ResourceCategory from "@/components/resources/resource-category";
@@ -24,9 +25,10 @@ const AIHustlesSection = ({ selectedTag, onTagClick }: AIHustlesSectionProps) =>
         "Client Getting & Pricing Game That Actually Works"
       ],
       ctaText: "Launch AI Business",
-      ctaLink: "/blog",
+      ctaLink: "/blog/ai-side-hustles-guide",
       tags: ["AI", "Side Hustle", "No Code", "High Income", "$25-100/hr", "Remote Work"],
       internalLinks: [
+        { text: "Complete AI Side Hustles Guide", link: "/blog/ai-side-hustles-guide" },
         { text: "See Builder Stories: AI Side Hustle Wins", link: "/blog" },
         { text: "Build the Digital Entrepreneur Mindset", link: "/about" }
       ]

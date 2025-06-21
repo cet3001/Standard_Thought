@@ -26,10 +26,11 @@ const InvestingSection = ({ selectedTag, onTagClick }: InvestingSectionProps) =>
         "Compound Interest Moves That Accelerate Everything"
       ],
       ctaText: "Start Investing Today",
-      ctaLink: "/blog",
+      ctaLink: "/free-investing-guide",
       tags: ["Investing", "Beginner", "$1 Start", "Automation", "Wealth Building", "Micro-Investing"],
       featured: "editors-pick" as const,
       internalLinks: [
+        { text: "Complete Free Investing Guide", link: "/free-investing-guide" },
         { text: "Read Builder Stories: First $1000 Invested", link: "/blog" },
         { text: "Master the Wealth Building Mindset", link: "/about" }
       ]

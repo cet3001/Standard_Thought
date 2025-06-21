@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
@@ -113,7 +114,7 @@ const BlogShowcase = () => {
           <Button 
             size="lg"
             variant="outline"
-            className="bg-transparent border-2 border-[#247EFF] text-[#247EFF] hover:bg-[#247EFF] hover:text-white font-semibold px-8 py-4 rounded-3xl mb-8"
+            className="bg-gradient-to-r from-accent to-[#FFD700] text-black font-bold hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg px-8 py-4 rounded-3xl mb-8 border-0"
             onClick={() => navigate('/submit-story')}
             aria-label="Submit your success story"
           >
@@ -132,7 +133,7 @@ const BlogShowcase = () => {
           
           <Button 
             size="lg"
-            className="bg-accent hover:bg-accent/90 text-black font-semibold px-8 py-4 rounded-3xl"
+            className="bg-gradient-to-r from-accent to-[#FFD700] text-black font-bold hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg px-8 py-4 rounded-3xl"
             onClick={() => navigate('/blog')}
             aria-label="Explore all success stories and business frameworks"
           >

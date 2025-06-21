@@ -184,7 +184,7 @@ const HomepageHero = ({ scrollToNewsletter }: HomepageHeroProps) => {
                 <Link 
                   to={prop.link}
                   onClick={() => handleLinkClick(prop.title, prop.link)}
-                  className="text-[#247EFF] hover:text-[#0057FF] font-semibold text-xs sm:text-sm underline decoration-dotted underline-offset-4 hover:decoration-solid transition-all duration-300"
+                  className="inline-block bg-gradient-to-r from-accent to-[#FFD700] text-black hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg px-3 py-2 rounded-lg font-semibold text-xs sm:text-sm"
                 >
                   {prop.linkText} →
                 </Link>
@@ -322,7 +322,7 @@ const HomepageHero = ({ scrollToNewsletter }: HomepageHeroProps) => {
               <Link to="/blog">
                 <Button 
                   variant="outline" 
-                  className="border-[#247EFF] text-[#247EFF] hover:bg-[#247EFF] hover:text-white"
+                  className="bg-gradient-to-r from-accent to-[#FFD700] text-black font-bold hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg px-6 py-3 rounded-3xl border-0"
                   aria-label="Read more success stories"
                 >
                   See More Stories
@@ -332,7 +332,7 @@ const HomepageHero = ({ scrollToNewsletter }: HomepageHeroProps) => {
               <Link to="/submit-story">
                 <Button 
                   variant="outline" 
-                  className="border-green-500 text-green-600 dark:text-green-400 hover:bg-green-500 hover:text-white"
+                  className="bg-gradient-to-r from-accent to-[#FFD700] text-black font-bold hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg px-6 py-3 rounded-3xl border-0"
                   aria-label="Share your success story"
                 >
                   Share Your Win
@@ -348,7 +348,7 @@ const HomepageHero = ({ scrollToNewsletter }: HomepageHeroProps) => {
               size="lg"
               variant="outline"
               onClick={scrollToNewsletter}
-              className="bg-gradient-to-r from-[#247EFF]/10 to-[#247EFF]/20 border-[#247EFF] text-[#247EFF] hover:bg-[#247EFF] hover:text-white font-semibold px-8 py-4 rounded-3xl transition-all duration-300 hover:scale-105"
+              className="bg-gradient-to-r from-accent to-[#FFD700] text-black font-bold hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg px-8 py-4 rounded-3xl border-0"
               aria-label="Ready to start your own story - Scroll to newsletter signup"
             >
               <ArrowDown className="mr-2 h-5 w-5" aria-label="Arrow pointing down to scroll to newsletter section" />

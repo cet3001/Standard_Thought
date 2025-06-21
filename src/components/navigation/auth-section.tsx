@@ -46,7 +46,7 @@ const AuthSection = ({ onAction }: AuthSectionProps) => {
     return (
       <Button 
         onClick={handleJoinMovement}
-        className="bg-gradient-to-r from-[#247EFF] to-[#0057FF] hover:from-[#0057FF] hover:to-[#003ACC] hover:shadow-lg hover:shadow-[#247EFF]/40 text-white font-bold rounded-full px-8 py-3 transition-all duration-300 hover:scale-105 animate-pulse hover:animate-none border-2 border-transparent hover:border-white/20"
+        className="bg-gradient-to-r from-accent to-[#FFD700] text-black font-bold hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg rounded-full px-8 py-3 border-0"
         aria-label="Join the wealth building movement - Sign up or login"
       >
         Join Movement
@@ -61,7 +61,7 @@ const AuthSection = ({ onAction }: AuthSectionProps) => {
           onClick={handleCreatePost}
           variant="outline"
           size="sm"
-          className="border-[#247EFF] text-[#247EFF] hover:bg-[#247EFF] hover:text-white transition-all duration-300"
+          className="bg-gradient-to-r from-accent to-[#FFD700] text-black font-bold hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg px-4 py-2 rounded-2xl border-0"
           aria-label="Create new story post"
         >
           Create Story

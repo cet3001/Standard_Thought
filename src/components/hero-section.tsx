@@ -67,8 +67,8 @@ const HeroSection = () => {
             </h1>
             
             <p className="text-xl md:text-2xl text-[#0A0A0A]/70 dark:text-brand-cream/70 leading-relaxed mb-8 max-w-4xl mx-auto">
-              Real talk—the system wasn't built for us, but that don't mean we can't secure the bag. Join 1000+ people who started from the bottom and are now <strong>leveling up financially</strong> through{" "}
-              <ContextualLinks context="hero" className="inline" />. Master <strong>street-smart money moves</strong> that actually work, learn to <strong>build generational wealth from scratch</strong>, and start your legacy—even if traditional finance feels like a foreign language right now.
+              The system wasn't built for us, but that doesn't mean we can't change the game. Over <strong>1,000 first-gen hustlers</strong> have already started building wealth from the ground up using our step-by-step frameworks—{" "}
+              <ContextualLinks context="hero" className="inline" />. Learn how to <strong>stack real assets</strong>, build your legacy, and turn struggle into strategy, even if money talk feels new.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
@@ -78,7 +78,7 @@ const HeroSection = () => {
                 className="bg-[#247EFF] hover:bg-[#0057FF] hover:shadow-lg hover:shadow-[#247EFF]/30 text-white font-semibold px-8 py-4 rounded-3xl transition-all duration-300 hover:scale-105"
                 aria-label="Start building wealth - Scroll to newsletter signup"
               >
-                Start Flipping Your Circumstances
+                Begin Your Wealth Journey
                 <ArrowUp className="ml-2 h-5 w-5 rotate-45" aria-hidden="true" />
               </Button>
             </div>

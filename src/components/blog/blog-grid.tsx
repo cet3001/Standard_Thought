@@ -6,6 +6,7 @@ import { Calendar, Clock, ArrowUp } from "lucide-react";
 import { trackBlogRead } from "@/components/analytics";
 import BlogPostActions from "@/components/blog-post-actions";
 import ThemeTag from "@/components/ui/theme-tag";
+import StoryBadge from "@/components/ui/story-badge";
 import { useAuth } from "@/contexts/AuthContext";
 
 interface BlogPost {
@@ -21,6 +22,9 @@ interface BlogPost {
   published: boolean;
   created_at: string;
   slug: string;
+  is_editors_pick?: boolean;
+  is_popular?: boolean;
+  view_count?: number;
 }
 
 interface BlogGridProps {
@@ -68,7 +72,7 @@ const BlogGrid = ({ posts, onPostDeleted, onThemeTagClick }: BlogGridProps) => {
                 className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
                 loading="lazy"
               />
-              <div className="absolute top-4 left-4 flex gap-2">
+              <div className="absolute top-4 left-4 flex gap-2 flex-wrap">
                 <Badge className="bg-[#247EFF] text-white px-3 py-1 rounded-full text-sm font-medium hover:bg-[#247EFF]">
                   {post.category}
                 </Badge>
@@ -77,6 +81,12 @@ const BlogGrid = ({ posts, onPostDeleted, onThemeTagClick }: BlogGridProps) => {
                     Featured
                   </Badge>
                 )}
+              </div>
+              
+              {/* Special story badges in top-right corner */}
+              <div className="absolute top-4 right-4 flex flex-col gap-2">
+                {post.is_popular && <StoryBadge type="popular" />}
+                {post.is_editors_pick && <StoryBadge type="editors-pick" />}
               </div>
             </div>
           </CardHeader>

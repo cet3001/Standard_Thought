@@ -13,6 +13,9 @@ export interface Post {
   published: boolean;
   created_at: string;
   slug: string;
+  is_editors_pick?: boolean; // New field for editor's pick
+  is_popular?: boolean; // New field for popular stories
+  view_count?: number; // For tracking popularity
 }
 
 export const getPosts = async (): Promise<Post[]> => {
@@ -27,13 +30,17 @@ export const getPosts = async (): Promise<Post[]> => {
     throw new Error('Failed to fetch posts');
   }
 
-  // Add mock theme tags for existing posts until database is updated
-  const postsWithThemeTags = (data || []).map(post => ({
+  // Add mock theme tags and featured story data for existing posts until database is updated
+  const postsWithEnhancements = (data || []).map((post, index) => ({
     ...post,
-    theme_tags: generateThemeTagsFromContent(post)
+    theme_tags: generateThemeTagsFromContent(post),
+    // Mock data - assign editor's pick and popular status to some posts
+    is_editors_pick: index % 5 === 0, // Every 5th post is editor's pick
+    is_popular: index % 3 === 0, // Every 3rd post is popular
+    view_count: Math.floor(Math.random() * 1000) + 100 // Mock view count
   }));
 
-  return postsWithThemeTags;
+  return postsWithEnhancements;
 };
 
 // Helper function to generate theme tags based on content until database is updated

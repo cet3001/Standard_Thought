@@ -5,6 +5,7 @@ import BlogHero from "@/components/blog/blog-hero";
 import BlogSearchFilter from "@/components/blog/blog-search-filter";
 import BlogGrid from "@/components/blog/blog-grid";
 import KeyGuidesCarousel from "@/components/blog/key-guides-carousel";
+import FeaturedStoriesSection from "@/components/blog/featured-stories-section";
 import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { getPosts, getCategories } from "@/lib/api";
@@ -107,6 +108,9 @@ const Blog = () => {
       <main className="pt-32 pb-16">
         <div className="container mx-auto px-6 max-w-7xl">
           <BlogHero isVisible={true} />
+          
+          {/* Featured Stories Section - NEW */}
+          {posts && <FeaturedStoriesSection posts={posts} />}
           
           {/* Strategic Learning Pathways Section - Updated for uniqueness */}
           <div className="mb-12 bg-white/80 dark:bg-brand-black/80 backdrop-blur-sm border border-[#247EFF]/20 rounded-3xl p-6">

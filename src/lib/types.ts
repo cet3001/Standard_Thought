@@ -12,4 +12,7 @@ export interface Post {
   published: boolean;
   created_at: string;
   slug: string;
+  is_editors_pick?: boolean; // New field for editor's pick
+  is_popular?: boolean; // New field for popular stories
+  view_count?: number; // For tracking popularity
 }

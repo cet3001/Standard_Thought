@@ -1,6 +1,6 @@
 
 import Analytics from "@/components/analytics";
-import HeroSection from "@/components/hero-section";
+import HomepageHero from "@/components/homepage-hero";
 import LeadMagnetPopup from "@/components/lead-magnet-popup";
 import ManifestoSection from "@/components/manifesto-section";
 import { NewsletterSection } from "@/components/newsletter-section";
@@ -14,6 +14,9 @@ import FeaturedSnippets from "@/components/seo/featured-snippets";
 import FAQSection from "@/components/faq/faq-section";
 import FeaturedContentSection from "@/components/featured-content-section";
 import BlogShowcase from "@/components/blog-showcase";
+import LSIContent from "@/components/lsi-content";
+import SiteNavigationHub from "@/components/site-navigation-hub";
+import SemanticContentEnhancer from "@/components/seo/semantic-content-enhancer";
 import { useMobilePerformance } from "@/hooks/use-mobile-performance";
 
 const Index = () => {
@@ -42,6 +45,32 @@ const Index = () => {
     }
   ];
 
+  const scrollToNewsletter = () => {
+    const newsletterSection = document.querySelector('[data-section="newsletter"]');
+    if (newsletterSection) {
+      const formElement = newsletterSection.querySelector('form');
+      
+      if (formElement) {
+        const formRect = formElement.getBoundingClientRect();
+        const targetPosition = window.pageYOffset + formRect.top;
+        const offset = window.innerWidth < 768 ? window.innerHeight * 0.3 : 100;
+        
+        window.scrollTo({
+          top: targetPosition - offset,
+          behavior: 'smooth'
+        });
+      } else {
+        const offsetTop = newsletterSection.getBoundingClientRect().top + window.pageYOffset;
+        const offset = window.innerWidth < 768 ? 300 : 150;
+        
+        window.scrollTo({
+          top: offsetTop - offset,
+          behavior: 'smooth'
+        });
+      }
+    }
+  };
+
   return (
     <div className="min-h-screen bg-brand-cream dark:bg-brand-black">
       {/* Enhanced SEO with targeted keywords */}
@@ -55,6 +84,12 @@ const Index = () => {
       />
 
       {/* SEO Enhancement Components */}
+      <LSIContent primaryKeyword="entrepreneurship" context="entrepreneurship" />
+      <SemanticContentEnhancer
+        primaryKeyword="urban entrepreneurship and generational wealth building for beginners"
+        context="entrepreneurship"
+        voiceSearchTopic="wealth-building"
+      />
       <KeywordOptimization primaryKeyword="urban wealth building" context="entrepreneurship" />
       <VoiceSearchOptimization topic="wealth-building" />
       <FeaturedSnippets topic="wealth-building" />
@@ -65,9 +100,17 @@ const Index = () => {
       {/* Navigation Header */}
       <Navigation />
 
-      {/* Hero */}
+      {/* Main Content */}
       <main>
-        <HeroSection />
+        {/* Hero Section */}
+        <HomepageHero scrollToNewsletter={scrollToNewsletter} />
+
+        {/* Navigation Hub */}
+        <div className="container mx-auto px-6 -mt-8 relative z-10">
+          <div className="max-w-6xl mx-auto">
+            <SiteNavigationHub />
+          </div>
+        </div>
 
         {/* Newsletter */}
         <NewsletterSection />

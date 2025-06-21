@@ -6,18 +6,18 @@ const ResourcesCTA = () => {
   return (
     <div className="text-center bg-[#247EFF]/10 rounded-3xl p-12">
       <HeaderHierarchy level={2} className="mb-4">
-        Ready to Build Your Legacy?
+        Ready to Execute Your Plan?
       </HeaderHierarchy>
       
       <p className="text-xl text-[#0A0A0A]/70 dark:text-brand-cream/70 mb-8 max-w-2xl mx-auto">
-        Join 1000+ urban entrepreneurs mastering <strong>generational wealth building for beginners</strong> with proven frameworks and community support.
+        Get the complete action plan with step-by-step checklists, templates, and weekly execution guides.
       </p>
       
       <Link 
         to="/#newsletter"
         className="inline-flex items-center px-8 py-4 bg-[#247EFF] text-white rounded-3xl hover:bg-[#0057FF] transition-colors font-semibold"
       >
-        Get Your Free Playbook
+        Download Your Execution Kit
       </Link>
     </div>
   );

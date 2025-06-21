@@ -1,7 +1,7 @@
 
 import HeaderHierarchy from "@/components/content-structure/header-hierarchy";
 import ResourceCategory from "@/components/resources/resource-category";
-import { BookOpen } from "lucide-react";
+import { DollarSign } from "lucide-react";
 
 interface FoundationSectionProps {
   selectedTag: string | null;
@@ -11,23 +11,23 @@ interface FoundationSectionProps {
 const FoundationSection = ({ selectedTag, onTagClick }: FoundationSectionProps) => {
   const foundationResources = [
     {
-      icon: BookOpen,
-      title: "Money Management Foundation",
-      description: "Essential cash flow mastery and wealth mindset development for entrepreneurs and side hustlers who need to get their money right first",
-      whoThisIsFor: "Perfect for anyone who needs to master basic money management before leveling up to wealth building",
+      icon: DollarSign,
+      title: "Side Hustle Cash Flow System",
+      description: "Practical cash management for irregular income streams—track every dollar, automate savings, and never miss a payment again",
+      whoThisIsFor: "Perfect for freelancers, gig workers, and side hustlers who struggle with unpredictable income timing",
       topics: [
-        "Cash Flow Management for Irregular Income (Side Hustle Life)",
-        "Emergency Fund Building on a Tight Budget (Real Talk)",
-        "Debt Elimination Without Killing Your Growth Dreams",
-        "Tax Strategies for Side Hustlers (Keep More Money)", 
-        "Retirement Planning When You're Self-Employed"
+        "Weekly Cash Flow Tracking (Know Your Numbers)",
+        "Automatic Bill Pay Setup for Irregular Income",
+        "Emergency Fund Building on $50-100/Month", 
+        "Side Hustle Tax Moves That Save You Money",
+        "Separate Business & Personal Money (Stop Mixing)"
       ],
-      ctaText: "Master Money Basics",
+      ctaText: "Get Cash Flow Control",
       ctaLink: "/blog",
-      tags: ["Mindset", "Foundation", "Cash Flow", "Beginner"],
+      tags: ["Cash Flow", "Side Hustle", "Beginner", "Automation"],
       internalLinks: [
-        { text: "See Builder Stories: Financial Turnaround Wins", link: "/blog" },
-        { text: "Build Your Money Mindset", link: "/about" }
+        { text: "See Builder Stories: Side Hustle Success", link: "/blog" },
+        { text: "Master the Hustle Mindset", link: "/about" }
       ]
     }
   ];
@@ -35,7 +35,7 @@ const FoundationSection = ({ selectedTag, onTagClick }: FoundationSectionProps) 
   return (
     <section className="mb-20" aria-labelledby="foundation-section">
       <HeaderHierarchy level={2} className="text-center mb-12" id="foundation-section">
-        Financial Literacy <span className="text-[#247EFF]">Foundation</span>
+        Side Hustle <span className="text-[#247EFF]">Cash Management</span>
       </HeaderHierarchy>
       
       <div className="grid grid-cols-1 lg:grid-cols-1 gap-8 mb-12">

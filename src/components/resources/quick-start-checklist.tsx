@@ -121,7 +121,7 @@ Visit us at: https://hoodfinancialliteracy.com/resources
               variant="outline"
               size="sm"
               onClick={handleDownload}
-              className="flex items-center gap-2 text-xs"
+              className="flex items-center gap-2 text-xs bg-gradient-to-r from-accent to-[#FFD700] hover:scale-105 text-black border-0 font-semibold shadow-md hover:shadow-lg transition-all duration-300"
               aria-label="Download checklist"
             >
               <Download className="h-3 w-3" />
@@ -131,7 +131,7 @@ Visit us at: https://hoodfinancialliteracy.com/resources
               variant="outline"
               size="sm"
               onClick={handlePrint}
-              className="flex items-center gap-2 text-xs"
+              className="flex items-center gap-2 text-xs bg-gradient-to-r from-accent to-[#FFD700] hover:scale-105 text-black border-0 font-semibold shadow-md hover:shadow-lg transition-all duration-300"
               aria-label="Print checklist"
             >
               <Printer className="h-3 w-3" />

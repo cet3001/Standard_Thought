@@ -15,7 +15,7 @@ const ResourcesCTA = () => {
       
       <Link 
         to="/#newsletter"
-        className="inline-flex items-center px-8 py-4 bg-[#247EFF] text-white rounded-3xl hover:bg-[#0057FF] transition-colors font-semibold"
+        className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-accent to-[#FFD700] text-black rounded-3xl hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl font-bold text-lg"
       >
         Download Your Execution Kit
       </Link>

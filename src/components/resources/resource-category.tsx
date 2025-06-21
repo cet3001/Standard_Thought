@@ -93,7 +93,7 @@ const ResourceCategory = ({
         
         <Button 
           asChild 
-          className="w-full bg-[#247EFF] hover:bg-[#0057FF] text-white min-h-[44px] touch-manipulation font-semibold text-sm md:text-base transition-all duration-200 hover:shadow-md" 
+          className="w-full bg-gradient-to-r from-accent to-[#FFD700] hover:scale-105 text-black min-h-[44px] touch-manipulation font-bold text-sm md:text-base transition-all duration-300 shadow-lg hover:shadow-xl border-0" 
           aria-label={`${ctaText} for ${title}`}
         >
           <Link to={ctaLink}>

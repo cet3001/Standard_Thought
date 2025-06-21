@@ -99,7 +99,7 @@ const Resources = () => {
                 </div>
                 <button 
                   onClick={() => setSelectedTag(null)}
-                  className="text-xs md:text-sm px-3 py-1.5 bg-[#247EFF] text-white rounded-full hover:bg-[#0057FF] transition-colors focus:outline-none focus:ring-2 focus:ring-[#247EFF] focus:ring-offset-2 touch-manipulation min-h-[32px]"
+                  className="text-xs md:text-sm px-3 py-1.5 bg-gradient-to-r from-accent to-[#FFD700] text-black rounded-full hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 touch-manipulation min-h-[32px] font-semibold"
                   aria-label={`Clear filter for ${selectedTag}`}
                 >
                   Clear Filter ×

@@ -16,6 +16,7 @@ import PrivacyPolicy from "@/pages/PrivacyPolicy";
 import TermsOfService from "@/pages/TermsOfService";
 import AISideHustlesGuide from "@/pages/AISideHustlesGuide";
 import FreeInvestingGuide from "@/pages/FreeInvestingGuide";
+import StartInvestingGuide from "@/pages/StartInvestingGuide";
 import FinancialEducationGuide from "@/pages/FinancialEducationGuide";
 import WealthBuildingStrategies from "@/pages/WealthBuildingStrategies";
 import { AuthProvider } from "./contexts/AuthContext";
@@ -45,6 +46,7 @@ function App() {
                 <Route path="/auth" element={<Auth />} />
                 <Route path="/resources" element={<Resources />} />
                 <Route path="/free-investing-guide" element={<FreeInvestingGuide />} />
+                <Route path="/start-investing-guide" element={<StartInvestingGuide />} />
                 <Route path="/financial-education-guide" element={<FinancialEducationGuide />} />
                 <Route path="/wealth-building-strategies" element={<WealthBuildingStrategies />} />
                 <Route path="/privacy-policy" element={<PrivacyPolicy />} />

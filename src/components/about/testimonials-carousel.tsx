@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Star } from "lucide-react";
 import {
@@ -75,6 +74,54 @@ const TestimonialsCarousel = () => {
       category: "Identity",
       initials: "ZO",
       categoryColor: "bg-red-500"
+    },
+    {
+      quote: "I inherited my grandmother's scarcity mindset—save every penny, never take risks, money doesn't grow on trees. Standard Thought helped me break that generational pattern. Now I invest boldly and my kids are learning abundance instead of fear. The cycle stops with me.",
+      name: "Terrance Washington",
+      title: "Postal Worker → Investment Advisor",
+      category: "Generational Wealth",
+      initials: "TW",
+      categoryColor: "bg-emerald-500"
+    },
+    {
+      quote: "Growing up poor, I thought rich people were the enemy. Standard Thought taught me that wealth isn't about greed—it's about impact. Once I shifted from survival mode to growth mode, everything changed. Now I help other people build wealth too.",
+      name: "Carmen Valdez",
+      title: "Restaurant Server → Wealth Coach",
+      category: "Survival to Growth",
+      initials: "CV",
+      categoryColor: "bg-violet-500"
+    },
+    {
+      quote: "I used to believe I had to choose between being authentic and being successful. Standard Thought showed me that my authenticity IS my competitive advantage. I stopped code-switching and started code-creating. My business tripled when I stopped trying to fit in.",
+      name: "Malik Brooks",
+      title: "Salesman → Brand Strategist",
+      category: "Authenticity",
+      initials: "MB",
+      categoryColor: "bg-cyan-500"
+    },
+    {
+      quote: "Money trauma ran deep in my family. We celebrated being broke like it was a badge of honor. Standard Thought helped me see that wanting financial stability wasn't betraying my roots—it was honoring them. Now I can take care of my parents the way they took care of me.",
+      name: "Destiny Johnson",
+      title: "Social Worker → Financial Planner",
+      category: "Money Trauma",
+      initials: "DJ",
+      categoryColor: "bg-rose-500"
+    },
+    {
+      quote: "I spent years believing I wasn't smart enough for business because I didn't go to college. Standard Thought taught me that street smarts and book smarts are both valuable. My life experience became my curriculum. Now I teach others what schools never could.",
+      name: "Rico Martinez",
+      title: "Construction → Business Mentor",
+      category: "Self-Worth",
+      initials: "RM", 
+      categoryColor: "bg-amber-500"
+    },
+    {
+      quote: "I was trapped in the 'good enough' mindset—good enough job, good enough paycheck, good enough life. Standard Thought woke me up to the fact that I was settling out of fear, not wisdom. Now I chase excellence instead of comfort.",
+      name: "Tiffany Chen",
+      title: "Admin Assistant → Digital Entrepreneur",
+      category: "Settling vs. Excellence",
+      initials: "TC",
+      categoryColor: "bg-lime-500"
     }
   ];
 

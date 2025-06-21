@@ -27,28 +27,28 @@ const ResourceCategory = ({ icon, title, description, topics, ctaText, ctaLink }
             </CardTitle>
           </div>
         </div>
-        <CardDescription className="text-[#0A0A0A]/70 dark:text-brand-cream/70">
+        <CardDescription className="text-[#0A0A0A]/70 dark:text-brand-cream/70 text-base">
           {description}
         </CardDescription>
       </CardHeader>
       
       <CardContent>
         <HeaderHierarchy level={3} className="mb-4">
-          Key Topics Covered:
+          What You'll Master:
         </HeaderHierarchy>
         
-        <ul className="space-y-2 mb-6">
+        <ul className="space-y-3 mb-6">
           {topics.map((topic, topicIndex) => (
-            <li key={topicIndex} className="flex items-center gap-2 text-[#0A0A0A]/80 dark:text-brand-cream/80">
-              <div className="w-2 h-2 bg-[#247EFF] rounded-full"></div>
-              {topic}
+            <li key={topicIndex} className="flex items-start gap-3 text-[#0A0A0A]/80 dark:text-brand-cream/80">
+              <div className="w-2 h-2 bg-[#247EFF] rounded-full mt-2 flex-shrink-0"></div>
+              <span>{topic}</span>
             </li>
           ))}
         </ul>
         
         <Link 
           to={ctaLink}
-          className="inline-flex items-center px-4 py-2 bg-[#247EFF] text-white rounded-lg hover:bg-[#0057FF] transition-colors"
+          className="inline-flex items-center px-4 py-2 bg-[#247EFF] text-white rounded-lg hover:bg-[#0057FF] transition-colors font-semibold"
         >
           {ctaText}
         </Link>

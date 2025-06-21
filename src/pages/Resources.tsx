@@ -1,4 +1,3 @@
-
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import SEO from "@/components/seo";
@@ -20,16 +19,21 @@ const Resources = () => {
     {
       icon: CreditCard,
       title: "Credit Building Mastery",
-      description: "Comprehensive guide to building and repairing credit from scratch",
+      description: "Complete blueprint for building credit from zero using secured cards, authorized user strategies, and alternative credit reporting",
+      whoThisIsFor: "Perfect for first-time builders with no credit history or anyone recovering from financial setbacks",
       topics: [
-        "Credit Building from Zero",
-        "Secured Credit Card Strategies", 
-        "Credit Utilization Optimization",
-        "Credit Report Dispute Process",
-        "Credit Monitoring Best Practices"
+        "Secured Credit Card Strategy (with $200-500)",
+        "Authorized User Tactics That Actually Work", 
+        "Alternative Credit Reporting (Rent/Utilities)",
+        "Credit Dispute Process for Beginners",
+        "Timeline: 0 to 700+ Credit Score"
       ],
-      ctaText: "Fix Your Credit",
-      ctaLink: "/blog"
+      ctaText: "Build Credit Now",
+      ctaLink: "/blog",
+      internalLinks: [
+        { text: "See Builder Stories: Credit Recovery", link: "/blog" },
+        { text: "Learn the Mindset Behind Credit Building", link: "/about" }
+      ]
     }
   ];
 
@@ -37,17 +41,22 @@ const Resources = () => {
   const investingResources = [
     {
       icon: TrendingUp,
-      title: "Urban Investing Strategies",
-      description: "Master hood financial literacy and street smart money moves for building generational wealth",
+      title: "Micro-Investing Mastery",
+      description: "Street-smart wealth building strategies using $1-5 investments, fractional shares, and automated portfolio growth",
+      whoThisIsFor: "Best for beginners who think they need thousands to start investing or anyone living paycheck to paycheck",
       topics: [
-        "Index Fund Investing for Beginners",
-        "Real Estate Investment Trusts (REITs)",
-        "Micro-Investing Strategies", 
-        "Portfolio Diversification Techniques",
-        "Risk Management for New Investors"
+        "Micro-Investing Apps That Actually Work",
+        "Fractional Share Strategies for Expensive Stocks",
+        "Round-Up Investing for Spare Change", 
+        "Portfolio Allocation for Young Investors",
+        "Compound Interest Acceleration Tactics"
       ],
       ctaText: "Start Investing Today",
-      ctaLink: "/blog"
+      ctaLink: "/blog",
+      internalLinks: [
+        { text: "Read Builder Stories: First $1000 Invested", link: "/blog" },
+        { text: "Master the Wealth Building Mindset", link: "/about" }
+      ]
     }
   ];
 
@@ -55,31 +64,41 @@ const Resources = () => {
   const aiResources = [
     {
       icon: Bot,
-      title: "AI Side Hustles",
-      description: "Profitable artificial intelligence income streams and automation opportunities",
+      title: "AI Side Hustles Blueprint",
+      description: "Profitable AI income streams using ChatGPT, Midjourney, and automation tools—no coding required",
+      whoThisIsFor: "Perfect for hustlers who want to leverage AI tools to create new income streams without technical skills",
       topics: [
-        "AI Content Creation Services",
-        "Chatbot Development for SMBs", 
-        "AI-Powered Social Media Management",
-        "Automated Marketing Workflows",
-        "AI Image Generation Business"
+        "ChatGPT Content Creation Services ($25-100/article)",
+        "Midjourney Design Business Setup", 
+        "Social Media Management with AI Tools",
+        "Business Automation Services ($1000-5000/project)",
+        "Client Acquisition and Pricing Strategies"
       ],
       ctaText: "Launch AI Business",
-      ctaLink: "/blog"
+      ctaLink: "/blog",
+      internalLinks: [
+        { text: "See Builder Stories: AI Side Hustle Success", link: "/blog" },
+        { text: "Learn the Digital Entrepreneur Mindset", link: "/about" }
+      ]
     },
     {
       icon: Building,
-      title: "Urban Entrepreneurship", 
-      description: "Street smart business building and startup methodologies for urban markets",
+      title: "Urban Entrepreneurship Toolkit", 
+      description: "Community-based business strategies and funding sources specifically designed for urban markets and minority entrepreneurs",
+      whoThisIsFor: "Best for aspiring entrepreneurs in urban communities who need culturally relevant business strategies",
       topics: [
-        "Low-Capital Business Ideas",
-        "Community-Based Marketing",
-        "Urban Market Analysis",
-        "Funding Sources for Minority Businesses",
-        "Scaling Urban Enterprises"
+        "Low-Capital Business Ideas for Urban Markets",
+        "Community-Based Marketing Strategies",
+        "Funding Sources for Minority-Owned Businesses",
+        "Urban Market Analysis and Opportunity Identification",
+        "Scaling Strategies for Local Enterprises"
       ],
       ctaText: "Build Your Business",
-      ctaLink: "/blog"
+      ctaLink: "/blog",
+      internalLinks: [
+        { text: "Read Builder Stories: Local Business Success", link: "/blog" },
+        { text: "Develop the Entrepreneur Mindset", link: "/about" }
+      ]
     }
   ];
 
@@ -87,17 +106,22 @@ const Resources = () => {
   const foundationResources = [
     {
       icon: BookOpen,
-      title: "Financial Literacy Foundation",
-      description: "Essential money management skills and wealth mindset development",
+      title: "Money Management Foundation",
+      description: "Essential cash flow management and wealth mindset development for entrepreneurs and side hustlers",
+      whoThisIsFor: "Perfect for anyone who needs to master basic money management before building wealth",
       topics: [
-        "Budgeting and Cash Flow Management",
-        "Emergency Fund Building",
-        "Debt Elimination Strategies",
-        "Tax Optimization for Entrepreneurs", 
-        "Retirement Planning for Self-Employed"
+        "Cash Flow Management for Irregular Income",
+        "Emergency Fund Building on a Tight Budget",
+        "Debt Elimination Without Sacrificing Growth",
+        "Tax Strategies for Side Hustlers", 
+        "Retirement Planning for the Self-Employed"
       ],
       ctaText: "Master Money Basics",
-      ctaLink: "/blog"
+      ctaLink: "/blog",
+      internalLinks: [
+        { text: "See Builder Stories: Financial Turnaround", link: "/blog" },
+        { text: "Build Your Money Mindset", link: "/about" }
+      ]
     }
   ];
 
@@ -162,17 +186,52 @@ const Resources = () => {
             
             <ComprehensiveGuideSection {...creditBuildingGuide} className="mb-12" />
             
+            {/* Quick Start Checklist */}
+            <div className="bg-green-50/50 dark:bg-green-900/20 border-l-4 border-green-500 rounded-lg p-6 mb-12">
+              <HeaderHierarchy level={3} className="mb-4 text-green-700 dark:text-green-400">
+                Quick Start Checklist: Build Credit This Week
+              </HeaderHierarchy>
+              <ul className="space-y-2">
+                {creditBuildingGuide.quickStartChecklist.map((item, index) => (
+                  <li key={index} className="flex items-center gap-3">
+                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                    <span className="text-[#0A0A0A] dark:text-brand-cream">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            
             <div className="grid grid-cols-1 lg:grid-cols-1 gap-8 mb-12">
               {creditResources.map((resource, index) => (
-                <ResourceCategory
-                  key={index}
-                  icon={<resource.icon className="h-8 w-8 text-[#247EFF]" />}
-                  title={resource.title}
-                  description={resource.description}
-                  topics={resource.topics}
-                  ctaText={resource.ctaText}
-                  ctaLink={resource.ctaLink}
-                />
+                <div key={index}>
+                  <ResourceCategory
+                    icon={<resource.icon className="h-8 w-8 text-[#247EFF]" />}
+                    title={resource.title}
+                    description={resource.description}
+                    topics={resource.topics}
+                    ctaText={resource.ctaText}
+                    ctaLink={resource.ctaLink}
+                  />
+                  
+                  {/* Who This Is For */}
+                  <div className="mt-4 p-4 bg-blue-50/50 dark:bg-blue-900/20 rounded-lg">
+                    <p className="text-sm font-semibold text-[#247EFF] mb-2">Who This Is For:</p>
+                    <p className="text-[#0A0A0A] dark:text-brand-cream">{resource.whoThisIsFor}</p>
+                  </div>
+                  
+                  {/* Internal Links */}
+                  <div className="mt-4 flex flex-wrap gap-3">
+                    {resource.internalLinks.map((link, linkIndex) => (
+                      <a
+                        key={linkIndex}
+                        href={link.link}
+                        className="text-sm text-[#247EFF] hover:underline flex items-center gap-1"
+                      >
+                        {link.text} →
+                      </a>
+                    ))}
+                  </div>
+                </div>
               ))}
             </div>
 
@@ -191,17 +250,52 @@ const Resources = () => {
             
             <ComprehensiveGuideSection {...investingGuide} className="mb-12" />
             
+            {/* Quick Start Checklist */}
+            <div className="bg-green-50/50 dark:bg-green-900/20 border-l-4 border-green-500 rounded-lg p-6 mb-12">
+              <HeaderHierarchy level={3} className="mb-4 text-green-700 dark:text-green-400">
+                Quick Start Checklist: Start Investing Today
+              </HeaderHierarchy>
+              <ul className="space-y-2">
+                {investingGuide.quickStartChecklist.map((item, index) => (
+                  <li key={index} className="flex items-center gap-3">
+                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                    <span className="text-[#0A0A0A] dark:text-brand-cream">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            
             <div className="grid grid-cols-1 lg:grid-cols-1 gap-8 mb-12">
               {investingResources.map((resource, index) => (
-                <ResourceCategory
-                  key={index}
-                  icon={<resource.icon className="h-8 w-8 text-[#247EFF]" />}
-                  title={resource.title}
-                  description={resource.description}
-                  topics={resource.topics}
-                  ctaText={resource.ctaText}
-                  ctaLink={resource.ctaLink}
-                />
+                <div key={index}>
+                  <ResourceCategory
+                    icon={<resource.icon className="h-8 w-8 text-[#247EFF]" />}
+                    title={resource.title}
+                    description={resource.description}
+                    topics={resource.topics}
+                    ctaText={resource.ctaText}
+                    ctaLink={resource.ctaLink}
+                  />
+                  
+                  {/* Who This Is For */}
+                  <div className="mt-4 p-4 bg-blue-50/50 dark:bg-blue-900/20 rounded-lg">
+                    <p className="text-sm font-semibold text-[#247EFF] mb-2">Who This Is For:</p>
+                    <p className="text-[#0A0A0A] dark:text-brand-cream">{resource.whoThisIsFor}</p>
+                  </div>
+                  
+                  {/* Internal Links */}
+                  <div className="mt-4 flex flex-wrap gap-3">
+                    {resource.internalLinks.map((link, linkIndex) => (
+                      <a
+                        key={linkIndex}
+                        href={link.link}
+                        className="text-sm text-[#247EFF] hover:underline flex items-center gap-1"
+                      >
+                        {link.text} →
+                      </a>
+                    ))}
+                  </div>
+                </div>
               ))}
             </div>
 
@@ -241,18 +335,67 @@ const Resources = () => {
               ]}
               className="mb-16"
             />
+
+            {/* Quick Start Checklist for AI Side Hustles */}
+            <div className="bg-green-50/50 dark:bg-green-900/20 border-l-4 border-green-500 rounded-lg p-6 mb-12">
+              <HeaderHierarchy level={3} className="mb-4 text-green-700 dark:text-green-400">
+                Quick Start Checklist: Launch Your AI Side Hustle
+              </HeaderHierarchy>
+              <ul className="space-y-2">
+                <li className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                  <span className="text-[#0A0A0A] dark:text-brand-cream">Sign up for ChatGPT Plus or try Midjourney free trial this week</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                  <span className="text-[#0A0A0A] dark:text-brand-cream">Create 3 sample projects for your portfolio</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                  <span className="text-[#0A0A0A] dark:text-brand-cream">Set up profiles on Upwork and Fiverr with your samples</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                  <span className="text-[#0A0A0A] dark:text-brand-cream">Apply to 5 gigs daily for your first 2 weeks</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                  <span className="text-[#0A0A0A] dark:text-brand-cream">Deliver first project and ask for testimonial</span>
+                </li>
+              </ul>
+            </div>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
               {aiResources.map((resource, index) => (
-                <ResourceCategory
-                  key={index}
-                  icon={<resource.icon className="h-8 w-8 text-[#247EFF]" />}
-                  title={resource.title}
-                  description={resource.description}
-                  topics={resource.topics}
-                  ctaText={resource.ctaText}
-                  ctaLink={resource.ctaLink}
-                />
+                <div key={index}>
+                  <ResourceCategory
+                    icon={<resource.icon className="h-8 w-8 text-[#247EFF]" />}
+                    title={resource.title}
+                    description={resource.description}
+                    topics={resource.topics}
+                    ctaText={resource.ctaText}
+                    ctaLink={resource.ctaLink}
+                  />
+                  
+                  {/* Who This Is For */}
+                  <div className="mt-4 p-4 bg-blue-50/50 dark:bg-blue-900/20 rounded-lg">
+                    <p className="text-sm font-semibold text-[#247EFF] mb-2">Who This Is For:</p>
+                    <p className="text-[#0A0A0A] dark:text-brand-cream">{resource.whoThisIsFor}</p>
+                  </div>
+                  
+                  {/* Internal Links */}
+                  <div className="mt-4 flex flex-wrap gap-3">
+                    {resource.internalLinks.map((link, linkIndex) => (
+                      <a
+                        key={linkIndex}
+                        href={link.link}
+                        className="text-sm text-[#247EFF] hover:underline flex items-center gap-1"
+                      >
+                        {link.text} →
+                      </a>
+                    ))}
+                  </div>
+                </div>
               ))}
             </div>
 
@@ -271,15 +414,35 @@ const Resources = () => {
             
             <div className="grid grid-cols-1 lg:grid-cols-1 gap-8 mb-12">
               {foundationResources.map((resource, index) => (
-                <ResourceCategory
-                  key={index}
-                  icon={<resource.icon className="h-8 w-8 text-[#247EFF]" />}
-                  title={resource.title}
-                  description={resource.description}
-                  topics={resource.topics}
-                  ctaText={resource.ctaText}
-                  ctaLink={resource.ctaLink}
-                />
+                <div key={index}>
+                  <ResourceCategory
+                    icon={<resource.icon className="h-8 w-8 text-[#247EFF]" />}
+                    title={resource.title}
+                    description={resource.description}
+                    topics={resource.topics}
+                    ctaText={resource.ctaText}
+                    ctaLink={resource.ctaLink}
+                  />
+                  
+                  {/* Who This Is For */}
+                  <div className="mt-4 p-4 bg-blue-50/50 dark:bg-blue-900/20 rounded-lg">
+                    <p className="text-sm font-semibold text-[#247EFF] mb-2">Who This Is For:</p>
+                    <p className="text-[#0A0A0A] dark:text-brand-cream">{resource.whoThisIsFor}</p>
+                  </div>
+                  
+                  {/* Internal Links */}
+                  <div className="mt-4 flex flex-wrap gap-3">
+                    {resource.internalLinks.map((link, linkIndex) => (
+                      <a
+                        key={linkIndex}
+                        href={link.link}
+                        className="text-sm text-[#247EFF] hover:underline flex items-center gap-1"
+                      >
+                        {link.text} →
+                      </a>
+                    ))}
+                  </div>
+                </div>
               ))}
             </div>
           </section>

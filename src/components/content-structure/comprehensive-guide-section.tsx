@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 interface ComprehensiveGuideSectionProps {
   title: string;
   summary: string;
+  whoThisIsFor: string;
   sections: {
     title: string;
     definition?: string;
@@ -13,13 +14,16 @@ interface ComprehensiveGuideSectionProps {
     bulletPoints?: string[];
     content?: string;
   }[];
+  quickStartChecklist?: string[];
   className?: string;
 }
 
 const ComprehensiveGuideSection = ({ 
   title, 
   summary, 
+  whoThisIsFor,
   sections, 
+  quickStartChecklist,
   className = "" 
 }: ComprehensiveGuideSectionProps) => {
   return (
@@ -28,15 +32,21 @@ const ComprehensiveGuideSection = ({
         {title}
       </HeaderHierarchy>
 
-      {/* Summary paragraph at the beginning */}
-      <Card className="mb-12 bg-gradient-to-r from-[#247EFF]/10 to-blue-100/20 dark:from-[#247EFF]/20 dark:to-blue-900/20">
+      {/* Summary paragraph */}
+      <Card className="mb-8 bg-gradient-to-r from-[#247EFF]/10 to-blue-100/20 dark:from-[#247EFF]/20 dark:to-blue-900/20">
         <CardContent className="p-8">
           <HeaderHierarchy level={2} className="mb-4 text-[#247EFF]">
-            Complete Guide Summary
+            What Makes This Guide Unique
           </HeaderHierarchy>
-          <p className="text-lg leading-relaxed text-[#0A0A0A] dark:text-brand-cream">
+          <p className="text-lg leading-relaxed text-[#0A0A0A] dark:text-brand-cream mb-4">
             {summary}
           </p>
+          
+          {/* Who This Is For */}
+          <div className="mt-6 p-4 bg-white/50 dark:bg-brand-black/30 rounded-lg">
+            <p className="text-sm font-semibold text-[#247EFF] mb-2">Who This Is For:</p>
+            <p className="text-[#0A0A0A] dark:text-brand-cream">{whoThisIsFor}</p>
+          </div>
         </CardContent>
       </Card>
 

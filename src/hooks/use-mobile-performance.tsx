@@ -43,22 +43,40 @@ export const useMobilePerformance = () => {
           img.style.maxWidth = '100%';
           img.style.height = 'auto';
         }
+
+        // Add responsive attributes
+        if (!img.hasAttribute('sizes')) {
+          img.setAttribute('sizes', '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw');
+        }
       });
 
       // Reduce animation complexity on mobile
       const animatedElements = document.querySelectorAll('[class*="animate"], [class*="transition"]');
       animatedElements.forEach(element => {
         const el = element as HTMLElement;
-        el.style.animationDuration = '0.2s';
-        el.style.transitionDuration = '0.2s';
+        if (window.innerWidth < 768) {
+          el.style.animationDuration = '0.2s';
+          el.style.transitionDuration = '0.2s';
+        }
       });
 
       // Optimize backdrop blur for mobile
       const blurElements = document.querySelectorAll('.backdrop-blur-sm, .backdrop-blur');
       blurElements.forEach(element => {
         const el = element as HTMLElement;
-        el.classList.remove('backdrop-blur-sm', 'backdrop-blur');
-        el.classList.add('bg-white/95', 'dark:bg-brand-black/95');
+        if (window.innerWidth < 768) {
+          el.classList.remove('backdrop-blur-sm', 'backdrop-blur');
+          el.classList.add('bg-white/95', 'dark:bg-brand-black/95');
+        }
+      });
+
+      // Optimize scroll performance
+      const scrollElements = document.querySelectorAll('[style*="scroll-behavior"]');
+      scrollElements.forEach(element => {
+        const el = element as HTMLElement;
+        if (window.innerWidth < 768) {
+          el.style.scrollBehavior = 'auto';
+        }
       });
     };
 
@@ -73,8 +91,8 @@ export const useMobilePerformance = () => {
     optimizeMobileExperience();
 
     // Listen for orientation changes and resizes
-    window.addEventListener('resize', handleResize);
-    window.addEventListener('orientationchange', optimizeMobileExperience);
+    window.addEventListener('resize', handleResize, { passive: true });
+    window.addEventListener('orientationchange', optimizeMobileExperience, { passive: true });
 
     // Cleanup
     return () => {

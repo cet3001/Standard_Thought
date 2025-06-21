@@ -25,6 +25,7 @@ const OptimizedImage = ({
   const [isLoaded, setIsLoaded] = useState(false);
   const [isInView, setIsInView] = useState(priority);
   const [imgSrc, setImgSrc] = useState(priority ? src : placeholder);
+  const [hasError, setHasError] = useState(false);
   const imgRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
@@ -67,9 +68,11 @@ const OptimizedImage = ({
 
   const handleLoad = () => {
     setIsLoaded(true);
+    setHasError(false);
   };
 
   const handleError = () => {
+    setHasError(true);
     setImgSrc(placeholder);
     setIsLoaded(true);
   };
@@ -91,10 +94,13 @@ const OptimizedImage = ({
         } w-full h-full object-cover gpu-accelerated`}
         style={{
           aspectRatio: width && height ? `${width}/${height}` : undefined,
-          imageRendering: mobileOptimized ? '-webkit-optimize-contrast' : undefined
+          imageRendering: mobileOptimized ? '-webkit-optimize-contrast' : undefined,
+          maxWidth: '100%',
+          height: 'auto'
         }}
+        sizes={mobileOptimized ? "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" : undefined}
       />
-      {!isLoaded && (
+      {(!isLoaded || hasError) && (
         <div className="absolute inset-0 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 loading-skeleton" />
       )}
     </div>

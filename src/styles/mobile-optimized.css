@@ -91,6 +91,10 @@
   .py-16 { padding-top: 3rem; padding-bottom: 3rem; }
   .py-12 { padding-top: 2rem; padding-bottom: 2rem; }
   .py-8 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+
+  /* Padding optimizations */
+  .px-6 { padding-left: 1rem; padding-right: 1rem; }
+  .px-8 { padding-left: 1.5rem; padding-right: 1.5rem; }
 }
 
 /* Ultra-small screens (iPhone SE, etc.) */
@@ -106,6 +110,10 @@
 
   .text-xl { font-size: 1.125rem; }
   .text-lg { font-size: 1rem; }
+
+  /* Further reduce padding on very small screens */
+  .py-16 { padding-top: 2rem; padding-bottom: 2rem; }
+  .py-12 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
 }
 
 /* Landscape mobile optimization */
@@ -148,5 +156,24 @@
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* Optimize for better mobile performance */
+@media (max-width: 768px) {
+  /* Reduce shadow complexity */
+  .shadow-lg, .shadow-xl, .shadow-2xl {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Simplify gradients */
+  .bg-gradient-to-r, .bg-gradient-to-b {
+    background: var(--accent-color, #FFD700);
+  }
+
+  /* Optimize hover states */
+  .hover\:shadow-lg:hover,
+  .hover\:shadow-xl:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   }
 }

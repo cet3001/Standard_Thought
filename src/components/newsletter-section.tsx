@@ -1,230 +1,145 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { supabase } from "@/integrations/supabase/client";
-import { toast } from "sonner";
-import { CheckCircle, Download, Mail } from "lucide-react";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Mail, Check, AlertCircle } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
+import { trackNewsletterSignup } from "@/components/analytics";
 
 export const NewsletterSection = () => {
   const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const { toast } = useToast();
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    const section = document.querySelector('[data-section="newsletter"]');
+    if (section) {
+      observer.observe(section);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email) {
-      toast.error("Please enter your email address");
-      return;
-    }
+    if (!email) return;
 
-    setIsLoading(true);
+    setIsSubmitting(true);
     
     try {
-      // Insert subscriber into database
-      const { data: subscriber, error } = await supabase
-        .from("Subscribers")
-        .insert([
-          {
-            email: email,
-            name: name || null,
-            unsubscribe_token: crypto.randomUUID(),
-          },
-        ])
-        .select()
-        .single();
+      const response = await fetch('/api/newsletter-signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
 
-      if (error) {
-        console.error("Subscription error:", error);
-        toast.error("Failed to subscribe. Please try again.");
-        return;
-      }
-
-      // Send notification email to admin
-      try {
-        const { error: notificationError } = await supabase.functions.invoke('notify-new-subscriber', {
-          body: {
-            subscriberId: subscriber.id,
-            email: subscriber.email,
-            name: subscriber.name,
-            created_at: subscriber.created_at
-          }
+      if (response.ok) {
+        // Track successful newsletter signup
+        trackNewsletterSignup(email, 'newsletter_section');
+        
+        toast({
+          title: "Welcome to the movement! 🔥",
+          description: "Check your email for the Urban Wealth Building Blueprint and exclusive content.",
+          duration: 5000,
         });
-
-        if (notificationError) {
-          console.error("Notification error:", notificationError);
-          // Don't show error to user as subscription was successful
-        }
-      } catch (notificationError) {
-        console.error("Failed to send notification:", notificationError);
-        // Don't show error to user as subscription was successful
+        setEmail("");
+      } else {
+        throw new Error('Failed to subscribe');
       }
-
-      toast.success("Blueprint sent! Check your email for your free PDF.");
-      setEmail("");
-      setName("");
     } catch (error) {
-      console.error("Unexpected error:", error);
-      toast.error("An unexpected error occurred. Please try again.");
+      console.error('Newsletter signup error:', error);
+      toast({
+        title: "Something went wrong",
+        description: "Please try again or contact us directly.",
+        variant: "destructive",
+      });
     } finally {
-      setIsLoading(false);
+      setIsSubmitting(false);
     }
   };
 
   return (
     <section 
-      className="py-20 bg-gradient-to-br from-[#247EFF]/5 via-brand-cream to-[#247EFF]/10 dark:from-[#247EFF]/10 dark:via-brand-black dark:to-[#247EFF]/5 relative overflow-hidden"
-      data-section="newsletter"
-      aria-labelledby="newsletter-heading"
+      data-section="newsletter" 
+      className="py-16 sm:py-20 bg-gradient-to-b from-accent/10 to-white dark:from-accent/20 dark:to-brand-black"
     >
-      {/* Background Pattern */}
-      <div className="absolute inset-0 pointer-events-none opacity-10" aria-hidden="true">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#247EFF]/20 via-transparent to-[#247EFF]/10"></div>
-      </div>
-
-      <div className="container mx-auto px-6 text-center relative z-10">
-        <div className="max-w-4xl mx-auto">
-          {/* Header */}
-          <div className="mb-12">
-            <div className="flex items-center justify-center mb-4">
-              <Download className="w-8 h-8 text-[#247EFF] mr-3" aria-hidden="true" />
-              <h2 id="newsletter-heading" className="text-4xl md:text-5xl font-bold text-[#0A0A0A] dark:text-brand-cream">
-                Get Your Free Wealth Building Blueprint
-              </h2>
-            </div>
+      <div className="container mx-auto px-4 sm:px-6 max-w-4xl">
+        <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <Card className="bg-white/90 dark:bg-brand-black/90 backdrop-blur-sm border-accent/30 shadow-2xl">
+            <CardHeader className="text-center p-6 sm:p-8">
+              <div className="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Mail className="h-8 w-8 text-accent" aria-label="Email newsletter icon" />
+              </div>
+              <CardTitle className="text-2xl sm:text-3xl font-black text-brand-black dark:text-brand-cream mb-4">
+                Get the <span className="text-accent">Urban Wealth Blueprint</span>
+              </CardTitle>
+              <CardDescription className="text-base sm:text-lg text-brand-black/70 dark:text-brand-cream/70 max-w-2xl mx-auto">
+                Join 1000+ first-gen entrepreneurs getting weekly strategies for building generational wealth, 
+                plus exclusive AI side hustle frameworks and street-smart investing tips.
+              </CardDescription>
+            </CardHeader>
             
-            {/* New bulleted list */}
-            <div className="max-w-2xl mx-auto mb-8">
-              <ul className="text-left text-lg text-[#0A0A0A]/80 dark:text-brand-cream/80 space-y-3" role="list">
-                <li className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-[#247EFF] mr-3 mt-0.5 flex-shrink-0" aria-hidden="true" />
-                  Step-by-step AI side hustle guide for beginners
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-[#247EFF] mr-3 mt-0.5 flex-shrink-0" aria-hidden="true" />
-                  Credit building moves that actually work
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-[#247EFF] mr-3 mt-0.5 flex-shrink-0" aria-hidden="true" />
-                  Blueprint for turning small wins into generational progress
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-[#247EFF] mr-3 mt-0.5 flex-shrink-0" aria-hidden="true" />
-                  Weekly "Level Up Notes" direct to your inbox
-                </li>
-              </ul>
-            </div>
-            
-            <p className="text-xl md:text-2xl text-[#0A0A0A]/80 dark:text-brand-cream/80 mb-8 leading-relaxed">
-              The same blueprint that helped 500+ people go from broke to <strong>securing the bag</strong> consistently. 
-              <span className="text-[#247EFF] font-semibold block mt-2">Instant PDF delivery + weekly "Level Up Notes"</span>
-            </p>
-          </div>
-
-          {/* Value Props */}
-          <div className="grid md:grid-cols-3 gap-8 mb-12" role="group" aria-label="Blueprint features">
-            {[
-              { icon: "💰", title: "Money Mindset Shift", desc: "Break the broke mentality that keeps you stuck in survival mode" },
-              { icon: "🎯", title: "Goal Stacking Framework", desc: "Turn big dreams into daily wins that build momentum" },
-              { icon: "📈", title: "Wealth Building Roadmap", desc: "Step-by-step path from paycheck to paycheck to generational wealth" }
-            ].map((item, index) => (
-              <div key={index} className="bg-white/50 dark:bg-brand-black/30 backdrop-blur-sm p-6 rounded-2xl border border-[#247EFF]/10 hover:border-[#247EFF]/30 transition-all duration-300">
-                <div className="text-3xl mb-3" aria-hidden="true">{item.icon}</div>
-                <h3 className="text-lg font-semibold text-[#0A0A0A] dark:text-brand-cream mb-2">{item.title}</h3>
-                <p className="text-[#0A0A0A]/70 dark:text-brand-cream/70 text-sm">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-
-          {/* Form */}
-          <div className="max-w-md mx-auto">
-            <form onSubmit={handleSubmit} className="space-y-4" role="form" aria-labelledby="newsletter-heading">
-              <div className="relative">
-                <Input
-                  type="text"
-                  placeholder="Your first name (optional)"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className="w-full h-12 bg-white/80 dark:bg-brand-black/50 border-[#247EFF]/20 focus:border-[#247EFF] rounded-xl text-base"
-                  aria-label="Your first name (optional)"
-                />
-              </div>
-              <div className="relative">
-                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#0A0A0A]/60 dark:text-brand-cream/60 h-5 w-5" aria-hidden="true" />
-                <Input
-                  type="email"
-                  placeholder="Enter your email to start leveling up"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  className="w-full h-12 pl-12 bg-white/80 dark:bg-brand-black/50 border-[#247EFF]/20 focus:border-[#247EFF] rounded-xl text-base"
-                  disabled={isLoading}
-                  aria-label="Your email address (required)"
-                  aria-describedby="email-help"
-                />
-              </div>
-              <div id="email-help" className="sr-only">
-                We'll send your free blueprint to this email address
-              </div>
-              <Button 
-                type="submit" 
-                className="w-full h-12 bg-[#247EFF] hover:bg-[#0057FF] hover:shadow-lg hover:shadow-[#247EFF]/30 text-white font-semibold rounded-xl text-lg transition-all duration-300 hover:scale-105 disabled:opacity-70"
-                disabled={isLoading}
-                aria-describedby="submit-help"
-              >
-                {isLoading ? (
-                  <div className="flex items-center">
-                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2" aria-hidden="true"></div>
-                    <span>Sending Blueprint...</span>
-                  </div>
-                ) : (
-                  <div className="flex items-center">
-                    <Download className="w-5 h-5 mr-2" aria-hidden="true" />
-                    Get Free Blueprint
-                  </div>
-                )}
-              </Button>
-              <div id="submit-help" className="sr-only">
-                Click to receive your free wealth building blueprint PDF
-              </div>
-            </form>
-            
-            <div className="flex items-center justify-center mt-6 space-x-6 text-sm text-[#0A0A0A]/60 dark:text-brand-cream/60" role="group" aria-label="Newsletter benefits">
-              <div className="flex items-center">
-                <CheckCircle className="w-4 h-4 text-green-500 mr-2" aria-hidden="true" />
-                Instant delivery
-              </div>
-              <div className="flex items-center">
-                <CheckCircle className="w-4 h-4 text-green-500 mr-2" aria-hidden="true" />
-                No spam, just game
-              </div>
-              <div className="flex items-center">
-                <CheckCircle className="w-4 h-4 text-green-500 mr-2" aria-hidden="true" />
-                Unsubscribe anytime
-              </div>
-            </div>
-          </div>
-
-          {/* Social Proof */}
-          <div className="mt-12 text-center">
-            <p className="text-[#0A0A0A]/60 dark:text-brand-cream/60 text-sm mb-4">
-              Join 10,000+ builders who are already leveling up financially
-            </p>
-            <div className="flex justify-center items-center space-x-2" role="group" aria-label="Member avatars">
-              <div className="flex -space-x-2">
-                {[1, 2, 3, 4, 5].map((i) => (
-                  <div 
-                    key={i} 
-                    className="w-8 h-8 rounded-full bg-gradient-to-br from-[#247EFF] to-[#0057FF] border-2 border-white dark:border-brand-black flex items-center justify-center text-white text-xs font-bold"
-                    aria-label={`Member avatar ${i}`}
+            <CardContent className="p-6 sm:p-8 pt-0">
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                  <Input
+                    type="email"
+                    placeholder="Enter your email to start building..."
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="flex-1 px-4 py-3 sm:py-4 text-sm sm:text-base border-accent/30 focus:border-accent bg-white dark:bg-brand-black/50 text-brand-black dark:text-brand-cream rounded-2xl"
+                    required
+                    disabled={isSubmitting}
+                  />
+                  <Button
+                    type="submit"
+                    disabled={isSubmitting || !email}
+                    className="w-full sm:w-auto bg-gradient-to-r from-accent to-[#FFD700] text-black font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-2xl hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-sm sm:text-base"
                   >
-                    {String.fromCharCode(64 + i)}
+                    {isSubmitting ? (
+                      <div className="flex items-center">
+                        <div className="w-4 h-4 border-2 border-black/30 border-t-black rounded-full animate-spin mr-2"></div>
+                        Joining...
+                      </div>
+                    ) : (
+                      <>
+                        <Check className="mr-2 h-4 w-4 sm:h-5 sm:w-5" aria-label="Checkmark icon" />
+                        Get My Blueprint
+                      </>
+                    )}
+                  </Button>
+                </div>
+                
+                <div className="flex items-center justify-center text-xs sm:text-sm text-brand-black/60 dark:text-brand-cream/60 space-x-4">
+                  <div className="flex items-center">
+                    <Check className="h-3 w-3 sm:h-4 sm:w-4 text-accent mr-1" aria-label="Check mark" />
+                    <span>Free wealth blueprint</span>
                   </div>
-                ))}
-              </div>
-              <span className="text-[#0A0A0A]/60 dark:text-brand-cream/60 text-sm">and thousands more securing the bag...</span>
-            </div>
-          </div>
+                  <div className="flex items-center">
+                    <Check className="h-3 w-3 sm:h-4 sm:w-4 text-accent mr-1" aria-label="Check mark" />
+                    <span>No spam, just value</span>
+                  </div>
+                  <div className="flex items-center">
+                    <Check className="h-3 w-3 sm:h-4 sm:w-4 text-accent mr-1" aria-label="Check mark" />
+                    <span>Unsubscribe anytime</span>
+                  </div>
+                </div>
+              </form>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </section>

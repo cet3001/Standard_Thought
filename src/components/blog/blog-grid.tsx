@@ -1,4 +1,3 @@
-
 import { useNavigate } from "react-router-dom";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -96,6 +95,7 @@ const BlogGrid = ({ posts, onPostDeleted, onThemeTagClick }: BlogGridProps) => {
               </div>
             )}
             
+            
             <h3 className="text-xl font-semibold mb-3 line-clamp-2 group-hover:text-[#247EFF] transition-colors text-[#0A0A0A] dark:text-brand-cream">
               {post.title}
             </h3>
@@ -113,6 +113,7 @@ const BlogGrid = ({ posts, onPostDeleted, onThemeTagClick }: BlogGridProps) => {
               </div>
             </div>
           </CardContent>
+          
           
           <CardFooter className="p-6 pt-0 space-y-3">
             <Button 

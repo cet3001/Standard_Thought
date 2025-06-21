@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 
 interface ThemeTagProps {
   tag: string;
-  onClick?: () => void;
+  onClick?: (e?: React.MouseEvent) => void;
   className?: string;
 }
 
@@ -28,6 +28,12 @@ const ThemeTag = ({ tag, onClick, className }: ThemeTagProps) => {
     }
   };
 
+  const handleClick = (e: React.MouseEvent) => {
+    if (onClick) {
+      onClick(e);
+    }
+  };
+
   return (
     <Badge
       variant="outline"
@@ -37,7 +43,7 @@ const ThemeTag = ({ tag, onClick, className }: ThemeTagProps) => {
         onClick && "hover:shadow-sm",
         className
       )}
-      onClick={onClick}
+      onClick={handleClick}
     >
       {tag}
     </Badge>

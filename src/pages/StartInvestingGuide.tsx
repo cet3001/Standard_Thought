@@ -34,7 +34,7 @@ const StartInvestingGuide = () => {
       
       <Navigation />
       
-      <div className="pt-28 pb-4">
+      <div className="pt-36 pb-4">
         <div className="container mx-auto px-6">
           <Button
             onClick={() => navigate(-1)}

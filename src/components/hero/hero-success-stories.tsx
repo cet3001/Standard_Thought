@@ -14,10 +14,10 @@ const HeroSuccessStories = () => {
   return (
     <div className={`mb-16 transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
       <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[#0A0A0A] dark:text-brand-cream">
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-brand-black dark:text-brand-cream">
           Real People. Real Progress.
         </h2>
-        <p className="text-lg text-[#0A0A0A]/70 dark:text-brand-cream/70 max-w-2xl mx-auto">
+        <p className="text-lg text-brand-black/70 dark:text-brand-cream/70 max-w-2xl mx-auto">
           Our community is flipping the script—one win at a time. Here's how folks just like you are turning hustle into legacy with Standard Thought.
         </p>
       </div>
@@ -35,10 +35,10 @@ const HeroSuccessStories = () => {
               ))}
             </div>
           </div>
-          <blockquote className="text-[#0A0A0A]/80 dark:text-brand-cream/80 mb-4 italic">
+          <blockquote className="text-brand-black/80 dark:text-brand-cream/80 mb-4 italic">
             "I started with $0 and a vision. Now I've got a side hustle bringing in $1,200/month. The blueprint made it simple."
           </blockquote>
-          <cite className="text-sm text-[#0A0A0A]/60 dark:text-brand-cream/60 font-medium">
+          <cite className="text-sm text-brand-black/60 dark:text-brand-cream/60 font-medium">
             — Tasha, Detroit
           </cite>
         </div>
@@ -55,10 +55,10 @@ const HeroSuccessStories = () => {
               ))}
             </div>
           </div>
-          <blockquote className="text-[#0A0A0A]/80 dark:text-brand-cream/80 mb-4 italic">
+          <blockquote className="text-brand-black/80 dark:text-brand-cream/80 mb-4 italic">
             "Standard Thought helped me fix my credit and stack my first $10K. I never thought I'd get here."
           </blockquote>
-          <cite className="text-sm text-[#0A0A0A]/60 dark:text-brand-cream/60 font-medium">
+          <cite className="text-sm text-brand-black/60 dark:text-brand-cream/60 font-medium">
             — Malik, Houston
           </cite>
         </div>
@@ -75,10 +75,10 @@ const HeroSuccessStories = () => {
               ))}
             </div>
           </div>
-          <blockquote className="text-[#0A0A0A]/80 dark:text-brand-cream/80 mb-4 italic">
+          <blockquote className="text-brand-black/80 dark:text-brand-cream/80 mb-4 italic">
             "I finally understand how to make my money work for me, not just work for money."
           </blockquote>
-          <cite className="text-sm text-[#0A0A0A]/60 dark:text-brand-cream/60 font-medium">
+          <cite className="text-sm text-brand-black/60 dark:text-brand-cream/60 font-medium">
             — J. Rivera, Bronx
           </cite>
         </div>

@@ -3,6 +3,7 @@ import HeaderHierarchy from "@/components/content-structure/header-hierarchy";
 import ComprehensiveGuideSection from "@/components/content-structure/comprehensive-guide-section";
 import { creditBuildingGuide } from "@/components/resources/comprehensive-guides-data";
 import ResourceCategory from "@/components/resources/resource-category";
+import QuickStartChecklist from "@/components/resources/quick-start-checklist";
 import { CreditCard } from "lucide-react";
 
 interface CreditBuildingSectionProps {
@@ -35,6 +36,17 @@ const CreditBuildingSection = ({ selectedTag, onTagClick }: CreditBuildingSectio
     }
   ];
 
+  const creditBuildingChecklist = [
+    { id: "secured-card", text: "Open a secured credit card account this week with $200-500 deposit" },
+    { id: "recurring-purchase", text: "Set up one small recurring purchase (Netflix, Spotify, etc.) on the card" },
+    { id: "auto-payment", text: "Schedule automatic full payment from your checking account" },
+    { id: "experian-boost", text: "Sign up for Experian Boost to report rent/utility payments" },
+    { id: "credit-monitoring", text: "Check your credit score in 3 months and track progress monthly" },
+    { id: "authorized-user", text: "Ask family member with good credit to add you as authorized user" },
+    { id: "credit-report", text: "Get free annual credit report and dispute any errors" },
+    { id: "credit-utilization", text: "Keep credit card balance under 10% of credit limit" }
+  ];
+
   return (
     <section className="mb-20" aria-labelledby="credit-building-section">
       <HeaderHierarchy level={2} className="text-center mb-12 text-2xl md:text-3xl lg:text-4xl font-black" id="credit-building-section">
@@ -43,20 +55,14 @@ const CreditBuildingSection = ({ selectedTag, onTagClick }: CreditBuildingSectio
       
       <ComprehensiveGuideSection {...creditBuildingGuide} className="mb-12" />
       
-      {/* Quick Start Checklist */}
-      <div className="bg-green-50/50 dark:bg-green-900/20 border-l-4 border-green-500 rounded-lg p-6 mb-12" role="complementary" aria-labelledby="credit-checklist-heading">
-        <HeaderHierarchy level={3} className="mb-4 text-green-700 dark:text-green-400" id="credit-checklist-heading">
-          Your Week 1 Credit Building Moves
-        </HeaderHierarchy>
-        <ul className="space-y-2" role="list">
-          {creditBuildingGuide.quickStartChecklist.map((item, index) => (
-            <li key={index} className="flex items-center gap-3" role="listitem">
-              <div className="w-2 h-2 bg-green-500 rounded-full" aria-hidden="true"></div>
-              <span className="text-[#0A0A0A] dark:text-brand-cream">{item}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <QuickStartChecklist
+        title="Credit Building Action Plan"
+        description="Your complete roadmap to building credit from zero. Download this checklist and check off each step as you complete it."
+        items={creditBuildingChecklist}
+        downloadTitle="credit-building-action-plan"
+        bgColor="bg-green-50/50 dark:bg-green-900/20"
+        accentColor="border-green-500"
+      />
       
       <div className="grid grid-cols-1 lg:grid-cols-1 gap-8 mb-12">
         {creditResources.map((resource, index) => (

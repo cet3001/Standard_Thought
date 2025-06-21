@@ -1,6 +1,7 @@
 
 import HeaderHierarchy from "@/components/content-structure/header-hierarchy";
 import ResourceCategory from "@/components/resources/resource-category";
+import QuickStartChecklist from "@/components/resources/quick-start-checklist";
 import { DollarSign } from "lucide-react";
 
 interface FoundationSectionProps {
@@ -32,11 +33,31 @@ const FoundationSection = ({ selectedTag, onTagClick }: FoundationSectionProps) 
     }
   ];
 
+  const cashFlowChecklist = [
+    { id: "income-tracking", text: "Track all income sources for 2 weeks (write everything down)" },
+    { id: "bill-calendar", text: "Create a monthly bill calendar with due dates" },
+    { id: "separate-accounts", text: "Open separate business checking account if side hustling" },
+    { id: "emergency-fund", text: "Start $25/week emergency fund (aim for $500 first)" },
+    { id: "auto-bills", text: "Set up automatic payments for fixed bills" },
+    { id: "weekly-check-in", text: "Schedule weekly 15-minute money check-ins" },
+    { id: "tax-prep", text: "Set aside 25% of side hustle income for taxes" },
+    { id: "cash-flow-app", text: "Download budgeting app or use simple spreadsheet" }
+  ];
+
   return (
     <section className="mb-20" aria-labelledby="foundation-section">
       <HeaderHierarchy level={2} className="text-center mb-12 text-2xl md:text-3xl lg:text-4xl font-black" id="foundation-section">
         Side Hustle <span className="text-[#247EFF]">Cash Management</span>
       </HeaderHierarchy>
+      
+      <QuickStartChecklist
+        title="Cash Flow Control Checklist"
+        description="Master your irregular income with this proven system. Download and check off each step to get your money right."
+        items={cashFlowChecklist}
+        downloadTitle="cash-flow-control-checklist"
+        bgColor="bg-orange-50/50 dark:bg-orange-900/20"
+        accentColor="border-orange-500"
+      />
       
       <div className="grid grid-cols-1 lg:grid-cols-1 gap-8 mb-12">
         {foundationResources.map((resource, index) => (

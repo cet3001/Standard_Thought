@@ -3,6 +3,7 @@ import HeaderHierarchy from "@/components/content-structure/header-hierarchy";
 import ComprehensiveGuideSection from "@/components/content-structure/comprehensive-guide-section";
 import { investingGuide } from "@/components/resources/comprehensive-guides-data";
 import ResourceCategory from "@/components/resources/resource-category";
+import QuickStartChecklist from "@/components/resources/quick-start-checklist";
 import { TrendingUp } from "lucide-react";
 
 interface InvestingSectionProps {
@@ -35,6 +36,17 @@ const InvestingSection = ({ selectedTag, onTagClick }: InvestingSectionProps) =>
     }
   ];
 
+  const investingChecklist = [
+    { id: "micro-app", text: "Download Acorns or Stash app and set up account today" },
+    { id: "link-account", text: "Link bank account and enable round-up investing" },
+    { id: "auto-invest", text: "Set up $10 weekly automatic investment" },
+    { id: "portfolio-choice", text: "Choose aggressive growth portfolio (80% stocks, 20% bonds)" },
+    { id: "dividend-reinvest", text: "Enable dividend reinvestment for compound growth" },
+    { id: "monthly-increase", text: "Schedule monthly check-ins to increase contributions" },
+    { id: "emergency-fund", text: "Build $500 emergency fund before increasing investments" },
+    { id: "long-term-mindset", text: "Commit to not checking account daily - focus on 5+ year growth" }
+  ];
+
   return (
     <section className="mb-20" aria-labelledby="investing-section">
       <HeaderHierarchy level={2} className="text-center mb-12 text-2xl md:text-3xl lg:text-4xl font-black" id="investing-section">
@@ -43,20 +55,14 @@ const InvestingSection = ({ selectedTag, onTagClick }: InvestingSectionProps) =>
       
       <ComprehensiveGuideSection {...investingGuide} className="mb-12" />
       
-      {/* Quick Start Checklist */}
-      <div className="bg-green-50/50 dark:bg-green-900/20 border-l-4 border-green-500 rounded-lg p-6 mb-12" role="complementary" aria-labelledby="investing-checklist-heading">
-        <HeaderHierarchy level={3} className="mb-4 text-green-700 dark:text-green-400" id="investing-checklist-heading">
-          Your First Investment Moves This Week
-        </HeaderHierarchy>
-        <ul className="space-y-2" role="list">
-          {investingGuide.quickStartChecklist.map((item, index) => (
-            <li key={index} className="flex items-center gap-3" role="listitem">
-              <div className="w-2 h-2 bg-green-500 rounded-full" aria-hidden="true"></div>
-              <span className="text-[#0A0A0A] dark:text-brand-cream">{item}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <QuickStartChecklist
+        title="Micro-Investing Launch List"
+        description="Your step-by-step plan to start building wealth with $1. Print this list and check off each milestone as you hit it."
+        items={investingChecklist}
+        downloadTitle="micro-investing-launch-list"
+        bgColor="bg-blue-50/50 dark:bg-blue-900/20"
+        accentColor="border-blue-500"
+      />
       
       <div className="grid grid-cols-1 lg:grid-cols-1 gap-8 mb-12">
         {investingResources.map((resource, index) => (

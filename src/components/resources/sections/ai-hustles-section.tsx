@@ -1,7 +1,7 @@
-
 import HeaderHierarchy from "@/components/content-structure/header-hierarchy";
 import SnippetOptimizedContent from "@/components/seo/snippet-optimized-content";
 import ResourceCategory from "@/components/resources/resource-category";
+import QuickStartChecklist from "@/components/resources/quick-start-checklist";
 import { Bot, Building } from "lucide-react";
 
 interface AIHustlesSectionProps {
@@ -53,6 +53,17 @@ const AIHustlesSection = ({ selectedTag, onTagClick }: AIHustlesSectionProps) =>
     }
   ];
 
+  const aiHustleChecklist = [
+    { id: "ai-tool-signup", text: "Sign up for ChatGPT Plus or try Midjourney free trial this week" },
+    { id: "portfolio-samples", text: "Create 3 sample projects for your portfolio" },
+    { id: "freelance-profiles", text: "Set up profiles on Upwork and Fiverr with your samples" },
+    { id: "daily-applications", text: "Apply to 5 gigs daily for your first 2 weeks" },
+    { id: "first-testimonial", text: "Deliver first project and ask for testimonial" },
+    { id: "price-strategy", text: "Start 20-30% below competitors, increase after 5 reviews" },
+    { id: "package-deals", text: "Create package deals for repeat clients" },
+    { id: "reinvest-profits", text: "Reinvest first $500 into better tools and training" }
+  ];
+
   return (
     <section className="mb-20" aria-labelledby="ai-hustles-section">
       <HeaderHierarchy level={2} className="text-center mb-12 text-2xl md:text-3xl lg:text-4xl font-black" id="ai-hustles-section">
@@ -83,34 +94,14 @@ const AIHustlesSection = ({ selectedTag, onTagClick }: AIHustlesSectionProps) =>
         className="mb-16"
       />
 
-      {/* Quick Start Checklist for AI Side Hustles */}
-      <div className="bg-green-50/50 dark:bg-green-900/20 border-l-4 border-green-500 rounded-lg p-6 mb-12" role="complementary" aria-labelledby="ai-checklist-heading">
-        <HeaderHierarchy level={3} className="mb-4 text-green-700 dark:text-green-400" id="ai-checklist-heading">
-          Your AI Side Hustle Launch Plan This Week
-        </HeaderHierarchy>
-        <ul className="space-y-2" role="list">
-          <li className="flex items-center gap-3" role="listitem">
-            <div className="w-2 h-2 bg-green-500 rounded-full" aria-hidden="true"></div>
-            <span className="text-[#0A0A0A] dark:text-brand-cream">Sign up for ChatGPT Plus or try Midjourney free trial this week</span>
-          </li>
-          <li className="flex items-center gap-3" role="listitem">
-            <div className="w-2 h-2 bg-green-500 rounded-full" aria-hidden="true"></div>
-            <span className="text-[#0A0A0A] dark:text-brand-cream">Create 3 sample projects for your portfolio</span>
-          </li>
-          <li className="flex items-center gap-3" role="listitem">
-            <div className="w-2 h-2 bg-green-500 rounded-full" aria-hidden="true"></div>
-            <span className="text-[#0A0A0A] dark:text-brand-cream">Set up profiles on Upwork and Fiverr with your samples</span>
-          </li>
-          <li className="flex items-center gap-3" role="listitem">
-            <div className="w-2 h-2 bg-green-500 rounded-full" aria-hidden="true"></div>
-            <span className="text-[#0A0A0A] dark:text-brand-cream">Apply to 5 gigs daily for your first 2 weeks</span>
-          </li>
-          <li className="flex items-center gap-3" role="listitem">
-            <div className="w-2 h-2 bg-green-500 rounded-full" aria-hidden="true"></div>
-            <span className="text-[#0A0A0A] dark:text-brand-cream">Deliver first project and ask for testimonial</span>
-          </li>
-        </ul>
-      </div>
+      <QuickStartChecklist
+        title="AI Side Hustle Launch Plan"
+        description="Your complete blueprint to launch a profitable AI side hustle. Save this checklist and track your progress week by week."
+        items={aiHustleChecklist}
+        downloadTitle="ai-side-hustle-launch-plan"
+        bgColor="bg-purple-50/50 dark:bg-purple-900/20"
+        accentColor="border-purple-500"
+      />
       
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
         {aiResources.map((resource, index) => (

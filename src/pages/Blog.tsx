@@ -5,6 +5,7 @@ import SEO from "@/components/seo";
 import BlogHero from "@/components/blog/blog-hero";
 import BlogSearchFilter from "@/components/blog/blog-search-filter";
 import BlogGrid from "@/components/blog/blog-grid";
+import KeyGuidesCarousel from "@/components/blog/key-guides-carousel";
 import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { getPosts, getCategories } from "@/lib/api";
@@ -169,6 +170,9 @@ const Blog = () => {
               </div>
             </div>
           </div>
+          
+          {/* Key Guides Carousel - NEW ADDITION */}
+          <KeyGuidesCarousel />
           
           {/* Featured Questions Section */}
           <BlogFeaturedQuestions />

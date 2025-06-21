@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Star } from "lucide-react";
 import {
@@ -126,9 +127,9 @@ const TestimonialsCarousel = () => {
   ];
 
   const StarRating = () => (
-    <div className="flex justify-center space-x-1 mb-6">
+    <div className="flex justify-center space-x-1 mb-6" role="img" aria-label="Five star rating">
       {[...Array(5)].map((_, i) => (
-        <Star key={i} className="w-5 h-5 fill-[#f4d03f] text-[#f4d03f]" />
+        <Star key={i} className="w-5 h-5 fill-[#f4d03f] text-[#f4d03f]" aria-hidden="true" />
       ))}
     </div>
   );
@@ -136,7 +137,7 @@ const TestimonialsCarousel = () => {
   return (
     <section className="py-24 bg-[#1a1a2e] relative overflow-hidden">
       {/* Background Pattern */}
-      <div className="absolute inset-0 pointer-events-none opacity-10">
+      <div className="absolute inset-0 pointer-events-none opacity-10" aria-hidden="true">
         <div className="absolute inset-0 bg-gradient-to-br from-[#247EFF]/20 via-transparent to-[#f4d03f]/10"></div>
         <div className="absolute top-0 left-0 w-full h-full" style={{
           backgroundImage: `radial-gradient(circle at 20% 50%, rgba(36, 126, 255, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(244, 208, 63, 0.1) 0%, transparent 50%), radial-gradient(circle at 40% 80%, rgba(36, 126, 255, 0.1) 0%, transparent 50%)`
@@ -167,6 +168,7 @@ const TestimonialsCarousel = () => {
               }),
             ]}
             className="w-full"
+            aria-label="Customer testimonials carousel"
           >
             <CarouselContent>
               {testimonials.map((testimonial, index) => (
@@ -189,7 +191,7 @@ const TestimonialsCarousel = () => {
                       
                       {/* Profile */}
                       <div className="flex items-center justify-center space-x-4">
-                        <div className="w-20 h-20 bg-[#247EFF] rounded-full flex items-center justify-center text-white font-bold text-lg">
+                        <div className="w-20 h-20 bg-[#247EFF] rounded-full flex items-center justify-center text-white font-bold text-lg" aria-hidden="true">
                           {testimonial.initials}
                         </div>
                         <div className="text-left">
@@ -202,8 +204,8 @@ const TestimonialsCarousel = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="bg-white/10 border-white/20 text-[#f4d03f] hover:bg-[#f4d03f] hover:text-black -left-12" />
-            <CarouselNext className="bg-white/10 border-white/20 text-[#f4d03f] hover:bg-[#f4d03f] hover:text-black -right-12" />
+            <CarouselPrevious className="bg-white/10 border-white/20 text-[#f4d03f] hover:bg-[#f4d03f] hover:text-black -left-12" aria-label="Previous testimonial" />
+            <CarouselNext className="bg-white/10 border-white/20 text-[#f4d03f] hover:bg-[#f4d03f] hover:text-black -right-12" aria-label="Next testimonial" />
           </Carousel>
         </div>
 

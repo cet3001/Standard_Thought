@@ -15,7 +15,7 @@ const MindsetFirstSection = () => {
           <div className={`transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
             <img 
               src="/lovable-uploads/a8faab87-8319-4fa0-ae53-35597c6f8fc5.png" 
-              alt="Looking up at the crown - building your own legacy" 
+              alt="Person looking up at towering buildings from ground level - representing building your own legacy and reaching for success from humble beginnings" 
               className="w-full h-[500px] object-cover rounded-3xl shadow-lg"
             />
           </div>

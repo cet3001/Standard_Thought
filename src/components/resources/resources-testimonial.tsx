@@ -20,6 +20,36 @@ const ResourcesTestimonial = () => {
       name: "Deshawn",
       location: "Atlanta",
       result: "First $2K Month"
+    },
+    {
+      quote: "I was drowning in overdraft fees every month. The cash flow system stopped that nightmare in 3 weeks. Haven't paid a fee since.",
+      name: "Keisha",
+      location: "Detroit",
+      result: "No More Overdrafts"
+    },
+    {
+      quote: "Used the micro-investing checklist and started with spare change from my coffee runs. Six months later I own shares in Apple and Tesla.",
+      name: "Marcus",
+      location: "Houston",
+      result: "First Stock Portfolio"
+    },
+    {
+      quote: "The credit building guide is straight fire. Went from 580 to 650 in four months just following the steps. My car loan rate dropped too.",
+      name: "Aaliyah",
+      location: "Miami",
+      result: "70-Point Credit Jump"
+    },
+    {
+      quote: "Started my virtual assistant business using the AI hustle guide. Made $800 my first month, $1,500 the second. This stuff actually works.",
+      name: "Jordan",
+      location: "Phoenix",
+      result: "$1.5K in Month 2"
+    },
+    {
+      quote: "The emergency fund strategy saved my life when my car broke down. Had $1,000 ready instead of panic and credit card debt.",
+      name: "Tiffany",
+      location: "Dallas",
+      result: "$1K Emergency Fund"
     }
   ];
 
@@ -35,7 +65,7 @@ const ResourcesTestimonial = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 max-w-7xl mx-auto">
           {testimonials.map((testimonial, index) => (
             <div key={index} className="bg-white dark:bg-brand-black/50 rounded-xl md:rounded-2xl p-4 md:p-6 border border-[#247EFF]/20 relative">
               <Quote className="h-6 w-6 md:h-8 md:w-8 text-[#247EFF] mb-3 md:mb-4" />
@@ -63,7 +93,7 @@ const ResourcesTestimonial = () => {
 
         <div className="text-center mt-8 md:mt-12">
           <p className="text-xs md:text-sm text-[#0A0A0A]/60 dark:text-brand-cream/60">
-            <strong>1,000+ builders</strong> have used these exact strategies to level up their financial game
+            <strong>2,500+ builders</strong> have used these exact strategies to level up their financial game
           </p>
         </div>
       </div>

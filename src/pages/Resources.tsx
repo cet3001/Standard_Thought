@@ -166,7 +166,7 @@ const Resources = () => {
       
       <Navigation />
       
-      <main className="pt-24 pb-16">
+      <main className="pt-32 pb-16">
         <div className="container mx-auto px-6 max-w-7xl">
           <ResourcesHero />
 

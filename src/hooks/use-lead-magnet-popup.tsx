@@ -12,62 +12,72 @@ export const useLeadMagnetPopup = () => {
   const [brickTextureUrl, setBrickTextureUrl] = useState<string>("");
   const [isGeneratingTexture, setIsGeneratingTexture] = useState(false);
 
-  // Optimize trigger setup to prevent excessive re-renders
+  // Enhanced session management with multiple storage checks
   useEffect(() => {
     console.log("LeadMagnetPopup: Setting up triggers");
     
-    // TEMPORARILY CLEAR SESSION STORAGE FOR TESTING
-    sessionStorage.removeItem('leadMagnetShown');
+    // Check multiple storage mechanisms to prevent excessive popups
+    const hasSeenPopupSession = sessionStorage.getItem('leadMagnetShown');
+    const hasSeenPopupLocal = localStorage.getItem('leadMagnetShown');
+    const lastShownTime = localStorage.getItem('leadMagnetLastShown');
     
-    // Check if user has already seen popup this session
-    const hasSeenPopup = sessionStorage.getItem('leadMagnetShown');
-    console.log("LeadMagnetPopup: Has seen popup before?", hasSeenPopup);
+    // If shown in last 24 hours, don't show again
+    const twentyFourHours = 24 * 60 * 60 * 1000;
+    const now = Date.now();
     
-    if (hasSeenPopup) {
-      console.log("LeadMagnetPopup: Popup already shown this session, skipping");
+    if (lastShownTime && (now - parseInt(lastShownTime)) < twentyFourHours) {
+      console.log("LeadMagnetPopup: Popup shown within last 24 hours, skipping");
+      return;
+    }
+    
+    if (hasSeenPopupSession || hasSeenPopupLocal) {
+      console.log("LeadMagnetPopup: Popup already shown, skipping");
       return;
     }
 
     let scrollTriggered = false;
     let exitTriggered = false;
+    let timeTriggered = false;
 
-    // Scroll trigger (60% of page)
+    // Scroll trigger (70% of page - higher threshold)
     const handleScroll = () => {
-      if (scrollTriggered || hasTriggered) return;
+      if (scrollTriggered || hasTriggered || timeTriggered || exitTriggered) return;
       
       const scrollPercentage = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
       
-      if (scrollPercentage >= 60) {
+      if (scrollPercentage >= 70) {
         console.log("LeadMagnetPopup: Scroll trigger activated!");
         scrollTriggered = true;
         setHasTriggered(true);
         setIsVisible(true);
-        sessionStorage.setItem('leadMagnetShown', 'true');
+        markPopupAsShown();
       }
     };
 
-    // Exit intent trigger (desktop only)
+    // Exit intent trigger (desktop only, more restrictive)
     const handleMouseLeave = (e: MouseEvent) => {
-      if (exitTriggered || hasTriggered || window.innerWidth < 768) return;
+      if (exitTriggered || hasTriggered || timeTriggered || scrollTriggered || window.innerWidth < 768) return;
       
-      if (e.clientY <= 0) {
+      // Only trigger if mouse leaves from top and user has been on page for at least 10 seconds
+      if (e.clientY <= 0 && performance.now() > 10000) {
         console.log("LeadMagnetPopup: Exit intent trigger activated!");
         exitTriggered = true;
         setHasTriggered(true);
         setIsVisible(true);
-        sessionStorage.setItem('leadMagnetShown', 'true');
+        markPopupAsShown();
       }
     };
 
-    // IMMEDIATE TRIGGER FOR TESTING (reduced to 500ms)
+    // Time-based trigger (30 seconds instead of 500ms)
     const timeoutTrigger = setTimeout(() => {
-      if (!hasTriggered && !hasSeenPopup) {
-        console.log("LeadMagnetPopup: Timeout trigger activated (500ms)!");
+      if (!hasTriggered && !scrollTriggered && !exitTriggered && !hasSeenPopupSession && !hasSeenPopupLocal) {
+        console.log("LeadMagnetPopup: Time trigger activated (30 seconds)!");
+        timeTriggered = true;
         setHasTriggered(true);
         setIsVisible(true);
-        sessionStorage.setItem('leadMagnetShown', 'true');
+        markPopupAsShown();
       }
-    }, 500);
+    }, 30000); // 30 seconds
 
     console.log("LeadMagnetPopup: Adding event listeners");
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -79,12 +89,19 @@ export const useLeadMagnetPopup = () => {
       document.removeEventListener('mouseleave', handleMouseLeave);
       clearTimeout(timeoutTrigger);
     };
-  }, []); // Remove hasTriggered dependency to prevent re-setup
+  }, []);
+
+  // Helper function to mark popup as shown with timestamp
+  const markPopupAsShown = () => {
+    const timestamp = Date.now().toString();
+    sessionStorage.setItem('leadMagnetShown', 'true');
+    localStorage.setItem('leadMagnetShown', 'true');
+    localStorage.setItem('leadMagnetLastShown', timestamp);
+  };
 
   // Generate enhanced brick texture when popup becomes visible (background process)
   useEffect(() => {
     if (isVisible && !brickTextureUrl && !isGeneratingTexture) {
-      // Start generation in background without blocking the UI
       generateBrickTexture();
     }
   }, [isVisible, brickTextureUrl, isGeneratingTexture]);
@@ -94,7 +111,6 @@ export const useLeadMagnetPopup = () => {
     console.log("🧱 Starting enhanced gritty urban brick texture generation...");
     
     try {
-      // Enhanced gritty urban brick prompt for more realistic texture
       const prompt = "Ultra-realistic weathered urban brick wall texture, dark burgundy and brown aged bricks with deep mortar lines, street graffiti stains, rust streaks, concrete dust patches, peeling paint, urban decay, gritty inner city aesthetic, high contrast shadows, worn industrial texture, close-up detailed pattern, street photography style, natural lighting";
       
       console.log("🧱 Calling Supabase function with enhanced prompt");
@@ -156,6 +172,9 @@ export const useLeadMagnetPopup = () => {
       setIsVisible(false);
       setEmail("");
       setName("");
+      
+      // Mark as permanently shown after successful subscription
+      markPopupAsShown();
     } catch (error) {
       console.error("Unexpected error:", error);
       toast.error("An unexpected error occurred. Please try again.");
@@ -165,9 +184,9 @@ export const useLeadMagnetPopup = () => {
   };
 
   const handleClose = useCallback(() => {
-    console.log("Closing popup and setting session storage");
+    console.log("Closing popup and marking as shown");
     setIsVisible(false);
-    sessionStorage.setItem('leadMagnetShown', 'true');
+    markPopupAsShown();
   }, []);
 
   return {

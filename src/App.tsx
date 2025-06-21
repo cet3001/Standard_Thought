@@ -10,6 +10,7 @@ import BlogPost from "@/pages/BlogPost";
 import CreatePost from "@/pages/CreatePost";
 import EditPost from "@/pages/EditPost";
 import Auth from "@/pages/Auth";
+import About from "@/pages/About";
 import PrivacyPolicy from "@/pages/PrivacyPolicy";
 import TermsOfService from "@/pages/TermsOfService";
 import { AuthProvider } from "./contexts/AuthContext";
@@ -30,6 +31,7 @@ function App() {
               <Toaster />
               <Routes>
                 <Route path="/" element={<Index />} />
+                <Route path="/about" element={<About />} />
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/blog/:slug" element={<BlogPost />} />
                 <Route path="/create-post" element={<CreatePost />} />

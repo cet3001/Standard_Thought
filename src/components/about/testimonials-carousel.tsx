@@ -29,36 +29,52 @@ const TestimonialsCarousel = () => {
       categoryColor: "bg-green-500"
     },
     {
-      quote: "Real talk—I was skeptical about another 'mindset' program. But this hit different. It's not about toxic positivity or fake motivation. It's about strategic thinking, cultural awareness, and building generational wealth. My investment portfolio grew 40% this year, and I finally have a plan that makes sense for my family's future.",
-      name: "Derek Thompson",
-      title: "Teacher → Real Estate Investor", 
-      category: "Wealth",
-      initials: "DT",
-      categoryColor: "bg-[#f4d03f]"
+      quote: "I stopped letting fear hold me back. StandardThought helped me see that my story wasn't a setback—it was my superpower. Growing up broke taught me resilience, and now I use that same energy to build wealth. My mindset shift happened before my bank account did.",
+      name: "Jamal Thompson",
+      title: "Philadelphia → Mindset Coach", 
+      category: "Mindset",
+      initials: "JT",
+      categoryColor: "bg-purple-500"
+    },
+    {
+      quote: "For years, I carried the weight of financial trauma from my family. I thought money was evil or that I didn't deserve it. Standard Thought helped me rewrite those stories. Now I see money as a tool for freedom, not something to fear. That mental shift changed everything.",
+      name: "Maria Rodriguez",
+      title: "Teacher → Financial Coach",
+      category: "Money Mindset",
+      initials: "MR",
+      categoryColor: "bg-pink-500"
     },
     {
       quote: "I used to think success meant grinding 24/7 and burning myself out. Standard Thought taught me how to work with intention, not just intensity. I doubled my income while working fewer hours and finally have time for my family. This isn't about hustle culture—it's about smart culture.",
       name: "Keisha Martinez",
       title: "Marketing Manager → Digital Agency Owner",
-      category: "Mindset",
+      category: "Balance",
       initials: "KM",
-      categoryColor: "bg-purple-500"
+      categoryColor: "bg-teal-500"
     },
     {
-      quote: "Calvin doesn't just talk about lifting as you climb—he shows you how. After implementing his community-building strategies, I launched a mentorship program that's helped 50+ young professionals in my city. Success isn't just personal anymore—it's generational.",
-      name: "Anthony Davis",
-      title: "Non-Profit Director → Community Leader",
-      category: "Legacy",
-      initials: "AD",
+      quote: "I used to apologize for wanting more. Growing up, I was taught that being ambitious was 'too much.' Standard Thought showed me how to own my vision without shrinking myself. Now I run a seven-figure business and I'm unapologetically hungry for more.",
+      name: "Asha Williams",
+      title: "Non-Profit Worker → CEO",
+      category: "Confidence",
+      initials: "AW",
       categoryColor: "bg-orange-500"
     },
     {
-      quote: "As an artist, I thought business and creativity were opposites. Standard Thought showed me how to monetize my art without selling my soul. I went from broke creative to six-figure art business owner in 18 months. Now I create on my terms AND pay my bills.",
-      name: "Maya Patel",
-      title: "Freelance Artist → Art Business Owner",
-      category: "Creative",
-      initials: "MP",
-      categoryColor: "bg-teal-500"
+      quote: "The biggest shift wasn't in my strategy—it was in my self-talk. I went from 'I can't afford it' to 'How can I afford it?' That simple reframe opened up possibilities I never saw before. Now I invest in real estate and my kids will never know the poverty I grew up with.",
+      name: "Devon Harris",
+      title: "Security Guard → Real Estate Investor",
+      category: "Reframe",
+      initials: "DH",
+      categoryColor: "bg-indigo-500"
+    },
+    {
+      quote: "I had imposter syndrome so bad I almost talked myself out of every opportunity. Standard Thought helped me realize that feeling like an outsider was actually my advantage. Now I use that perspective to spot opportunities others miss. My 'weakness' became my superpower.",
+      name: "Zara Okafor",
+      title: "Immigrant → Tech Founder",
+      category: "Identity",
+      initials: "ZO",
+      categoryColor: "bg-red-500"
     }
   ];
 
@@ -157,6 +173,14 @@ const TestimonialsCarousel = () => {
         </div>
       </div>
     </section>
+  );
+
+  const StarRating = () => (
+    <div className="flex justify-center space-x-1 mb-6">
+      {[...Array(5)].map((_, i) => (
+        <Star key={i} className="w-5 h-5 fill-[#f4d03f] text-[#f4d03f]" />
+      ))}
+    </div>
   );
 };
 

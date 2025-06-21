@@ -1,7 +1,5 @@
 
 import Analytics from "@/components/analytics";
-import FloatingCTA from "@/components/floating-cta";
-import MobileFloatingCTA from "@/components/mobile-floating-cta";
 import HeroSection from "@/components/hero-section";
 import LeadMagnetPopup from "@/components/lead-magnet-popup";
 import ManifestoSection from "@/components/manifesto-section";
@@ -14,10 +12,8 @@ import KeywordOptimization from "@/components/seo/keyword-optimization";
 import VoiceSearchOptimization from "@/components/seo/voice-search-optimization";
 import FeaturedSnippets from "@/components/seo/featured-snippets";
 import { useMobilePerformance } from "@/hooks/use-mobile-performance";
-import { useIsMobile } from "@/hooks/use-mobile";
 
 const Index = () => {
-  const isMobile = useIsMobile();
   useMobilePerformance();
 
   const breadcrumbs = [
@@ -63,9 +59,6 @@ const Index = () => {
 
       {/* Footer */}
       <Footer />
-
-      {/* Conditional CTA based on device */}
-      {isMobile ? <MobileFloatingCTA /> : <FloatingCTA />}
 
       {/* Lead Magnet Popup */}
       <LeadMagnetPopup />

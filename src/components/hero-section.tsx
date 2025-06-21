@@ -115,11 +115,11 @@ const HeroSection = () => {
               {/* Success Rate */}
               <div className="text-center group hover:scale-105 transition-transform duration-300">
                 <div className="flex justify-center mb-4">
-                  <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center group-hover:bg-accent/20 transition-colors">
-                    <CheckCircle className="h-8 w-8 text-accent" aria-hidden="true" />
+                  <div className="w-16 h-16 bg-orange-500/10 rounded-full flex items-center justify-center group-hover:bg-orange-500/20 transition-colors">
+                    <CheckCircle className="h-8 w-8 text-orange-600" aria-hidden="true" />
                   </div>
                 </div>
-                <div className="text-3xl font-bold text-accent mb-2">83%</div>
+                <div className="text-3xl font-bold text-orange-600 mb-2">83%</div>
                 <div className="text-[#0A0A0A]/80 dark:text-brand-cream/80 font-medium mb-2">Success Rate</div>
                 <div className="text-sm text-[#0A0A0A]/60 dark:text-brand-cream/60">Members who increased their income within 6 months</div>
               </div>

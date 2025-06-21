@@ -1,3 +1,4 @@
+
 import HeaderHierarchy from "@/components/content-structure/header-hierarchy";
 import ComprehensiveGuideSection from "@/components/content-structure/comprehensive-guide-section";
 import { investingGuide } from "@/components/resources/comprehensive-guides-data";
@@ -14,6 +15,7 @@ const InvestingSection = ({ selectedTag, onTagClick }: InvestingSectionProps) =>
   const investingResources = [
     {
       icon: TrendingUp,
+      iconAlt: "Trending up arrow icon representing investment growth and wealth building strategies",
       title: "Micro-Investing Mastery",
       description: "Street-smart wealth building using $1-5 investments and fractional shares. No trust fund needed—just consistency and the right moves",
       whoThisIsFor: "Perfect for beginners who think you need thousands to start investing or anyone living check to check",
@@ -68,7 +70,7 @@ const InvestingSection = ({ selectedTag, onTagClick }: InvestingSectionProps) =>
         {investingResources.map((resource, index) => (
           <div key={index}>
             <ResourceCategory
-              icon={<resource.icon className="h-8 w-8 text-[#247EFF]" />}
+              icon={<resource.icon className="h-8 w-8 text-[#247EFF]" aria-label={resource.iconAlt} />}
               title={resource.title}
               description={resource.description}
               topics={resource.topics}
@@ -91,7 +93,8 @@ const InvestingSection = ({ selectedTag, onTagClick }: InvestingSectionProps) =>
                 <a
                   key={linkIndex}
                   href={link.link}
-                  className="text-sm text-[#247EFF] hover:underline flex items-center gap-1"
+                  className="text-sm text-[#247EFF] hover:underline flex items-center gap-1 min-h-[32px] px-2 py-1 rounded transition-colors hover:bg-[#247EFF]/10"
+                  aria-label={`Navigate to ${link.text}`}
                 >
                   {link.text} →
                 </a>

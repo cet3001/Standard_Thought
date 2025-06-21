@@ -40,7 +40,7 @@ const ResourceCategory = ({
       
       <CardHeader className="p-4 md:p-6">
         <div className="flex items-start md:items-center gap-3 md:gap-4 mb-3 md:mb-4">
-          <div role="img" aria-label={`${title} resource icon`} className="text-[#247EFF] flex-shrink-0 mt-1 md:mt-0">
+          <div className="text-[#247EFF] flex-shrink-0 mt-1 md:mt-0">
             {icon}
           </div>
           <div className="flex-1 min-w-0">
@@ -85,13 +85,17 @@ const ResourceCategory = ({
         <ul className="space-y-2 md:space-y-3 mb-6 md:mb-8" role="list">
           {topics.map((topic, topicIndex) => (
             <li key={topicIndex} className="flex items-start gap-3 text-[#0A0A0A]/80 dark:text-brand-cream/80 text-sm md:text-base" role="listitem">
-              <div className="w-2 h-2 bg-[#247EFF] rounded-full mt-2 flex-shrink-0"  aria-hidden="true"></div>
+              <div className="w-2 h-2 bg-[#247EFF] rounded-full mt-2 flex-shrink-0" aria-hidden="true"></div>
               <span className="leading-relaxed">{topic}</span>
             </li>
           ))}
         </ul>
         
-        <Button asChild className="w-full bg-[#247EFF] hover:bg-[#0057FF] text-white min-h-[44px] touch-manipulation" aria-label={`${ctaText} for ${title}`}>
+        <Button 
+          asChild 
+          className="w-full bg-[#247EFF] hover:bg-[#0057FF] text-white min-h-[44px] touch-manipulation font-semibold text-sm md:text-base transition-all duration-200 hover:shadow-md" 
+          aria-label={`${ctaText} for ${title}`}
+        >
           <Link to={ctaLink}>
             {ctaText}
           </Link>

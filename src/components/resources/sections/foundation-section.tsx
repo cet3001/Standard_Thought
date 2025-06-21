@@ -13,6 +13,7 @@ const FoundationSection = ({ selectedTag, onTagClick }: FoundationSectionProps) 
   const foundationResources = [
     {
       icon: DollarSign,
+      iconAlt: "Dollar sign icon representing cash flow management and financial foundations",
       title: "Side Hustle Cash Flow System",
       description: "Practical cash management for irregular income streams—track every dollar, automate savings, and never miss a payment again",
       whoThisIsFor: "Perfect for freelancers, gig workers, and side hustlers who struggle with unpredictable income timing",
@@ -64,7 +65,7 @@ const FoundationSection = ({ selectedTag, onTagClick }: FoundationSectionProps) 
         {foundationResources.map((resource, index) => (
           <div key={index}>
             <ResourceCategory
-              icon={<resource.icon className="h-8 w-8 text-[#247EFF]" />}
+              icon={<resource.icon className="h-8 w-8 text-[#247EFF]" aria-label={resource.iconAlt} />}
               title={resource.title}
               description={resource.description}
               topics={resource.topics}
@@ -86,7 +87,8 @@ const FoundationSection = ({ selectedTag, onTagClick }: FoundationSectionProps) 
                 <a
                   key={linkIndex}
                   href={link.link}
-                  className="text-sm text-[#247EFF] hover:underline flex items-center gap-1"
+                  className="text-sm text-[#247EFF] hover:underline flex items-center gap-1 min-h-[32px] px-2 py-1 rounded transition-colors hover:bg-[#247EFF]/10"
+                  aria-label={`Navigate to ${link.text}`}
                 >
                   {link.text} →
                 </a>

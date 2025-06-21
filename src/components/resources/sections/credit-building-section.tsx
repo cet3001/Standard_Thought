@@ -1,3 +1,4 @@
+
 import HeaderHierarchy from "@/components/content-structure/header-hierarchy";
 import ComprehensiveGuideSection from "@/components/content-structure/comprehensive-guide-section";
 import { creditBuildingGuide } from "@/components/resources/comprehensive-guides-data";
@@ -14,6 +15,7 @@ const CreditBuildingSection = ({ selectedTag, onTagClick }: CreditBuildingSectio
   const creditResources = [
     {
       icon: CreditCard,
+      iconAlt: "Credit card icon representing credit building tools and strategies",
       title: "Credit Building Mastery",
       description: "Real blueprint for building credit from zero—no cosigner needed. Secured cards, authorized user game, and rent reporting that actually moves the needle",
       whoThisIsFor: "Built for first-time credit builders with zero history or anyone bouncing back from financial setbacks",
@@ -24,7 +26,7 @@ const CreditBuildingSection = ({ selectedTag, onTagClick }: CreditBuildingSectio
         "Credit Dispute Process (Fix Your Report Yourself)",
         "Real Timeline: 0 to 700+ Credit Score Blueprint"
       ],
-      ctaText: "Build Credit Now",
+      ctaText: "Start Building Credit",
       ctaLink: "/blog",
       tags: ["Credit", "Beginner", "$200 Start", "Fast Track", "Zero History", "No Cosigner"],
       featured: "popular" as const,
@@ -67,7 +69,7 @@ const CreditBuildingSection = ({ selectedTag, onTagClick }: CreditBuildingSectio
         {creditResources.map((resource, index) => (
           <div key={index}>
             <ResourceCategory
-              icon={<resource.icon className="h-8 w-8 text-[#247EFF]" />}
+              icon={<resource.icon className="h-8 w-8 text-[#247EFF]" aria-label={resource.iconAlt} />}
               title={resource.title}
               description={resource.description}
               topics={resource.topics}
@@ -90,7 +92,8 @@ const CreditBuildingSection = ({ selectedTag, onTagClick }: CreditBuildingSectio
                 <a
                   key={linkIndex}
                   href={link.link}
-                  className="text-sm text-[#247EFF] hover:underline flex items-center gap-1"
+                  className="text-sm text-[#247EFF] hover:underline flex items-center gap-1 min-h-[32px] px-2 py-1 rounded transition-colors hover:bg-[#247EFF]/10"
+                  aria-label={`Navigate to ${link.text}`}
                 >
                   {link.text} →
                 </a>

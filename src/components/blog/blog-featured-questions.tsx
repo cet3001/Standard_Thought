@@ -5,10 +5,14 @@ import HeaderHierarchy from "../content-structure/header-hierarchy";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { CheckCircle, Download, ArrowRight, DollarSign, Clock, TrendingUp } from "lucide-react";
+import { CheckCircle, Download, ArrowRight, DollarSign, Clock, TrendingUp, RotateCcw } from "lucide-react";
+import { useState, useEffect } from "react";
 
 const BlogFeaturedQuestions = () => {
-  const featuredQuestions = [
+  const [currentRotation, setCurrentRotation] = useState(0);
+
+  // Complete question pool for rotation
+  const questionPool = [
     {
       question: "What's the biggest mistake first-gen wealth builders make?",
       answer: "The biggest mistake is trying to copy strategies without understanding the context. Here's what really matters:\n\n• **Know your starting point**: Your credit score, income stability, and risk tolerance aren't the same as someone else's\n• **Build systems, not just income**: Focus on repeatable processes that generate consistent cash flow\n• **Invest in education first**: Understanding compound interest and tax implications saves more money than most 'get rich quick' schemes\n• **Start ugly and improve**: Perfect plans never launch - start with what you have and optimize as you learn\n\nMost people want the Instagram highlight reel, but real wealth comes from boring consistency and smart systems.",
@@ -22,11 +26,17 @@ const BlogFeaturedQuestions = () => {
         "Join a community or find an accountability partner",
         "Schedule weekly progress reviews"
       ],
-      realStory: "Keisha from Detroit went from $40K debt to $100K net worth in 3 years by focusing on credit repair first, then side hustles.",
+      realStories: [
+        "Keisha from Detroit went from $40K debt to $100K net worth in 3 years by focusing on credit repair first, then side hustles.",
+        "Marcus in Baltimore avoided the crypto trap and built steady wealth through index funds and a lawn care business.",
+        "Tasha from Phoenix started with budgeting apps and now runs a $50K/year bookkeeping service."
+      ],
       nextMoves: "Ready to build your foundation? Start with our Credit Building Blueprint to establish your financial base.",
       nextMovesLink: "/blog?category=Credit Building",
-      actionText: "Read Success Stories",
-      actionLink: "/blog?search=success+story"
+      actionText: "Read Keisha's Full Story",
+      actionLink: "/blog?search=keisha+detroit+success",
+      secondaryActionText: "See More Success Stories",
+      secondaryActionLink: "/blog?search=success+story"
     },
     {
       question: "How do you know if a side hustle is worth scaling?",
@@ -41,11 +51,17 @@ const BlogFeaturedQuestions = () => {
         "Survey 5 customers about demand and referrals",
         "Calculate true profit margins including your time"
       ],
-      realStory: "Carlos scaled his lawn care hustle from $500/month to $5K by systematizing routes and hiring two part-timers.",
+      realStories: [
+        "Carlos scaled his lawn care hustle from $500/month to $5K by systematizing routes and hiring two part-timers.",
+        "Jasmine turned her Etsy shop into a $3K/month business by creating templates others could customize.",
+        "DeShawn went from weekend car detailing to a 4-location operation by documenting everything and training others."
+      ],
       nextMoves: "Got consistent revenue? Check out our Business Scaling Strategies to build systems that work without you.",
       nextMovesLink: "/blog?category=Entrepreneurship",
-      actionText: "Explore Scaling Stories",
-      actionLink: "/blog?search=scaling+business"
+      actionText: "Read Carlos's Scaling Story",
+      actionLink: "/blog?search=carlos+lawn+care+scaling",
+      secondaryActionText: "Explore More Scaling Stories",
+      secondaryActionLink: "/blog?search=scaling+business"
     },
     {
       question: "What financial moves should you make in your first $10K?",
@@ -60,13 +76,84 @@ const BlogFeaturedQuestions = () => {
         "Research low-cost index funds (Vanguard, Fidelity)",
         "Set up automatic transfers for each goal"
       ],
-      realStory: "Jamal followed this exact blueprint and went from broke to $50K invested in 18 months while working retail.",
+      realStories: [
+        "Jamal followed this exact blueprint and went from broke to $50K invested in 18 months while working retail.",
+        "Maya used this system to pay off $8K in credit card debt and start investing within her first year.",
+        "Andre prioritized his emergency fund first and avoided going back into debt when his car broke down."
+      ],
       nextMoves: "Ready to invest your first $1K? Our Free Investing Guide breaks down exactly which funds to choose and why.",
       nextMovesLink: "/free-investing-guide",
-      actionText: "See Investment Stories",
-      actionLink: "/blog?search=investment+strategy"
+      actionText: "Read Jamal's Investment Journey",
+      actionLink: "/blog?search=jamal+investment+strategy",
+      secondaryActionText: "See All Investment Stories",
+      secondaryActionLink: "/blog?search=investment+strategy"
+    },
+    {
+      question: "How long does it take to build generational wealth from nothing?",
+      answer: "Real generational wealth takes 10-20 years of consistent action, but you'll see meaningful progress much sooner:\n\n**Year 1-2**: Foundation building (emergency fund, debt payoff, credit repair)\n**Year 3-5**: Wealth acceleration (investing, side hustles, skill development)\n**Year 5-10**: System optimization (business scaling, advanced investing, tax strategies)\n**Year 10-20**: Legacy building (real estate, business ownership, teaching others)\n\n**The key**: Start with what you have, stay consistent, and compound your efforts. Most people see their first $10K within 2-3 years, $100K by year 7-10.\n\nGenerational wealth isn't just money—it's knowledge, systems, and mindset you pass down.",
+      tags: ["Generational Wealth", "Timeline", "Long-term Strategy"],
+      skillLevel: "Beginner",
+      startupCost: "$0",
+      quickStartChecklist: [
+        "Set your 20-year wealth vision and work backwards",
+        "Start tracking net worth monthly (even if it's negative)",
+        "Choose your first wealth-building pillar (investing, business, or real estate)",
+        "Find mentors or examples who've walked this path",
+        "Document your journey to teach others later"
+      ],
+      realStories: [
+        "Keisha from Detroit went from $40K debt to $100K net worth in 3 years by staying consistent with her plan.",
+        "The Johnson family in Memphis built their first $250K in 8 years through real estate and business ownership.",
+        "Tony from Oakland started at 25 with nothing and retired his mom at 40 through systematic wealth building."
+      ],
+      nextMoves: "Ready to start your wealth journey? Our Generational Wealth Blueprint shows you exactly how to build lasting legacy.",
+      nextMovesLink: "/wealth-building-strategies",
+      actionText: "Read Tony's Full Journey",
+      actionLink: "/blog?search=tony+oakland+generational+wealth",
+      secondaryActionText: "See More Wealth Stories",
+      secondaryActionLink: "/blog?search=generational+wealth"
+    },
+    {
+      question: "What business can I start with $500 or less?",
+      answer: "Here are proven businesses you can launch with $500 or less:\n\n**Service-Based ($0-100)**:\n• Virtual assistant, tutoring, social media management\n• House cleaning, car detailing, pet sitting\n• Freelance writing, graphic design, web development\n\n**Product-Based ($100-500)**:\n• Print-on-demand (t-shirts, mugs, phone cases)\n• Dropshipping (start with one niche)\n• Digital products (courses, templates, ebooks)\n• Reselling (thrift flips, wholesale products)\n\n**The secret**: Start with services to build capital, then reinvest in products for passive income.",
+      tags: ["Low-Cost Business", "Entrepreneurship", "Side Hustles"],
+      skillLevel: "Beginner",
+      startupCost: "$0-500",
+      quickStartChecklist: [
+        "Pick ONE business model that matches your skills",
+        "Set up basic online presence (social media + simple website)",
+        "Create your first offer and price it confidently",
+        "Find your first 3 customers through your network",
+        "Reinvest first profits to improve and scale"
+      ],
+      realStories: [
+        "Marcus in Atlanta started a cleaning business with $100 in supplies and landed his first client in a week.",
+        "Jasmine launched her print-on-demand store with $150 and hit $1K/month within 4 months.",
+        "Kevin started dropshipping phone accessories with $300 and scaled to $2K/month profit in 6 months."
+      ],
+      nextMoves: "Ready to launch? Download our Business Startup Checklist and get your first sale within 30 days.",
+      nextMovesLink: "/blog?category=Bootstrapping",
+      actionText: "Read Marcus's Startup Story",
+      actionLink: "/blog?search=marcus+atlanta+cleaning+business",
+      secondaryActionText: "See All Startup Stories",
+      secondaryActionLink: "/blog?search=low+cost+business"
     }
   ];
+
+  // Auto-rotate questions every 30 seconds for demo, or implement based on time/analytics
+  useEffect(() => {
+    const rotationTimer = setInterval(() => {
+      setCurrentRotation((prev) => (prev + 1) % Math.min(3, questionPool.length));
+    }, 30000); // 30 seconds for demo, adjust as needed
+
+    return () => clearInterval(rotationTimer);
+  }, []);
+
+  // Get current set of featured questions (show 3 at a time)
+  const featuredQuestions = questionPool.slice(currentRotation, currentRotation + 3);
+  if (featuredQuestions.length < 3) {
+    featuredQuestions.push(...questionPool.slice(0, 3 - featuredQuestions.length));
+  }
 
   const getSkillLevelColor = (level: string) => {
     switch (level) {
@@ -85,9 +172,17 @@ const BlogFeaturedQuestions = () => {
 
   return (
     <div className="mb-16">
-      <HeaderHierarchy level={2} className="text-center mb-6">
-        Real Questions. Real Answers. Real Action.
-      </HeaderHierarchy>
+      <div className="flex items-center justify-between mb-6">
+        <HeaderHierarchy level={2} className="text-center">
+          Real Questions. Real Answers. Real Action.
+        </HeaderHierarchy>
+        
+        {/* Rotation Indicator */}
+        <div className="flex items-center gap-2 text-sm text-[#0A0A0A]/60 dark:text-brand-cream/60">
+          <RotateCcw className="h-4 w-4" />
+          <span>Fresh content rotates automatically</span>
+        </div>
+      </div>
       
       <p className="text-center text-[#0A0A0A]/70 dark:text-brand-cream/70 mb-12 max-w-2xl mx-auto">
         These aren't generic financial advice questions—they're the exact challenges our community faces, 
@@ -122,7 +217,7 @@ const BlogFeaturedQuestions = () => {
       
       <div className="grid grid-cols-1 lg:grid-cols-1 gap-12">
         {featuredQuestions.map((qa, index) => (
-          <Card key={index} className="bg-white/90 dark:bg-brand-black/80 backdrop-blur-sm border border-[#247EFF]/20 rounded-2xl overflow-hidden">
+          <Card key={`${currentRotation}-${index}`} className="bg-white/90 dark:bg-brand-black/80 backdrop-blur-sm border border-[#247EFF]/20 rounded-2xl overflow-hidden">
             <CardContent className="p-8">
               {/* Question Header with Tags */}
               <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
@@ -165,15 +260,19 @@ const BlogFeaturedQuestions = () => {
                   </ul>
                 </div>
                 
-                {/* Real Story */}
+                {/* Real Stories - Enhanced with Multiple Examples */}
                 <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 p-6 rounded-xl">
                   <div className="flex items-center gap-2 mb-4">
                     <TrendingUp className="h-5 w-5 text-[#247EFF]" />
                     <h4 className="font-semibold text-[#247EFF]">Real Results</h4>
                   </div>
-                  <p className="text-sm text-[#0A0A0A]/80 dark:text-brand-cream/80 italic leading-relaxed">
-                    "{qa.realStory}"
-                  </p>
+                  <div className="space-y-3">
+                    {qa.realStories.map((story, storyIdx) => (
+                      <p key={storyIdx} className="text-sm text-[#0A0A0A]/80 dark:text-brand-cream/80 italic leading-relaxed border-l-2 border-[#247EFF]/20 pl-3">
+                        "{story}"
+                      </p>
+                    ))}
+                  </div>
                 </div>
                 
                 {/* Next Moves */}
@@ -188,14 +287,14 @@ const BlogFeaturedQuestions = () => {
                   <Button 
                     asChild 
                     size="sm" 
-                    className="bg-yellow-600 hover:bg-yellow-700 text-white rounded-lg"
+                    className="bg-yellow-600 hover:bg-yellow-700 text-white rounded-lg w-full"
                   >
                     <a href={qa.nextMovesLink}>Level Up →</a>
                   </Button>
                 </div>
               </div>
               
-              {/* Tags and Main CTA */}
+              {/* Tags and Enhanced CTAs */}
               <div className="flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-[#247EFF]/20">
                 <div className="flex flex-wrap gap-2">
                   {qa.tags.map((tag, tagIndex) => (
@@ -205,16 +304,45 @@ const BlogFeaturedQuestions = () => {
                   ))}
                 </div>
                 
-                <Button 
-                  asChild
-                  className="bg-[#247EFF] hover:bg-[#0057FF] text-white rounded-lg"
-                >
-                  <a href={qa.actionLink}>{qa.actionText}</a>
-                </Button>
+                <div className="flex flex-wrap gap-3">
+                  <Button 
+                    asChild
+                    className="bg-[#247EFF] hover:bg-[#0057FF] text-white rounded-lg"
+                  >
+                    <a href={qa.actionLink}>{qa.actionText}</a>
+                  </Button>
+                  <Button 
+                    asChild
+                    variant="outline"
+                    className="border-[#247EFF] text-[#247EFF] hover:bg-[#247EFF] hover:text-white rounded-lg"
+                  >
+                    <a href={qa.secondaryActionLink}>{qa.secondaryActionText}</a>
+                  </Button>
+                </div>
               </div>
             </CardContent>
           </Card>
         ))}
+      </div>
+      
+      {/* Rotation Controls */}
+      <div className="mt-8 text-center">
+        <div className="flex items-center justify-center gap-2 mb-4">
+          {Array.from({ length: Math.ceil(questionPool.length / 3) }).map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => setCurrentRotation(idx)}
+              className={`w-3 h-3 rounded-full transition-colors ${
+                Math.floor(currentRotation / 3) === idx 
+                  ? 'bg-[#247EFF]' 
+                  : 'bg-[#247EFF]/20 hover:bg-[#247EFF]/40'
+              }`}
+            />
+          ))}
+        </div>
+        <p className="text-sm text-[#0A0A0A]/60 dark:text-brand-cream/60">
+          Showing {featuredQuestions.length} of {questionPool.length} featured questions • Content rotates to keep fresh
+        </p>
       </div>
     </div>
   );

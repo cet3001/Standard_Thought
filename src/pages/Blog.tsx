@@ -1,4 +1,3 @@
-
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import SEO from "@/components/seo";
@@ -22,6 +21,7 @@ import ContextualLinks from "@/components/contextual-links";
 const Blog = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedThemeTag, setSelectedThemeTag] = useState("");
   const [filteredPosts, setFilteredPosts] = useState<Post[] | null>(null);
 
   const {
@@ -45,6 +45,11 @@ const Blog = () => {
     queryFn: getCategories,
   });
 
+  // Get unique theme tags from all posts
+  const themeTags = posts 
+    ? [...new Set(posts.flatMap(post => post.theme_tags || []))]
+    : [];
+
   useEffect(() => {
     if (posts) {
       const filtered = posts.filter((post) => {
@@ -52,14 +57,23 @@ const Blog = () => {
         const categoryMatch = selectedCategory === "All" || selectedCategory === ""
           ? true
           : post.category === selectedCategory;
+        const themeTagMatch = selectedThemeTag === ""
+          ? true
+          : post.theme_tags?.includes(selectedThemeTag);
+        
         return (
           searchRegex.test(post.title) &&
-          categoryMatch
+          categoryMatch &&
+          themeTagMatch
         );
       });
       setFilteredPosts(filtered);
     }
-  }, [posts, searchTerm, selectedCategory]);
+  }, [posts, searchTerm, selectedCategory, selectedThemeTag]);
+
+  const handleThemeTagClick = (tag: string) => {
+    setSelectedThemeTag(tag);
+  };
 
   if (isPostsLoading || isCategoriesLoading) return <Loading />;
   if (isPostsError || isCategoriesError)
@@ -182,13 +196,20 @@ const Blog = () => {
             setSearchTerm={setSearchTerm}
             selectedCategory={selectedCategory}
             setSelectedCategory={setSelectedCategory}
+            selectedThemeTag={selectedThemeTag}
+            setSelectedThemeTag={setSelectedThemeTag}
             categories={categories || []}
+            themeTags={themeTags}
           />
 
           {!hasPosts ? (
             <Empty message="No posts found." />
           ) : (
-            <BlogGrid posts={filteredPosts} onPostDeleted={() => refetchPosts()} />
+            <BlogGrid 
+              posts={filteredPosts} 
+              onPostDeleted={() => refetchPosts()} 
+              onThemeTagClick={handleThemeTagClick}
+            />
           )}
         </div>
       </main>

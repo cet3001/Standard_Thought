@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Calendar, Clock, ArrowUp } from "lucide-react";
 import { trackBlogRead } from "@/components/analytics";
 import BlogPostActions from "@/components/blog-post-actions";
+import ThemeTag from "@/components/ui/theme-tag";
 import { useAuth } from "@/contexts/AuthContext";
 
 interface BlogPost {
@@ -16,6 +17,7 @@ interface BlogPost {
   image_url: string | null;
   category: string;
   tags: string[];
+  theme_tags?: string[];
   featured: boolean;
   published: boolean;
   created_at: string;
@@ -25,9 +27,10 @@ interface BlogPost {
 interface BlogGridProps {
   posts: BlogPost[];
   onPostDeleted: () => void;
+  onThemeTagClick?: (tag: string) => void;
 }
 
-const BlogGrid = ({ posts, onPostDeleted }: BlogGridProps) => {
+const BlogGrid = ({ posts, onPostDeleted, onThemeTagClick }: BlogGridProps) => {
   const navigate = useNavigate();
   const { isAdmin } = useAuth();
 
@@ -41,6 +44,13 @@ const BlogGrid = ({ posts, onPostDeleted }: BlogGridProps) => {
   const handleReadStory = (post: BlogPost) => {
     trackBlogRead(post.title, post.slug);
     navigate(`/blog/${post.slug}`);
+  };
+
+  const handleThemeTagClick = (tag: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (onThemeTagClick) {
+      onThemeTagClick(tag);
+    }
   };
 
   return (
@@ -73,6 +83,19 @@ const BlogGrid = ({ posts, onPostDeleted }: BlogGridProps) => {
           </CardHeader>
           
           <CardContent className="p-6">
+            {/* Theme Tags */}
+            {post.theme_tags && post.theme_tags.length > 0 && (
+              <div className="flex flex-wrap gap-2 mb-3">
+                {post.theme_tags.map((tag, tagIndex) => (
+                  <ThemeTag
+                    key={tagIndex}
+                    tag={tag}
+                    onClick={(e) => handleThemeTagClick(tag, e)}
+                  />
+                ))}
+              </div>
+            )}
+            
             <h3 className="text-xl font-semibold mb-3 line-clamp-2 group-hover:text-[#247EFF] transition-colors text-[#0A0A0A] dark:text-brand-cream">
               {post.title}
             </h3>

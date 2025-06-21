@@ -1,4 +1,3 @@
-
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import SEO from "@/components/seo";
@@ -14,6 +13,7 @@ import AIHustlesSection from "@/components/resources/sections/ai-hustles-section
 import FoundationSection from "@/components/resources/sections/foundation-section";
 import { faqGroups } from "@/components/resources/faq-data";
 import { useState } from "react";
+import ResourcesTestimonial from "@/components/resources/resources-testimonial";
 
 const Resources = () => {
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
@@ -67,6 +67,8 @@ const Resources = () => {
           <InvestingSection selectedTag={selectedTag} onTagClick={handleTagClick} />
           <AIHustlesSection selectedTag={selectedTag} onTagClick={handleTagClick} />
           <FoundationSection selectedTag={selectedTag} onTagClick={handleTagClick} />
+
+          <ResourcesTestimonial />
 
           <OrganizedFAQs 
             title="Frequently Asked Questions"

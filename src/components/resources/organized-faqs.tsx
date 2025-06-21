@@ -38,33 +38,45 @@ const OrganizedFAQs = ({ title, faqGroups, className = "" }: OrganizedFAQsProps)
   };
 
   return (
-    <div className={`organized-faqs ${className}`}>
+    <section className={`organized-faqs ${className}`} aria-labelledby="faq-main-heading">
       <FAQSchema faqs={allFAQs} />
       
-      <HeaderHierarchy level={2} className="text-center mb-8">
+      <HeaderHierarchy level={2} className="text-center mb-8" id="faq-main-heading">
         {title}
       </HeaderHierarchy>
       
-      <div className="space-y-6">
+      <div className="space-y-6" role="list" aria-label="FAQ topic groups">
         {faqGroups.map((group, groupIndex) => (
-          <div key={groupIndex} className="border border-[#247EFF]/20 rounded-lg overflow-hidden">
+          <div key={groupIndex} className="border border-[#247EFF]/20 rounded-lg overflow-hidden" role="listitem">
             <button
               onClick={() => toggleGroup(group.title)}
-              className="w-full px-6 py-4 bg-[#247EFF]/10 hover:bg-[#247EFF]/20 transition-colors flex items-center justify-between"
+              className="w-full px-6 py-4 bg-[#247EFF]/10 hover:bg-[#247EFF]/20 transition-colors flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-[#247EFF] focus:ring-offset-2"
+              aria-expanded={openGroups.includes(group.title)}
+              aria-controls={`faq-group-${groupIndex}`}
+              aria-describedby={`faq-group-${groupIndex}-description`}
             >
               <HeaderHierarchy level={3} className="mb-0 text-left">
-                {group.icon && <span className="mr-2">{group.icon}</span>}
+                {group.icon && <span className="mr-2" role="img" aria-label={`${group.title} icon`}>{group.icon}</span>}
                 {group.title}
               </HeaderHierarchy>
               <ChevronDown 
                 className={`h-5 w-5 transition-transform ${
                   openGroups.includes(group.title) ? 'rotate-180' : ''
-                }`} 
+                }`}
+                aria-hidden="true"
               />
             </button>
             
             {openGroups.includes(group.title) && (
-              <div className="p-6 pt-0">
+              <div 
+                className="p-6 pt-0" 
+                id={`faq-group-${groupIndex}`}
+                role="region"
+                aria-labelledby={`faq-group-${groupIndex}-heading`}
+              >
+                <span id={`faq-group-${groupIndex}-description`} className="sr-only">
+                  Frequently asked questions about {group.title}
+                </span>
                 <Accordion type="single" collapsible className="w-full space-y-4">
                   {group.faqs.map((faq, index) => (
                     <AccordionItem 
@@ -72,13 +84,18 @@ const OrganizedFAQs = ({ title, faqGroups, className = "" }: OrganizedFAQsProps)
                       value={`${groupIndex}-${index}`}
                       className="border border-[#247EFF]/10 rounded-lg px-4 py-2"
                     >
-                      <AccordionTrigger className="text-left hover:no-underline">
+                      <AccordionTrigger 
+                        className="text-left hover:no-underline focus:outline-none focus:ring-2 focus:ring-[#247EFF] focus:ring-offset-2"
+                        aria-label={`Expand answer for: ${faq.question}`}
+                      >
                         <HeaderHierarchy level={4} className="mb-0 text-sm font-semibold">
                           {faq.question}
                         </HeaderHierarchy>
                       </AccordionTrigger>
                       <AccordionContent className="text-[#0A0A0A]/80 dark:text-brand-cream/80 pt-2">
-                        <div className="whitespace-pre-line">{faq.answer}</div>
+                        <div className="whitespace-pre-line" role="region" aria-label="FAQ answer">
+                          {faq.answer}
+                        </div>
                       </AccordionContent>
                     </AccordionItem>
                   ))}
@@ -88,7 +105,7 @@ const OrganizedFAQs = ({ title, faqGroups, className = "" }: OrganizedFAQsProps)
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

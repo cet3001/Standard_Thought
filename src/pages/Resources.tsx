@@ -1,9 +1,9 @@
-
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import SEO from "@/components/seo";
 import FeaturedSnippets from "@/components/seo/featured-snippets";
 import LSIContent from "@/components/lsi-content";
+import SemanticContentEnhancer from "@/components/seo/semantic-content-enhancer";
 import ResourcesHero from "@/components/resources/resources-hero";
 import ResourcesCTA from "@/components/resources/resources-cta";
 import HeaderHierarchy from "@/components/content-structure/header-hierarchy";
@@ -200,6 +200,11 @@ const Resources = () => {
       
       <LSIContent primaryKeyword="comprehensive business resources" context="business-strategy" />
       <FeaturedSnippets topic="wealth-building" />
+      <SemanticContentEnhancer 
+        primaryKeyword="hood financial literacy resources"
+        context="financial-literacy"
+        voiceSearchTopic="wealth-building"
+      />
       
       <Navigation />
       
@@ -209,12 +214,13 @@ const Resources = () => {
 
           {/* Tag Filter Display */}
           {selectedTag && (
-            <div className="mb-8 p-4 bg-[#247EFF]/10 rounded-lg">
+            <div className="mb-8 p-4 bg-[#247EFF]/10 rounded-lg" role="status" aria-live="polite">
               <p className="text-sm text-[#247EFF]">
                 Showing resources tagged with: <strong>{selectedTag}</strong>
                 <button 
                   onClick={() => setSelectedTag(null)}
-                  className="ml-2 text-xs underline hover:no-underline"
+                  className="ml-2 text-xs underline hover:no-underline focus:outline-none focus:ring-1 focus:ring-[#247EFF]"
+                  aria-label={`Clear filter for ${selectedTag}`}
                 >
                   Clear filter
                 </button>
@@ -223,22 +229,22 @@ const Resources = () => {
           )}
 
           {/* SECTION 1: BUILD CREDIT FROM SCRATCH */}
-          <section className="mb-20">
-            <HeaderHierarchy level={2} className="text-center mb-12">
+          <section className="mb-20" aria-labelledby="credit-building-section">
+            <HeaderHierarchy level={2} className="text-center mb-12" id="credit-building-section">
               Build Credit from <span className="text-[#247EFF]">Scratch</span>
             </HeaderHierarchy>
             
             <ComprehensiveGuideSection {...creditBuildingGuide} className="mb-12" />
             
             {/* Quick Start Checklist */}
-            <div className="bg-green-50/50 dark:bg-green-900/20 border-l-4 border-green-500 rounded-lg p-6 mb-12">
-              <HeaderHierarchy level={3} className="mb-4 text-green-700 dark:text-green-400">
+            <div className="bg-green-50/50 dark:bg-green-900/20 border-l-4 border-green-500 rounded-lg p-6 mb-12" role="complementary" aria-labelledby="credit-checklist-heading">
+              <HeaderHierarchy level={3} className="mb-4 text-green-700 dark:text-green-400" id="credit-checklist-heading">
                 Quick Start Checklist: Build Credit This Week
               </HeaderHierarchy>
-              <ul className="space-y-2">
+              <ul className="space-y-2" role="list">
                 {creditBuildingGuide.quickStartChecklist.map((item, index) => (
-                  <li key={index} className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                  <li key={index} className="flex items-center gap-3" role="listitem">
+                    <div className="w-2 h-2 bg-green-500 rounded-full" aria-hidden="true"></div>
                     <span className="text-[#0A0A0A] dark:text-brand-cream">{item}</span>
                   </li>
                 ))}
@@ -284,22 +290,22 @@ const Resources = () => {
           </section>
 
           {/* SECTION 2: INVESTING WITH NO MONEY */}
-          <section className="mb-20">
-            <HeaderHierarchy level={2} className="text-center mb-12">
+          <section className="mb-20" aria-labelledby="investing-section">
+            <HeaderHierarchy level={2} className="text-center mb-12" id="investing-section">
               Investing with <span className="text-[#247EFF]">No Money</span>
             </HeaderHierarchy>
             
             <ComprehensiveGuideSection {...investingGuide} className="mb-12" />
             
             {/* Quick Start Checklist */}
-            <div className="bg-green-50/50 dark:bg-green-900/20 border-l-4 border-green-500 rounded-lg p-6 mb-12">
-              <HeaderHierarchy level={3} className="mb-4 text-green-700 dark:text-green-400">
+            <div className="bg-green-50/50 dark:bg-green-900/20 border-l-4 border-green-500 rounded-lg p-6 mb-12" role="complementary" aria-labelledby="investing-checklist-heading">
+              <HeaderHierarchy level={3} className="mb-4 text-green-700 dark:text-green-400" id="investing-checklist-heading">
                 Quick Start Checklist: Start Investing Today
               </HeaderHierarchy>
-              <ul className="space-y-2">
+              <ul className="space-y-2" role="list">
                 {investingGuide.quickStartChecklist.map((item, index) => (
-                  <li key={index} className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                  <li key={index} className="flex items-center gap-3" role="listitem">
+                    <div className="w-2 h-2 bg-green-500 rounded-full" aria-hidden="true"></div>
                     <span className="text-[#0A0A0A] dark:text-brand-cream">{item}</span>
                   </li>
                 ))}
@@ -345,8 +351,8 @@ const Resources = () => {
           </section>
 
           {/* SECTION 3: AI SIDE HUSTLES & DIGITAL INCOME */}
-          <section className="mb-20">
-            <HeaderHierarchy level={2} className="text-center mb-12">
+          <section className="mb-20" aria-labelledby="ai-hustles-section">
+            <HeaderHierarchy level={2} className="text-center mb-12" id="ai-hustles-section">
               AI Side Hustles & <span className="text-[#247EFF]">Digital Income</span>
             </HeaderHierarchy>
 
@@ -375,29 +381,29 @@ const Resources = () => {
             />
 
             {/* Quick Start Checklist for AI Side Hustles */}
-            <div className="bg-green-50/50 dark:bg-green-900/20 border-l-4 border-green-500 rounded-lg p-6 mb-12">
-              <HeaderHierarchy level={3} className="mb-4 text-green-700 dark:text-green-400">
+            <div className="bg-green-50/50 dark:bg-green-900/20 border-l-4 border-green-500 rounded-lg p-6 mb-12" role="complementary" aria-labelledby="ai-checklist-heading">
+              <HeaderHierarchy level={3} className="mb-4 text-green-700 dark:text-green-400" id="ai-checklist-heading">
                 Quick Start Checklist: Launch Your AI Side Hustle
               </HeaderHierarchy>
-              <ul className="space-y-2">
-                <li className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+              <ul className="space-y-2" role="list">
+                <li className="flex items-center gap-3" role="listitem">
+                  <div className="w-2 h-2 bg-green-500 rounded-full" aria-hidden="true"></div>
                   <span className="text-[#0A0A0A] dark:text-brand-cream">Sign up for ChatGPT Plus or try Midjourney free trial this week</span>
                 </li>
-                <li className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                <li className="flex items-center gap-3" role="listitem">
+                  <div className="w-2 h-2 bg-green-500 rounded-full" aria-hidden="true"></div>
                   <span className="text-[#0A0A0A] dark:text-brand-cream">Create 3 sample projects for your portfolio</span>
                 </li>
-                <li className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                <li className="flex items-center gap-3" role="listitem">
+                  <div className="w-2 h-2 bg-green-500 rounded-full" aria-hidden="true"></div>
                   <span className="text-[#0A0A0A] dark:text-brand-cream">Set up profiles on Upwork and Fiverr with your samples</span>
                 </li>
-                <li className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                <li className="flex items-center gap-3" role="listitem">
+                  <div className="w-2 h-2 bg-green-500 rounded-full" aria-hidden="true"></div>
                   <span className="text-[#0A0A0A] dark:text-brand-cream">Apply to 5 gigs daily for your first 2 weeks</span>
                 </li>
-                <li className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                <li className="flex items-center gap-3" role="listitem">
+                  <div className="w-2 h-2 bg-green-500 rounded-full" aria-hidden="true"></div>
                   <span className="text-[#0A0A0A] dark:text-brand-cream">Deliver first project and ask for testimonial</span>
                 </li>
               </ul>
@@ -441,8 +447,8 @@ const Resources = () => {
           </section>
 
           {/* SECTION 4: FINANCIAL LITERACY FOUNDATION */}
-          <section className="mb-20">
-            <HeaderHierarchy level={2} className="text-center mb-12">
+          <section className="mb-20" aria-labelledby="foundation-section">
+            <HeaderHierarchy level={2} className="text-center mb-12" id="foundation-section">
               Financial Literacy <span className="text-[#247EFF]">Foundation</span>
             </HeaderHierarchy>
             
@@ -484,12 +490,10 @@ const Resources = () => {
           </section>
 
           {/* ORGANIZED FAQ SECTION */}
-          <section className="mb-20">
-            <OrganizedFAQs 
-              title="Frequently Asked Questions"
-              faqGroups={faqGroups}
-            />
-          </section>
+          <OrganizedFAQs 
+            title="Frequently Asked Questions"
+            faqGroups={faqGroups}
+          />
           
           <ResourcesCTA />
         </div>

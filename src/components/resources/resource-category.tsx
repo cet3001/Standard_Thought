@@ -31,7 +31,7 @@ const ResourceCategory = ({
   onTagClick 
 }: ResourceCategoryProps) => {
   return (
-    <Card className="border-[#247EFF]/20 hover:border-[#247EFF]/40 transition-colors relative">
+    <Card className="border-[#247EFF]/20 hover:border-[#247EFF]/40 transition-colors relative" role="article" aria-labelledby={`resource-${title.replace(/\s+/g, '-').toLowerCase()}`}>
       {featured && (
         <div className="absolute top-4 right-4 z-10">
           <StoryBadge type={featured} />
@@ -40,10 +40,12 @@ const ResourceCategory = ({
       
       <CardHeader>
         <div className="flex items-center gap-4 mb-4">
-          {icon}
+          <div role="img" aria-label={`${title} resource icon`} className="text-[#247EFF]">
+            {icon}
+          </div>
           <div className="flex-1">
             <CardTitle className="text-[#0A0A0A] dark:text-brand-cream">
-              <HeaderHierarchy level={2} className="mb-0">
+              <HeaderHierarchy level={2} className="mb-0" id={`resource-${title.replace(/\s+/g, '-').toLowerCase()}`}>
                 {title}
               </HeaderHierarchy>
             </CardTitle>
@@ -54,13 +56,14 @@ const ResourceCategory = ({
         </CardDescription>
         
         {tags.length > 0 && (
-          <div className="flex flex-wrap gap-2 mt-4">
+          <div className="flex flex-wrap gap-2 mt-4" role="list" aria-label="Resource tags">
             {tags.map((tag, index) => (
-              <ThemeTag 
-                key={index} 
-                tag={tag} 
-                onClick={() => onTagClick?.(tag)}
-              />
+              <div key={index} role="listitem">
+                <ThemeTag 
+                  tag={tag} 
+                  onClick={() => onTagClick?.(tag)}
+                />
+              </div>
             ))}
           </div>
         )}
@@ -71,16 +74,16 @@ const ResourceCategory = ({
           What You'll Master:
         </HeaderHierarchy>
         
-        <ul className="space-y-3 mb-6">
+        <ul className="space-y-3 mb-6" role="list">
           {topics.map((topic, topicIndex) => (
-            <li key={topicIndex} className="flex items-start gap-3 text-[#0A0A0A]/80 dark:text-brand-cream/80">
-              <div className="w-2 h-2 bg-[#247EFF] rounded-full mt-2 flex-shrink-0"></div>
+            <li key={topicIndex} className="flex items-start gap-3 text-[#0A0A0A]/80 dark:text-brand-cream/80" role="listitem">
+              <div className="w-2 h-2 bg-[#247EFF] rounded-full mt-2 flex-shrink-0" aria-hidden="true"></div>
               <span>{topic}</span>
             </li>
           ))}
         </ul>
         
-        <Button asChild className="w-full bg-[#247EFF] hover:bg-[#0057FF] text-white">
+        <Button asChild className="w-full bg-[#247EFF] hover:bg-[#0057FF] text-white" aria-label={`${ctaText} for ${title}`}>
           <Link to={ctaLink}>
             {ctaText}
           </Link>

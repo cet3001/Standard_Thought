@@ -19,7 +19,7 @@ const StartInvestingGuide = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-brand-black text-brand-cream">
+    <div className="min-h-screen bg-background text-foreground">
       <SEO 
         title="Start Investing with $1: Complete Urban Investing Guide | Standardthought"
         description="Flip your first dollar into wealth. Complete guide to micro-investing apps, fractional shares, and building generational wealth from the block with just $1."

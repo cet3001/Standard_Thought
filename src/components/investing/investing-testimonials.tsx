@@ -17,10 +17,10 @@ const InvestingTestimonials = () => {
   ];
 
   return (
-    <section className="py-16 bg-gray-900">
+    <section className="py-16 bg-muted/50">
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
-          <HeaderHierarchy level={2} className="text-center mb-12 text-white">
+          <HeaderHierarchy level={2} className="text-center mb-12 text-foreground">
             Real People, Real <span className="text-[#FFD700]">Progress</span>
           </HeaderHierarchy>
           
@@ -28,7 +28,7 @@ const InvestingTestimonials = () => {
             {testimonials.map((testimonial, index) => (
               <Card key={index} className="bg-gradient-to-br from-[#247EFF]/10 to-green-500/10 border-[#247EFF]/30">
                 <CardContent className="p-8">
-                  <blockquote className="text-lg text-gray-200 leading-relaxed mb-6 italic">
+                  <blockquote className="text-lg text-foreground leading-relaxed mb-6 italic">
                     "{testimonial.quote}"
                   </blockquote>
                   <div className="flex items-center gap-3">
@@ -37,7 +37,7 @@ const InvestingTestimonials = () => {
                     </div>
                     <div>
                       <p className="font-semibold text-[#FFD700]">{testimonial.author}</p>
-                      <p className="text-gray-400 text-sm">{testimonial.location}</p>
+                      <p className="text-muted-foreground text-sm">{testimonial.location}</p>
                     </div>
                   </div>
                 </CardContent>

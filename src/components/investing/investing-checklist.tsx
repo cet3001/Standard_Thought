@@ -12,7 +12,7 @@ const InvestingChecklist = () => {
   ];
 
   return (
-    <section className="py-16 bg-gray-900">
+    <section className="py-16 bg-muted/50">
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto">
           <QuickStartChecklist

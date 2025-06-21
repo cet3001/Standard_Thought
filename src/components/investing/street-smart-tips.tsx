@@ -9,27 +9,27 @@ const StreetSmartTips = () => {
       title: "Watch Out for Fees",
       description: "Some apps charge monthly fees—read the fine print.",
       icon: AlertTriangle,
-      color: "text-red-400"
+      color: "text-red-500"
     },
     {
       title: "Don't Chase Hype",
       description: "Ignore \"get rich quick\" plays. Slow, steady, and consistent wins.",
       icon: TrendingDown,
-      color: "text-yellow-400"
+      color: "text-yellow-500"
     },
     {
       title: "Keep Learning",
       description: "Investing is a skill—don't be afraid to ask questions or look up terms.",
       icon: BookOpen,
-      color: "text-blue-400"
+      color: "text-blue-500"
     }
   ];
 
   return (
-    <section className="py-16 bg-brand-black">
+    <section className="py-16 bg-background">
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
-          <HeaderHierarchy level={2} className="text-center mb-12 text-white">
+          <HeaderHierarchy level={2} className="text-center mb-12 text-foreground">
             Street-Smart <span className="text-[#FFD700]">Tips</span>
           </HeaderHierarchy>
           
@@ -37,7 +37,7 @@ const StreetSmartTips = () => {
             {tips.map((tip, index) => {
               const IconComponent = tip.icon;
               return (
-                <Card key={index} className="bg-gray-900 border-[#247EFF]/30">
+                <Card key={index} className="border-[#247EFF]/30">
                   <CardHeader className="pb-4">
                     <CardTitle className="flex items-center gap-3 text-lg">
                       <IconComponent className={`h-6 w-6 ${tip.color}`} />
@@ -45,7 +45,7 @@ const StreetSmartTips = () => {
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-gray-300 leading-relaxed">
+                    <p className="text-muted-foreground leading-relaxed">
                       {tip.description}
                     </p>
                   </CardContent>

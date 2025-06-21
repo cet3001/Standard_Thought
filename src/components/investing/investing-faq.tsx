@@ -26,7 +26,7 @@ const InvestingFAQ = () => {
   ];
 
   return (
-    <section id="faq" className="py-16 bg-gray-900">
+    <section id="faq" className="py-16 bg-muted/50">
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto">
           <FAQSection 

@@ -37,12 +37,12 @@ const StartInvestingGuide = () => {
       <div className="pt-36 pb-4">
         <div className="container mx-auto px-6">
           <Button
-            onClick={() => navigate(-1)}
+            onClick={() => navigate("/")}
             variant="ghost"
             className="flex items-center gap-2 text-muted-foreground hover:text-foreground mb-4"
           >
             <ArrowLeft className="h-4 w-4" />
-            Back
+            Back to Home
           </Button>
         </div>
       </div>

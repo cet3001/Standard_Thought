@@ -61,10 +61,10 @@ const InvestingStepsSection = () => {
   ];
 
   return (
-    <section id="steps" className="py-16 bg-background">
+    <section id="steps" className="py-16 bg-white/70 dark:bg-brand-black/70">
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
-          <HeaderHierarchy level={2} className="text-center mb-12 text-foreground">
+          <HeaderHierarchy level={2} className="text-center mb-12 text-brand-black dark:text-brand-cream">
             Step-By-Step: How to Start Investing from <span className="text-[#FFD700]">Scratch</span>
           </HeaderHierarchy>
           
@@ -72,7 +72,7 @@ const InvestingStepsSection = () => {
             {steps.map((step) => {
               const IconComponent = step.icon;
               return (
-                <Card key={step.number} className="border-[#247EFF]/30 hover:border-[#247EFF]/50 transition-all duration-300">
+                <Card key={step.number} className="border-[#247EFF]/30 hover:border-[#247EFF]/50 transition-all duration-300 bg-white/90 dark:bg-brand-black/80 backdrop-blur-sm">
                   <CardHeader className="pb-4">
                     <div className="flex items-center gap-4 mb-4">
                       <div className="w-12 h-12 rounded-full bg-gradient-to-r from-[#247EFF] to-green-500 flex items-center justify-center text-white font-bold text-xl">
@@ -91,7 +91,7 @@ const InvestingStepsSection = () => {
                       </Badge>
                       <ul className="space-y-2">
                         {step.content.lookFor.map((item, index) => (
-                          <li key={index} className="text-muted-foreground flex items-start gap-2">
+                          <li key={index} className="text-brand-black/70 dark:text-brand-cream/70 flex items-start gap-2">
                             <span className="text-green-500 mt-1">•</span>
                             {item}
                           </li>
@@ -103,7 +103,7 @@ const InvestingStepsSection = () => {
                       <p className="text-[#FFD700] font-semibold mb-2">
                         {step.number <= 2 ? "Real Talk:" : "Pro Tip:"}
                       </p>
-                      <p className="text-foreground text-sm leading-relaxed">
+                      <p className="text-brand-black dark:text-brand-cream text-sm leading-relaxed">
                         {step.content.proTip}
                       </p>
                     </div>

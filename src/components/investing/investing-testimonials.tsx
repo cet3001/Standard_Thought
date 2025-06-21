@@ -17,18 +17,18 @@ const InvestingTestimonials = () => {
   ];
 
   return (
-    <section className="py-16 bg-muted/50">
+    <section className="py-16 bg-brand-cream/30 dark:bg-brand-black/30">
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
-          <HeaderHierarchy level={2} className="text-center mb-12 text-foreground">
+          <HeaderHierarchy level={2} className="text-center mb-12 text-brand-black dark:text-brand-cream">
             Real People, Real <span className="text-[#FFD700]">Progress</span>
           </HeaderHierarchy>
           
           <div className="grid md:grid-cols-2 gap-8">
             {testimonials.map((testimonial, index) => (
-              <Card key={index} className="bg-gradient-to-br from-[#247EFF]/10 to-green-500/10 border-[#247EFF]/30">
+              <Card key={index} className="bg-gradient-to-br from-[#247EFF]/10 to-green-500/10 border-[#247EFF]/30 backdrop-blur-sm">
                 <CardContent className="p-8">
-                  <blockquote className="text-lg text-foreground leading-relaxed mb-6 italic">
+                  <blockquote className="text-lg text-brand-black dark:text-brand-cream leading-relaxed mb-6 italic">
                     "{testimonial.quote}"
                   </blockquote>
                   <div className="flex items-center gap-3">
@@ -37,7 +37,7 @@ const InvestingTestimonials = () => {
                     </div>
                     <div>
                       <p className="font-semibold text-[#FFD700]">{testimonial.author}</p>
-                      <p className="text-muted-foreground text-sm">{testimonial.location}</p>
+                      <p className="text-brand-black/70 dark:text-brand-cream/70 text-sm">{testimonial.location}</p>
                     </div>
                   </div>
                 </CardContent>

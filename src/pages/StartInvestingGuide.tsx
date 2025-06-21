@@ -22,7 +22,7 @@ const StartInvestingGuide = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-brand-cream dark:bg-brand-black text-foreground">
+    <div className="min-h-screen bg-gradient-to-b from-brand-cream to-white dark:from-brand-black dark:to-brand-black/90 text-foreground">
       <SEO 
         title="Start Investing with $1: Complete Urban Investing Guide | Standardthought"
         description="Flip your first dollar into wealth. Complete guide to micro-investing apps, fractional shares, and building generational wealth from the block with just $1."
@@ -39,7 +39,7 @@ const StartInvestingGuide = () => {
           <Button
             onClick={() => navigate("/")}
             variant="ghost"
-            className="flex items-center gap-2 text-muted-foreground hover:text-foreground mb-4"
+            className="flex items-center gap-2 text-brand-black/70 dark:text-brand-cream/70 hover:text-[#247EFF] mb-4 transition-colors"
           >
             <ArrowLeft className="h-4 w-4" />
             Back to Home

@@ -51,21 +51,27 @@ const ResourceCategory = ({
             </CardTitle>
           </div>
         </div>
-        <CardDescription className="text-[#0A0A0A]/70 dark:text-brand-cream/70 text-sm md:text-base leading-relaxed">
+        <CardDescription className="text-[#0A0A0A]/70 dark:text-brand-cream/70 text-sm md:text-base leading-relaxed mb-4">
           {description}
         </CardDescription>
         
+        {/* Enhanced Tag Display */}
         {tags.length > 0 && (
-          <div className="flex flex-wrap gap-2 mt-3 md:mt-4 overflow-x-auto pb-2" role="list" aria-label="Resource tags">
-            <div className="flex gap-2 min-w-max">
-              {tags.map((tag, index) => (
-                <div key={index} role="listitem">
-                  <ThemeTag 
-                    tag={tag} 
-                    onClick={() => onTagClick?.(tag)}
-                  />
-                </div>
-              ))}
+          <div className="mb-4" role="region" aria-label="Resource tags">
+            <p className="text-xs font-medium text-[#0A0A0A]/60 dark:text-brand-cream/60 mb-2 uppercase tracking-wide">
+              Quick Filter Tags:
+            </p>
+            <div className="flex flex-wrap gap-2 overflow-x-auto pb-2" role="list" aria-label="Resource tags">
+              <div className="flex gap-2 min-w-max">
+                {tags.map((tag, index) => (
+                  <div key={index} role="listitem">
+                    <ThemeTag 
+                      tag={tag} 
+                      onClick={() => onTagClick?.(tag)}
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         )}
@@ -79,7 +85,7 @@ const ResourceCategory = ({
         <ul className="space-y-2 md:space-y-3 mb-6 md:mb-8" role="list">
           {topics.map((topic, topicIndex) => (
             <li key={topicIndex} className="flex items-start gap-3 text-[#0A0A0A]/80 dark:text-brand-cream/80 text-sm md:text-base" role="listitem">
-              <div className="w-2 h-2 bg-[#247EFF] rounded-full mt-2 flex-shrink-0" aria-hidden="true"></div>
+              <div className="w-2 h-2 bg-[#247EFF] rounded-full mt-2 flex-shrink-0"  aria-hidden="true"></div>
               <span className="leading-relaxed">{topic}</span>
             </li>
           ))}

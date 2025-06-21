@@ -25,7 +25,7 @@ const AIHustlesSection = ({ selectedTag, onTagClick }: AIHustlesSectionProps) =>
       ],
       ctaText: "Launch AI Business",
       ctaLink: "/blog",
-      tags: ["AI", "Side Hustle", "No Code", "High Income"],
+      tags: ["AI", "Side Hustle", "No Code", "High Income", "$25-100/hr", "Remote Work"],
       internalLinks: [
         { text: "See Builder Stories: AI Side Hustle Wins", link: "/blog" },
         { text: "Build the Digital Entrepreneur Mindset", link: "/about" }
@@ -45,7 +45,7 @@ const AIHustlesSection = ({ selectedTag, onTagClick }: AIHustlesSectionProps) =>
       ],
       ctaText: "Build Your Business",
       ctaLink: "/blog",
-      tags: ["Business", "Urban", "Community", "Low Capital"],
+      tags: ["Business", "Urban", "Community", "Low Capital", "Minority-Owned", "Local Market"],
       internalLinks: [
         { text: "Read Builder Stories: Local Business Success", link: "/blog" },
         { text: "Develop the Entrepreneur Mindset", link: "/about" }

@@ -26,7 +26,7 @@ const CreditBuildingSection = ({ selectedTag, onTagClick }: CreditBuildingSectio
       ],
       ctaText: "Build Credit Now",
       ctaLink: "/blog",
-      tags: ["Credit", "Beginner", "$0 Start", "Fast Track"],
+      tags: ["Credit", "Beginner", "$200 Start", "Fast Track", "Zero History", "No Cosigner"],
       featured: "popular" as const,
       internalLinks: [
         { text: "See Builder Stories: Credit Recovery Wins", link: "/blog" },

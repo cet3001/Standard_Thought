@@ -47,19 +47,24 @@ const Resources = () => {
         <div className="container mx-auto px-4 md:px-6 max-w-7xl">
           <ResourcesHero />
 
-          {/* Tag Filter Display */}
+          {/* Enhanced Tag Filter Display */}
           {selectedTag && (
-            <div className="mb-6 md:mb-8 p-3 md:p-4 bg-[#247EFF]/10 rounded-lg mx-4 md:mx-0" role="status" aria-live="polite">
-              <p className="text-sm text-[#247EFF]">
-                Showing resources tagged with: <strong>{selectedTag}</strong>
+            <div className="mb-6 md:mb-8 p-4 md:p-6 bg-gradient-to-r from-[#247EFF]/10 to-[#247EFF]/5 border border-[#247EFF]/20 rounded-xl mx-4 md:mx-0" role="status" aria-live="polite">
+              <div className="flex items-center justify-between flex-wrap gap-3">
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-[#247EFF] rounded-full"></div>
+                  <p className="text-sm md:text-base text-[#247EFF] font-medium">
+                    Showing resources tagged with: <strong className="font-bold text-[#0A0A0A] dark:text-brand-cream">{selectedTag}</strong>
+                  </p>
+                </div>
                 <button 
                   onClick={() => setSelectedTag(null)}
-                  className="ml-2 text-xs underline hover:no-underline focus:outline-none focus:ring-1 focus:ring-[#247EFF] touch-manipulation min-h-[28px] min-w-[28px]"
+                  className="text-xs md:text-sm px-3 py-1.5 bg-[#247EFF] text-white rounded-full hover:bg-[#0057FF] transition-colors focus:outline-none focus:ring-2 focus:ring-[#247EFF] focus:ring-offset-2 touch-manipulation min-h-[32px]"
                   aria-label={`Clear filter for ${selectedTag}`}
                 >
-                  Clear filter
+                  Clear Filter ×
                 </button>
-              </p>
+              </div>
             </div>
           )}
 

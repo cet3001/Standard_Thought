@@ -26,7 +26,7 @@ const InvestingSection = ({ selectedTag, onTagClick }: InvestingSectionProps) =>
       ],
       ctaText: "Start Investing Today",
       ctaLink: "/blog",
-      tags: ["Investing", "Beginner", "$1 Start", "Automation"],
+      tags: ["Investing", "Beginner", "$1 Start", "Automation", "Wealth Building", "Micro-Investing"],
       featured: "editors-pick" as const,
       internalLinks: [
         { text: "Read Builder Stories: First $1000 Invested", link: "/blog" },

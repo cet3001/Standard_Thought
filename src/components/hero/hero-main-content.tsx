@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Zap } from "lucide-react";
@@ -51,8 +50,7 @@ const HeroMainContent = ({ scrollToNewsletter }: HeroMainContentProps) => {
           <Link to="/blog" onClick={handleReadStories}>
             <Button 
               size="lg"
-              variant="outline"
-              className="w-full sm:w-auto border-2 border-accent text-accent hover:bg-accent hover:text-black font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-3xl transition-all duration-300 hover:scale-105 text-sm sm:text-base"
+              className="w-full sm:w-auto bg-gradient-to-r from-accent to-[#FFD700] text-black font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-3xl hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-sm sm:text-base"
               aria-label="Read real builder success stories"
             >
               Read Builder Stories

@@ -55,7 +55,7 @@ const AIHustlesSection = ({ selectedTag, onTagClick }: AIHustlesSectionProps) =>
 
   return (
     <section className="mb-20" aria-labelledby="ai-hustles-section">
-      <HeaderHierarchy level={2} className="text-center mb-12" id="ai-hustles-section">
+      <HeaderHierarchy level={2} className="text-center mb-12 text-2xl md:text-3xl lg:text-4xl font-black" id="ai-hustles-section">
         AI Side Hustles & <span className="text-[#247EFF]">Securing the Bag</span>
       </HeaderHierarchy>
 

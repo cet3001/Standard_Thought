@@ -37,7 +37,7 @@ const CreditBuildingSection = ({ selectedTag, onTagClick }: CreditBuildingSectio
 
   return (
     <section className="mb-20" aria-labelledby="credit-building-section">
-      <HeaderHierarchy level={2} className="text-center mb-12" id="credit-building-section">
+      <HeaderHierarchy level={2} className="text-center mb-12 text-2xl md:text-3xl lg:text-4xl font-black" id="credit-building-section">
         Build Credit from <span className="text-[#247EFF]">Nothing</span>
       </HeaderHierarchy>
       

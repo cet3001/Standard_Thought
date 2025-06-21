@@ -37,7 +37,7 @@ const InvestingSection = ({ selectedTag, onTagClick }: InvestingSectionProps) =>
 
   return (
     <section className="mb-20" aria-labelledby="investing-section">
-      <HeaderHierarchy level={2} className="text-center mb-12" id="investing-section">
+      <HeaderHierarchy level={2} className="text-center mb-12 text-2xl md:text-3xl lg:text-4xl font-black" id="investing-section">
         Start Investing with <span className="text-[#247EFF]">Zero Dollars</span>
       </HeaderHierarchy>
       

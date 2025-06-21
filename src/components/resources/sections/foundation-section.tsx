@@ -34,7 +34,7 @@ const FoundationSection = ({ selectedTag, onTagClick }: FoundationSectionProps) 
 
   return (
     <section className="mb-20" aria-labelledby="foundation-section">
-      <HeaderHierarchy level={2} className="text-center mb-12" id="foundation-section">
+      <HeaderHierarchy level={2} className="text-center mb-12 text-2xl md:text-3xl lg:text-4xl font-black" id="foundation-section">
         Side Hustle <span className="text-[#247EFF]">Cash Management</span>
       </HeaderHierarchy>
       

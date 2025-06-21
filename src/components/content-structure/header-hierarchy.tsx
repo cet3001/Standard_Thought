@@ -13,7 +13,7 @@ const HeaderHierarchy = ({ level, children, className = "", id }: HeaderHierarch
   
   const levelClasses = {
     1: "text-4xl md:text-5xl mb-8",
-    2: "text-3xl md:text-4xl mb-6",
+    2: "text-3xl md:text-4xl mb-6", 
     3: "text-2xl md:text-3xl mb-4",
     4: "text-xl md:text-2xl mb-3",
     5: "text-lg md:text-xl mb-2",

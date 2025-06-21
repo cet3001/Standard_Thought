@@ -1,3 +1,4 @@
+
 import Analytics from "@/components/analytics";
 import HeroSection from "@/components/hero-section";
 import LeadMagnetPopup from "@/components/lead-magnet-popup";
@@ -12,6 +13,7 @@ import VoiceSearchOptimization from "@/components/seo/voice-search-optimization"
 import FeaturedSnippets from "@/components/seo/featured-snippets";
 import FAQSection from "@/components/faq/faq-section";
 import FeaturedContentSection from "@/components/featured-content-section";
+import BlogShowcase from "@/components/blog-showcase";
 import { useMobilePerformance } from "@/hooks/use-mobile-performance";
 
 const Index = () => {
@@ -70,8 +72,11 @@ const Index = () => {
         {/* Newsletter */}
         <NewsletterSection />
 
-        {/* Featured Content Section - NEW */}
+        {/* Featured Content Section */}
         <FeaturedContentSection />
+
+        {/* Featured Blog Stories Section */}
+        <BlogShowcase />
 
         {/* Manifesto */}
         <ManifestoSection />

@@ -131,7 +131,7 @@ const AIHustlesSection = ({ selectedTag, onTagClick }: AIHustlesSectionProps) =>
                 <a
                   key={linkIndex}
                   href={link.link}
-                  className="text-sm text-[#247EFF] hover:underline flex items-center gap-1"
+                  className="text-sm bg-gradient-to-r from-accent to-[#FFD700] text-black hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg px-3 py-2 rounded-lg font-semibold flex items-center gap-1 min-h-[32px] border-0"
                 >
                   {link.text} →
                 </a>

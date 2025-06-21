@@ -1,5 +1,7 @@
 
+
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import HeaderHierarchy from "@/components/content-structure/header-hierarchy";
 import { CheckCircle, Download, ArrowRight, DollarSign, Clock, TrendingUp } from "lucide-react";
@@ -91,9 +93,16 @@ const QuestionCard = ({ question, index }: QuestionCardProps) => {
               <ArrowRight className="h-5 w-5 text-yellow-600" />
               <h4 className="font-semibold text-yellow-700 dark:text-yellow-400">Next Moves</h4>
             </div>
-            <p className="text-sm text-[#0A0A0A]/80 dark:text-brand-cream/80 leading-relaxed">
+            <p className="text-sm text-[#0A0A0A]/80 dark:text-brand-cream/80 mb-4 leading-relaxed">
               {question.nextMoves}
             </p>
+            <Button 
+              asChild 
+              size="sm" 
+              className="bg-yellow-600 hover:bg-yellow-700 text-white rounded-lg w-full"
+            >
+              <a href={question.nextMovesLink}>Level Up →</a>
+            </Button>
           </div>
         </div>
         
@@ -111,3 +120,4 @@ const QuestionCard = ({ question, index }: QuestionCardProps) => {
 };
 
 export default QuestionCard;
+

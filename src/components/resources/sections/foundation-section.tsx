@@ -13,20 +13,20 @@ const FoundationSection = ({ selectedTag, onTagClick }: FoundationSectionProps) 
     {
       icon: BookOpen,
       title: "Money Management Foundation",
-      description: "Essential cash flow management and wealth mindset development for entrepreneurs and side hustlers",
-      whoThisIsFor: "Perfect for anyone who needs to master basic money management before building wealth",
+      description: "Essential cash flow mastery and wealth mindset development for entrepreneurs and side hustlers who need to get their money right first",
+      whoThisIsFor: "Perfect for anyone who needs to master basic money management before leveling up to wealth building",
       topics: [
-        "Cash Flow Management for Irregular Income",
-        "Emergency Fund Building on a Tight Budget",
-        "Debt Elimination Without Sacrificing Growth",
-        "Tax Strategies for Side Hustlers", 
-        "Retirement Planning for the Self-Employed"
+        "Cash Flow Management for Irregular Income (Side Hustle Life)",
+        "Emergency Fund Building on a Tight Budget (Real Talk)",
+        "Debt Elimination Without Killing Your Growth Dreams",
+        "Tax Strategies for Side Hustlers (Keep More Money)", 
+        "Retirement Planning When You're Self-Employed"
       ],
       ctaText: "Master Money Basics",
       ctaLink: "/blog",
       tags: ["Mindset", "Foundation", "Cash Flow", "Beginner"],
       internalLinks: [
-        { text: "See Builder Stories: Financial Turnaround", link: "/blog" },
+        { text: "See Builder Stories: Financial Turnaround Wins", link: "/blog" },
         { text: "Build Your Money Mindset", link: "/about" }
       ]
     }
@@ -54,7 +54,7 @@ const FoundationSection = ({ selectedTag, onTagClick }: FoundationSectionProps) 
             
             {/* Who This Is For */}
             <div className="mt-4 p-4 bg-blue-50/50 dark:bg-blue-900/20 rounded-lg">
-              <p className="text-sm font-semibold text-[#247EFF] mb-2">Who This Is For:</p>
+              <p className="text-sm font-semibold text-[#247EFF] mb-2">Who This Hits Different For:</p>
               <p className="text-[#0A0A0A] dark:text-brand-cream">{resource.whoThisIsFor}</p>
             </div>
             

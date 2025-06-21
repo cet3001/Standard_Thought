@@ -15,22 +15,22 @@ const CreditBuildingSection = ({ selectedTag, onTagClick }: CreditBuildingSectio
     {
       icon: CreditCard,
       title: "Credit Building Mastery",
-      description: "Complete blueprint for building credit from zero using secured cards, authorized user strategies, and alternative credit reporting",
-      whoThisIsFor: "Perfect for first-time builders with no credit history or anyone recovering from financial setbacks",
+      description: "Real blueprint for building credit from zero—no cosigner needed. Secured cards, authorized user game, and rent reporting that actually moves the needle",
+      whoThisIsFor: "Built for first-time credit builders with zero history or anyone bouncing back from financial setbacks",
       topics: [
-        "Secured Credit Card Strategy (with $200-500)",
-        "Authorized User Tactics That Actually Work", 
-        "Alternative Credit Reporting (Rent/Utilities)",
-        "Credit Dispute Process for Beginners",
-        "Timeline: 0 to 700+ Credit Score"
+        "Secured Credit Card Game (Start with $200-500)",
+        "Authorized User Strategy That Actually Works", 
+        "Get Credit for Rent & Utilities (Stop Throwing Money Away)",
+        "Credit Dispute Process (Fix Your Report Yourself)",
+        "Real Timeline: 0 to 700+ Credit Score Blueprint"
       ],
       ctaText: "Build Credit Now",
       ctaLink: "/blog",
       tags: ["Credit", "Beginner", "$0 Start", "Fast Track"],
       featured: "popular" as const,
       internalLinks: [
-        { text: "See Builder Stories: Credit Recovery", link: "/blog" },
-        { text: "Learn the Mindset Behind Credit Building", link: "/about" }
+        { text: "See Builder Stories: Credit Recovery Wins", link: "/blog" },
+        { text: "Build the Credit Mindset", link: "/about" }
       ]
     }
   ];
@@ -38,7 +38,7 @@ const CreditBuildingSection = ({ selectedTag, onTagClick }: CreditBuildingSectio
   return (
     <section className="mb-20" aria-labelledby="credit-building-section">
       <HeaderHierarchy level={2} className="text-center mb-12" id="credit-building-section">
-        Build Credit from <span className="text-[#247EFF]">Scratch</span>
+        Build Credit from <span className="text-[#247EFF]">Nothing</span>
       </HeaderHierarchy>
       
       <ComprehensiveGuideSection {...creditBuildingGuide} className="mb-12" />
@@ -46,7 +46,7 @@ const CreditBuildingSection = ({ selectedTag, onTagClick }: CreditBuildingSectio
       {/* Quick Start Checklist */}
       <div className="bg-green-50/50 dark:bg-green-900/20 border-l-4 border-green-500 rounded-lg p-6 mb-12" role="complementary" aria-labelledby="credit-checklist-heading">
         <HeaderHierarchy level={3} className="mb-4 text-green-700 dark:text-green-400" id="credit-checklist-heading">
-          Quick Start Checklist: Build Credit This Week
+          Your Week 1 Credit Building Moves
         </HeaderHierarchy>
         <ul className="space-y-2" role="list">
           {creditBuildingGuide.quickStartChecklist.map((item, index) => (
@@ -75,7 +75,7 @@ const CreditBuildingSection = ({ selectedTag, onTagClick }: CreditBuildingSectio
             
             {/* Who This Is For */}
             <div className="mt-4 p-4 bg-blue-50/50 dark:bg-blue-900/20 rounded-lg">
-              <p className="text-sm font-semibold text-[#247EFF] mb-2">Who This Is For:</p>
+              <p className="text-sm font-semibold text-[#247EFF] mb-2">Who This Hits Different For:</p>
               <p className="text-[#0A0A0A] dark:text-brand-cream">{resource.whoThisIsFor}</p>
             </div>
             

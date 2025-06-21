@@ -14,34 +14,34 @@ const AIHustlesSection = ({ selectedTag, onTagClick }: AIHustlesSectionProps) =>
     {
       icon: Bot,
       title: "AI Side Hustles Blueprint",
-      description: "Profitable AI income streams using ChatGPT, Midjourney, and automation tools—no coding required",
-      whoThisIsFor: "Perfect for hustlers who want to leverage AI tools to create new income streams without technical skills",
+      description: "Profitable AI income streams using ChatGPT, Midjourney, and automation tools—zero coding required, maximum bag secured",
+      whoThisIsFor: "Built for hustlers ready to leverage AI tools for new income streams without needing tech skills",
       topics: [
-        "ChatGPT Content Creation Services ($25-100/article)",
-        "Midjourney Design Business Setup", 
-        "Social Media Management with AI Tools",
+        "ChatGPT Content Services That Pay ($25-100/article)",
+        "Midjourney Design Business Setup & Client Flow", 
+        "Social Media Management Using AI (Scale Fast)",
         "Business Automation Services ($1000-5000/project)",
-        "Client Acquisition and Pricing Strategies"
+        "Client Getting & Pricing Game That Actually Works"
       ],
       ctaText: "Launch AI Business",
       ctaLink: "/blog",
       tags: ["AI", "Side Hustle", "No Code", "High Income"],
       internalLinks: [
-        { text: "See Builder Stories: AI Side Hustle Success", link: "/blog" },
-        { text: "Learn the Digital Entrepreneur Mindset", link: "/about" }
+        { text: "See Builder Stories: AI Side Hustle Wins", link: "/blog" },
+        { text: "Build the Digital Entrepreneur Mindset", link: "/about" }
       ]
     },
     {
       icon: Building,
       title: "Urban Entrepreneurship Toolkit", 
-      description: "Community-based business strategies and funding sources specifically designed for urban markets and minority entrepreneurs",
-      whoThisIsFor: "Best for aspiring entrepreneurs in urban communities who need culturally relevant business strategies",
+      description: "Community-based business strategies and funding sources built specifically for urban markets and minority entrepreneurs who know the culture",
+      whoThisIsFor: "Perfect for aspiring entrepreneurs in urban communities who need culturally relevant business strategies that actually work",
       topics: [
-        "Low-Capital Business Ideas for Urban Markets",
-        "Community-Based Marketing Strategies",
-        "Funding Sources for Minority-Owned Businesses",
-        "Urban Market Analysis and Opportunity Identification",
-        "Scaling Strategies for Local Enterprises"
+        "Low-Capital Business Ideas That Work in Urban Markets",
+        "Community-Based Marketing (Leverage Your Network)",
+        "Funding Sources Built for Minority-Owned Businesses",
+        "Urban Market Analysis & Opportunity Recognition",
+        "Scaling Strategies That Don't Lose Your Community"
       ],
       ctaText: "Build Your Business",
       ctaLink: "/blog",
@@ -56,7 +56,7 @@ const AIHustlesSection = ({ selectedTag, onTagClick }: AIHustlesSectionProps) =>
   return (
     <section className="mb-20" aria-labelledby="ai-hustles-section">
       <HeaderHierarchy level={2} className="text-center mb-12" id="ai-hustles-section">
-        AI Side Hustles & <span className="text-[#247EFF]">Digital Income</span>
+        AI Side Hustles & <span className="text-[#247EFF]">Securing the Bag</span>
       </HeaderHierarchy>
 
       <SnippetOptimizedContent
@@ -86,7 +86,7 @@ const AIHustlesSection = ({ selectedTag, onTagClick }: AIHustlesSectionProps) =>
       {/* Quick Start Checklist for AI Side Hustles */}
       <div className="bg-green-50/50 dark:bg-green-900/20 border-l-4 border-green-500 rounded-lg p-6 mb-12" role="complementary" aria-labelledby="ai-checklist-heading">
         <HeaderHierarchy level={3} className="mb-4 text-green-700 dark:text-green-400" id="ai-checklist-heading">
-          Quick Start Checklist: Launch Your AI Side Hustle
+          Your AI Side Hustle Launch Plan This Week
         </HeaderHierarchy>
         <ul className="space-y-2" role="list">
           <li className="flex items-center gap-3" role="listitem">
@@ -128,7 +128,7 @@ const AIHustlesSection = ({ selectedTag, onTagClick }: AIHustlesSectionProps) =>
             
             {/* Who This Is For */}
             <div className="mt-4 p-4 bg-blue-50/50 dark:bg-blue-900/20 rounded-lg">
-              <p className="text-sm font-semibold text-[#247EFF] mb-2">Who This Is For:</p>
+              <p className="text-sm font-semibold text-[#247EFF] mb-2">Who This Hits Different For:</p>
               <p className="text-[#0A0A0A] dark:text-brand-cream">{resource.whoThisIsFor}</p>
             </div>
             

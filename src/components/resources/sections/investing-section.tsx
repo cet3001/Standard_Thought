@@ -15,14 +15,14 @@ const InvestingSection = ({ selectedTag, onTagClick }: InvestingSectionProps) =>
     {
       icon: TrendingUp,
       title: "Micro-Investing Mastery",
-      description: "Street-smart wealth building strategies using $1-5 investments, fractional shares, and automated portfolio growth",
-      whoThisIsFor: "Best for beginners who think they need thousands to start investing or anyone living paycheck to paycheck",
+      description: "Street-smart wealth building using $1-5 investments and fractional shares. No trust fund needed—just consistency and the right moves",
+      whoThisIsFor: "Perfect for beginners who think you need thousands to start investing or anyone living check to check",
       topics: [
-        "Micro-Investing Apps That Actually Work",
-        "Fractional Share Strategies for Expensive Stocks",
-        "Round-Up Investing for Spare Change", 
-        "Portfolio Allocation for Young Investors",
-        "Compound Interest Acceleration Tactics"
+        "Micro-Investing Apps That Actually Hit Different",
+        "Fractional Share Strategy for Expensive Stocks",
+        "Round-Up Investing (Turn Spare Change Into Wealth)", 
+        "Portfolio Game for Young Money",
+        "Compound Interest Moves That Accelerate Everything"
       ],
       ctaText: "Start Investing Today",
       ctaLink: "/blog",
@@ -38,7 +38,7 @@ const InvestingSection = ({ selectedTag, onTagClick }: InvestingSectionProps) =>
   return (
     <section className="mb-20" aria-labelledby="investing-section">
       <HeaderHierarchy level={2} className="text-center mb-12" id="investing-section">
-        Investing with <span className="text-[#247EFF]">No Money</span>
+        Start Investing with <span className="text-[#247EFF]">Zero Dollars</span>
       </HeaderHierarchy>
       
       <ComprehensiveGuideSection {...investingGuide} className="mb-12" />
@@ -46,7 +46,7 @@ const InvestingSection = ({ selectedTag, onTagClick }: InvestingSectionProps) =>
       {/* Quick Start Checklist */}
       <div className="bg-green-50/50 dark:bg-green-900/20 border-l-4 border-green-500 rounded-lg p-6 mb-12" role="complementary" aria-labelledby="investing-checklist-heading">
         <HeaderHierarchy level={3} className="mb-4 text-green-700 dark:text-green-400" id="investing-checklist-heading">
-          Quick Start Checklist: Start Investing Today
+          Your First Investment Moves This Week
         </HeaderHierarchy>
         <ul className="space-y-2" role="list">
           {investingGuide.quickStartChecklist.map((item, index) => (
@@ -75,7 +75,7 @@ const InvestingSection = ({ selectedTag, onTagClick }: InvestingSectionProps) =>
             
             {/* Who This Is For */}
             <div className="mt-4 p-4 bg-blue-50/50 dark:bg-blue-900/20 rounded-lg">
-              <p className="text-sm font-semibold text-[#247EFF] mb-2">Who This Is For:</p>
+              <p className="text-sm font-semibold text-[#247EFF] mb-2">Who This Hits Different For:</p>
               <p className="text-[#0A0A0A] dark:text-brand-cream">{resource.whoThisIsFor}</p>
             </div>
             

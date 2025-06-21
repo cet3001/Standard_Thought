@@ -12,7 +12,6 @@ import KeywordOptimization from "@/components/seo/keyword-optimization";
 import VoiceSearchOptimization from "@/components/seo/voice-search-optimization";
 import FeaturedSnippets from "@/components/seo/featured-snippets";
 import FAQSection from "@/components/faq/faq-section";
-import FeaturedContentSection from "@/components/featured-content-section";
 import BlogShowcase from "@/components/blog-showcase";
 import LSIContent from "@/components/lsi-content";
 import SiteNavigationHub from "@/components/site-navigation-hub";
@@ -114,9 +113,6 @@ const Index = () => {
 
         {/* Newsletter */}
         <NewsletterSection />
-
-        {/* Featured Content Section */}
-        <FeaturedContentSection />
 
         {/* Featured Blog Stories Section */}
         <BlogShowcase />

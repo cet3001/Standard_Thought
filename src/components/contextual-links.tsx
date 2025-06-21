@@ -22,7 +22,7 @@ const contextualLinks: Record<string, ContextualLink[]> = {
       lsiKeywords: ["startup methodologies", "business building", "entrepreneurial systems"]
     },
     {
-      text: "hood financial literacy tools",
+      text: "financial literacy tools",
       href: "/about",
       context: "financial education",
       lsiKeywords: ["street smart money moves", "urban finance", "generational wealth building"]
@@ -112,14 +112,16 @@ const ContextualLinks = ({ context, className = "" }: ContextualLinksProps) => {
   return (
     <span className={`contextual-links ${className}`}>
       {links.map((link, index) => (
-        <Link
-          key={index}
-          to={link.href}
-          className="text-[#247EFF] hover:text-[#0057FF] underline decoration-dotted underline-offset-4 hover:decoration-solid transition-all duration-300 touch-manipulation font-medium"
-          title={`Learn more about ${link.context} - ${link.lsiKeywords?.slice(0, 2).join(', ')}`}
-        >
-          {link.text}
-        </Link>
+        <span key={index}>
+          <Link
+            to={link.href}
+            className="text-[#247EFF] hover:text-[#0057FF] underline decoration-dotted underline-offset-4 hover:decoration-solid transition-all duration-300 touch-manipulation font-medium"
+            title={`Learn more about ${link.context} - ${link.lsiKeywords?.slice(0, 2).join(', ')}`}
+          >
+            {link.text}
+          </Link>
+          {index < links.length - 1 && <span>, </span>}
+        </span>
       ))}
     </span>
   );

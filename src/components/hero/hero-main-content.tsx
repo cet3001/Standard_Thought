@@ -34,7 +34,7 @@ const HeroMainContent = ({ scrollToNewsletter }: HeroMainContentProps) => {
           aria-label="Start building wealth - Scroll to newsletter signup"
         >
           Begin Your Wealth Journey
-          <ArrowUp className="ml-2 h-5 w-5 rotate-45" aria-hidden="true" />
+          <ArrowUp className="ml-2 h-5 w-5 rotate-45" aria-label="Arrow pointing up and right indicating forward progress" />
         </Button>
       </div>
     </div>

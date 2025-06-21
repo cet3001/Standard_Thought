@@ -27,7 +27,7 @@ const HeroValueProps = () => {
             aria-label="Learn more about wealth building strategies"
           >
             Learn More
-            <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+            <ArrowRight className="ml-2 h-4 w-4" aria-label="Arrow pointing right to continue reading" />
           </Button>
         </Link>
       </div>
@@ -46,7 +46,7 @@ const HeroValueProps = () => {
             aria-label="Learn more about financial education guide"
           >
             Learn More
-            <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+            <ArrowRight className="ml-2 h-4 w-4" aria-label="Arrow pointing right to continue reading" />
           </Button>
         </Link>
       </div>

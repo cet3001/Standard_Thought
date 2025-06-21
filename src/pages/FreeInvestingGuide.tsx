@@ -6,14 +6,20 @@ import FreeInvestingPillar from "@/components/blog/pillar-pages/free-investing-p
 import BreadcrumbNavigation from "@/components/breadcrumb-navigation";
 
 const FreeInvestingGuide = () => {
+  const breadcrumbs = [
+    { name: "Home", url: "https://www.standardthought.com", position: 1 },
+    { name: "Free Investing Guide", url: "https://www.standardthought.com/blog/free-investing-guide", position: 2 }
+  ];
+
   return (
     <div className="min-h-screen bg-brand-cream dark:bg-brand-black">
       <SEO 
-        title="Free Ways to Start Investing: Complete Beginner's Guide"
-        description="Start building generational wealth with $1. Complete guide to micro-investing apps, free investment strategies, and how to invest with no money down."
-        keywords="free ways to start investing, micro investing apps, how to start investing with no money, beginner investing guide, acorns stash robinhood, investment apps"
+        title="Free Ways to Start Investing: Complete Urban Investing Guide for First-Gen Wealth Builders | Standardthought"
+        description="Start building generational wealth with $1. Complete guide to micro-investing apps, free investment strategies, and urban investing approaches for first-gen entrepreneurs with limited capital."
+        keywords="free ways to start investing, micro investing apps for beginners, how to start investing with no money, urban investing strategies, beginner investing guide, acorns stash robinhood, investment apps for first-gen entrepreneurs"
         url="/blog/free-investing-guide"
         type="article"
+        breadcrumbs={breadcrumbs}
       />
       
       <Navigation />

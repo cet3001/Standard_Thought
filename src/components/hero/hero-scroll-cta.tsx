@@ -23,7 +23,7 @@ const HeroScrollCTA = ({ scrollToNewsletter }: HeroScrollCTAProps) => {
         className="bg-gradient-to-r from-[#247EFF]/10 to-[#247EFF]/20 border-[#247EFF] text-[#247EFF] hover:bg-[#247EFF] hover:text-white font-semibold px-8 py-4 rounded-3xl transition-all duration-300 hover:scale-105"
         aria-label="Ready to start your own story - Scroll to newsletter signup"
       >
-        <ArrowDown className="mr-2 h-5 w-5" aria-hidden="true" />
+        <ArrowDown className="mr-2 h-5 w-5" aria-label="Arrow pointing down to scroll to newsletter section" />
         Ready to start your own story? Get the Blueprint
       </Button>
     </div>

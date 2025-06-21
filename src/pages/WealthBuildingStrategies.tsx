@@ -6,14 +6,20 @@ import BreadcrumbNavigation from "@/components/breadcrumb-navigation";
 import WealthBuildingPillar from "@/components/blog/pillar-pages/wealth-building-pillar";
 
 const WealthBuildingStrategies = () => {
+  const breadcrumbs = [
+    { name: "Home", url: "https://www.standardthought.com", position: 1 },
+    { name: "Wealth Building", url: "https://www.standardthought.com/wealth-building-strategies", position: 2 }
+  ];
+
   return (
     <div className="min-h-screen bg-brand-cream dark:bg-brand-black">
       <SEO 
-        title="From Survival Mode to Wealth Mode: Complete Guide to Building Assets"
-        description="Break free from living paycheck to paycheck. Learn proven wealth-building strategies, asset creation, and financial systems that work for you—not against you."
-        keywords="wealth building strategies, survival mode to wealth mode, build assets from nothing, paycheck to paycheck solutions, financial freedom guide, wealth creation mindset"
+        title="Urban Wealth Building Strategies: From Survival Mode to Generational Wealth | Standardthought"
+        description="Break free from paycheck-to-paycheck living with proven urban wealth building strategies. Learn asset creation, investment frameworks, and financial systems designed for first-gen entrepreneurs starting from nothing."
+        keywords="urban wealth building strategies, survival mode to wealth mode, build assets from nothing, paycheck to paycheck solutions, financial freedom for first-gen entrepreneurs, generational wealth building guide, street smart investing, urban asset creation"
         url="/wealth-building-strategies"
         type="article"
+        breadcrumbs={breadcrumbs}
       />
       
       <Navigation />

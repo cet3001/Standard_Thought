@@ -6,14 +6,20 @@ import AISideHustlesPillar from "@/components/blog/pillar-pages/ai-side-hustles-
 import BreadcrumbNavigation from "@/components/breadcrumb-navigation";
 
 const AISideHustlesGuide = () => {
+  const breadcrumbs = [
+    { name: "Home", url: "https://www.standardthought.com", position: 1 },
+    { name: "AI Side Hustles", url: "https://www.standardthought.com/blog/ai-side-hustles-guide", position: 2 }
+  ];
+
   return (
     <div className="min-h-screen bg-brand-cream dark:bg-brand-black">
       <SEO 
-        title="How to Make Money with AI Side Hustles in 2024 | Complete Guide"
-        description="Learn how to make $500-5000+ monthly with AI side hustles. Complete guide to ChatGPT content creation, AI automation, and profitable artificial intelligence income streams."
-        keywords="AI side hustles, how to make money with AI, ChatGPT side hustle, AI business ideas, artificial intelligence income streams, AI automation business, make money with AI tools"
+        title="AI Side Hustles Guide 2024: Make $500-5000+ Monthly with Artificial Intelligence | Standardthought"
+        description="Master profitable AI side hustles with step-by-step guides for ChatGPT content creation, AI automation, and artificial intelligence income streams. Perfect for urban entrepreneurs and first-gen builders."
+        keywords="AI side hustles 2024, how to make money with AI, ChatGPT side hustle guide, AI business ideas for beginners, artificial intelligence income streams, AI automation business, make money with AI tools, urban AI entrepreneurship"
         url="/blog/ai-side-hustles-guide"
         type="article"
+        breadcrumbs={breadcrumbs}
       />
       
       <Navigation />

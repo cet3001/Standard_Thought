@@ -4,9 +4,9 @@
  */
 
 export const DEFAULTS = {
-  title: "Build Generational Wealth From Nothing | Standardthought - Urban Entrepreneurship & Financial Freedom",
-  description: "Join 1000+ urban entrepreneurs building generational wealth from scratch. Get proven frameworks for financial literacy, AI side hustles, credit building, and investment strategies. No safety net required - just real game for securing the bag.",
-  keywords: "urban entrepreneurship, build generational wealth, hood financial literacy, street smart money moves, AI side hustles, credit building strategies, urban investing strategies, first generation wealth, entrepreneur community, business growth strategies, mindset shift, self-made success, urban personal development, financial education, wealth building for beginners",
+  title: "Urban Wealth Building & AI Side Hustles | Standardthought - Financial Education for First-Gen Entrepreneurs",
+  description: "Master urban wealth building with proven AI side hustles and financial education designed for first-gen entrepreneurs. Build generational wealth from nothing with street-smart strategies that actually work.",
+  keywords: "urban wealth building, AI side hustles, financial education for first-gen entrepreneurs, generational wealth building, street smart money moves, urban entrepreneurship, hood financial literacy, first generation wealth builders, AI business ideas, urban investing strategies",
   image: "/lovable-uploads/a8faab87-8319-4fa0-ae53-35597c6f8fc5.png",
   url: "https://www.standardthought.com",
   author: "Standardthought",

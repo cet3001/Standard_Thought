@@ -74,16 +74,16 @@ const Blog = () => {
   return (
     <div className="min-h-screen bg-brand-cream dark:bg-brand-black">
       <SEO
-        title="Urban Financial Literacy Blog - Real Builder Stories | Standardthought"
-        description="Get real game on urban investing, AI side hustles, and credit building. Generational wealth building stories and strategies from people who built from nothing. Hood financial literacy that actually works."
-        keywords="hood financial literacy, urban investing strategies, street smart money moves, generational wealth building for beginners, AI side hustles, urban entrepreneurship, credit building strategies, wealth creation resources, financial education, business development tools, real money stories, urban finance blog"
+        title="Urban Financial Education Blog - AI Side Hustles & Wealth Building Stories | Standardthought"
+        description="Get real strategies on urban wealth building, AI side hustles, and financial education for first-gen entrepreneurs. Proven frameworks and success stories from builders who started with nothing."
+        keywords="urban financial education blog, AI side hustles guide, wealth building stories, first-gen entrepreneur resources, hood financial literacy, street smart money moves, generational wealth building tips, urban investing strategies, financial education for beginners"
         url="/blog"
         type="website"
         breadcrumbs={breadcrumbs}
       />
 
       {/* SEO Enhancement Components */}
-      <KeywordOptimization primaryKeyword="hood financial literacy" context="financial-literacy" />
+      <KeywordOptimization primaryKeyword="urban financial education" context="financial-literacy" />
       <VoiceSearchOptimization topic="wealth-building" />
       <FeaturedSnippets topic="wealth-building" />
 

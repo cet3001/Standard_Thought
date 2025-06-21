@@ -39,12 +39,12 @@ const ManifestoSection = () => {
       <div className="container mx-auto px-6 max-w-4xl relative z-10">
         <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-black mb-8 text-brand-black dark:text-brand-cream">
+            <h2 className="text-4xl md:text-5xl font-black mb-8 text-black dark:text-brand-cream">
               The Real About <span className="text-accent">Building Wealth</span>
             </h2>
           </div>
 
-          <div className="space-y-8 text-lg leading-relaxed text-brand-black dark:text-brand-cream">
+          <div className="space-y-8 text-lg leading-relaxed text-black dark:text-brand-cream">
             <p>
               <strong>Nobody's coming to save you.</strong> The system wasn't built for us, and that's exactly why we're going to beat it at its own game.
             </p>

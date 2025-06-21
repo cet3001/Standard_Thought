@@ -67,7 +67,7 @@ const HeroSection = () => {
             </h1>
             
             <p className="text-xl md:text-2xl text-[#0A0A0A]/70 dark:text-brand-cream/70 leading-relaxed mb-8 max-w-4xl mx-auto">
-              The system wasn't built for us, but that doesn't mean we can't change the game. Over <strong>1,000 first-gen hustlers</strong> have already started building wealth from the ground up using our step-by-step frameworks—{" "}
+              The system wasn't built for us, but that doesn't mean we can't change the game. Over <strong>1,000 first gen hustlers</strong> have already started building wealth from the ground up using our step by step frameworks—{" "}
               <ContextualLinks context="hero" className="inline" />. Learn how to <strong>stack real assets</strong>, build your legacy, and turn struggle into strategy, even if money talk feels new.
             </p>
 
@@ -128,7 +128,7 @@ const HeroSection = () => {
                 <span className="text-green-600 dark:text-green-400">Keep It 100</span> Financial Education
               </h3>
               <p className="text-[#0A0A0A]/80 dark:text-brand-cream/80 leading-relaxed mb-6">
-                Learn <strong>street-smart money moves</strong> and investment strategies in language that makes sense. No corporate jargon, no code-switching—just real talk about <strong>leveling up financially</strong>.
+                Learn <strong>street smart money moves</strong> and investment strategies in language that makes sense. No corporate jargon, no code switching—just real talk about <strong>leveling up financially</strong>.
               </p>
               <Link to="/financial-education-guide">
                 <Button 

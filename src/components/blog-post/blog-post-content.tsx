@@ -1,3 +1,4 @@
+
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
 import SemanticContentEnhancer from "../seo/semantic-content-enhancer";
@@ -102,10 +103,10 @@ const BlogPostContent = ({ content, imageUrl, imageMetaDescription, title, tags 
           </HeaderHierarchy>
           <div className="space-y-2">
             <p className="text-sm text-[#0A0A0A]/80 dark:text-brand-cream/80">
-              Ready to master <strong>hood financial literacy</strong> and <strong>urban investing strategies</strong>? Check out our <Link to="/blog" className="text-[#247EFF] hover:underline font-medium">complete story collection</Link> and <Link to="/resources" className="text-[#247EFF] hover:underline font-medium">comprehensive resource hub</Link> for more proven frameworks.
+              Ready to master hood financial literacy and urban investing strategies? Check out our <Link to="/blog" className="text-[#247EFF] hover:underline font-medium">complete story collection</Link> and <Link to="/resources" className="text-[#247EFF] hover:underline font-medium">comprehensive resource hub</Link> for more proven frameworks.
             </p>
             <p className="text-sm text-[#0A0A0A]/80 dark:text-brand-cream/80">
-              Get started with our <Link to="/#newsletter" className="text-[#247EFF] hover:underline font-medium">free playbook PDF</Link> and join 1000+ urban entrepreneurs building <strong>generational wealth from scratch</strong>.
+              Get started with our <Link to="/#newsletter" className="text-[#247EFF] hover:underline font-medium">free playbook PDF</Link> and join 1000+ urban entrepreneurs building generational wealth from scratch.
             </p>
           </div>
         </div>
@@ -113,7 +114,7 @@ const BlogPostContent = ({ content, imageUrl, imageMetaDescription, title, tags 
         {/* Outbound Links Section - Trust & Authority */}
         <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl">
           <HeaderHierarchy level={4} className="mb-3">
-            Recommended Resources for <strong>Generational Wealth Building for Beginners</strong>
+            Recommended Resources for Generational Wealth Building for Beginners
           </HeaderHierarchy>
           <div className="text-sm space-y-1">
             <p>

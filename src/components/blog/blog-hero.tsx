@@ -13,12 +13,12 @@ const BlogHero = ({ isVisible }: BlogHeroProps) => {
           </h1>
           <p className="text-xl text-[#0A0A0A]/70 dark:text-brand-cream/70 leading-relaxed mb-6">
             Raw game from people who actually built something from nothing. No theory, no fluff—just real blueprints 
-            for <strong>securing the bag</strong> and <strong>leveling up financially</strong> from people who refused to stay stuck.
+            for securing the bag and leveling up financially from people who refused to stay stuck.
           </p>
           <div className="bg-white/80 dark:bg-brand-black/80 backdrop-blur-sm border border-[#247EFF]/20 rounded-3xl p-6 max-w-2xl mx-auto mb-8">
             <p className="text-[#0A0A0A]/80 dark:text-brand-cream/80">
               Every story here comes from someone who had to figure it out with their own hands and hustle. 
-              These aren't case studies—they're battle-tested strategies for <strong>building generational wealth</strong>.
+              These aren't case studies—they're battle-tested strategies for building generational wealth.
             </p>
           </div>
           

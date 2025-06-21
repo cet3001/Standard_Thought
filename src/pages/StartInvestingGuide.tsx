@@ -2,7 +2,6 @@
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import SEO from "@/components/seo";
-import BreadcrumbNavigation from "@/components/breadcrumb-navigation";
 import StartInvestingHero from "@/components/investing/start-investing-hero";
 import WhyInvestingMatters from "@/components/investing/why-investing-matters";
 import InvestingStepsSection from "@/components/investing/investing-steps-section";
@@ -11,8 +10,12 @@ import StreetSmartTips from "@/components/investing/street-smart-tips";
 import InvestingTestimonials from "@/components/investing/investing-testimonials";
 import InvestingNextMoves from "@/components/investing/investing-next-moves";
 import InvestingFAQ from "@/components/investing/investing-faq";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const StartInvestingGuide = () => {
+  const navigate = useNavigate();
   const breadcrumbs = [
     { name: "Home", url: "https://www.standardthought.com", position: 1 },
     { name: "Start Investing Guide", url: "https://www.standardthought.com/start-investing-guide", position: 2 }
@@ -31,8 +34,17 @@ const StartInvestingGuide = () => {
       
       <Navigation />
       
-      <div className="pt-24">
-        <BreadcrumbNavigation />
+      <div className="pt-28 pb-4">
+        <div className="container mx-auto px-6">
+          <Button
+            onClick={() => navigate(-1)}
+            variant="ghost"
+            className="flex items-center gap-2 text-muted-foreground hover:text-foreground mb-4"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Back
+          </Button>
+        </div>
       </div>
       
       <main className="pb-16">

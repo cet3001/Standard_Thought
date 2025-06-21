@@ -35,8 +35,8 @@ export const useMobilePerformance = () => {
       horizontalScrollAreas.forEach(area => {
         const el = area as HTMLElement;
         
-        // Enable smooth scrolling with momentum
-        el.style.webkitOverflowScrolling = 'touch';
+        // Enable smooth scrolling with momentum - use setProperty for webkit properties
+        (el.style as any).webkitOverflowScrolling = 'touch';
         el.style.scrollBehavior = 'smooth';
         
         // Add scroll snap for better UX
@@ -71,9 +71,9 @@ export const useMobilePerformance = () => {
         // Ensure tags don't wrap on mobile for better scroll UX
         el.style.flexWrap = 'nowrap';
         el.style.overflowX = 'auto';
-        el.style.webkitOverflowScrolling = 'touch';
+        (el.style as any).webkitOverflowScrolling = 'touch';
         el.style.scrollbarWidth = 'none'; // Firefox
-        el.style.msOverflowStyle = 'none'; // IE/Edge
+        (el.style as any).msOverflowStyle = 'none'; // IE/Edge
         
         // Hide scrollbar for webkit browsers
         const style = document.createElement('style');

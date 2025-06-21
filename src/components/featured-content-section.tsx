@@ -41,7 +41,7 @@ const FeaturedContentSection = () => {
       icon: <TrendingUp className="h-6 w-6 sm:h-8 sm:w-8 text-[#247EFF]" aria-label="Investment growth icon" />,
       title: "Free Investing Guide",
       description: "Start building wealth with $1. Complete guide to micro-investing apps and urban investing strategies.",
-      link: "/blog/free-investing-guide",
+      link: "/start-investing-guide",
       cta: "Start Investing Today"
     },
     {

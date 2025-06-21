@@ -44,7 +44,7 @@ const ManifestoSection = () => {
             </h2>
           </div>
 
-          <div className="space-y-8 text-lg leading-relaxed text-brand-black/80 dark:text-brand-cream/80">
+          <div className="space-y-8 text-lg leading-relaxed text-brand-black dark:text-brand-cream">
             <p>
               <strong>Nobody's coming to save you.</strong> The system wasn't built for us, and that's exactly why we're going to beat it at its own game.
             </p>

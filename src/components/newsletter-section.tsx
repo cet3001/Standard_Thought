@@ -86,7 +86,7 @@ export const NewsletterSection = () => {
               <CardTitle className="text-2xl sm:text-3xl font-black text-brand-black dark:text-brand-cream mb-4">
                 Get the <span className="text-accent">Urban Wealth Blueprint</span>
               </CardTitle>
-              <CardDescription className="text-base sm:text-lg text-brand-black/70 dark:text-brand-cream/70 max-w-2xl mx-auto">
+              <CardDescription className="text-base sm:text-lg text-brand-black dark:text-brand-cream max-w-2xl mx-auto">
                 Join 1000+ first-gen entrepreneurs getting weekly strategies for building generational wealth, 
                 plus exclusive AI side hustle frameworks and street-smart investing tips.
               </CardDescription>
@@ -123,7 +123,7 @@ export const NewsletterSection = () => {
                   </Button>
                 </div>
                 
-                <div className="flex items-center justify-center text-xs sm:text-sm text-brand-black/60 dark:text-brand-cream/60 space-x-4">
+                <div className="flex items-center justify-center text-xs sm:text-sm text-brand-black dark:text-brand-cream space-x-4">
                   <div className="flex items-center">
                     <Check className="h-3 w-3 sm:h-4 sm:w-4 text-accent mr-1" aria-label="Check mark" />
                     <span>Free wealth blueprint</span>

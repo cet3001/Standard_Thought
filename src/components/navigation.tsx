@@ -40,7 +40,8 @@ const Navigation = () => {
               <div className="flex-1 flex justify-center min-w-0">
                 <Logo />
               </div>
-              <div className="flex items-center space-x-3 flex-shrink-0">
+              <div className="flex items-center space-x-2 flex-shrink-0">
+                <AuthSection onAction={() => setIsMenuOpen(false)} />
                 <ThemeToggle />
               </div>
             </div>

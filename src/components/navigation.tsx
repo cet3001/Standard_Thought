@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import Logo from "./navigation/logo";
 import NavItems from "./navigation/nav-items";

@@ -40,7 +40,7 @@ const Logo = () => {
                   handleJoinMovement();
                 }}
                 size="sm"
-                className="bg-gradient-to-r from-accent to-[#FFD700] text-black font-bold hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg rounded-full px-2 py-0.5 border-0 text-[10px] h-auto leading-tight"
+                className="bg-gradient-to-r from-accent to-[#FFD700] text-black font-bold hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg rounded-full px-6 py-1 border-0 text-[10px] h-5 w-auto min-w-[60px]"
                 aria-label="Join the wealth building movement - Sign up or login"
               >
                 Join

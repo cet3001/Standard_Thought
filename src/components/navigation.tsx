@@ -41,6 +41,7 @@ const Navigation = () => {
                 <Logo />
               </div>
               <div className="flex items-center space-x-2 flex-shrink-0">
+                <AuthSection onAction={() => setIsMenuOpen(false)} />
                 <ThemeToggle />
               </div>
             </div>

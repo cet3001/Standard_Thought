@@ -33,14 +33,14 @@ const Logo = () => {
           
           {/* Mobile Join Button - positioned underneath on mobile */}
           {!user && (
-            <div className="lg:hidden flex justify-end -mt-1">
+            <div className="lg:hidden flex justify-start -mt-1">
               <Button 
                 onClick={(e) => {
                   e.preventDefault();
                   handleJoinMovement();
                 }}
                 size="sm"
-                className="bg-gradient-to-r from-accent to-[#FFD700] text-black font-bold hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg rounded-full px-6 py-1 border-0 text-[10px] h-5 w-auto min-w-[60px]"
+                className="bg-gradient-to-r from-accent to-[#FFD700] text-black font-bold hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg rounded-full px-3 py-0.5 border-0 text-[9px] h-4 leading-none"
                 aria-label="Join the wealth building movement - Sign up or login"
               >
                 Join

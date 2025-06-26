@@ -1,6 +1,8 @@
 
 User-agent: *
 Allow: /
+Disallow: /auth
+Disallow: /admin
 
 # Block scrapers you don't want
 User-agent: SemrushBot
@@ -13,9 +15,5 @@ User-agent: BLEXBot
 Disallow: /
 User-agent: DotBot
 Disallow: /
-
-# Protect sensitive paths
-Disallow: /auth
-Disallow: /admin
 
 Sitemap: https://www.standardthought.com/sitemap_index.xml

@@ -17,3 +17,13 @@ Disallow: /
 
 User-agent: MJ12bot
 Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# Protect sensitive areas
+Disallow: /auth
+Disallow: /admin

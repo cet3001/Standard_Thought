@@ -2,28 +2,20 @@
 User-agent: *
 Allow: /
 
-# Ensure canonical domain preference
-Host: https://www.standardthought.com
-
-# Sitemap location
-Sitemap: https://www.standardthought.com/sitemap_index.xml
-
-# Block unwanted crawlers
+# Block scrapers
 User-agent: SemrushBot
 Disallow: /
-
 User-agent: AhrefsBot
 Disallow: /
-
 User-agent: MJ12bot
 Disallow: /
-
 User-agent: BLEXBot
 Disallow: /
-
 User-agent: DotBot
 Disallow: /
 
-# Protect sensitive areas
+# Protect sensitive paths
 Disallow: /auth
 Disallow: /admin
+
+Sitemap: https://www.standardthought.com/sitemap_index.xml

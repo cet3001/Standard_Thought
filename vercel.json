@@ -1,22 +1,5 @@
 
 {
-  "routes": [
-    {
-      "src": "/sitemap.xml",
-      "dest": "/sitemap.xml",
-      "headers": {
-        "Content-Type": "application/xml",
-        "Cache-Control": "public, max-age=3600"
-      }
-    },
-    {
-      "src": "/googlea59634ea3ae6e4ed.html",
-      "dest": "/googlea59634ea3ae6e4ed.html",
-      "headers": {
-        "Content-Type": "text/html"
-      }
-    }
-  ],
   "redirects": [
     {
       "source": "/(.*)",

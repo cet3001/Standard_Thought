@@ -1,5 +1,5 @@
 
-# Security and SEO headers
+# ── Global security headers ─────────────────────────
 /*
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY
@@ -7,7 +7,7 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Cache-Control: public, max-age=31536000, immutable
 
-# Specific content type headers for SEO files
+# ── Explicit content types ──────────────────────────
 /sitemap.xml
   Content-Type: application/xml
   Cache-Control: public, max-age=3600
@@ -28,18 +28,14 @@
   Content-Type: text/plain
   Cache-Control: public, max-age=3600
 
-# Static assets optimization
+# ── Long-cache static assets ────────────────────────
 /lovable-uploads/*
   Cache-Control: public, max-age=31536000, immutable
-
 /*.png
   Cache-Control: public, max-age=31536000, immutable
-
 /*.jpg
   Cache-Control: public, max-age=31536000, immutable
-
 /*.svg
   Cache-Control: public, max-age=31536000, immutable
-
 /*.ico
   Cache-Control: public, max-age=86400

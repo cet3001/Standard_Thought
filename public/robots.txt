@@ -2,7 +2,7 @@
 User-agent: *
 Allow: /
 
-# Block scrapers
+# Block scrapers you don't want
 User-agent: SemrushBot
 Disallow: /
 User-agent: AhrefsBot

@@ -1,0 +1,55 @@
+import React from "react";
+import { generateFAQSchema } from "../components/seo/schemas"; // Adjust path if needed
+
+const faqs = [
+  // Wealth-building
+  { question: "How do you build generational wealth from nothing?", answer: "Start with financial literacy education, active multiple income streams through urban investing strategies, focus on asset acquisition over consumer spending." },
+  { question: "What are the best ways to start smart money moves for beginners?", answer: "Begin with budgeting and debt elimination, build an emergency fund, start investing with as little as $25, learn about compound interest, and focus on consistent saving." },
+  { question: "How long does it take to build generational wealth?", answer: "Building generational wealth typically takes 15-30 years of consistent investing and wealth-building strategies, but urban entrepreneurs can accelerate the process with smart financial choices." },
+
+  // Investing
+  { question: "What are urban investing strategies that actually work?", answer: "Focus on low-cost index funds, real estate investment trusts (REITs), dividend-paying stocks, and micro-investing apps. Start with $25-$50 monthly investments and increase over time." },
+  { question: "How do you start investing with limited income?", answer: "Use micro-investing apps like Acorns or Stash, start with fractional shares, focus on low-fee index funds, and automate small weekly investments." },
+  { question: "What investments should urban entrepreneurs prioritize?", answer: "Prioritize your business first for highest returns, then diversify into index funds, emergency savings, and real estate. Aim for 60% business, 30% index funds, 10% cash reserves." },
+
+  // Credit
+  { question: "How do you build credit from scratch in 6 months?", answer: "Get a secured credit card, make small purchases monthly, pay balances in full before due dates, keep utilization under 10%, and consider becoming an authorized user on someone else's established account." },
+  { question: "What are the fastest credit building strategies?", answer: "Use credit builder loans, report rent payments through services like RentTrack, pay down existing balances to under 30% utilization, and dispute any errors on your credit report." },
+  { question: "How long does credit repair take?", answer: "Credit repair typically takes 3-6 months for significant improvements and 12-24 months for major score increases, depending on your starting point and consistency with payments." },
+
+  // AI Hustles
+  { question: "What are the most profitable AI side hustles for beginners?", answer: "Content creation with AI tools, social media management using automation, AI-powered copywriting services, chatbot development for small businesses, and AI image generation for marketing materials." },
+  { question: "How much money can you make with AI side hustles?", answer: "Beginners can earn $500-2000 monthly within 3-6 months, while experienced AI entrepreneurs generate $5000-15000 monthly through scaled AI service businesses." },
+  { question: "What AI tools are best for making money?", answer: "ChatGPT for content and copywriting, Midjourney for image creation, Jasper for marketing copy, Make.com for automation workflows, and Claude for business analysis and strategy." },
+
+  // Entrepreneurship
+  { question: "How do you start a business in urban areas with no money?", answer: "Start with service-based businesses requiring minimal capital, leverage social media for free marketing, use community resources and small business grants, and reinvest early profits for growth." },
+  { question: "What are the best urban business opportunities?", answer: "Digital marketing services, food delivery and catering, mobile services (car wash, repair), tutoring and coaching, and e-commerce with local fulfillment." },
+  { question: "How do urban entrepreneurs find startup funding?", answer: "Explore community development financial institutions (CDFIs), minority business grants, crowdfunding platforms, microloans, and angel investor networks focused on urban development." }
+];
+
+const FAQ = () => {
+  const faqSchema = generateFAQSchema({ faqs });
+
+  return (
+    <>
+      <h1>Frequently Asked Questions</h1>
+      <ul>
+        {faqs.map((faq, idx) => (
+          <li key={idx}>
+            <strong>{faq.question}</strong>
+            <div>{faq.answer}</div>
+          </li>
+        ))}
+      </ul>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqSchema)
+        }}
+      />
+    </>
+  );
+};
+
+export default FAQ;

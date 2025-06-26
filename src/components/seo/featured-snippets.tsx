@@ -92,16 +92,9 @@ const FeaturedSnippets = ({ topic, className = "" }: FeaturedSnippetsProps) => {
 
   return (
     <div className={`featured-snippets ${className}`}>
-      <div className="sr-only" itemScope itemType="https://schema.org/FAQPage">
-        {snippets.questions.map((item, index) => (
-          <div key={index} itemScope itemType="https://schema.org/Question">
-            <h3 itemProp="name">{item.question}</h3>
-            <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
-              <div itemProp="text">{item.answer}</div>
-            </div>
-          </div>
-        ))}
-      </div>
+     <div className={`featured-snippets ${className}`}>
+  {/* Render your visible Q&A here if you want, or leave empty for now */}
+</div>
     </div>
   );
 };

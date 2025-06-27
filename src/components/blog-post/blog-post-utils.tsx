@@ -10,7 +10,16 @@ export const getWordCount = (content: string) => {
   return content.split(' ').length;
 };
 
-export const generateBlogPostSEO = (post: any) => {
+interface BlogPost {
+  title: string;
+  excerpt: string;
+  category: string;
+  tags: string[];
+  meta_description?: string | null;
+  meta_keywords?: string | null;
+}
+
+export const generateBlogPostSEO = (post: BlogPost) => {
   const metaDescription = post.meta_description || 
     `${post.excerpt.slice(0, 140)}... | Read this ${post.category.toLowerCase()} story on Standardthought - Building legacy from nothing.`;
   

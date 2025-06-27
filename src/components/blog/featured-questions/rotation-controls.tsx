@@ -4,7 +4,13 @@ import { questionPool } from "./question-data";
 interface RotationControlsProps {
   currentRotation: number;
   setCurrentRotation: (rotation: number) => void;
-  featuredQuestions: any[];
+  featuredQuestions: Array<{
+    id: number;
+    question: string;
+    answer: string;
+    category: string;
+    featured: boolean;
+  }>;
 }
 
 const RotationControls = ({ currentRotation, setCurrentRotation, featuredQuestions }: RotationControlsProps) => {

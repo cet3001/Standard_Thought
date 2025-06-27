@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import BlogShowcaseHeader from "./blog-showcase-header";
@@ -22,12 +22,7 @@ const BlogShowcase = () => {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    setIsVisible(true);
-    fetchFeaturedPosts();
-  }, []);
-
-  const fetchFeaturedPosts = async () => {
+  const fetchFeaturedPosts = useCallback(async () => {
     try {
       const { data, error } = await supabase
         .from('blog_posts')
@@ -44,13 +39,18 @@ const BlogShowcase = () => {
       } else {
         setFeaturedPosts(data || fallbackPosts);
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Fetch error:', error);
       setFeaturedPosts(fallbackPosts);
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    setIsVisible(true);
+    fetchFeaturedPosts();
+  }, [fetchFeaturedPosts]);
 
   // Fallback posts for when no posts exist yet
   const fallbackPosts = [

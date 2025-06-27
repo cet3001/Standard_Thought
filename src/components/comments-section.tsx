@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -34,27 +34,7 @@ const CommentsSection = ({ blogPostId, commentsEnabled }: CommentsSectionProps) 
     content: ""
   });
 
-  useEffect(() => {
-    if (commentsEnabled) {
-      fetchComments();
-      checkAdminStatus();
-    }
-  }, [blogPostId, commentsEnabled]);
-
-  const checkAdminStatus = async () => {
-    const { data: { user } } = await supabase.auth.getUser();
-    if (user) {
-      const { data: profile } = await supabase
-        .from('profiles')
-        .select('role')
-        .eq('id', user.id)
-        .single();
-      
-      setIsAdmin(profile?.role === 'admin');
-    }
-  };
-
-  const fetchComments = async () => {
+  const fetchComments = useCallback(async () => {
     try {
       setLoading(true);
       const { data, error } = await supabase
@@ -75,7 +55,27 @@ const CommentsSection = ({ blogPostId, commentsEnabled }: CommentsSectionProps) 
     } finally {
       setLoading(false);
     }
-  };
+  }, [blogPostId]);
+
+  const checkAdminStatus = useCallback(async () => {
+    const { data: { user } } = await supabase.auth.getUser();
+    if (user) {
+      const { data: profile } = await supabase
+        .from('profiles')
+        .select('role')
+        .eq('id', user.id)
+        .single();
+      
+      setIsAdmin(profile?.role === 'admin');
+    }
+  }, []);
+
+  useEffect(() => {
+    if (commentsEnabled) {
+      fetchComments();
+      checkAdminStatus();
+    }
+  }, [commentsEnabled, fetchComments, checkAdminStatus]);
 
   const handleSubmitComment = async (e: React.FormEvent) => {
     e.preventDefault();

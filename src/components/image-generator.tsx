@@ -33,9 +33,10 @@ const ImageGenerator = () => {
 
       setResult(data);
       toast.success('Image generated successfully!');
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('DALL-E generation error:', error);
-      toast.error(error.message || 'Failed to generate image');
+      const errorMessage = error instanceof Error ? error.message : 'Failed to generate image';
+      toast.error(errorMessage);
     } finally {
       setLoading(false);
     }

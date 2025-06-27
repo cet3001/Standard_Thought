@@ -3,7 +3,10 @@ import { useEffect } from 'react';
 
 declare global {
   interface Window {
-    gtag: (...args: unknown[]) => void;
+    gtag: {
+      (...args: unknown[]): void;
+      q?: unknown[];
+    };
   }
 }
 
@@ -25,10 +28,10 @@ const Analytics = () => {
 
     // Initialize gtag
     script.onload = () => {
-      window.gtag = window.gtag || function(...args: unknown[]) {
-        (window.gtag as { q: unknown[] }).q = (window.gtag as { q: unknown[] }).q || [];
-        (window.gtag as { q: unknown[] }).q.push(args);
-      };
+      window.gtag = window.gtag || ((...args: unknown[]) => {
+        window.gtag.q = window.gtag.q || [];
+        window.gtag.q.push(args);
+      }) as typeof window.gtag;
       
       window.gtag('js', new Date());
       window.gtag('config', GA_MEASUREMENT_ID, {

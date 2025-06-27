@@ -4,6 +4,7 @@ import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.39.3';
 import { Resend } from "npm:resend@2.0.0";
 
 const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
+const adminEmail = Deno.env.get("ADMIN_NOTIFICATION_EMAIL");
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -30,10 +31,14 @@ const handler = async (req: Request): Promise<Response> => {
     const subscriberName = name || 'Anonymous';
     const signupTime = new Date(created_at).toLocaleString();
 
-    // Send notification email to you (the admin)
+    if (!adminEmail) {
+      throw new Error('ADMIN_NOTIFICATION_EMAIL is not set');
+    }
+
+    // Blast a quick notice to the admin
     const emailResponse = await resend.emails.send({
       from: "Standardthought <onboarding@resend.dev>",
-      to: ["cet3001@gmail.com"], // Your admin email
+      to: [adminEmail],
       subject: "🎉 New Newsletter Subscriber!",
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">

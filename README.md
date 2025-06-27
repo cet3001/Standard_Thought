@@ -71,3 +71,17 @@ Yes, you can!
 To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
 Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+
+## Environment Setup
+
+Copy `.env.example` to `.env` and drop in your own keys. These values fuel the email and AI features.
+
+```
+SUPABASE_URL=your-supabase-url
+SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
+RESEND_API_KEY=your-resend-api-key
+OPENAI_API_KEY=your-openai-key
+ADMIN_NOTIFICATION_EMAIL=admin@yourdomain.com
+```
+
+Set `ADMIN_NOTIFICATION_EMAIL` to whatever inbox should get new-subscriber alerts.

@@ -5,7 +5,7 @@ import { fonts } from "./src/styles/tailwind/fonts";
 import { fontSize } from "./src/styles/tailwind/fontSize";
 import { letterSpacing } from "./src/styles/tailwind/letterSpacing";
 import { borderRadius } from "./src/styles/tailwind/borderRadius";
-import { animations } from "./src/styles/tailwind/animations";
+import animations from "./src/styles/tailwind/animations";
 
 const config: Config = {
   darkMode: ["class"],
@@ -34,7 +34,7 @@ const config: Config = {
       animation: animations.animation,
     },
   },
-  plugins: [import("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate")],
 } satisfies Config;
 
 export default config;

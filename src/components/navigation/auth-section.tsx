@@ -46,7 +46,7 @@ const AuthSection = ({ onAction }: AuthSectionProps) => {
     return (
       <Button 
         onClick={handleJoinMovement}
-        className="bg-gradient-to-r from-[#FFD700] to-[#FFA500] text-black font-bold hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg rounded-full px-4 lg:px-8 py-2 lg:py-3 border-0 text-xs lg:text-sm hover:from-[#FFA500] hover:to-[#FFD700]"
+        className="bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFA500] text-black font-bold hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg rounded-full px-4 lg:px-8 py-2 lg:py-3 border-0 text-xs lg:text-sm relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/30 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 hover:from-[#FFA500] hover:via-[#FFD700] hover:to-[#FFD700]"
         aria-label="Join the wealth building movement - Sign up or login"
       >
         <span className="hidden sm:inline">Join Movement</span>
@@ -62,7 +62,7 @@ const AuthSection = ({ onAction }: AuthSectionProps) => {
           onClick={handleCreatePost}
           variant="outline"
           size="sm"
-          className="bg-gradient-to-r from-[#FFD700] to-[#FFA500] text-black font-bold hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg px-2 lg:px-4 py-1 lg:py-2 rounded-2xl border-0 text-xs lg:text-sm hover:from-[#FFA500] hover:to-[#FFD700]"
+          className="bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFA500] text-black font-bold hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg px-2 lg:px-4 py-1 lg:py-2 rounded-2xl border-0 text-xs lg:text-sm relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/30 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 hover:from-[#FFA500] hover:via-[#FFD700] hover:to-[#FFD700]"
           aria-label="Create new story post"
         >
           <span className="hidden sm:inline">Create Story</span>

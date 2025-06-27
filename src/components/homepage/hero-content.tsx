@@ -35,7 +35,7 @@ const HeroContent = ({ isVisible, scrollToNewsletter }: HeroContentProps) => {
           <Button 
             size="lg"
             onClick={handleGetBlueprint}
-            className="w-full sm:w-auto bg-gradient-to-r from-[#FFD700] to-[#FFA500] text-black font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-3xl hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-sm sm:text-base hover:from-[#FFA500] hover:to-[#FFD700] border-0"
+            className="w-full sm:w-auto bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFA500] text-black font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-3xl hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-sm sm:text-base border-0 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/30 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 hover:from-[#FFA500] hover:via-[#FFD700] hover:to-[#FFD700]"
             aria-label="Get the wealth building blueprint - scroll to newsletter signup"
           >
             <Zap className="mr-2 h-4 w-4 sm:h-5 sm:w-5" aria-label="Lightning bolt icon representing fast action" />
@@ -45,7 +45,7 @@ const HeroContent = ({ isVisible, scrollToNewsletter }: HeroContentProps) => {
           <Link to="/blog" onClick={handleReadStories}>
             <Button 
               size="lg"
-              className="w-full sm:w-auto bg-gradient-to-r from-[#FFD700] to-[#FFA500] text-black font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-3xl hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-sm sm:text-base hover:from-[#FFA500] hover:to-[#FFD700] border-0"
+              className="w-full sm:w-auto bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFA500] text-black font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-3xl hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-sm sm:text-base border-0 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/30 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 hover:from-[#FFA500] hover:via-[#FFD700] hover:to-[#FFD700]"
               aria-label="Read real builder success stories"
             >
               Read Builder Stories

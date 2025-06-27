@@ -59,22 +59,21 @@ const ValuePropsSection = ({ isVisible }: ValuePropsSectionProps) => {
             key={index}
             to={prop.link}
             onClick={() => handleLinkClick(prop.title, prop.link)}
-            className={`block text-center p-4 sm:p-6 bg-white/70 dark:bg-brand-black/70 backdrop-blur-sm rounded-2xl sm:rounded-3xl border border-accent/20 hover:border-accent/60 transition-all duration-300 hover:scale-105 hover:shadow-xl group cursor-pointer ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+            className={`block text-center p-4 sm:p-6 bg-white/70 dark:bg-brand-black/70 backdrop-blur-sm rounded-2xl sm:rounded-3xl border border-accent/20 hover:border-accent/60 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#247EFF]/10 group cursor-pointer ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
             style={{ transitionDelay: `${700 + index * 100}ms` }}
             aria-label={`Navigate to ${prop.title} - ${prop.description}`}
           >
             <div className="mb-3 sm:mb-4 flex justify-center">
-              {prop.icon}
+              <div className="group-hover:scale-110 transition-transform duration-200">
+                {prop.icon}
+              </div>
             </div>
             <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-brand-black dark:text-brand-cream group-hover:text-accent transition-colors">
               {prop.title}
             </h3>
-            <p className="text-sm sm:text-base text-brand-black/70 dark:text-brand-cream/70 mb-3 sm:mb-4 leading-relaxed">
+            <p className="text-sm sm:text-base text-brand-black/70 dark:text-brand-cream/70 leading-relaxed">
               {prop.description}
             </p>
-            <span className="inline-block text-xs sm:text-sm text-accent hover:text-[#FFD700] transition-colors font-medium group-hover:underline">
-              Learn More →
-            </span>
           </Link>
         ))}
       </div>

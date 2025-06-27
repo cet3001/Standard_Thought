@@ -1,8 +1,21 @@
-# Let bots crawl everything except /auth and /admin. No special blocks.
+
+# Allow all legitimate crawlers to index the site
+# Only block sensitive areas like auth and admin
 
 User-agent: *
 Allow: /
 Disallow: /auth
 Disallow: /admin
 
+# Special rules for specific crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Sitemap location for crawlers
 Sitemap: https://www.standardthought.com/sitemap_index.xml
+
+# Crawl delay to be respectful of server resources
+Crawl-delay: 1

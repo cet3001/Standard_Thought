@@ -1,3 +1,4 @@
+
 import { Helmet } from "react-helmet";
 import { DEFAULTS } from "./defaults";
 import { normalizeUrl, getFullImageUrl, optimizeDescription } from "./helpers";
@@ -43,7 +44,7 @@ const SEO = ({
   category,
   tags = [],
   twitterHandle = DEFAULTS.twitterHandle,
-  noIndex = false,
+  noIndex = false, // Explicitly default to false to ensure indexing
   wordCount,
   breadcrumbs
 }: SEOProps) => {
@@ -60,7 +61,7 @@ const SEO = ({
   const fullImageUrl = getFullImageUrl(image);
   const optimizedDescription = optimizeDescription(description);
 
-  // Enhanced robots content with additional directives
+  // Enhanced robots content - ENSURE INDEXING for public pages
   const robotsContent = noIndex
     ? "noindex, nofollow"
     : "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1";
@@ -117,6 +118,8 @@ const SEO = ({
       <meta name="keywords" content={keywords} />
       <meta name="author" content={author} />
       <link rel="canonical" href={canonicalUrl} />
+      
+      {/* CRITICAL: Ensure proper indexing directives */}
       <meta name="robots" content={robotsContent} />
       <meta name="googlebot" content={robotsContent} />
       <meta name="bingbot" content={robotsContent} />

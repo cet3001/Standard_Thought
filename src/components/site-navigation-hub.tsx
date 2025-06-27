@@ -42,30 +42,30 @@ const SiteNavigationHub = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {navigationSections.map((section, index) => (
-            <Card key={index} className="border-[#247EFF]/20 hover:border-[#247EFF]/40 transition-colors group">
-              <CardHeader>
-                <div className="flex items-center justify-between mb-4">
-                  <div className="text-[#247EFF]">{section.icon}</div>
-                  <Badge className={section.color}>{section.badge}</Badge>
-                </div>
-                <CardTitle className="text-[#0A0A0A] dark:text-brand-cream group-hover:text-[#247EFF] transition-colors">
-                  {section.title}
-                </CardTitle>
-                <CardDescription className="text-[#0A0A0A]/70 dark:text-brand-cream/70">
-                  {section.description}
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Link 
-                  to={section.link}
-                  onClick={() => handleNavigationClick(section)}
-                  className="inline-flex items-center text-[#247EFF] hover:text-[#0057FF] font-medium transition-colors"
-                >
-                  Explore {section.title}
-                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </CardContent>
-            </Card>
+            <Link
+              key={index}
+              to={section.link}
+              onClick={() => handleNavigationClick(section)}
+              className="block"
+            >
+              <Card className="border-[#247EFF]/20 hover:border-[#247EFF]/40 transition-all duration-300 group hover:shadow-lg cursor-pointer h-full">
+                <CardHeader>
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="text-[#247EFF]">{section.icon}</div>
+                    <Badge className={section.color}>{section.badge}</Badge>
+                  </div>
+                  <CardTitle className="text-[#0A0A0A] dark:text-brand-cream group-hover:text-[#247EFF] transition-colors text-xl">
+                    {section.title}
+                  </CardTitle>
+                  <CardDescription className="text-[#0A0A0A]/70 dark:text-brand-cream/70 mb-4">
+                    {section.description}
+                  </CardDescription>
+                  <div className="text-sm text-[#247EFF] hover:text-[#0057FF] font-medium transition-colors">
+                    Read More →
+                  </div>
+                </CardHeader>
+              </Card>
+            </Link>
           ))}
         </div>
       </div>

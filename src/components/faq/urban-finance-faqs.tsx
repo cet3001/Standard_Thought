@@ -45,21 +45,46 @@ const UrbanFinanceFAQs = () => {
   ];
 
   return (
-    <div className="space-y-12">
-      <FAQSection 
-        title="Investing & Building Generational Wealth FAQs"
-        faqs={investingFAQs}
-      />
+    <div className="space-y-16">
+      {/* Section with gradient background */}
+      <div className="bg-gradient-to-r from-[#247EFF]/5 to-transparent rounded-2xl p-8 md:p-12">
+        <FAQSection 
+          title="💰 Investing & Building Generational Wealth"
+          faqs={investingFAQs}
+          className="text-center"
+        />
+      </div>
       
-      <FAQSection 
-        title="Credit Building & Financial Recovery FAQs"
-        faqs={creditFAQs}
-      />
+      {/* Section with different styling */}
+      <div className="bg-white/50 dark:bg-brand-black/30 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-[#247EFF]/10">
+        <FAQSection 
+          title="🏦 Credit Building & Financial Recovery"
+          faqs={creditFAQs}
+          className="text-center"
+        />
+      </div>
       
-      <FAQSection 
-        title="AI Side Hustles & Securing the Bag FAQs"
-        faqs={aiHustleFAQs}
-      />
+      {/* Section with accent styling */}
+      <div className="bg-gradient-to-l from-[#247EFF]/5 to-transparent rounded-2xl p-8 md:p-12">
+        <FAQSection 
+          title="🤖 AI Side Hustles & Securing the Bag"
+          faqs={aiHustleFAQs}
+          className="text-center"
+        />
+      </div>
+
+      {/* Call to Action Section */}
+      <div className="text-center py-12 bg-gradient-to-r from-[#247EFF] to-[#0057FF] rounded-2xl text-white">
+        <h2 className="text-2xl md:text-3xl font-bold mb-4">
+          Still Got Questions?
+        </h2>
+        <p className="text-lg md:text-xl mb-6 opacity-90">
+          Join our community of first-gen wealth builders
+        </p>
+        <button className="bg-white text-[#247EFF] px-8 py-3 rounded-lg font-semibold hover:bg-brand-cream transition-colors">
+          Join The Movement
+        </button>
+      </div>
     </div>
   );
 };

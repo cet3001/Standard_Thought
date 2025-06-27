@@ -16,10 +16,13 @@ import BlogShowcase from "@/components/blog-showcase";
 import LSIContent from "@/components/lsi-content";
 import SiteNavigationHub from "@/components/site-navigation-hub";
 import SemanticContentEnhancer from "@/components/seo/semantic-content-enhancer";
+import AddSamplePosts from "@/components/admin/add-sample-posts";
 import { useMobilePerformance } from "@/hooks/use-mobile-performance";
+import { useAuth } from "@/contexts/AuthContext";
 
 const Index = () => {
   useMobilePerformance();
+  const { isAdmin } = useAuth();
 
   const breadcrumbs = [
     { name: "Home", url: "https://www.standardthought.com", position: 1 }
@@ -98,6 +101,13 @@ const Index = () => {
 
       {/* Navigation Header */}
       <Navigation />
+
+      {/* Admin Controls */}
+      {isAdmin && (
+        <div className="fixed top-20 right-4 z-50 bg-white/90 dark:bg-brand-black/90 backdrop-blur-sm p-4 rounded-xl border border-[#247EFF]/20">
+          <AddSamplePosts />
+        </div>
+      )}
 
       {/* Main Content */}
       <main>

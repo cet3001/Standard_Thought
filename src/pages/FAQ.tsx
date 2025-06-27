@@ -20,8 +20,8 @@ const FAQ = () => {
       />
       <Navigation />
 
-      {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-gradient-to-b from-[#247EFF]/10 to-transparent">
+      {/* Hero Section with extra top padding */}
+      <section className="pt-40 pb-16 bg-gradient-to-b from-[#247EFF]/10 to-transparent">
         <div className="container mx-auto px-6 text-center max-w-4xl">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#0A0A0A] dark:text-brand-cream mb-6 leading-tight">
             Your Questions, <span className="text-[#247EFF]">Answered</span>

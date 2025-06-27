@@ -46,20 +46,20 @@ const Navigation = () => {
             </div>
           </div>
 
-          {/* Desktop Layout - Improved alignment and spacing */}
-          <div className="hidden lg:flex items-center justify-between w-full">
-            {/* Logo Section */}
-            <div className="flex-shrink-0">
+          {/* Desktop Layout - Better spacing with more room for logo */}
+          <div className="hidden lg:flex items-center w-full">
+            {/* Logo Section - More space on the left */}
+            <div className="flex-shrink-0 w-80">
               <Logo />
             </div>
 
-            {/* Center Navigation Items */}
-            <div className="flex-1 flex justify-center">
+            {/* Center Navigation Items - Adjusted positioning */}
+            <div className="flex-1 flex justify-center -ml-20">
               <NavItems className="flex items-center space-x-8" showButton={true} />
             </div>
 
             {/* Right Side Actions */}
-            <div className="flex items-center space-x-4 flex-shrink-0">
+            <div className="flex items-center space-x-4 flex-shrink-0 w-80 justify-end">
               <ThemeToggle />
               <AuthSection />
             </div>

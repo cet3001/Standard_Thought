@@ -20,6 +20,13 @@ export interface BlogPost {
   updated_at: string;
 }
 
+export interface Post extends BlogPost {
+  theme_tags?: string[];
+  is_editors_pick?: boolean;
+  is_popular?: boolean;
+  view_count?: number;
+}
+
 export const getBlogPosts = async (): Promise<BlogPost[]> => {
   const { data, error } = await supabase
     .from('blog_posts')
@@ -33,6 +40,36 @@ export const getBlogPosts = async (): Promise<BlogPost[]> => {
   }
 
   return data || [];
+};
+
+export const getPosts = async (): Promise<Post[]> => {
+  const { data, error } = await supabase
+    .from('blog_posts')
+    .select('*')
+    .eq('published', true)
+    .order('created_at', { ascending: false });
+
+  if (error) {
+    console.error('Error fetching posts:', error);
+    throw error;
+  }
+
+  return data || [];
+};
+
+export const getCategories = async (): Promise<string[]> => {
+  const { data, error } = await supabase
+    .from('blog_posts')
+    .select('category')
+    .eq('published', true);
+
+  if (error) {
+    console.error('Error fetching categories:', error);
+    throw error;
+  }
+
+  const categories = [...new Set(data?.map(post => post.category) || [])];
+  return categories;
 };
 
 export const getBlogPost = async (slug: string): Promise<BlogPost | null> => {
@@ -54,7 +91,7 @@ export const getBlogPost = async (slug: string): Promise<BlogPost | null> => {
   return data;
 };
 
-export const createBlogPost = async (post: unknown): Promise<BlogPost> => {
+export const createBlogPost = async (post: Partial<BlogPost>): Promise<BlogPost> => {
   const { data, error } = await supabase
     .from('blog_posts')
     .insert(post)
@@ -69,7 +106,7 @@ export const createBlogPost = async (post: unknown): Promise<BlogPost> => {
   return data;
 };
 
-export const updateBlogPost = async (id: string, updates: unknown): Promise<BlogPost> => {
+export const updateBlogPost = async (id: string, updates: Partial<BlogPost>): Promise<BlogPost> => {
   const { data, error } = await supabase
     .from('blog_posts')
     .update(updates)

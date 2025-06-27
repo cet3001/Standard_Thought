@@ -1,7 +1,10 @@
 
 export interface FeaturedQuestion {
+  id: number;
   question: string;
   answer: string;
+  category: string;
+  featured: boolean;
   tags: string[];
   skillLevel: "Beginner" | "Intermediate" | "Advanced";
   startupCost: string;
@@ -17,8 +20,11 @@ export interface FeaturedQuestion {
 
 export const questionPool: FeaturedQuestion[] = [
   {
+    id: 1,
     question: "What's the biggest mistake first-gen wealth builders make?",
     answer: "The biggest mistake is trying to copy strategies without understanding the context. Here's what really matters:\n\n• Know your starting point: Your credit score, income stability, and risk tolerance aren't the same as someone else's\n• Build systems, not just income: Focus on repeatable processes that generate consistent cash flow\n• Invest in education first: Understanding compound interest and tax implications saves more money than most 'get rich quick' schemes\n• Start ugly and improve: Perfect plans never launch - start with what you have and optimize as you learn\n\nMost people want the Instagram highlight reel, but real wealth comes from boring consistency and smart systems.",
+    category: "Common Mistakes",
+    featured: true,
     tags: ["Common Mistakes", "First-Gen Wealth", "Strategy"],
     skillLevel: "Beginner",
     startupCost: "$0",
@@ -42,8 +48,11 @@ export const questionPool: FeaturedQuestion[] = [
     secondaryActionLink: "/blog?search=success+story"
   },
   {
+    id: 2,
     question: "How do you know if a side hustle is worth scaling?",
     answer: "A side hustle is ready to scale when you see these 3 clear signals:\n\n1. Predictable Revenue: You can forecast monthly income within 20% accuracy\n2. Systems That Work Without You: The business runs for at least a week without your direct involvement\n3. Market Demand Exceeds Your Capacity: You're turning down work or have a waiting list\n\nRed flags to avoid scaling:\n• Income depends entirely on your personal time\n• No clear path to hire/train others\n• Market is too small or seasonal\n• Profit margins are shrinking as you grow\n\nFocus on businesses where your role shifts from 'doing' to 'managing systems.'",
+    category: "Side Hustles",
+    featured: true,
     tags: ["Side Hustles", "Scaling Business", "Decision Framework"],
     skillLevel: "Intermediate",
     startupCost: "$100-500",
@@ -67,8 +76,11 @@ export const questionPool: FeaturedQuestion[] = [
     secondaryActionLink: "/blog?search=scaling+business"
   },
   {
+    id: 3,
     question: "What financial moves should you make in your first $10K?",
     answer: "Your first $10K is the foundation for everything else. Here's the strategic order:\n\nFirst $1K: Emergency fund in high-yield savings (prevents debt spiral)\nNext $2K: Pay off high-interest debt (credit cards, payday loans)\nNext $2K: Build credit with secured card + report rent payments\nNext $3K: Start investing in index funds (S&P 500, total market)\nLast $2K: Skill development or business investment with proven ROI\n\nDon't do this: Put everything in crypto, day trading, or 'business opportunities' without emergency funds first.\n\nThis order maximizes your financial stability while building wealth-generating assets.",
+    category: "Financial Strategy",
+    featured: true,
     tags: ["Financial Strategy", "Investment Priority", "Wealth Building"],
     skillLevel: "Beginner",
     startupCost: "$1K+",
@@ -92,8 +104,11 @@ export const questionPool: FeaturedQuestion[] = [
     secondaryActionLink: "/blog?search=investment+strategy"
   },
   {
+    id: 4,
     question: "How long does it take to build generational wealth from nothing?",
     answer: "Real generational wealth takes 10-20 years of consistent action, but you'll see meaningful progress much sooner:\n\nYear 1-2: Foundation building (emergency fund, debt payoff, credit repair)\nYear 3-5: Wealth acceleration (investing, side hustles, skill development)\nYear 5-10: System optimization (business scaling, advanced investing, tax strategies)\nYear 10-20: Legacy building (real estate, business ownership, teaching others)\n\nThe key: Start with what you have, stay consistent, and compound your efforts. Most people see their first $10K within 2-3 years, $100K by year 7-10.\n\nGenerational wealth isn't just money—it's knowledge, systems, and mindset you pass down.",
+    category: "Generational Wealth",
+    featured: true,
     tags: ["Generational Wealth", "Timeline", "Long-term Strategy"],
     skillLevel: "Beginner",
     startupCost: "$0",
@@ -117,8 +132,11 @@ export const questionPool: FeaturedQuestion[] = [
     secondaryActionLink: "/blog?search=generational+wealth"
   },
   {
+    id: 5,
     question: "What business can I start with $500 or less?",
     answer: "Here are proven businesses you can launch with $500 or less:\n\nService-Based ($0-100):\n• Virtual assistant, tutoring, social media management\n• House cleaning, car detailing, pet sitting\n• Freelance writing, graphic design, web development\n\nProduct-Based ($100-500):\n• Print-on-demand (t-shirts, mugs, phone cases)\n• Dropshipping (start with one niche)\n• Digital products (courses, templates, ebooks)\n• Reselling (thrift flips, wholesale products)\n\nThe secret: Start with services to build capital, then reinvest in products for passive income.",
+    category: "Low-Cost Business",
+    featured: true,
     tags: ["Low-Cost Business", "Entrepreneurship", "Side Hustles"],
     skillLevel: "Beginner",
     startupCost: "$0-500",

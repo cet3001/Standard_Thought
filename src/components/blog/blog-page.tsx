@@ -6,7 +6,7 @@ import BlogPageContent from "./blog-page-content";
 import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { getPosts, getCategories } from "@/lib/api";
-import { Post } from "@/lib/types";
+import { Post } from "@/lib/api";
 import Loading from "@/components/ui/loading";
 import ErrorMessage from "@/components/ui/error-message";
 
@@ -76,7 +76,7 @@ const BlogPage = () => {
       <Navigation />
       <main className="pt-32 pb-16">
         <BlogPageContent
-          posts={posts}
+          posts={posts || []}
           filteredPosts={filteredPosts}
           categories={categories || []}
           themeTags={themeTags}

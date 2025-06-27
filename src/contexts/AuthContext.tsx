@@ -9,6 +9,8 @@ interface AuthContextType {
   loading: boolean;
   isAdmin: boolean;
   signOut: () => Promise<void>;
+  signIn: (email: string, password: string) => Promise<{ error: Error | null }>;
+  signUp: (email: string, password: string) => Promise<{ error: Error | null }>;
 }
 
 interface UserProfile {
@@ -25,6 +27,8 @@ const defaultValue: AuthContextType = {
   loading: true,
   isAdmin: false,
   signOut: async (): Promise<void> => {},
+  signIn: async (): Promise<{ error: Error | null }> => ({ error: null }),
+  signUp: async (): Promise<{ error: Error | null }> => ({ error: null }),
 };
 
 const AuthContext = createContext<AuthContextType>(defaultValue);
@@ -106,6 +110,36 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   };
 
+  const signIn = async (email: string, password: string) => {
+    try {
+      const { error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+      return { error };
+    } catch (error: unknown) {
+      console.error('Sign in error:', error);
+      return { error: error instanceof Error ? error : new Error('Sign in failed') };
+    }
+  };
+
+  const signUp = async (email: string, password: string) => {
+    try {
+      const redirectUrl = `${window.location.origin}/`;
+      const { error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          emailRedirectTo: redirectUrl
+        }
+      });
+      return { error };
+    } catch (error: unknown) {
+      console.error('Sign up error:', error);
+      return { error: error instanceof Error ? error : new Error('Sign up failed') };
+    }
+  };
+
   const isAdmin = profile?.role === 'admin';
 
   const value = {
@@ -114,6 +148,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     loading,
     isAdmin,
     signOut,
+    signIn,
+    signUp,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

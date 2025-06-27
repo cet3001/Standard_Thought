@@ -31,25 +31,27 @@ const HeroContent = ({ isVisible, scrollToNewsletter }: HeroContentProps) => {
           Real strategies for <strong>urban wealth building</strong>, proven <Link to="/blog/ai-side-hustles-guide" className="text-[#247EFF] hover:text-[#0057FF] underline decoration-dotted underline-offset-4 transition-colors">AI side hustles</Link>, and <Link to="/financial-education-guide" className="text-[#247EFF] hover:text-[#0057FF] underline decoration-dotted underline-offset-4 transition-colors">financial education</Link> designed for first-gen entrepreneurs building generational wealth.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-8 sm:mb-12 px-4">
+        {/* Single Primary CTA */}
+        <div className="flex justify-center mb-6 px-4">
           <Button 
             size="lg"
             onClick={handleGetBlueprint}
-            className="w-full sm:w-auto bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFA500] text-black font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-3xl hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-sm sm:text-base border-0 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/30 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 hover:from-[#FFA500] hover:via-[#FFD700] hover:to-[#FFD700]"
+            className="w-full sm:w-auto bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFA500] text-black font-bold px-8 sm:px-12 py-4 sm:py-5 rounded-3xl hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-base sm:text-lg border-0 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/40 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 hover:from-[#FFA500] hover:via-[#FFD700] hover:to-[#FFD700] after:absolute after:inset-0 after:bg-gradient-to-45 after:from-transparent after:via-white/20 after:to-transparent after:animate-[shimmer_3s_ease-in-out_infinite]"
             aria-label="Get the wealth building blueprint - scroll to newsletter signup"
           >
-            <Zap className="mr-2 h-4 w-4 sm:h-5 sm:w-5" aria-label="Lightning bolt icon representing fast action" />
+            <Zap className="mr-3 h-5 w-5 sm:h-6 sm:w-6" aria-label="Lightning bolt icon representing fast action" />
             Get the Blueprint
           </Button>
-          
-          <Link to="/blog" onClick={handleReadStories}>
-            <Button 
-              size="lg"
-              className="w-full sm:w-auto bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFA500] text-black font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-3xl hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-sm sm:text-base border-0 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/30 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 hover:from-[#FFA500] hover:via-[#FFD700] hover:to-[#FFD700]"
-              aria-label="Read real builder success stories"
-            >
-              Read Builder Stories
-            </Button>
+        </div>
+
+        {/* Subtle Secondary Link */}
+        <div className="mb-8 sm:mb-12 px-4">
+          <Link 
+            to="/blog" 
+            onClick={handleReadStories}
+            className="text-sm text-brand-black/60 dark:text-brand-cream/60 hover:text-[#247EFF] dark:hover:text-[#247EFF] underline decoration-dotted underline-offset-4 transition-colors font-medium"
+          >
+            Or explore Builder Stories →
           </Link>
         </div>
 

@@ -14,12 +14,12 @@ const Navigation = () => {
   return (
     <div className="fixed top-0 left-0 right-0 z-50">
       {/* Community Trust Banner */}
-      <div className="bg-gradient-to-r from-[#247EFF] to-[#0057FF] text-white text-center py-2 text-sm font-medium">
+      <div className="hidden sm:block bg-gradient-to-r from-[#247EFF] to-[#0057FF] text-white text-center py-2 text-sm font-medium">
         🔥 Trusted by 1,000+ first-gen hustlers building generational wealth
       </div>
       
       {/* Main Navigation */}
-      <nav className="backdrop-blur-sm bg-brand-cream/90 dark:bg-brand-black/90 border-b border-[#247EFF]/20">
+      <nav className="backdrop-blur-sm bg-brand-cream/95 dark:bg-brand-black/95 border-b border-[#247EFF]/20 shadow-sm">
         <div className="container mx-auto px-4 sm:px-6 py-3">
           {/* Mobile/Tablet Layout - Simple single row */}
           <div className="lg:hidden">

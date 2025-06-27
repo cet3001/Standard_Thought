@@ -28,11 +28,29 @@ filesToCheck.forEach(file => {
   if (exists) {
     const stats = fs.statSync(filePath);
     console.log(`✅ ${file} (${stats.size} bytes)`);
+    
+    // Check if _headers has content
+    if (file === '_headers' && stats.size === 0) {
+      console.log(`⚠️  ${file} is empty - headers won't work`);
+    }
   } else {
     console.log(`❌ ${file} - MISSING`);
     allPresent = false;
   }
 });
+
+// Check _headers content specifically
+const headersPath = path.join(distPath, '_headers');
+if (fs.existsSync(headersPath)) {
+  const headersContent = fs.readFileSync(headersPath, 'utf8');
+  console.log('\n📋 _headers content:');
+  if (headersContent.trim()) {
+    console.log(headersContent);
+  } else {
+    console.log('(empty file - this will cause issues)');
+    allPresent = false;
+  }
+}
 
 console.log('\n' + '='.repeat(50));
 

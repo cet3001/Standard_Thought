@@ -55,10 +55,13 @@ const ValuePropsSection = ({ isVisible }: ValuePropsSectionProps) => {
       
       <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 px-4 transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         {valueProps.map((prop, index) => (
-          <div 
+          <Link
             key={index}
-            className={`text-center p-4 sm:p-6 bg-white/70 dark:bg-brand-black/70 backdrop-blur-sm rounded-2xl sm:rounded-3xl border border-accent/20 hover:border-accent/40 transition-all duration-300 hover:scale-105 hover:shadow-lg group ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+            to={prop.link}
+            onClick={() => handleLinkClick(prop.title, prop.link)}
+            className={`block text-center p-4 sm:p-6 bg-white/70 dark:bg-brand-black/70 backdrop-blur-sm rounded-2xl sm:rounded-3xl border border-accent/20 hover:border-accent/60 transition-all duration-300 hover:scale-105 hover:shadow-xl group cursor-pointer ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
             style={{ transitionDelay: `${700 + index * 100}ms` }}
+            aria-label={`Navigate to ${prop.title} - ${prop.description}`}
           >
             <div className="mb-3 sm:mb-4 flex justify-center">
               {prop.icon}
@@ -69,14 +72,10 @@ const ValuePropsSection = ({ isVisible }: ValuePropsSectionProps) => {
             <p className="text-sm sm:text-base text-brand-black/70 dark:text-brand-cream/70 mb-3 sm:mb-4 leading-relaxed">
               {prop.description}
             </p>
-            <Link 
-              to={prop.link}
-              onClick={() => handleLinkClick(prop.title, prop.link)}
-              className="inline-block bg-gradient-to-r from-accent to-[#FFD700] text-black hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg px-3 py-2 rounded-lg font-semibold text-xs sm:text-sm"
-            >
-              {prop.linkText} →
-            </Link>
-          </div>
+            <span className="inline-block text-xs sm:text-sm text-accent hover:text-[#FFD700] transition-colors font-medium group-hover:underline">
+              Learn More →
+            </span>
+          </Link>
         ))}
       </div>
     </div>

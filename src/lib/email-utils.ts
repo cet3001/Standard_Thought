@@ -1,7 +1,6 @@
-
 import { supabase } from '@/integrations/supabase/client'
 import type { Database } from '@/integrations/supabase/types'
-import { trackNewsletterSignup, trackPlaybookDownload } from '@/components/analytics'
+import { trackNewsletterSignup, trackPlaybookDownload } from '@/lib/analytics-utils'
 
 type SubscriberInsert = Database['public']['Tables']['Subscribers']['Insert']
 

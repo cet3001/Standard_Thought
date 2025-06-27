@@ -1,9 +1,10 @@
+
 import { useNavigate } from "react-router-dom";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Clock, ArrowUp } from "lucide-react";
-import { trackBlogRead } from "@/components/analytics";
+import { trackBlogRead } from "@/lib/analytics-utils";
 import BlogPostActions from "@/components/blog-post-actions";
 import ThemeTag from "@/components/ui/theme-tag";
 import StoryBadge from "@/components/ui/story-badge";

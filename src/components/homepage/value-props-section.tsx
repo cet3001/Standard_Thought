@@ -1,7 +1,7 @@
 
 import { Link } from "react-router-dom";
 import { TrendingUp, Users, Brain, Rocket } from "lucide-react";
-import { trackResourceClick } from "@/components/analytics";
+import { trackResourceClick } from "@/lib/analytics-utils";
 import HeaderHierarchy from "@/components/content-structure/header-hierarchy";
 
 interface ValuePropsSectionProps {

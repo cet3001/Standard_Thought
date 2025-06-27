@@ -1,7 +1,7 @@
 
 declare global {
   interface Window {
-    gtag: (command: string, targetId: string | Date, config?: Record<string, unknown>) => void;
+    gtag: (...args: unknown[]) => void;
   }
 }
 
@@ -12,28 +12,28 @@ export interface AnalyticsEventParams {
   page_location?: string;
 }
 
-export interface NewsletterSignupParams {
+export interface NewsletterSignupParams extends AnalyticsEventParams {
   method: string;
   user_email: string;
   conversion_value: number;
   currency: string;
 }
 
-export interface ButtonClickParams {
+export interface ButtonClickParams extends AnalyticsEventParams {
   button_name: string;
   click_location: string;
   action: string;
   engagement_type: string;
 }
 
-export interface BlogReadParams {
+export interface BlogReadParams extends AnalyticsEventParams {
   post_title: string;
   post_slug: string;
   content_type: string;
   engagement_type: string;
 }
 
-export interface PlaybookDownloadParams {
+export interface PlaybookDownloadParams extends AnalyticsEventParams {
   method: string;
   user_email: string;
   conversion_value: number;
@@ -41,19 +41,19 @@ export interface PlaybookDownloadParams {
   content_type: string;
 }
 
-export interface SocialShareParams {
+export interface SocialShareParams extends AnalyticsEventParams {
   platform: string;
   post_title: string;
   engagement_type: string;
 }
 
-export interface ResourceClickParams {
+export interface ResourceClickParams extends AnalyticsEventParams {
   resource_name: string;
   resource_type: string;
   engagement_type: string;
 }
 
-export interface ScrollMilestoneParams {
+export interface ScrollMilestoneParams extends AnalyticsEventParams {
   scroll_percentage: number;
   engagement_type: string;
 }

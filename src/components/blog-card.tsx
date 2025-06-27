@@ -1,11 +1,10 @@
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { ArrowUp, Calendar, Clock } from "lucide-react";
-import { trackBlogRead } from "@/components/analytics";
+import { trackBlogRead } from "@/lib/analytics-utils";
 
 interface BlogPost {
   id: string;

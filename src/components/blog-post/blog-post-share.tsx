@@ -1,8 +1,7 @@
-
 import { Button } from "@/components/ui/button";
 import { Share2, Facebook, Twitter, Linkedin } from "lucide-react";
 import { toast } from "sonner";
-import { trackSocialShare } from "@/components/analytics";
+import { trackSocialShare } from "@/lib/analytics-utils";
 
 interface BlogPostShareProps {
   title: string;

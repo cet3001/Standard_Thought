@@ -1,7 +1,6 @@
-
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { trackBlogRead } from "@/components/analytics";
+import { trackBlogRead } from "@/lib/analytics-utils";
 
 interface BlogPost {
   id: string;

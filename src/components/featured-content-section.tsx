@@ -1,11 +1,10 @@
-
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowRight, BookOpen, TrendingUp, Bot, Users } from "lucide-react";
 import HeaderHierarchy from "./content-structure/header-hierarchy";
-import { trackButtonClick, trackResourceClick } from "@/components/analytics";
+import { trackButtonClick, trackResourceClick } from "@/lib/analytics-utils";
 
 const FeaturedContentSection = () => {
   const [isVisible, setIsVisible] = useState(false);

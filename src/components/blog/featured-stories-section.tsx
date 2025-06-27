@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowUp, Calendar } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { trackBlogRead } from "@/components/analytics";
+import { trackBlogRead } from "@/lib/analytics-utils";
 import StoryBadge from "@/components/ui/story-badge";
 import ThemeTag from "@/components/ui/theme-tag";
 

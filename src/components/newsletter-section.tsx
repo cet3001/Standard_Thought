@@ -1,11 +1,10 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Mail, Check, AlertCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { trackNewsletterSignup } from "@/components/analytics";
+import { trackNewsletterSignup } from "@/lib/analytics-utils";
 
 export const NewsletterSection = () => {
   const [email, setEmail] = useState("");

@@ -46,18 +46,22 @@ const Navigation = () => {
             </div>
           </div>
 
-          {/* Desktop Layout - Single row */}
-          <div className="hidden lg:flex items-center justify-between min-w-0">
-            <div className="flex-shrink-0 mr-4 lg:mr-8 min-w-0">
+          {/* Desktop Layout - Improved alignment and spacing */}
+          <div className="hidden lg:flex items-center justify-between w-full">
+            {/* Logo Section */}
+            <div className="flex-shrink-0">
               <Logo />
             </div>
 
-            <div className="flex items-center space-x-12">
-              <NavItems className="flex items-center space-x-10" showButton={true} />
-              <div className="flex items-center space-x-6 ml-8">
-                <ThemeToggle />
-                <AuthSection />
-              </div>
+            {/* Center Navigation Items */}
+            <div className="flex-1 flex justify-center">
+              <NavItems className="flex items-center space-x-8" showButton={true} />
+            </div>
+
+            {/* Right Side Actions */}
+            <div className="flex items-center space-x-4 flex-shrink-0">
+              <ThemeToggle />
+              <AuthSection />
             </div>
           </div>
         </div>

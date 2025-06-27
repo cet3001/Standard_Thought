@@ -1,4 +1,3 @@
-
 import Analytics from "@/components/analytics";
 import HomepageHero from "@/components/homepage-hero";
 import LeadMagnetPopup from "@/components/lead-magnet-popup";
@@ -104,7 +103,7 @@ const Index = () => {
 
       {/* Admin Controls */}
       {isAdmin && (
-        <div className="fixed top-20 right-4 z-50 bg-white/90 dark:bg-brand-black/90 backdrop-blur-sm p-4 rounded-xl border border-[#247EFF]/20">
+        <div className="fixed top-20 right-4 z-50 bg-white/90 dark:bg-brand-black/90 backdrop-blur-sm p-4 rounded-xl border border-[#247EFF]/20 shadow-lg">
           <AddSamplePosts />
         </div>
       )}
@@ -122,16 +121,22 @@ const Index = () => {
         </div>
 
         {/* Newsletter */}
-        <NewsletterSection />
+        <section className="bg-gradient-to-b from-white to-brand-cream/80 dark:from-brand-black/90 dark:to-brand-black py-16">
+          <NewsletterSection />
+        </section>
 
         {/* Featured Blog Stories Section */}
-        <BlogShowcase />
+        <section className="bg-brand-cream/50 dark:bg-brand-black/50 py-16">
+          <BlogShowcase />
+        </section>
 
         {/* Manifesto */}
-        <ManifestoSection />
+        <section className="bg-gradient-to-b from-brand-cream/80 to-white dark:from-brand-black/50 dark:to-brand-black/90 py-16">
+          <ManifestoSection />
+        </section>
 
         {/* FAQ Section with Schema */}
-        <section className="py-16 bg-white/50 dark:bg-brand-black/50">
+        <section className="py-16 bg-white/80 dark:bg-brand-black/80">
           <div className="container mx-auto px-6 max-w-4xl">
             <FAQSection
               title="Frequently Asked Questions About Urban Wealth Building"
@@ -142,7 +147,9 @@ const Index = () => {
         </section>
 
         {/* Trust Badge */}
-        <TrustBadgeSection />
+        <section className="bg-gradient-to-b from-white to-brand-cream dark:from-brand-black/90 dark:to-brand-black py-16">
+          <TrustBadgeSection />
+        </section>
       </main>
 
       {/* Footer */}

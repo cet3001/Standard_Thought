@@ -18,8 +18,8 @@ const Navigation = () => {
         🔥 Trusted by 1,000+ first-gen hustlers building generational wealth
       </div>
       
-      {/* Main Navigation */}
-      <nav className="backdrop-blur-sm bg-brand-cream/90 dark:bg-brand-black/90 border-b border-[#247EFF]/20">
+      {/* Main Navigation - Fixed transparency issue */}
+      <nav className="bg-brand-cream/95 dark:bg-brand-black/95 backdrop-blur-md border-b border-[#247EFF]/20 shadow-sm">
         <div className="container mx-auto px-4 sm:px-6 py-3">
           {/* Mobile/Tablet Layout - Simple single row */}
           <div className="lg:hidden">

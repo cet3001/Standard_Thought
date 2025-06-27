@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -20,6 +19,7 @@ const MobileMenu = ({ isOpen, onToggle, onClose }: MobileMenuProps) => {
     { href: "/about", label: "Mindset Tools" },
     { href: "/blog", label: "Builder Stories" },
     { href: "/resources", label: "Success Strategies" },
+    { href: "/faq", label: "Wealth Wisdom" },
   ];
 
   const handleJoinMovement = () => {

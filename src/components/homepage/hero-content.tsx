@@ -1,8 +1,7 @@
-
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Zap } from "lucide-react";
-import { trackButtonClick } from "@/components/analytics";
+import { trackButtonClick } from "@/lib/analytics-utils";
 
 interface HeroContentProps {
   isVisible: boolean;

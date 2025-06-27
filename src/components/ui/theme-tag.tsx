@@ -43,6 +43,17 @@ const ThemeTag = ({ tag, onClick, className, isSelected = false }: ThemeTagProps
     }
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      const mouseEvent = new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true,
+      });
+      handleClick(mouseEvent as unknown as React.MouseEvent);
+    }
+  };
+
   return (
     <Badge
       variant="outline"
@@ -58,12 +69,7 @@ const ThemeTag = ({ tag, onClick, className, isSelected = false }: ThemeTagProps
       role="button"
       tabIndex={0}
       aria-pressed={isSelected}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          handleClick(e as any);
-        }
-      }}
+      onKeyDown={handleKeyDown}
     >
       {tag}
     </Badge>

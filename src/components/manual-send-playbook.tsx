@@ -23,9 +23,10 @@ export const ManualSendPlaybook = () => {
       await manualSendPlaybook(email);
       toast.success(`Playbook sent successfully to ${email}!`);
       setEmail("");
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Manual send error:", error);
-      toast.error(error.message || "Failed to send playbook");
+      const errorMessage = error instanceof Error ? error.message : "Failed to send playbook";
+      toast.error(errorMessage);
     } finally {
       setIsLoading(false);
     }

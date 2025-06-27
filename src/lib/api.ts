@@ -1,6 +1,7 @@
-import { supabase } from "@/integrations/supabase/client";
 
-export interface Post {
+import { supabase } from '@/integrations/supabase/client'
+
+export interface BlogPost {
   id: string;
   title: string;
   excerpt: string;
@@ -8,17 +9,18 @@ export interface Post {
   image_url: string | null;
   category: string;
   tags: string[];
-  theme_tags?: string[]; // New field for theme-based tags
   featured: boolean;
-  published: boolean;
   created_at: string;
+  meta_description: string | null;
+  meta_keywords: string | null;
   slug: string;
-  is_editors_pick?: boolean; // New field for editor's pick
-  is_popular?: boolean; // New field for popular stories
-  view_count?: number; // For tracking popularity
+  comments_enabled: boolean;
+  published: boolean;
+  author_id: string;
+  updated_at: string;
 }
 
-export const getPosts = async (): Promise<Post[]> => {
+export const getBlogPosts = async (): Promise<BlogPost[]> => {
   const { data, error } = await supabase
     .from('blog_posts')
     .select('*')
@@ -26,89 +28,59 @@ export const getPosts = async (): Promise<Post[]> => {
     .order('created_at', { ascending: false });
 
   if (error) {
-    console.error('Error fetching posts:', error);
-    throw new Error('Failed to fetch posts');
+    console.error('Error fetching blog posts:', error);
+    throw error;
   }
 
-  // Add mock theme tags and featured story data for existing posts until database is updated
-  const postsWithEnhancements = (data || []).map((post, index) => ({
-    ...post,
-    theme_tags: generateThemeTagsFromContent(post),
-    // Mock data - assign editor's pick and popular status to some posts
-    is_editors_pick: index % 5 === 0, // Every 5th post is editor's pick
-    is_popular: index % 3 === 0, // Every 3rd post is popular
-    view_count: Math.floor(Math.random() * 1000) + 100 // Mock view count
-  }));
-
-  return postsWithEnhancements;
+  return data || [];
 };
 
-// Helper function to generate theme tags based on content until database is updated
-const generateThemeTagsFromContent = (post: any): string[] => {
-  const title = post.title.toLowerCase();
-  const excerpt = post.excerpt.toLowerCase();
-  const content = `${title} ${excerpt}`.toLowerCase();
-  
-  const themeTags: string[] = [];
-  
-  // AI-related content
-  if (content.includes('ai') || content.includes('artificial intelligence') || content.includes('automation')) {
-    themeTags.push('AI');
-  }
-  
-  // Credit-related content
-  if (content.includes('credit') || content.includes('score') || content.includes('loan')) {
-    themeTags.push('Credit');
-  }
-  
-  // Mindset-related content
-  if (content.includes('mindset') || content.includes('mental') || content.includes('psychology') || content.includes('motivation')) {
-    themeTags.push('Mindset');
-  }
-  
-  // Investing-related content
-  if (content.includes('invest') || content.includes('stock') || content.includes('portfolio') || content.includes('wealth')) {
-    themeTags.push('Investing');
-  }
-  
-  // Side hustle content
-  if (content.includes('side hustle') || content.includes('freelance') || content.includes('gig') || content.includes('extra income')) {
-    themeTags.push('Side Hustle');
-  }
-  
-  // Entrepreneurship content
-  if (content.includes('business') || content.includes('startup') || content.includes('entrepreneur')) {
-    themeTags.push('Business');
-  }
-  
-  // Return up to 3 tags to keep it focused
-  return themeTags.slice(0, 3);
-};
-
-export const getCategories = async (): Promise<string[]> => {
+export const getBlogPost = async (slug: string): Promise<BlogPost | null> => {
   const { data, error } = await supabase
     .from('blog_posts')
-    .select('category')
-    .eq('published', true);
+    .select('*')
+    .eq('slug', slug)
+    .eq('published', true)
+    .single();
 
   if (error) {
-    console.error('Error fetching categories:', error);
-    throw new Error('Failed to fetch categories');
+    if (error.code === 'PGRST116') {
+      return null; // Post not found
+    }
+    console.error('Error fetching blog post:', error);
+    throw error;
   }
 
-  const categories = [...new Set(data?.map(post => post.category) || [])];
-  return ['All', ...categories];
+  return data;
 };
 
-export const generateImage = async (prompt: string): Promise<string> => {
-  const { data, error } = await supabase.functions.invoke('generate-image', {
-    body: { prompt }
-  });
+export const createBlogPost = async (post: unknown): Promise<BlogPost> => {
+  const { data, error } = await supabase
+    .from('blog_posts')
+    .insert(post)
+    .select()
+    .single();
 
   if (error) {
-    console.error('Error generating image:', error);
-    throw new Error('Failed to generate image');
+    console.error('Error creating blog post:', error);
+    throw error;
   }
 
-  return data.imageUrl;
+  return data;
+};
+
+export const updateBlogPost = async (id: string, updates: unknown): Promise<BlogPost> => {
+  const { data, error } = await supabase
+    .from('blog_posts')
+    .update(updates)
+    .eq('id', id)
+    .select()
+    .single();
+
+  if (error) {
+    console.error('Error updating blog post:', error);
+    throw error;
+  }
+
+  return data;
 };

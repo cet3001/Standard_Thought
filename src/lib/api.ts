@@ -27,6 +27,22 @@ export interface Post extends BlogPost {
   view_count?: number;
 }
 
+// Type for creating a new blog post - all required fields must be present
+export interface CreateBlogPostData {
+  title: string;
+  excerpt: string;
+  content: string;
+  category: string;
+  author_id: string;
+  tags?: string[];
+  image_url?: string | null;
+  meta_description?: string | null;
+  meta_keywords?: string | null;
+  featured?: boolean;
+  published?: boolean;
+  comments_enabled?: boolean;
+}
+
 export const getBlogPosts = async (): Promise<BlogPost[]> => {
   const { data, error } = await supabase
     .from('blog_posts')
@@ -91,10 +107,23 @@ export const getBlogPost = async (slug: string): Promise<BlogPost | null> => {
   return data;
 };
 
-export const createBlogPost = async (post: Partial<BlogPost>): Promise<BlogPost> => {
+export const createBlogPost = async (postData: CreateBlogPostData): Promise<BlogPost> => {
   const { data, error } = await supabase
     .from('blog_posts')
-    .insert(post)
+    .insert({
+      title: postData.title,
+      excerpt: postData.excerpt,
+      content: postData.content,
+      category: postData.category,
+      author_id: postData.author_id,
+      tags: postData.tags || [],
+      image_url: postData.image_url || null,
+      meta_description: postData.meta_description || null,
+      meta_keywords: postData.meta_keywords || null,
+      featured: postData.featured || false,
+      published: postData.published || false,
+      comments_enabled: postData.comments_enabled !== false,
+    })
     .select()
     .single();
 

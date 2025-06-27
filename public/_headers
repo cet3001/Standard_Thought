@@ -1,12 +1,4 @@
 
-# -- Global security headers -------------------------------
-/*
-  X-Content-Type-Options: nosniff
-  X-Frame-Options: DENY
-  X-XSS-Protection: 1; mode=block
-  Referrer-Policy: strict-origin-when-cross-origin
-  Cache-Control: public, max-age=31536000, immutable
-
 # -- Critical content types for crawlers -------------------
 /robots.txt
   Content-Type: text/plain; charset=utf-8
@@ -28,14 +20,25 @@
   Content-Type: text/html; charset=utf-8
   Cache-Control: public, max-age=86400
 
+# -- Global security headers -------------------------------
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+
 # -- Long-cache static assets ------------------------------
 /lovable-uploads/*
   Cache-Control: public, max-age=31536000, immutable
+
 /*.png
   Cache-Control: public, max-age=31536000, immutable
+
 /*.jpg
   Cache-Control: public, max-age=31536000, immutable
+
 /*.svg
   Cache-Control: public, max-age=31536000, immutable
+
 /*.ico
   Cache-Control: public, max-age=86400

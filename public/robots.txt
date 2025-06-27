@@ -1,21 +1,11 @@
 
-# Allow all legitimate crawlers to index the site
-# Only block sensitive areas like auth and admin
+# Production robots.txt for www.standardthought.com
+# Allow all legitimate crawlers - no blanket restrictions
 
 User-agent: *
 Allow: /
-Disallow: /auth
-Disallow: /admin
-
-# Special rules for specific crawlers
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
+Disallow: /auth/
+Disallow: /admin/
 
 # Sitemap location for crawlers
 Sitemap: https://www.standardthought.com/sitemap_index.xml
-
-# Crawl delay to be respectful of server resources
-Crawl-delay: 1

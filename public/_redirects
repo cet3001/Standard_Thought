@@ -4,10 +4,12 @@ https://standardthought.com/*     https://www.standardthought.com/:splat   301!
 http://standardthought.com/*      https://www.standardthought.com/:splat   301!
 http://www.standardthought.com/*  https://www.standardthought.com/:splat   301!
 
-# -- SEO verification & crawl assets ─────────────────
-/sitemap.xml           /sitemap.xml                 200
-/sitemap_index.xml     /sitemap_index.xml           200
-/googlea59634ea3ae6e4ed.html  /googlea59634ea3ae6e4ed.html  200
+# -- Static files (MUST come before SPA fallback) ────
+/robots.txt                /robots.txt               200!
+/sitemap.xml              /sitemap.xml              200!
+/sitemap_index.xml        /sitemap_index.xml        200!
+/page-sitemap.xml         /page-sitemap.xml         200!
+/googlea59634ea3ae6e4ed.html  /googlea59634ea3ae6e4ed.html  200!
 
 # -- SPA fallback (must remain LAST) ────────────────
-/*                    /index.html                  200
+/*                        /index.html               200

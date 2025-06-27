@@ -1,15 +1,13 @@
 
 import type { Config } from "tailwindcss";
+import { colors } from "./src/styles/tailwind/colors";
+import { fonts } from "./src/styles/tailwind/fonts";
+import { fontSize } from "./src/styles/tailwind/fontSize";
+import { letterSpacing } from "./src/styles/tailwind/letterSpacing";
+import { borderRadius } from "./src/styles/tailwind/borderRadius";
+import { animations } from "./src/styles/tailwind/animations";
 
-// Import extensions
-import colors from "./src/styles/tailwind/colors";
-import fontFamily from "./src/styles/tailwind/fonts";
-import fontSize from "./src/styles/tailwind/fontSize";
-import letterSpacing from "./src/styles/tailwind/letterSpacing";
-import borderRadius from "./src/styles/tailwind/borderRadius";
-import animations from "./src/styles/tailwind/animations";
-
-export default {
+const config: Config = {
   darkMode: ["class"],
   content: [
     "./pages/**/*.{ts,tsx}",
@@ -21,20 +19,22 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: '2rem',
+      padding: "2rem",
       screens: {
-        '2xl': '1400px'
-      }
+        "2xl": "1400px",
+      },
     },
     extend: {
       colors,
-      borderRadius,
-      fontFamily,
+      fontFamily: fonts,
       fontSize,
       letterSpacing,
+      borderRadius,
       keyframes: animations.keyframes,
       animation: animations.animation,
-    }
+    },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [import("tailwindcss-animate")],
 } satisfies Config;
+
+export default config;

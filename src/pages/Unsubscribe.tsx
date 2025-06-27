@@ -1,5 +1,4 @@
-
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
@@ -12,15 +11,7 @@ const Unsubscribe = () => {
   const [status, setStatus] = useState<'loading' | 'success' | 'error' | 'already_unsubscribed'>('loading');
   const [isProcessing, setIsProcessing] = useState(false);
 
-  useEffect(() => {
-    if (token) {
-      handleUnsubscribe();
-    } else {
-      setStatus('error');
-    }
-  }, [token]);
-
-  const handleUnsubscribe = async () => {
+  const handleUnsubscribe = useCallback(async () => {
     if (!token) return;
     
     setIsProcessing(true);
@@ -45,7 +36,15 @@ const Unsubscribe = () => {
     } finally {
       setIsProcessing(false);
     }
-  };
+  }, [token]);
+
+  useEffect(() => {
+    if (token) {
+      handleUnsubscribe();
+    } else {
+      setStatus('error');
+    }
+  }, [token, handleUnsubscribe]);
 
   const renderContent = () => {
     switch (status) {

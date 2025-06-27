@@ -26,8 +26,8 @@ const Analytics = () => {
     // Initialize gtag
     script.onload = () => {
       window.gtag = window.gtag || function(...args: unknown[]) {
-        (window.gtag as unknown as { q: unknown[] }).q = (window.gtag as unknown as { q: unknown[] }).q || [];
-        (window.gtag as unknown as { q: unknown[] }).q.push(args);
+        (window.gtag as { q: unknown[] }).q = (window.gtag as { q: unknown[] }).q || [];
+        (window.gtag as { q: unknown[] }).q.push(args);
       };
       
       window.gtag('js', new Date());

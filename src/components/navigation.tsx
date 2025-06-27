@@ -14,12 +14,12 @@ const Navigation = () => {
   return (
     <div className="fixed top-0 left-0 right-0 z-50">
       {/* Community Trust Banner */}
-      <div className="hidden sm:block bg-gradient-to-r from-[#247EFF] to-[#0057FF] text-white text-center py-2 text-sm font-medium">
+      <div className="bg-gradient-to-r from-[#247EFF] to-[#0057FF] text-white text-center py-2 text-sm font-medium">
         🔥 Trusted by 1,000+ first-gen hustlers building generational wealth
       </div>
       
       {/* Main Navigation */}
-      <nav className="backdrop-blur-sm bg-brand-cream/95 dark:bg-brand-black/95 border-b border-[#247EFF]/20 shadow-sm">
+      <nav className="backdrop-blur-sm bg-brand-cream/90 dark:bg-brand-black/90 border-b border-[#247EFF]/20">
         <div className="container mx-auto px-4 sm:px-6 py-3">
           {/* Mobile/Tablet Layout - Simple single row */}
           <div className="lg:hidden">
@@ -46,22 +46,18 @@ const Navigation = () => {
             </div>
           </div>
 
-          {/* Desktop Layout - Better spacing with more room for logo */}
-          <div className="hidden lg:flex items-center w-full">
-            {/* Logo Section - More space on the left */}
-            <div className="flex-shrink-0 w-80">
+          {/* Desktop Layout - Single row */}
+          <div className="hidden lg:flex items-center justify-between min-w-0">
+            <div className="flex-shrink-0 mr-4 lg:mr-8 min-w-0">
               <Logo />
             </div>
 
-            {/* Center Navigation Items - Adjusted positioning */}
-            <div className="flex-1 flex justify-center -ml-20">
-              <NavItems className="flex items-center space-x-8" showButton={true} />
-            </div>
-
-            {/* Right Side Actions */}
-            <div className="flex items-center space-x-4 flex-shrink-0 w-80 justify-end">
-              <ThemeToggle />
-              <AuthSection />
+            <div className="flex items-center space-x-12">
+              <NavItems className="flex items-center space-x-10" showButton={true} />
+              <div className="flex items-center space-x-6 ml-8">
+                <ThemeToggle />
+                <AuthSection />
+              </div>
             </div>
           </div>
         </div>

@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -33,7 +32,6 @@ const MobileMenu = ({ isOpen, onToggle, onClose }: MobileMenuProps) => {
         <Button 
           variant="ghost" 
           size="icon"
-          className="text-[#0A0A0A] dark:text-brand-cream hover:text-[#247EFF] dark:hover:text-[#247EFF]"
           aria-label="Open mobile navigation menu"
           aria-expanded={isOpen}
           aria-controls="mobile-navigation-menu"
@@ -43,7 +41,7 @@ const MobileMenu = ({ isOpen, onToggle, onClose }: MobileMenuProps) => {
       </SheetTrigger>
       <SheetContent 
         side="right" 
-        className="w-[300px] sm:w-[400px] bg-brand-cream dark:bg-brand-black border-[#247EFF]/20"
+        className="w-[300px] sm:w-[400px]"
         aria-label="Mobile navigation menu"
         id="mobile-navigation-menu"
       >
@@ -52,7 +50,7 @@ const MobileMenu = ({ isOpen, onToggle, onClose }: MobileMenuProps) => {
             <Link
               key={item.href}
               to={item.href}
-              className="text-lg font-medium text-[#0A0A0A] dark:text-brand-cream hover:text-[#247EFF] dark:hover:text-[#247EFF] transition-colors py-2"
+              className="text-lg font-medium text-[#0A0A0A] dark:text-brand-cream hover:text-[#247EFF] dark:hover:text-[#247EFF] transition-colors"
               aria-label={`Navigate to ${item.label} page`}
               onClick={onClose}
             >
@@ -69,7 +67,7 @@ const MobileMenu = ({ isOpen, onToggle, onClose }: MobileMenuProps) => {
                 className="block w-full"
               >
                 <Button 
-                  className="w-full bg-gradient-to-r from-[#247EFF] to-[#0057FF] text-white font-bold hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg rounded-full px-6 py-3 border-0"
+                  className="w-full bg-gradient-to-r from-accent to-[#FFD700] text-black font-bold hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg rounded-full px-6 py-3 border-0"
                   aria-label="Join the wealth building movement - Sign up or login"
                 >
                   Join Movement

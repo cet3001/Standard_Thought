@@ -44,10 +44,10 @@ const SocialProofSection = ({ isVisible }: SocialProofSectionProps) => {
         </div>
       </div>
 
-      <div className="mt-8 pt-8 border-t border-[#247EFF]/20">
+      <div className="mt-10 pt-10 border-t border-[#247EFF]/20">
         <div className="text-center max-w-2xl mx-auto">
-          <p className="text-[#0A0A0A]/80 dark:text-brand-cream/80 italic mb-4">
-            "I went from living check to check to having my first $10K saved in 8 months. The frameworks here are different—they actually work for people like us."
+          <p className="text-[#0A0A0A]/80 dark:text-brand-cream/80 text-lg leading-8 mb-6">
+            Thousands of urban entrepreneurs are using Standard Thought's proven methods to build real wealth. Join a community committed to your success.
           </p>
           <div className="text-sm text-[#0A0A0A]/60 dark:text-brand-cream/60">
             — Marcus T., Community Member since 2023

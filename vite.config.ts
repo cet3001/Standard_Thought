@@ -1,3 +1,4 @@
+
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
@@ -28,19 +29,9 @@ export default defineConfig(({ mode }) => ({
       // Ensure critical files are included in build
       input: {
         main: path.resolve(__dirname, 'index.html')
-      },
-      // Explicitly copy 404.html to root of dist
-      output: {
-        assetFileNames: (assetInfo) => {
-          // Keep 404.html at root level
-          if (assetInfo.name === '404.html') {
-            return '404.html';
-          }
-          return 'assets/[name]-[hash][extname]';
-        }
       }
     },
-    // Ensure 404.html is treated as a static asset
-    assetsInclude: ['**/*.html']
+    // Copy all files from public directory
+    copyPublicDir: true
   }
 }));

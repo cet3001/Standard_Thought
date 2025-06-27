@@ -32,6 +32,7 @@ filesToCheck.forEach(file => {
     // Check if _headers has content
     if (file === '_headers' && stats.size === 0) {
       console.log(`⚠️  ${file} is empty - headers won't work`);
+      allPresent = false;
     }
   } else {
     console.log(`❌ ${file} - MISSING`);
@@ -50,6 +51,20 @@ if (fs.existsSync(headersPath)) {
     console.log('(empty file - this will cause issues)');
     allPresent = false;
   }
+} else {
+  console.log('\n❌ _headers file not found');
+  allPresent = false;
+}
+
+// Check _redirects content
+const redirectsPath = path.join(distPath, '_redirects');
+if (fs.existsSync(redirectsPath)) {
+  const redirectsContent = fs.readFileSync(redirectsPath, 'utf8');
+  console.log('\n📋 _redirects content:');
+  console.log(redirectsContent);
+} else {
+  console.log('\n❌ _redirects file not found');
+  allPresent = false;
 }
 
 console.log('\n' + '='.repeat(50));
@@ -60,12 +75,28 @@ if (allPresent) {
   console.log('1. Deploy to Netlify');
   console.log('2. Clear Netlify cache');
   console.log('3. Test headers with: curl -I https://www.standardthought.com/robots.txt');
+  
+  // JSON summary for build agent
+  console.log('\n📊 Build Summary:');
+  console.log(JSON.stringify({
+    "completed": ["copy_files", "build_verification"],
+    "skipped": [],
+    "next_steps": ["deploy", "purge_cache"]
+  }, null, 2));
 } else {
-  console.log('❌ Some files are missing from dist/');
+  console.log('❌ Some files are missing or empty in dist/');
   console.log('\nTroubleshooting:');
   console.log('1. Ensure files are in public/ directory');
   console.log('2. Run npm run build again');
   console.log('3. Check Vite configuration');
+  
+  // JSON summary for build agent
+  console.log('\n📊 Build Summary:');
+  console.log(JSON.stringify({
+    "completed": [],
+    "skipped": [],
+    "next_steps": ["fix_public_files", "rebuild"]
+  }, null, 2));
 }
 
 console.log('\n');

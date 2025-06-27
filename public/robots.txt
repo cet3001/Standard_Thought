@@ -1,19 +1,8 @@
+# Let bots crawl everything except /auth and /admin. No special blocks.
 
 User-agent: *
 Allow: /
 Disallow: /auth
 Disallow: /admin
-
-# Block scrapers you don't want
-User-agent: SemrushBot
-Disallow: /
-User-agent: AhrefsBot
-Disallow: /
-User-agent: MJ12bot
-Disallow: /
-User-agent: BLEXBot
-Disallow: /
-User-agent: DotBot
-Disallow: /
 
 Sitemap: https://www.standardthought.com/sitemap_index.xml

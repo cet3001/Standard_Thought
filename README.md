@@ -60,6 +60,17 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
+## Setup
+
+1. Copy `.env.example` to `.env`.
+2. Fill in your keys and URLs:
+   - `OPENAI_API_KEY`
+   - `RESEND_API_KEY`
+   - `SUPABASE_URL`
+   - `SUPABASE_ANON_KEY`
+   - `SUPABASE_SERVICE_ROLE_KEY`
+   - `ADMIN_NOTIFICATION_EMAIL`
+
 ## How can I deploy this project?
 
 Simply open [Lovable](https://lovable.dev/projects/77b99b38-7590-4686-8b21-9653b11d193b) and click on Share -> Publish.

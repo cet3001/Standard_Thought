@@ -17,7 +17,7 @@ const SuccessStoriesSection = ({ isVisible }: SuccessStoriesSectionProps) => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12" role="group" aria-label="Community success stories">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mb-16" role="group" aria-label="Community success stories">
         <div className="bg-white/90 dark:bg-brand-black/80 backdrop-blur-sm border border-[#247EFF]/20 rounded-3xl p-6 hover:shadow-lg hover:shadow-[#247EFF]/10 transition-all duration-300">
           <div className="flex items-center mb-4">
             <div className="w-12 h-12 bg-green-500/10 rounded-full flex items-center justify-center mr-4">
@@ -76,9 +76,9 @@ const SuccessStoriesSection = ({ isVisible }: SuccessStoriesSectionProps) => {
         </div>
       </div>
 
-      {/* CTA Section */}
+      {/* Enhanced CTA Section */}
       <div className="text-center">
-        <button className="bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFA500] text-black font-bold px-8 sm:px-12 py-4 sm:py-5 rounded-3xl hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-base sm:text-lg border-0 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/40 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 hover:from-[#FFA500] hover:via-[#FFD700] hover:to-[#FFD700] after:absolute after:inset-0 after:bg-gradient-to-45 after:from-transparent after:via-white/20 after:to-transparent after:animate-[shimmer_3s_ease-in-out_infinite]">
+        <button className="bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFA500] text-black font-bold px-12 sm:px-16 py-6 sm:py-7 rounded-3xl hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-3xl text-xl sm:text-2xl border-0 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/40 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 hover:from-[#FFA500] hover:via-[#FFD700] hover:to-[#FFD700] after:absolute after:inset-0 after:bg-gradient-to-45 after:from-transparent after:via-white/20 after:to-transparent after:animate-[shimmer_3s_ease-in-out_infinite] min-h-[60px] sm:min-h-[70px]">
           Get the Blueprint
         </button>
       </div>

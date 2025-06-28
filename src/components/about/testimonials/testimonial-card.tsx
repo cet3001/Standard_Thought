@@ -33,11 +33,11 @@ const TestimonialCard = ({ testimonial }: TestimonialCardProps) => {
           }}
         />
 
-        {/* Street Cred Badge - Now with pearlescent effect */}
+        {/* Street Cred Badge - Now with yellow pearlescent effect */}
         <div 
           className="absolute -top-2 -right-2 text-black text-xs font-black px-3 py-1 rounded-full transform rotate-12 shadow-lg border-2 border-black"
           style={{
-            background: 'linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3, #54a0ff)',
+            background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
             backgroundSize: '400% 400%',
             animation: 'pearlescent 3s ease-in-out infinite'
           }}

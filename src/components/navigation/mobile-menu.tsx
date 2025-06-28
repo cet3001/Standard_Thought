@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -28,29 +29,34 @@ const MobileMenu = ({ isOpen, onToggle, onClose }: MobileMenuProps) => {
 
   return (
     <Sheet>
-      <SheetTrigger asChild className="lg:hidden">
+      <SheetTrigger asChild>
         <Button 
           variant="ghost" 
           size="icon"
-          aria-label="Open mobile navigation menu"
+          aria-label="Open navigation menu"
           aria-expanded={isOpen}
-          aria-controls="mobile-navigation-menu"
+          aria-controls="navigation-menu"
+          className="hover:bg-[#247EFF]/10"
         >
           <Menu className="h-6 w-6" aria-hidden="true" />
         </Button>
       </SheetTrigger>
       <SheetContent 
-        side="right" 
-        className="w-[300px] sm:w-[400px]"
-        aria-label="Mobile navigation menu"
-        id="mobile-navigation-menu"
+        side="left" 
+        className="w-[300px] sm:w-[400px] bg-brand-cream/95 dark:bg-brand-black/95 backdrop-blur-md"
+        aria-label="Navigation menu"
+        id="navigation-menu"
       >
-        <nav className="flex flex-col space-y-4 mt-8" role="navigation" aria-label="Main navigation">
+        {/* Urban texture background */}
+        <div className="absolute inset-0 opacity-[0.02] bg-[radial-gradient(circle_at_1px_1px,_rgba(0,0,0,1)_1px,_transparent_0)] bg-[length:20px_20px]"></div>
+        
+        <nav className="flex flex-col space-y-6 mt-8 relative z-10" role="navigation" aria-label="Main navigation">
+          {/* Navigation Links */}
           {navItems.map((item) => (
             <Link
               key={item.href}
               to={item.href}
-              className="text-lg font-medium text-[#0A0A0A] dark:text-brand-cream hover:text-[#247EFF] dark:hover:text-[#247EFF] transition-colors"
+              className="text-xl font-semibold text-[#0A0A0A] dark:text-brand-cream hover:text-[#247EFF] dark:hover:text-[#247EFF] transition-colors border-b border-[#247EFF]/10 pb-3"
               aria-label={`Navigate to ${item.label} page`}
               onClick={onClose}
             >
@@ -58,30 +64,17 @@ const MobileMenu = ({ isOpen, onToggle, onClose }: MobileMenuProps) => {
             </Link>
           ))}
           
-          {/* Join Movement Button - only show if not logged in */}
-          {!user && (
-            <div className="pt-4 border-t border-[#247EFF]/20">
-              <Link
-                to="/auth"
-                onClick={handleJoinMovement}
-                className="block w-full"
-              >
-                <Button 
-                  className="w-full bg-gradient-to-r from-accent to-[#FFD700] text-black font-bold hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg rounded-full px-6 py-3 border-0"
-                  aria-label="Join the wealth building movement - Sign up or login"
-                >
-                  Join Movement
-                </Button>
-              </Link>
-            </div>
-          )}
+          {/* Auth Section */}
+          <div className="pt-6 border-t border-[#247EFF]/20">
+            <AuthSection onAction={onClose} />
+          </div>
           
-          {/* Auth Section for logged in users */}
-          {user && (
-            <div className="pt-4 border-t border-[#247EFF]/20">
-              <AuthSection onAction={onClose} />
-            </div>
-          )}
+          {/* Get Blueprint CTA - Prominent in menu */}
+          <div className="pt-4">
+            <button className="w-full bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFA500] text-black font-bold hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg rounded-full px-6 py-4 border-0 text-lg relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/30 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 hover:from-[#FFA500] hover:via-[#FFD700] hover:to-[#FFD700]">
+              Get the Blueprint
+            </button>
+          </div>
         </nav>
       </SheetContent>
     </Sheet>

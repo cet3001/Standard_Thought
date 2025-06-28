@@ -2,19 +2,23 @@
 export interface MindsetPrinciple {
   title: string;
   description: string;
+  icon: string;
 }
 
 export const mindsetPrinciples: MindsetPrinciple[] = [
   {
-    title: "Growth Over Comfort",
-    description: "We don't settle for what's easy. Every challenge is a chance to level up. When everyone else stays safe, we lean into the discomfort because that's where real transformation happens."
+    title: "Level Up Over Easy",
+    description: "Comfort is the enemy of progress. While everyone else plays it safe, we lean into the uncomfortable spaces where real growth happens. Every challenge is just another level to unlock.",
+    icon: "🔥"
   },
   {
-    title: "Community Wins",
-    description: "Your growth fuels ours. We share knowledge, celebrate progress, and pull each other up. Success isn't a solo mission—when one of us wins, we all win."
+    title: "We All Eat",
+    description: "Your success fuels the whole circle. We share game, celebrate wins, and pull each other up. When one person breaks through, it opens doors for everyone. Solo missions don't build empires.",
+    icon: "🤝"
   },
   {
-    title: "Vision for the Future",
-    description: "Every decision is made with legacy in mind. We move with purpose, not just for today, but for tomorrow. This is about building something that lasts beyond us."
+    title: "Legacy Moves Only",
+    description: "Every decision gets measured against forever. We don't just move for today's bag—we move for generational impact. This is about building something that outlasts us and changes the whole family tree.",
+    icon: "👑"
   }
 ];

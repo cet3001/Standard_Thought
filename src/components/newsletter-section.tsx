@@ -6,12 +6,14 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Mail, Check, AlertCircle, Lock } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { trackNewsletterSignup } from "@/lib/analytics-utils";
+import { useUrbanTexture } from "@/hooks/use-urban-texture";
 
 export const NewsletterSection = () => {
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const { toast } = useToast();
+  const { textureImageUrl } = useUrbanTexture();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -74,9 +76,30 @@ export const NewsletterSection = () => {
   return (
     <section 
       data-section="newsletter" 
-      className="py-16 sm:py-20 bg-gradient-to-b from-accent/10 to-brand-cream dark:from-accent/20 dark:to-brand-black"
+      className="py-16 sm:py-20 relative overflow-hidden"
     >
-      <div className="container mx-auto px-4 sm:px-6 max-w-4xl">
+      {/* Urban Background - Matches Hero Section */}
+      <div className="absolute inset-0" aria-hidden="true">
+        {/* AI-Generated or Curated Urban Texture */}
+        {textureImageUrl && (
+          <div 
+            className="absolute inset-0 opacity-20 bg-repeat bg-center"
+            style={{
+              backgroundImage: `url(${textureImageUrl})`,
+              backgroundSize: textureImageUrl.startsWith('data:') ? 'cover' : '300px 300px',
+              filter: 'contrast(1.3) brightness(0.7)'
+            }}
+          />
+        )}
+        
+        {/* Background gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 opacity-50"></div>
+        
+        {/* Content overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/85 via-brand-cream/90 to-brand-cream/95 dark:from-brand-black/85 dark:via-brand-black/90 dark:to-brand-black/95"></div>
+      </div>
+
+      <div className="container mx-auto px-4 sm:px-6 max-w-4xl relative z-10">
         <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <Card className="relative bg-brand-cream/90 dark:bg-brand-black/90 backdrop-blur-sm border-[#247EFF]/30 shadow-2xl overflow-hidden">
             {/* Blueprint Paper Background */}

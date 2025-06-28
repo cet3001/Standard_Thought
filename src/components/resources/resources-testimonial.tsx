@@ -1,7 +1,10 @@
 
 import { Quote } from "lucide-react";
+import { useUrbanTexture } from "@/hooks/use-urban-texture";
 
 const ResourcesTestimonial = () => {
+  const { textureImageUrl } = useUrbanTexture();
+
   const testimonials = [
     {
       quote: "This guide helped me go from no credit to approved for my first apartment in 8 months. The secured card strategy was game-changing.",
@@ -54,8 +57,29 @@ const ResourcesTestimonial = () => {
   ];
 
   return (
-    <section className="py-12 md:py-16 bg-[#247EFF]/5 dark:bg-[#247EFF]/10 rounded-2xl md:rounded-3xl my-12 md:my-16 mx-4 md:mx-0">
-      <div className="container mx-auto px-4 md:px-6">
+    <section className="py-12 md:py-16 rounded-2xl md:rounded-3xl my-12 md:my-16 mx-4 md:mx-0 relative overflow-hidden">
+      {/* Urban Background */}
+      <div className="absolute inset-0" aria-hidden="true">
+        {/* AI-Generated or Curated Urban Texture */}
+        {textureImageUrl && (
+          <div 
+            className="absolute inset-0 opacity-15 bg-repeat bg-center"
+            style={{
+              backgroundImage: `url(${textureImageUrl})`,
+              backgroundSize: textureImageUrl.startsWith('data:') ? 'cover' : '300px 300px',
+              filter: 'contrast(1.2) brightness(0.8) saturate(0.9)'
+            }}
+          />
+        )}
+        
+        {/* Background gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#247EFF]/20 via-[#247EFF]/10 to-[#247EFF]/15 dark:from-[#247EFF]/30 dark:via-[#247EFF]/20 dark:to-[#247EFF]/25"></div>
+        
+        {/* Content overlay for readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/20 to-transparent dark:from-transparent dark:via-black/20 dark:to-transparent"></div>
+      </div>
+
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="text-center mb-8 md:mb-12">
           <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-[#0A0A0A] dark:text-brand-cream mb-3 md:mb-4">
             Real People, Real Results
@@ -67,7 +91,7 @@ const ResourcesTestimonial = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 max-w-7xl mx-auto">
           {testimonials.map((testimonial, index) => (
-            <div key={index} className="bg-white dark:bg-brand-black/50 rounded-xl md:rounded-2xl p-4 md:p-6 border border-[#247EFF]/20 relative">
+            <div key={index} className="bg-white/90 dark:bg-brand-black/70 backdrop-blur-sm rounded-xl md:rounded-2xl p-4 md:p-6 border border-[#247EFF]/20 relative">
               <Quote className="h-6 w-6 md:h-8 md:w-8 text-[#247EFF] mb-3 md:mb-4" />
               
               <blockquote className="text-[#0A0A0A] dark:text-brand-cream mb-4 md:mb-6 italic text-sm md:text-base leading-relaxed">

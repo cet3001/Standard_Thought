@@ -2,15 +2,39 @@
 import { Link } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, Map } from "lucide-react";
+import { useUrbanTexture } from "@/hooks/use-urban-texture";
 
 const SiteNavigationHub = () => {
+  const { textureImageUrl } = useUrbanTexture();
+
   const handleNavigationClick = () => {
     console.log(`Navigating to Explore More: /blog`);
   };
 
   return (
-    <div className="py-16 bg-brand-cream dark:bg-brand-black">
-      <div className="container mx-auto px-6">
+    <div className="py-16 relative overflow-hidden">
+      {/* Urban Background - Matches Hero Section */}
+      <div className="absolute inset-0" aria-hidden="true">
+        {/* AI-Generated or Curated Urban Texture */}
+        {textureImageUrl && (
+          <div 
+            className="absolute inset-0 opacity-15 bg-repeat bg-center"
+            style={{
+              backgroundImage: `url(${textureImageUrl})`,
+              backgroundSize: textureImageUrl.startsWith('data:') ? 'cover' : '400px 400px',
+              filter: 'contrast(1.2) brightness(0.8)'
+            }}
+          />
+        )}
+        
+        {/* Background gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 opacity-40"></div>
+        
+        {/* Content overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/90 via-brand-cream/95 to-brand-cream/90 dark:from-brand-black/90 dark:via-brand-black/95 dark:to-brand-black/90"></div>
+      </div>
+
+      <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-2xl mx-auto">
           <Link
             to="/blog"

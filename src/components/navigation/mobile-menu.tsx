@@ -1,7 +1,7 @@
 
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import AuthSection from "./auth-section";
@@ -49,6 +49,12 @@ const MobileMenu = ({ isOpen, onToggle, onClose }: MobileMenuProps) => {
         aria-label="Navigation menu"
         id="navigation-menu"
       >
+        {/* Add required accessibility components */}
+        <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+        <SheetDescription className="sr-only">
+          Navigate to different sections of the site
+        </SheetDescription>
+
         {/* Multi-layered background with urban texture */}
         <div className="absolute inset-0 bg-gradient-to-br from-white via-brand-cream/30 to-white">
           {/* Primary texture layer - dot pattern */}

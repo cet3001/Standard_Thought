@@ -5,10 +5,8 @@ import MobileMenu from "./navigation/mobile-menu";
 import { useUrbanTexture } from "@/hooks/use-urban-texture";
 
 const Navigation = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { textureImageUrl, imageGenerationStatus } = useUrbanTexture();
 
-  console.log('Navigation render - isMenuOpen:', isMenuOpen);
   console.log('Navigation render - textureImageUrl:', textureImageUrl);
   console.log('Navigation render - imageGenerationStatus:', imageGenerationStatus);
 
@@ -74,19 +72,9 @@ const Navigation = () => {
         <div className="container mx-auto px-4 sm:px-6 py-4 relative z-10">
           {/* Single layout for all screen sizes */}
           <div className="flex items-center justify-between">
-            {/* Hamburger Menu */}
+            {/* Hamburger Menu - now self-contained */}
             <div className="flex items-center flex-shrink-0">
-              <MobileMenu 
-                isOpen={isMenuOpen}
-                onToggle={() => {
-                  console.log('Toggle called, current state:', isMenuOpen);
-                  setIsMenuOpen(!isMenuOpen);
-                }}
-                onClose={() => {
-                  console.log('Close called');
-                  setIsMenuOpen(false);
-                }}
-              />
+              <MobileMenu />
             </div>
 
             {/* Centered Logo - bigger and more prominent */}

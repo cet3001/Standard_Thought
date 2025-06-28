@@ -1,4 +1,4 @@
-
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from "@/components/ui/sheet";
@@ -6,14 +6,11 @@ import { Menu } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import AuthSection from "./auth-section";
 
-interface MobileMenuProps {
-  isOpen?: boolean;
-  onToggle?: () => void;
-  onClose?: () => void;
-}
-
-const MobileMenu = ({ isOpen, onToggle, onClose }: MobileMenuProps) => {
+const MobileMenu = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const { user } = useAuth();
+  
+  console.log('MobileMenu render - isOpen:', isOpen);
   
   const navItems = [
     { href: "/", label: "Start Here" },
@@ -23,12 +20,18 @@ const MobileMenu = ({ isOpen, onToggle, onClose }: MobileMenuProps) => {
     { href: "/faq", label: "Wealth Wisdom" },
   ];
 
-  const handleJoinMovement = () => {
-    onClose?.();
+  const handleClose = () => {
+    console.log('MobileMenu - closing menu');
+    setIsOpen(false);
+  };
+
+  const handleToggle = () => {
+    console.log('MobileMenu - toggle called, current state:', isOpen);
+    setIsOpen(!isOpen);
   };
 
   return (
-    <Sheet open={isOpen} onOpenChange={onClose}>
+    <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger asChild>
         <Button 
           variant="ghost" 
@@ -37,7 +40,7 @@ const MobileMenu = ({ isOpen, onToggle, onClose }: MobileMenuProps) => {
           aria-expanded={isOpen}
           aria-controls="navigation-menu"
           className="hover:bg-[#247EFF]/10 relative overflow-hidden"
-          onClick={onToggle}
+          onClick={handleToggle}
         >
           <div className="absolute inset-0 opacity-[0.1] bg-[radial-gradient(circle_at_1px_1px,_rgba(36,126,255,0.3)_1px,_transparent_0)] bg-[length:8px_8px]"></div>
           <Menu className="h-6 w-6 relative z-10" aria-hidden="true" />
@@ -54,24 +57,27 @@ const MobileMenu = ({ isOpen, onToggle, onClose }: MobileMenuProps) => {
           Navigate to different sections of the site
         </SheetDescription>
 
-        {/* Multi-layered background with urban texture */}
+        {/* Debug indicator - remove after testing */}
+        <div className="absolute top-2 right-2 bg-red-500 text-white text-xs px-2 py-1 rounded z-50">
+          Menu Open: {isOpen ? 'YES' : 'NO'}
+        </div>
+
+        {/* Simplified background - keep it urban but lighter */}
         <div className="absolute inset-0 bg-white">
-          <div className="absolute inset-0 opacity-[0.08] bg-[radial-gradient(circle_at_1px_1px,_rgba(36,126,255,0.4)_1px,_transparent_0)] bg-[length:16px_16px]"></div>
-          <div className="absolute inset-0 opacity-[0.05] bg-[linear-gradient(45deg,_transparent_45%,_rgba(36,126,255,0.3)_47%,_rgba(36,126,255,0.3)_53%,_transparent_55%)] bg-[length:12px_12px]"></div>
-          <div className="absolute inset-0 bg-gradient-to-b from-[#247EFF]/5 via-transparent via-50% to-[#FFD700]/5"></div>
-          <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-[#247EFF]/10 to-transparent rounded-bl-full"></div>
-          <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-[#FFD700]/10 to-transparent rounded-tr-full"></div>
+          <div className="absolute inset-0 opacity-[0.05] bg-[radial-gradient(circle_at_1px_1px,_rgba(36,126,255,0.4)_1px,_transparent_0)] bg-[length:16px_16px]"></div>
+          <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(45deg,_transparent_45%,_rgba(36,126,255,0.3)_47%,_rgba(36,126,255,0.3)_53%,_transparent_55%)] bg-[length:12px_12px]"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-[#247EFF]/3 via-transparent via-50% to-[#FFD700]/3"></div>
         </div>
         
-        <nav className="flex flex-col space-y-6 mt-8 relative z-10" role="navigation" aria-label="Main navigation">
-          {/* Navigation Links with enhanced styling */}
+        <nav className="flex flex-col space-y-6 mt-12 relative z-20" role="navigation" aria-label="Main navigation">
+          {/* Navigation Links */}
           {navItems.map((item, index) => (
             <Link
               key={item.href}
               to={item.href}
               className="group relative text-xl font-semibold text-gray-900 hover:text-[#247EFF] transition-all duration-300 border-b border-[#247EFF]/10 pb-3 pl-4"
               aria-label={`Navigate to ${item.label} page`}
-              onClick={onClose}
+              onClick={handleClose}
               style={{ animationDelay: `${index * 50}ms` }}
             >
               <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#247EFF] to-[#FFD700] transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top rounded-r"></div>
@@ -80,24 +86,26 @@ const MobileMenu = ({ isOpen, onToggle, onClose }: MobileMenuProps) => {
             </Link>
           ))}
           
-          {/* Auth Section with enhanced container */}
+          {/* Auth Section */}
           <div className="pt-6 border-t border-[#247EFF]/20 relative">
             <div className="absolute inset-0 bg-gradient-to-r from-[#247EFF]/3 to-[#FFD700]/3 rounded-lg -mx-4 -my-2"></div>
             <div className="relative z-10">
-              <AuthSection onAction={onClose} />
+              <AuthSection onAction={handleClose} />
             </div>
           </div>
           
-          {/* Enhanced CTA Buttons */}
+          {/* CTA Buttons */}
           <div className="pt-4 space-y-3">
             <button 
-              onClick={handleJoinMovement}
-              className="w-full bg-gradient-to-r from-[#247EFF] to-[#0057FF] text-white font-bold hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg rounded-full px-6 py-3 text-base relative overflow-hidden border-0 before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700"
+              onClick={handleClose}
+              className="w-full bg-gradient-to-r from-[#247EFF] to-[#0057FF] text-white font-bold hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg rounded-full px-6 py-3 text-base relative overflow-hidden border-0"
             >
               <span className="relative z-10">Join Movement</span>
             </button>
             
-            <button className="w-full bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFA500] text-black font-bold hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl rounded-full px-6 py-4 border-0 text-lg relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/30 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 hover:from-[#FFA500] hover:via-[#FFD700] hover:to-[#FFD700]"
+            <button 
+              onClick={handleClose}
+              className="w-full bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFA500] text-black font-bold hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl rounded-full px-6 py-4 border-0 text-lg relative overflow-hidden"
               style={{ 
                 fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
                 textShadow: '1px 1px 0px rgba(0,0,0,0.2)' 

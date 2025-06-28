@@ -1,4 +1,3 @@
-
 import Analytics from "@/components/analytics";
 import HomepageHero from "@/components/homepage-hero";
 import LeadMagnetPopup from "@/components/lead-magnet-popup";
@@ -19,10 +18,12 @@ import SemanticContentEnhancer from "@/components/seo/semantic-content-enhancer"
 import AddSamplePosts from "@/components/admin/add-sample-posts";
 import { useMobilePerformance } from "@/hooks/use-mobile-performance";
 import { useAuth } from "@/contexts/AuthContext";
+import { useUrbanTexture } from "@/hooks/use-urban-texture";
 
 const Index = () => {
   useMobilePerformance();
   const { isAdmin } = useAuth();
+  const { textureImageUrl } = useUrbanTexture();
 
   const breadcrumbs = [
     { name: "Home", url: "https://www.standardthought.com", position: 1 }
@@ -129,9 +130,30 @@ const Index = () => {
           <ManifestoSection />
         </section>
 
-        {/* FAQ Section with Schema */}
-        <section className="py-16 bg-white/80 dark:bg-brand-black/80">
-          <div className="container mx-auto px-6 max-w-4xl">
+        {/* FAQ Section with Urban Background */}
+        <section className="py-16 relative overflow-hidden">
+          {/* Urban Background - Matches other sections */}
+          <div className="absolute inset-0" aria-hidden="true">
+            {/* AI-Generated or Curated Urban Texture */}
+            {textureImageUrl && (
+              <div 
+                className="absolute inset-0 opacity-30 bg-repeat bg-center"
+                style={{
+                  backgroundImage: `url(${textureImageUrl})`,
+                  backgroundSize: textureImageUrl.startsWith('data:') ? 'cover' : '300px 300px',
+                  filter: 'contrast(1.3) brightness(0.7) sepia(0.05)'
+                }}
+              />
+            )}
+            
+            {/* Background gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 opacity-30"></div>
+            
+            {/* Content overlay for text readability */}
+            <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/80 via-brand-cream/85 to-brand-cream/90 dark:from-brand-black/80 dark:via-brand-black/85 dark:to-brand-black/90"></div>
+          </div>
+
+          <div className="container mx-auto px-6 max-w-4xl relative z-10">
             <FAQSection
               title="No Dumb Questions—Just Real Answers"
               faqs={homepageFAQs}

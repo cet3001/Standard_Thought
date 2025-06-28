@@ -7,12 +7,12 @@ const Blog = () => {
 
   return (
     <div className="min-h-screen relative overflow-hidden">
-      {/* Enhanced Urban Background with Pearlescent Effect - Consistent with Home/About */}
+      {/* Urban Background with Texture - Consistent with Home/About */}
       <div className="absolute inset-0" aria-hidden="true">
         {/* AI-Generated or Curated Urban Texture */}
         {textureImageUrl && (
           <div 
-            className="absolute inset-0 opacity-25 bg-cover bg-center"
+            className="absolute inset-0 opacity-30 bg-cover bg-center"
             style={{
               backgroundImage: `url(${textureImageUrl})`,
               backgroundSize: 'cover',
@@ -22,33 +22,13 @@ const Blog = () => {
           />
         )}
         
-        {/* Primary pearlescent background overlay - Enhanced consistency */}
-        <div 
-          className="absolute inset-0"
-          style={{
-            background: 'linear-gradient(135deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-            backgroundSize: '400% 400%',
-            animation: 'pearlescent 4s ease-in-out infinite',
-            opacity: 0.12
-          }}
-        ></div>
+        {/* Urban gradient overlay - reduced to let texture show through */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-800/20 via-slate-700/30 to-slate-900/20"></div>
         
-        {/* Secondary pearlescent layer for depth */}
-        <div 
-          className="absolute inset-0"
-          style={{
-            background: 'radial-gradient(circle at 30% 70%, rgba(244, 208, 63, 0.15), rgba(247, 220, 111, 0.1), rgba(253, 234, 167, 0.08), transparent 70%)',
-            animation: 'pearlescent 6s ease-in-out infinite reverse'
-          }}
-        ></div>
+        {/* Light content overlay for readability - much lighter than before */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white/75 via-white/80 to-white/85 dark:from-black/75 dark:via-black/80 dark:to-black/85"></div>
         
-        {/* Urban texture overlay with enhanced opacity */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-800/12 via-slate-700/18 to-slate-900/12"></div>
-        
-        {/* Content overlay for text readability - Consistent with other pages */}
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/88 via-brand-cream/92 to-brand-cream/95 dark:from-brand-black/88 dark:via-brand-black/92 dark:to-brand-black/95"></div>
-        
-        {/* Floating pearlescent accent elements - Consistent styling */}
+        {/* Floating pearlescent accent elements */}
         <div 
           className="absolute top-20 right-16 w-24 h-24 rounded-full opacity-15 animate-float"
           style={{

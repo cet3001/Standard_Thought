@@ -57,13 +57,13 @@ const BlogGrid = ({ posts, onPostDeleted, onThemeTagClick }: BlogGridProps) => {
   };
 
   return (
-    <div className="w-full max-w-none overflow-x-auto">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 min-w-[1200px] lg:min-w-0">
+    <div className="w-full">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-none">
         {posts.map((post, index) => (
           <Card 
             key={post.id} 
             onClick={() => handleCardClick(post)}
-            className={`cursor-pointer bg-white/90 dark:bg-brand-black/80 backdrop-blur-sm border-none rounded-none overflow-hidden group transition-all duration-500 hover:scale-105 hover:shadow-lg relative w-full lg:w-auto lg:min-w-[280px]
+            className={`cursor-pointer bg-white/90 dark:bg-brand-black/80 backdrop-blur-sm border-none rounded-none overflow-hidden group transition-all duration-500 hover:scale-105 hover:shadow-lg relative
               /* Torn paper effect */
               before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-2 before:bg-white/90 dark:before:bg-brand-black/80
               before:shadow-[0_3px_0_0_rgba(0,0,0,0.1)] before:z-10

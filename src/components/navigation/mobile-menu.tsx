@@ -56,7 +56,7 @@ const MobileMenu = ({ isOpen, onToggle, onClose }: MobileMenuProps) => {
         </SheetDescription>
 
         {/* Multi-layered background with urban texture */}
-        <div className="absolute inset-0 bg-gradient-to-br from-white via-brand-cream/30 to-white">
+        <div className="absolute inset-0 bg-white">
           {/* Primary texture layer - dot pattern */}
           <div className="absolute inset-0 opacity-[0.08] bg-[radial-gradient(circle_at_1px_1px,_rgba(36,126,255,0.4)_1px,_transparent_0)] bg-[length:16px_16px]"></div>
           
@@ -77,7 +77,7 @@ const MobileMenu = ({ isOpen, onToggle, onClose }: MobileMenuProps) => {
             <Link
               key={item.href}
               to={item.href}
-              className="group relative text-xl font-semibold text-brand-black hover:text-[#247EFF] transition-all duration-300 border-b border-[#247EFF]/10 pb-3 pl-4"
+              className="group relative text-xl font-semibold text-gray-900 hover:text-[#247EFF] transition-all duration-300 border-b border-[#247EFF]/10 pb-3 pl-4"
               aria-label={`Navigate to ${item.label} page`}
               onClick={onClose}
               style={{ animationDelay: `${index * 50}ms` }}

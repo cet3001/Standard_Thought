@@ -15,9 +15,47 @@ const HeroContent = ({ isVisible, scrollToNewsletter }: HeroContentProps) => {
   };
 
   return (
-    <div className="text-center mb-16">
-      <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-        <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black mb-6 sm:mb-8 leading-tight text-brand-black dark:text-brand-cream">
+    <div className="text-center mb-16 relative">
+      {/* Urban grain texture overlay */}
+      <div className="absolute inset-0 opacity-[0.15] pointer-events-none" aria-hidden="true">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,_rgba(0,0,0,0.8)_1px,_transparent_0)] bg-[length:8px_8px]"></div>
+        <div className="absolute inset-0 bg-[linear-gradient(45deg,_transparent_46%,_rgba(0,0,0,0.2)_47%,_rgba(0,0,0,0.2)_53%,_transparent_54%)] bg-[length:4px_4px] opacity-60"></div>
+      </div>
+
+      {/* Subtle graffiti tags background */}
+      <div className="absolute top-10 right-10 transform rotate-12 opacity-[0.08] pointer-events-none" aria-hidden="true">
+        <div 
+          className="text-[#247EFF] text-6xl font-black"
+          style={{ 
+            fontFamily: "'Permanent Marker', 'Kalam', cursive",
+            textShadow: '2px 2px 0px rgba(0,0,0,0.3)',
+            filter: 'blur(0.5px)'
+          }}
+        >
+          BUILT FOR THIS
+        </div>
+        {/* Drip effect */}
+        <div className="absolute bottom-0 left-8 w-2 h-8 bg-[#247EFF] opacity-40 transform rotate-12 blur-sm"></div>
+      </div>
+
+      <div className="absolute bottom-20 left-10 transform -rotate-6 opacity-[0.06] pointer-events-none" aria-hidden="true">
+        <div 
+          className="text-[#FFD700] text-4xl font-black"
+          style={{ 
+            fontFamily: "'Permanent Marker', 'Kalam', cursive",
+            textShadow: '1px 1px 0px rgba(0,0,0,0.2)',
+            filter: 'blur(0.3px)'
+          }}
+        >
+          LEGACY
+        </div>
+      </div>
+
+      <div className={`transition-all duration-1000 relative z-10 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black mb-6 sm:mb-8 leading-tight text-brand-black dark:text-brand-cream relative">
+          {/* Additional texture behind main heading */}
+          <div className="absolute inset-0 opacity-[0.05] bg-[conic-gradient(from_0deg,_transparent_70%,_rgba(0,0,0,0.3)_90%,_transparent_100%)] bg-[length:15px_15px]"></div>
+          
           Build <span 
             className="text-[#FFD700] relative overflow-hidden"
             style={{

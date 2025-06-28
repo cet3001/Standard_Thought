@@ -15,7 +15,11 @@ const ResourcesCTA = () => {
       
       <Link 
         to="/#newsletter"
-        className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-accent to-[#FFD700] text-black rounded-3xl hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl font-bold text-lg"
+        className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFA500] text-black font-bold hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl rounded-3xl border-0 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/30 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 hover:from-[#FFA500] hover:via-[#FFD700] hover:to-[#FFD700] text-lg"
+        style={{ 
+          fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
+          textShadow: '1px 1px 0px rgba(0,0,0,0.2)' 
+        }}
       >
         Download Your Execution Kit
       </Link>

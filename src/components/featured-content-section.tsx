@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -131,7 +132,11 @@ const FeaturedContentSection = () => {
                     onClick={() => handleResourceClick(content.title, content.link)}
                   >
                     <Button 
-                      className="w-full bg-gradient-to-r from-[#247EFF] to-[#0057FF] text-white hover:from-[#0057FF] hover:to-[#247EFF] font-semibold py-2 sm:py-3 rounded-2xl transition-all duration-300 hover:scale-105 text-sm sm:text-base"
+                      className="w-full bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFA500] text-black font-bold hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl py-2 sm:py-3 rounded-3xl border-0 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/30 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 hover:from-[#FFA500] hover:via-[#FFD700] hover:to-[#FFD700] text-sm sm:text-base"
+                      style={{ 
+                        fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
+                        textShadow: '1px 1px 0px rgba(0,0,0,0.2)' 
+                      }}
                     >
                       {content.cta}
                       <ArrowRight className="ml-2 h-3 w-3 sm:h-4 sm:w-4" aria-label="Arrow pointing to content" />

@@ -49,7 +49,11 @@ const FloatingCTA = () => {
           </div>
           <Button 
             size="sm"
-            className="bg-[#247EFF] hover:bg-[#0057FF] hover:shadow-lg hover:shadow-[#247EFF]/30 text-white font-medium rounded-2xl px-4 py-2 text-sm w-full transition-all duration-300"
+            className="bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFA500] text-black font-bold hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg rounded-2xl px-4 py-2 text-sm w-full border-0 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/30 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 hover:from-[#FFA500] hover:via-[#FFD700] hover:to-[#FFD700]"
+            style={{ 
+              fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
+              textShadow: '1px 1px 0px rgba(0,0,0,0.2)' 
+            }}
             aria-label="Start building your wealth - Get free blueprint"
           >
             Let's Build

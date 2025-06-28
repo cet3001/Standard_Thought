@@ -1,0 +1,26 @@
+
+/* Touch-friendly interactive elements and inputs */
+
+@media (max-width: 768px) {
+  /* Touch-friendly interactive elements */
+  button, a, input, textarea, select, [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Optimize form inputs */
+  input, textarea {
+    font-size: 16px; /* Prevent zoom on iOS */
+    border-radius: 0.5rem; /* Consistent with design */
+    -webkit-appearance: none;
+  }
+
+  /* Optimize navigation for mobile */
+  nav {
+    position: fixed;
+    transform: translateZ(0);
+    will-change: transform;
+  }
+}

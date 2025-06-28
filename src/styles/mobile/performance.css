@@ -1,0 +1,63 @@
+
+/* Mobile performance optimizations */
+
+@media (max-width: 768px) {
+  /* Reduce backdrop blur for performance - keep visual design intact */
+  .backdrop-blur-sm,
+  .backdrop-blur {
+    backdrop-filter: blur(4px) !important;
+    -webkit-backdrop-filter: blur(4px) !important;
+  }
+
+  /* Reduce expensive transforms for performance */
+  .hover\:scale-105:hover {
+    transform: scale(1.02);
+  }
+
+  /* Reduce shadow complexity for performance */
+  .shadow-lg, .shadow-xl, .shadow-2xl {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Optimize hover states */
+  .hover\:shadow-lg:hover,
+  .hover\:shadow-xl:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* Performance critical styles */
+.critical-path {
+  contain: layout style paint;
+}
+
+.gpu-layer {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Loading states optimization */
+.loading-skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1s infinite;
+}
+
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Reduce motion for accessibility and performance */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .overflow-x-auto {
+    scroll-behavior: auto !important;
+  }
+}

@@ -10,7 +10,11 @@
 @import "./styles/selection.css";
 @import "./styles/animations.css";
 @import "./styles/performance.css";
-@import "./styles/mobile-optimized.css";
+@import "./styles/mobile/core-optimizations.css";
+@import "./styles/mobile/touch-interactions.css";
+@import "./styles/mobile/scroll-enhancements.css";
+@import "./styles/mobile/performance.css";
+@import "./styles/mobile/responsive-adjustments.css";
 
 /* Critical rendering path - inline critical styles */
 html {

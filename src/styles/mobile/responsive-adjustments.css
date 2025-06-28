@@ -1,0 +1,20 @@
+
+/* Spacing and layout adjustments for mobile */
+
+@media (max-width: 768px) {
+  /* Spacing adjustments for mobile */
+  .py-16 { padding-top: 3rem; padding-bottom: 3rem; }
+  .py-12 { padding-top: 2rem; padding-bottom: 2rem; }
+  .py-8 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+
+  /* Padding optimizations */
+  .px-6 { padding-left: 1rem; padding-right: 1rem; }
+  .px-8 { padding-left: 1.5rem; padding-right: 1.5rem; }
+}
+
+/* Ultra-small screens adjustments */
+@media (max-width: 375px) {
+  /* Further reduce padding on very small screens */
+  .py-16 { padding-top: 2rem; padding-bottom: 2rem; }
+  .py-12 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+}

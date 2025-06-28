@@ -94,7 +94,7 @@ const TestimonialsCarousel = () => {
         <TestimonialsCTA />
       </div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes pearlescent {
           0% {
             background-position: 0% 50%;

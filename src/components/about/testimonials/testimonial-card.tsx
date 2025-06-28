@@ -110,7 +110,7 @@ const TestimonialCard = ({ testimonial }: TestimonialCardProps) => {
         <div className="absolute top-16 right-2 w-1.5 h-1.5 bg-[#FFD700] rounded-full opacity-80"></div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes pearlescent {
           0% {
             background-position: 0% 50%;

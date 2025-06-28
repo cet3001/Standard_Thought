@@ -44,7 +44,10 @@
 
 /* Mobile and tablet specific overrides to prevent blue tinting */
 @media (max-width: 1024px) {
-  .bg-brand-cream {
+  /* Force cream background on all mobile/tablet devices */
+  .bg-brand-cream,
+  .bg-brand-cream\/95,
+  [class*="bg-brand-cream"] {
     background-color: #FDF6E3 !important;
   }
   
@@ -53,7 +56,45 @@
   }
   
   /* Ensure nav background stays cream on mobile/tablet */
-  nav {
+  nav,
+  nav[class*="bg-brand-cream"],
+  .bg-brand-cream\/95 {
     background-color: rgba(253, 246, 227, 0.95) !important;
+  }
+  
+  /* Override any blue backgrounds that might appear */
+  .bg-blue-500,
+  .bg-blue-600,
+  [class*="bg-blue"] {
+    background-color: #FDF6E3 !important;
+  }
+  
+  /* Force body and html backgrounds */
+  body,
+  html,
+  #root {
+    background-color: #FDF6E3 !important;
+  }
+  
+  /* Override any gradient backgrounds on mobile */
+  [class*="bg-gradient"] {
+    background: #FDF6E3 !important;
+  }
+}
+
+/* Ultra-specific overrides for stubborn blue backgrounds */
+@media (max-width: 768px) {
+  * {
+    /* Force cream on any element that might have blue */
+    --tw-bg-opacity: 1 !important;
+  }
+  
+  .min-h-screen {
+    background-color: #FDF6E3 !important;
+  }
+  
+  /* Target the main app container */
+  div[class*="min-h-screen"] {
+    background-color: #FDF6E3 !important;
   }
 }

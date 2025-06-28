@@ -12,12 +12,12 @@ const Blog = () => {
         {/* AI-Generated or Curated Urban Texture */}
         {textureImageUrl && (
           <div 
-            className="absolute inset-0 opacity-50 bg-cover bg-center"
+            className="absolute inset-0 opacity-50 bg-center"
             style={{
               backgroundImage: `url(${textureImageUrl})`,
-              backgroundSize: 'cover',
+              backgroundSize: 'auto',
               backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat'
+              backgroundRepeat: 'repeat'
             }}
           />
         )}

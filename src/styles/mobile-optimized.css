@@ -1,10 +1,10 @@
 
-/* Mobile-first performance optimizations */
+/* Mobile-first performance optimizations - ONLY optimizations, no design overrides */
 
 /* Viewport and layout optimizations */
 @media (max-width: 768px) {
   * {
-    /* Reduce animation complexity on mobile */
+    /* Reduce animation complexity on mobile for performance */
     animation-duration: 0.2s !important;
     transition-duration: 0.2s !important;
   }
@@ -103,20 +103,11 @@
     }
   }
 
-  /* Reduce backdrop blur for performance */
+  /* Reduce backdrop blur for performance - keep visual design intact */
   .backdrop-blur-sm,
   .backdrop-blur {
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-  }
-
-  /* Replace with solid backgrounds */
-  .backdrop-blur-sm {
-    background: rgba(255, 255, 255, 0.95);
-  }
-
-  .dark .backdrop-blur-sm {
-    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(4px) !important;
+    -webkit-backdrop-filter: blur(4px) !important;
   }
 
   /* Optimize scroll performance */
@@ -124,7 +115,7 @@
     scroll-behavior: smooth;
   }
 
-  /* Reduce expensive transforms */
+  /* Reduce expensive transforms for performance */
   .hover\:scale-105:hover {
     transform: scale(1.02);
   }
@@ -148,12 +139,12 @@
     gap: 1rem; /* Reduce grid gaps on mobile */
   }
 
-  /* Text optimization */
+  /* Text optimization for mobile readability */
   h1 { font-size: 2rem; }
   h2 { font-size: 1.75rem; }
   h3 { font-size: 1.5rem; }
   
-  /* Spacing adjustments */
+  /* Spacing adjustments for mobile */
   .py-16 { padding-top: 3rem; padding-bottom: 3rem; }
   .py-12 { padding-top: 2rem; padding-bottom: 2rem; }
   .py-8 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
@@ -245,16 +236,11 @@
   }
 }
 
-/* Optimize for better mobile performance */
+/* Optimize for better mobile performance - shadows and gradients */
 @media (max-width: 768px) {
-  /* Reduce shadow complexity */
+  /* Reduce shadow complexity for performance */
   .shadow-lg, .shadow-xl, .shadow-2xl {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  }
-
-  /* Simplify gradients */
-  .bg-gradient-to-r, .bg-gradient-to-b {
-    background: var(--accent-color, #247EFF);
   }
 
   /* Optimize hover states */

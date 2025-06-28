@@ -36,11 +36,8 @@ const Navigation = () => {
         🔥 Trusted by 1,000+ first-gen hustlers building generational wealth
       </div>
       
-      {/* Main Navigation - Force cream background on all devices */}
-      <nav 
-        className="bg-explicit-cream backdrop-blur-md border-b border-[#247EFF]/20 shadow-sm"
-        style={{ backgroundColor: '#FDF6E3' }}
-      >
+      {/* Main Navigation - Consistent across all devices */}
+      <nav className="bg-brand-cream backdrop-blur-md border-b border-[#247EFF]/20 shadow-sm">
         <div className="container mx-auto px-4 sm:px-6 py-4">
           <div className="flex items-center justify-between">
             {/* Hamburger Menu */}

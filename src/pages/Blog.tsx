@@ -7,12 +7,12 @@ const Blog = () => {
 
   return (
     <div className="min-h-screen relative overflow-hidden">
-      {/* Urban Background with Texture - Consistent with Home/About */}
+      {/* Urban Background with Texture - Matching Home/About Pages */}
       <div className="absolute inset-0" aria-hidden="true">
         {/* AI-Generated or Curated Urban Texture */}
         {textureImageUrl && (
           <div 
-            className="absolute inset-0 opacity-60 bg-cover bg-center"
+            className="absolute inset-0 opacity-50 bg-cover bg-center"
             style={{
               backgroundImage: `url(${textureImageUrl})`,
               backgroundSize: 'cover',
@@ -22,11 +22,11 @@ const Blog = () => {
           />
         )}
         
-        {/* Urban gradient overlay - darker for street vibe */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/40 via-slate-800/50 to-slate-900/60"></div>
+        {/* Urban gradient overlay - lighter for better texture visibility */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-800/40 via-slate-700/50 to-slate-900/40"></div>
         
-        {/* Minimal content overlay for text readability - much darker */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/30 to-black/40 dark:from-black/40 dark:via-black/50 dark:to-black/60"></div>
+        {/* Content overlay for text readability - reduced opacity */}
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/70 via-brand-cream/75 to-brand-cream/80 dark:from-brand-black/70 dark:via-brand-black/75 dark:to-brand-black/80"></div>
         
         {/* Floating pearlescent accent elements */}
         <div 

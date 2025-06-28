@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { TrendingUp, CreditCard } from "lucide-react";
 import { trackResourceClick } from "@/lib/analytics-utils";
@@ -89,7 +88,7 @@ const ValuePropsSection = ({ isVisible }: ValuePropsSectionProps) => {
         level={2} 
         className={`text-center mb-8 sm:mb-12 text-brand-black dark:text-brand-cream transition-all duration-1000 delay-400 relative z-10 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
       >
-        Ready to Build Wealth? Start Here
+        Ready to Flip the Script? Start Here
       </HeaderHierarchy>
       
       <div className={`grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 px-4 max-w-4xl mx-auto transition-all duration-1000 delay-600 relative z-10 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>

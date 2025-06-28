@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -101,7 +100,7 @@ const FeaturedContentSection = () => {
         <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="text-center mb-8 sm:mb-12">
             <HeaderHierarchy level={2} className="mb-4 text-2xl sm:text-3xl lg:text-4xl">
-              Ready to Build Wealth? Start Here
+              Ready to Flip the Script? Start Here
             </HeaderHierarchy>
             <p className="text-base sm:text-lg text-[#0A0A0A]/70 dark:text-brand-cream/70 max-w-2xl mx-auto px-4">
               Dive deeper into proven strategies, real success stories, and actionable frameworks that turn hustle into generational wealth.

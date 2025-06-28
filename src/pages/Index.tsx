@@ -1,3 +1,4 @@
+
 import Analytics from "@/components/analytics";
 import HomepageHero from "@/components/homepage-hero";
 import LeadMagnetPopup from "@/components/lead-magnet-popup";
@@ -132,7 +133,7 @@ const Index = () => {
         <section className="py-16 bg-white/80 dark:bg-brand-black/80">
           <div className="container mx-auto px-6 max-w-4xl">
             <FAQSection
-              title="Your Questions, Answered"
+              title="No Dumb Questions—Just Real Answers"
               faqs={homepageFAQs}
               className="mb-8"
             />
@@ -148,7 +149,6 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Trust Badge */}
         <section className="bg-gradient-to-b from-white to-brand-cream dark:from-brand-black/90 dark:to-brand-black py-16">
           <TrustBadgeSection />
         </section>

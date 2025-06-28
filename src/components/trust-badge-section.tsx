@@ -1,9 +1,11 @@
 
 import { Users } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useUrbanTexture } from "@/hooks/use-urban-texture";
 
 const TrustBadgeSection = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const { textureImageUrl } = useUrbanTexture();
 
   const testimonials = [
     { text: "Finally, money advice that speaks my language.", author: "Jamal", city: "Atlanta" },
@@ -23,14 +25,27 @@ const TrustBadgeSection = () => {
   }, [testimonials.length]);
 
   return (
-    <section className="py-12 bg-gradient-to-b from-brand-cream/30 to-brand-cream/80 dark:from-brand-black/30 dark:to-brand-black/80 border-t border-[#0A0A0A]/10 dark:border-brand-cream/10 relative overflow-hidden">
+    <section className="py-12 relative overflow-hidden border-t border-[#0A0A0A]/10 dark:border-brand-cream/10">
       
-      {/* Urban Background Elements */}
-      <div className="absolute inset-0 opacity-[0.03]" aria-hidden="true">
-        {/* Brick wall texture */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_4px_4px,_rgba(0,0,0,1)_1px,_transparent_0)] bg-[length:40px_20px]"></div>
-        {/* Faded cityscape silhouette */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0A0A0A]/20 via-[#0A0A0A]/10 to-transparent"></div>
+      {/* Urban Background - Matches other sections */}
+      <div className="absolute inset-0" aria-hidden="true">
+        {/* AI-Generated or Curated Urban Texture */}
+        {textureImageUrl && (
+          <div 
+            className="absolute inset-0 opacity-30 bg-repeat bg-center"
+            style={{
+              backgroundImage: `url(${textureImageUrl})`,
+              backgroundSize: textureImageUrl.startsWith('data:') ? 'cover' : '300px 300px',
+              filter: 'contrast(1.3) brightness(0.7) sepia(0.05)'
+            }}
+          />
+        )}
+        
+        {/* Background gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 opacity-30"></div>
+        
+        {/* Content overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/80 via-brand-cream/85 to-brand-cream/90 dark:from-brand-black/80 dark:via-brand-black/85 dark:to-brand-black/90"></div>
       </div>
 
       {/* Graffiti-style background elements */}

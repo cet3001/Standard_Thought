@@ -13,25 +13,25 @@ const SiteNavigationHub = () => {
 
   return (
     <div className="py-16 relative overflow-hidden">
-      {/* Urban Background - Matches Hero Section */}
+      {/* Urban Background - Matches other sections */}
       <div className="absolute inset-0" aria-hidden="true">
         {/* AI-Generated or Curated Urban Texture */}
         {textureImageUrl && (
           <div 
-            className="absolute inset-0 opacity-15 bg-repeat bg-center"
+            className="absolute inset-0 opacity-30 bg-repeat bg-center"
             style={{
               backgroundImage: `url(${textureImageUrl})`,
-              backgroundSize: textureImageUrl.startsWith('data:') ? 'cover' : '400px 400px',
-              filter: 'contrast(1.2) brightness(0.8)'
+              backgroundSize: textureImageUrl.startsWith('data:') ? 'cover' : '300px 300px',
+              filter: 'contrast(1.3) brightness(0.7) sepia(0.05)'
             }}
           />
         )}
         
         {/* Background gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 opacity-40"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 opacity-30"></div>
         
         {/* Content overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/90 via-brand-cream/95 to-brand-cream/90 dark:from-brand-black/90 dark:via-brand-black/95 dark:to-brand-black/90"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/80 via-brand-cream/85 to-brand-cream/90 dark:from-brand-black/80 dark:via-brand-black/85 dark:to-brand-black/90"></div>
       </div>
 
       <div className="container mx-auto px-6 relative z-10">

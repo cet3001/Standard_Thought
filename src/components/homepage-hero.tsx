@@ -6,6 +6,7 @@ import ValuePropsSection from "./homepage/value-props-section";
 import BlueprintPillarsSection from "./homepage/blueprint-pillars-section";
 import SuccessStoriesSection from "./homepage/success-stories-section";
 import FinalCTASection from "./homepage/final-cta-section";
+import { useUrbanTexture } from "@/hooks/use-urban-texture";
 
 interface HomepageHeroProps {
   scrollToNewsletter: () => void;
@@ -13,6 +14,7 @@ interface HomepageHeroProps {
 
 const HomepageHero = ({ scrollToNewsletter }: HomepageHeroProps) => {
   const [isVisible, setIsVisible] = useState(false);
+  const { textureImageUrl } = useUrbanTexture();
 
   useEffect(() => {
     setIsVisible(true);
@@ -20,29 +22,43 @@ const HomepageHero = ({ scrollToNewsletter }: HomepageHeroProps) => {
 
   return (
     <section className="pt-40 pb-24 relative overflow-hidden">
-      {/* Enhanced Urban Background with Immediate CSS Fallbacks */}
+      {/* Enhanced Urban Background with AI-Generated Texture */}
       <div className="absolute inset-0" aria-hidden="true">
-        {/* Immediate CSS fallback background - shows instantly */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 opacity-50"></div>
-        
-        {/* CSS urban texture patterns - show immediately */}
-        <div className="absolute inset-0 opacity-30">
-          {/* Brick pattern */}
+        {/* AI-Generated Urban Texture */}
+        {textureImageUrl && (
           <div 
-            className="absolute inset-0 bg-repeat opacity-40"
+            className="absolute inset-0 opacity-20 bg-repeat bg-center"
             style={{
-              backgroundImage: `
-                linear-gradient(90deg, rgba(139,69,19,0.8) 1px, transparent 1px),
-                linear-gradient(rgba(139,69,19,0.8) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(160,82,45,0.6) 2px, transparent 2px),
-                linear-gradient(rgba(160,82,45,0.6) 2px, transparent 2px)
-              `,
-              backgroundSize: '40px 20px, 40px 20px, 80px 40px, 80px 40px'
+              backgroundImage: `url(${textureImageUrl})`,
+              backgroundSize: '300px 300px',
+              filter: 'contrast(1.3) brightness(0.7)'
             }}
           />
-          {/* Grunge overlay */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,_rgba(0,0,0,0.3)_2px,_transparent_2px)] bg-[length:30px_30px] opacity-50"></div>
-        </div>
+        )}
+        
+        {/* CSS urban texture patterns - show as fallback */}
+        {!textureImageUrl && (
+          <div className="absolute inset-0 opacity-30">
+            {/* Brick pattern */}
+            <div 
+              className="absolute inset-0 bg-repeat opacity-40"
+              style={{
+                backgroundImage: `
+                  linear-gradient(90deg, rgba(139,69,19,0.8) 1px, transparent 1px),
+                  linear-gradient(rgba(139,69,19,0.8) 1px, transparent 1px),
+                  linear-gradient(90deg, rgba(160,82,45,0.6) 2px, transparent 2px),
+                  linear-gradient(rgba(160,82,45,0.6) 2px, transparent 2px)
+                `,
+                backgroundSize: '40px 20px, 40px 20px, 80px 40px, 80px 40px'
+              }}
+            />
+            {/* Grunge overlay */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,_rgba(0,0,0,0.3)_2px,_transparent_2px)] bg-[length:30px_30px] opacity-50"></div>
+          </div>
+        )}
+        
+        {/* Background gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 opacity-50"></div>
         
         {/* Content overlay for text readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/85 via-brand-cream/90 to-brand-cream/95 dark:from-brand-black/85 dark:via-brand-black/90 dark:to-brand-black/95"></div>

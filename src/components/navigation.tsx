@@ -8,14 +8,18 @@ import { supabase } from "@/integrations/supabase/client";
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [textureImageUrl, setTextureImageUrl] = useState<string>("");
+  const [imageGenerationStatus, setImageGenerationStatus] = useState<string>("idle");
 
   console.log('Navigation render - isMenuOpen:', isMenuOpen);
+  console.log('Navigation render - textureImageUrl:', textureImageUrl);
+  console.log('Navigation render - imageGenerationStatus:', imageGenerationStatus);
 
   // Generate urban texture image on component mount
   useEffect(() => {
     const generateUrbanTexture = async () => {
       try {
-        console.log("🎨 Generating urban grainy texture background...");
+        console.log("🎨 Starting urban texture generation process...");
+        setImageGenerationStatus("generating");
         
         const { data, error } = await supabase.functions.invoke('generate-image', {
           body: {
@@ -26,17 +30,25 @@ const Navigation = () => {
           }
         });
 
+        console.log("📊 Supabase function response:", { data, error });
+
         if (error) {
-          console.error("❌ Error generating texture:", error);
+          console.error("❌ Supabase function error:", error);
+          setImageGenerationStatus("error");
           return;
         }
 
         if (data && data.imageUrl) {
           setTextureImageUrl(data.imageUrl);
+          setImageGenerationStatus("success");
           console.log("✅ Urban texture generated successfully:", data.imageUrl);
+        } else {
+          console.log("⚠️ No image URL returned from function");
+          setImageGenerationStatus("no-url");
         }
       } catch (error) {
         console.error("❌ Failed to generate urban texture:", error);
+        setImageGenerationStatus("failed");
       }
     };
 
@@ -52,6 +64,11 @@ const Navigation = () => {
       
       {/* Main Navigation with AI-Generated Urban Texture */}
       <nav className="bg-brand-cream/95 dark:bg-brand-black/95 backdrop-blur-md border-b border-[#247EFF]/20 shadow-sm relative">
+        {/* Debug Status Indicator */}
+        <div className="absolute top-0 left-0 bg-black/80 text-white text-xs px-2 py-1 z-50">
+          Status: {imageGenerationStatus}
+        </div>
+        
         {/* AI-Generated Urban Texture Background */}
         {textureImageUrl && (
           <div 

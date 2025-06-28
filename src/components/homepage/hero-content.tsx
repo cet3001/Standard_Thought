@@ -18,8 +18,51 @@ const HeroContent = ({ isVisible, scrollToNewsletter }: HeroContentProps) => {
     <div className="text-center mb-16">
       <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black mb-6 sm:mb-8 leading-tight text-brand-black dark:text-brand-cream">
-          Build <span className="text-[#FFD700]">Legacy</span><br />
-          From <span className="text-[#FFD700]">Nothing</span>
+          Build <span 
+            className="text-[#FFD700] relative overflow-hidden"
+            style={{
+              background: 'linear-gradient(45deg, #FFD700, #FFF8DC, #FFA500, #FFD700)',
+              backgroundSize: '400% 400%',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              animation: 'shimmer 3s ease-in-out infinite'
+            }}
+          >
+            Legacy
+            {/* Pearlescent overlay */}
+            <div 
+              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-60 animate-[shimmer_2s_ease-in-out_infinite]"
+              style={{
+                background: 'linear-gradient(90deg, transparent 25%, rgba(255,255,255,0.4) 50%, transparent 75%)',
+                backgroundSize: '200% 100%',
+                mixBlendMode: 'overlay'
+              }}
+            />
+          </span><br />
+          From <span 
+            className="text-[#FFD700] relative overflow-hidden"
+            style={{
+              background: 'linear-gradient(45deg, #FFD700, #FFF8DC, #FFA500, #FFD700)',
+              backgroundSize: '400% 400%',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              animation: 'shimmer 3s ease-in-out infinite'
+            }}
+          >
+            Nothing
+            {/* Pearlescent overlay */}
+            <div 
+              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-60 animate-[shimmer_2s_ease-in-out_infinite]"
+              style={{
+                background: 'linear-gradient(90deg, transparent 25%, rgba(255,255,255,0.4) 50%, transparent 75%)',
+                backgroundSize: '200% 100%',
+                mixBlendMode: 'overlay',
+                animationDelay: '1s'
+              }}
+            />
+          </span>
         </h1>
         
         <p className="text-lg sm:text-xl md:text-2xl mb-8 sm:mb-12 max-w-4xl mx-auto text-brand-black dark:text-brand-cream leading-relaxed px-4">

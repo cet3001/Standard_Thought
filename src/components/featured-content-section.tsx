@@ -6,9 +6,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { ArrowRight, BookOpen, TrendingUp, Bot, Users } from "lucide-react";
 import HeaderHierarchy from "./content-structure/header-hierarchy";
 import { trackButtonClick, trackResourceClick } from "@/lib/analytics-utils";
+import { useUrbanTexture } from "@/hooks/use-urban-texture";
 
 const FeaturedContentSection = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const { textureImageUrl } = useUrbanTexture();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -95,9 +97,36 @@ const FeaturedContentSection = () => {
   return (
     <section 
       data-section="featured-content"
-      className="py-12 sm:py-16 bg-gradient-to-b from-white/50 to-brand-cream dark:from-brand-black/50 dark:to-brand-black"
+      className="py-12 sm:py-16 relative overflow-hidden"
     >
-      <div className="container mx-auto px-4 sm:px-6 max-w-6xl">
+      {/* Urban Background */}
+      <div className="absolute inset-0" aria-hidden="true">
+        {/* AI-Generated or Curated Urban Texture */}
+        {textureImageUrl && (
+          <div 
+            className="absolute inset-0 opacity-15 bg-repeat bg-center"
+            style={{
+              backgroundImage: `url(${textureImageUrl})`,
+              backgroundSize: textureImageUrl.startsWith('data:') ? 'cover' : '400px 400px',
+              filter: 'contrast(1.2) brightness(0.8)'
+            }}
+          />
+        )}
+        
+        {/* Background gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-800/30 via-slate-700/20 to-slate-900/30"></div>
+        
+        {/* Content overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-brand-cream/60 to-brand-cream/70 dark:from-brand-black/50 dark:via-brand-black/60 dark:to-brand-black/70"></div>
+      </div>
+
+      {/* Floating Urban Elements */}
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div className="absolute top-20 right-10 w-32 h-32 rounded-full bg-[#FFD700]/10 animate-float"></div>
+        <div className="absolute bottom-40 left-10 w-24 h-24 rounded-2xl bg-[#247EFF]/20 animate-float" style={{ animationDelay: '2s' }}></div>
+      </div>
+
+      <div className="container mx-auto px-4 sm:px-6 max-w-6xl relative z-10">
         <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="text-center mb-8 sm:mb-12">
             <HeaderHierarchy level={2} className="mb-4 text-2xl sm:text-3xl lg:text-4xl">

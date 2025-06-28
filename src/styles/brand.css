@@ -41,3 +41,19 @@
 .text-explicit-black {
   color: #0A0A0A !important;
 }
+
+/* Mobile and tablet specific overrides to prevent blue tinting */
+@media (max-width: 1024px) {
+  .bg-brand-cream {
+    background-color: #FDF6E3 !important;
+  }
+  
+  .bg-explicit-white {
+    background-color: #ffffff !important;
+  }
+  
+  /* Ensure nav background stays cream on mobile/tablet */
+  nav {
+    background-color: rgba(253, 246, 227, 0.95) !important;
+  }
+}

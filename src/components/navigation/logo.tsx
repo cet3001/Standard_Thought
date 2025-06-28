@@ -18,10 +18,10 @@ const Logo = () => {
       <div className="font-inter text-logo-lg md:text-[3.5rem]">
         <div className="flex flex-col">
           <div className="leading-none">
-            <span className="text-typography-primary group-hover:text-[#007cba]">Standard</span>
+            <span className="text-[#0A0A0A] group-hover:text-[#007cba]">Standard</span>
             <span className="text-[#007cba]">thought</span>
           </div>
-          <div className="text-sm font-medium text-[#0A0A0A]/60 dark:text-brand-cream/60 mt-1">
+          <div className="text-sm font-medium text-[#0A0A0A]/60 mt-1">
             Urban Wealth. Real Progress.
           </div>
         </div>

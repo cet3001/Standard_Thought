@@ -71,7 +71,7 @@ const BlogPage = () => {
     return <ErrorMessage error={postsError || categoriesError} onRetry={() => refetchPosts()} />;
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-transparent">
       <BlogMetadata />
       <Navigation />
       <main className="pt-32 pb-16">

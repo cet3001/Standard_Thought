@@ -12,7 +12,7 @@ const Blog = () => {
         {/* AI-Generated or Curated Urban Texture */}
         {textureImageUrl && (
           <div 
-            className="absolute inset-0 opacity-30 bg-cover bg-center"
+            className="absolute inset-0 opacity-60 bg-cover bg-center"
             style={{
               backgroundImage: `url(${textureImageUrl})`,
               backgroundSize: 'cover',
@@ -22,11 +22,11 @@ const Blog = () => {
           />
         )}
         
-        {/* Urban gradient overlay - reduced to let texture show through */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-800/20 via-slate-700/30 to-slate-900/20"></div>
+        {/* Urban gradient overlay - darker for street vibe */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/40 via-slate-800/50 to-slate-900/60"></div>
         
-        {/* Light content overlay for readability - much lighter than before */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/75 via-white/80 to-white/85 dark:from-black/75 dark:via-black/80 dark:to-black/85"></div>
+        {/* Minimal content overlay for text readability - much darker */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/30 to-black/40 dark:from-black/40 dark:via-black/50 dark:to-black/60"></div>
         
         {/* Floating pearlescent accent elements */}
         <div 

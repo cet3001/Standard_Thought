@@ -16,9 +16,9 @@ const SocialProofSection = ({ isVisible }: SocialProofSectionProps) => {
               <Users className="h-8 w-8 text-[#247EFF]" aria-hidden="true" />
             </div>
           </div>
-          <div className="text-3xl font-bold text-[#247EFF] mb-2" aria-label="Over 1000 community members">1,000+</div>
-          <div className="text-[#0A0A0A]/80 dark:text-brand-cream/80 font-medium mb-2">Active Community Members</div>
-          <div className="text-sm text-[#0A0A0A]/60 dark:text-brand-cream/60">First gen hustlers building wealth from scratch</div>
+          <div className="text-3xl font-bold text-[#247EFF] mb-2" aria-label="Over 1000 hustlers started with us">1,000+</div>
+          <div className="text-[#0A0A0A]/80 dark:text-brand-cream/80 font-medium mb-2">Hustlers Started With Us</div>
+          <div className="text-sm text-[#0A0A0A]/60 dark:text-brand-cream/60">Real people building from scratch</div>
         </div>
 
         <div className="text-center group hover:scale-105 transition-transform duration-300">
@@ -27,9 +27,9 @@ const SocialProofSection = ({ isVisible }: SocialProofSectionProps) => {
               <TrendingUp className="h-8 w-8 text-green-600" aria-hidden="true" />
             </div>
           </div>
-          <div className="text-3xl font-bold text-green-600 mb-2" aria-label="Income growth from 500 to 50,000 dollars">$500→$50K+</div>
-          <div className="text-[#0A0A0A]/80 dark:text-brand-cream/80 font-medium mb-2">Average Income Growth</div>
-          <div className="text-sm text-[#0A0A0A]/60 dark:text-brand-cream/60">From side hustles to legitimate businesses</div>
+          <div className="text-3xl font-bold text-green-600 mb-2" aria-label="Income growth from 500 to 50,000 dollars">$500–$50K</div>
+          <div className="text-[#0A0A0A]/80 dark:text-brand-cream/80 font-medium mb-2">Earned by Real People</div>
+          <div className="text-sm text-[#0A0A0A]/60 dark:text-brand-cream/60">From side hustles to legit businesses</div>
         </div>
 
         <div className="text-center group hover:scale-105 transition-transform duration-300">
@@ -39,18 +39,18 @@ const SocialProofSection = ({ isVisible }: SocialProofSectionProps) => {
             </div>
           </div>
           <div className="text-3xl font-bold text-orange-600 mb-2">83%</div>
-          <div className="text-[#0A0A0A]/80 dark:text-brand-cream/80 font-medium mb-2">Success Rate</div>
-          <div className="text-sm text-[#0A0A0A]/60 dark:text-brand-cream/60">Members who increased their income within 6 months</div>
+          <div className="text-[#0A0A0A]/80 dark:text-brand-cream/80 font-medium mb-2">Say We Changed Their Money Game</div>
+          <div className="text-sm text-[#0A0A0A]/60 dark:text-brand-cream/60">Real results from real people in the community</div>
         </div>
       </div>
 
       <div className="mt-10 pt-10 border-t border-[#247EFF]/20">
         <div className="text-center max-w-2xl mx-auto">
           <p className="text-[#0A0A0A]/80 dark:text-brand-cream/80 text-lg leading-8 mb-6">
-            Thousands of urban entrepreneurs are using Standard Thought's proven methods to build real wealth. Join a community committed to your success.
+            "This ain't your typical finance advice. These folks understand the struggle and give you real strategies that actually work when you're starting from zero."
           </p>
           <div className="text-sm text-[#0A0A0A]/60 dark:text-brand-cream/60">
-            — Marcus T., Community Member since 2023
+            — Keisha M., Community Member
           </div>
         </div>
       </div>

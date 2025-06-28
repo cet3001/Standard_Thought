@@ -32,7 +32,7 @@ const ValuesInternalLinks = () => {
 
           {/* Content */}
           <p 
-            className="text-lg text-[#0A0A0A] font-bold leading-relaxed"
+            className="text-lg text-[#0A0A0A] font-bold leading-relaxed mb-4"
             style={{
               fontFamily: "'Kalam', 'Comic Neue', cursive",
               textShadow: '1px 1px 0px rgba(255,255,255,0.3)'
@@ -54,6 +54,19 @@ const ValuesInternalLinks = () => {
             </Link>
             .
           </p>
+
+          {/* Member testimonial quote */}
+          <div className="relative">
+            <p 
+              className="text-sm text-[#0A0A0A]/80 italic font-medium border-l-2 border-[#0057FF] pl-3"
+              style={{
+                fontFamily: "'Kalam', 'Comic Neue', cursive"
+              }}
+            >
+              "These stories showed me I wasn't alone—other people from my block made it work too." 
+              <span className="text-xs font-bold text-[#0057FF] ml-1">- Marcus, Detroit</span>
+            </p>
+          </div>
 
           {/* Graffiti-style corner tag */}
           <div 

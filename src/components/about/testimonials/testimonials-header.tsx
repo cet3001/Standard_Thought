@@ -3,11 +3,38 @@ const TestimonialsHeader = () => {
   return (
     <div className="text-center mb-16">
       <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
-        Real People. Real Results. <span className="text-[#f4d03f]">Real Talk.</span>
+        Real People. Real Results.{" "}
+        <span 
+          className="font-black"
+          style={{ 
+            background: 'linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3, #54a0ff)',
+            backgroundSize: '400% 400%',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            animation: 'pearlescent 3s ease-in-out infinite'
+          }}
+        >
+          Real Talk.
+        </span>
       </h2>
       <p className="text-xl text-white/80 max-w-2xl mx-auto">
         See what happens when you stop settling for average
       </p>
+
+      <style>{`
+        @keyframes pearlescent {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+      `}</style>
     </div>
   );
 };

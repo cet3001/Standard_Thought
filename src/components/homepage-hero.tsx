@@ -6,7 +6,6 @@ import ValuePropsSection from "./homepage/value-props-section";
 import BlueprintPillarsSection from "./homepage/blueprint-pillars-section";
 import SuccessStoriesSection from "./homepage/success-stories-section";
 import FinalCTASection from "./homepage/final-cta-section";
-import { supabase } from "@/integrations/supabase/client";
 
 interface HomepageHeroProps {
   scrollToNewsletter: () => void;
@@ -14,56 +13,24 @@ interface HomepageHeroProps {
 
 const HomepageHero = ({ scrollToNewsletter }: HomepageHeroProps) => {
   const [isVisible, setIsVisible] = useState(false);
-  const [urbanBackgroundUrl, setUrbanBackgroundUrl] = useState<string>("");
 
   useEffect(() => {
     // Make component visible immediately
     setIsVisible(true);
-    
-    // Generate urban background image in the background (non-blocking)
-    const generateUrbanBackground = async () => {
-      try {
-        console.log("🎨 Starting background urban image generation...");
-        
-        const { data, error } = await supabase.functions.invoke('generate-image', {
-          body: {
-            prompt: "Raw urban cityscape background, street photography style, graffiti walls, community gathering spaces, inner city neighborhood, gritty atmosphere with grain filter effect, high contrast shadows, authentic street culture, weathered buildings, urban decay aesthetic, natural lighting, photojournalistic style, documentary photography feel",
-            size: "1792x1024",
-            quality: "hd",
-            style: "natural"
-          }
-        });
-
-        if (error) {
-          console.error("❌ Error generating urban background:", error);
-          return;
-        }
-
-        if (data && data.imageUrl) {
-          setUrbanBackgroundUrl(data.imageUrl);
-          console.log("✅ Urban background generated and applied");
-        }
-      } catch (error) {
-        console.error("❌ Failed to generate urban background:", error);
-      }
-    };
-
-    // Start background generation without blocking the UI
-    generateUrbanBackground();
   }, []);
 
   return (
     <section className="pt-40 pb-24 relative overflow-hidden">
-      {/* Enhanced Urban Background with Immediate Fallbacks */}
+      {/* Pure CSS Urban Background - Shows Immediately */}
       <div className="absolute inset-0" aria-hidden="true">
-        {/* Immediate CSS fallback background - shows instantly */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 opacity-50"></div>
+        {/* Base urban gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 opacity-60"></div>
         
-        {/* CSS urban texture patterns - show immediately */}
-        <div className="absolute inset-0 opacity-30">
+        {/* Layered urban textures */}
+        <div className="absolute inset-0 opacity-40">
           {/* Brick pattern */}
           <div 
-            className="absolute inset-0 bg-repeat opacity-40"
+            className="absolute inset-0 bg-repeat opacity-60"
             style={{
               backgroundImage: `
                 linear-gradient(90deg, rgba(139,69,19,0.8) 1px, transparent 1px),
@@ -74,20 +41,16 @@ const HomepageHero = ({ scrollToNewsletter }: HomepageHeroProps) => {
               backgroundSize: '40px 20px, 40px 20px, 80px 40px, 80px 40px'
             }}
           />
+          
           {/* Grunge overlay */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,_rgba(0,0,0,0.3)_2px,_transparent_2px)] bg-[length:30px_30px] opacity-50"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,_rgba(0,0,0,0.4)_2px,_transparent_2px)] bg-[length:30px_30px] opacity-70"></div>
+          
+          {/* Street texture */}
+          <div className="absolute inset-0 bg-[conic-gradient(from_0deg_at_2px_2px,_rgba(0,0,0,0.8)_90deg,_transparent_90deg)] bg-[length:20px_20px] opacity-50"></div>
+          
+          {/* Urban decay effect */}
+          <div className="absolute inset-0 bg-[linear-gradient(45deg,_transparent_46%,_rgba(0,0,0,0.3)_47%,_rgba(0,0,0,0.3)_53%,_transparent_54%)] bg-[length:8px_8px] opacity-60"></div>
         </div>
-        
-        {/* AI-generated background - loads when ready with smooth transition */}
-        {urbanBackgroundUrl && (
-          <div 
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 opacity-40"
-            style={{
-              backgroundImage: `url(${urbanBackgroundUrl})`,
-              filter: 'grayscale(20%) contrast(1.1) brightness(0.7) sepia(10%)'
-            }}
-          />
-        )}
         
         {/* Content overlay for text readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/85 via-brand-cream/90 to-brand-cream/95 dark:from-brand-black/85 dark:via-brand-black/90 dark:to-brand-black/95"></div>

@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -16,7 +17,7 @@ const FeaturedContentSection = () => {
     console.log("FeaturedContentSection - Texture URL:", textureImageUrl);
     console.log("FeaturedContentSection - Generation Status:", imageGenerationStatus);
     if (!textureImageUrl) {
-      console.warn("FeaturedContentSection - No texture URL available, using fallback");
+      console.warn("FeaturedContentSection - No texture URL available, using hardcoded");
     }
   }, [textureImageUrl, imageGenerationStatus]);
 
@@ -46,13 +47,11 @@ const FeaturedContentSection = () => {
     trackButtonClick('Explore All Resources', 'featured_content_section', 'navigate_to_resources');
   };
 
-  // Hardcoded test URL to ensure texture shows
-  const testTextureUrl = "https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80";
-  const fallbackTextureUrl = "https://via.placeholder.com/300x300/1a1a1a/333333?text=Urban+Texture";
-  const activeTextureUrl = textureImageUrl || testTextureUrl;
+  // Hardcoded test URL - Force texture to show
+  const hardcodedTextureUrl = "https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80";
   
-  // Forced logging to debug what's actually being used
-  console.log("Forced URL:", activeTextureUrl);
+  // Debug what's actually being used
+  console.log("Forced hardcoded URL:", hardcodedTextureUrl);
 
   const featuredContent = [
     {
@@ -115,19 +114,19 @@ const FeaturedContentSection = () => {
       data-section="featured-content"
       className="py-12 sm:py-16 relative"
     >
-      {/* Street-Level Urban Background - Reordered Layers */}
+      {/* Hardcoded Urban Background - Force Texture */}
       <div className="absolute inset-0" aria-hidden="true">
-        {/* Base gradient - underneath everything */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/20 via-slate-800/15 to-slate-700/20"></div>
+        {/* Light base gradient - let texture shine */}
+        <div className="absolute inset-0 bg-gradient-to-br from-brand-cream/10 via-transparent to-brand-cream/20"></div>
         
-        {/* Urban Texture - Main Layer - Always Show */}
+        {/* Hardcoded Urban Texture - Always Show */}
         <div 
+          key={Date.now()} // Force re-render
           className="absolute inset-0 opacity-50 bg-repeat bg-center"
           style={{
-            backgroundImage: `url(${activeTextureUrl})`,
+            backgroundImage: `url(${hardcodedTextureUrl})`,
             backgroundSize: '300px 300px',
-            filter: 'contrast(1.3) brightness(0.7) sepia(0.08)',
-            mixBlendMode: 'multiply'
+            filter: 'contrast(1.3) brightness(0.7) sepia(0.08)'
           }}
         />
         

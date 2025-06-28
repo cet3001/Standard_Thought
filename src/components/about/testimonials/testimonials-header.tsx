@@ -7,7 +7,7 @@ const TestimonialsHeader = () => {
         <span 
           className="font-black"
           style={{ 
-            background: 'linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3, #54a0ff)',
+            background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176)',
             backgroundSize: '400% 400%',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',

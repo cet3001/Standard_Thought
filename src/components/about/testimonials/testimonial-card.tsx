@@ -33,8 +33,15 @@ const TestimonialCard = ({ testimonial }: TestimonialCardProps) => {
           }}
         />
 
-        {/* Street Cred Badge */}
-        <div className="absolute -top-2 -right-2 bg-[#FFD700] text-black text-xs font-black px-3 py-1 rounded-full transform rotate-12 shadow-lg border-2 border-black">
+        {/* Street Cred Badge - Now with pearlescent effect */}
+        <div 
+          className="absolute -top-2 -right-2 text-black text-xs font-black px-3 py-1 rounded-full transform rotate-12 shadow-lg border-2 border-black"
+          style={{
+            background: 'linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3, #54a0ff)',
+            backgroundSize: '400% 400%',
+            animation: 'pearlescent 3s ease-in-out infinite'
+          }}
+        >
           REAL TALK
         </div>
 
@@ -102,6 +109,20 @@ const TestimonialCard = ({ testimonial }: TestimonialCardProps) => {
         <div className="absolute bottom-2 right-4 w-2 h-2 bg-[#247EFF] rounded-full opacity-60"></div>
         <div className="absolute top-16 right-2 w-1.5 h-1.5 bg-[#FFD700] rounded-full opacity-80"></div>
       </div>
+
+      <style jsx>{`
+        @keyframes pearlescent {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+      `}</style>
     </div>
   );
 };

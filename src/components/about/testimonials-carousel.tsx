@@ -43,11 +43,17 @@ const TestimonialsCarousel = () => {
       {/* Graffiti accent elements */}
       <div className="absolute top-20 right-16 opacity-20 pointer-events-none" aria-hidden="true">
         <div 
-          className="text-[#f4d03f] text-3xl font-black transform rotate-12"
+          className="text-3xl font-black transform rotate-12 animate-shimmer"
           style={{ 
             fontFamily: "'Permanent Marker', 'Kalam', cursive",
-            textShadow: '2px 2px 0px rgba(0,0,0,0.3)',
-            filter: 'blur(0.5px)'
+            textShadow: '2px 2px 4px rgba(0,0,0,0.3)',
+            filter: 'blur(0.5px)',
+            background: 'linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3, #54a0ff)',
+            backgroundSize: '400% 400%',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            animation: 'pearlescent 3s ease-in-out infinite'
           }}
         >
           REAL TALK
@@ -87,6 +93,20 @@ const TestimonialsCarousel = () => {
 
         <TestimonialsCTA />
       </div>
+
+      <style jsx>{`
+        @keyframes pearlescent {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+      `}</style>
     </section>
   );
 };

@@ -41,36 +41,10 @@ const ValuesHeader = () => {
         These ain't your typical self-help mantras. These are the mental blueprints that separate 
         those who break through from those who stay stuck. This is how we rewire the game.
       </p>
-      <div className="relative max-w-3xl mx-auto">
-        {/* Background with street-style texture */}
-        <div 
-          className="absolute inset-0 bg-gradient-to-r from-[#FFD700]/20 via-[#FFA500]/15 to-[#FFD700]/20 rounded-2xl"
-          style={{
-            transform: 'rotate(-0.5deg)',
-            borderRadius: '25px 15px 30px 20px'
-          }}
-        ></div>
-        <div className="relative bg-[#0A0A0A]/90 dark:bg-brand-cream/90 border-2 border-[#FFD700]/60 rounded-2xl p-8 backdrop-blur-sm">
-          <div className="flex items-start gap-4">
-            <div className="text-3xl">💡</div>
-            <div>
-              <h3 className="text-xl font-bold text-[#FFD700] mb-2">How to Lock These In:</h3>
-              <p className="text-lg text-brand-cream dark:text-[#0A0A0A] font-medium leading-relaxed">
-                Screenshot this page and make it your mental reset button. 
-                When doubt creeps in or life hits different, come back to these codes and keep pushing.
-              </p>
-            </div>
-          </div>
-          {/* Graffiti-style accent */}
-          <div 
-            className="absolute -top-1 -right-1 w-6 h-6 bg-[#FFD700] rounded-full opacity-80"
-            style={{
-              transform: 'rotate(15deg)',
-              boxShadow: '2px 2px 4px rgba(0,0,0,0.3)'
-            }}
-          ></div>
-        </div>
-      </div>
+      <p className="text-lg text-[#0A0A0A]/70 dark:text-brand-cream/70 max-w-3xl mx-auto font-medium">
+        <strong>How to Lock These In:</strong> Screenshot this page and make it your mental reset button. 
+        When doubt creeps in or life hits different, come back to these codes and keep pushing.
+      </p>
     </div>
   );
 };

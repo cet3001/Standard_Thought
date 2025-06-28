@@ -1,9 +1,8 @@
 
 import { useNavigate } from "react-router-dom";
-import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, Clock, ArrowUp } from "lucide-react";
+import { Calendar, Clock, Star } from "lucide-react";
 import { trackBlogRead } from "@/lib/analytics-utils";
 import BlogPostActions from "@/components/blog-post-actions";
 import ThemeTag from "@/components/ui/theme-tag";
@@ -45,7 +44,7 @@ const BlogGrid = ({ posts, onPostDeleted, onThemeTagClick }: BlogGridProps) => {
     return `${readTime} min read`;
   };
 
-  const handleReadStory = (post: BlogPost) => {
+  const handleCardClick = (post: BlogPost) => {
     trackBlogRead(post.title, post.slug);
     navigate(`/blog/${post.slug}`);
   };
@@ -62,37 +61,67 @@ const BlogGrid = ({ posts, onPostDeleted, onThemeTagClick }: BlogGridProps) => {
       {posts.map((post, index) => (
         <Card 
           key={post.id} 
-          className="bg-white/90 dark:bg-brand-black/80 backdrop-blur-sm border-[#247EFF]/20 rounded-3xl overflow-hidden group transition-all duration-500 hover:scale-105 hover:shadow-lg hover:shadow-[#247EFF]/20 relative"
-          style={{ animationDelay: `${index * 0.1}s` }}
+          onClick={() => handleCardClick(post)}
+          className={`cursor-pointer bg-white/90 dark:bg-brand-black/80 backdrop-blur-sm border-none rounded-none overflow-hidden group transition-all duration-500 hover:scale-105 hover:shadow-lg relative
+            /* Torn paper effect */
+            before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-2 before:bg-white/90 dark:before:bg-brand-black/80
+            before:shadow-[0_3px_0_0_rgba(0,0,0,0.1)] before:z-10
+            after:content-[''] after:absolute after:top-0 after:left-0 after:right-0 after:h-2
+            after:bg-gradient-to-r after:from-transparent after:via-[#247EFF]/20 after:to-transparent
+            /* Notebook margin line */
+            shadow-lg hover:shadow-xl transform-gpu
+          `}
+          style={{ 
+            animationDelay: `${index * 0.1}s`,
+            // Add subtle paper texture with margin line
+            backgroundImage: `
+              linear-gradient(90deg, rgba(255,107,107,0.3) 1px, transparent 1px),
+              linear-gradient(180deg, transparent 32px, rgba(229,231,235,0.4) 32px, rgba(229,231,235,0.4) 33px, transparent 33px)
+            `,
+            backgroundSize: '24px 100%, 100% 33px',
+            backgroundPosition: '24px 0, 0 0'
+          }}
         >
+          {/* RAW PICK Badge */}
+          {post.featured && (
+            <div className="absolute top-4 right-4 z-20">
+              <div 
+                className="bg-[#FF6B6B] text-white px-3 py-1 text-xs font-bold transform rotate-12 shadow-md"
+                style={{ 
+                  fontFamily: "'Permanent Marker', 'Kalam', cursive",
+                  textShadow: '1px 1px 0px rgba(0,0,0,0.5)',
+                  clipPath: 'polygon(0% 0%, 85% 0%, 100% 50%, 85% 100%, 0% 100%)'
+                }}
+              >
+                <Star className="w-3 h-3 inline mr-1 fill-current" />
+                RAW PICK
+              </div>
+            </div>
+          )}
+
           <CardHeader className="p-0">
-            <div className="relative overflow-hidden rounded-t-3xl">
+            <div className="relative overflow-hidden">
               <img
                 src={post.image_url || "/placeholder.svg"}
                 alt={post.title}
                 className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
                 loading="lazy"
               />
-              <div className="absolute top-4 left-4 flex gap-2 flex-wrap">
+              <div className="absolute top-4 left-4 flex gap-2 flex-wrap z-10">
                 <Badge className="bg-[#247EFF] text-white px-3 py-1 rounded-full text-sm font-medium hover:bg-[#247EFF]">
                   {post.category}
                 </Badge>
-                {post.featured && (
-                  <Badge className="bg-brand-cream text-[#0A0A0A] px-3 py-1 rounded-full text-sm font-medium hover:bg-brand-cream">
-                    Featured
-                  </Badge>
-                )}
               </div>
               
-              {/* Special story badges in top-right corner */}
-              <div className="absolute top-4 right-4 flex flex-col gap-2">
+              {/* Special story badges in top-left corner (below category) */}
+              <div className="absolute top-14 left-4 flex flex-col gap-2 z-10">
                 {post.is_popular && <StoryBadge type="popular" />}
                 {post.is_editors_pick && <StoryBadge type="editors-pick" />}
               </div>
             </div>
           </CardHeader>
           
-          <CardContent className="p-6">
+          <CardContent className="p-6 relative z-10">
             {/* Theme Tags */}
             {post.theme_tags && post.theme_tags.length > 0 && (
               <div className="flex flex-wrap gap-2 mb-3">
@@ -106,13 +135,22 @@ const BlogGrid = ({ posts, onPostDeleted, onThemeTagClick }: BlogGridProps) => {
               </div>
             )}
             
-            
-            <h3 className="text-xl font-semibold mb-3 line-clamp-2 group-hover:text-[#247EFF] transition-colors text-[#0A0A0A] dark:text-brand-cream">
+            {/* Typewriter-style title */}
+            <h3 
+              className="text-xl font-bold mb-3 line-clamp-2 group-hover:text-[#247EFF] transition-colors text-[#0A0A0A] dark:text-brand-cream"
+              style={{ 
+                fontFamily: "'IBM Plex Sans', 'Courier New', monospace",
+                letterSpacing: '0.5px',
+                lineHeight: '1.3'
+              }}
+            >
               {post.title}
             </h3>
-            <p className="text-[#0A0A0A]/70 dark:text-brand-cream/70 mb-4 line-clamp-3">
+            
+            <p className="text-[#0A0A0A]/70 dark:text-brand-cream/70 mb-4 line-clamp-3 font-medium">
               {post.excerpt}
             </p>
+            
             <div className="flex items-center justify-between text-sm text-[#0A0A0A]/60 dark:text-brand-cream/60">
               <div className="flex items-center space-x-2">
                 <Calendar size={16} />
@@ -123,27 +161,19 @@ const BlogGrid = ({ posts, onPostDeleted, onThemeTagClick }: BlogGridProps) => {
                 <span>{getReadTime(post.content)}</span>
               </div>
             </div>
-          </CardContent>
-          
-          
-          <CardFooter className="p-6 pt-0 space-y-3">
-            <Button 
-              onClick={() => handleReadStory(post)}
-              className="w-full bg-[#247EFF] hover:bg-[#0057FF] text-white transition-all rounded-2xl font-medium"
-            >
-              Read Story
-              <ArrowUp className="ml-2 h-4 w-4 rotate-45 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            
+
+            {/* Admin actions - prevent card click propagation */}
             {isAdmin && (
-              <BlogPostActions
-                postId={post.id}
-                postTitle={post.title}
-                postSlug={post.slug}
-                onDelete={onPostDeleted}
-              />
+              <div className="mt-4" onClick={(e) => e.stopPropagation()}>
+                <BlogPostActions
+                  postId={post.id}
+                  postTitle={post.title}
+                  postSlug={post.slug}
+                  onDelete={onPostDeleted}
+                />
+              </div>
             )}
-          </CardFooter>
+          </CardContent>
         </Card>
       ))}
     </div>

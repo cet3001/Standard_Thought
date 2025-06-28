@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -60,7 +61,32 @@ const FeaturedContentSection = () => {
     {
       icon: <Users className="h-6 w-6 sm:h-8 sm:w-8 text-[#247EFF]" aria-label="Community builders icon" />,
       title: "Builder Success Stories",
-      description: "Real stories from first-gen entrepreneurs building generational wealth from nothing.",
+      description: (
+        <>
+          <span 
+            className="relative overflow-hidden"
+            style={{
+              background: 'linear-gradient(45deg, #FFD700, #FFF8DC, #FFA500, #FFD700)',
+              backgroundSize: '400% 400%',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              animation: 'shimmer 3s ease-in-out infinite'
+            }}
+          >
+            Real wins
+            {/* Pearlescent overlay */}
+            <div 
+              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-60 animate-[shimmer_2s_ease-in-out_infinite]"
+              style={{
+                background: 'linear-gradient(90deg, transparent 25%, rgba(255,255,255,0.4) 50%, transparent 75%)',
+                backgroundSize: '200% 100%',
+                mixBlendMode: 'overlay'
+              }}
+            />
+          </span> from first-gen entrepreneurs building generational wealth from nothing.
+        </>
+      ),
       link: "/blog",
       cta: "Read Success Stories"
     }

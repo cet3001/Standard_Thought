@@ -77,28 +77,7 @@ const SocialProofSection = ({ isVisible }: SocialProofSectionProps) => {
             <div className="absolute -bottom-1 -left-2 w-4 h-1 bg-green-400 rounded-full opacity-70 transform -rotate-12"></div>
           </div>
           <div className="text-[#0A0A0A]/90 dark:text-brand-cream/90 font-bold text-lg mb-1">
-            <span 
-              className="relative overflow-hidden"
-              style={{
-                background: 'linear-gradient(45deg, #FFD700, #FFF8DC, #FFA500, #FFD700)',
-                backgroundSize: '400% 400%',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                animation: 'shimmer 3s ease-in-out infinite'
-              }}
-            >
-              Real wins
-              {/* Pearlescent overlay */}
-              <div 
-                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-60 animate-[shimmer_2s_ease-in-out_infinite]"
-                style={{
-                  background: 'linear-gradient(90deg, transparent 25%, rgba(255,255,255,0.4) 50%, transparent 75%)',
-                  backgroundSize: '200% 100%',
-                  mixBlendMode: 'overlay'
-                }}
-              />
-            </span>
+            Real wins
           </div>
           <div className="text-sm text-[#0A0A0A]/70 dark:text-brand-cream/70">
             From side hustles to serious money

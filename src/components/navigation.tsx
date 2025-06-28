@@ -39,47 +39,26 @@ const Navigation = () => {
         🔥 Trusted by 1,000+ first-gen hustlers building generational wealth
       </div>
       
-      {/* Main Navigation with Urban Texture Background */}
+      {/* Main Navigation with Matching Urban Texture Background */}
       <nav className="relative backdrop-blur-md border-b border-[#247EFF]/20 shadow-sm overflow-hidden">
-        {/* Urban Background Texture - Same as Homepage Hero */}
+        {/* Urban Background Texture - Matches Homepage Hero */}
         <div className="absolute inset-0" aria-hidden="true">
-          {/* AI-Generated Urban Texture */}
+          {/* AI-Generated or Curated Urban Texture */}
           {textureImageUrl && (
             <div 
               className="absolute inset-0 opacity-20 bg-repeat bg-center"
               style={{
                 backgroundImage: `url(${textureImageUrl})`,
-                backgroundSize: '300px 300px',
+                backgroundSize: textureImageUrl.startsWith('data:') ? 'cover' : '300px 300px',
                 filter: 'contrast(1.3) brightness(0.7)'
               }}
             />
           )}
           
-          {/* CSS urban texture patterns - show as fallback */}
-          {!textureImageUrl && (
-            <div className="absolute inset-0 opacity-30">
-              {/* Brick pattern */}
-              <div 
-                className="absolute inset-0 bg-repeat opacity-40"
-                style={{
-                  backgroundImage: `
-                    linear-gradient(90deg, rgba(139,69,19,0.8) 1px, transparent 1px),
-                    linear-gradient(rgba(139,69,19,0.8) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(160,82,45,0.6) 2px, transparent 2px),
-                    linear-gradient(rgba(160,82,45,0.6) 2px, transparent 2px)
-                  `,
-                  backgroundSize: '40px 20px, 40px 20px, 80px 40px, 80px 40px'
-                }}
-              />
-              {/* Grunge overlay */}
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,_rgba(0,0,0,0.3)_2px,_transparent_2px)] bg-[length:30px_30px] opacity-50"></div>
-            </div>
-          )}
-          
           {/* Background gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 opacity-50"></div>
           
-          {/* Content overlay for text readability - same as hero */}
+          {/* Content overlay for text readability */}
           <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/85 via-brand-cream/90 to-brand-cream/95 dark:from-brand-black/85 dark:via-brand-black/90 dark:to-brand-black/95"></div>
         </div>
 

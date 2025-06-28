@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import HeroContent from "./homepage/hero-content";
 import SocialProofSection from "./homepage/social-proof-section";
@@ -22,39 +21,18 @@ const HomepageHero = ({ scrollToNewsletter }: HomepageHeroProps) => {
 
   return (
     <section className="pt-40 pb-24 relative overflow-hidden">
-      {/* Enhanced Urban Background with AI-Generated Texture */}
+      {/* Enhanced Urban Background with AI-Generated Texture - Matches Navigation */}
       <div className="absolute inset-0" aria-hidden="true">
-        {/* AI-Generated Urban Texture */}
+        {/* AI-Generated or Curated Urban Texture */}
         {textureImageUrl && (
           <div 
             className="absolute inset-0 opacity-20 bg-repeat bg-center"
             style={{
               backgroundImage: `url(${textureImageUrl})`,
-              backgroundSize: '300px 300px',
+              backgroundSize: textureImageUrl.startsWith('data:') ? 'cover' : '300px 300px',
               filter: 'contrast(1.3) brightness(0.7)'
             }}
           />
-        )}
-        
-        {/* CSS urban texture patterns - show as fallback */}
-        {!textureImageUrl && (
-          <div className="absolute inset-0 opacity-30">
-            {/* Brick pattern */}
-            <div 
-              className="absolute inset-0 bg-repeat opacity-40"
-              style={{
-                backgroundImage: `
-                  linear-gradient(90deg, rgba(139,69,19,0.8) 1px, transparent 1px),
-                  linear-gradient(rgba(139,69,19,0.8) 1px, transparent 1px),
-                  linear-gradient(90deg, rgba(160,82,45,0.6) 2px, transparent 2px),
-                  linear-gradient(rgba(160,82,45,0.6) 2px, transparent 2px)
-                `,
-                backgroundSize: '40px 20px, 40px 20px, 80px 40px, 80px 40px'
-              }}
-            />
-            {/* Grunge overlay */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,_rgba(0,0,0,0.3)_2px,_transparent_2px)] bg-[length:30px_30px] opacity-50"></div>
-          </div>
         )}
         
         {/* Background gradient overlay */}

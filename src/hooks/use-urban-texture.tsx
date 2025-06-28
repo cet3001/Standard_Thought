@@ -1,9 +1,8 @@
 
 import { useState, useEffect } from 'react';
 
-// CUSTOM URBAN STREET IMAGERY - Real city vibes, street culture, urban life
+// Custom urban street imagery - Real city vibes, street culture, urban life
 const URBAN_IMAGES = [
-  // Your new custom uploaded images - street scenes, urban atmosphere
   "/lovable-uploads/4696326a-6203-4b1e-b0bc-e1ccc29263be.png", // Hooded figure under bridge with yellow taxi - STREET ✓
   "/lovable-uploads/319b9311-4018-46d0-9292-5c7220a671c7.png", // Night street scene with figure - URBAN ✓
   "/lovable-uploads/44b44c48-a7dc-4d1e-8480-8e3d666ede2e.png", // Street chalk art inspirational message - STREET ART ✓
@@ -15,7 +14,7 @@ const URBAN_IMAGES = [
   "/lovable-uploads/c32d557b-f984-4e31-8e74-82fb6c5fd20c.png", // Rainy street scene with umbrellas - URBAN ✓
   "/lovable-uploads/4fd61de9-3d13-4e62-8cd6-4c10748ee279.png", // Train car with graffiti - STREET ART ✓
   
-  // Previously uploaded project images (if any exist)
+  // Previously uploaded project images
   "/lovable-uploads/120d4385-153e-4704-ad3a-0f64d8a24a04.png",
   "/lovable-uploads/21728a70-c6c7-4f2f-8689-d74741cb605b.png",
   "/lovable-uploads/5316a53a-9afb-4437-8f49-d3b521d18e44.png",
@@ -23,72 +22,111 @@ const URBAN_IMAGES = [
   "/lovable-uploads/a8faab87-8319-4fa0-ae53-35597c6f8fc5.png"
 ];
 
+// Urban prompts for AI-generated backgrounds
+const URBAN_PROMPTS = [
+  "Dark urban alleyway with graffiti walls, street art, moody lighting, city atmosphere",
+  "Rooftop view of city skyline at night, urban lights, metropolitan vibe",
+  "Underground subway tunnel with colorful street art, urban decay aesthetic",
+  "City street corner with brick walls, street lamps, urban textures",
+  "Industrial warehouse district, concrete textures, urban grit",
+  "Nighttime city balcony overlooking downtown streets, neon reflections",
+  "Street-level view of busy urban intersection, crosswalks, city energy",
+  "Abandoned urban building with artistic graffiti, raw city vibes",
+  "Metropolitan bridge underpass, urban shadows and textures",
+  "City fire escape stairway with brick wall backdrop, urban architecture"
+];
+
+let globalTextureUrl: string = "";
+
 export const useUrbanTexture = () => {
-  const [textureImageUrl, setTextureImageUrl] = useState<string>("");
+  const [textureImageUrl, setTextureImageUrl] = useState<string>(globalTextureUrl);
   const [imageGenerationStatus, setImageGenerationStatus] = useState<string>("idle");
 
-  // Force clear any old cache and select new image on mount
+  // Auto-generate new image on mount or when specifically requested
   useEffect(() => {
-    // Clear any existing cache first
-    localStorage.removeItem('urban-texture-cache');
-    localStorage.removeItem('urban-texture-timestamp');
-    localStorage.removeItem('used-urban-textures');
-    
-    // Force a new selection with custom images
-    selectUrbanTexture();
+    if (!globalTextureUrl) {
+      generateNewUrbanTexture();
+    } else {
+      setTextureImageUrl(globalTextureUrl);
+      setImageGenerationStatus("success");
+    }
   }, []);
 
-  const selectUrbanTexture = () => {
+  const generateNewUrbanTexture = async () => {
     try {
-      setImageGenerationStatus("selecting");
-      console.log("Selecting new custom urban texture...");
+      setImageGenerationStatus("generating");
+      console.log("Generating new urban texture...");
       
-      // Get previously used images to avoid immediate repeats
-      const usedImages = JSON.parse(localStorage.getItem('used-urban-textures') || '[]');
-      let availableImages = URBAN_IMAGES.filter(img => !usedImages.includes(img));
+      // First try to generate AI image
+      const shouldGenerateAI = Math.random() > 0.3; // 70% chance to generate AI image
       
-      // If all images have been used, reset the cycle
-      if (availableImages.length === 0) {
-        availableImages = URBAN_IMAGES;
-        localStorage.setItem('used-urban-textures', '[]');
-        console.log("Reset custom urban texture cycle");
+      if (shouldGenerateAI) {
+        const randomPrompt = URBAN_PROMPTS[Math.floor(Math.random() * URBAN_PROMPTS.length)];
+        
+        try {
+          const response = await fetch('/api/generate-urban-background', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ prompt: randomPrompt })
+          });
+          
+          if (response.ok) {
+            const data = await response.json();
+            if (data.imageUrl) {
+              console.log("Generated AI urban texture:", randomPrompt);
+              globalTextureUrl = data.imageUrl;
+              setTextureImageUrl(data.imageUrl);
+              setImageGenerationStatus("success");
+              return;
+            }
+          }
+        } catch (aiError) {
+          console.log("AI generation failed, falling back to curated images:", aiError);
+        }
       }
       
-      // Select a random image from available ones
-      const randomIndex = Math.floor(Math.random() * availableImages.length);
-      const selectedImage = availableImages[randomIndex];
-      
-      console.log("Selected custom urban texture:", selectedImage);
-      
-      // Update used images list
-      const newUsedImages = [...usedImages, selectedImage].slice(-Math.floor(URBAN_IMAGES.length * 0.7)); // Keep track of last 70%
-      localStorage.setItem('used-urban-textures', JSON.stringify(newUsedImages));
-      
-      // Cache the selected image with shorter duration for more variety
-      localStorage.setItem('urban-texture-cache', selectedImage);
-      localStorage.setItem('urban-texture-timestamp', Date.now().toString());
-      
-      setTextureImageUrl(selectedImage);
-      setImageGenerationStatus("success");
+      // Fallback to curated images
+      selectCuratedUrbanTexture();
       
     } catch (error) {
-      console.error("Failed to select custom urban texture:", error);
-      
-      // Use first custom image as fallback
-      const fallbackImage = URBAN_IMAGES[0];
-      setTextureImageUrl(fallbackImage);
-      setImageGenerationStatus("fallback");
+      console.error("Failed to generate urban texture:", error);
+      selectCuratedUrbanTexture();
     }
+  };
+
+  const selectCuratedUrbanTexture = () => {
+    // Get previously used images to avoid immediate repeats
+    const usedImages = JSON.parse(localStorage.getItem('used-urban-textures') || '[]');
+    let availableImages = URBAN_IMAGES.filter(img => !usedImages.includes(img));
+    
+    // If all images have been used, reset the cycle
+    if (availableImages.length === 0) {
+      availableImages = URBAN_IMAGES;
+      localStorage.setItem('used-urban-textures', '[]');
+      console.log("Reset curated urban texture cycle");
+    }
+    
+    // Select a random image from available ones
+    const randomIndex = Math.floor(Math.random() * availableImages.length);
+    const selectedImage = availableImages[randomIndex];
+    
+    console.log("Selected curated urban texture:", selectedImage);
+    
+    // Update used images list
+    const newUsedImages = [...usedImages, selectedImage].slice(-Math.floor(URBAN_IMAGES.length * 0.7));
+    localStorage.setItem('used-urban-textures', JSON.stringify(newUsedImages));
+    
+    globalTextureUrl = selectedImage;
+    setTextureImageUrl(selectedImage);
+    setImageGenerationStatus("success");
   };
 
   return {
     textureImageUrl,
     imageGenerationStatus,
     regenerateTexture: () => {
-      // Clear cache and force new selection
-      localStorage.removeItem('urban-texture-cache');
-      localStorage.removeItem('urban-texture-timestamp');
-      selectUrbanTexture();
+      globalTextureUrl = ""; // Clear global cache
+      generateNewUrbanTexture();
     }
   };
 };

@@ -18,25 +18,26 @@ const TestimonialsCarousel = () => {
 
   return (
     <section className="py-24 relative overflow-hidden">
-      {/* Urban Background - Street Style */}
+      {/* Urban Background - Matches other sections styling */}
       <div className="absolute inset-0" aria-hidden="true">
         {/* AI-Generated or Curated Urban Texture */}
         {textureImageUrl && (
           <div 
-            className="absolute inset-0 opacity-25 bg-repeat bg-center"
+            className="absolute inset-0 opacity-35 bg-cover bg-center"
             style={{
               backgroundImage: `url(${textureImageUrl})`,
-              backgroundSize: textureImageUrl.startsWith('data:') ? 'cover' : '350px 350px',
-              filter: 'contrast(1.4) brightness(0.6) saturate(0.8)'
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat'
             }}
           />
         )}
         
-        {/* Dark urban overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#1a1a2e] via-[#16213e] to-[#0f3460] opacity-85"></div>
+        {/* Background gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-800/25 via-slate-700/35 to-slate-900/25"></div>
         
-        {/* Additional texture for depth */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,_rgba(36,126,255,0.1)_0%,_transparent_50%),radial-gradient(circle_at_70%_80%,_rgba(244,208,63,0.08)_0%,_transparent_50%)]"></div>
+        {/* Content overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/65 via-brand-cream/70 to-brand-cream/75 dark:from-brand-black/65 dark:via-brand-black/70 dark:to-brand-black/75"></div>
       </div>
 
       {/* Graffiti accent elements */}
@@ -79,8 +80,8 @@ const TestimonialsCarousel = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="bg-white/10 border-white/20 text-[#f4d03f] hover:bg-[#f4d03f] hover:text-black -left-12" aria-label="Previous testimonial" />
-            <CarouselNext className="bg-white/10 border-white/20 text-[#f4d03f] hover:bg-[#f4d03f] hover:text-black -right-12" aria-label="Next testimonial" />
+            <CarouselPrevious className="bg-white/10 border-white/20 text-[#247EFF] hover:bg-[#247EFF] hover:text-white -left-12" aria-label="Previous testimonial" />
+            <CarouselNext className="bg-white/10 border-white/20 text-[#247EFF] hover:bg-[#247EFF] hover:text-white -right-12" aria-label="Next testimonial" />
           </Carousel>
         </div>
 

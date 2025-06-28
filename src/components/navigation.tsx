@@ -14,46 +14,136 @@ const Navigation = () => {
   console.log('Navigation render - textureImageUrl:', textureImageUrl);
   console.log('Navigation render - imageGenerationStatus:', imageGenerationStatus);
 
-  // Generate urban texture image on component mount
+  // Check localStorage cache first
   useEffect(() => {
-    const generateUrbanTexture = async () => {
-      try {
-        console.log("🎨 Starting urban texture generation process...");
-        setImageGenerationStatus("generating");
-        
-        const { data, error } = await supabase.functions.invoke('generate-image', {
-          body: {
-            prompt: "Ultra-realistic weathered urban brick wall texture, dark burgundy and brown aged bricks with deep mortar lines, street graffiti stains, rust streaks, concrete dust patches, peeling paint, urban decay, gritty inner city aesthetic, high contrast shadows, worn industrial texture, close-up detailed pattern, street photography style, natural lighting, seamless tileable pattern",
-            size: "1024x1024",
-            quality: "hd",
-            style: "natural"
-          }
-        });
+    const cachedImageUrl = localStorage.getItem('urban-texture-cache');
+    const cacheTimestamp = localStorage.getItem('urban-texture-timestamp');
+    const CACHE_DURATION = 24 * 60 * 60 * 1000; // 24 hours
 
-        console.log("📊 Supabase function response:", { data, error });
-
-        if (error) {
-          console.error("❌ Supabase function error:", error);
-          setImageGenerationStatus("error");
-          return;
-        }
-
-        if (data && data.imageUrl) {
-          setTextureImageUrl(data.imageUrl);
-          setImageGenerationStatus("success");
-          console.log("✅ Urban texture generated successfully:", data.imageUrl);
-        } else {
-          console.log("⚠️ No image URL returned from function");
-          setImageGenerationStatus("no-url");
-        }
-      } catch (error) {
-        console.error("❌ Failed to generate urban texture:", error);
-        setImageGenerationStatus("failed");
+    if (cachedImageUrl && cacheTimestamp) {
+      const isExpired = Date.now() - parseInt(cacheTimestamp) > CACHE_DURATION;
+      if (!isExpired) {
+        console.log("🔥 Using cached urban texture:", cachedImageUrl);
+        setTextureImageUrl(cachedImageUrl);
+        setImageGenerationStatus("cached");
+        return;
+      } else {
+        console.log("⏰ Cache expired, generating new texture...");
+        localStorage.removeItem('urban-texture-cache');
+        localStorage.removeItem('urban-texture-timestamp');
       }
-    };
+    }
 
     generateUrbanTexture();
   }, []);
+
+  const generateUrbanTexture = async (retryCount = 0) => {
+    const MAX_RETRIES = 2;
+    
+    try {
+      console.log(`🎨 Starting urban texture generation (attempt ${retryCount + 1})...`);
+      setImageGenerationStatus("generating");
+      
+      const { data, error } = await supabase.functions.invoke('generate-image', {
+        body: {
+          prompt: "Ultra-realistic weathered urban brick wall texture, dark burgundy and brown aged bricks with deep mortar lines, street graffiti stains, rust streaks, concrete dust patches, peeling paint, urban decay, gritty inner city aesthetic, high contrast shadows, worn industrial texture, close-up detailed pattern, street photography style, natural lighting, seamless tileable pattern",
+          size: "1024x1024",
+          quality: "hd",
+          style: "natural"
+        }
+      });
+
+      console.log("📊 Supabase function response:", { data, error });
+
+      if (error) {
+        console.error("❌ Supabase function error:", error);
+        
+        // If we haven't exhausted retries, try again
+        if (retryCount < MAX_RETRIES) {
+          console.log(`🔄 Retrying in 2 seconds... (${retryCount + 1}/${MAX_RETRIES})`);
+          setTimeout(() => generateUrbanTexture(retryCount + 1), 2000);
+          return;
+        }
+        
+        // All retries failed, use fallback
+        console.log("💀 All retries failed, using fallback texture");
+        await useFallbackTexture();
+        return;
+      }
+
+      if (data && data.imageUrl) {
+        // Cache the successful result
+        localStorage.setItem('urban-texture-cache', data.imageUrl);
+        localStorage.setItem('urban-texture-timestamp', Date.now().toString());
+        
+        setTextureImageUrl(data.imageUrl);
+        setImageGenerationStatus("success");
+        console.log("✅ Urban texture generated and cached:", data.imageUrl);
+      } else {
+        console.log("⚠️ No image URL returned from function");
+        
+        if (retryCount < MAX_RETRIES) {
+          setTimeout(() => generateUrbanTexture(retryCount + 1), 2000);
+        } else {
+          await useFallbackTexture();
+        }
+      }
+    } catch (error) {
+      console.error("❌ Failed to generate urban texture:", error);
+      
+      if (retryCount < MAX_RETRIES) {
+        setTimeout(() => generateUrbanTexture(retryCount + 1), 2000);
+      } else {
+        await useFallbackTexture();
+      }
+    }
+  };
+
+  const useFallbackTexture = async () => {
+    console.log("🔧 Attempting fallback texture strategies...");
+    setImageGenerationStatus("fallback");
+    
+    // Strategy 1: Try a pre-uploaded texture from Supabase Storage (if available)
+    try {
+      const { data: storageList } = await supabase.storage
+        .from('public')
+        .list('textures');
+      
+      if (storageList && storageList.length > 0) {
+        const { data: publicUrl } = supabase.storage
+          .from('public')
+          .getPublicUrl(`textures/${storageList[0].name}`);
+        
+        if (publicUrl.publicUrl) {
+          console.log("🏗️ Using pre-uploaded fallback texture:", publicUrl.publicUrl);
+          setTextureImageUrl(publicUrl.publicUrl);
+          setImageGenerationStatus("storage-fallback");
+          return;
+        }
+      }
+    } catch (storageError) {
+      console.log("⚠️ Storage fallback failed:", storageError);
+    }
+    
+    // Strategy 2: Use a high-quality Unsplash image as ultimate fallback
+    const unsplashFallback = "https://images.unsplash.com/photo-1527576539890-dfa815648363?w=1024&h=1024&fit=crop&crop=center";
+    console.log("🌆 Using Unsplash urban texture fallback");
+    setTextureImageUrl(unsplashFallback);
+    setImageGenerationStatus("unsplash-fallback");
+  };
+
+  const getStatusMessage = () => {
+    switch (imageGenerationStatus) {
+      case "generating": return "🔥 Cooking up that street texture...";
+      case "success": return "✅ Fresh AI texture loaded";
+      case "cached": return "⚡ Cached texture ready";
+      case "fallback": return "🔧 Switching to backup";
+      case "storage-fallback": return "🏗️ Storage texture active";
+      case "unsplash-fallback": return "🌆 Urban fallback ready";
+      case "error": return "❌ Generation failed";
+      default: return "⏳ Starting up...";
+    }
+  };
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50">
@@ -66,7 +156,7 @@ const Navigation = () => {
       <nav className="bg-brand-cream/95 dark:bg-brand-black/95 backdrop-blur-md border-b border-[#247EFF]/20 shadow-sm relative">
         {/* Debug Status Indicator */}
         <div className="absolute top-0 left-0 bg-black/80 text-white text-xs px-2 py-1 z-50">
-          Status: {imageGenerationStatus}
+          {getStatusMessage()}
         </div>
         
         {/* AI-Generated Urban Texture Background */}
@@ -81,7 +171,7 @@ const Navigation = () => {
           />
         )}
         
-        {/* Fallback CSS texture while AI image loads */}
+        {/* Enhanced CSS fallback while image loads */}
         {!textureImageUrl && (
           <>
             <div className="absolute inset-0 opacity-[0.15] bg-[radial-gradient(circle_at_1px_1px,_rgba(0,0,0,1)_1px,_transparent_0)] bg-[length:12px_12px]"></div>

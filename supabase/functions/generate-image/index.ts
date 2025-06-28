@@ -1,5 +1,4 @@
 
-
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
@@ -56,6 +55,20 @@ serve(async (req) => {
     console.log("📊 gpt-image-1 Response Status:", gptImageResponse.status);
     const gptImageData = await gptImageResponse.json();
     console.log("📊 gpt-image-1 Response Data:", JSON.stringify(gptImageData, null, 2));
+
+    // Check for billing limit specifically
+    if (gptImageData.error?.code === 'billing_hard_limit_reached') {
+      console.error("💸 OpenAI billing limit reached - returning fallback strategy");
+      return new Response(JSON.stringify({ 
+        error: 'billing_limit_reached',
+        message: 'OpenAI billing limit reached. Using fallback texture strategy.',
+        fallback: true,
+        imageUrl: 'https://images.unsplash.com/photo-1527576539890-dfa815648363?w=1024&h=1024&fit=crop&crop=center'
+      }), {
+        status: 202, // Accepted but using fallback
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
 
     // If gpt-image-1 works, return the result
     if (gptImageResponse.ok && gptImageData.data && gptImageData.data[0]) {
@@ -141,18 +154,20 @@ serve(async (req) => {
         });
       }
 
-      // If DALL-E 2 also fails, return comprehensive error
+      // If DALL-E 2 also fails, return comprehensive error with fallback
       console.error("❌ All models failed:", { gptImageData, dalle3Data, dalle2Data });
       return new Response(JSON.stringify({ 
-        error: 'All image generation models failed',
+        error: 'all_models_failed',
+        fallback: true,
+        imageUrl: 'https://images.unsplash.com/photo-1527576539890-dfa815648363?w=1024&h=1024&fit=crop&crop=center',
         details: {
           gpt_image_error: gptImageData,
           dalle3_error: dalle3Data,
           dalle2_error: dalle2Data,
-          message: 'Your OpenAI account may not have image generation access enabled, or there may be a temporary issue with OpenAI\'s image generation service. Please check your OpenAI account settings and try again.'
+          message: 'All AI models failed. Check your OpenAI account billing and try again.'
         }
       }), {
-        status: 402,
+        status: 202, // Accepted but using fallback
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       });
     }
@@ -165,6 +180,8 @@ serve(async (req) => {
     
     return new Response(JSON.stringify({ 
       error: `OpenAI API Error: ${errorMessage}`,
+      fallback: true,
+      imageUrl: 'https://images.unsplash.com/photo-1527576539890-dfa815648363?w=1024&h=1024&fit=crop&crop=center',
       details: {
         status: dalle3Response.status,
         type: errorType,
@@ -172,20 +189,21 @@ serve(async (req) => {
         raw_error: dalle3Data
       }
     }), {
-      status: dalle3Response.status,
+      status: 202, // Accepted but using fallback
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });
 
   } catch (error) {
     console.error('❌ Unexpected error in generate-image function:', error);
     return new Response(JSON.stringify({ 
-      error: 'Unexpected server error',
+      error: 'unexpected_server_error',
+      fallback: true,
+      imageUrl: 'https://images.unsplash.com/photo-1527576539890-dfa815648363?w=1024&h=1024&fit=crop&crop=center',
       details: error.message,
       stack: error.stack
     }), {
-      status: 500,
+      status: 202, // Accepted but using fallback
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });
   }
 });
-

@@ -16,11 +16,12 @@ const Navigation = () => {
         🔥 Trusted by 1,000+ first-gen hustlers building generational wealth
       </div>
       
-      {/* Main Navigation with Enhanced Urban Texture */}
+      {/* Main Navigation with Strong Urban Texture */}
       <nav className="bg-brand-cream/95 dark:bg-brand-black/95 backdrop-blur-md border-b border-[#247EFF]/20 shadow-sm relative">
-        {/* Enhanced Urban grainy texture overlay - more visible */}
-        <div className="absolute inset-0 opacity-[0.08] bg-[radial-gradient(circle_at_1px_1px,_rgba(0,0,0,1)_1px,_transparent_0)] bg-[length:15px_15px]"></div>
-        <div className="absolute inset-0 opacity-[0.05] bg-[linear-gradient(45deg,_transparent_47%,_rgba(0,0,0,0.3)_48%,_rgba(0,0,0,0.3)_52%,_transparent_53%)] bg-[length:8px_8px]"></div>
+        {/* Strong Urban grainy texture overlay - highly visible */}
+        <div className="absolute inset-0 opacity-[0.15] bg-[radial-gradient(circle_at_1px_1px,_rgba(0,0,0,1)_1px,_transparent_0)] bg-[length:12px_12px]"></div>
+        <div className="absolute inset-0 opacity-[0.1] bg-[linear-gradient(45deg,_transparent_46%,_rgba(0,0,0,0.4)_47%,_rgba(0,0,0,0.4)_53%,_transparent_54%)] bg-[length:6px_6px]"></div>
+        <div className="absolute inset-0 opacity-[0.08] bg-[conic-gradient(from_0deg,_transparent_60%,_rgba(0,0,0,0.2)_80%,_transparent_100%)] bg-[length:10px_10px]"></div>
         
         <div className="container mx-auto px-4 sm:px-6 py-4 relative z-10">
           {/* Single layout for all screen sizes */}

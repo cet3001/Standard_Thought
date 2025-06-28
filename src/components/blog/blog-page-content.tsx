@@ -1,8 +1,8 @@
+
 import BlogHero from "./blog-hero";
 import FeaturedRecentPosts from "./featured-recent-posts";
 import FeaturedStoriesSection from "./featured-stories-section";
 import StartHereCard from "./start-here-card";
-import BlogFeaturedQuestions from "./blog-featured-questions";
 import BlogFiltersSection from "./blog-filters-section";
 import BlogGrid from "./blog-grid";
 import Empty from "@/components/ui/empty";
@@ -92,6 +92,16 @@ const BlogPageContent = ({
               />
             </div>
           ) : null}
+
+          {/* Guides & Resources Link - Mobile Only */}
+          <div className="lg:hidden mt-12 text-center">
+            <a 
+              href="/resources"
+              className="inline-flex items-center gap-2 bg-[#247EFF] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#247EFF]/90 transition-colors"
+            >
+              📚 Explore Guides & Resources
+            </a>
+          </div>
         </div>
 
         {/* Sidebar - Start Here Card (desktop only) */}
@@ -107,8 +117,6 @@ const BlogPageContent = ({
       
       {/* Keep the other sections below */}
       {posts && <FeaturedStoriesSection posts={posts} />}
-      
-      <BlogFeaturedQuestions />
     </div>
   );
 };

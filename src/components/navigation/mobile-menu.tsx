@@ -1,20 +1,18 @@
 
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import AuthSection from "./auth-section";
 
-interface MobileMenuProps {
-  isOpen?: boolean;
-  onToggle?: () => void;
-  onClose?: () => void;
-}
-
-const MobileMenu = ({ isOpen, onToggle, onClose }: MobileMenuProps) => {
+const MobileMenu = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const { user } = useAuth();
-  
+
+  console.log('MobileMenu render - isOpen:', isOpen);
+
   const navItems = [
     { href: "/", label: "Start Here" },
     { href: "/about", label: "Mindset Tools" },
@@ -23,58 +21,95 @@ const MobileMenu = ({ isOpen, onToggle, onClose }: MobileMenuProps) => {
     { href: "/faq", label: "Wealth Wisdom" },
   ];
 
-  const handleJoinMovement = () => {
-    onClose?.();
+  const handleClose = () => {
+    console.log('MobileMenu - handleClose called');
+    setIsOpen(false);
   };
 
   return (
-    <Sheet>
+    <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger asChild>
-        <Button 
-          variant="ghost" 
+        <Button
+          variant="ghost"
           size="icon"
           aria-label="Open navigation menu"
           aria-expanded={isOpen}
           aria-controls="navigation-menu"
-          className="hover:bg-[#247EFF]/10"
+          className="hover:bg-[#247EFF]/10 relative overflow-hidden"
+          onClick={() => {
+            console.log('Hamburger clicked, toggling to:', !isOpen);
+            setIsOpen(!isOpen);
+          }}
         >
-          <Menu className="h-6 w-6" aria-hidden="true" />
+          <Menu className="h-6 w-6 text-brand-black" aria-hidden="true" />
         </Button>
       </SheetTrigger>
-      <SheetContent 
-        side="left" 
-        className="w-[300px] sm:w-[400px] bg-white dark:bg-brand-black border-r border-[#247EFF]/20"
+      <SheetContent
+        side="left"
+        className="w-[300px] sm:w-[400px] bg-white border-r border-[#247EFF]/20 relative overflow-hidden z-[100] shadow-2xl"
         aria-label="Navigation menu"
         id="navigation-menu"
       >
-        {/* Clean background with subtle texture */}
-        <div className="absolute inset-0 bg-white dark:bg-brand-black">
-          <div className="absolute inset-0 opacity-[0.02] bg-[radial-gradient(circle_at_1px_1px,_rgba(36,126,255,0.3)_1px,_transparent_0)] bg-[length:20px_20px]"></div>
+        <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+        <SheetDescription className="sr-only">
+          Navigate to different sections of the site
+        </SheetDescription>
+
+        {/* Clean white background with subtle urban texture */}
+        <div className="absolute inset-0 bg-white">
+          <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(circle_at_1px_1px,_rgba(36,126,255,0.2)_1px,_transparent_0)] bg-[length:16px_16px]"></div>
+          <div className="absolute inset-0 opacity-[0.02] bg-[linear-gradient(45deg,_transparent_47%,_rgba(255,215,0,0.1)_49%,_rgba(255,215,0,0.1)_51%,_transparent_53%)] bg-[length:12px_12px]"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-[#247EFF]/3 via-transparent to-brand-cream/10"></div>
         </div>
-        
+
         <nav className="flex flex-col space-y-6 mt-8 relative z-10" role="navigation" aria-label="Main navigation">
           {/* Navigation Links */}
-          {navItems.map((item) => (
+          {navItems.map((item, index) => (
             <Link
               key={item.href}
               to={item.href}
-              className="text-xl font-semibold text-brand-black dark:text-brand-cream hover:text-[#247EFF] dark:hover:text-[#247EFF] transition-colors border-b border-[#247EFF]/10 pb-3"
+              className="group relative text-xl font-bold text-brand-black hover:text-[#247EFF] transition-all duration-300 border-b border-[#247EFF]/20 pb-3 pl-4"
               aria-label={`Navigate to ${item.label} page`}
-              onClick={onClose}
+              onClick={handleClose}
+              style={{ 
+                animationDelay: `${index * 50}ms`,
+                textShadow: '2px 2px 4px rgba(0,0,0,0.1)',
+                fontFamily: "'Inter', system-ui, sans-serif"
+              }}
             >
-              {item.label}
+              <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#247EFF] to-[#FFD700] transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top rounded-r"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-[#247EFF]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg -mx-2 -my-1"></div>
+              <span className="relative z-10">{item.label}</span>
             </Link>
           ))}
-          
+
           {/* Auth Section */}
-          <div className="pt-6 border-t border-[#247EFF]/20">
-            <AuthSection onAction={onClose} />
+          <div className="pt-6 border-t border-[#247EFF]/20 relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-brand-cream/20 to-transparent rounded-lg -mx-4 -my-2"></div>
+            <div className="relative z-10">
+              <AuthSection onAction={handleClose} />
+            </div>
           </div>
-          
-          {/* Get Blueprint CTA - Prominent in menu */}
-          <div className="pt-4">
-            <button className="w-full bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFA500] text-black font-bold hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg rounded-full px-6 py-4 border-0 text-lg relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/30 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 hover:from-[#FFA500] hover:via-[#FFD700] hover:to-[#FFD700]">
-              Get the Blueprint
+
+          {/* CTA Buttons */}
+          <div className="pt-4 space-y-3">
+            <button
+              onClick={handleClose}
+              className="w-full bg-gradient-to-r from-[#247EFF] to-[#0057FF] text-white font-bold hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl rounded-full px-6 py-3 text-base relative overflow-hidden border-0 before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700"
+              style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.3)' }}
+            >
+              <span className="relative z-10">Join Movement</span>
+            </button>
+
+            <button
+              onClick={handleClose}
+              className="w-full bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFA500] text-black font-bold hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl rounded-full px-6 py-4 border-0 text-lg relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/30 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 hover:from-[#FFA500] hover:via-[#FFD700] hover:to-[#FFD700]"
+              style={{
+                fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
+                textShadow: "2px 2px 4px rgba(0,0,0,0.2)",
+              }}
+            >
+              <span className="relative z-10">Get the Blueprint</span>
             </button>
           </div>
         </nav>

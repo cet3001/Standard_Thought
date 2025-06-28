@@ -50,11 +50,11 @@ const Navigation = () => {
         {/* AI-Generated Urban Texture Background */}
         {textureImageUrl && (
           <div 
-            className="absolute inset-0 opacity-[0.15] bg-repeat bg-center"
+            className="absolute inset-0 opacity-[0.08] bg-repeat bg-center"
             style={{
               backgroundImage: `url(${textureImageUrl})`,
               backgroundSize: '200px 200px',
-              filter: 'contrast(1.2) brightness(0.8)'
+              filter: 'contrast(1.1) brightness(0.9)'
             }}
           />
         )}
@@ -62,31 +62,21 @@ const Navigation = () => {
         {/* Enhanced CSS fallback while image loads */}
         {!textureImageUrl && (
           <>
-            <div className="absolute inset-0 opacity-[0.15] bg-[radial-gradient(circle_at_1px_1px,_rgba(0,0,0,1)_1px,_transparent_0)] bg-[length:12px_12px]"></div>
-            <div className="absolute inset-0 opacity-[0.1] bg-[linear-gradient(45deg,_transparent_46%,_rgba(0,0,0,0.4)_47%,_rgba(0,0,0,0.4)_53%,_transparent_54%)] bg-[length:6px_6px]"></div>
-            <div className="absolute inset-0 opacity-[0.08] bg-[conic-gradient(from_0deg,_transparent_60%,_rgba(0,0,0,0.2)_80%,_transparent_100%)] bg-[length:10px_10px]"></div>
+            <div className="absolute inset-0 opacity-[0.08] bg-[radial-gradient(circle_at_1px_1px,_rgba(36,126,255,0.2)_1px,_transparent_0)] bg-[length:12px_12px]"></div>
+            <div className="absolute inset-0 opacity-[0.05] bg-[linear-gradient(45deg,_transparent_46%,_rgba(36,126,255,0.1)_47%,_rgba(36,126,255,0.1)_53%,_transparent_54%)] bg-[length:6px_6px]"></div>
+            <div className="absolute inset-0 opacity-[0.03] bg-[conic-gradient(from_0deg,_transparent_60%,_rgba(255,215,0,0.1)_80%,_transparent_100%)] bg-[length:10px_10px]"></div>
           </>
         )}
         
-        {/* Content overlay */}
-        <div className="absolute inset-0 bg-brand-cream/20"></div>
+        {/* Light content overlay */}
+        <div className="absolute inset-0 bg-brand-cream/10"></div>
         
         <div className="container mx-auto px-4 sm:px-6 py-4 relative z-10">
           {/* Single layout for all screen sizes */}
           <div className="flex items-center justify-between">
             {/* Hamburger Menu */}
             <div className="flex items-center flex-shrink-0">
-              <MobileMenu 
-                isOpen={isMenuOpen}
-                onToggle={() => {
-                  console.log('Toggle called, current state:', isMenuOpen);
-                  setIsMenuOpen(!isMenuOpen);
-                }}
-                onClose={() => {
-                  console.log('Close called');
-                  setIsMenuOpen(false);
-                }}
-              />
+              <MobileMenu />
             </div>
 
             {/* Centered Logo - bigger and more prominent */}

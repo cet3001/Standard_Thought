@@ -10,7 +10,16 @@ import { useUrbanTexture } from "@/hooks/use-urban-texture";
 
 const FeaturedContentSection = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const { textureImageUrl } = useUrbanTexture();
+  const { textureImageUrl, imageGenerationStatus } = useUrbanTexture();
+
+  // Debug logging for texture URL
+  useEffect(() => {
+    console.log("FeaturedContentSection - Texture URL:", textureImageUrl);
+    console.log("FeaturedContentSection - Generation Status:", imageGenerationStatus);
+    if (!textureImageUrl) {
+      console.warn("FeaturedContentSection - No texture URL available, using fallback");
+    }
+  }, [textureImageUrl, imageGenerationStatus]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -37,6 +46,10 @@ const FeaturedContentSection = () => {
   const handleExploreAllClick = () => {
     trackButtonClick('Explore All Resources', 'featured_content_section', 'navigate_to_resources');
   };
+
+  // Fallback texture URL for when texture fails to load
+  const fallbackTextureUrl = "https://via.placeholder.com/300x300/1a1a1a/333333?text=Urban+Texture";
+  const activeTextureUrl = textureImageUrl || fallbackTextureUrl;
 
   const featuredContent = [
     {
@@ -97,34 +110,33 @@ const FeaturedContentSection = () => {
   return (
     <section 
       data-section="featured-content"
-      className="py-12 sm:py-16 relative overflow-hidden"
+      className="py-12 sm:py-16 relative"
     >
-      {/* Enhanced Urban Background */}
+      {/* Gritty Urban Background - No Overflow Hidden */}
       <div className="absolute inset-0" aria-hidden="true">
-        {/* AI-Generated or Curated Urban Texture */}
-        {textureImageUrl && (
-          <div 
-            className="absolute inset-0 opacity-30 bg-repeat bg-center"
-            style={{
-              backgroundImage: `url(${textureImageUrl})`,
-              backgroundSize: textureImageUrl.startsWith('data:') ? 'cover' : '300px 300px',
-              filter: 'contrast(1.4) brightness(0.6) sepia(0.1)'
-            }}
-          />
-        )}
+        {/* Urban Texture - Always Show */}
+        <div 
+          className="absolute inset-0 opacity-40 bg-repeat bg-center"
+          style={{
+            backgroundImage: `url(${activeTextureUrl})`,
+            backgroundSize: '300px 300px',
+            filter: 'contrast(1.2) brightness(0.8) sepia(0.05)'
+          }}
+        />
         
-        {/* Darker background gradient overlay for more contrast */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/40 via-slate-800/30 to-slate-700/40"></div>
+        {/* Subtle street gradient - lighter for texture visibility */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/20 via-slate-800/15 to-slate-700/25"></div>
         
-        {/* Content overlay for text readability - reduced opacity to show texture more */}
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/70 via-brand-cream/80 to-brand-cream/85 dark:from-brand-black/70 dark:via-brand-black/80 dark:to-brand-black/85"></div>
+        {/* Lighter content overlay - let the grit show through */}
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/20 via-brand-cream/50 to-brand-cream/60 dark:from-brand-black/20 dark:via-brand-black/50 dark:to-brand-black/60"></div>
       </div>
 
-      {/* Enhanced Floating Urban Elements */}
+      {/* Street Elements - More Visible */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-        <div className="absolute top-20 right-10 w-32 h-32 rounded-full bg-[#FFD700]/15 animate-float"></div>
-        <div className="absolute bottom-40 left-10 w-24 h-24 rounded-2xl bg-[#247EFF]/25 animate-float" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute top-60 left-1/3 w-16 h-16 rounded bg-[#FFD700]/10 animate-float" style={{ animationDelay: '4s' }}></div>
+        <div className="absolute top-20 right-10 w-32 h-32 rounded-full bg-[#FFD700]/20 animate-float"></div>
+        <div className="absolute bottom-40 left-10 w-24 h-24 rounded-2xl bg-[#247EFF]/30 animate-float" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-60 left-1/3 w-16 h-16 rounded bg-[#FFD700]/15 animate-float" style={{ animationDelay: '4s' }}></div>
+        <div className="absolute bottom-20 right-1/4 w-20 h-20 rounded-lg bg-slate-600/10 animate-float" style={{ animationDelay: '1s' }}></div>
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 max-w-6xl relative z-10">

@@ -43,12 +43,14 @@ const MobileMenu = ({ isOpen, onToggle, onClose }: MobileMenuProps) => {
       </SheetTrigger>
       <SheetContent 
         side="left" 
-        className="w-[300px] sm:w-[400px] bg-brand-cream/95 dark:bg-brand-black/95 backdrop-blur-md"
+        className="w-[300px] sm:w-[400px] bg-white dark:bg-brand-black border-r border-[#247EFF]/20"
         aria-label="Navigation menu"
         id="navigation-menu"
       >
-        {/* Urban texture background */}
-        <div className="absolute inset-0 opacity-[0.02] bg-[radial-gradient(circle_at_1px_1px,_rgba(0,0,0,1)_1px,_transparent_0)] bg-[length:20px_20px]"></div>
+        {/* Clean background with subtle texture */}
+        <div className="absolute inset-0 bg-white dark:bg-brand-black">
+          <div className="absolute inset-0 opacity-[0.02] bg-[radial-gradient(circle_at_1px_1px,_rgba(36,126,255,0.3)_1px,_transparent_0)] bg-[length:20px_20px]"></div>
+        </div>
         
         <nav className="flex flex-col space-y-6 mt-8 relative z-10" role="navigation" aria-label="Main navigation">
           {/* Navigation Links */}
@@ -56,7 +58,7 @@ const MobileMenu = ({ isOpen, onToggle, onClose }: MobileMenuProps) => {
             <Link
               key={item.href}
               to={item.href}
-              className="text-xl font-semibold text-[#0A0A0A] dark:text-brand-cream hover:text-[#247EFF] dark:hover:text-[#247EFF] transition-colors border-b border-[#247EFF]/10 pb-3"
+              className="text-xl font-semibold text-brand-black dark:text-brand-cream hover:text-[#247EFF] dark:hover:text-[#247EFF] transition-colors border-b border-[#247EFF]/10 pb-3"
               aria-label={`Navigate to ${item.label} page`}
               onClick={onClose}
             >

@@ -1,3 +1,4 @@
+
 import Analytics from "@/components/analytics";
 import HomepageHero from "@/components/homepage-hero";
 import LeadMagnetPopup from "@/components/lead-magnet-popup";
@@ -162,18 +163,11 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Navigation Hub - moved below FAQ */}
-        <section className="bg-brand-cream dark:bg-brand-black">
-          <div className="container mx-auto px-6">
-            <div className="max-w-6xl mx-auto">
-              <SiteNavigationHub />
-            </div>
-          </div>
-        </section>
+        {/* Navigation Hub - now without background color overlay */}
+        <SiteNavigationHub />
 
-        <section className="bg-gradient-to-b from-white to-brand-cream dark:from-brand-black/90 dark:to-brand-black py-16">
-          <TrustBadgeSection />
-        </section>
+        {/* Trust Badge Section - now without background color overlay */}
+        <TrustBadgeSection />
       </main>
 
       {/* Footer */}

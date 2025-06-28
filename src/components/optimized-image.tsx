@@ -1,5 +1,5 @@
 
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 
 interface OptimizedImageProps {
   src: string;
@@ -23,8 +23,8 @@ const OptimizedImage = ({
   mobileOptimized = true
 }: OptimizedImageProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [imgSrc, setImgSrc] = useState(src); // Start with actual image, not placeholder
   const [hasError, setHasError] = useState(false);
+  const [imgSrc, setImgSrc] = useState(src);
 
   const handleLoad = () => {
     setIsLoaded(true);
@@ -32,6 +32,7 @@ const OptimizedImage = ({
   };
 
   const handleError = () => {
+    console.log(`Image failed to load: ${src}, using placeholder: ${placeholder}`);
     setHasError(true);
     setImgSrc(placeholder);
     setIsLoaded(true);
@@ -57,7 +58,7 @@ const OptimizedImage = ({
           height: 'auto'
         }}
       />
-      {(!isLoaded || hasError) && (
+      {!isLoaded && !hasError && (
         <div className="absolute inset-0 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 animate-pulse" />
       )}
     </div>

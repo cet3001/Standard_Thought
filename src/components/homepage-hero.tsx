@@ -21,13 +21,13 @@ const HomepageHero = ({ scrollToNewsletter }: HomepageHeroProps) => {
 
   return (
     <section className="pt-40 pb-24 relative overflow-hidden">
-      {/* Pure CSS Urban Background - Shows Immediately */}
+      {/* Urban Background - Always visible */}
       <div className="absolute inset-0" aria-hidden="true">
         {/* Base urban gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 opacity-60"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900"></div>
         
         {/* Layered urban textures */}
-        <div className="absolute inset-0 opacity-40">
+        <div className="absolute inset-0 opacity-30">
           {/* Brick pattern */}
           <div 
             className="absolute inset-0 bg-repeat opacity-60"
@@ -81,7 +81,7 @@ const HomepageHero = ({ scrollToNewsletter }: HomepageHeroProps) => {
           <SuccessStoriesSection isVisible={isVisible} />
 
           {/* Final CTA */}
-          <FinalCTASection isVisible={isVisible} scrollToNewsletter={scrollToNewsletter} />
+          <FinalCTASection isVisible={isVisible} scrollToNewslotter={scrollToNewsletter} />
         </div>
       </div>
     </section>

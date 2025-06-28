@@ -11,8 +11,6 @@ const MobileMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user } = useAuth();
 
-  console.log('MobileMenu render - isOpen:', isOpen);
-
   const navItems = [
     { href: "/", label: "Start Here" },
     { href: "/about", label: "Mindset Tools" },
@@ -22,7 +20,6 @@ const MobileMenu = () => {
   ];
 
   const handleClose = () => {
-    console.log('MobileMenu - handleClose called');
     setIsOpen(false);
   };
 
@@ -35,18 +32,14 @@ const MobileMenu = () => {
           aria-label="Open navigation menu"
           aria-expanded={isOpen}
           aria-controls="navigation-menu"
-          className="hover:bg-[#247EFF]/10 relative overflow-hidden"
-          onClick={() => {
-            console.log('Hamburger clicked, toggling to:', !isOpen);
-            setIsOpen(!isOpen);
-          }}
+          className="hover:bg-[#247EFF]/10"
         >
-          <Menu className="h-6 w-6 text-brand-black" aria-hidden="true" />
+          <Menu className="h-6 w-6 text-[#0A0A0A]" aria-hidden="true" />
         </Button>
       </SheetTrigger>
       <SheetContent
         side="left"
-        className="w-[300px] sm:w-[400px] bg-white border-r border-[#247EFF]/20 relative overflow-hidden z-[100] shadow-2xl"
+        className="w-[300px] sm:w-[400px] bg-white border-r border-[#247EFF]/20 z-[100] shadow-2xl"
         aria-label="Navigation menu"
         id="navigation-menu"
       >
@@ -55,20 +48,13 @@ const MobileMenu = () => {
           Navigate to different sections of the site
         </SheetDescription>
 
-        {/* Clean white background with subtle urban texture */}
-        <div className="absolute inset-0 bg-white">
-          <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(circle_at_1px_1px,_rgba(36,126,255,0.2)_1px,_transparent_0)] bg-[length:16px_16px]"></div>
-          <div className="absolute inset-0 opacity-[0.02] bg-[linear-gradient(45deg,_transparent_47%,_rgba(255,215,0,0.1)_49%,_rgba(255,215,0,0.1)_51%,_transparent_53%)] bg-[length:12px_12px]"></div>
-          <div className="absolute inset-0 bg-gradient-to-b from-[#247EFF]/3 via-transparent to-brand-cream/10"></div>
-        </div>
-
-        <nav className="flex flex-col space-y-6 mt-8 relative z-10" role="navigation" aria-label="Main navigation">
+        <nav className="flex flex-col space-y-6 mt-8" role="navigation" aria-label="Main navigation">
           {/* Navigation Links */}
           {navItems.map((item, index) => (
             <Link
               key={item.href}
               to={item.href}
-              className="group relative text-xl font-bold text-brand-black hover:text-[#247EFF] transition-all duration-300 border-b border-[#247EFF]/20 pb-3 pl-4"
+              className="group relative text-xl font-bold text-[#0A0A0A] hover:text-[#247EFF] transition-all duration-300 border-b border-[#247EFF]/20 pb-3 pl-4"
               aria-label={`Navigate to ${item.label} page`}
               onClick={handleClose}
               style={{ 
@@ -85,7 +71,7 @@ const MobileMenu = () => {
 
           {/* Auth Section */}
           <div className="pt-6 border-t border-[#247EFF]/20 relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-brand-cream/20 to-transparent rounded-lg -mx-4 -my-2"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#FDF6E3]/20 to-transparent rounded-lg -mx-4 -my-2"></div>
             <div className="relative z-10">
               <AuthSection onAction={handleClose} />
             </div>

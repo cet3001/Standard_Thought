@@ -99,31 +99,32 @@ const FeaturedContentSection = () => {
       data-section="featured-content"
       className="py-12 sm:py-16 relative overflow-hidden"
     >
-      {/* Urban Background */}
+      {/* Enhanced Urban Background */}
       <div className="absolute inset-0" aria-hidden="true">
         {/* AI-Generated or Curated Urban Texture */}
         {textureImageUrl && (
           <div 
-            className="absolute inset-0 opacity-15 bg-repeat bg-center"
+            className="absolute inset-0 opacity-30 bg-repeat bg-center"
             style={{
               backgroundImage: `url(${textureImageUrl})`,
-              backgroundSize: textureImageUrl.startsWith('data:') ? 'cover' : '400px 400px',
-              filter: 'contrast(1.2) brightness(0.8)'
+              backgroundSize: textureImageUrl.startsWith('data:') ? 'cover' : '300px 300px',
+              filter: 'contrast(1.4) brightness(0.6) sepia(0.1)'
             }}
           />
         )}
         
-        {/* Background gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-800/30 via-slate-700/20 to-slate-900/30"></div>
+        {/* Darker background gradient overlay for more contrast */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/40 via-slate-800/30 to-slate-700/40"></div>
         
-        {/* Content overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-brand-cream/60 to-brand-cream/70 dark:from-brand-black/50 dark:via-brand-black/60 dark:to-brand-black/70"></div>
+        {/* Content overlay for text readability - reduced opacity to show texture more */}
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/70 via-brand-cream/80 to-brand-cream/85 dark:from-brand-black/70 dark:via-brand-black/80 dark:to-brand-black/85"></div>
       </div>
 
-      {/* Floating Urban Elements */}
+      {/* Enhanced Floating Urban Elements */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-        <div className="absolute top-20 right-10 w-32 h-32 rounded-full bg-[#FFD700]/10 animate-float"></div>
-        <div className="absolute bottom-40 left-10 w-24 h-24 rounded-2xl bg-[#247EFF]/20 animate-float" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-20 right-10 w-32 h-32 rounded-full bg-[#FFD700]/15 animate-float"></div>
+        <div className="absolute bottom-40 left-10 w-24 h-24 rounded-2xl bg-[#247EFF]/25 animate-float" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-60 left-1/3 w-16 h-16 rounded bg-[#FFD700]/10 animate-float" style={{ animationDelay: '4s' }}></div>
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 max-w-6xl relative z-10">

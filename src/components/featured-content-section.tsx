@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -12,7 +11,7 @@ const FeaturedContentSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const { textureImageUrl, imageGenerationStatus } = useUrbanTexture();
 
-  // Debug logging for texture URL
+  // Enhanced debugging for texture URL
   useEffect(() => {
     console.log("FeaturedContentSection - Texture URL:", textureImageUrl);
     console.log("FeaturedContentSection - Generation Status:", imageGenerationStatus);
@@ -47,9 +46,13 @@ const FeaturedContentSection = () => {
     trackButtonClick('Explore All Resources', 'featured_content_section', 'navigate_to_resources');
   };
 
-  // Fallback texture URL for when texture fails to load
+  // Hardcoded test URL to ensure texture shows
+  const testTextureUrl = "https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80";
   const fallbackTextureUrl = "https://via.placeholder.com/300x300/1a1a1a/333333?text=Urban+Texture";
-  const activeTextureUrl = textureImageUrl || fallbackTextureUrl;
+  const activeTextureUrl = textureImageUrl || testTextureUrl;
+  
+  // Forced logging to debug what's actually being used
+  console.log("Forced URL:", activeTextureUrl);
 
   const featuredContent = [
     {
@@ -112,23 +115,24 @@ const FeaturedContentSection = () => {
       data-section="featured-content"
       className="py-12 sm:py-16 relative"
     >
-      {/* Gritty Urban Background - No Overflow Hidden */}
+      {/* Street-Level Urban Background - Reordered Layers */}
       <div className="absolute inset-0" aria-hidden="true">
-        {/* Urban Texture - Always Show */}
+        {/* Base gradient - underneath everything */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/20 via-slate-800/15 to-slate-700/20"></div>
+        
+        {/* Urban Texture - Main Layer - Always Show */}
         <div 
-          className="absolute inset-0 opacity-40 bg-repeat bg-center"
+          className="absolute inset-0 opacity-50 bg-repeat bg-center"
           style={{
             backgroundImage: `url(${activeTextureUrl})`,
             backgroundSize: '300px 300px',
-            filter: 'contrast(1.2) brightness(0.8) sepia(0.05)'
+            filter: 'contrast(1.3) brightness(0.7) sepia(0.08)',
+            mixBlendMode: 'multiply'
           }}
         />
         
-        {/* Subtle street gradient - lighter for texture visibility */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/20 via-slate-800/15 to-slate-700/25"></div>
-        
-        {/* Lighter content overlay - let the grit show through */}
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/20 via-brand-cream/50 to-brand-cream/60 dark:from-brand-black/20 dark:via-brand-black/50 dark:to-brand-black/60"></div>
+        {/* Light content overlay - on top for readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/20 via-brand-cream/40 to-brand-cream/50 dark:from-brand-black/20 dark:via-brand-black/40 dark:to-brand-black/50"></div>
       </div>
 
       {/* Street Elements - More Visible */}

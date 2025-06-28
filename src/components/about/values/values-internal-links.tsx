@@ -8,8 +8,11 @@ const ValuesInternalLinks = () => {
       <div className="relative">
         {/* Main sticky note background */}
         <div 
-          className="bg-[#FFD700] p-8 rounded-lg shadow-lg transform -rotate-1 relative"
+          className="p-8 rounded-lg shadow-lg transform -rotate-1 relative"
           style={{
+            background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+            backgroundSize: '400% 400%',
+            animation: 'pearlescent 3s ease-in-out infinite',
             borderRadius: '15px 25px 20px 10px',
             boxShadow: '4px 6px 12px rgba(0,0,0,0.3), inset -2px -2px 4px rgba(0,0,0,0.1)'
           }}
@@ -82,16 +85,34 @@ const ValuesInternalLinks = () => {
           <div className="absolute bottom-4 left-6 w-1.5 h-1.5 bg-[#0057FF] rounded-full opacity-60"></div>
         </div>
 
-        {/* Shadow/depth effect */}
+        {/* Shadow/depth effect with pearlescent background */}
         <div 
-          className="absolute inset-0 bg-[#FFD700]/30 rounded-lg transform rotate-1 -z-10"
+          className="absolute inset-0 rounded-lg transform rotate-1 -z-10"
           style={{
+            background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+            backgroundSize: '400% 400%',
+            animation: 'pearlescent 3s ease-in-out infinite',
+            opacity: 0.3,
             borderRadius: '20px 15px 25px 15px',
             top: '6px',
             left: '4px'
           }}
         ></div>
       </div>
+
+      <style>{`
+        @keyframes pearlescent {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+      `}</style>
     </div>
   );
 };

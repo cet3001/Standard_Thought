@@ -77,16 +77,8 @@ const MobileMenu = () => {
             </div>
           </div>
 
-          {/* CTA Buttons */}
+          {/* CTA Button - Only the golden one remains */}
           <div className="pt-4 space-y-3">
-            <button
-              onClick={handleClose}
-              className="w-full bg-gradient-to-r from-[#247EFF] to-[#0057FF] text-white font-bold hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl rounded-full px-6 py-3 text-base relative overflow-hidden border-0 before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700"
-              style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.3)' }}
-            >
-              <span className="relative z-10">Join Movement</span>
-            </button>
-
             <button
               onClick={handleClose}
               className="w-full bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFA500] text-black font-bold hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl rounded-full px-6 py-4 border-0 text-lg relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/30 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 hover:from-[#FFA500] hover:via-[#FFD700] hover:to-[#FFD700]"

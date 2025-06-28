@@ -35,31 +35,32 @@ const Navigation = () => {
   return (
     <div className="fixed top-0 left-0 right-0 z-50">
       {/* Community Trust Banner with improved styling */}
-      <div className="bg-gradient-to-r from-slate-800 via-slate-700 to-slate-900 text-brand-cream text-center py-2 text-sm font-medium shadow-md">
-        📈 Join the movement—real strategies for building wealth from the ground up
+      <div className="bg-gradient-to-r from-slate-600 via-slate-500 to-slate-700 text-brand-cream text-center py-2 text-sm font-medium shadow-md">
+        💡 Real strategies, real results—join builders creating wealth from scratch
       </div>
       
-      {/* Main Navigation with Matching Urban Texture Background */}
+      {/* Main Navigation with Enhanced Urban Texture Background */}
       <nav className="relative backdrop-blur-md border-b border-[#247EFF]/20 shadow-sm overflow-hidden">
-        {/* Urban Background Texture - Matches Homepage Hero */}
+        {/* Urban Background Texture - Enhanced Visibility */}
         <div className="absolute inset-0" aria-hidden="true">
           {/* AI-Generated or Curated Urban Texture */}
           {textureImageUrl && (
             <div 
-              className="absolute inset-0 opacity-20 bg-repeat bg-center"
+              className="absolute inset-0 opacity-40 bg-cover bg-center"
               style={{
                 backgroundImage: `url(${textureImageUrl})`,
-                backgroundSize: textureImageUrl.startsWith('data:') ? 'cover' : '300px 300px',
-                filter: 'contrast(1.3) brightness(0.7)'
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat'
               }}
             />
           )}
           
-          {/* Background gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 opacity-50"></div>
+          {/* Background gradient overlay - lighter for better texture visibility */}
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-800/60 via-slate-700/70 to-slate-900/60"></div>
           
-          {/* Content overlay for text readability */}
-          <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/85 via-brand-cream/90 to-brand-cream/95 dark:from-brand-black/85 dark:via-brand-black/90 dark:to-brand-black/95"></div>
+          {/* Content overlay for text readability - reduced opacity */}
+          <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/70 via-brand-cream/75 to-brand-cream/80 dark:from-brand-black/70 dark:via-brand-black/75 dark:to-brand-black/80"></div>
         </div>
 
         <div className="container mx-auto px-4 sm:px-6 py-4 relative z-10">

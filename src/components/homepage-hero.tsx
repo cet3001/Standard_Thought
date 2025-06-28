@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import HeroContent from "./homepage/hero-content";
 import SocialProofSection from "./homepage/social-proof-section";
@@ -21,25 +22,26 @@ const HomepageHero = ({ scrollToNewsletter }: HomepageHeroProps) => {
 
   return (
     <section className="pt-40 pb-24 relative overflow-hidden">
-      {/* Enhanced Urban Background with AI-Generated Texture - Matches Navigation */}
+      {/* Enhanced Urban Background with Better Texture Visibility */}
       <div className="absolute inset-0" aria-hidden="true">
         {/* AI-Generated or Curated Urban Texture */}
         {textureImageUrl && (
           <div 
-            className="absolute inset-0 opacity-20 bg-repeat bg-center"
+            className="absolute inset-0 opacity-50 bg-cover bg-center"
             style={{
               backgroundImage: `url(${textureImageUrl})`,
-              backgroundSize: textureImageUrl.startsWith('data:') ? 'cover' : '300px 300px',
-              filter: 'contrast(1.3) brightness(0.7)'
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat'
             }}
           />
         )}
         
-        {/* Background gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 opacity-50"></div>
+        {/* Background gradient overlay - lighter for better texture visibility */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-800/40 via-slate-700/50 to-slate-900/40"></div>
         
-        {/* Content overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/85 via-brand-cream/90 to-brand-cream/95 dark:from-brand-black/85 dark:via-brand-black/90 dark:to-brand-black/95"></div>
+        {/* Content overlay for text readability - reduced opacity */}
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/70 via-brand-cream/75 to-brand-cream/80 dark:from-brand-black/70 dark:via-brand-black/75 dark:to-brand-black/80"></div>
       </div>
 
       {/* Floating Elements */}

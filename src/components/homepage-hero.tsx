@@ -28,8 +28,8 @@ const HomepageHero = ({ scrollToNewsletter }: HomepageHeroProps) => {
         const { data, error } = await supabase.functions.invoke('generate-image', {
           body: {
             prompt: "Raw urban cityscape background, street photography style, graffiti walls, community gathering spaces, inner city neighborhood, gritty atmosphere with grain filter effect, high contrast shadows, authentic street culture, weathered buildings, urban decay aesthetic, natural lighting, photojournalistic style, documentary photography feel",
-            size: "1536x1024", // Using supported size instead of 1792x1024
-            quality: "high", // Using 'high' instead of 'hd' for gpt-image-1
+            size: "1792x1024",
+            quality: "hd",
             style: "natural"
           }
         });
@@ -57,51 +57,40 @@ const HomepageHero = ({ scrollToNewsletter }: HomepageHeroProps) => {
       {/* Enhanced Urban Background with Immediate Fallbacks */}
       <div className="absolute inset-0" aria-hidden="true">
         {/* Immediate CSS fallback background - shows instantly */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 opacity-60"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 opacity-50"></div>
         
-        {/* Enhanced CSS urban texture patterns - show immediately */}
-        <div className="absolute inset-0 opacity-40">
-          {/* Layered brick pattern for more realistic look */}
+        {/* CSS urban texture patterns - show immediately */}
+        <div className="absolute inset-0 opacity-30">
+          {/* Brick pattern */}
           <div 
-            className="absolute inset-0 bg-repeat opacity-50"
+            className="absolute inset-0 bg-repeat opacity-40"
             style={{
               backgroundImage: `
-                linear-gradient(90deg, rgba(139,69,19,0.9) 1px, transparent 1px),
-                linear-gradient(rgba(139,69,19,0.9) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(160,82,45,0.7) 2px, transparent 2px),
-                linear-gradient(rgba(160,82,45,0.7) 2px, transparent 2px)
+                linear-gradient(90deg, rgba(139,69,19,0.8) 1px, transparent 1px),
+                linear-gradient(rgba(139,69,19,0.8) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(160,82,45,0.6) 2px, transparent 2px),
+                linear-gradient(rgba(160,82,45,0.6) 2px, transparent 2px)
               `,
               backgroundSize: '40px 20px, 40px 20px, 80px 40px, 80px 40px'
             }}
           />
-          {/* Urban grunge overlay */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,_rgba(0,0,0,0.4)_2px,_transparent_2px)] bg-[length:30px_30px] opacity-60"></div>
-          {/* Street texture lines */}
-          <div 
-            className="absolute inset-0 opacity-30"
-            style={{
-              backgroundImage: `
-                linear-gradient(45deg, rgba(0,0,0,0.3) 25%, transparent 25%),
-                linear-gradient(-45deg, rgba(0,0,0,0.3) 25%, transparent 25%)
-              `,
-              backgroundSize: '20px 20px'
-            }}
-          />
+          {/* Grunge overlay */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,_rgba(0,0,0,0.3)_2px,_transparent_2px)] bg-[length:30px_30px] opacity-50"></div>
         </div>
         
         {/* AI-generated background - loads when ready with smooth transition */}
         {urbanBackgroundUrl && (
           <div 
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-2000 opacity-50"
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 opacity-40"
             style={{
               backgroundImage: `url(${urbanBackgroundUrl})`,
-              filter: 'grayscale(15%) contrast(1.15) brightness(0.75) sepia(8%)'
+              filter: 'grayscale(20%) contrast(1.1) brightness(0.7) sepia(10%)'
             }}
           />
         )}
         
         {/* Content overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/88 via-brand-cream/92 to-brand-cream/96 dark:from-brand-black/88 dark:via-brand-black/92 dark:to-brand-black/96"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/85 via-brand-cream/90 to-brand-cream/95 dark:from-brand-black/85 dark:via-brand-black/90 dark:to-brand-black/95"></div>
       </div>
 
       {/* Floating Elements */}

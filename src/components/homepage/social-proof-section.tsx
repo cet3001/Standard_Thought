@@ -1,11 +1,31 @@
 
 import { Users, TrendingUp, CheckCircle } from "lucide-react";
+import { useState, useEffect } from "react";
 
 interface SocialProofSectionProps {
   isVisible: boolean;
 }
 
 const SocialProofSection = ({ isVisible }: SocialProofSectionProps) => {
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+
+  const testimonials = [
+    { text: "Finally, money advice that speaks my language.", author: "Tasha", location: "South Side" },
+    { text: "This ain't your typical finance BS—it's real talk.", author: "Marcus", location: "East Oakland" },
+    { text: "Started with $25, now I'm building something real.", author: "Keisha", location: "North Philly" },
+    { text: "These folks get the struggle and show you the way out.", author: "Carlos", location: "East LA" },
+    { text: "No cap, this changed my whole money mindset.", author: "Aisha", location: "West Side" },
+    { text: "First time financial advice made sense to me.", author: "Jamal", location: "The Bronx" }
+  ];
+
+  // Rotate testimonials every 4 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [testimonials.length]);
+
   return (
     <div className={`relative bg-white/90 dark:bg-brand-black/80 backdrop-blur-sm border border-[#247EFF]/20 rounded-3xl p-8 mb-16 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} overflow-hidden`}>
       
@@ -109,13 +129,32 @@ const SocialProofSection = ({ isVisible }: SocialProofSectionProps) => {
         </div>
       </div>
 
+      {/* Rotating Community Testimonials */}
       <div className="mt-10 pt-10 border-t border-[#247EFF]/20 relative z-10">
         <div className="text-center max-w-2xl mx-auto">
-          <p className="text-[#0A0A0A]/80 dark:text-brand-cream/80 text-lg leading-8 mb-6">
-            "This ain't your typical finance advice. These folks understand the struggle and give you real strategies that actually work when you're starting from zero."
-          </p>
-          <div className="text-sm text-[#0A0A0A]/60 dark:text-brand-cream/60">
-            — Keisha M., Community Member
+          <div className="transition-all duration-500 ease-in-out min-h-[80px] flex items-center justify-center">
+            <blockquote className="text-[#0A0A0A]/80 dark:text-brand-cream/80 text-lg leading-8 italic">
+              "{testimonials[currentTestimonial].text}"
+              <footer className="text-sm text-[#0A0A0A]/60 dark:text-brand-cream/60 mt-2 not-italic">
+                — {testimonials[currentTestimonial].author}, {testimonials[currentTestimonial].location}
+              </footer>
+            </blockquote>
+          </div>
+          
+          {/* Testimonial indicators */}
+          <div className="flex justify-center mt-4 space-x-2">
+            {testimonials.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentTestimonial(index)}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  index === currentTestimonial 
+                    ? 'bg-[#247EFF] scale-125' 
+                    : 'bg-[#0A0A0A]/30 dark:bg-brand-cream/30 hover:bg-[#247EFF]/50'
+                }`}
+                aria-label={`View testimonial ${index + 1}`}
+              />
+            ))}
           </div>
         </div>
       </div>

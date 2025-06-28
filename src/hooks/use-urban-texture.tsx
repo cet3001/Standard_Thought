@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 
-// Carefully curated urban/gritty architectural images - street-smart vibes only
+// Carefully curated GENUINELY urban/gritty architectural images - street-smart vibes only
 const URBAN_IMAGES = [
   "https://images.unsplash.com/photo-1527576539890-dfa815648363?w=1024&h=1024&fit=crop&crop=center", // grayscale low angle building - URBAN ✓
   "https://images.unsplash.com/photo-1488972685288-c3fd157d7c7a?w=1024&h=1024&fit=crop&crop=center", // low angle gray building - URBAN ✓
@@ -19,30 +19,21 @@ export const useUrbanTexture = () => {
   const [textureImageUrl, setTextureImageUrl] = useState<string>("");
   const [imageGenerationStatus, setImageGenerationStatus] = useState<string>("idle");
 
-  // Check localStorage cache first
+  // Force clear any old cache and select new image on mount
   useEffect(() => {
-    const cachedImageUrl = localStorage.getItem('urban-texture-cache');
-    const cacheTimestamp = localStorage.getItem('urban-texture-timestamp');
-    const CACHE_DURATION = 8 * 60 * 60 * 1000; // 8 hours (shorter for more variety)
-
-    if (cachedImageUrl && cacheTimestamp) {
-      const isExpired = Date.now() - parseInt(cacheTimestamp) > CACHE_DURATION;
-      if (!isExpired) {
-        setTextureImageUrl(cachedImageUrl);
-        setImageGenerationStatus("cached");
-        return;
-      } else {
-        localStorage.removeItem('urban-texture-cache');
-        localStorage.removeItem('urban-texture-timestamp');
-      }
-    }
-
+    // Clear any existing cache first
+    localStorage.removeItem('urban-texture-cache');
+    localStorage.removeItem('urban-texture-timestamp');
+    localStorage.removeItem('used-urban-textures');
+    
+    // Force a new selection
     selectUrbanTexture();
   }, []);
 
   const selectUrbanTexture = () => {
     try {
       setImageGenerationStatus("selecting");
+      console.log("Selecting new urban texture...");
       
       // Get previously used images to avoid immediate repeats
       const usedImages = JSON.parse(localStorage.getItem('used-urban-textures') || '[]');
@@ -52,17 +43,20 @@ export const useUrbanTexture = () => {
       if (availableImages.length === 0) {
         availableImages = URBAN_IMAGES;
         localStorage.setItem('used-urban-textures', '[]');
+        console.log("Reset urban texture cycle");
       }
       
       // Select a random image from available ones
       const randomIndex = Math.floor(Math.random() * availableImages.length);
       const selectedImage = availableImages[randomIndex];
       
+      console.log("Selected urban texture:", selectedImage);
+      
       // Update used images list
       const newUsedImages = [...usedImages, selectedImage].slice(-Math.floor(URBAN_IMAGES.length * 0.7)); // Keep track of last 70%
       localStorage.setItem('used-urban-textures', JSON.stringify(newUsedImages));
       
-      // Cache the selected image
+      // Cache the selected image with shorter duration for more variety
       localStorage.setItem('urban-texture-cache', selectedImage);
       localStorage.setItem('urban-texture-timestamp', Date.now().toString());
       
@@ -82,6 +76,11 @@ export const useUrbanTexture = () => {
   return {
     textureImageUrl,
     imageGenerationStatus,
-    regenerateTexture: () => selectUrbanTexture()
+    regenerateTexture: () => {
+      // Clear cache and force new selection
+      localStorage.removeItem('urban-texture-cache');
+      localStorage.removeItem('urban-texture-timestamp');
+      selectUrbanTexture();
+    }
   };
 };

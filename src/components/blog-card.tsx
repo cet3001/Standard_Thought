@@ -25,6 +25,7 @@ interface BlogCardProps {
 
 const BlogCard = ({ post, index, isVisible }: BlogCardProps) => {
   const navigate = useNavigate();
+  const [imageError, setImageError] = useState(false);
 
   const getReadTime = (excerpt: string) => {
     const wordsPerMinute = 200;
@@ -36,6 +37,10 @@ const BlogCard = ({ post, index, isVisible }: BlogCardProps) => {
   const handleCardClick = () => {
     trackBlogRead(post.title, post.slug);
     navigate(`/blog/${post.slug}`);
+  };
+
+  const handleImageError = () => {
+    setImageError(true);
   };
 
   // Generate SEO-rich ALT text
@@ -93,10 +98,11 @@ const BlogCard = ({ post, index, isVisible }: BlogCardProps) => {
         <div className="relative overflow-hidden">
           <AspectRatio ratio={16/9} className="bg-gray-50 dark:bg-gray-900">
             <img
-              src={post.image_url || "/placeholder.svg"}
+              src={imageError || !post.image_url ? "/placeholder.svg" : post.image_url}
               alt={imageAlt}
-              className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               loading="lazy"
+              onError={handleImageError}
             />
           </AspectRatio>
           <div className="absolute top-4 left-4">

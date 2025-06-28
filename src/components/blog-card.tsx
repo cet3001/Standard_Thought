@@ -95,7 +95,7 @@ const BlogCard = ({ post, index, isVisible }: BlogCardProps) => {
             <img
               src={post.image_url || "/placeholder.svg"}
               alt={imageAlt}
-              className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               loading="lazy"
             />
           </AspectRatio>

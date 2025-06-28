@@ -40,17 +40,17 @@ const BlogShowcaseGrid = ({ posts, loading, isVisible }: BlogShowcaseGridProps) 
             <div className="absolute top-0 left-0 right-0 h-2 bg-white/90 dark:bg-brand-black/80 shadow-[0_3px_0_0_rgba(0,0,0,0.1)] z-10"></div>
             <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-transparent via-[#247EFF]/20 to-transparent"></div>
             
-            <div className="h-48 bg-gradient-to-r from-accent/10 via-accent/20 to-accent/10 bg-[length:200%_100%]"></div>
+            <div className="h-48 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200"></div>
             <div className="p-6 relative z-10">
-              <div className="h-6 bg-accent/20 rounded mb-3 w-3/4"></div>
+              <div className="h-6 bg-gray-200 rounded mb-3 w-3/4"></div>
               <div className="space-y-2 mb-4">
-                <div className="h-4 bg-accent/20 rounded"></div>
-                <div className="h-4 bg-accent/20 rounded w-5/6"></div>
-                <div className="h-4 bg-accent/20 rounded w-4/6"></div>
+                <div className="h-4 bg-gray-200 rounded"></div>
+                <div className="h-4 bg-gray-200 rounded w-5/6"></div>
+                <div className="h-4 bg-gray-200 rounded w-4/6"></div>
               </div>
               <div className="flex justify-between">
-                <div className="h-4 w-24 bg-accent/20 rounded"></div>
-                <div className="h-4 w-20 bg-accent/20 rounded"></div>
+                <div className="h-4 w-24 bg-gray-200 rounded"></div>
+                <div className="h-4 w-20 bg-gray-200 rounded"></div>
               </div>
             </div>
           </div>

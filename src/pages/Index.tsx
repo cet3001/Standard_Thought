@@ -29,20 +29,20 @@ const Index = () => {
 
   const homepageFAQs = [
     {
-      question: "What is urban wealth building and how do I start?",
-      answer: "Urban wealth building focuses on creating generational wealth using street-smart strategies and accessible resources. Start with financial education, build multiple income streams through AI side hustles, and invest in appreciating assets like index funds and real estate. Our community provides step-by-step frameworks designed for first-gen entrepreneurs."
+      question: "So what's this whole urban wealth building thing about?",
+      answer: "Look, urban wealth building is about flipping the script on how we think about money. It's not about waiting for handouts or playing by rules that weren't made for us. We're talking about building real generational wealth using street-smart strategies that actually work.\n\nStart with getting your financial education right, then build multiple income streams through AI side hustles, and invest in stuff that grows over time—index funds, real estate, whatever appreciates. Our community breaks it all down step-by-step for first-gen entrepreneurs who are starting from scratch."
     },
     {
-      question: "What are the best AI side hustles for beginners in 2024?",
-      answer: "Top AI side hustles include content creation with ChatGPT, social media management using automation tools, AI-powered copywriting services, and image generation for marketing. Beginners can start earning $500-2000 monthly within 3-6 months by focusing on high-demand services like blog writing and social media content."
+      question: "What AI side hustles are actually making people money right now?",
+      answer: "Real talk—these AI tools are putting money in people's pockets if you know how to use them:\n\n• Content creation with ChatGPT (blog posts, social media, email campaigns)\n• Graphics and logos with Midjourney (businesses need this stuff constantly)\n• Social media management using automation tools\n• AI-powered copywriting services\n• Image generation for marketing\n\nBeginners are pulling in $500-2000 monthly within 3-6 months. The key is picking one tool, getting really good at it, then scaling up your services."
     },
     {
-      question: "How can first-generation entrepreneurs build wealth without family money?",
-      answer: "First-gen entrepreneurs can build wealth by focusing on education-first approaches: learn financial literacy, start service-based businesses with minimal capital, leverage community resources and grants, and reinvest profits systematically. The key is turning hustle into strategy through proven frameworks and consistent action."
+      question: "How do I build wealth when I'm starting with basically nothing?",
+      answer: "Starting from zero? That's where most of us began. Here's the real blueprint:\n\nFirst, get your financial literacy up—understand how money actually works. Then start small: even $25 a week invested consistently builds serious wealth over time through compound interest. Focus on service-based businesses that don't need much startup capital.\n\nLeverage community resources, apply for grants, and reinvest your profits systematically. The secret sauce is turning your hustle into strategy with proven frameworks that actually work for people like us."
     },
     {
-      question: "What financial education resources work best for urban communities?",
-      answer: "Effective financial education for urban communities uses accessible language, real-world examples, and actionable steps. Focus on budgeting basics, credit building strategies, micro-investing apps, and entrepreneurship opportunities. Avoid corporate jargon and connect learning to immediate, practical applications."
+      question: "What financial education actually works for people from the hood?",
+      answer: "Most financial education is written by people who've never had to choose between paying rent and buying groceries. We need real talk, not corporate jargon.\n\nFocus on practical stuff: budgeting with irregular income, building credit from scratch, micro-investing apps that don't require minimums, and entrepreneurship opportunities you can start today. \n\nAvoid anything that assumes you already have money to invest or family wealth to fall back on. We break it down in language that makes sense and connects to your immediate reality."
     }
   ];
 
@@ -132,7 +132,7 @@ const Index = () => {
         <section className="py-16 bg-white/80 dark:bg-brand-black/80">
           <div className="container mx-auto px-6 max-w-4xl">
             <FAQSection
-              title="Frequently Asked Questions About Urban Wealth Building"
+              title="Your Questions, Answered"
               faqs={homepageFAQs}
               className="mb-8"
             />

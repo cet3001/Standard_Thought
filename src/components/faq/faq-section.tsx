@@ -20,9 +20,45 @@ const FAQSection = ({ title, faqs, className = "" }: FAQSectionProps) => {
     <div className={`faq-section ${className}`}>
       <FAQSchema faqs={faqs} />
       
-      <HeaderHierarchy level={2} className="text-center mb-8 md:mb-12 text-2xl md:text-3xl">
-        {title}
-      </HeaderHierarchy>
+      <div className="text-center mb-8 md:mb-12 relative">
+        {/* Graffiti Tag Visual */}
+        <div className="absolute -top-8 -right-4 md:-right-8 w-20 h-12 transform rotate-12" aria-hidden="true">
+          <svg viewBox="0 0 80 48" className="w-full h-full">
+            {/* Spray paint effect background */}
+            <ellipse cx="40" cy="24" rx="35" ry="20" fill="#FFD700" opacity="0.3"/>
+            <ellipse cx="38" cy="22" rx="30" ry="15" fill="#FFD700" opacity="0.5"/>
+            
+            {/* Main tag text */}
+            <text 
+              x="40" 
+              y="28" 
+              textAnchor="middle" 
+              className="fill-[#247EFF]" 
+              style={{ 
+                fontSize: '12px', 
+                fontFamily: "'Permanent Marker', 'Kalam', cursive",
+                fontWeight: 'bold',
+                textShadow: '1px 1px 0px rgba(0,0,0,0.3)'
+              }}
+            >
+              FAQ
+            </text>
+            
+            {/* Drip effects */}
+            <circle cx="25" cy="35" r="1.5" fill="#FFD700" opacity="0.6"/>
+            <circle cx="55" cy="38" r="1" fill="#247EFF" opacity="0.4"/>
+            <circle cx="45" cy="40" r="0.8" fill="#FFD700" opacity="0.5"/>
+          </svg>
+        </div>
+
+        <HeaderHierarchy level={2} className="text-2xl md:text-3xl font-bold">
+          {title}
+        </HeaderHierarchy>
+        
+        <p className="text-lg text-brand-black/70 dark:text-brand-cream/70 mt-4 max-w-2xl mx-auto">
+          Real questions, real answers. No corporate BS, just straight talk about building wealth.
+        </p>
+      </div>
       
       <Accordion type="single" collapsible className="w-full space-y-6">
         {faqs.map((faq, index) => (

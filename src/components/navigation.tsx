@@ -34,9 +34,9 @@ const Navigation = () => {
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50">
-      {/* Community Trust Banner */}
-      <div className="bg-gradient-to-r from-[#247EFF] to-[#0057FF] text-white text-center py-2 text-sm font-medium">
-        🔥 Trusted by 1,000+ first-gen hustlers building generational wealth
+      {/* Community Trust Banner with improved styling */}
+      <div className="bg-gradient-to-r from-slate-800 via-slate-700 to-slate-900 text-brand-cream text-center py-2 text-sm font-medium shadow-md">
+        📈 Join the movement—real strategies for building wealth from the ground up
       </div>
       
       {/* Main Navigation with Matching Urban Texture Background */}

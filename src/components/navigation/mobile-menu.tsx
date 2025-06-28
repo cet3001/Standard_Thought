@@ -28,7 +28,13 @@ const MobileMenu = ({ isOpen, onToggle, onClose }: MobileMenuProps) => {
   };
 
   return (
-    <Sheet>
+    <Sheet open={isOpen} onOpenChange={(open) => {
+      if (open) {
+        onToggle?.();
+      } else {
+        onClose?.();
+      }
+    }}>
       <SheetTrigger asChild>
         <Button 
           variant="ghost" 

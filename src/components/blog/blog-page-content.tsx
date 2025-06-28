@@ -4,6 +4,7 @@ import FeaturedStoriesSection from "./featured-stories-section";
 import StartHereCard from "./start-here-card";
 import BlogFiltersSection from "./blog-filters-section";
 import BlogGrid from "./blog-grid";
+import RealBuilderWinsStrip from "./real-builder-wins-strip";
 import Empty from "@/components/ui/empty";
 import { Post } from "@/lib/types";
 
@@ -87,6 +88,9 @@ const BlogPageContent = ({
           />
         </div>
       ) : null}
+
+      {/* Real Builder Wins Testimonial Strip */}
+      <RealBuilderWinsStrip />
 
       {/* Start Here Card - Now below the main content */}
       <div className="mb-12">

@@ -1,13 +1,47 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Logo from "./navigation/logo";
 import ThemeToggle from "./navigation/theme-toggle";
 import MobileMenu from "./navigation/mobile-menu";
+import { supabase } from "@/integrations/supabase/client";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [textureImageUrl, setTextureImageUrl] = useState<string>("");
 
   console.log('Navigation render - isMenuOpen:', isMenuOpen);
+
+  // Generate urban texture image on component mount
+  useEffect(() => {
+    const generateUrbanTexture = async () => {
+      try {
+        console.log("🎨 Generating urban grainy texture background...");
+        
+        const { data, error } = await supabase.functions.invoke('generate-image', {
+          body: {
+            prompt: "Ultra-realistic weathered urban brick wall texture, dark burgundy and brown aged bricks with deep mortar lines, street graffiti stains, rust streaks, concrete dust patches, peeling paint, urban decay, gritty inner city aesthetic, high contrast shadows, worn industrial texture, close-up detailed pattern, street photography style, natural lighting, seamless tileable pattern",
+            size: "1024x1024",
+            quality: "hd",
+            style: "natural"
+          }
+        });
+
+        if (error) {
+          console.error("❌ Error generating texture:", error);
+          return;
+        }
+
+        if (data && data.imageUrl) {
+          setTextureImageUrl(data.imageUrl);
+          console.log("✅ Urban texture generated successfully:", data.imageUrl);
+        }
+      } catch (error) {
+        console.error("❌ Failed to generate urban texture:", error);
+      }
+    };
+
+    generateUrbanTexture();
+  }, []);
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50">
@@ -16,12 +50,31 @@ const Navigation = () => {
         🔥 Trusted by 1,000+ first-gen hustlers building generational wealth
       </div>
       
-      {/* Main Navigation with Strong Urban Texture */}
+      {/* Main Navigation with AI-Generated Urban Texture */}
       <nav className="bg-brand-cream/95 dark:bg-brand-black/95 backdrop-blur-md border-b border-[#247EFF]/20 shadow-sm relative">
-        {/* Strong Urban grainy texture overlay - highly visible */}
-        <div className="absolute inset-0 opacity-[0.15] bg-[radial-gradient(circle_at_1px_1px,_rgba(0,0,0,1)_1px,_transparent_0)] bg-[length:12px_12px]"></div>
-        <div className="absolute inset-0 opacity-[0.1] bg-[linear-gradient(45deg,_transparent_46%,_rgba(0,0,0,0.4)_47%,_rgba(0,0,0,0.4)_53%,_transparent_54%)] bg-[length:6px_6px]"></div>
-        <div className="absolute inset-0 opacity-[0.08] bg-[conic-gradient(from_0deg,_transparent_60%,_rgba(0,0,0,0.2)_80%,_transparent_100%)] bg-[length:10px_10px]"></div>
+        {/* AI-Generated Urban Texture Background */}
+        {textureImageUrl && (
+          <div 
+            className="absolute inset-0 opacity-[0.15] bg-repeat bg-center"
+            style={{
+              backgroundImage: `url(${textureImageUrl})`,
+              backgroundSize: '200px 200px',
+              filter: 'contrast(1.2) brightness(0.8)'
+            }}
+          />
+        )}
+        
+        {/* Fallback CSS texture while AI image loads */}
+        {!textureImageUrl && (
+          <>
+            <div className="absolute inset-0 opacity-[0.15] bg-[radial-gradient(circle_at_1px_1px,_rgba(0,0,0,1)_1px,_transparent_0)] bg-[length:12px_12px]"></div>
+            <div className="absolute inset-0 opacity-[0.1] bg-[linear-gradient(45deg,_transparent_46%,_rgba(0,0,0,0.4)_47%,_rgba(0,0,0,0.4)_53%,_transparent_54%)] bg-[length:6px_6px]"></div>
+            <div className="absolute inset-0 opacity-[0.08] bg-[conic-gradient(from_0deg,_transparent_60%,_rgba(0,0,0,0.2)_80%,_transparent_100%)] bg-[length:10px_10px]"></div>
+          </>
+        )}
+        
+        {/* Content overlay */}
+        <div className="absolute inset-0 bg-brand-cream/20 dark:bg-brand-black/20"></div>
         
         <div className="container mx-auto px-4 sm:px-6 py-4 relative z-10">
           {/* Single layout for all screen sizes */}

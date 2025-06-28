@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, Map } from "lucide-react";
@@ -29,9 +28,6 @@ const SiteNavigationHub = () => {
         
         {/* Background gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 opacity-30"></div>
-        
-        {/* Content overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/80 via-brand-cream/85 to-brand-cream/90 dark:from-brand-black/80 dark:via-brand-black/85 dark:to-brand-black/90"></div>
       </div>
 
       <div className="container mx-auto px-6 relative z-10">

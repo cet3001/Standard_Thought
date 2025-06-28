@@ -1,4 +1,3 @@
-
 import { Users } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useUrbanTexture } from "@/hooks/use-urban-texture";
@@ -43,9 +42,6 @@ const TrustBadgeSection = () => {
         
         {/* Background gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 opacity-30"></div>
-        
-        {/* Content overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/80 via-brand-cream/85 to-brand-cream/90 dark:from-brand-black/80 dark:via-brand-black/85 dark:to-brand-black/90"></div>
       </div>
 
       {/* Graffiti-style background elements */}

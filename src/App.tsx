@@ -1,3 +1,4 @@
+
 import {
   BrowserRouter,
   Routes,
@@ -20,7 +21,6 @@ import FinancialEducationGuide from "@/pages/FinancialEducationGuide";
 import WealthBuildingStrategies from "@/pages/WealthBuildingStrategies";
 import FAQ from "@/pages/FAQ";
 import { AuthProvider } from "./contexts/AuthContext";
-import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/toaster"
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import ImageGeneratorPage from "@/pages/ImageGenerator";
@@ -30,34 +30,32 @@ const queryClient = new QueryClient();
 function App() {
   return (
     <BrowserRouter>
-      <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
-        <QueryClientProvider client={queryClient}>
-          <AuthProvider>
-            <div className="min-h-screen">
-              <Toaster />
-              <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/blog" element={<Blog />} />
-                <Route path="/blog/:slug" element={<BlogPost />} />
-                <Route path="/blog/ai-side-hustles-guide" element={<AISideHustlesGuide />} />
-                <Route path="/create-post" element={<CreatePost />} />
-                <Route path="/edit-post/:id" element={<EditPost />} />
-                <Route path="/auth" element={<Auth />} />
-                <Route path="/resources" element={<Resources />} />
-                <Route path="/faq" element={<FAQ />} />
-                <Route path="/free-investing-guide" element={<FreeInvestingGuide />} />
-                <Route path="/start-investing-guide" element={<StartInvestingGuide />} />
-                <Route path="/financial-education-guide" element={<FinancialEducationGuide />} />
-                <Route path="/wealth-building-strategies" element={<WealthBuildingStrategies />} />
-                <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-                <Route path="/terms-of-service" element={<TermsOfService />} />
-                <Route path="/image-generator" element={<ImageGeneratorPage />} />
-              </Routes>
-            </div>
-          </AuthProvider>
-        </QueryClientProvider>
-      </ThemeProvider>
+      <QueryClientProvider client={queryClient}>
+        <AuthProvider>
+          <div className="min-h-screen">
+            <Toaster />
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:slug" element={<BlogPost />} />
+              <Route path="/blog/ai-side-hustles-guide" element={<AISideHustlesGuide />} />
+              <Route path="/create-post" element={<CreatePost />} />
+              <Route path="/edit-post/:id" element={<EditPost />} />
+              <Route path="/auth" element={<Auth />} />
+              <Route path="/resources" element={<Resources />} />
+              <Route path="/faq" element={<FAQ />} />
+              <Route path="/free-investing-guide" element={<FreeInvestingGuide />} />
+              <Route path="/start-investing-guide" element={<StartInvestingGuide />} />
+              <Route path="/financial-education-guide" element={<FinancialEducationGuide />} />
+              <Route path="/wealth-building-strategies" element={<WealthBuildingStrategies />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="/terms-of-service" element={<TermsOfService />} />
+              <Route path="/image-generator" element={<ImageGeneratorPage />} />
+            </Routes>
+          </div>
+        </AuthProvider>
+      </QueryClientProvider>
     </BrowserRouter>
   );
 }

@@ -35,7 +35,7 @@ const MobileFloatingCTA = () => {
       aria-label="Call to action popup"
       aria-live="polite"
     >
-      <div className="bg-white/95 dark:bg-brand-black/95 border border-[#247EFF]/30 rounded-2xl p-4 shadow-lg relative">
+      <div className="bg-white/95 border border-[#247EFF]/30 rounded-2xl p-4 shadow-lg relative">
         <button
           onClick={handleDismiss}
           className="absolute top-2 right-2 w-8 h-8 rounded-full bg-[#247EFF]/20 hover:bg-[#247EFF]/30 flex items-center justify-center transition-colors duration-200 touch-manipulation"

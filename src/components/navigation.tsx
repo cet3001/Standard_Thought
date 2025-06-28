@@ -1,7 +1,6 @@
 
 import { useState } from "react";
 import Logo from "./navigation/logo";
-import ThemeToggle from "./navigation/theme-toggle";
 import MobileMenu from "./navigation/mobile-menu";
 import { useUrbanTexture } from "@/hooks/use-urban-texture";
 
@@ -47,7 +46,7 @@ const Navigation = () => {
       </div>
       
       {/* Main Navigation with AI-Generated Urban Texture */}
-      <nav className="bg-brand-cream/95 dark:bg-brand-black/95 backdrop-blur-md border-b border-[#247EFF]/20 shadow-sm relative">
+      <nav className="bg-brand-cream/95 backdrop-blur-md border-b border-[#247EFF]/20 shadow-sm relative">
         {/* AI-Generated Urban Texture Background */}
         {textureImageUrl && (
           <div 
@@ -70,7 +69,7 @@ const Navigation = () => {
         )}
         
         {/* Content overlay */}
-        <div className="absolute inset-0 bg-brand-cream/20 dark:bg-brand-black/20"></div>
+        <div className="absolute inset-0 bg-brand-cream/20"></div>
         
         <div className="container mx-auto px-4 sm:px-6 py-4 relative z-10">
           {/* Single layout for all screen sizes */}
@@ -95,9 +94,8 @@ const Navigation = () => {
               <Logo />
             </div>
 
-            {/* Right side with Theme Toggle and Primary CTA */}
-            <div className="flex items-center space-x-3 flex-shrink-0">
-              <ThemeToggle />
+            {/* Right side with Primary CTA */}
+            <div className="flex items-center flex-shrink-0">
               {/* Primary CTA Button - Get the Blueprint */}
               <button 
                 onClick={scrollToNewsletter}

@@ -91,12 +91,12 @@ const StartHereCard = () => {
         <div className="mt-6 pt-4 border-t border-[#247EFF]/20">
           <a 
             href="/resources"
-            className="block p-3 bg-gradient-to-r from-[#247EFF]/10 to-[#247EFF]/5 rounded-lg hover:from-[#247EFF]/20 hover:to-[#247EFF]/10 transition-colors group"
+            className="block p-4 bg-white/60 dark:bg-brand-black/40 rounded-xl hover:bg-white/80 dark:hover:bg-brand-black/60 transition-colors group"
           >
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-[#247EFF]/20 rounded-lg flex items-center justify-center">
-                  <BookOpen className="w-4 h-4 text-[#247EFF]" />
+                <div className="w-10 h-10 bg-[#247EFF]/20 rounded-lg flex items-center justify-center">
+                  <BookOpen className="w-5 h-5 text-[#247EFF]" />
                 </div>
                 <div>
                   <h4 className="font-semibold text-[#0A0A0A] dark:text-brand-cream text-sm">

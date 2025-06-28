@@ -1,16 +1,40 @@
 
 import { useEffect, useState } from "react";
+import { useUrbanTexture } from "@/hooks/use-urban-texture";
 
 const MindsetFirstSection = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const { textureImageUrl } = useUrbanTexture();
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
 
   return (
-    <section className="py-24 bg-white/90 dark:bg-brand-black/80">
-      <div className="container mx-auto px-6">
+    <section className="py-24 relative overflow-hidden">
+      {/* Urban Background - Matches homepage styling */}
+      <div className="absolute inset-0" aria-hidden="true">
+        {/* AI-Generated or Curated Urban Texture */}
+        {textureImageUrl && (
+          <div 
+            className="absolute inset-0 opacity-40 bg-cover bg-center"
+            style={{
+              backgroundImage: `url(${textureImageUrl})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat'
+            }}
+          />
+        )}
+        
+        {/* Background gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-800/20 via-slate-700/30 to-slate-900/20"></div>
+        
+        {/* Content overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/75 to-white/80 dark:from-brand-black/70 dark:via-brand-black/75 dark:to-brand-black/80"></div>
+      </div>
+
+      <div className="container mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <div className={`transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
             <img 

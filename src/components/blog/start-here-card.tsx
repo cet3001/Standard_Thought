@@ -63,19 +63,19 @@ const StartHereCard = () => {
           <div className="space-y-5">
             <a 
               href="/ai-side-hustles-guide" 
-              className="block p-5 bg-white/80 backdrop-blur-sm rounded-lg hover:bg-white/90 transition-all duration-300 group border border-[#247EFF]/20 shadow-md hover:shadow-lg transform hover:scale-[1.02] hover:border-[#247EFF]/40"
+              className="block p-5 bg-[#0A0A0A]/5 dark:bg-brand-cream/10 backdrop-blur-sm rounded-lg hover:bg-[#0A0A0A]/10 dark:hover:bg-brand-cream/20 transition-all duration-300 group border border-[#247EFF]/10 shadow-sm hover:shadow-md transform hover:scale-[1.02] hover:border-[#247EFF]/20"
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-[#247EFF]/30 to-[#247EFF]/20 rounded-lg flex items-center justify-center border border-[#247EFF]/30 shadow-md">
+                  <div className="w-12 h-12 bg-gradient-to-br from-[#247EFF]/20 to-[#247EFF]/10 rounded-lg flex items-center justify-center border border-[#247EFF]/20 shadow-sm">
                     <span className="text-xl">💻</span>
                   </div>
                   <div>
-                    <h4 className="font-bold text-[#0A0A0A] text-base mb-1"
+                    <h4 className="font-bold text-[#0A0A0A] dark:text-brand-cream text-base mb-1"
                         style={{ fontFamily: "'IBM Plex Sans', monospace", letterSpacing: '0.5px' }}>
                       AI Hustles That Pay 🔥
                     </h4>
-                    <p className="text-sm text-[#0A0A0A]/70 font-medium">
+                    <p className="text-sm text-[#0A0A0A]/70 dark:text-brand-cream/70 font-medium">
                       Turn AI tools into cold hard cash
                     </p>
                   </div>
@@ -86,19 +86,19 @@ const StartHereCard = () => {
 
             <a 
               href="/free-investing-guide" 
-              className="block p-5 bg-white/80 backdrop-blur-sm rounded-lg hover:bg-white/90 transition-all duration-300 group border border-green-500/20 shadow-md hover:shadow-lg transform hover:scale-[1.02] hover:border-green-500/40"
+              className="block p-5 bg-[#0A0A0A]/5 dark:bg-brand-cream/10 backdrop-blur-sm rounded-lg hover:bg-[#0A0A0A]/10 dark:hover:bg-brand-cream/20 transition-all duration-300 group border border-green-500/10 shadow-sm hover:shadow-md transform hover:scale-[1.02] hover:border-green-500/20"
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-green-500/30 to-green-500/20 rounded-lg flex items-center justify-center border border-green-500/30 shadow-md">
+                  <div className="w-12 h-12 bg-gradient-to-br from-green-500/20 to-green-500/10 rounded-lg flex items-center justify-center border border-green-500/20 shadow-sm">
                     <span className="text-xl">💰</span>
                   </div>
                   <div>
-                    <h4 className="font-bold text-[#0A0A0A] text-base mb-1"
+                    <h4 className="font-bold text-[#0A0A0A] dark:text-brand-cream text-base mb-1"
                         style={{ fontFamily: "'IBM Plex Sans', monospace", letterSpacing: '0.5px' }}>
                       Zero to Investment Boss 📊
                     </h4>
-                    <p className="text-sm text-[#0A0A0A]/70 font-medium">
+                    <p className="text-sm text-[#0A0A0A]/70 dark:text-brand-cream/70 font-medium">
                       Start building wealth with $0 down
                     </p>
                   </div>
@@ -109,19 +109,19 @@ const StartHereCard = () => {
 
             <a 
               href="/wealth-building-strategies" 
-              className="block p-5 bg-white/80 backdrop-blur-sm rounded-lg hover:bg-white/90 transition-all duration-300 group border border-yellow-500/20 shadow-md hover:shadow-lg transform hover:scale-[1.02] hover:border-yellow-500/40"
+              className="block p-5 bg-[#0A0A0A]/5 dark:bg-brand-cream/10 backdrop-blur-sm rounded-lg hover:bg-[#0A0A0A]/10 dark:hover:bg-brand-cream/20 transition-all duration-300 group border border-yellow-500/10 shadow-sm hover:shadow-md transform hover:scale-[1.02] hover:border-yellow-500/20"
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-yellow-500/30 to-yellow-500/20 rounded-lg flex items-center justify-center border border-yellow-500/30 shadow-md">
+                  <div className="w-12 h-12 bg-gradient-to-br from-yellow-500/20 to-yellow-500/10 rounded-lg flex items-center justify-center border border-yellow-500/20 shadow-sm">
                     <span className="text-xl">🏆</span>
                   </div>
                   <div>
-                    <h4 className="font-bold text-[#0A0A0A] text-base mb-1"
+                    <h4 className="font-bold text-[#0A0A0A] dark:text-brand-cream text-base mb-1"
                         style={{ fontFamily: "'IBM Plex Sans', monospace", letterSpacing: '0.5px' }}>
                       Long-Term Wealth Game 🏛️
                     </h4>
-                    <p className="text-sm text-[#0A0A0A]/70 font-medium">
+                    <p className="text-sm text-[#0A0A0A]/70 dark:text-brand-cream/70 font-medium">
                       Build generational wealth strategies
                     </p>
                   </div>
@@ -133,7 +133,7 @@ const StartHereCard = () => {
 
           <div className="mt-8 pt-6 border-t border-orange-300/40 text-center relative">
             {/* Handwritten style text */}
-            <p className="text-lg text-[#0A0A0A]/90 transform -rotate-1"
+            <p className="text-lg text-[#0A0A0A]/90 dark:text-brand-cream/90 transform -rotate-1"
                style={{ 
                  fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
                  textShadow: '1px 1px 0px rgba(255,140,0,0.4)',

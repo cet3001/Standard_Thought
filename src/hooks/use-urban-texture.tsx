@@ -1,19 +1,26 @@
 
-
 import { useState, useEffect } from 'react';
 
-// AUTHENTIC urban street imagery - alleys, rooftops, street scenes, city vibes ONLY
+// CUSTOM URBAN STREET IMAGERY - Real city vibes, street culture, urban life
 const URBAN_IMAGES = [
-  "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=1024&h=1024&fit=crop&crop=center", // city alley with graffiti - STREET ✓
-  "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1024&h=1024&fit=crop&crop=center", // narrow city alley - URBAN ✓  
-  "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1024&h=1024&fit=crop&crop=center", // urban rooftop view - CITY ✓
-  "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1f?w=1024&h=1024&fit=crop&crop=center", // city street with buildings - URBAN ✓
-  "https://images.unsplash.com/photo-1494522855154-9297ac14b55f?w=1024&h=1024&fit=crop&crop=center", // urban alleyway - STREET ✓
-  "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1024&h=1024&fit=crop&crop=center", // city skyline buildings - URBAN ✓
-  "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1024&h=1024&fit=crop&crop=center", // urban architecture concrete - CITY ✓
-  "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=1024&h=1024&fit=crop&crop=center", // city street scene - URBAN ✓
-  "https://images.unsplash.com/photo-1514565131-fce0801e5785?w=1024&h=1024&fit=crop&crop=center", // urban bridge/underpass - STREET ✓
-  "https://images.unsplash.com/photo-1449157291145-7efd050a4d0e?w=1024&h=1024&fit=crop&crop=center", // building from street level - URBAN ✓
+  // Your new custom uploaded images - street scenes, urban atmosphere
+  "/lovable-uploads/4696326a-6203-4b1e-b0bc-e1ccc29263be.png", // Hooded figure under bridge with yellow taxi - STREET ✓
+  "/lovable-uploads/319b9311-4018-46d0-9292-5c7220a671c7.png", // Night street scene with figure - URBAN ✓
+  "/lovable-uploads/44b44c48-a7dc-4d1e-8480-8e3d666ede2e.png", // Street chalk art inspirational message - STREET ART ✓
+  "/lovable-uploads/5a73c6c8-6cb4-4b24-bc21-793d647712be.png", // Chain link fence with city lights bokeh - URBAN ✓
+  "/lovable-uploads/b293ef64-21e7-478b-aad6-46b9df35a06d.png", // Wet blueprint on street - STREET ✓
+  "/lovable-uploads/1928b2bf-f534-4c1f-982f-bf3cf95d5005.png", // City skyline at night from rooftop - URBAN ✓
+  "/lovable-uploads/4d0b232a-9f5f-4c60-9a61-04047f4a0a45.png", // Rooftop view at sunset with antenna - CITY ✓
+  "/lovable-uploads/1336e121-a69f-44f5-887c-ae15280ab9b0.png", // Graffiti wall with golden letters - STREET ART ✓
+  "/lovable-uploads/c32d557b-f984-4e31-8e74-82fb6c5fd20c.png", // Rainy street scene with umbrellas - URBAN ✓
+  "/lovable-uploads/4fd61de9-3d13-4e62-8cd6-4c10748ee279.png", // Train car with graffiti - STREET ART ✓
+  
+  // Previously uploaded project images (if any exist)
+  "/lovable-uploads/120d4385-153e-4704-ad3a-0f64d8a24a04.png",
+  "/lovable-uploads/21728a70-c6c7-4f2f-8689-d74741cb605b.png",
+  "/lovable-uploads/5316a53a-9afb-4437-8f49-d3b521d18e44.png",
+  "/lovable-uploads/94cc6adb-cf25-4c3e-b059-ee67f8401562.png",
+  "/lovable-uploads/a8faab87-8319-4fa0-ae53-35597c6f8fc5.png"
 ];
 
 export const useUrbanTexture = () => {
@@ -27,14 +34,14 @@ export const useUrbanTexture = () => {
     localStorage.removeItem('urban-texture-timestamp');
     localStorage.removeItem('used-urban-textures');
     
-    // Force a new selection
+    // Force a new selection with custom images
     selectUrbanTexture();
   }, []);
 
   const selectUrbanTexture = () => {
     try {
       setImageGenerationStatus("selecting");
-      console.log("Selecting new urban texture...");
+      console.log("Selecting new custom urban texture...");
       
       // Get previously used images to avoid immediate repeats
       const usedImages = JSON.parse(localStorage.getItem('used-urban-textures') || '[]');
@@ -44,14 +51,14 @@ export const useUrbanTexture = () => {
       if (availableImages.length === 0) {
         availableImages = URBAN_IMAGES;
         localStorage.setItem('used-urban-textures', '[]');
-        console.log("Reset urban texture cycle");
+        console.log("Reset custom urban texture cycle");
       }
       
       // Select a random image from available ones
       const randomIndex = Math.floor(Math.random() * availableImages.length);
       const selectedImage = availableImages[randomIndex];
       
-      console.log("Selected urban texture:", selectedImage);
+      console.log("Selected custom urban texture:", selectedImage);
       
       // Update used images list
       const newUsedImages = [...usedImages, selectedImage].slice(-Math.floor(URBAN_IMAGES.length * 0.7)); // Keep track of last 70%
@@ -65,9 +72,9 @@ export const useUrbanTexture = () => {
       setImageGenerationStatus("success");
       
     } catch (error) {
-      console.error("Failed to select urban texture:", error);
+      console.error("Failed to select custom urban texture:", error);
       
-      // Use first image as fallback
+      // Use first custom image as fallback
       const fallbackImage = URBAN_IMAGES[0];
       setTextureImageUrl(fallbackImage);
       setImageGenerationStatus("fallback");
@@ -85,4 +92,3 @@ export const useUrbanTexture = () => {
     }
   };
 };
-

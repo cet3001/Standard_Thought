@@ -1,4 +1,3 @@
-
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import SEO from "@/components/seo";
@@ -17,6 +16,7 @@ import { useState, useEffect } from "react";
 import ResourcesTestimonial from "@/components/resources/resources-testimonial";
 import { useMobilePerformance } from "@/hooks/use-mobile-performance";
 import { useUrbanTexture } from "@/hooks/use-urban-texture";
+import FeaturedGuidesSection from "@/components/resources/featured-guides-section";
 
 const Resources = () => {
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
@@ -142,6 +142,9 @@ const Resources = () => {
         <main className="pt-24 md:pt-32 pb-12 md:pb-16">
           <div className="container mx-auto px-4 md:px-6 max-w-7xl">
             <ResourcesHero />
+
+            {/* NEW: Featured Guides Section */}
+            <FeaturedGuidesSection />
 
             {/* Enhanced Tag Filter Display */}
             {selectedTag && (

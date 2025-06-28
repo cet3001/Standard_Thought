@@ -54,6 +54,48 @@ const RealBuilderWinsStrip = () => {
       name: "Deshawn",
       city: "Dallas",
       result: "$1.2K Month"
+    },
+    {
+      quote: "Built my credit from scratch with their step-by-step guide. Now I'm approved for everything.",
+      name: "Maya",
+      city: "Oakland",
+      result: "Credit Built"
+    },
+    {
+      quote: "These investing tips had me making moves I never thought possible.",
+      name: "Rico",
+      city: "Bronx",
+      result: "Smart Moves"
+    },
+    {
+      quote: "From broke to building wealth—this community keeps it 100.",
+      name: "Jasmine",
+      city: "Memphis",
+      result: "Wealth Building"
+    },
+    {
+      quote: "Finally understanding money instead of just chasing it. Big difference.",
+      name: "Devon",
+      city: "Charlotte",
+      result: "Money Mindset"
+    },
+    {
+      quote: "Got my side hustle bringing in $800 monthly. This knowledge pays.",
+      name: "Zara",
+      city: "Tampa",
+      result: "$800 Side Hustle"
+    },
+    {
+      quote: "Standard Thought taught me to build assets, not just collect paychecks.",
+      name: "Anthony",
+      city: "Kansas City",
+      result: "Asset Building"
+    },
+    {
+      quote: "Real talk—this changed my whole relationship with money forever.",
+      name: "Imani",
+      city: "Las Vegas",
+      result: "Life Changed"
     }
   ];
 
@@ -98,7 +140,7 @@ const RealBuilderWinsStrip = () => {
 
       <div className="relative z-10">
         {/* Street-style header */}
-        <div className="text-center mb-6">
+        <div className="text-center mb-8">
           <h2 
             className="text-2xl md:text-3xl font-black text-[#0A0A0A] dark:text-brand-cream inline-block transform -rotate-1 relative"
             style={{ 
@@ -118,61 +160,37 @@ const RealBuilderWinsStrip = () => {
               }}
             />
           </h2>
-        </div>
-
-        {/* Testimonial Strip */}
-        <div className="container mx-auto px-6 max-w-4xl">
-          <div className="bg-white/90 dark:bg-brand-black/80 backdrop-blur-sm rounded-2xl p-6 md:p-8 border-2 border-[#247EFF]/20 relative overflow-hidden shadow-lg">
-            
-            {/* Street cred badge */}
-            <div className="absolute top-3 right-3 bg-[#FFD700] text-black text-xs font-black px-3 py-1 rounded-full transform rotate-12 shadow-md">
+          
+          {/* Street cred badge */}
+          <div className="mt-4 flex justify-center">
+            <div className="bg-[#FFD700] text-black text-sm font-black px-4 py-2 rounded-full transform rotate-2 shadow-md">
               VERIFIED ✓
             </div>
+          </div>
+        </div>
 
-            {/* Testimonial content */}
-            <div className="transition-all duration-700 ease-in-out">
-              <div className="text-center">
-                <blockquote className="text-lg md:text-xl text-[#0A0A0A] dark:text-brand-cream font-medium italic mb-4 leading-relaxed">
-                  "{testimonials[currentTestimonial].quote}"
-                </blockquote>
-                
-                <div className="flex items-center justify-center gap-4 mb-4">
-                  <div className="text-sm md:text-base text-[#0A0A0A]/80 dark:text-brand-cream/80 font-semibold">
-                    — {testimonials[currentTestimonial].name}, {testimonials[currentTestimonial].city}
-                  </div>
-                  <div className="bg-[#247EFF]/10 text-[#247EFF] px-3 py-1 rounded-full text-xs font-bold">
-                    {testimonials[currentTestimonial].result}
-                  </div>
+        {/* Testimonial Content - No Card */}
+        <div className="container mx-auto px-6 max-w-4xl">
+          <div className="transition-all duration-700 ease-in-out">
+            <div className="text-center">
+              <blockquote className="text-xl md:text-2xl text-[#0A0A0A] dark:text-brand-cream font-medium italic mb-6 leading-relaxed">
+                "{testimonials[currentTestimonial].quote}"
+              </blockquote>
+              
+              <div className="flex items-center justify-center gap-4 mb-6">
+                <div className="text-base md:text-lg text-[#0A0A0A]/80 dark:text-brand-cream/80 font-semibold">
+                  — {testimonials[currentTestimonial].name}, {testimonials[currentTestimonial].city}
+                </div>
+                <div className="bg-[#247EFF]/10 text-[#247EFF] px-3 py-1 rounded-full text-sm font-bold">
+                  {testimonials[currentTestimonial].result}
                 </div>
               </div>
-            </div>
-
-            {/* Navigation dots */}
-            <div className="flex justify-center space-x-2 mt-4">
-              {testimonials.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentTestimonial(index)}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    index === currentTestimonial 
-                      ? 'bg-[#247EFF] scale-125 shadow-md' 
-                      : 'bg-[#0A0A0A]/20 dark:bg-brand-cream/20 hover:bg-[#247EFF]/50 hover:scale-110'
-                  }`}
-                  aria-label={`Go to testimonial ${index + 1}`}
-                />
-              ))}
-            </div>
-
-            {/* Graffiti accent */}
-            <div className="absolute bottom-2 left-4 opacity-30 text-[#FFD700] transform -rotate-12"
-                 style={{ fontFamily: "'Permanent Marker', cursive", fontSize: '10px' }}>
-              REAL TALK
             </div>
           </div>
         </div>
 
         {/* Bottom tagline */}
-        <div className="text-center mt-6">
+        <div className="text-center mt-8">
           <p className="text-sm text-[#0A0A0A]/60 dark:text-brand-cream/60 font-medium">
             <strong>2,500+ builders</strong> are leveling up their financial game with us
           </p>

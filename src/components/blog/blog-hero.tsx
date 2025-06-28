@@ -59,24 +59,57 @@ const BlogHero = ({ isVisible }: BlogHeroProps) => {
             </span>
             : Real Builder Stories
           </h1>
-          <p className="text-xl text-[#0A0A0A]/70 dark:text-brand-cream/70 leading-relaxed mb-6">
-            Raw game from people who actually built something from nothing. No theory, no fluff—just real blueprints 
-            for securing the bag and leveling up financially from people who refused to stay stuck.
+
+          {/* Direct, community-rooted intro */}
+          <p className="text-xl md:text-2xl text-[#0A0A0A] dark:text-brand-cream leading-relaxed mb-8 font-semibold">
+            This ain't theory—this is raw game from hustlers who built it brick by brick. 
+            If you had to figure it out with nothing but vision and grind, these stories are for you.
           </p>
-          <div 
-            className="backdrop-blur-sm border border-[#247EFF]/20 rounded-3xl p-6 max-w-2xl mx-auto mb-8 relative overflow-hidden"
-            style={{
-              background: 'linear-gradient(135deg, rgba(244, 208, 63, 0.08), rgba(247, 220, 111, 0.08), rgba(253, 234, 167, 0.08), rgba(248, 231, 28, 0.08), rgba(255, 215, 0, 0.08), rgba(255, 235, 59, 0.08), rgba(241, 245, 118, 0.08), rgba(244, 208, 63, 0.08))',
-              backgroundSize: '400% 400%',
-              animation: 'pearlescent 4s ease-in-out infinite'
-            }}
-          >
-            <div className="relative z-10 bg-white/85 dark:bg-brand-black/85 backdrop-blur-sm rounded-2xl p-4">
-              <p className="text-[#0A0A0A]/80 dark:text-brand-cream/80">
-                Every story here comes from someone who had to figure it out with their own hands and hustle. 
-                These aren't case studies—they're battle-tested strategies for building generational wealth.
-              </p>
-            </div>
+
+          {/* Handwritten-style pull-quote */}
+          <div className="relative mb-8">
+            <blockquote 
+              className="text-2xl md:text-3xl text-[#0A0A0A] dark:text-brand-cream transform -rotate-1 relative inline-block px-8 py-6"
+              style={{ 
+                fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
+                textShadow: '2px 2px 0px rgba(255,215,0,0.4)',
+                letterSpacing: '0.5px'
+              }}
+            >
+              "No trust funds. No shortcuts. Just real blueprints for stacking bread and breaking cycles."
+              
+              {/* Hand-drawn style quotation marks */}
+              <span 
+                className="absolute -top-4 -left-2 text-[#FFD700] text-6xl opacity-60"
+                style={{ 
+                  fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
+                  transform: 'rotate(-15deg)'
+                }}
+              >
+                "
+              </span>
+              <span 
+                className="absolute -bottom-8 -right-2 text-[#FFD700] text-6xl opacity-60"
+                style={{ 
+                  fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
+                  transform: 'rotate(15deg)'
+                }}
+              >
+                "
+              </span>
+              
+              {/* Underline scribble */}
+              <div 
+                className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-80 h-3 opacity-70"
+                style={{
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 20'%3E%3Cpath d='M5 15 Q 40 5, 80 12 T 160 8 T 240 13 T 315 10' stroke='%23FFD700' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E")`,
+                  backgroundSize: 'contain',
+                  backgroundRepeat: 'no-repeat',
+                  backgroundPosition: 'center'
+                }}
+              >
+              </div>
+            </blockquote>
           </div>
           
           {/* Enhanced CTA buttons with consistent pearlescent styling */}

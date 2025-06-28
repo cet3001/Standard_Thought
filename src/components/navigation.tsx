@@ -13,19 +13,6 @@ const Navigation = () => {
   console.log('Navigation render - textureImageUrl:', textureImageUrl);
   console.log('Navigation render - imageGenerationStatus:', imageGenerationStatus);
 
-  const getStatusMessage = () => {
-    switch (imageGenerationStatus) {
-      case "generating": return "🔥 Cooking up that street texture...";
-      case "success": return "✅ Fresh AI texture loaded";
-      case "cached": return "⚡ Cached texture ready";
-      case "fallback": return "🔧 Switching to backup";
-      case "storage-fallback": return "🏗️ Storage texture active";
-      case "unsplash-fallback": return "🌆 Urban fallback ready";
-      case "error": return "❌ Generation failed";
-      default: return "⏳ Starting up...";
-    }
-  };
-
   return (
     <div className="fixed top-0 left-0 right-0 z-50">
       {/* Community Trust Banner */}
@@ -35,11 +22,6 @@ const Navigation = () => {
       
       {/* Main Navigation with AI-Generated Urban Texture */}
       <nav className="bg-brand-cream/95 dark:bg-brand-black/95 backdrop-blur-md border-b border-[#247EFF]/20 shadow-sm relative">
-        {/* Debug Status Indicator */}
-        <div className="absolute top-0 left-0 bg-black/80 text-white text-xs px-2 py-1 z-50">
-          {getStatusMessage()}
-        </div>
-        
         {/* AI-Generated Urban Texture Background */}
         {textureImageUrl && (
           <div 

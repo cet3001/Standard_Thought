@@ -1,4 +1,3 @@
-
 import BlogHero from "./blog-hero";
 import FeaturedRecentPosts from "./featured-recent-posts";
 import FeaturedStoriesSection from "./featured-stories-section";
@@ -53,66 +52,55 @@ const BlogPageContent = ({
     <div className="container mx-auto px-6 max-w-7xl">
       <BlogHero isVisible={true} />
       
-      {/* Main content with sidebar layout on desktop */}
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 mb-16">
-        {/* Main content area */}
-        <div className="lg:col-span-3">
-          {/* Featured Recent Posts - 3 Large Cards */}
-          {recentPosts.length > 0 && (
-            <FeaturedRecentPosts 
-              posts={recentPosts} 
-              onThemeTagClick={onThemeTagClick}
-            />
-          )}
-          
-          {/* Filters Section */}
-          <BlogFiltersSection
-            searchTerm={searchTerm}
-            setSearchTerm={setSearchTerm}
-            selectedCategory={selectedCategory}
-            setSelectedCategory={setSelectedCategory}
-            selectedThemeTag={selectedThemeTag}
-            setSelectedThemeTag={setSelectedThemeTag}
-            categories={categories}
-            themeTags={themeTags}
+      {/* Featured Recent Posts - 3 Large Cards */}
+      {recentPosts.length > 0 && (
+        <FeaturedRecentPosts 
+          posts={recentPosts} 
+          onThemeTagClick={onThemeTagClick}
+        />
+      )}
+      
+      {/* Filters Section */}
+      <BlogFiltersSection
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        selectedCategory={selectedCategory}
+        setSelectedCategory={setSelectedCategory}
+        selectedThemeTag={selectedThemeTag}
+        setSelectedThemeTag={setSelectedThemeTag}
+        categories={categories}
+        themeTags={themeTags}
+      />
+
+      {/* Remaining Posts Grid */}
+      {!hasPosts ? (
+        <Empty message="No posts found." />
+      ) : remainingPosts.length > 0 ? (
+        <div className="mb-12">
+          <h2 className="text-2xl font-bold text-[#0A0A0A] dark:text-brand-cream mb-6">
+            More Stories
+          </h2>
+          <BlogGrid 
+            posts={remainingPosts} 
+            onPostDeleted={onPostDeleted} 
+            onThemeTagClick={onThemeTagClick}
           />
-
-          {/* Remaining Posts Grid */}
-          {!hasPosts ? (
-            <Empty message="No posts found." />
-          ) : remainingPosts.length > 0 ? (
-            <div className="mb-12">
-              <h2 className="text-2xl font-bold text-[#0A0A0A] dark:text-brand-cream mb-6">
-                More Stories
-              </h2>
-              <BlogGrid 
-                posts={remainingPosts} 
-                onPostDeleted={onPostDeleted} 
-                onThemeTagClick={onThemeTagClick}
-              />
-            </div>
-          ) : null}
-
-          {/* Guides & Resources Link - Mobile Only */}
-          <div className="lg:hidden mt-12 text-center">
-            <a 
-              href="/resources"
-              className="inline-flex items-center gap-2 bg-[#247EFF] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#247EFF]/90 transition-colors"
-            >
-              📚 Explore Guides & Resources
-            </a>
-          </div>
         </div>
+      ) : null}
 
-        {/* Sidebar - Start Here Card (desktop only) */}
-        <div className="hidden lg:block">
-          <StartHereCard />
-        </div>
+      {/* Start Here Card - Now below the main content */}
+      <div className="mb-12">
+        <StartHereCard />
       </div>
 
-      {/* Start Here Card for mobile - placed after main content */}
-      <div className="lg:hidden mb-12">
-        <StartHereCard />
+      {/* Guides & Resources Link */}
+      <div className="mb-12 text-center">
+        <a 
+          href="/resources"
+          className="inline-flex items-center gap-2 bg-[#247EFF] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#247EFF]/90 transition-colors"
+        >
+          📚 Explore Guides & Resources
+        </a>
       </div>
       
       {/* Keep the other sections below */}

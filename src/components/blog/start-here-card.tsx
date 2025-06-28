@@ -1,11 +1,10 @@
 
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Zap, TrendingUp, Banknote, BookOpen } from "lucide-react";
+import { ArrowRight, Zap, TrendingUp, Banknote } from "lucide-react";
 
 const StartHereCard = () => {
   return (
-    <Card className="bg-gradient-to-br from-[#247EFF]/10 via-blue-50/80 to-[#247EFF]/5 dark:from-[#247EFF]/20 dark:via-blue-900/30 dark:to-[#247EFF]/10 border-2 border-[#247EFF]/30 shadow-lg hover:shadow-xl transition-all duration-300 sticky top-32">
+    <Card className="bg-gradient-to-br from-[#247EFF]/10 via-blue-50/80 to-[#247EFF]/5 dark:from-[#247EFF]/20 dark:via-blue-900/30 dark:to-[#247EFF]/10 border-2 border-[#247EFF]/30 shadow-lg hover:shadow-xl transition-all duration-300">
       <CardContent className="p-6">
         <div className="text-center mb-6">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-[#247EFF] rounded-full mb-4">
@@ -87,31 +86,8 @@ const StartHereCard = () => {
           </a>
         </div>
 
-        {/* Guides & Resources Link */}
-        <div className="mt-6 pt-4 border-t border-[#247EFF]/20">
-          <a 
-            href="/resources"
-            className="block p-4 bg-white/60 dark:bg-brand-black/40 rounded-xl hover:bg-white/80 dark:hover:bg-brand-black/60 transition-colors group"
-          >
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-[#247EFF]/20 rounded-lg flex items-center justify-center">
-                  <BookOpen className="w-5 h-5 text-[#247EFF]" />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-[#0A0A0A] dark:text-brand-cream text-sm">
-                    📚 Guides & Resources
-                  </h4>
-                  <p className="text-xs text-[#0A0A0A]/60 dark:text-brand-cream/60">
-                    Deep dive learning hub
-                  </p>
-                </div>
-              </div>
-              <ArrowRight className="w-4 h-4 text-[#247EFF] group-hover:translate-x-1 transition-transform" />
-            </div>
-          </a>
-          
-          <p className="text-xs text-center text-[#0A0A0A]/50 dark:text-brand-cream/50 mt-3">
+        <div className="mt-6 pt-4 border-t border-[#247EFF]/20 text-center">
+          <p className="text-xs text-[#0A0A0A]/50 dark:text-brand-cream/50">
             ⬆️ Pick your path and secure the bag
           </p>
         </div>

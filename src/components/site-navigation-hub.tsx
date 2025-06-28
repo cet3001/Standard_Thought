@@ -1,72 +1,92 @@
 
 import { Link } from "react-router-dom";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { ArrowRight, BookOpen, DollarSign, TrendingUp, Users } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { ArrowRight, Map } from "lucide-react";
 
 const SiteNavigationHub = () => {
-  const navigationSections = [
-    {
-      title: "Builder Stories",
-      description: "Real stories from people building wealth from scratch",
-      icon: <BookOpen className="h-6 w-6" />,
-      link: "/blog",
-      badge: "Latest Stories",
-      color: "bg-blue-100 text-blue-800"
-    },
-    {
-      title: "Wealth Building Strategies", 
-      description: "Step-by-step guides to building your financial foundation",
-      icon: <TrendingUp className="h-6 w-6" />,
-      link: "/resources",
-      badge: "Popular",
-      color: "bg-green-100 text-green-800"
-    }
-  ];
-
-  const handleNavigationClick = (section: { title: string; link: string }) => {
-    console.log(`Navigating to ${section.title}: ${section.link}`);
+  const handleNavigationClick = () => {
+    console.log(`Navigating to Explore More: /blog`);
   };
 
   return (
     <div className="py-16 bg-brand-cream dark:bg-brand-black">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-[#0A0A0A] dark:text-brand-cream mb-4">
-            Explore Standardthought
-          </h2>
-          <p className="text-lg text-[#0A0A0A]/70 dark:text-brand-cream/70 max-w-2xl mx-auto">
-            Everything you need to build wealth, develop the right mindset, and create your legacy.
-          </p>
-        </div>
+        <div className="max-w-2xl mx-auto">
+          <Link
+            to="/blog"
+            onClick={handleNavigationClick}
+            className="block group"
+          >
+            <Card className="border-[#247EFF]/20 hover:border-[#247EFF]/40 transition-all duration-300 group hover:shadow-xl cursor-pointer relative overflow-hidden bg-white/80 dark:bg-brand-black/80 backdrop-blur-sm">
+              {/* Street Sign Background Visual */}
+              <div className="absolute inset-0 opacity-10 pointer-events-none" aria-hidden="true">
+                <svg 
+                  viewBox="0 0 400 200" 
+                  className="w-full h-full object-cover"
+                  preserveAspectRatio="xMidYMid slice"
+                >
+                  {/* Street sign post */}
+                  <rect x="190" y="0" width="20" height="200" fill="currentColor" className="text-[#247EFF]" opacity="0.6"/>
+                  
+                  {/* Street signs */}
+                  <g className="text-[#247EFF]" opacity="0.7">
+                    {/* Main street sign */}
+                    <rect x="80" y="60" width="240" height="40" rx="4" fill="currentColor"/>
+                    <rect x="85" y="65" width="230" height="30" rx="2" fill="white"/>
+                    
+                    {/* Directional signs */}
+                    <polygon points="60,90 80,80 80,100" fill="currentColor"/>
+                    <polygon points="340,90 320,80 320,100" fill="currentColor"/>
+                    
+                    {/* Secondary street sign */}
+                    <rect x="120" y="110" width="160" height="30" rx="3" fill="currentColor" opacity="0.8"/>
+                    <rect x="125" y="115" width="150" height="20" rx="2" fill="white"/>
+                  </g>
+                  
+                  {/* Street grid lines */}
+                  <g className="text-[#247EFF]" opacity="0.3">
+                    <line x1="0" y1="50" x2="400" y2="50" stroke="currentColor" strokeWidth="2"/>
+                    <line x1="0" y1="150" x2="400" y2="150" stroke="currentColor" strokeWidth="2"/>
+                    <line x1="50" y1="0" x2="50" y2="200" stroke="currentColor" strokeWidth="1"/>
+                    <line x1="350" y1="0" x2="350" y2="200" stroke="currentColor" strokeWidth="1"/>
+                  </g>
+                </svg>
+              </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {navigationSections.map((section, index) => (
-            <Link
-              key={index}
-              to={section.link}
-              onClick={() => handleNavigationClick(section)}
-              className="block"
-            >
-              <Card className="border-[#247EFF]/20 hover:border-[#247EFF]/40 transition-all duration-300 group hover:shadow-lg cursor-pointer h-full">
-                <CardHeader>
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="text-[#247EFF]">{section.icon}</div>
-                    <Badge className={section.color}>{section.badge}</Badge>
+              {/* Graffiti-style corner tag */}
+              <div className="absolute top-4 right-4 w-8 h-8 bg-[#FFD700]/20 transform rotate-45 group-hover:bg-[#FFD700]/40 transition-colors"></div>
+
+              <CardContent className="p-8 md:p-12 text-center relative z-10">
+                <div className="flex justify-center mb-6">
+                  <div className="w-16 h-16 bg-[#247EFF]/10 group-hover:bg-[#247EFF]/20 rounded-full flex items-center justify-center transition-colors transform group-hover:rotate-12 group-hover:scale-110 duration-300">
+                    <Map className="h-8 w-8 text-[#247EFF]" />
                   </div>
-                  <CardTitle className="text-[#0A0A0A] dark:text-brand-cream group-hover:text-[#247EFF] transition-colors text-xl">
-                    {section.title}
-                  </CardTitle>
-                  <CardDescription className="text-[#0A0A0A]/70 dark:text-brand-cream/70 mb-4">
-                    {section.description}
-                  </CardDescription>
-                  <div className="text-sm text-[#247EFF] hover:text-[#0057FF] font-medium transition-colors">
-                    Read More →
-                  </div>
-                </CardHeader>
-              </Card>
-            </Link>
-          ))}
+                </div>
+                
+                <h2 
+                  className="text-2xl md:text-3xl font-black text-brand-black dark:text-brand-cream mb-4 group-hover:text-[#247EFF] transition-colors transform -rotate-1"
+                  style={{ 
+                    fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive", 
+                    textShadow: '1px 1px 0px rgba(0,0,0,0.1)' 
+                  }}
+                >
+                  Explore More
+                </h2>
+                
+                <p className="text-lg text-brand-black/80 dark:text-brand-cream/80 leading-relaxed mb-6 max-w-lg mx-auto">
+                  Real stories, street-smart strategies, and step-by-step guides from people building wealth from nothing.
+                </p>
+                
+                <div className="flex items-center justify-center text-[#247EFF] hover:text-[#0057FF] font-bold transition-colors group-hover:scale-105 duration-300">
+                  <span className="mr-2">Dive In</span>
+                  <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </div>
+                
+                {/* Street-style underline */}
+                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-[#247EFF]/20 group-hover:bg-[#247EFF]/60 transition-colors rounded-full"></div>
+              </CardContent>
+            </Card>
+          </Link>
         </div>
       </div>
     </div>

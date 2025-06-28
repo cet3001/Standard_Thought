@@ -113,13 +113,6 @@ const Index = () => {
         {/* Hero Section */}
         <HomepageHero scrollToNewsletter={scrollToNewsletter} />
 
-        {/* Navigation Hub */}
-        <div className="container mx-auto px-6 -mt-8 relative z-10">
-          <div className="max-w-6xl mx-auto">
-            <SiteNavigationHub />
-          </div>
-        </div>
-
         {/* Newsletter */}
         <section className="bg-gradient-to-b from-white to-brand-cream/80 dark:from-brand-black/90 dark:to-brand-black py-16">
           <NewsletterSection />
@@ -143,6 +136,15 @@ const Index = () => {
               faqs={homepageFAQs}
               className="mb-8"
             />
+          </div>
+        </section>
+
+        {/* Navigation Hub - moved below FAQ */}
+        <section className="bg-brand-cream dark:bg-brand-black">
+          <div className="container mx-auto px-6">
+            <div className="max-w-6xl mx-auto">
+              <SiteNavigationHub />
+            </div>
           </div>
         </section>
 

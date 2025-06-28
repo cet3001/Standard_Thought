@@ -1,5 +1,5 @@
-
 import BlogHero from "./blog-hero";
+import FeaturedRecentPosts from "./featured-recent-posts";
 import FeaturedStoriesSection from "./featured-stories-section";
 import StrategyPathwaysSection from "./strategy-pathways-section";
 import KeyGuidesCarousel from "./key-guides-carousel";
@@ -40,18 +40,29 @@ const BlogPageContent = ({
 }: BlogPageContentProps) => {
   const hasPosts = filteredPosts && filteredPosts.length > 0;
 
+  // Get the 3 most recent posts for featured section
+  const recentPosts = posts ? [...posts].sort((a, b) => 
+    new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+  ).slice(0, 3) : [];
+
+  // Get remaining posts (excluding the 3 most recent)
+  const remainingPosts = filteredPosts ? filteredPosts.filter(post => 
+    !recentPosts.some(recent => recent.id === post.id)
+  ) : [];
+
   return (
     <div className="container mx-auto px-6 max-w-7xl">
       <BlogHero isVisible={true} />
       
-      {posts && <FeaturedStoriesSection posts={posts} />}
+      {/* Featured Recent Posts - 3 Large Cards */}
+      {recentPosts.length > 0 && (
+        <FeaturedRecentPosts 
+          posts={recentPosts} 
+          onThemeTagClick={onThemeTagClick}
+        />
+      )}
       
-      <StrategyPathwaysSection />
-      
-      <KeyGuidesCarousel />
-      
-      <BlogFeaturedQuestions />
-      
+      {/* Filters Section */}
       <BlogFiltersSection
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
@@ -63,15 +74,30 @@ const BlogPageContent = ({
         themeTags={themeTags}
       />
 
+      {/* Remaining Posts Grid */}
       {!hasPosts ? (
         <Empty message="No posts found." />
-      ) : (
-        <BlogGrid 
-          posts={filteredPosts} 
-          onPostDeleted={onPostDeleted} 
-          onThemeTagClick={onThemeTagClick}
-        />
-      )}
+      ) : remainingPosts.length > 0 ? (
+        <div className="mb-12">
+          <h2 className="text-2xl font-bold text-[#0A0A0A] dark:text-brand-cream mb-6">
+            More Stories
+          </h2>
+          <BlogGrid 
+            posts={remainingPosts} 
+            onPostDeleted={onPostDeleted} 
+            onThemeTagClick={onThemeTagClick}
+          />
+        </div>
+      ) : null}
+      
+      {/* Keep the other sections below */}
+      {posts && <FeaturedStoriesSection posts={posts} />}
+      
+      <StrategyPathwaysSection />
+      
+      <KeyGuidesCarousel />
+      
+      <BlogFeaturedQuestions />
     </div>
   );
 };

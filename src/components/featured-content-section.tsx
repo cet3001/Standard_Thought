@@ -6,20 +6,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { ArrowRight, BookOpen, TrendingUp, Bot, Users } from "lucide-react";
 import HeaderHierarchy from "./content-structure/header-hierarchy";
 import { trackButtonClick, trackResourceClick } from "@/lib/analytics-utils";
-import { useUrbanTexture } from "@/hooks/use-urban-texture";
 
 const FeaturedContentSection = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const { textureImageUrl, imageGenerationStatus } = useUrbanTexture();
-
-  // Enhanced debugging for texture URL
-  useEffect(() => {
-    console.log("FeaturedContentSection - Texture URL:", textureImageUrl);
-    console.log("FeaturedContentSection - Generation Status:", imageGenerationStatus);
-    if (!textureImageUrl) {
-      console.warn("FeaturedContentSection - No texture URL available, using hardcoded");
-    }
-  }, [textureImageUrl, imageGenerationStatus]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -46,12 +35,6 @@ const FeaturedContentSection = () => {
   const handleExploreAllClick = () => {
     trackButtonClick('Explore All Resources', 'featured_content_section', 'navigate_to_resources');
   };
-
-  // Hardcoded test URL - Force texture to show
-  const hardcodedTextureUrl = "https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80";
-  
-  // Debug what's actually being used
-  console.log("Forced hardcoded URL:", hardcodedTextureUrl);
 
   const featuredContent = [
     {
@@ -112,37 +95,9 @@ const FeaturedContentSection = () => {
   return (
     <section 
       data-section="featured-content"
-      className="py-12 sm:py-16 relative"
+      className="py-12 sm:py-16 bg-gradient-to-b from-white/50 to-brand-cream dark:from-brand-black/50 dark:to-brand-black"
     >
-      {/* Hardcoded Urban Background - Force Texture */}
-      <div className="absolute inset-0" aria-hidden="true">
-        {/* Light base gradient - let texture shine */}
-        <div className="absolute inset-0 bg-gradient-to-br from-brand-cream/10 via-transparent to-brand-cream/20"></div>
-        
-        {/* Hardcoded Urban Texture - Always Show */}
-        <div 
-          key={Date.now()} // Force re-render
-          className="absolute inset-0 opacity-50 bg-repeat bg-center"
-          style={{
-            backgroundImage: `url(${hardcodedTextureUrl})`,
-            backgroundSize: '300px 300px',
-            filter: 'contrast(1.3) brightness(0.7) sepia(0.08)'
-          }}
-        />
-        
-        {/* Light content overlay - on top for readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/20 via-brand-cream/40 to-brand-cream/50 dark:from-brand-black/20 dark:via-brand-black/40 dark:to-brand-black/50"></div>
-      </div>
-
-      {/* Street Elements - More Visible */}
-      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-        <div className="absolute top-20 right-10 w-32 h-32 rounded-full bg-[#FFD700]/20 animate-float"></div>
-        <div className="absolute bottom-40 left-10 w-24 h-24 rounded-2xl bg-[#247EFF]/30 animate-float" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute top-60 left-1/3 w-16 h-16 rounded bg-[#FFD700]/15 animate-float" style={{ animationDelay: '4s' }}></div>
-        <div className="absolute bottom-20 right-1/4 w-20 h-20 rounded-lg bg-slate-600/10 animate-float" style={{ animationDelay: '1s' }}></div>
-      </div>
-
-      <div className="container mx-auto px-4 sm:px-6 max-w-6xl relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 max-w-6xl">
         <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="text-center mb-8 sm:mb-12">
             <HeaderHierarchy level={2} className="mb-4 text-2xl sm:text-3xl lg:text-4xl">

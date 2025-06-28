@@ -1,6 +1,18 @@
 
 import { useState, useEffect } from 'react';
-import { supabase } from "@/integrations/supabase/client";
+
+// Curated urban-style images from Unsplash
+const URBAN_IMAGES = [
+  "https://images.unsplash.com/photo-1527576539890-dfa815648363?w=1024&h=1024&fit=crop&crop=center", // grayscale building low angle
+  "https://images.unsplash.com/photo-1488972685288-c3fd157d7c7a?w=1024&h=1024&fit=crop&crop=center", // gray building daytime
+  "https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=1024&h=1024&fit=crop&crop=center", // white concrete building
+  "https://images.unsplash.com/photo-1518005020951-eccb494ad742?w=1024&h=1024&fit=crop&crop=center", // concrete building daytime
+  "https://images.unsplash.com/photo-1496307653780-42ee777d4833?w=1024&h=1024&fit=crop&crop=center", // glass building bottom view
+  "https://images.unsplash.com/photo-1431576901776-e539bd916ba2?w=1024&h=1024&fit=crop&crop=center", // worms eye view buildings
+  "https://images.unsplash.com/photo-1449157291145-7efd050a4d0e?w=1024&h=1024&fit=crop&crop=center", // low angle building
+  "https://images.unsplash.com/photo-1459767129954-1b1c1f9b9ace?w=1024&h=1024&fit=crop&crop=center", // white concrete building
+  "https://images.unsplash.com/photo-1460574283810-2aab119d8511?w=1024&h=1024&fit=crop&crop=center", // low angle building photography
+];
 
 export const useUrbanTexture = () => {
   const [textureImageUrl, setTextureImageUrl] = useState<string>("");
@@ -23,108 +35,46 @@ export const useUrbanTexture = () => {
         setImageGenerationStatus("cached");
         return;
       } else {
-        console.log("⏰ Cache expired, generating new texture...");
+        console.log("⏰ Cache expired, selecting new urban texture...");
         localStorage.removeItem('urban-texture-cache');
         localStorage.removeItem('urban-texture-timestamp');
       }
     }
 
-    generateUrbanTexture();
+    selectUrbanTexture();
   }, []);
 
-  const generateUrbanTexture = async (retryCount = 0) => {
-    const MAX_RETRIES = 2;
-    
+  const selectUrbanTexture = () => {
     try {
-      console.log(`🎨 Starting urban texture generation (attempt ${retryCount + 1})...`);
-      setImageGenerationStatus("generating");
+      console.log("🏙️ Selecting urban texture from Unsplash collection...");
+      setImageGenerationStatus("selecting");
       
-      const { data, error } = await supabase.functions.invoke('generate-image', {
-        body: {
-          prompt: "Ultra-realistic weathered urban brick wall texture, dark burgundy and brown aged bricks with deep mortar lines, street graffiti stains, rust streaks, concrete dust patches, peeling paint, urban decay, gritty inner city aesthetic, high contrast shadows, worn industrial texture, close-up detailed pattern, street photography style, natural lighting, seamless tileable pattern",
-          size: "1024x1024",
-          quality: "hd",
-          style: "natural"
-        }
-      });
-
-      console.log("📊 Supabase function response:", { data, error });
-
-      if (error) {
-        console.error("❌ Supabase function error:", error);
-        
-        if (retryCount < MAX_RETRIES) {
-          console.log(`🔄 Retrying in 2 seconds... (${retryCount + 1}/${MAX_RETRIES})`);
-          setTimeout(() => generateUrbanTexture(retryCount + 1), 2000);
-          return;
-        }
-        
-        console.log("💀 All retries failed, using fallback texture");
-        await useFallbackTexture();
-        return;
-      }
-
-      if (data && data.imageUrl) {
-        localStorage.setItem('urban-texture-cache', data.imageUrl);
-        localStorage.setItem('urban-texture-timestamp', Date.now().toString());
-        
-        setTextureImageUrl(data.imageUrl);
-        setImageGenerationStatus("success");
-        console.log("✅ Urban texture generated and cached:", data.imageUrl);
-      } else {
-        console.log("⚠️ No image URL returned from function");
-        
-        if (retryCount < MAX_RETRIES) {
-          setTimeout(() => generateUrbanTexture(retryCount + 1), 2000);
-        } else {
-          await useFallbackTexture();
-        }
-      }
+      // Select a random urban image from our curated collection
+      const randomIndex = Math.floor(Math.random() * URBAN_IMAGES.length);
+      const selectedImage = URBAN_IMAGES[randomIndex];
+      
+      // Cache the selected image
+      localStorage.setItem('urban-texture-cache', selectedImage);
+      localStorage.setItem('urban-texture-timestamp', Date.now().toString());
+      
+      setTextureImageUrl(selectedImage);
+      setImageGenerationStatus("success");
+      console.log("✅ Urban texture selected from Unsplash:", selectedImage);
+      
     } catch (error) {
-      console.error("❌ Failed to generate urban texture:", error);
+      console.error("❌ Failed to select urban texture:", error);
       
-      if (retryCount < MAX_RETRIES) {
-        setTimeout(() => generateUrbanTexture(retryCount + 1), 2000);
-      } else {
-        await useFallbackTexture();
-      }
+      // Use first image as fallback
+      const fallbackImage = URBAN_IMAGES[0];
+      console.log("🏗️ Using fallback urban texture:", fallbackImage);
+      setTextureImageUrl(fallbackImage);
+      setImageGenerationStatus("fallback");
     }
-  };
-
-  const useFallbackTexture = async () => {
-    console.log("🔧 Attempting fallback texture strategies...");
-    setImageGenerationStatus("fallback");
-    
-    try {
-      const { data: storageList } = await supabase.storage
-        .from('public')
-        .list('textures');
-      
-      if (storageList && storageList.length > 0) {
-        const { data: publicUrl } = supabase.storage
-          .from('public')
-          .getPublicUrl(`textures/${storageList[0].name}`);
-        
-        if (publicUrl.publicUrl) {
-          console.log("🏗️ Using pre-uploaded fallback texture:", publicUrl.publicUrl);
-          setTextureImageUrl(publicUrl.publicUrl);
-          setImageGenerationStatus("storage-fallback");
-          return;
-        }
-      }
-    } catch (storageError) {
-      console.log("⚠️ Storage fallback failed:", storageError);
-    }
-    
-    const unsplashFallback = "https://images.unsplash.com/photo-1527576539890-dfa815648363?w=1024&h=1024&fit=crop&crop=center";
-    console.log("🌆 Using Unsplash urban texture fallback");
-    setTextureImageUrl(unsplashFallback);
-    setImageGenerationStatus("unsplash-fallback");
   };
 
   return {
     textureImageUrl,
     imageGenerationStatus,
-    regenerateTexture: () => generateUrbanTexture(0)
+    regenerateTexture: () => selectUrbanTexture()
   };
 };

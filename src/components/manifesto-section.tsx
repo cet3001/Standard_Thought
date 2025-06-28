@@ -84,16 +84,6 @@ const ManifestoSection = () => {
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-black mb-8 text-brand-black dark:text-brand-cream relative">
               The Real About <span className="text-[#247EFF]">Building Wealth</span>
-              <span 
-                className="text-[#247EFF] ml-4"
-                style={{ 
-                  fontFamily: "'Permanent Marker', 'Kalam', cursive",
-                  fontSize: '0.6em',
-                  verticalAlign: 'super'
-                }}
-              >
-                —No Cap
-              </span>
               
               {/* Handwritten underline effect under "Building Wealth" */}
               <div 

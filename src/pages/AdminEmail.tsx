@@ -19,17 +19,43 @@ const AdminEmail = () => {
   const [content, setContent] = useState('');
   const [sending, setSending] = useState(false);
 
-  // Fetch subscriber count
-  const { data: subscriberCount } = useQuery({
+  // Fetch subscriber count with better error handling and debugging
+  const { data: subscriberCount, error: subscriberError } = useQuery({
     queryKey: ['subscriber-count'],
     queryFn: async () => {
-      const { count, error } = await supabase
-        .from('Subscribers')
-        .select('*', { count: 'exact', head: true })
-        .eq('unsubscribed', false);
+      console.log('Fetching subscriber count...');
       
-      if (error) throw error;
-      return count || 0;
+      // Try different approaches to get the count
+      try {
+        // First, try the original query
+        const { count, error } = await supabase
+          .from('Subscribers')
+          .select('*', { count: 'exact', head: true })
+          .eq('unsubscribed', false);
+        
+        if (error) {
+          console.error('Subscriber count error (method 1):', error);
+          
+          // Try without the unsubscribed filter
+          const { count: totalCount, error: totalError } = await supabase
+            .from('Subscribers')
+            .select('*', { count: 'exact', head: true });
+          
+          if (totalError) {
+            console.error('Total subscriber count error:', totalError);
+            throw totalError;
+          }
+          
+          console.log('Total subscribers (ignoring unsubscribed status):', totalCount);
+          return totalCount || 0;
+        }
+        
+        console.log('Active subscribers:', count);
+        return count || 0;
+      } catch (err) {
+        console.error('Error fetching subscriber count:', err);
+        throw err;
+      }
     },
     enabled: isAdmin,
   });
@@ -121,7 +147,7 @@ const AdminEmail = () => {
               <GuideUploader />
             </div>
 
-            {/* Subscriber Stats */}
+            {/* Subscriber Stats with better error handling */}
             <Card>
               <CardHeader>
                 <CardTitle className="text-lg flex items-center gap-2">
@@ -131,11 +157,22 @@ const AdminEmail = () => {
               </CardHeader>
               <CardContent>
                 <div className="text-3xl font-bold text-primary">
-                  {subscriberCount || 0}
+                  {subscriberError ? (
+                    <span className="text-sm text-destructive">
+                      Error loading count
+                    </span>
+                  ) : (
+                    subscriberCount || 0
+                  )}
                 </div>
                 <p className="text-sm text-muted-foreground">
                   Active subscribers who will receive this email
                 </p>
+                {subscriberError && (
+                  <p className="text-xs text-destructive mt-2">
+                    Debug info: {subscriberError.message}
+                  </p>
+                )}
               </CardContent>
             </Card>
 

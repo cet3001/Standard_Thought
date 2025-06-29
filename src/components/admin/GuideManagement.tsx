@@ -27,7 +27,8 @@ export const GuideManagement = () => {
   const loadGuides = async () => {
     setLoading(true);
     try {
-      console.log('Loading guides from storage...');
+      console.log('🔍 Loading guides from storage...');
+      console.log('📊 Network check: This should trigger a request to .../storage/v1/object/list');
       
       const { data, error } = await supabase.storage
         .from('guides')
@@ -37,17 +38,20 @@ export const GuideManagement = () => {
         });
 
       if (error) {
-        console.error('Error loading guides:', error);
+        console.error('❌ Storage list error:', error);
+        console.error('🚨 Check DevTools Network tab for storage/v1/object/list request');
+        console.error('🚨 Status should be 200. If 403, check RLS policies on storage.objects');
         throw error;
       }
 
-      console.log('Guides loaded:', data);
+      console.log('✅ Guides loaded successfully:', data?.length || 0, 'files');
+      console.log('📋 Guide data:', data);
       setGuides(data || []);
     } catch (error: any) {
-      console.error('Error loading guides:', error);
+      console.error('💥 Error loading guides:', error);
       toast({
         title: "Error loading guides",
-        description: error.message || "Check RLS on storage.objects or ensure the guides bucket exists.",
+        description: error.message || "Check console and Network tab for RLS/auth issues",
         variant: "destructive",
       });
       setGuides([]);
@@ -60,7 +64,7 @@ export const GuideManagement = () => {
     const file = event.target.files?.[0];
     if (!file) return;
 
-    console.log('Starting upload for file:', file.name, 'Type:', file.type, 'Size:', file.size);
+    console.log('📤 Starting upload for file:', file.name, 'Type:', file.type, 'Size:', file.size);
 
     if (file.type !== 'application/pdf') {
       toast({
@@ -84,7 +88,8 @@ export const GuideManagement = () => {
     setUploading(true);
     try {
       const fileName = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9.-]/g, '_')}`;
-      console.log('Uploading file as:', fileName);
+      console.log('🔄 Uploading file as:', fileName);
+      console.log('📊 Network check: This should trigger a request to .../storage/v1/object (POST)');
       
       const { data, error } = await supabase.storage
         .from('guides')
@@ -94,11 +99,13 @@ export const GuideManagement = () => {
         });
 
       if (error) {
-        console.error('Upload error:', error);
+        console.error('❌ Upload error:', error);
+        console.error('🚨 Check DevTools Network tab for storage/v1/object request');
+        console.error('🚨 Status should be 200. If 403, RLS policy is blocking upload');
         throw error;
       }
 
-      console.log('Upload successful:', data);
+      console.log('✅ Upload successful:', data);
       toast({
         title: "Guide uploaded successfully! 🎉",
         description: `${file.name} has been uploaded and is ready for download.`,
@@ -110,11 +117,11 @@ export const GuideManagement = () => {
       // Refresh the list
       loadGuides();
     } catch (error: any) {
-      console.error('Upload error:', error);
+      console.error('💥 Upload error:', error);
       
       let errorMessage = "Please try again or contact support.";
       if (error.message?.includes('policy') || error.message?.includes('permission')) {
-        errorMessage = "You don't have permission to upload files. Please check your admin status.";
+        errorMessage = "RLS policy blocking upload. Check admin permissions.";
       } else if (error.message?.includes('duplicate')) {
         errorMessage = "A file with this name already exists.";
       }
@@ -132,16 +139,21 @@ export const GuideManagement = () => {
   const deleteGuide = async (fileName: string) => {
     setDeletingFile(fileName);
     try {
-      console.log('Deleting file:', fileName);
+      console.log('🗑️ Deleting file:', fileName);
+      console.log('📊 Network check: This should trigger a request to .../storage/v1/object (DELETE)');
+      
       const { error } = await supabase.storage
         .from('guides')
         .remove([fileName]);
 
       if (error) {
-        console.error('Delete error:', error);
+        console.error('❌ Delete error:', error);
+        console.error('🚨 Check DevTools Network tab for storage/v1/object DELETE request');
+        console.error('🚨 Status should be 200. If 403, RLS policy is blocking delete');
         throw error;
       }
 
+      console.log('✅ Delete successful for:', fileName);
       toast({
         title: "Guide deleted",
         description: `${fileName} has been removed.`,
@@ -149,10 +161,10 @@ export const GuideManagement = () => {
 
       loadGuides(); // Refresh the list
     } catch (error) {
-      console.error('Delete error:', error);
+      console.error('💥 Delete error:', error);
       toast({
         title: "Delete failed",
-        description: "Please try again.",
+        description: "Check console for RLS/auth issues.",
         variant: "destructive",
       });
     } finally {
@@ -162,7 +174,10 @@ export const GuideManagement = () => {
 
   useEffect(() => {
     if (isAdmin) {
+      console.log('🔐 Admin detected, loading guides...');
       loadGuides();
+    } else {
+      console.log('⚠️ Non-admin user, guides not loaded');
     }
   }, [isAdmin]);
 
@@ -203,7 +218,7 @@ export const GuideManagement = () => {
           {uploading && (
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <Loader2 className="w-4 h-4 animate-spin" />
-              Uploading... Please wait.
+              Uploading... Check Network tab for storage/v1/object requests
             </div>
           )}
           <p className="text-sm text-muted-foreground">
@@ -232,7 +247,7 @@ export const GuideManagement = () => {
           {loading ? (
             <div className="flex items-center justify-center py-8">
               <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
-              <span className="ml-2 text-muted-foreground">Loading guides...</span>
+              <span className="ml-2 text-muted-foreground">Loading guides... Check Network tab</span>
             </div>
           ) : guides.length === 0 ? (
             <div className="text-center py-8">

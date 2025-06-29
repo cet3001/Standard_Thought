@@ -1,6 +1,6 @@
 
 import { Button } from '@/components/ui/button';
-import { FileText, Trash2, Loader2, RefreshCw } from 'lucide-react';
+import { FileText, Trash2, Loader2, RefreshCw, FolderOpen } from 'lucide-react';
 import type { Guide } from './types';
 
 interface GuideListSectionProps {
@@ -9,6 +9,7 @@ interface GuideListSectionProps {
   deletingFile: string | null;
   onRefresh: () => void;
   onDelete: (fileName: string) => void;
+  onListBuckets: () => void; // New prop
 }
 
 export const GuideListSection = ({ 
@@ -16,31 +17,43 @@ export const GuideListSection = ({
   loading, 
   deletingFile, 
   onRefresh, 
-  onDelete 
+  onDelete,
+  onListBuckets // New prop
 }: GuideListSectionProps) => {
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <h3 className="font-semibold">Uploaded Guides</h3>
-        <Button 
-          onClick={onRefresh} 
-          disabled={loading} 
-          variant="outline" 
-          size="sm"
-          className="flex items-center gap-2"
-        >
-          {loading ? (
-            <>
-              <Loader2 className="w-4 h-4 animate-spin" />
-              Loading...
-            </>
-          ) : (
-            <>
-              <RefreshCw className="w-4 h-4" />
-              Refresh
-            </>
-          )}
-        </Button>
+        <div className="flex gap-2">
+          <Button 
+            onClick={onListBuckets} 
+            variant="outline" 
+            size="sm"
+            className="flex items-center gap-2"
+          >
+            <FolderOpen className="w-4 h-4" />
+            List Buckets
+          </Button>
+          <Button 
+            onClick={onRefresh} 
+            disabled={loading} 
+            variant="outline" 
+            size="sm"
+            className="flex items-center gap-2"
+          >
+            {loading ? (
+              <>
+                <Loader2 className="w-4 h-4 animate-spin" />
+                Loading...
+              </>
+            ) : (
+              <>
+                <RefreshCw className="w-4 h-4" />
+                Refresh
+              </>
+            )}
+          </Button>
+        </div>
       </div>
       
       {loading ? (

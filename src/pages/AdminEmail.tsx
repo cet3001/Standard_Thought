@@ -1,5 +1,3 @@
-
-
 import React, { useState } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { supabase } from '@/integrations/supabase/client';
@@ -11,6 +9,8 @@ import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
 import { Mail, Users, Send, Loader2 } from 'lucide-react';
 import { useQuery } from '@tanstack/react-query';
+import { GuideUploader } from "@/components/admin/guide-uploader";
+import { Navigation } from "@/components/admin/navigation";
 
 const AdminEmail = () => {
   const { isAdmin } = useAuth();
@@ -98,21 +98,30 @@ const AdminEmail = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="container mx-auto py-8 px-4">
+    <div className="min-h-screen bg-gradient-to-b from-brand-cream via-brand-cream to-brand-cream/95 dark:from-brand-black dark:via-brand-black dark:to-brand-black/95">
+      <Navigation />
+      
+      <div className="container mx-auto px-4 pt-24 pb-16">
         <div className="max-w-4xl mx-auto">
-          <div className="mb-8">
-            <h1 className="text-3xl font-bold text-foreground mb-2 flex items-center gap-2">
-              <Mail className="w-8 h-8 text-primary" />
-              Newsletter Composer
+          <div className="text-center mb-8">
+            <h1 className="text-3xl font-bold text-brand-black dark:text-brand-cream mb-4">
+              Admin Dashboard
             </h1>
-            <p className="text-muted-foreground">
-              Create and send emails to your newsletter subscribers
+            <p className="text-brand-black/70 dark:text-brand-cream/70">
+              Manage subscribers, send newsletters, and upload guides
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {/* Stats Card */}
+          <div className="grid gap-8">
+            {/* Add Guide Uploader Section */}
+            <div>
+              <h2 className="text-xl font-semibold mb-4 text-brand-black dark:text-brand-cream">
+                Guide Management
+              </h2>
+              <GuideUploader />
+            </div>
+
+            {/* Subscriber Stats */}
             <Card>
               <CardHeader>
                 <CardTitle className="text-lg flex items-center gap-2">

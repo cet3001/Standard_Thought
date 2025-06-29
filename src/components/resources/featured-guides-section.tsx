@@ -3,9 +3,56 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import HeaderHierarchy from "@/components/content-structure/header-hierarchy";
 import OptimizedImage from "@/components/optimized-image";
-import { Link } from "react-router-dom";
+import { useGuideDownload } from "@/hooks/use-guide-download";
+import { useState } from "react";
+import { Input } from "@/components/ui/input";
+import { useToast } from "@/hooks/use-toast";
+import { subscribeToNewsletter } from "@/lib/email-utils";
 
 const FeaturedGuidesSection = () => {
+  const { downloadGuide, isDownloading } = useGuideDownload();
+  const [email, setEmail] = useState("");
+  const [isSubscribing, setIsSubscribing] = useState(false);
+  const { toast } = useToast();
+
+  const handleDownload = async () => {
+    if (!email) {
+      toast({
+        title: "Email required",
+        description: "Please enter your email to download the guide.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsSubscribing(true);
+    
+    try {
+      // First, subscribe them to the newsletter
+      await subscribeToNewsletter(email);
+      
+      // Then trigger the guide download
+      // Note: You'll need to replace 'your-guide-filename.pdf' with the actual filename
+      await downloadGuide('10k-starter-blueprint.pdf', email);
+      
+      toast({
+        title: "Success! 🎉",
+        description: "You've been subscribed and your guide is downloading now!",
+      });
+      
+      setEmail("");
+    } catch (error) {
+      console.error('Download process error:', error);
+      toast({
+        title: "Something went wrong",
+        description: "Please try again or contact support.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubscribing(false);
+    }
+  };
+
   return (
     <section className="mb-16 md:mb-20">
       <div className="text-center mb-8 md:mb-12">
@@ -71,31 +118,38 @@ const FeaturedGuidesSection = () => {
               </ul>
             </div>
 
-            <Button 
-              asChild 
-              className="w-full bg-gradient-to-r from-[#FFD700] to-[#FFA500] hover:scale-105 text-black min-h-[44px] touch-manipulation font-bold text-sm md:text-base transition-all duration-300 shadow-lg hover:shadow-xl border-0" 
-              aria-label="Download The $10K Starter Blueprint for free"
-            >
-              <Link to="/#newsletter">
-                Download Free
-              </Link>
-            </Button>
+            {/* Email Input + Download */}
+            <div className="space-y-3 mb-4">
+              <Input
+                type="email"
+                placeholder="Enter your email for instant download..."
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full"
+                disabled={isSubscribing || isDownloading}
+              />
+              <Button 
+                onClick={handleDownload}
+                disabled={isSubscribing || isDownloading || !email}
+                className="w-full bg-gradient-to-r from-[#FFD700] to-[#FFA500] hover:scale-105 text-black min-h-[44px] touch-manipulation font-bold text-sm md:text-base transition-all duration-300 shadow-lg hover:shadow-xl border-0" 
+                aria-label="Download The $10K Starter Blueprint for free"
+              >
+                {isSubscribing || isDownloading ? (
+                  <div className="flex items-center">
+                    <div className="w-4 h-4 border-2 border-black/30 border-t-black rounded-full animate-spin mr-2"></div>
+                    {isSubscribing ? 'Subscribing...' : 'Downloading...'}
+                  </div>
+                ) : (
+                  'Download Free'
+                )}
+              </Button>
+            </div>
+
+            <p className="text-xs text-[#0A0A0A]/60 dark:text-brand-cream/60 text-center">
+              You'll also join our newsletter for exclusive wealth-building tips
+            </p>
           </CardContent>
         </Card>
-
-        {/* Placeholder for future guides - commented out for now */}
-        {/*
-        <Card className="border-dashed border-2 border-[#247EFF]/30 bg-gradient-to-br from-[#247EFF]/5 to-transparent flex items-center justify-center min-h-[400px] group hover:border-[#247EFF]/50 transition-colors">
-          <div className="text-center p-6">
-            <div className="w-16 h-16 bg-[#247EFF]/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-[#247EFF]/30 transition-colors">
-              <Plus className="w-8 h-8 text-[#247EFF]" />
-            </div>
-            <p className="text-[#0A0A0A]/60 dark:text-brand-cream/60 font-medium">
-              More guides coming soon...
-            </p>
-          </div>
-        </Card>
-        */}
       </div>
     </section>
   );

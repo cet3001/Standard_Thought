@@ -104,6 +104,36 @@ export type Database = {
           },
         ]
       }
+      guide_downloads: {
+        Row: {
+          downloaded_at: string
+          file_path: string
+          guide_name: string
+          id: string
+          ip_address: unknown | null
+          user_agent: string | null
+          user_email: string
+        }
+        Insert: {
+          downloaded_at?: string
+          file_path: string
+          guide_name: string
+          id?: string
+          ip_address?: unknown | null
+          user_agent?: string | null
+          user_email: string
+        }
+        Update: {
+          downloaded_at?: string
+          file_path?: string
+          guide_name?: string
+          id?: string
+          ip_address?: unknown | null
+          user_agent?: string | null
+          user_email?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           created_at: string

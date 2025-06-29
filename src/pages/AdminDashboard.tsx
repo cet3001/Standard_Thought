@@ -2,7 +2,6 @@
 import { useAuth } from "@/contexts/AuthContext";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Navigation from "@/components/navigation";
-import { GuideManagement } from '@/components/admin/GuideManagement';
 import { SubscriberStats } from '@/components/admin/SubscriberStats';
 import { EmailComposer } from '@/components/admin/EmailComposer';
 import { EmailPreview } from '@/components/admin/EmailPreview';
@@ -44,11 +43,6 @@ const AdminDashboard = () => {
       {/* Main Content */}
       <main className="container mx-auto px-4 pt-24 pb-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {/* Guide Management */}
-          <div className="min-h-[200px] border border-gray-300 rounded-lg">
-            <GuideManagement />
-          </div>
-
           {/* Subscriber Stats */}
           <div className="min-h-[200px] border border-gray-300 rounded-lg">
             <SubscriberStats />
@@ -60,7 +54,7 @@ const AdminDashboard = () => {
           </div>
 
           {/* Email Preview */}
-          <div className="min-h-[200px] border border-gray-300 rounded-lg">
+          <div className="min-h-[200px] border border-gray-300 rounded-lg col-span-full">
             <EmailPreview />
           </div>
         </div>

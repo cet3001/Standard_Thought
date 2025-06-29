@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -25,100 +26,26 @@ export const GuideManagement = () => {
   const [error, setError] = useState<string | null>(null);
 
   const loadGuides = async () => {
-    if (!isAdmin || !user) {
-      console.log('⚠️ User not admin or not authenticated, skipping guide load');
-      return;
-    }
-
     setLoading(true);
-    setError(null);
-    
     try {
-      console.log('🔍 Loading guides from storage...');
-      console.log('👤 Current user:', user.email);
-      console.log('🔐 Admin status:', isAdmin);
-      
-      // Add timeout to prevent hanging
-      const timeoutPromise = new Promise<never>((_, reject) => {
-        setTimeout(() => reject(new Error('Storage request timed out after 10 seconds')), 10000);
-      });
-      
-      console.log('📦 Step 1: Checking bucket existence...');
-      
-      // First, let's check if the bucket exists with timeout
-      const bucketListPromise = supabase.storage.listBuckets();
-      const bucketResult = await Promise.race([bucketListPromise, timeoutPromise]);
-      
-      const { data: buckets, error: bucketError } = bucketResult;
-      
-      if (bucketError) {
-        console.error('❌ Error listing buckets:', bucketError);
-        throw new Error(`Bucket error: ${bucketError.message}`);
-      }
-      
-      console.log('📦 Available buckets:', buckets?.map(b => b.name));
-      
-      const guidesBucket = buckets?.find(b => b.name === 'guides');
-      if (!guidesBucket) {
-        throw new Error('Guides bucket not found. Please contact support.');
-      }
-      
-      console.log('✅ Guides bucket found:', guidesBucket);
-      
-      // Now try to list files with timeout
-      console.log('📊 Step 2: Listing files in guides bucket...');
-      const fileListPromise = supabase.storage
+      const { data, error } = await supabase.storage
         .from('guides')
-        .list('', { 
-          sortBy: { column: 'created_at', order: 'desc' },
-          limit: 100
-        });
-      
-      const fileResult = await Promise.race([fileListPromise, timeoutPromise]);
-      const { data, error } = fileResult;
+        .list('', { sortBy: { column: 'created_at', order: 'desc' } });
 
-      if (error) {
-        console.error('❌ Storage list error:', error);
-        console.error('🚨 Error details:', {
-          message: error.message,
-          statusCode: (error as any).statusCode,
-          status: (error as any).status
-        });
-        
-        if (error.message.includes('permission') || error.message.includes('policy') || (error as any).statusCode === 403) {
-          throw new Error('Permission denied. Admin storage policies may need to be updated.');
-        }
-        
-        throw error;
-      }
-
-      console.log('✅ Guides loaded successfully:', data?.length || 0, 'files');
-      console.log('📋 Guide data:', data);
-      setGuides(data || []);
-      
-      if (!data || data.length === 0) {
-        console.log('📝 No guides found in bucket');
-        toast({
-          title: "No guides found",
-          description: "Upload your first PDF guide using the form above.",
-        });
-      } else {
-        console.log('🎉 Successfully loaded', data.length, 'guides');
-      }
-      
-    } catch (error: any) {
-      console.error('💥 Error loading guides:', error);
-      const errorMessage = error.message || 'Unknown error occurred';
-      setError(errorMessage);
-      
+      if (error) throw error;
+      setGuides(data ?? []);
+    } catch (err: any) {
+      console.error('Error loading guides:', err);
       toast({
-        title: "Error loading guides",
-        description: errorMessage,
-        variant: "destructive",
+        title: 'Error loading guides',
+        description:
+          err.message?.includes('The resource was not found')
+            ? 'Bucket "guides" is missing. Create it in Supabase ▸ Storage.'
+            : err.message,
+        variant: 'destructive',
       });
       setGuides([]);
     } finally {
-      console.log('🏁 Finished loading guides');
       setLoading(false);
     }
   };
@@ -158,7 +85,7 @@ export const GuideManagement = () => {
         .from('guides')
         .upload(fileName, file, {
           cacheControl: '3600',
-          upsert: false
+          upsert: false,
         });
 
       if (error) {

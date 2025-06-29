@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Upload, FileText, Trash2, Loader2, AlertCircle } from 'lucide-react';
+import { Upload, FileText, Trash2, Loader2, AlertCircle, RefreshCw } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/contexts/AuthContext';
@@ -17,19 +17,47 @@ interface Guide {
 }
 
 export const GuideManagement = () => {
-  const { isAdmin } = useAuth();
+  const { isAdmin, user } = useAuth();
   const { toast } = useToast();
   const [guides, setGuides] = useState<Guide[]>([]);
   const [loading, setLoading] = useState(false);
   const [uploading, setUploading] = useState(false);
   const [deletingFile, setDeletingFile] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const loadGuides = async () => {
+    if (!isAdmin || !user) {
+      console.log('⚠️ User not admin or not authenticated, skipping guide load');
+      return;
+    }
+
     setLoading(true);
+    setError(null);
+    
     try {
       console.log('🔍 Loading guides from storage...');
-      console.log('📊 Network check: This should trigger a request to .../storage/v1/object/list');
+      console.log('👤 Current user:', user.email);
+      console.log('🔐 Admin status:', isAdmin);
       
+      // First, let's check if the bucket exists
+      const { data: buckets, error: bucketError } = await supabase.storage.listBuckets();
+      
+      if (bucketError) {
+        console.error('❌ Error listing buckets:', bucketError);
+        throw new Error(`Bucket error: ${bucketError.message}`);
+      }
+      
+      console.log('📦 Available buckets:', buckets?.map(b => b.name));
+      
+      const guidesBucket = buckets?.find(b => b.name === 'guides');
+      if (!guidesBucket) {
+        throw new Error('Guides bucket not found. Please contact support.');
+      }
+      
+      console.log('✅ Guides bucket found:', guidesBucket);
+      
+      // Now try to list files
+      console.log('📊 Attempting to list files in guides bucket...');
       const { data, error } = await supabase.storage
         .from('guides')
         .list('', { 
@@ -39,19 +67,38 @@ export const GuideManagement = () => {
 
       if (error) {
         console.error('❌ Storage list error:', error);
-        console.error('🚨 Check DevTools Network tab for storage/v1/object/list request');
-        console.error('🚨 Status should be 200. If 403, check RLS policies on storage.objects');
+        console.error('🚨 Error details:', {
+          message: error.message,
+          statusCode: (error as any).statusCode,
+          status: (error as any).status
+        });
+        
+        if (error.message.includes('permission') || error.message.includes('policy') || (error as any).statusCode === 403) {
+          throw new Error('Permission denied. Admin storage policies may need to be updated.');
+        }
+        
         throw error;
       }
 
       console.log('✅ Guides loaded successfully:', data?.length || 0, 'files');
       console.log('📋 Guide data:', data);
       setGuides(data || []);
+      
+      if (data && data.length === 0) {
+        toast({
+          title: "No guides found",
+          description: "Upload your first PDF guide using the form above.",
+        });
+      }
+      
     } catch (error: any) {
       console.error('💥 Error loading guides:', error);
+      const errorMessage = error.message || 'Unknown error occurred';
+      setError(errorMessage);
+      
       toast({
         title: "Error loading guides",
-        description: error.message || "Check console and Network tab for RLS/auth issues",
+        description: errorMessage,
         variant: "destructive",
       });
       setGuides([]);
@@ -89,7 +136,7 @@ export const GuideManagement = () => {
     try {
       const fileName = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9.-]/g, '_')}`;
       console.log('🔄 Uploading file as:', fileName);
-      console.log('📊 Network check: This should trigger a request to .../storage/v1/object (POST)');
+      console.log('👤 Upload by user:', user?.email);
       
       const { data, error } = await supabase.storage
         .from('guides')
@@ -100,8 +147,16 @@ export const GuideManagement = () => {
 
       if (error) {
         console.error('❌ Upload error:', error);
-        console.error('🚨 Check DevTools Network tab for storage/v1/object request');
-        console.error('🚨 Status should be 200. If 403, RLS policy is blocking upload');
+        console.error('🚨 Upload error details:', {
+          message: error.message,
+          statusCode: (error as any).statusCode,
+          status: (error as any).status
+        });
+        
+        if (error.message.includes('permission') || error.message.includes('policy') || (error as any).statusCode === 403) {
+          throw new Error('Permission denied. You may not have admin upload permissions.');
+        }
+        
         throw error;
       }
 
@@ -119,16 +174,9 @@ export const GuideManagement = () => {
     } catch (error: any) {
       console.error('💥 Upload error:', error);
       
-      let errorMessage = "Please try again or contact support.";
-      if (error.message?.includes('policy') || error.message?.includes('permission')) {
-        errorMessage = "RLS policy blocking upload. Check admin permissions.";
-      } else if (error.message?.includes('duplicate')) {
-        errorMessage = "A file with this name already exists.";
-      }
-      
       toast({
         title: "Upload failed",
-        description: errorMessage,
+        description: error.message || "Please try again or contact support.",
         variant: "destructive",
       });
     } finally {
@@ -140,7 +188,7 @@ export const GuideManagement = () => {
     setDeletingFile(fileName);
     try {
       console.log('🗑️ Deleting file:', fileName);
-      console.log('📊 Network check: This should trigger a request to .../storage/v1/object (DELETE)');
+      console.log('👤 Delete by user:', user?.email);
       
       const { error } = await supabase.storage
         .from('guides')
@@ -148,8 +196,16 @@ export const GuideManagement = () => {
 
       if (error) {
         console.error('❌ Delete error:', error);
-        console.error('🚨 Check DevTools Network tab for storage/v1/object DELETE request');
-        console.error('🚨 Status should be 200. If 403, RLS policy is blocking delete');
+        console.error('🚨 Delete error details:', {
+          message: error.message,
+          statusCode: (error as any).statusCode,
+          status: (error as any).status
+        });
+        
+        if (error.message.includes('permission') || error.message.includes('policy') || (error as any).statusCode === 403) {
+          throw new Error('Permission denied. You may not have admin delete permissions.');
+        }
+        
         throw error;
       }
 
@@ -160,11 +216,11 @@ export const GuideManagement = () => {
       });
 
       loadGuides(); // Refresh the list
-    } catch (error) {
+    } catch (error: any) {
       console.error('💥 Delete error:', error);
       toast({
         title: "Delete failed",
-        description: "Check console for RLS/auth issues.",
+        description: error.message || "Please try again or contact support.",
         variant: "destructive",
       });
     } finally {
@@ -173,13 +229,13 @@ export const GuideManagement = () => {
   };
 
   useEffect(() => {
-    if (isAdmin) {
-      console.log('🔐 Admin detected, loading guides...');
+    if (isAdmin && user) {
+      console.log('🔐 Admin user detected, loading guides...');
       loadGuides();
     } else {
-      console.log('⚠️ Non-admin user, guides not loaded');
+      console.log('⚠️ User not admin or not authenticated');
     }
-  }, [isAdmin]);
+  }, [isAdmin, user]);
 
   if (!isAdmin) {
     return (
@@ -211,14 +267,14 @@ export const GuideManagement = () => {
               type="file"
               accept=".pdf"
               onChange={uploadGuide}
-              disabled={uploading}
+              disabled={uploading || loading}
               className="cursor-pointer"
             />
           </div>
           {uploading && (
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <Loader2 className="w-4 h-4 animate-spin" />
-              Uploading... Check Network tab for storage/v1/object requests
+              Uploading PDF guide...
             </div>
           )}
           <p className="text-sm text-muted-foreground">
@@ -235,23 +291,49 @@ export const GuideManagement = () => {
               disabled={loading} 
               variant="outline" 
               size="sm"
+              className="flex items-center gap-2"
             >
               {loading ? (
-                <Loader2 className="w-4 h-4 animate-spin" />
+                <>
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                  Loading...
+                </>
               ) : (
-                'Refresh'
+                <>
+                  <RefreshCw className="w-4 h-4" />
+                  Refresh
+                </>
               )}
             </Button>
           </div>
           
+          {error && (
+            <div className="p-4 border border-red-200 bg-red-50 rounded-lg">
+              <div className="flex items-center gap-2 text-red-800">
+                <AlertCircle className="h-4 w-4" />
+                <span className="font-medium">Error</span>
+              </div>
+              <p className="text-sm text-red-700 mt-1">{error}</p>
+              <Button 
+                onClick={loadGuides} 
+                variant="outline" 
+                size="sm" 
+                className="mt-2"
+                disabled={loading}
+              >
+                Try Again
+              </Button>
+            </div>
+          )}
+          
           {loading ? (
             <div className="flex items-center justify-center py-8">
               <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
-              <span className="ml-2 text-muted-foreground">Loading guides... Check Network tab</span>
+              <span className="ml-2 text-muted-foreground">Loading guides...</span>
             </div>
-          ) : guides.length === 0 ? (
+          ) : guides.length === 0 && !error ? (
             <div className="text-center py-8">
-              <AlertCircle className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+              <FileText className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
               <p className="text-muted-foreground">
                 No guides uploaded yet. Upload your first PDF guide above.
               </p>

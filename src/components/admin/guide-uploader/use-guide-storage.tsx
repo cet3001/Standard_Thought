@@ -1,6 +1,8 @@
 
+// Hook: useGuideStorage
+// Purpose: Fetch and manage guide files in Supabase without overloading the UI.
 import { useState, useCallback } from 'react';
-import { useToast } from '@/hooks/use-toast';
+import { toast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 
 interface Guide {
@@ -14,7 +16,6 @@ interface Guide {
 export const useGuideStorage = () => {
   const [guides, setGuides] = useState<Guide[]>([]);
   const [loading, setLoading] = useState(false);
-  const { toast } = useToast();
 
   const loadGuides = useCallback(async () => {
     setLoading(true);
@@ -47,7 +48,7 @@ export const useGuideStorage = () => {
     } finally {
       setLoading(false);
     }
-  }, [toast]);
+  }, []);
 
   return {
     guides,

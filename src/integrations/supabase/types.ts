@@ -202,6 +202,10 @@ export type Database = {
         Args: Record<PropertyKey, never>
         Returns: string
       }
+      is_admin_user: {
+        Args: Record<PropertyKey, never>
+        Returns: boolean
+      }
       unsubscribe_user: {
         Args: { token: string }
         Returns: boolean

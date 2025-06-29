@@ -1,28 +1,26 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Users } from 'lucide-react';
+import { Users, Loader2 } from 'lucide-react';
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 
 export const SubscriberStatsCard = () => {
-  // Fetch subscriber count with better error handling and debugging
-  const { data: subscriberCount, error: subscriberError } = useQuery({
+  const { data: subscriberCount, error: subscriberError, isLoading } = useQuery({
     queryKey: ['subscriber-count'],
     queryFn: async () => {
       console.log('Fetching subscriber count...');
       
-      // Try different approaches to get the count
       try {
-        // First, try the original query
+        // Try to get active subscribers count first
         const { count, error } = await supabase
           .from('Subscribers')
           .select('*', { count: 'exact', head: true })
           .eq('unsubscribed', false);
         
         if (error) {
-          console.error('Subscriber count error (method 1):', error);
+          console.error('Active subscriber count error:', error);
           
-          // Try without the unsubscribed filter
+          // Try to get total count if active count fails
           const { count: totalCount, error: totalError } = await supabase
             .from('Subscribers')
             .select('*', { count: 'exact', head: true });
@@ -32,7 +30,7 @@ export const SubscriberStatsCard = () => {
             throw totalError;
           }
           
-          console.log('Total subscribers (ignoring unsubscribed status):', totalCount);
+          console.log('Total subscribers (all):', totalCount);
           return totalCount || 0;
         }
         
@@ -43,6 +41,8 @@ export const SubscriberStatsCard = () => {
         throw err;
       }
     },
+    retry: 3,
+    retryDelay: 1000,
   });
 
   return (
@@ -54,8 +54,13 @@ export const SubscriberStatsCard = () => {
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="text-3xl font-bold text-primary">
-          {subscriberError ? (
+        <div className="text-3xl font-bold text-primary flex items-center gap-2">
+          {isLoading ? (
+            <>
+              <Loader2 className="w-6 h-6 animate-spin" />
+              <span className="text-lg">Loading...</span>
+            </>
+          ) : subscriberError ? (
             <span className="text-sm text-destructive">
               Error loading count
             </span>

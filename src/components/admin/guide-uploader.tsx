@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -33,30 +34,9 @@ export const GuideUploader = () => {
     try {
       console.log('Loading guides from storage...');
       
-      // First check if the bucket exists
-      const { data: buckets, error: bucketError } = await supabase.storage.listBuckets();
-      
-      if (bucketError) {
-        console.error('Error checking buckets:', bucketError);
-        throw new Error('Cannot access storage buckets');
-      }
-      
-      const guidesBucket = buckets.find(bucket => bucket.id === 'guides');
-      if (!guidesBucket) {
-        console.log('Guides bucket does not exist');
-        toast({
-          title: "Storage bucket missing",
-          description: "The guides storage bucket hasn't been created yet. Please contact support.",
-          variant: "destructive",
-        });
-        return;
-      }
-      
-      console.log('Guides bucket found:', guidesBucket);
-      
       const { data, error } = await supabase.storage
         .from('guides')
-        .list();
+        .list('', { sortBy: { column: 'created_at', order: 'desc' } });
 
       if (error) {
         console.error('Error loading guides:', error);
@@ -69,7 +49,7 @@ export const GuideUploader = () => {
       console.error('Error loading guides:', error);
       toast({
         title: "Error loading guides",
-        description: error.message || "Please try again or check if the storage bucket exists.",
+        description: error.message || "Check RLS on storage.objects.",
         variant: "destructive",
       });
     } finally {
@@ -107,19 +87,6 @@ export const GuideUploader = () => {
       const fileName = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9.-]/g, '_')}`;
       console.log('Uploading file as:', fileName);
       
-      // First check if the bucket exists
-      const { data: buckets, error: bucketError } = await supabase.storage.listBuckets();
-      
-      if (bucketError) {
-        console.error('Error checking buckets:', bucketError);
-        throw new Error('Cannot access storage. Please check your permissions.');
-      }
-      
-      const guidesBucket = buckets.find(bucket => bucket.id === 'guides');
-      if (!guidesBucket) {
-        throw new Error('Guides storage bucket does not exist. Please contact support to set it up.');
-      }
-      
       const { data, error } = await supabase.storage
         .from('guides')
         .upload(fileName, file, {
@@ -147,11 +114,7 @@ export const GuideUploader = () => {
       console.error('Upload error:', error);
       
       let errorMessage = "Please try again or contact support.";
-      if (error.message?.includes('bucket does not exist')) {
-        errorMessage = "Storage bucket is not set up. Please contact support.";
-      } else if (error.message?.includes('storage')) {
-        errorMessage = "Storage access issue. Please check the setup.";
-      } else if (error.message?.includes('policy') || error.message?.includes('permission')) {
+      if (error.message?.includes('policy') || error.message?.includes('permission')) {
         errorMessage = "You don't have permission to upload files. Please check your admin status.";
       } else if (error.message?.includes('duplicate')) {
         errorMessage = "A file with this name already exists.";

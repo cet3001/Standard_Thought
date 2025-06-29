@@ -20,7 +20,6 @@ import StartInvestingGuide from "@/pages/StartInvestingGuide";
 import FinancialEducationGuide from "@/pages/FinancialEducationGuide";
 import WealthBuildingStrategies from "@/pages/WealthBuildingStrategies";
 import FAQ from "@/pages/FAQ";
-import AdminEmail from "@/pages/AdminEmail";
 import { AuthProvider } from "./contexts/AuthContext";
 import { Toaster } from "@/components/ui/toaster"
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -53,7 +52,6 @@ function App() {
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="/terms-of-service" element={<TermsOfService />} />
               <Route path="/image-generator" element={<ImageGeneratorPage />} />
-              <Route path="/admin-email" element={<AdminEmail />} />
             </Routes>
           </div>
         </AuthProvider>

@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -39,8 +38,18 @@ export const GuideManagement = () => {
       console.log('👤 Current user:', user.email);
       console.log('🔐 Admin status:', isAdmin);
       
-      // First, let's check if the bucket exists
-      const { data: buckets, error: bucketError } = await supabase.storage.listBuckets();
+      // Add timeout to prevent hanging
+      const timeoutPromise = new Promise<never>((_, reject) => {
+        setTimeout(() => reject(new Error('Storage request timed out after 10 seconds')), 10000);
+      });
+      
+      console.log('📦 Step 1: Checking bucket existence...');
+      
+      // First, let's check if the bucket exists with timeout
+      const bucketListPromise = supabase.storage.listBuckets();
+      const bucketResult = await Promise.race([bucketListPromise, timeoutPromise]);
+      
+      const { data: buckets, error: bucketError } = bucketResult;
       
       if (bucketError) {
         console.error('❌ Error listing buckets:', bucketError);
@@ -56,14 +65,17 @@ export const GuideManagement = () => {
       
       console.log('✅ Guides bucket found:', guidesBucket);
       
-      // Now try to list files
-      console.log('📊 Attempting to list files in guides bucket...');
-      const { data, error } = await supabase.storage
+      // Now try to list files with timeout
+      console.log('📊 Step 2: Listing files in guides bucket...');
+      const fileListPromise = supabase.storage
         .from('guides')
         .list('', { 
           sortBy: { column: 'created_at', order: 'desc' },
           limit: 100
         });
+      
+      const fileResult = await Promise.race([fileListPromise, timeoutPromise]);
+      const { data, error } = fileResult;
 
       if (error) {
         console.error('❌ Storage list error:', error);
@@ -84,11 +96,14 @@ export const GuideManagement = () => {
       console.log('📋 Guide data:', data);
       setGuides(data || []);
       
-      if (data && data.length === 0) {
+      if (!data || data.length === 0) {
+        console.log('📝 No guides found in bucket');
         toast({
           title: "No guides found",
           description: "Upload your first PDF guide using the form above.",
         });
+      } else {
+        console.log('🎉 Successfully loaded', data.length, 'guides');
       }
       
     } catch (error: any) {
@@ -103,6 +118,7 @@ export const GuideManagement = () => {
       });
       setGuides([]);
     } finally {
+      console.log('🏁 Finished loading guides');
       setLoading(false);
     }
   };

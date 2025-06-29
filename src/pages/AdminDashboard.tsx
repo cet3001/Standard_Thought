@@ -1,13 +1,31 @@
 
+// Page: AdminDashboard
+// Purpose: Give admins one spot to manage guides and newsletters.
 import { useAuth } from "@/contexts/AuthContext";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Navigation from "@/components/navigation";
+import { GuideUploader } from '@/components/admin/guide-uploader';
 import { SubscriberStats } from '@/components/admin/SubscriberStats';
 import { EmailComposer } from '@/components/admin/EmailComposer';
-import { EmailPreview } from '@/components/admin/EmailPreview';
+import { useQuery } from '@tanstack/react-query';
+import { supabase } from '@/integrations/supabase/client';
 
 const AdminDashboard = () => {
   const { isAdmin } = useAuth();
+
+  // grab subscriber count once so multiple components can share it
+  const { data: subscriberCount = 0 } = useQuery({
+    queryKey: ["subscriber-count"],
+    queryFn: async () => {
+      const { count, error } = await supabase
+        .from("Subscribers")
+        .select("*", { count: "exact", head: true })
+        .eq("unsubscribed", false);
+      if (error) throw error;
+      return count ?? 0;
+    },
+    staleTime: 60_000,
+  });
 
   if (!isAdmin) {
     return (
@@ -41,23 +59,21 @@ const AdminDashboard = () => {
       </div>
 
       {/* Main Content */}
-      <main className="container mx-auto px-4 pt-24 pb-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {/* Subscriber Stats */}
-          <div className="min-h-[200px] border border-gray-300 rounded-lg">
-            <SubscriberStats />
-          </div>
+      <main className="container mx-auto px-4 pt-24 pb-16 space-y-10 max-w-5xl">
+        <h1 className="text-3xl font-bold text-center mb-2">Admin Dashboard</h1>
+        <p className="text-center text-muted-foreground mb-8">
+          Manage guides & newsletters.
+        </p>
+        <div className="grid md:grid-cols-2 gap-8">
+          {/* Left column: Guide management */}
+          <GuideUploader />
 
-          {/* Email Composer */}
-          <div className="min-h-[200px] border border-gray-300 rounded-lg">
-            <EmailComposer />
-          </div>
-
-          {/* Email Preview */}
-          <div className="min-h-[200px] border border-gray-300 rounded-lg col-span-full">
-            <EmailPreview />
-          </div>
+          {/* Right column: subscriber stats */}
+          <SubscriberStats />
         </div>
+
+        {/* Compose email */}
+        <EmailComposer subscriberCount={subscriberCount} />
       </main>
     </div>
   );

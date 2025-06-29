@@ -13,38 +13,6 @@ export const useGuideManagement = () => {
   const [uploading, setUploading] = useState(false);
   const [deletingFile, setDeletingFile] = useState<string | null>(null);
 
-  const listBuckets = async () => {
-    try {
-      console.log('🗂️ Listing all storage buckets...');
-      const { data, error } = await supabase.storage.listBuckets();
-      
-      if (error) {
-        console.error('❌ Error listing buckets:', error);
-        toast({
-          title: 'Error listing buckets',
-          description: error.message,
-          variant: 'destructive',
-        });
-        return;
-      }
-      
-      console.log('✅ Available buckets:', data);
-      toast({
-        title: 'Buckets listed successfully',
-        description: `Found ${data?.length || 0} buckets. Check console for details.`,
-      });
-      
-      return data;
-    } catch (error: any) {
-      console.error('💥 Bucket listing error:', error);
-      toast({
-        title: 'Failed to list buckets',
-        description: error.message || 'Unknown error occurred',
-        variant: 'destructive',
-      });
-    }
-  };
-
   const loadGuides = useCallback(async () => {
     setLoading(true);
     try {
@@ -190,6 +158,5 @@ export const useGuideManagement = () => {
     loadGuides,
     uploadGuide,
     deleteGuide,
-    listBuckets, // New function exposed
   };
 };

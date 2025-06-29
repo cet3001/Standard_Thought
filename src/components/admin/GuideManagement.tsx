@@ -16,7 +16,6 @@ export const GuideManagement = () => {
     loadGuides,
     uploadGuide,
     deleteGuide,
-    listBuckets, // New function
   } = useGuideManagement();
 
   if (!isAdmin) {
@@ -52,7 +51,6 @@ export const GuideManagement = () => {
           deletingFile={deletingFile}
           onRefresh={loadGuides}
           onDelete={deleteGuide}
-          onListBuckets={listBuckets} // Pass the new function
         />
       </CardContent>
     </Card>

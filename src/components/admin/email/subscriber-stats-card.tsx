@@ -8,34 +8,19 @@ export const SubscriberStatsCard = () => {
   const { data: subscriberCount, error: subscriberError, isLoading } = useQuery({
     queryKey: ['subscriber-count'],
     queryFn: async () => {
-      console.log('Fetching subscriber count...');
+      console.log('Fetching subscriber count using RPC...');
       
       try {
-        // Try to get active subscribers count first
-        const { count, error } = await supabase
-          .from('Subscribers')
-          .select('*', { count: 'exact', head: true })
-          .eq('unsubscribed', false);
+        // ✅ Use the secure RPC function
+        const { data, error } = await supabase.rpc('active_subscriber_count');
         
         if (error) {
-          console.error('Active subscriber count error:', error);
-          
-          // Try to get total count if active count fails
-          const { count: totalCount, error: totalError } = await supabase
-            .from('Subscribers')
-            .select('*', { count: 'exact', head: true });
-          
-          if (totalError) {
-            console.error('Total subscriber count error:', totalError);
-            throw totalError;
-          }
-          
-          console.log('Total subscribers (all):', totalCount);
-          return totalCount || 0;
+          console.error('RPC subscriber count error:', error);
+          throw error;
         }
         
-        console.log('Active subscribers:', count);
-        return count || 0;
+        console.log('Active subscribers from RPC:', data);
+        return data ?? 0;
       } catch (err) {
         console.error('Error fetching subscriber count:', err);
         throw err;

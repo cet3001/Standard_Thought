@@ -21,30 +21,7 @@ export const useGuideStorage = () => {
     try {
       console.log('Loading guides from storage...');
       
-      // First ensure the bucket exists
-      const { data: buckets, error: bucketsError } = await supabase.storage.listBuckets();
-      console.log('Available buckets:', buckets);
-      
-      if (bucketsError) {
-        console.error('Error listing buckets:', bucketsError);
-      }
-      
-      const guidesBucket = buckets?.find(bucket => bucket.name === 'guides');
-      if (!guidesBucket) {
-        console.log('Guides bucket not found, creating it...');
-        const { data: newBucket, error: createError } = await supabase.storage.createBucket('guides', {
-          public: true,
-          allowedMimeTypes: ['application/pdf'],
-          fileSizeLimit: 10485760 // 10MB
-        });
-        
-        if (createError) {
-          console.error('Error creating guides bucket:', createError);
-          throw new Error('Failed to create guides storage bucket');
-        }
-        console.log('Created guides bucket:', newBucket);
-      }
-
+      // ✅ Just list objects in the bucket - no admin calls
       const { data, error } = await supabase.storage
         .from('guides')
         .list('', { 
@@ -63,7 +40,7 @@ export const useGuideStorage = () => {
       console.error('Error loading guides:', error);
       toast({
         title: "Error loading guides",
-        description: error.message || "Check storage permissions or create the guides bucket.",
+        description: error.message || "Check RLS on storage.objects or ensure the guides bucket exists.",
         variant: "destructive",
       });
       setGuides([]);

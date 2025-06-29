@@ -13,23 +13,13 @@ export const AdminEmailContent = () => {
   const [subject, setSubject] = useState('');
   const [content, setContent] = useState('');
 
-  // Fetch subscriber count for the email composer
+  // Fetch subscriber count using the secure RPC function
   const { data: subscriberCount = 0 } = useQuery({
     queryKey: ['subscriber-count'],
     queryFn: async () => {
-      const { count, error } = await supabase
-        .from('Subscribers')
-        .select('*', { count: 'exact', head: true })
-        .eq('unsubscribed', false);
-      
-      if (error) {
-        const { count: totalCount } = await supabase
-          .from('Subscribers')
-          .select('*', { count: 'exact', head: true });
-        return totalCount || 0;
-      }
-      
-      return count || 0;
+      const { data, error } = await supabase.rpc('active_subscriber_count');
+      if (error) throw error;
+      return data ?? 0;
     },
     enabled: isAdmin,
   });

@@ -190,6 +190,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      active_subscriber_count: {
+        Args: Record<PropertyKey, never>
+        Returns: number
+      }
       generate_slug: {
         Args: { title: string }
         Returns: string

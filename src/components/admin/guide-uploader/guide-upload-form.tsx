@@ -45,6 +45,7 @@ export const GuideUploadForm = ({ onUploadSuccess }: GuideUploadFormProps) => {
       const fileName = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9.-]/g, '_')}`;
       console.log('Uploading file as:', fileName);
       
+      // ✅ Direct upload without admin checks
       const { data, error } = await supabase.storage
         .from('guides')
         .upload(fileName, file, {

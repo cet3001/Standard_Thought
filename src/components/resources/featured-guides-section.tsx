@@ -76,12 +76,12 @@ const FeaturedGuidesSection = () => {
           </div>
 
           <CardHeader className="p-0">
-            {/* Guide Cover Image */}
+            {/* Guide Cover Image - Made smaller */}
             <div className="relative overflow-hidden rounded-t-lg">
               <OptimizedImage
                 src="/lovable-uploads/b4e3b459-4253-40a2-bc9a-74ec02d85e18.png"
                 alt="The $10K Starter Blueprint - Premium Investing Playbook Cover"
-                className="w-full h-48 md:h-56 object-cover group-hover:scale-105 transition-transform duration-300"
+                className="w-full h-32 md:h-40 object-cover group-hover:scale-105 transition-transform duration-300"
                 priority={true}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>

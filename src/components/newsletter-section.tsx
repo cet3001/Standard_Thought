@@ -29,7 +29,7 @@ export const NewsletterSection = () => {
   return (
     <section 
       data-section="newsletter" 
-      className="py-16 sm:py-20 relative overflow-hidden bg-[rgba(96,96,96,0.4)]"
+      className="py-16 sm:py-20 relative overflow-hidden"
     >
       {/* Urban Background - Now pushed behind with -z-10 */}
       <NewsletterBackground />

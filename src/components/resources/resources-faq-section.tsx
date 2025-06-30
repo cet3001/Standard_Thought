@@ -1,4 +1,3 @@
-
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import HeaderHierarchy from "@/components/content-structure/header-hierarchy";
 import FAQSchema from "@/components/seo/faq-schema";
@@ -178,7 +177,8 @@ const ResourcesFAQSection = () => {
                 backgroundSize: '100% 100%, 15px 15px, 25px 25px, 20px 20px',
                 border: '2px solid rgba(0,0,0,0.1)',
                 boxShadow: `
-                  4px 4px 0px rgba(0,0,0,0.1),
+                  8px 8px 0px rgba(0,0,0,0.15),
+                  4px 4px 12px rgba(0,0,0,0.2),
                   inset 1px 1px 0px rgba(255,255,255,0.5),
                   inset -1px -1px 0px rgba(0,0,0,0.05)
                 `,
@@ -246,7 +246,16 @@ const ResourcesFAQSection = () => {
                     </div>
                   </div>
                   
-                  <HeaderHierarchy level={3} className="mb-0 text-lg md:text-xl font-bold leading-tight flex-1 text-left group-hover:text-[#f8e71c] transition-colors">
+                  <HeaderHierarchy 
+                    level={3} 
+                    className="mb-0 text-lg md:text-xl leading-tight flex-1 text-left group-hover:text-[#f8e71c] transition-colors"
+                    style={{
+                      fontFamily: "'Permanent Marker', 'Kalam', cursive",
+                      fontWeight: 'bold',
+                      textShadow: '2px 2px 0px rgba(0,0,0,0.3), 1px 1px 2px rgba(0,0,0,0.2)',
+                      letterSpacing: '0.5px'
+                    }}
+                  >
                     {faq.question}
                   </HeaderHierarchy>
                 </div>
@@ -254,15 +263,37 @@ const ResourcesFAQSection = () => {
               
               <AccordionContent className="px-6 pb-6 pt-2 relative z-10">
                 <div className="ml-16">
-                  <p className="text-[#0A0A0A]/80 dark:text-brand-cream/80 text-base md:text-lg leading-relaxed">
-                    {faq.answer}
-                  </p>
+                  <p 
+                    className="text-[#0A0A0A]/80 dark:text-brand-cream/80 text-base md:text-lg leading-relaxed"
+                    dangerouslySetInnerHTML={{
+                      __html: faq.answer
+                        .replace(/(\$10|spare change investing|credit building|secured cards|3-6 months|30-90 days|get-rich-smart)/gi, 
+                          '<span style="background: linear-gradient(45deg, #FFD700, #F4D03F, #FFEB3B); background-size: 200% 200%; animation: pearlescent 3s ease-in-out infinite; padding: 2px 4px; border-radius: 3px; font-weight: 600; text-shadow: 1px 1px 0px rgba(0,0,0,0.2);">$&</span>')
+                        .replace(/(Hell yeah|Real talk|Nah, this is different)/gi,
+                          '<span style="background: linear-gradient(45deg, #FFD700, #F4D03F, #FFEB3B); background-size: 200% 200%; animation: pearlescent 3s ease-in-out infinite; padding: 2px 4px; border-radius: 3px; font-weight: 600; text-shadow: 1px 1px 0px rgba(0,0,0,0.2);">$&</span>')
+                    }}
+                  />
                 </div>
               </AccordionContent>
             </AccordionItem>
           ))}
         </Accordion>
       </div>
+
+      {/* Add pearlescent animation styles */}
+      <style jsx>{`
+        @keyframes pearlescent {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+      `}</style>
     </section>
   );
 };

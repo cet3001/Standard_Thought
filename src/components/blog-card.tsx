@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Calendar, Clock, Star } from "lucide-react";
 import { trackBlogRead } from "@/lib/analytics-utils";
@@ -43,53 +43,32 @@ const BlogCard = ({ post, index, isVisible }: BlogCardProps) => {
     setImageError(true);
   };
 
-  // Generate SEO-rich ALT text
   const imageAlt = post.image_url 
-    ? `${post.title} - ${post.category} story on Standardthought: Building legacy from nothing`
-    : `Standardthought ${post.category} article placeholder`;
-
-  // Check if this is a "RAW PICK" (featured story)
-  const isRawPick = post.featured;
+    ? `${post.title} - ${post.category} story on Standardthought`
+    : `Standardthought ${post.category} article`;
 
   return (
     <Card 
       onClick={handleCardClick}
-      className={`cursor-pointer bg-white/90 dark:bg-brand-black/80 backdrop-blur-sm border-none rounded-none overflow-hidden group transition-all duration-1000 relative
+      className={`cursor-pointer bg-white/90 dark:bg-brand-black/80 backdrop-blur-sm border border-white/20 dark:border-brand-cream/20 rounded-lg overflow-hidden group transition-all duration-1000 shadow-lg hover:shadow-xl hover:scale-105 transform-gpu relative
         ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
-        /* Torn paper effect */
-        before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-2 before:bg-white/90 dark:before:bg-brand-black/80
-        before:shadow-[0_3px_0_0_rgba(0,0,0,0.1)] before:z-10
-        after:content-[''] after:absolute after:top-0 after:left-0 after:right-0 after:h-2
-        after:bg-gradient-to-r after:from-transparent after:via-[#247EFF]/20 after:to-transparent
-        /* Notebook margin line */
-        shadow-lg hover:shadow-xl hover:scale-105 transform-gpu
-        bg-[linear-gradient(to_right,#ff6b6b_1px,transparent_1px)] bg-[size:24px_100%] bg-[position:24px_0]
-        bg-[linear-gradient(to_bottom,transparent_32px,#e5e7eb_32px,#e5e7eb_33px,transparent_33px)] bg-[size:100%_33px]
       `}
       style={{ 
-        animationDelay: `${0.2 + index * 0.1}s`,
-        // Add subtle paper texture
-        backgroundImage: `
-          linear-gradient(90deg, rgba(255,107,107,0.3) 1px, transparent 1px),
-          linear-gradient(180deg, transparent 32px, rgba(229,231,235,0.4) 32px, rgba(229,231,235,0.4) 33px, transparent 33px)
-        `,
-        backgroundSize: '24px 100%, 100% 33px',
-        backgroundPosition: '24px 0, 0 0'
+        animationDelay: `${0.2 + index * 0.1}s`
       }}
     >
-      {/* RAW PICK Badge */}
-      {isRawPick && (
+      {/* Featured Badge */}
+      {post.featured && (
         <div className="absolute top-4 right-4 z-20">
           <div 
-            className="bg-[#FF6B6B] text-white px-3 py-1 text-xs font-bold transform rotate-12 shadow-md"
+            className="bg-[#FFD700] text-black px-3 py-1 text-xs font-bold transform rotate-12 shadow-md rounded"
             style={{ 
               fontFamily: "'Permanent Marker', 'Kalam', cursive",
-              textShadow: '1px 1px 0px rgba(0,0,0,0.5)',
-              clipPath: 'polygon(0% 0%, 85% 0%, 100% 50%, 85% 100%, 0% 100%)'
+              textShadow: '1px 1px 0px rgba(0,0,0,0.2)'
             }}
           >
             <Star className="w-3 h-3 inline mr-1 fill-current" />
-            RAW PICK
+            FEATURED
           </div>
         </div>
       )}
@@ -114,16 +93,8 @@ const BlogCard = ({ post, index, isVisible }: BlogCardProps) => {
         </div>
       </CardHeader>
       
-      <CardContent className="p-6 relative z-10">
-        {/* Typewriter-style title */}
-        <h3 
-          className="text-xl font-bold mb-3 line-clamp-2 group-hover:text-[#247EFF] transition-colors text-brand-black dark:text-brand-cream"
-          style={{ 
-            fontFamily: "'IBM Plex Sans', 'Courier New', monospace",
-            letterSpacing: '0.5px',
-            lineHeight: '1.3'
-          }}
-        >
+      <CardContent className="p-6">
+        <h3 className="text-xl font-bold mb-3 line-clamp-2 group-hover:text-[#247EFF] transition-colors text-brand-black dark:text-brand-cream">
           {post.title}
         </h3>
         

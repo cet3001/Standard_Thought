@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
@@ -26,7 +25,10 @@ const BlogShowcase = () => {
 
   const fetchFeaturedPosts = useCallback(async () => {
     try {
-      const { data, error } = await supabase
+      console.log('Fetching blog posts for showcase...');
+      
+      // First try to get featured posts
+      const { data: featured, error: featuredError } = await supabase
         .from('blog_posts')
         .select('*')
         .eq('published', true)
@@ -34,28 +36,36 @@ const BlogShowcase = () => {
         .order('created_at', { ascending: false })
         .limit(3);
 
-      if (error) {
-        console.error('Error fetching featured posts:', error);
-        // Fallback to any published posts if no featured posts exist
-        const { data: allPosts, error: allError } = await supabase
-          .from('blog_posts')
-          .select('*')
-          .eq('published', true)
-          .order('created_at', { ascending: false })
-          .limit(3);
+      if (featuredError) {
+        console.error('Error fetching featured posts:', featuredError);
+      }
 
-        if (allError) {
-          console.error('Error fetching all posts:', allError);
-          setFeaturedPosts(fallbackPosts);
-        } else {
-          setFeaturedPosts(allPosts || fallbackPosts);
-        }
+      // If we have featured posts, use them
+      if (featured && featured.length > 0) {
+        console.log('Found featured posts:', featured.length);
+        setFeaturedPosts(featured);
+        setLoading(false);
+        return;
+      }
+
+      // Otherwise, get any published posts
+      const { data: allPosts, error: allError } = await supabase
+        .from('blog_posts')
+        .select('*')
+        .eq('published', true)
+        .order('created_at', { ascending: false })
+        .limit(3);
+
+      if (allError) {
+        console.error('Error fetching all posts:', allError);
+        setFeaturedPosts([]);
       } else {
-        setFeaturedPosts(data || fallbackPosts);
+        console.log('Found published posts:', allPosts?.length || 0);
+        setFeaturedPosts(allPosts || []);
       }
     } catch (error: unknown) {
       console.error('Fetch error:', error);
-      setFeaturedPosts(fallbackPosts);
+      setFeaturedPosts([]);
     } finally {
       setLoading(false);
     }
@@ -65,42 +75,6 @@ const BlogShowcase = () => {
     setIsVisible(true);
     fetchFeaturedPosts();
   }, [fetchFeaturedPosts]);
-
-  // Fallback posts for when no posts exist yet
-  const fallbackPosts = [
-    {
-      id: "1",
-      title: "From the Mud to Momentum",
-      excerpt: "How one builder went from \"nobody\" to owning every room. The moves, the missteps, and what finally clicked.",
-      image_url: "/placeholder.svg",
-      created_at: "2024-01-15",
-      category: "Hustle",
-      featured: true,
-      slug: "from-the-mud-to-momentum"
-    },
-    {
-      id: "2",
-      title: "No Blueprint? No Problem.",
-      excerpt: "Turning chaos into strategy when you've got zero safety net. The scrappy way to level up and last.",
-      image_url: "/placeholder.svg",
-      created_at: "2024-01-12",
-      category: "Gameplan",
-      featured: true,
-      slug: "no-blueprint-no-problem"
-    },
-    {
-      id: "3",
-      title: "Plugged In: Building Connections When You Know No One",
-      excerpt: "How first-gens, outsiders, and solo strivers build their own table—and never look back.",
-      image_url: "/placeholder.svg",
-      created_at: "2024-01-10",
-      category: "Network",
-      featured: true,
-      slug: "plugged-in-building-connections"
-    }
-  ];
-
-  const postsToShow = featuredPosts.length > 0 ? featuredPosts : fallbackPosts;
 
   return (
     <section className="py-24 relative overflow-hidden" aria-labelledby="blog-showcase-heading">
@@ -135,8 +109,16 @@ const BlogShowcase = () => {
 
       <div className="container mx-auto px-6 relative z-10">
         <BlogShowcaseHeader isVisible={isVisible} />
-
-        <BlogShowcaseGrid posts={postsToShow} loading={loading} isVisible={isVisible} />
+        <BlogShowcaseGrid posts={featuredPosts} loading={loading} isVisible={isVisible} />
+        
+        {/* Show message if no posts found */}
+        {!loading && featuredPosts.length === 0 && (
+          <div className="text-center py-12">
+            <p className="text-xl text-brand-black/70 dark:text-brand-cream/70">
+              New stories coming soon. Check back for fresh content from the community.
+            </p>
+          </div>
+        )}
       </div>
     </section>
   );

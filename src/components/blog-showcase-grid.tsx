@@ -25,23 +25,10 @@ const BlogShowcaseGrid = ({ posts, loading, isVisible }: BlogShowcaseGridProps) 
         {[...Array(3)].map((_, index) => (
           <div 
             key={index} 
-            className="bg-white/90 dark:bg-brand-black/80 backdrop-blur-sm border-none rounded-none overflow-hidden animate-pulse shadow-lg relative"
-            style={{
-              // Add paper texture to loading cards too
-              backgroundImage: `
-                linear-gradient(90deg, rgba(255,107,107,0.3) 1px, transparent 1px),
-                linear-gradient(180deg, transparent 32px, rgba(229,231,235,0.4) 32px, rgba(229,231,235,0.4) 33px, transparent 33px)
-              `,
-              backgroundSize: '24px 100%, 100% 33px',
-              backgroundPosition: '24px 0, 0 0'
-            }}
+            className="bg-white/90 dark:bg-brand-black/80 backdrop-blur-sm border border-white/20 dark:border-brand-cream/20 rounded-lg overflow-hidden animate-pulse shadow-lg hover:shadow-xl transition-all duration-300"
           >
-            {/* Torn paper effect for loading cards */}
-            <div className="absolute top-0 left-0 right-0 h-2 bg-white/90 dark:bg-brand-black/80 shadow-[0_3px_0_0_rgba(0,0,0,0.1)] z-10"></div>
-            <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-transparent via-[#247EFF]/20 to-transparent"></div>
-            
-            <div className="h-48 bg-gradient-to-r from-accent/10 via-accent/20 to-accent/10 bg-[length:200%_100%]"></div>
-            <div className="p-6 relative z-10">
+            <div className="h-48 bg-gradient-to-r from-accent/10 via-accent/20 to-accent/10"></div>
+            <div className="p-6">
               <div className="h-6 bg-accent/20 rounded mb-3 w-3/4"></div>
               <div className="space-y-2 mb-4">
                 <div className="h-4 bg-accent/20 rounded"></div>
@@ -57,6 +44,10 @@ const BlogShowcaseGrid = ({ posts, loading, isVisible }: BlogShowcaseGridProps) 
         ))}
       </div>
     );
+  }
+
+  if (posts.length === 0) {
+    return null;
   }
 
   return (

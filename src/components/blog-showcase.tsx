@@ -1,6 +1,8 @@
+
 import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import { supabase } from "@/integrations/supabase/client";
+import { useQuery } from "@tanstack/react-query";
+import { getPosts } from "@/lib/api";
 import BlogShowcaseHeader from "./blog-showcase-header";
 import BlogShowcaseGrid from "./blog-showcase-grid";
 import { useUrbanTexture } from "@/hooks/use-urban-texture";
@@ -18,63 +20,42 @@ interface BlogPost {
 
 const BlogShowcase = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [featuredPosts, setFeaturedPosts] = useState<BlogPost[]>([]);
-  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const { textureImageUrl } = useUrbanTexture();
 
-  const fetchFeaturedPosts = useCallback(async () => {
-    try {
-      console.log('Fetching blog posts for showcase...');
-      
-      // First try to get featured posts
-      const { data: featured, error: featuredError } = await supabase
-        .from('blog_posts')
-        .select('*')
-        .eq('published', true)
-        .eq('featured', true)
-        .order('created_at', { ascending: false })
-        .limit(3);
+  console.log('BlogShowcase: Component rendering...');
 
-      if (featuredError) {
-        console.error('Error fetching featured posts:', featuredError);
-      }
+  const {
+    data: posts,
+    isLoading,
+    isError,
+    error,
+  } = useQuery({
+    queryKey: ['showcase-posts'],
+    queryFn: getPosts,
+    retry: 2,
+    staleTime: 5 * 60 * 1000, // 5 minutes
+  });
 
-      // If we have featured posts, use them
-      if (featured && featured.length > 0) {
-        console.log('Found featured posts:', featured.length);
-        setFeaturedPosts(featured);
-        setLoading(false);
-        return;
-      }
+  console.log('BlogShowcase: Posts loading:', isLoading, 'Posts data:', posts?.length);
 
-      // Otherwise, get any published posts
-      const { data: allPosts, error: allError } = await supabase
-        .from('blog_posts')
-        .select('*')
-        .eq('published', true)
-        .order('created_at', { ascending: false })
-        .limit(3);
+  // Get featured posts first, then fall back to recent posts
+  const featuredPosts = posts ? 
+    posts.filter(post => post.featured).slice(0, 3) : [];
+  
+  const displayPosts = featuredPosts.length > 0 ? 
+    featuredPosts : 
+    (posts ? posts.slice(0, 3) : []);
 
-      if (allError) {
-        console.error('Error fetching all posts:', allError);
-        setFeaturedPosts([]);
-      } else {
-        console.log('Found published posts:', allPosts?.length || 0);
-        setFeaturedPosts(allPosts || []);
-      }
-    } catch (error: unknown) {
-      console.error('Fetch error:', error);
-      setFeaturedPosts([]);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
+  console.log('BlogShowcase: Featured posts:', featuredPosts.length, 'Display posts:', displayPosts.length);
 
   useEffect(() => {
     setIsVisible(true);
-    fetchFeaturedPosts();
-  }, [fetchFeaturedPosts]);
+  }, []);
+
+  if (isError) {
+    console.log('BlogShowcase: Error fetching posts:', error);
+  }
 
   return (
     <section className="py-24 relative overflow-hidden" aria-labelledby="blog-showcase-heading">
@@ -109,10 +90,10 @@ const BlogShowcase = () => {
 
       <div className="container mx-auto px-6 relative z-10">
         <BlogShowcaseHeader isVisible={isVisible} />
-        <BlogShowcaseGrid posts={featuredPosts} loading={loading} isVisible={isVisible} />
+        <BlogShowcaseGrid posts={displayPosts} loading={isLoading} isVisible={isVisible} />
         
         {/* Show message if no posts found */}
-        {!loading && featuredPosts.length === 0 && (
+        {!isLoading && displayPosts.length === 0 && (
           <div className="text-center py-12">
             <p className="text-xl text-brand-black/70 dark:text-brand-cream/70">
               New stories coming soon. Check back for fresh content from the community.

@@ -1,3 +1,4 @@
+
 import BlogHero from "./blog-hero";
 import FeaturedRecentPosts from "./featured-recent-posts";
 import FeaturedStoriesSection from "./featured-stories-section";
@@ -6,7 +7,7 @@ import BlogFiltersSection from "./blog-filters-section";
 import BlogGrid from "./blog-grid";
 import RealBuilderWinsStrip from "./real-builder-wins-strip";
 import Empty from "@/components/ui/empty";
-import { Post } from "@/lib/types";
+import { Post } from "@/lib/api";
 
 interface BlogPageContentProps {
   posts: Post[] | null;

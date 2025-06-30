@@ -44,6 +44,7 @@ export interface CreateBlogPostData {
 }
 
 export const getBlogPosts = async (): Promise<BlogPost[]> => {
+  console.log('Fetching blog posts...');
   const { data, error } = await supabase
     .from('blog_posts')
     .select('*')
@@ -55,10 +56,12 @@ export const getBlogPosts = async (): Promise<BlogPost[]> => {
     throw error;
   }
 
+  console.log('Found blog posts:', data?.length || 0);
   return data || [];
 };
 
 export const getPosts = async (): Promise<Post[]> => {
+  console.log('Fetching posts...');
   const { data, error } = await supabase
     .from('blog_posts')
     .select('*')
@@ -70,6 +73,7 @@ export const getPosts = async (): Promise<Post[]> => {
     throw error;
   }
 
+  console.log('Found posts:', data?.length || 0);
   return data || [];
 };
 

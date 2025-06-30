@@ -28,31 +28,28 @@ const FAQCard = ({ faq, index }: FAQCardProps) => {
           ${98 + Math.random() * 1}% ${97 + Math.random() * 2}%, 
           ${1 + Math.random() * 2}% ${98 + Math.random() * 1}%
         )`,
-        // Concrete texture overlay
+        // Transparent concrete texture overlay - removed heavy white background
         background: `
-          linear-gradient(135deg, 
-            rgba(255,255,255,0.9) 0%, 
-            rgba(248,248,248,0.85) 50%, 
-            rgba(240,240,240,0.8) 100%
-          ),
+          rgba(255,255,255,0.15),
           radial-gradient(circle at 20% 30%, rgba(0,0,0,0.05) 1px, transparent 1px),
           radial-gradient(circle at 80% 70%, rgba(0,0,0,0.03) 1px, transparent 1px),
           radial-gradient(circle at 40% 80%, rgba(0,0,0,0.04) 1px, transparent 1px)
         `,
         backgroundSize: '100% 100%, 15px 15px, 25px 25px, 20px 20px',
-        border: '2px solid rgba(0,0,0,0.1)',
+        border: '2px solid rgba(0,0,0,0.2)',
         boxShadow: `
           8px 8px 0px rgba(0,0,0,0.15),
           4px 4px 12px rgba(0,0,0,0.2),
-          inset 1px 1px 0px rgba(255,255,255,0.5),
+          inset 1px 1px 0px rgba(255,255,255,0.3),
           inset -1px -1px 0px rgba(0,0,0,0.05)
         `,
-        transform: `rotate(${(index % 2 === 0 ? 1 : -1) * (0.5 + Math.random() * 0.5)}deg)`
+        transform: `rotate(${(index % 2 === 0 ? 1 : -1) * (0.5 + Math.random() * 0.5)}deg)`,
+        backdropFilter: 'blur(2px)'
       }}
     >
-      {/* Additional concrete grain overlay */}
+      {/* Reduced opacity concrete grain overlay */}
       <div 
-        className="absolute inset-0 opacity-20 pointer-events-none"
+        className="absolute inset-0 opacity-10 pointer-events-none"
         style={{
           background: `
             repeating-linear-gradient(
@@ -80,10 +77,10 @@ const FAQCard = ({ faq, index }: FAQCardProps) => {
             <div 
               className="w-12 h-12 flex items-center justify-center rounded-full transform group-hover:rotate-12 group-hover:scale-110 transition-all duration-300 relative"
               style={{
-                background: 'rgba(255,255,255,0.9)',
+                background: 'rgba(255,255,255,0.6)',
                 boxShadow: `
                   4px 4px 0px rgba(0,0,0,0.2),
-                  inset 2px 2px 0px rgba(255,255,255,0.8),
+                  inset 2px 2px 0px rgba(255,255,255,0.5),
                   inset -2px -2px 0px rgba(0,0,0,0.1)
                 `,
                 transform: `rotate(${(index * 7) % 20 - 10}deg)`,
@@ -129,7 +126,7 @@ const FAQCard = ({ faq, index }: FAQCardProps) => {
       <AccordionContent className="px-6 pb-6 pt-2 relative z-10">
         <div className="ml-16">
           <p 
-            className="text-[#0A0A0A]/80 dark:text-brand-cream/80 text-base md:text-lg leading-relaxed"
+            className="text-[#0A0A0A]/90 dark:text-brand-cream/90 text-base md:text-lg leading-relaxed"
             dangerouslySetInnerHTML={{
               __html: faq.answer
                 .replace(/(\$10|spare change investing|credit building|secured cards|3-6 months|30-90 days|get-rich-smart)/gi, 

@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 import { TrendingUp, CreditCard } from "lucide-react";
 import { trackResourceClick } from "@/lib/analytics-utils";
@@ -14,13 +15,29 @@ const ValuePropsSection = ({ isVisible }: ValuePropsSectionProps) => {
 
   const valueProps = [
     {
-      icon: <TrendingUp className="h-12 w-12 text-[#247EFF]" aria-label="Financial growth and investment icon" />,
+      icon: <TrendingUp className="h-12 w-12" style={{
+        color: 'transparent',
+        background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+        backgroundSize: '400% 400%',
+        WebkitBackgroundClip: 'text',
+        WebkitTextFillColor: 'transparent',
+        backgroundClip: 'text',
+        animation: 'pearlescent 3s ease-in-out infinite'
+      }} aria-label="Financial growth and investment icon" />,
       title: "Start Small, Stack Fast",
       description: "Turn $1 into $100, then $1000. Master micro-investing and AI side hustles that actually pay.",
       link: "/start-investing-guide"
     },
     {
-      icon: <CreditCard className="h-12 w-12 text-[#247EFF]" aria-label="Credit building and financial power icon" />,
+      icon: <CreditCard className="h-12 w-12" style={{
+        color: 'transparent',
+        background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+        backgroundSize: '400% 400%',
+        WebkitBackgroundClip: 'text',
+        WebkitTextFillColor: 'transparent',
+        backgroundClip: 'text',
+        animation: 'pearlescent 3s ease-in-out infinite'
+      }} aria-label="Credit building and financial power icon" />,
       title: "Build Credit, Build Power",
       description: "Fix your credit score, stack business credit, and unlock funding for your next move.",
       link: "/financial-education-guide"
@@ -73,11 +90,16 @@ const ValuePropsSection = ({ isVisible }: ValuePropsSectionProps) => {
       {/* Subtle graffiti elements */}
       <div className="absolute top-4 right-8 transform rotate-6 pointer-events-none opacity-[0.06]" aria-hidden="true">
         <div 
-          className="text-[#FFD700] text-3xl font-black"
+          className="text-3xl font-black"
           style={{ 
             fontFamily: "'Permanent Marker', 'Kalam', cursive",
             textShadow: '2px 2px 0px rgba(0,0,0,0.2)',
-            filter: 'blur(0.5px)'
+            filter: 'blur(0.5px)',
+            color: 'transparent',
+            background: 'linear-gradient(45deg, #f4d03f, #ffd700, #ffeb3b)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text'
           }}
         >
           STACK UP
@@ -97,21 +119,45 @@ const ValuePropsSection = ({ isVisible }: ValuePropsSectionProps) => {
             key={index}
             to={prop.link}
             onClick={() => handleLinkClick(prop.title, prop.link)}
-            className={`block p-6 sm:p-8 bg-white/80 dark:bg-brand-black/80 backdrop-blur-sm rounded-3xl border-2 border-[#247EFF]/20 hover:border-[#247EFF]/60 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#247EFF]/20 group cursor-pointer relative overflow-hidden ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-            style={{ transitionDelay: `${700 + index * 100}ms` }}
+            className={`block p-6 sm:p-8 backdrop-blur-sm rounded-3xl border-2 transition-all duration-300 hover:scale-105 hover:shadow-xl group cursor-pointer relative overflow-hidden ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+            style={{ 
+              transitionDelay: `${700 + index * 100}ms`,
+              background: 'rgba(128, 128, 128, 0.1)',
+              borderColor: 'rgba(244, 208, 63, 0.2)',
+              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = 'rgba(244, 208, 63, 0.6)';
+              e.currentTarget.style.boxShadow = '0 20px 40px rgba(244, 208, 63, 0.2)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = 'rgba(244, 208, 63, 0.2)';
+              e.currentTarget.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.1)';
+            }}
             aria-label={`Navigate to ${prop.title} - ${prop.description}`}
           >
             {/* Enhanced urban gritty texture background */}
             <div className="absolute inset-0 opacity-[0.08] bg-[radial-gradient(circle_at_3px_3px,_rgba(0,0,0,1)_2px,_transparent_0)] bg-[length:25px_25px]"></div>
             <div className="absolute inset-0 opacity-[0.05] bg-[linear-gradient(135deg,_transparent_46%,_rgba(0,0,0,0.6)_47%,_rgba(0,0,0,0.6)_53%,_transparent_54%)] bg-[length:10px_10px]"></div>
             
-            {/* Enhanced street-style corner tear effect */}
-            <div className="absolute top-0 right-0 w-10 h-10 bg-[#FFD700]/30 transform rotate-45 translate-x-5 -translate-y-5 group-hover:bg-[#FFD700]/50 transition-colors"></div>
-            <div className="absolute top-1 right-1 w-6 h-6 bg-[#FFD700]/20 transform rotate-45 translate-x-3 -translate-y-3"></div>
+            {/* Enhanced street-style corner tear effect with yellow */}
+            <div className="absolute top-0 right-0 w-10 h-10 transform rotate-45 translate-x-5 -translate-y-5 transition-colors" style={{
+              background: 'linear-gradient(45deg, #f4d03f, #ffd700, #ffeb3b)',
+              opacity: 0.3
+            }}></div>
+            <div className="absolute top-1 right-1 w-6 h-6 transform rotate-45 translate-x-3 -translate-y-3" style={{
+              background: 'linear-gradient(45deg, #f4d03f, #ffd700, #ffeb3b)',
+              opacity: 0.2
+            }}></div>
             
             <div className="relative z-10">
               <div className="mb-4 flex justify-center">
-                <div className="group-hover:scale-110 transition-transform duration-300 p-4 bg-[#247EFF]/10 rounded-2xl group-hover:bg-[#247EFF]/20 relative overflow-hidden">
+                <div className="group-hover:scale-110 transition-transform duration-300 p-4 rounded-2xl relative overflow-hidden" style={{
+                  background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                  backgroundSize: '400% 400%',
+                  animation: 'pearlescent 3s ease-in-out infinite',
+                  opacity: 0.1
+                }}>
                   {/* Subtle texture inside icon container */}
                   <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_1px_1px,_rgba(0,0,0,0.4)_1px,_transparent_0)] bg-[length:6px_6px]"></div>
                   <div className="relative z-10">
@@ -121,15 +167,34 @@ const ValuePropsSection = ({ isVisible }: ValuePropsSectionProps) => {
               </div>
               
               <h3 
-                className="text-xl sm:text-2xl font-black mb-4 text-brand-black dark:text-brand-cream group-hover:text-[#247EFF] transition-colors text-center transform -rotate-1 relative"
+                className="text-xl sm:text-2xl font-black mb-4 text-brand-black dark:text-brand-cream transition-colors text-center transform -rotate-1 relative"
                 style={{ 
                   fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive", 
                   textShadow: '2px 2px 0px rgba(0,0,0,0.1)' 
                 }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = 'transparent';
+                  e.currentTarget.style.background = 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)';
+                  e.currentTarget.style.backgroundSize = '400% 400%';
+                  e.currentTarget.style.WebkitBackgroundClip = 'text';
+                  e.currentTarget.style.WebkitTextFillColor = 'transparent';
+                  e.currentTarget.style.backgroundClip = 'text';
+                  e.currentTarget.style.animation = 'pearlescent 3s ease-in-out infinite';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = '';
+                  e.currentTarget.style.background = '';
+                  e.currentTarget.style.WebkitBackgroundClip = '';
+                  e.currentTarget.style.WebkitTextFillColor = '';
+                  e.currentTarget.style.backgroundClip = '';
+                  e.currentTarget.style.animation = '';
+                }}
               >
                 {prop.title}
                 {/* Subtle spray paint effect behind text */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#247EFF]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity blur-lg -z-10"></div>
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity blur-lg -z-10" style={{
+                  background: 'linear-gradient(to right, transparent, rgba(244, 208, 63, 0.1), transparent)'
+                }}></div>
               </h3>
               
               <p className="text-base sm:text-lg text-brand-black/80 dark:text-brand-cream/80 leading-relaxed text-center group-hover:text-brand-black/90 dark:group-hover:text-brand-cream/90 transition-colors">
@@ -143,12 +208,12 @@ const ValuePropsSection = ({ isVisible }: ValuePropsSectionProps) => {
       {/* Enhanced handwritten arrow pointing to blueprint CTA */}
       <div className="mt-12 flex justify-center relative z-10">
         <div 
-          className="transform rotate-12 text-[#247EFF] relative"
+          className="transform rotate-12 relative"
           style={{ 
             fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive"
           }}
         >
-          {/* Enhanced hand-drawn arrow SVG with more detail */}
+          {/* Enhanced hand-drawn arrow SVG with yellow color */}
           <svg 
             width="140" 
             height="90" 
@@ -158,7 +223,7 @@ const ValuePropsSection = ({ isVisible }: ValuePropsSectionProps) => {
           >
             <path 
               d="M25,70 Q45,25 65,45 Q85,65 105,35 L100,40 M105,35 L100,30" 
-              stroke="#247EFF" 
+              stroke="#f4d03f"
               strokeWidth="4" 
               fill="none" 
               strokeLinecap="round"
@@ -168,7 +233,7 @@ const ValuePropsSection = ({ isVisible }: ValuePropsSectionProps) => {
             {/* Additional sketch lines for hand-drawn effect */}
             <path 
               d="M27,72 Q47,27 67,47 Q87,67 103,37" 
-              stroke="#247EFF" 
+              stroke="#ffd700"
               strokeWidth="2" 
               fill="none" 
               strokeLinecap="round"
@@ -177,7 +242,7 @@ const ValuePropsSection = ({ isVisible }: ValuePropsSectionProps) => {
             />
             <path 
               d="M23,68 Q43,23 63,43 Q83,63 103,33" 
-              stroke="#247EFF" 
+              stroke="#ffeb3b"
               strokeWidth="1" 
               fill="none" 
               strokeLinecap="round"
@@ -186,13 +251,37 @@ const ValuePropsSection = ({ isVisible }: ValuePropsSectionProps) => {
             />
           </svg>
           
-          <div className="text-lg font-bold text-[#247EFF] mt-6 transform -rotate-6 relative">
+          <div className="text-lg font-bold mt-6 transform -rotate-6 relative" style={{
+            color: 'transparent',
+            background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+            backgroundSize: '400% 400%',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            animation: 'pearlescent 3s ease-in-out infinite'
+          }}>
             Get the Blueprint ↓
             {/* Subtle spray effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#247EFF]/20 to-transparent opacity-60 blur-md -z-10"></div>
+            <div className="absolute inset-0 opacity-60 blur-md -z-10" style={{
+              background: 'linear-gradient(to right, transparent, rgba(244, 208, 63, 0.2), transparent)'
+            }}></div>
           </div>
         </div>
       </div>
+
+      <style>{`
+        @keyframes pearlescent {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+      `}</style>
     </div>
   );
 };

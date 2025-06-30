@@ -1,8 +1,8 @@
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { getPosts } from "@/lib/api";
+import { getBlogPosts } from "@/lib/api";
 import BlogShowcaseHeader from "./blog-showcase-header";
 import BlogShowcaseGrid from "./blog-showcase-grid";
 import { useUrbanTexture } from "@/hooks/use-urban-texture";
@@ -32,12 +32,15 @@ const BlogShowcase = () => {
     error,
   } = useQuery({
     queryKey: ['showcase-posts'],
-    queryFn: getPosts,
+    queryFn: getBlogPosts,
     retry: 2,
     staleTime: 5 * 60 * 1000, // 5 minutes
   });
 
-  console.log('BlogShowcase: Posts loading:', isLoading, 'Posts data:', posts?.length);
+  console.log('BlogShowcase: Posts loading:', isLoading);
+  console.log('BlogShowcase: Posts data:', posts);
+  console.log('BlogShowcase: Posts length:', posts?.length);
+  console.log('BlogShowcase: Featured posts available:', posts?.filter(post => post.featured));
 
   // Get featured posts first, then fall back to recent posts
   const featuredPosts = posts ? 
@@ -47,14 +50,16 @@ const BlogShowcase = () => {
     featuredPosts : 
     (posts ? posts.slice(0, 3) : []);
 
-  console.log('BlogShowcase: Featured posts:', featuredPosts.length, 'Display posts:', displayPosts.length);
+  console.log('BlogShowcase: Featured posts count:', featuredPosts.length);
+  console.log('BlogShowcase: Display posts count:', displayPosts.length);
+  console.log('BlogShowcase: Display posts:', displayPosts);
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
 
   if (isError) {
-    console.log('BlogShowcase: Error fetching posts:', error);
+    console.error('BlogShowcase: Error fetching posts:', error);
   }
 
   return (
@@ -98,6 +103,18 @@ const BlogShowcase = () => {
             <p className="text-xl text-brand-black/70 dark:text-brand-cream/70">
               New stories coming soon. Check back for fresh content from the community.
             </p>
+          </div>
+        )}
+
+        {/* Debug info (remove in production) */}
+        {process.env.NODE_ENV === 'development' && (
+          <div className="mt-8 p-4 bg-gray-100 dark:bg-gray-800 rounded text-sm">
+            <p>Debug Info:</p>
+            <p>Loading: {isLoading ? 'Yes' : 'No'}</p>
+            <p>Error: {isError ? 'Yes' : 'No'}</p>
+            <p>Total Posts: {posts?.length || 0}</p>
+            <p>Featured Posts: {featuredPosts.length}</p>
+            <p>Display Posts: {displayPosts.length}</p>
           </div>
         )}
       </div>

@@ -2,12 +2,11 @@
 import { useState } from "react";
 import ResourcesHero from "@/components/resources/resources-hero";
 import ResourcesCTA from "@/components/resources/resources-cta";
-import OrganizedFAQs from "@/components/resources/organized-faqs";
+import ResourcesFAQSection from "@/components/resources/resources-faq-section";
 import CreditBuildingSection from "@/components/resources/sections/credit-building-section";
 import InvestingSection from "@/components/resources/sections/investing-section";
 import AIHustlesSection from "@/components/resources/sections/ai-hustles-section";
 import FoundationSection from "@/components/resources/sections/foundation-section";
-import { faqGroups } from "@/components/resources/faq-data";
 import ResourcesTestimonial from "@/components/resources/resources-testimonial";
 import FeaturedGuidesSection from "@/components/resources/featured-guides-section";
 
@@ -57,10 +56,7 @@ const ResourcesContent = () => {
 
         <ResourcesTestimonial />
 
-        <OrganizedFAQs 
-          title="Frequently Asked Questions"
-          faqGroups={faqGroups}
-        />
+        <ResourcesFAQSection />
         
         <ResourcesCTA />
       </div>

@@ -41,7 +41,7 @@ export const NewsletterSection = () => {
         <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="relative backdrop-blur-sm overflow-hidden rounded-3xl p-8 border-2"
                style={{ 
-                 background: 'rgba(128, 128, 128, 0.15)',
+                 background: 'transparent',
                  borderColor: 'rgba(255, 215, 0, 0.4)',
                  boxShadow: '0 20px 40px rgba(255, 215, 0, 0.15)'
                }}>

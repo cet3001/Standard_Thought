@@ -3,6 +3,7 @@ import HeaderHierarchy from "@/components/content-structure/header-hierarchy";
 import FeaturedGuideCard from "@/components/resources/featured-guides/featured-guide-card";
 import ComingSoonGuideCard from "@/components/resources/featured-guides/coming-soon-guide-card";
 import WaitlistSignup from "@/components/resources/featured-guides/waitlist-signup";
+import SocialProofSection from "@/components/resources/featured-guides/social-proof-section";
 
 const FeaturedGuidesSection = () => {
   return (
@@ -66,6 +67,9 @@ const FeaturedGuidesSection = () => {
 
       {/* Waitlist Signup */}
       <WaitlistSignup />
+
+      {/* Social Proof Section - moved here */}
+      <SocialProofSection />
 
       <style>{`
         @keyframes pearlescent {

@@ -21,7 +21,7 @@ const ResourcesContent = () => {
         {/* Featured Guides Section */}
         <FeaturedGuidesSection />
 
-        {/* Explore More Section - replaces all duplicate Q&A/framework content */}
+        {/* Explore More Section - moved above Q&A */}
         <ExploreMoreSection />
 
         {/* Final CTA */}

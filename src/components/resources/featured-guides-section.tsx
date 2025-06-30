@@ -4,6 +4,7 @@ import FeaturedGuideCard from "@/components/resources/featured-guides/featured-g
 import ComingSoonGuideCard from "@/components/resources/featured-guides/coming-soon-guide-card";
 import WaitlistSignup from "@/components/resources/featured-guides/waitlist-signup";
 import SocialProofSection from "@/components/resources/featured-guides/social-proof-section";
+import ResourcesFAQSection from "@/components/resources/resources-faq-section";
 
 const FeaturedGuidesSection = () => {
   return (
@@ -70,6 +71,9 @@ const FeaturedGuidesSection = () => {
 
       {/* Social Proof Section - moved here */}
       <SocialProofSection />
+
+      {/* FAQ Section */}
+      <ResourcesFAQSection />
 
       <style>{`
         @keyframes pearlescent {

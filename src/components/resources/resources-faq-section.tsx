@@ -5,41 +5,46 @@ import FAQSchema from "@/components/seo/faq-schema";
 import { resourcesFAQs } from "./resources-faq-data";
 
 const ResourcesFAQSection = () => {
-  // Graffiti-style question icons
-  const questionIcons = ["❓", "💸", "🎯", "💯"];
+  // Graffiti-style question icons with more variety
+  const graffitiIcons = ["❓", "💸", "🎯", "💯"];
 
   return (
     <section className="py-12 md:py-16 mx-4 md:mx-0" aria-labelledby="resources-faq-heading">
       <FAQSchema faqs={resourcesFAQs} />
       
       <div className="text-center mb-8 md:mb-12 relative">
-        {/* Graffiti Tag Visual */}
-        <div className="absolute -top-6 -right-4 md:-right-8 w-24 h-14 transform rotate-12" aria-hidden="true">
-          <svg viewBox="0 0 96 56" className="w-full h-full">
-            {/* Spray paint effect background */}
-            <ellipse cx="48" cy="28" rx="40" ry="22" fill="#ffd700" opacity="0.3"/>
-            <ellipse cx="45" cy="25" rx="35" ry="18" fill="#f4d03f" opacity="0.5"/>
+        {/* Graffiti Tag Visual - Enhanced */}
+        <div className="absolute -top-8 -right-4 md:-right-8 w-28 h-16 transform rotate-12" aria-hidden="true">
+          <svg viewBox="0 0 112 64" className="w-full h-full">
+            {/* Spray paint effect background - multiple layers */}
+            <ellipse cx="56" cy="32" rx="45" ry="25" fill="#ffd700" opacity="0.3"/>
+            <ellipse cx="52" cy="28" rx="38" ry="20" fill="#f4d03f" opacity="0.5"/>
+            <ellipse cx="58" cy="35" rx="32" ry="15" fill="#f8e71c" opacity="0.4"/>
             
-            {/* Main tag text */}
+            {/* Main tag text with shadow */}
             <text 
-              x="48" 
-              y="32" 
+              x="57" 
+              y="37" 
               textAnchor="middle" 
               style={{ 
-                fontSize: '14px', 
+                fontSize: '16px', 
                 fontFamily: "'Permanent Marker', 'Kalam', cursive",
                 fontWeight: 'bold',
-                textShadow: '1px 1px 0px rgba(0,0,0,0.3)',
-                fill: '#f8e71c'
+                textShadow: '2px 2px 0px rgba(0,0,0,0.4)',
+                fill: '#f8e71c',
+                stroke: '#000000',
+                strokeWidth: '0.5px'
               }}
             >
               Q&A
             </text>
             
-            {/* Drip effects */}
-            <circle cx="30" cy="40" r="1.5" fill="#ffd700" opacity="0.6"/>
-            <circle cx="65" cy="42" r="1" fill="#f4d03f" opacity="0.4"/>
-            <circle cx="50" cy="45" r="0.8" fill="#ffeb3b" opacity="0.5"/>
+            {/* Drip effects - more scattered */}
+            <circle cx="32" cy="45" r="1.8" fill="#ffd700" opacity="0.7"/>
+            <circle cx="78" cy="48" r="1.2" fill="#f4d03f" opacity="0.5"/>
+            <circle cx="58" cy="52" r="1" fill="#ffeb3b" opacity="0.6"/>
+            <circle cx="25" cy="52" r="0.8" fill="#f8e71c" opacity="0.4"/>
+            <circle cx="85" cy="45" r="1.5" fill="#ffd700" opacity="0.5"/>
           </svg>
         </div>
 
@@ -62,21 +67,31 @@ const ResourcesFAQSection = () => {
             >
               <AccordionTrigger className="text-left hover:no-underline px-6 py-6 transition-colors group">
                 <div className="flex items-start gap-4">
-                  {/* Graffiti-style question icon */}
+                  {/* Enhanced graffiti-style question icon */}
                   <div className="flex-shrink-0 mt-1">
                     <div 
-                      className="w-8 h-8 flex items-center justify-center rounded-full transform group-hover:rotate-12 transition-transform duration-300 text-black font-bold"
+                      className="w-10 h-10 flex items-center justify-center rounded-full transform group-hover:rotate-12 transition-transform duration-300 text-black font-bold relative"
                       style={{
                         background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
                         backgroundSize: '400% 400%',
                         animation: 'pearlescent 3s ease-in-out infinite',
-                        boxShadow: '2px 2px 0px rgba(0,0,0,0.2)',
-                        transform: `rotate(${(index * 5) % 15 - 7}deg)`
+                        boxShadow: '3px 3px 0px rgba(0,0,0,0.3), inset 1px 1px 0px rgba(255,255,255,0.3)',
+                        transform: `rotate(${(index * 7) % 20 - 10}deg)`,
+                        border: '2px solid rgba(0,0,0,0.2)'
                       }}
                     >
-                      <span className="text-lg" role="img" aria-hidden="true">
-                        {questionIcons[index % questionIcons.length]}
+                      <span className="text-xl drop-shadow-sm" role="img" aria-hidden="true">
+                        {graffitiIcons[index % graffitiIcons.length]}
                       </span>
+                      
+                      {/* Small graffiti drip effect */}
+                      <div 
+                        className="absolute -bottom-1 left-1/2 w-1 h-2 rounded-full opacity-60"
+                        style={{
+                          background: 'linear-gradient(to bottom, #f8e71c, transparent)',
+                          transform: 'translateX(-50%)'
+                        }}
+                      />
                     </div>
                   </div>
                   
@@ -87,7 +102,7 @@ const ResourcesFAQSection = () => {
               </AccordionTrigger>
               
               <AccordionContent className="px-6 pb-6 pt-2">
-                <div className="ml-12">
+                <div className="ml-14">
                   <p className="text-[#0A0A0A]/80 dark:text-brand-cream/80 text-base md:text-lg leading-relaxed">
                     {faq.answer}
                   </p>

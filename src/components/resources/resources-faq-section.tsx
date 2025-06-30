@@ -100,6 +100,21 @@ const ResourcesFAQSection = () => {
     <section className="py-12 md:py-16 mx-4 md:mx-0" aria-labelledby="resources-faq-heading">
       <FAQSchema faqs={resourcesFAQs} />
       
+      {/* Add pearlescent animation styles in head */}
+      <style>{`
+        @keyframes pearlescent {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+      `}</style>
+      
       <div className="text-center mb-8 md:mb-12 relative">
         {/* Enhanced Graffiti Tag Visual */}
         <div className="absolute -top-8 -right-4 md:-right-8 w-32 h-20 transform rotate-12" aria-hidden="true">
@@ -279,21 +294,6 @@ const ResourcesFAQSection = () => {
           ))}
         </Accordion>
       </div>
-
-      {/* Add pearlescent animation styles */}
-      <style jsx>{`
-        @keyframes pearlescent {
-          0% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-          100% {
-            background-position: 0% 50%;
-          }
-        }
-      `}</style>
     </section>
   );
 };

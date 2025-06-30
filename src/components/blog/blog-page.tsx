@@ -3,7 +3,7 @@ import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import BlogMetadata from "./blog-metadata";
 import BlogPageContent from "./blog-page-content";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { getPosts, getCategories } from "@/lib/api";
 import { Post } from "@/lib/api";
@@ -14,11 +14,10 @@ const BlogPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedThemeTag, setSelectedThemeTag] = useState("");
-  const [filteredPosts, setFilteredPosts] = useState<Post[]>([]);
 
-  // Simplified query with no retries and better error handling
+  // Fetch posts with error boundaries
   const {
-    data: posts = [], // Default to empty array
+    data: posts = [],
     isLoading: isPostsLoading,
     isError: isPostsError,
     error: postsError,
@@ -26,37 +25,36 @@ const BlogPage = () => {
   } = useQuery({
     queryKey: ['posts'],
     queryFn: getPosts,
-    retry: false, // No retries to prevent loops
-    staleTime: 10 * 60 * 1000, // 10 minutes
+    retry: 1,
+    staleTime: 10 * 60 * 1000,
     refetchOnWindowFocus: false,
+    refetchOnMount: false,
   });
 
   const {
-    data: categories = [], // Default to empty array
+    data: categories = [],
     isLoading: isCategoriesLoading,
     isError: isCategoriesError,
     error: categoriesError,
   } = useQuery({
     queryKey: ['categories'],
     queryFn: getCategories,
-    retry: false, // No retries to prevent loops
-    staleTime: 10 * 60 * 1000, // 10 minutes
+    retry: 1,
+    staleTime: 10 * 60 * 1000,
     refetchOnWindowFocus: false,
+    refetchOnMount: false,
   });
 
-  // Extract theme tags from posts
-  const themeTags = posts.length > 0 
-    ? [...new Set(posts.flatMap(post => post.theme_tags || []))]
-    : [];
+  // Memoize derived data to prevent unnecessary recalculations
+  const themeTags = useMemo(() => {
+    if (!posts || posts.length === 0) return [];
+    return [...new Set(posts.flatMap(post => post.theme_tags || []))];
+  }, [posts]);
 
-  // Filter posts whenever dependencies change
-  useEffect(() => {
-    if (!posts || posts.length === 0) {
-      setFilteredPosts([]);
-      return;
-    }
+  const filteredPosts = useMemo(() => {
+    if (!posts || posts.length === 0) return [];
 
-    const filtered = posts.filter((post) => {
+    return posts.filter((post) => {
       const searchRegex = new RegExp(searchTerm, "i");
       const categoryMatch = selectedCategory === "All" || selectedCategory === ""
         ? true
@@ -71,15 +69,13 @@ const BlogPage = () => {
         themeTagMatch
       );
     });
-    
-    setFilteredPosts(filtered);
   }, [posts, searchTerm, selectedCategory, selectedThemeTag]);
 
   const handleThemeTagClick = (tag: string) => {
     setSelectedThemeTag(tag);
   };
 
-  // Show loading only when actually loading
+  // Show loading state
   if (isPostsLoading || isCategoriesLoading) {
     return <Loading />;
   }

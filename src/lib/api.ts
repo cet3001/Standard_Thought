@@ -1,4 +1,3 @@
-
 import { supabase } from '@/integrations/supabase/client'
 
 export interface BlogPost {
@@ -43,6 +42,18 @@ export interface CreateBlogPostData {
   comments_enabled?: boolean;
 }
 
+// Safe data validation helper
+const validatePostData = (data: any[]): BlogPost[] => {
+  if (!Array.isArray(data)) return [];
+  
+  return data.filter(post => {
+    return post && 
+           typeof post.id === 'string' && 
+           typeof post.title === 'string' && 
+           typeof post.slug === 'string';
+  });
+};
+
 export const getBlogPosts = async (): Promise<BlogPost[]> => {
   try {
     const { data, error } = await supabase
@@ -53,13 +64,13 @@ export const getBlogPosts = async (): Promise<BlogPost[]> => {
 
     if (error) {
       console.error('getBlogPosts error:', error);
-      return []; // Return empty array on error
+      return [];
     }
 
-    return data || [];
+    return validatePostData(data || []);
   } catch (error) {
     console.error('getBlogPosts caught error:', error);
-    return []; // Return empty array on any error
+    return [];
   }
 };
 
@@ -73,17 +84,15 @@ export const getPosts = async (): Promise<Post[]> => {
 
     if (error) {
       console.error('getPosts error:', error);
-      return []; // Return empty array on error
+      return [];
     }
 
-    if (!data) {
-      return []; // Return empty array if no data
-    }
+    const validatedData = validatePostData(data || []);
 
-    const transformedData = data.map(post => ({
+    const transformedData = validatedData.map(post => ({
       ...post,
-      theme_tags: post.tags || [],
-      is_editors_pick: post.featured || false,
+      theme_tags: Array.isArray(post.tags) ? post.tags : [],
+      is_editors_pick: Boolean(post.featured),
       is_popular: false,
       view_count: 0
     }));
@@ -91,7 +100,7 @@ export const getPosts = async (): Promise<Post[]> => {
     return transformedData;
   } catch (error) {
     console.error('getPosts caught error:', error);
-    return []; // Return empty array on any error
+    return [];
   }
 };
 
@@ -104,23 +113,26 @@ export const getCategories = async (): Promise<string[]> => {
 
     if (error) {
       console.error('getCategories error:', error);
-      return []; // Return empty array on error
+      return [];
     }
 
-    if (!data) {
-      return []; // Return empty array if no data
-    }
+    if (!Array.isArray(data)) return [];
 
-    const categories = [...new Set(data.map(post => post.category))];
-    return categories;
+    const categories = data
+      .map(post => post?.category)
+      .filter(category => typeof category === 'string' && category.length > 0);
+    
+    return [...new Set(categories)];
   } catch (error) {
     console.error('getCategories caught error:', error);
-    return []; // Return empty array on any error
+    return [];
   }
 };
 
 export const getBlogPost = async (slug: string): Promise<BlogPost | null> => {
   try {
+    if (!slug || typeof slug !== 'string') return null;
+
     const { data, error } = await supabase
       .from('blog_posts')
       .select('*')
@@ -133,6 +145,11 @@ export const getBlogPost = async (slug: string): Promise<BlogPost | null> => {
         return null;
       }
       console.error('getBlogPost error:', error);
+      return null;
+    }
+
+    // Validate the returned data
+    if (!data || typeof data.id !== 'string' || typeof data.title !== 'string') {
       return null;
     }
 

@@ -1,9 +1,10 @@
 
 const fontFamily = {
-  'inter': ['Inter', 'system-ui', 'sans-serif'],
-  'ibm-plex': ['IBM Plex Sans', 'system-ui', 'sans-serif'],
-  'kalam': ['Kalam', 'cursive', 'system-ui'],
-  'permanent-marker': ['Permanent Marker', 'cursive', 'system-ui']
+  'inter': ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'sans-serif'],
+  'ibm-plex': ['IBM Plex Sans', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+  'kalam': ['Kalam', 'Comic Neue', 'cursive', 'sans-serif'],
+  'permanent-marker': ['Permanent Marker', 'Kalam', 'Comic Neue', 'cursive', 'sans-serif']
 };
 
+export { fontFamily };
 export default fontFamily;

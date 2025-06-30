@@ -16,8 +16,8 @@ const ResourcesHero = () => {
         }}>Wealth Blueprint</span>
       </HeaderHierarchy>
       
-      <p className="text-lg md:text-xl text-[#0A0A0A]/70 dark:text-brand-cream/70 max-w-3xl mx-auto mb-6 md:mb-8 leading-relaxed">
-        The official spot for free and premium guides, playbooks, and tools to help you stack bread, fix your credit, and build generational wealth—no trust fund needed.
+      <p className="text-lg md:text-xl text-[#0A0A0A]/70 dark:text-brand-cream/70 max-w-3xl mx-auto leading-relaxed">
+        All the guides, playbooks, and tools you need to stack bread, fix your credit, and build legacy—no trust fund needed.
       </p>
 
       <style>{`

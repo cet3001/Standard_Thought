@@ -31,6 +31,8 @@ const BlogShowcase = () => {
     isError,
     error,
     isSuccess,
+    dataUpdatedAt,
+    errorUpdatedAt,
   } = useQuery({
     queryKey: ['showcase-posts'],
     queryFn: getBlogPosts,
@@ -39,6 +41,8 @@ const BlogShowcase = () => {
   });
 
   console.log('BlogShowcase: Query state - Loading:', isLoading, 'Success:', isSuccess, 'Error:', isError);
+  console.log('BlogShowcase: Data updated at:', new Date(dataUpdatedAt));
+  console.log('BlogShowcase: Error updated at:', errorUpdatedAt ? new Date(errorUpdatedAt) : 'Never');
   console.log('BlogShowcase: Raw posts data:', posts);
   console.log('BlogShowcase: Posts array length:', Array.isArray(posts) ? posts.length : 'Not an array');
 
@@ -60,6 +64,21 @@ const BlogShowcase = () => {
   if (isError) {
     console.error('BlogShowcase: Error fetching posts:', error);
   }
+
+  // Check for authentication issues
+  useEffect(() => {
+    const checkAuth = async () => {
+      try {
+        const { data: { session }, error: authError } = await supabase.auth.getSession();
+        console.log('BlogShowcase: Auth check - Session exists:', !!session);
+        console.log('BlogShowcase: Auth error:', authError);
+      } catch (err) {
+        console.error('BlogShowcase: Auth check failed:', err);
+      }
+    };
+    
+    checkAuth();
+  }, []);
 
   return (
     <section className="py-24 relative overflow-hidden" aria-labelledby="blog-showcase-heading">
@@ -111,6 +130,11 @@ const BlogShowcase = () => {
             <p className="text-xl text-red-600 dark:text-red-400">
               Unable to load stories right now. Please try again later.
             </p>
+            {process.env.NODE_ENV === 'development' && (
+              <p className="text-sm mt-2 text-red-500">
+                Error: {error?.message || 'Unknown error'}
+              </p>
+            )}
           </div>
         )}
 
@@ -126,6 +150,7 @@ const BlogShowcase = () => {
             <p>Valid Posts: {validPosts.length}</p>
             <p>Featured Posts: {featuredPosts.length}</p>
             <p>Display Posts: {displayPosts.length}</p>
+            <p>Data Updated: {new Date(dataUpdatedAt).toLocaleTimeString()}</p>
             {isError && <p>Error Message: {error?.message}</p>}
           </div>
         )}

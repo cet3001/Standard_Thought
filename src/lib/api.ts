@@ -43,24 +43,51 @@ export interface CreateBlogPostData {
 }
 
 export const getBlogPosts = async (): Promise<BlogPost[]> => {
-  console.log('API: Fetching blog posts...');
+  console.log('API: Starting getBlogPosts request...');
   
   try {
-    const { data, error } = await supabase
+    console.log('API: Querying Supabase for blog posts...');
+    
+    const { data, error, count } = await supabase
       .from('blog_posts')
-      .select('*')
+      .select('*', { count: 'exact' })
       .eq('published', true)
       .order('created_at', { ascending: false });
 
+    console.log('API: Supabase response received');
+    console.log('API: Count from query:', count);
+    console.log('API: Data type:', typeof data);
+    console.log('API: Data is array:', Array.isArray(data));
+    console.log('API: Data length:', data?.length);
+    console.log('API: Error object:', error);
+
     if (error) {
-      console.error('API: Error fetching blog posts:', error);
+      console.error('API: Supabase error details:', {
+        message: error.message,
+        details: error.details,
+        hint: error.hint,
+        code: error.code
+      });
       throw new Error(`Failed to fetch blog posts: ${error.message}`);
     }
 
-    console.log('API: Successfully fetched blog posts:', data?.length || 0);
-    return data || [];
+    if (!data) {
+      console.log('API: No data returned, returning empty array');
+      return [];
+    }
+
+    console.log('API: Successfully fetched blog posts:', data.length);
+    console.log('API: Sample of first post:', data[0] ? {
+      id: data[0].id,
+      title: data[0].title,
+      featured: data[0].featured,
+      published: data[0].published
+    } : 'No posts available');
+    
+    return data;
   } catch (error) {
     console.error('API: Unexpected error in getBlogPosts:', error);
+    console.error('API: Error stack:', error instanceof Error ? error.stack : 'No stack available');
     throw error;
   }
 };

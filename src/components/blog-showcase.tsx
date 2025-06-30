@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getBlogPosts } from "@/lib/api";
+import { supabase } from "@/integrations/supabase/client";
 import BlogShowcaseHeader from "./blog-showcase-header";
 import BlogShowcaseGrid from "./blog-showcase-grid";
 import { useUrbanTexture } from "@/hooks/use-urban-texture";

@@ -27,7 +27,9 @@ const SocialProofSection = ({ isVisible }: SocialProofSectionProps) => {
   }, [testimonials.length]);
 
   return (
-    <div className={`relative bg-white/90 dark:bg-brand-black/80 backdrop-blur-sm border border-[#247EFF]/20 rounded-3xl p-8 mb-16 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} overflow-hidden`}>
+    <div className={`relative backdrop-blur-sm border border-gray-300/20 rounded-3xl p-8 mb-16 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} overflow-hidden`} style={{
+      background: 'rgba(128, 128, 128, 0.1)'
+    }}>
       
       {/* Torn Paper Effect Background */}
       <div className="absolute inset-0 opacity-20" aria-hidden="true">
@@ -39,12 +41,12 @@ const SocialProofSection = ({ isVisible }: SocialProofSectionProps) => {
           <path 
             d="M0,0 L400,0 L395,15 L385,25 L390,35 L380,45 L385,55 L375,65 L380,75 L370,85 L375,95 L365,105 L370,115 L360,125 L365,135 L355,145 L360,155 L350,165 L355,175 L345,185 L350,195 L400,200 L0,200 Z" 
             fill="currentColor" 
-            className="text-[#247EFF]/10"
+            className="text-yellow-400/10"
           />
           <path 
             d="M0,20 L15,25 L25,15 L35,30 L45,20 L55,35 L65,25 L75,40 L85,30 L95,45 L105,35 L115,50 L125,40 L135,55 L145,45 L155,60 L165,50 L175,65 L185,55 L195,70 L205,60 L215,75 L225,65 L235,80 L245,70 L255,85 L265,75 L275,90 L285,80 L295,95 L305,85 L315,100 L325,90 L335,105 L345,95 L355,110 L365,100 L375,115 L385,105 L395,120 L400,115 L400,200 L0,200 Z" 
             fill="currentColor" 
-            className="text-[#FFD700]/15"
+            className="text-yellow-300/15"
           />
         </svg>
       </div>
@@ -56,20 +58,42 @@ const SocialProofSection = ({ isVisible }: SocialProofSectionProps) => {
         
         <div className="text-center group hover:scale-105 transition-transform duration-300">
           <div className="flex justify-center mb-4">
-            <div className="w-16 h-16 bg-[#247EFF]/10 rounded-full flex items-center justify-center group-hover:bg-[#247EFF]/20 transition-colors">
-              <Users className="h-8 w-8 text-[#247EFF]" aria-hidden="true" />
+            <div className="w-16 h-16 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform" style={{
+              background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+              backgroundSize: '400% 400%',
+              animation: 'pearlescent 3s ease-in-out infinite',
+              opacity: 0.2
+            }}>
+              <Users className="h-8 w-8" style={{
+                color: 'transparent',
+                background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                backgroundSize: '400% 400%',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                animation: 'pearlescent 3s ease-in-out infinite'
+              }} aria-hidden="true" />
             </div>
           </div>
           <div 
-            className="text-4xl md:text-5xl font-black text-[#247EFF] mb-3 transform -rotate-1 relative" 
+            className="text-4xl md:text-5xl font-black mb-3 transform -rotate-1 relative" 
             style={{ 
               fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive", 
-              textShadow: '2px 2px 0px rgba(0,0,0,0.1)' 
+              textShadow: '2px 2px 0px rgba(0,0,0,0.1)',
+              color: 'transparent',
+              background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+              backgroundSize: '400% 400%',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              animation: 'pearlescent 3s ease-in-out infinite'
             }}
             aria-label="Over 1000 hustlers leveling up"
           >
             1,000+
-            <div className="absolute -top-2 -right-2 w-3 h-3 bg-[#FFD700] rounded-full opacity-80"></div>
+            <div className="absolute -top-2 -right-2 w-3 h-3 rounded-full opacity-80" style={{
+              background: 'linear-gradient(45deg, #f4d03f, #ffd700, #ffeb3b)'
+            }}></div>
           </div>
           <div className="text-[#0A0A0A]/90 dark:text-brand-cream/90 font-bold text-lg mb-1">
             hustlers leveling up
@@ -81,20 +105,42 @@ const SocialProofSection = ({ isVisible }: SocialProofSectionProps) => {
 
         <div className="text-center group hover:scale-105 transition-transform duration-300">
           <div className="flex justify-center mb-4">
-            <div className="w-16 h-16 bg-green-500/10 rounded-full flex items-center justify-center group-hover:bg-green-500/20 transition-colors">
-              <TrendingUp className="h-8 w-8 text-green-600" aria-hidden="true" />
+            <div className="w-16 h-16 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform" style={{
+              background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+              backgroundSize: '400% 400%',
+              animation: 'pearlescent 3s ease-in-out infinite',
+              opacity: 0.2
+            }}>
+              <TrendingUp className="h-8 w-8" style={{
+                color: 'transparent',
+                background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                backgroundSize: '400% 400%',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                animation: 'pearlescent 3s ease-in-out infinite'
+              }} aria-hidden="true" />
             </div>
           </div>
           <div 
-            className="text-3xl md:text-4xl font-black text-green-600 mb-3 transform rotate-1 relative" 
+            className="text-3xl md:text-4xl font-black mb-3 transform rotate-1 relative" 
             style={{ 
               fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive", 
-              textShadow: '2px 2px 0px rgba(0,0,0,0.1)' 
+              textShadow: '2px 2px 0px rgba(0,0,0,0.1)',
+              color: 'transparent',
+              background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+              backgroundSize: '400% 400%',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              animation: 'pearlescent 3s ease-in-out infinite'
             }}
             aria-label="500 to 50,000 dollars real wins"
           >
             $500–$50K
-            <div className="absolute -bottom-1 -left-2 w-4 h-1 bg-green-400 rounded-full opacity-70 transform -rotate-12"></div>
+            <div className="absolute -bottom-1 -left-2 w-4 h-1 rounded-full opacity-70 transform -rotate-12" style={{
+              background: 'linear-gradient(45deg, #f4d03f, #ffd700, #ffeb3b)'
+            }}></div>
           </div>
           <div className="text-[#0A0A0A]/90 dark:text-brand-cream/90 font-bold text-lg mb-1">
             Real wins
@@ -106,19 +152,45 @@ const SocialProofSection = ({ isVisible }: SocialProofSectionProps) => {
 
         <div className="text-center group hover:scale-105 transition-transform duration-300">
           <div className="flex justify-center mb-4">
-            <div className="w-16 h-16 bg-orange-500/10 rounded-full flex items-center justify-center group-hover:bg-orange-500/20 transition-colors">
-              <CheckCircle className="h-8 w-8 text-orange-600" aria-hidden="true" />
+            <div className="w-16 h-16 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform" style={{
+              background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+              backgroundSize: '400% 400%',
+              animation: 'pearlescent 3s ease-in-out infinite',
+              opacity: 0.2
+            }}>
+              <CheckCircle className="h-8 w-8" style={{
+                color: 'transparent',
+                background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                backgroundSize: '400% 400%',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                animation: 'pearlescent 3s ease-in-out infinite'
+              }} aria-hidden="true" />
             </div>
           </div>
           <div 
-            className="text-4xl md:text-5xl font-black text-orange-600 mb-3 transform -rotate-2 relative" 
-            style={{ 
+            className="text-4xl md:text-5xl font-black mb-3 transform -rotate-2 relative" 
+            style={{
               fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive", 
-              textShadow: '2px 2px 0px rgba(0,0,0,0.1)' 
+              textShadow: '2px 2px 0px rgba(0,0,0,0.1)',
+              color: 'transparent',
+              background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+              backgroundSize: '400% 400%',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              animation: 'pearlescent 3s ease-in-out infinite'
             }}
           >
             83%
-            <div className="absolute top-0 right-0 text-lg text-orange-400 transform rotate-12">✓</div>
+            <div className="absolute top-0 right-0 text-lg transform rotate-12" style={{
+              color: 'transparent',
+              background: 'linear-gradient(45deg, #f4d03f, #ffd700, #ffeb3b)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text'
+            }}>✓</div>
           </div>
           <div className="text-[#0A0A0A]/90 dark:text-brand-cream/90 font-bold text-lg mb-1">
             broke the cycle
@@ -130,7 +202,7 @@ const SocialProofSection = ({ isVisible }: SocialProofSectionProps) => {
       </div>
 
       {/* Rotating Community Testimonials */}
-      <div className="mt-10 pt-10 border-t border-[#247EFF]/20 relative z-10">
+      <div className="mt-10 pt-10 border-t border-yellow-400/20 relative z-10">
         <div className="text-center max-w-2xl mx-auto">
           <div className="transition-all duration-500 ease-in-out min-h-[80px] flex items-center justify-center">
             <blockquote className="text-[#0A0A0A]/80 dark:text-brand-cream/80 text-lg leading-8 italic">
@@ -149,15 +221,34 @@ const SocialProofSection = ({ isVisible }: SocialProofSectionProps) => {
                 onClick={() => setCurrentTestimonial(index)}
                 className={`w-2 h-2 rounded-full transition-all duration-300 ${
                   index === currentTestimonial 
-                    ? 'bg-[#247EFF] scale-125' 
-                    : 'bg-[#0A0A0A]/30 dark:bg-brand-cream/30 hover:bg-[#247EFF]/50'
+                    ? 'scale-125' 
+                    : 'hover:scale-110'
                 }`}
+                style={{
+                  background: index === currentTestimonial 
+                    ? 'linear-gradient(45deg, #f4d03f, #ffd700, #ffeb3b)'
+                    : 'rgba(10, 10, 10, 0.3)'
+                }}
                 aria-label={`View testimonial ${index + 1}`}
               />
             ))}
           </div>
         </div>
       </div>
+
+      <style>{`
+        @keyframes pearlescent {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+      `}</style>
     </div>
   );
 };

@@ -1,6 +1,5 @@
 
 import { useState, useEffect } from "react";
-import { NewsletterBackground } from "./newsletter/newsletter-background";
 import { NewsletterContent } from "./newsletter/newsletter-content";
 import { NewsletterForm } from "./newsletter/newsletter-form";
 import { MembersOnlyStamp } from "./newsletter/members-only-stamp";
@@ -29,11 +28,8 @@ export const NewsletterSection = () => {
   return (
     <section 
       data-section="newsletter" 
-      className="py-16 sm:py-20 relative overflow-hidden bg-brand-cream dark:bg-brand-black"
+      className="py-16 sm:py-20 relative"
     >
-      {/* Urban Background - Now pushed behind with -z-10 */}
-      <NewsletterBackground />
-
       <div className="container mx-auto px-4 sm:px-6 max-w-4xl relative z-10">
         <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="relative backdrop-blur-sm overflow-hidden rounded-3xl p-8 border-2"

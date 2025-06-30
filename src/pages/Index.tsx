@@ -84,7 +84,30 @@ const Index = () => {
     console.log('Index.tsx: About to render JSX');
 
     return (
-      <div className="min-h-screen bg-brand-cream dark:bg-brand-black">
+      <div className="min-h-screen relative overflow-hidden">
+        {/* Site-wide Urban Background */}
+        <div className="fixed inset-0 -z-50" aria-hidden="true">
+          {/* AI-Generated or Curated Urban Texture */}
+          {textureImageUrl && (
+            <div 
+              className="absolute inset-0 opacity-40 bg-cover bg-center bg-fixed"
+              style={{
+                backgroundImage: `url(${textureImageUrl})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+                backgroundAttachment: 'fixed'
+              }}
+            />
+          )}
+          
+          {/* Background gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-800/50 via-slate-700/60 to-slate-900/50"></div>
+          
+          {/* Content overlay for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/85 via-brand-cream/90 to-brand-cream/85 dark:from-brand-black/85 dark:via-brand-black/90 dark:to-brand-black/85"></div>
+        </div>
+
         {/* Enhanced SEO with targeted keywords */}
         <SEO
           title="Urban Wealth Building & AI Side Hustles | Standardthought - Financial Education for First-Gen Entrepreneurs"
@@ -113,46 +136,25 @@ const Index = () => {
         <Navigation />
 
         {/* Main Content */}
-        <main>
+        <main className="relative z-10">
           {/* Hero Section */}
           <HomepageHero scrollToNewsletter={scrollToNewsletter} />
 
-          {/* Newsletter - Now without any background wrapper */}
+          {/* Newsletter */}
           <NewsletterSection />
 
           {/* Featured Blog Stories Section */}
-          <section className="bg-brand-cream/50 dark:bg-brand-black/50 py-16">
+          <section className="py-16">
             <BlogShowcase />
           </section>
 
           {/* Manifesto */}
-          <section className="bg-gradient-to-b from-brand-cream/80 to-white dark:from-brand-black/50 dark:to-brand-black/90 py-16">
+          <section className="py-16">
             <ManifestoSection />
           </section>
 
-          {/* FAQ Section with Urban Background */}
-          <section className="py-16 relative overflow-hidden">
-            {/* Urban Background - Matches other sections */}
-            <div className="absolute inset-0" aria-hidden="true">
-              {/* AI-Generated or Curated Urban Texture */}
-              {textureImageUrl && (
-                <div 
-                  className="absolute inset-0 opacity-30 bg-repeat bg-center"
-                  style={{
-                    backgroundImage: `url(${textureImageUrl})`,
-                    backgroundSize: textureImageUrl.startsWith('data:') ? 'cover' : '300px 300px',
-                    filter: 'contrast(1.3) brightness(0.7) sepia(0.05)'
-                  }}
-                />
-              )}
-              
-              {/* Background gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 opacity-30"></div>
-              
-              {/* Content overlay for text readability */}
-              <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/80 via-brand-cream/85 to-brand-cream/90 dark:from-brand-black/80 dark:via-brand-black/85 dark:to-brand-black/90"></div>
-            </div>
-
+          {/* FAQ Section */}
+          <section className="py-16 relative">
             <div className="container mx-auto px-6 max-w-4xl relative z-10">
               <FAQSection
                 title="No Dumb Questions—Just Real Answers"
@@ -162,10 +164,10 @@ const Index = () => {
             </div>
           </section>
 
-          {/* Navigation Hub - now without background color overlay */}
+          {/* Navigation Hub */}
           <SiteNavigationHub />
 
-          {/* Trust Badge Section - now without background color overlay */}
+          {/* Trust Badge Section */}
           <TrustBadgeSection />
         </main>
 

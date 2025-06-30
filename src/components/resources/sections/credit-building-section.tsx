@@ -51,7 +51,15 @@ const CreditBuildingSection = ({ selectedTag, onTagClick }: CreditBuildingSectio
   return (
     <section className="mb-20" aria-labelledby="credit-building-section">
       <HeaderHierarchy level={2} className="text-center mb-12 text-2xl md:text-3xl lg:text-4xl font-black" id="credit-building-section">
-        Build Credit from <span className="text-[#247EFF]">Nothing</span>
+        Build Credit from <span style={{
+          background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+          backgroundSize: '400% 400%',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text',
+          color: 'transparent',
+          animation: 'pearlescent 3s ease-in-out infinite'
+        }}>Nothing</span>
       </HeaderHierarchy>
       
       <ComprehensiveGuideSection {...creditBuildingGuide} className="mb-12" />
@@ -61,15 +69,15 @@ const CreditBuildingSection = ({ selectedTag, onTagClick }: CreditBuildingSectio
         description="Your complete roadmap to building credit from zero. Download this checklist and check off each step as you complete it."
         items={creditBuildingChecklist}
         downloadTitle="credit-building-action-plan"
-        bgColor="bg-green-50/50 dark:bg-green-900/20"
-        accentColor="border-green-500"
+        bgColor="bg-yellow-50/50 dark:bg-yellow-900/20"
+        accentColor="border-yellow-500"
       />
       
       <div className="grid grid-cols-1 lg:grid-cols-1 gap-8 mb-12">
         {creditResources.map((resource, index) => (
           <div key={index}>
             <ResourceCategory
-              icon={<resource.icon className="h-8 w-8 text-[#247EFF]" aria-label={resource.iconAlt} />}
+              icon={<resource.icon className="h-8 w-8" aria-label={resource.iconAlt} />}
               title={resource.title}
               description={resource.description}
               topics={resource.topics}
@@ -81,8 +89,16 @@ const CreditBuildingSection = ({ selectedTag, onTagClick }: CreditBuildingSectio
             />
             
             {/* Who This Is For */}
-            <div className="mt-4 p-4 bg-blue-50/50 dark:bg-blue-900/20 rounded-lg">
-              <p className="text-sm font-semibold text-[#247EFF] mb-2">Who This Hits Different For:</p>
+            <div className="mt-4 p-4 bg-yellow-50/50 dark:bg-yellow-900/20 rounded-lg">
+              <p className="text-sm font-semibold mb-2" style={{
+                background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                backgroundSize: '400% 400%',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                color: 'transparent',
+                animation: 'pearlescent 3s ease-in-out infinite'
+              }}>Who This Hits Different For:</p>
               <p className="text-[#0A0A0A] dark:text-brand-cream">{resource.whoThisIsFor}</p>
             </div>
             
@@ -102,6 +118,20 @@ const CreditBuildingSection = ({ selectedTag, onTagClick }: CreditBuildingSectio
           </div>
         ))}
       </div>
+
+      <style>{`
+        @keyframes pearlescent {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+      `}</style>
     </section>
   );
 };

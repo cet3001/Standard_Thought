@@ -73,7 +73,7 @@ const ResourcesTestimonial = () => {
         )}
         
         {/* Background gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#247EFF]/20 via-[#247EFF]/10 to-[#247EFF]/15 dark:from-[#247EFF]/30 dark:via-[#247EFF]/20 dark:to-[#247EFF]/25"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/20 via-yellow-300/10 to-yellow-500/15 dark:from-yellow-500/30 dark:via-yellow-400/20 dark:to-yellow-600/25"></div>
         
         {/* Content overlay for readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/20 to-transparent dark:from-transparent dark:via-black/20 dark:to-transparent"></div>
@@ -91,8 +91,16 @@ const ResourcesTestimonial = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 max-w-7xl mx-auto">
           {testimonials.map((testimonial, index) => (
-            <div key={index} className="bg-white/90 dark:bg-brand-black/70 backdrop-blur-sm rounded-xl md:rounded-2xl p-4 md:p-6 border border-[#247EFF]/20 relative">
-              <Quote className="h-6 w-6 md:h-8 md:w-8 text-[#247EFF] mb-3 md:mb-4" />
+            <div key={index} className="bg-white/90 dark:bg-brand-black/70 backdrop-blur-sm rounded-xl md:rounded-2xl p-4 md:p-6 border border-yellow-200/30 relative">
+              <Quote className="h-6 w-6 md:h-8 md:w-8 mb-3 md:mb-4" style={{
+                color: 'transparent',
+                background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                backgroundSize: '400% 400%',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                animation: 'pearlescent 3s ease-in-out infinite'
+              }} />
               
               <blockquote className="text-[#0A0A0A] dark:text-brand-cream mb-4 md:mb-6 italic text-sm md:text-base leading-relaxed">
                 "{testimonial.quote}"
@@ -107,7 +115,9 @@ const ResourcesTestimonial = () => {
                     {testimonial.location}
                   </div>
                 </div>
-                <div className="bg-[#247EFF]/10 text-[#247EFF] px-2 md:px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap ml-2">
+                <div className="px-2 md:px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap ml-2 text-black" style={{
+                  background: 'linear-gradient(45deg, #f4d03f, #ffd700, #ffeb3b)',
+                }}>
                   {testimonial.result}
                 </div>
               </div>
@@ -121,6 +131,20 @@ const ResourcesTestimonial = () => {
           </p>
         </div>
       </div>
+
+      <style>{`
+        @keyframes pearlescent {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+      `}</style>
     </section>
   );
 };

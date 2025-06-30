@@ -49,7 +49,15 @@ const FoundationSection = ({ selectedTag, onTagClick }: FoundationSectionProps) 
   return (
     <section className="mb-20" aria-labelledby="foundation-section">
       <HeaderHierarchy level={2} className="text-center mb-12 text-2xl md:text-3xl lg:text-4xl font-black" id="foundation-section">
-        Side Hustle <span className="text-[#247EFF]">Cash Management</span>
+        Side Hustle <span style={{
+          background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+          backgroundSize: '400% 400%',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text',
+          color: 'transparent',
+          animation: 'pearlescent 3s ease-in-out infinite'
+        }}>Cash Management</span>
       </HeaderHierarchy>
       
       <QuickStartChecklist
@@ -57,15 +65,15 @@ const FoundationSection = ({ selectedTag, onTagClick }: FoundationSectionProps) 
         description="Master your irregular income with this proven system. Download and check off each step to get your money right."
         items={cashFlowChecklist}
         downloadTitle="cash-flow-control-checklist"
-        bgColor="bg-orange-50/50 dark:bg-orange-900/20"
-        accentColor="border-orange-500"
+        bgColor="bg-yellow-50/50 dark:bg-yellow-900/20"
+        accentColor="border-yellow-500"
       />
       
       <div className="grid grid-cols-1 lg:grid-cols-1 gap-8 mb-12">
         {foundationResources.map((resource, index) => (
           <div key={index}>
             <ResourceCategory
-              icon={<resource.icon className="h-8 w-8 text-[#247EFF]" aria-label={resource.iconAlt} />}
+              icon={<resource.icon className="h-8 w-8" aria-label={resource.iconAlt} />}
               title={resource.title}
               description={resource.description}
               topics={resource.topics}
@@ -76,8 +84,16 @@ const FoundationSection = ({ selectedTag, onTagClick }: FoundationSectionProps) 
             />
             
             {/* Who This Is For */}
-            <div className="mt-4 p-4 bg-blue-50/50 dark:bg-blue-900/20 rounded-lg">
-              <p className="text-sm font-semibold text-[#247EFF] mb-2">Who This Hits Different For:</p>
+            <div className="mt-4 p-4 bg-yellow-50/50 dark:bg-yellow-900/20 rounded-lg">
+              <p className="text-sm font-semibold mb-2" style={{
+                background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                backgroundSize: '400% 400%',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                color: 'transparent',
+                animation: 'pearlescent 3s ease-in-out infinite'
+              }}>Who This Hits Different For:</p>
               <p className="text-[#0A0A0A] dark:text-brand-cream">{resource.whoThisIsFor}</p>
             </div>
             
@@ -97,6 +113,20 @@ const FoundationSection = ({ selectedTag, onTagClick }: FoundationSectionProps) 
           </div>
         ))}
       </div>
+
+      <style>{`
+        @keyframes pearlescent {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+      `}</style>
     </section>
   );
 };

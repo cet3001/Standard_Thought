@@ -103,15 +103,13 @@ const ExploreMoreSection = () => {
               <div
                 key={topic.title}
                 onClick={() => navigate(topic.route)}
-                className="group relative overflow-hidden cursor-pointer transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl"
+                className={`group relative overflow-hidden cursor-pointer transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl bg-gradient-to-br ${topic.bgGradient}`}
                 style={{
-                  background: `linear-gradient(135deg, var(--tw-gradient-stops))`,
                   borderRadius: '12px 20px 15px 18px', // Uneven, hand-cut borders
                   filter: 'drop-shadow(4px 6px 12px rgba(0, 0, 0, 0.4))',
                   animation: `streetFloat 4s ease-in-out infinite ${index * 0.7}s`,
                   border: '2px solid rgba(255, 215, 0, 0.2)'
                 }}
-                className={`bg-gradient-to-br ${topic.bgGradient}`}
               >
                 {/* Concrete/grain texture overlay */}
                 <div 

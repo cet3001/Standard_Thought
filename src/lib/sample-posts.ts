@@ -1,4 +1,7 @@
 
+// Sample Post Seeder
+// Purpose: Push a batch of starter blog posts into the database.
+// Why: Makes demos quick without writing content from scratch.
 import { supabase } from '@/integrations/supabase/client';
 
 export const createSamplePosts = async () => {
@@ -467,7 +470,9 @@ Stop following advice designed for people who don't look like you or come from w
       return { success: false, error };
     }
 
-    console.log('Sample posts created successfully:', data);
+    if (process.env.NODE_ENV !== 'production') {
+      console.log('Sample posts created successfully:', data);
+    }
     return { success: true, data };
   } catch (err) {
     console.error('Unexpected error:', err);

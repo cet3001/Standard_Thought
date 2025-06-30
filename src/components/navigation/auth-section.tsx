@@ -18,11 +18,15 @@ const AuthSection = ({ onAction }: AuthSectionProps) => {
     if (isSigningOut) return;
     
     setIsSigningOut(true);
-    console.log('AuthSection: Starting sign out...');
+    if (process.env.NODE_ENV !== 'production') {
+      console.log('AuthSection: Starting sign out...');
+    }
     
     try {
       await signOut();
-      console.log('AuthSection: Sign out completed, navigating to home...');
+      if (process.env.NODE_ENV !== 'production') {
+        console.log('AuthSection: Sign out completed, navigating to home...');
+      }
       navigate("/");
       onAction?.();
     } catch (error) {

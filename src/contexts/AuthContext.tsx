@@ -1,4 +1,7 @@
 
+// Auth Context
+// Purpose: Handles Supabase auth state and provides user info across the app.
+// Why: Centralizes login logic so pages stay clean.
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { User } from '@supabase/supabase-js';
 import { supabase } from '@/integrations/supabase/client';
@@ -48,7 +51,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const fetchProfile = useCallback(async (userId: string) => {
     try {
-      console.log('Fetching profile for user:', userId);
+      if (process.env.NODE_ENV !== 'production') {
+        console.log('Fetching profile for user:', userId);
+      }
       const { data, error } = await supabase
         .from('profiles')
         .select('*')
@@ -60,7 +65,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         return;
       }
 
-      console.log('Profile fetched:', data);
+      if (process.env.NODE_ENV !== 'production') {
+        console.log('Profile fetched:', data);
+      }
       setProfile(data);
     } catch (error: unknown) {
       console.error('Error fetching profile:', error);
@@ -74,7 +81,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         console.error('Error getting session:', error);
       }
       
-      console.log('Initial session:', session);
+      if (process.env.NODE_ENV !== 'production') {
+        console.log('Initial session:', session);
+      }
       setUser(session?.user ?? null);
       if (session?.user) {
         fetchProfile(session.user.id);
@@ -86,7 +95,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange(async (event, session) => {
-      console.log('Auth state change:', event, session);
+      if (process.env.NODE_ENV !== 'production') {
+        console.log('Auth state change:', event, session);
+      }
       setUser(session?.user ?? null);
       
       if (session?.user) {
@@ -147,7 +158,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   // Check if user is admin - either by profile role or by email
   const isAdmin = profile?.role === 'admin' || user?.email === 'cet3001@gmail.com';
 
-  console.log('Current auth state:', { user: user?.email, profile, isAdmin, loading });
+  if (process.env.NODE_ENV !== 'production') {
+    console.log('Current auth state:', { user: user?.email, profile, isAdmin, loading });
+  }
 
   const value = {
     user,

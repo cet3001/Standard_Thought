@@ -38,10 +38,12 @@ ${pages.map(page => `  <url>
 </sitemapindex>`;
 
       // Log sitemap files for SEO compliance
-      console.log('Generated page-sitemap.xml content:');
-      console.log(pageSitemap);
-      console.log('\nGenerated sitemap_index.xml content:');
-      console.log(sitemapIndex);
+      if (process.env.NODE_ENV !== 'production') {
+        console.log('Generated page-sitemap.xml content:');
+        console.log(pageSitemap);
+        console.log('\nGenerated sitemap_index.xml content:');
+        console.log(sitemapIndex);
+      }
     };
 
     generateSitemap();

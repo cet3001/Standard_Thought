@@ -1,4 +1,7 @@
 
+// Edit Post Hook
+// Purpose: Manage form state and DB updates for the edit post page.
+// Why: Keeps the component lean and handles side effects in one place.
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -52,35 +55,47 @@ export const useEditPost = () => {
 
   // Watch form values for debugging
   const watchedValues = form.watch();
-  console.log('useEditPost - Form values:', watchedValues);
+  if (process.env.NODE_ENV !== 'production') {
+    console.log('useEditPost - Form values:', watchedValues);
+  }
 
   useEffect(() => {
-    console.log('useEditPost - useEffect triggered', { id, isAdmin, authLoading });
+    if (process.env.NODE_ENV !== 'production') {
+      console.log('useEditPost - useEffect triggered', { id, isAdmin, authLoading });
+    }
     
     if (authLoading) return;
 
     if (!isAdmin) {
-      console.log('useEditPost - User is not admin, redirecting');
+      if (process.env.NODE_ENV !== 'production') {
+        console.log('useEditPost - User is not admin, redirecting');
+      }
       navigate("/");
       setLoading(false);
       return;
     }
 
     if (!id) {
-      console.log('useEditPost - No ID parameter found');
+      if (process.env.NODE_ENV !== 'production') {
+        console.log('useEditPost - No ID parameter found');
+      }
       toast.error("No post ID provided");
       navigate("/blog");
       setLoading(false);
       return;
     }
 
-    console.log('useEditPost - Fetching post for id:', id);
+    if (process.env.NODE_ENV !== 'production') {
+      console.log('useEditPost - Fetching post for id:', id);
+    }
     fetchPost();
   }, [id, isAdmin, authLoading, navigate]);
 
   useEffect(() => {
-    if (post) {
-      console.log('useEditPost - Post data available, populating form:', post);
+      if (post) {
+        if (process.env.NODE_ENV !== 'production') {
+          console.log('useEditPost - Post data available, populating form:', post);
+        }
       
       const formData: PostFormData = {
         title: post.title || '',
@@ -97,9 +112,13 @@ export const useEditPost = () => {
         comments_enabled: post.comments_enabled !== false,
       };
       
-      console.log('useEditPost - Resetting form with data:', formData);
+      if (process.env.NODE_ENV !== 'production') {
+        console.log('useEditPost - Resetting form with data:', formData);
+      }
       form.reset(formData);
-      console.log('useEditPost - Form reset completed');
+      if (process.env.NODE_ENV !== 'production') {
+        console.log('useEditPost - Form reset completed');
+      }
     }
   }, [post, form]);
 
@@ -109,7 +128,9 @@ export const useEditPost = () => {
       return;
     }
 
-    console.log('useEditPost - fetchPost called for id:', id);
+    if (process.env.NODE_ENV !== 'production') {
+      console.log('useEditPost - fetchPost called for id:', id);
+    }
     try {
       const { data, error } = await supabase
         .from('blog_posts')
@@ -117,7 +138,9 @@ export const useEditPost = () => {
         .eq('id', id)
         .single();
 
-      console.log('useEditPost - Supabase response:', { data, error });
+      if (process.env.NODE_ENV !== 'production') {
+        console.log('useEditPost - Supabase response:', { data, error });
+      }
 
       if (error || !data) {
         console.error('Error fetching post:', error);
@@ -126,7 +149,9 @@ export const useEditPost = () => {
         return;
       }
 
-      console.log('useEditPost - Setting post data:', data);
+      if (process.env.NODE_ENV !== 'production') {
+        console.log('useEditPost - Setting post data:', data);
+      }
       setPost(data);
       
     } catch (error) {
@@ -141,7 +166,9 @@ export const useEditPost = () => {
   const onSubmit = async (data: PostFormData) => {
     if (!post) return;
 
-    console.log('useEditPost - onSubmit called with data:', data);
+    if (process.env.NODE_ENV !== 'production') {
+      console.log('useEditPost - onSubmit called with data:', data);
+    }
     setSaving(true);
     try {
       const tagsArray = data.tags 
@@ -163,7 +190,9 @@ export const useEditPost = () => {
         updated_at: new Date().toISOString(),
       };
 
-      console.log('useEditPost - Updating post with data:', updateData);
+      if (process.env.NODE_ENV !== 'production') {
+        console.log('useEditPost - Updating post with data:', updateData);
+      }
 
       const { error } = await supabase
         .from('blog_posts')
@@ -174,7 +203,9 @@ export const useEditPost = () => {
         console.error('Error updating post:', error);
         toast.error('Failed to update post');
       } else {
-        console.log('useEditPost - Post updated successfully');
+        if (process.env.NODE_ENV !== 'production') {
+          console.log('useEditPost - Post updated successfully');
+        }
         toast.success('Post updated successfully!');
         navigate(`/blog/${post.slug}`);
       }

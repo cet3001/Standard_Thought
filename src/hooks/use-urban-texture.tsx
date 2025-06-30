@@ -1,4 +1,7 @@
 
+// Urban Texture Hook
+// Purpose: Rotate background textures with a mix of AI and curated images.
+// Why: Keeps pages fresh and on-brand without manual updates.
 import { useState, useEffect } from 'react';
 
 // Custom urban street imagery - Real city vibes, street culture, urban life
@@ -55,7 +58,9 @@ export const useUrbanTexture = () => {
   const generateNewUrbanTexture = async () => {
     try {
       setImageGenerationStatus("generating");
-      console.log("Generating new urban texture...");
+      if (process.env.NODE_ENV !== 'production') {
+        console.log("Generating new urban texture...");
+      }
       
       // First try to generate AI image
       const shouldGenerateAI = Math.random() > 0.3; // 70% chance to generate AI image
@@ -73,7 +78,9 @@ export const useUrbanTexture = () => {
           if (response.ok) {
             const data = await response.json();
             if (data.imageUrl) {
-              console.log("Generated AI urban texture:", randomPrompt);
+              if (process.env.NODE_ENV !== 'production') {
+                console.log("Generated AI urban texture:", randomPrompt);
+              }
               globalTextureUrl = data.imageUrl;
               setTextureImageUrl(data.imageUrl);
               setImageGenerationStatus("success");
@@ -81,7 +88,9 @@ export const useUrbanTexture = () => {
             }
           }
         } catch (aiError) {
-          console.log("AI generation failed, falling back to curated images:", aiError);
+          if (process.env.NODE_ENV !== 'production') {
+            console.log("AI generation failed, falling back to curated images:", aiError);
+          }
         }
       }
       
@@ -103,14 +112,18 @@ export const useUrbanTexture = () => {
     if (availableImages.length === 0) {
       availableImages = URBAN_IMAGES;
       localStorage.setItem('used-urban-textures', '[]');
-      console.log("Reset curated urban texture cycle");
+      if (process.env.NODE_ENV !== 'production') {
+        console.log("Reset curated urban texture cycle");
+      }
     }
     
     // Select a random image from available ones
     const randomIndex = Math.floor(Math.random() * availableImages.length);
     const selectedImage = availableImages[randomIndex];
     
-    console.log("Selected curated urban texture:", selectedImage);
+    if (process.env.NODE_ENV !== 'production') {
+      console.log("Selected curated urban texture:", selectedImage);
+    }
     
     // Update used images list
     const newUsedImages = [...usedImages, selectedImage].slice(-Math.floor(URBAN_IMAGES.length * 0.7));

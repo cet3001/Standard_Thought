@@ -1,3 +1,6 @@
+// Email Utility Functions
+// Purpose: Handle newsletter subscriptions and welcome emails.
+// Why: Centralizes signup logic and analytics tracking.
 import { supabase } from '@/integrations/supabase/client'
 import type { Database } from '@/integrations/supabase/types'
 import { trackNewsletterSignup, trackPlaybookDownload } from '@/lib/analytics-utils'
@@ -6,7 +9,9 @@ type SubscriberInsert = Database['public']['Tables']['Subscribers']['Insert']
 
 export const subscribeToNewsletter = async (email: string, name?: string) => {
   try {
-    console.log(`[EMAIL DEBUG] Starting subscription process for: ${email}`)
+    if (process.env.NODE_ENV !== 'production') {
+      console.log(`[EMAIL DEBUG] Starting subscription process for: ${email}`)
+    }
     
     // Generate unsubscribe token
     const { data: tokenData, error: tokenError } = await supabase.rpc('generate_unsubscribe_token')
@@ -16,7 +21,9 @@ export const subscribeToNewsletter = async (email: string, name?: string) => {
       throw new Error('Failed to generate unsubscribe token')
     }
 
-    console.log(`[EMAIL DEBUG] Generated unsubscribe token for ${email}:`, tokenData)
+    if (process.env.NODE_ENV !== 'production') {
+      console.log(`[EMAIL DEBUG] Generated unsubscribe token for ${email}:`, tokenData)
+    }
 
     const { data, error } = await supabase
       .from('Subscribers')
@@ -38,7 +45,9 @@ export const subscribeToNewsletter = async (email: string, name?: string) => {
       throw new Error(error.message)
     }
 
-    console.log(`[EMAIL DEBUG] Successfully inserted ${email} into database:`, data)
+    if (process.env.NODE_ENV !== 'production') {
+      console.log(`[EMAIL DEBUG] Successfully inserted ${email} into database:`, data)
+    }
 
     // Track newsletter signup
     trackNewsletterSignup(email)
@@ -46,7 +55,9 @@ export const subscribeToNewsletter = async (email: string, name?: string) => {
 
     // Send welcome email with playbook after successful subscription
     try {
-      console.log(`[EMAIL DEBUG] Triggering welcome email for: ${email}`)
+      if (process.env.NODE_ENV !== 'production') {
+        console.log(`[EMAIL DEBUG] Triggering welcome email for: ${email}`)
+      }
       const { data: emailData, error: emailError } = await supabase.functions.invoke('send-welcome-email', {
         body: { 
           email: email.trim().toLowerCase(),
@@ -60,7 +71,9 @@ export const subscribeToNewsletter = async (email: string, name?: string) => {
         console.error(`[EMAIL DEBUG] Welcome email error for ${email}:`, emailError)
         // Don't throw here - subscription was successful, email is just a bonus
       } else {
-        console.log(`[EMAIL DEBUG] Welcome email sent successfully for ${email}:`, emailData)
+        if (process.env.NODE_ENV !== 'production') {
+          console.log(`[EMAIL DEBUG] Welcome email sent successfully for ${email}:`, emailData)
+        }
       }
     } catch (emailError) {
       console.error(`[EMAIL DEBUG] Failed to send welcome email for ${email}:`, emailError)

@@ -24,14 +24,9 @@ const FoundationSection = ({ selectedTag, onTagClick }: FoundationSectionProps) 
         "Side Hustle Tax Moves That Save You Money",
         "Separate Business & Personal Money (Stop Mixing)"
       ],
-      ctaText: "Get Cash Flow Control",
-      ctaLink: "/blog",
-      tags: ["Cash Flow", "Side Hustle", "Beginner", "Automation", "Irregular Income", "Tax Strategy"],
-      internalLinks: [
-        { text: "Financial Education Guide", link: "/financial-education-guide" },
-        { text: "See Builder Stories: Side Hustle Success", link: "/blog" },
-        { text: "Master the Hustle Mindset", link: "/about" }
-      ]
+      ctaText: "Master Cash Flow",
+      ctaLink: "#",
+      tags: ["Cash Flow", "Side Hustle", "Beginner", "Automation", "Irregular Income", "Tax Strategy"]
     }
   ];
 
@@ -95,20 +90,6 @@ const FoundationSection = ({ selectedTag, onTagClick }: FoundationSectionProps) 
                 animation: 'pearlescent 3s ease-in-out infinite'
               }}>Who This Hits Different For:</p>
               <p className="text-[#0A0A0A] dark:text-brand-cream">{resource.whoThisIsFor}</p>
-            </div>
-            
-            {/* Internal Links */}
-            <div className="mt-4 flex flex-wrap gap-3">
-              {resource.internalLinks.map((link, linkIndex) => (
-                <a
-                  key={linkIndex}
-                  href={link.link}
-                  className="text-sm bg-gradient-to-r from-accent to-[#FFD700] text-black hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg px-3 py-2 rounded-lg font-semibold flex items-center gap-1 min-h-[32px] border-0"
-                  aria-label={`Navigate to ${link.text}`}
-                >
-                  {link.text} →
-                </a>
-              ))}
             </div>
           </div>
         ))}

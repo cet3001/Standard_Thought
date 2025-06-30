@@ -117,10 +117,8 @@ const Index = () => {
           {/* Hero Section */}
           <HomepageHero scrollToNewsletter={scrollToNewsletter} />
 
-          {/* Newsletter */}
-          <section className="bg-gradient-to-b from-white to-brand-cream/80 dark:from-brand-black/90 dark:to-brand-black py-16">
-            <NewsletterSection />
-          </section>
+          {/* Newsletter - Now without white background wrapper */}
+          <NewsletterSection />
 
           {/* Featured Blog Stories Section */}
           <section className="bg-brand-cream/50 dark:bg-brand-black/50 py-16">

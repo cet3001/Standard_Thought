@@ -1,5 +1,5 @@
 
-import { ArrowRight, CreditCard, TrendingUp, Bot, Wallet } from "lucide-react";
+import { ArrowRight, Building2, Target, Cpu, Banknote } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const ExploreMoreSection = () => {
@@ -9,30 +9,30 @@ const ExploreMoreSection = () => {
     {
       title: "Credit Building",
       description: "Fix your credit score fast with street-smart strategies",
-      icon: CreditCard,
+      icon: Building2,
       route: "/blog/credit-building-guide",
-      gradient: "from-green-400 to-emerald-600"
+      color: "#10B981"
     },
     {
       title: "Smart Investing", 
       description: "Start building wealth with micro-investing apps",
-      icon: TrendingUp,
+      icon: Target,
       route: "/start-investing-guide",
-      gradient: "from-blue-400 to-indigo-600"
+      color: "#3B82F6"
     },
     {
       title: "AI Side Hustles",
       description: "Turn AI tools into consistent income streams",
-      icon: Bot,
+      icon: Cpu,
       route: "/blog/ai-side-hustles-guide", 
-      gradient: "from-purple-400 to-violet-600"
+      color: "#8B5CF6"
     },
     {
       title: "Cash Management",
       description: "Break the paycheck-to-paycheck cycle for good",
-      icon: Wallet,
+      icon: Banknote,
       route: "/wealth-building-strategies",
-      gradient: "from-orange-400 to-red-600"
+      color: "#F97316"
     }
   ];
 
@@ -72,7 +72,7 @@ const ExploreMoreSection = () => {
           </p>
         </div>
 
-        {/* Enhanced Topic Cards Grid */}
+        {/* Urban-Style Topic Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {topics.map((topic, index) => {
             const IconComponent = topic.icon;
@@ -81,54 +81,78 @@ const ExploreMoreSection = () => {
               <div
                 key={topic.title}
                 onClick={() => navigate(topic.route)}
-                className="group relative overflow-hidden rounded-2xl p-6 cursor-pointer transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl"
+                className="group relative overflow-hidden rounded-2xl cursor-pointer transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl border-2 border-[#0A0A0A]/20 dark:border-brand-cream/20"
                 style={{
-                  background: `linear-gradient(135deg, ${topic.gradient.includes('green') ? '#10b981' : topic.gradient.includes('blue') ? '#3b82f6' : topic.gradient.includes('purple') ? '#8b5cf6' : '#f97316'} 0%, ${topic.gradient.includes('green') ? '#059669' : topic.gradient.includes('blue') ? '#1d4ed8' : topic.gradient.includes('purple') ? '#7c3aed' : '#ea580c'} 100%)`,
+                  background: `
+                    linear-gradient(135deg, rgba(10, 10, 10, 0.9) 0%, rgba(10, 10, 10, 0.7) 100%),
+                    linear-gradient(45deg, ${topic.color}40 0%, ${topic.color}20 100%)
+                  `,
+                  backdropFilter: 'blur(10px)',
                   animation: `float 3s ease-in-out infinite ${index * 0.5}s`
                 }}
               >
-                {/* Graffiti texture overlay */}
-                <div className="absolute inset-0 opacity-10 bg-[conic-gradient(from_0deg_at_2px_2px,_rgba(0,0,0,1)_90deg,_transparent_90deg)] bg-[length:12px_12px]"></div>
+                {/* Urban texture overlay */}
+                <div className="absolute inset-0 opacity-20 bg-[conic-gradient(from_0deg_at_2px_2px,_rgba(0,0,0,1)_90deg,_transparent_90deg)] bg-[length:12px_12px]"></div>
                 
-                {/* Icon with urban styling */}
-                <div className="relative z-10 mb-4">
-                  <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur-sm border border-white/30">
-                    <IconComponent className="w-6 h-6 text-white" />
+                {/* Graffiti-style corner accent */}
+                <div 
+                  className="absolute top-0 right-0 w-16 h-16 opacity-30"
+                  style={{
+                    background: `radial-gradient(circle at center, ${topic.color}60 0%, transparent 70%)`,
+                    clipPath: 'polygon(50% 0%, 100% 0%, 100% 50%)'
+                  }}
+                />
+                
+                {/* Street-style icon with background */}
+                <div className="relative z-10 mb-4 p-6">
+                  <div 
+                    className="w-14 h-14 rounded-xl flex items-center justify-center backdrop-blur-sm border-2 group-hover:scale-110 transition-transform duration-300"
+                    style={{
+                      background: `linear-gradient(135deg, ${topic.color}30 0%, ${topic.color}10 100%)`,
+                      borderColor: `${topic.color}60`,
+                      boxShadow: `0 4px 12px ${topic.color}20`
+                    }}
+                  >
+                    <IconComponent 
+                      className="w-7 h-7" 
+                      style={{ color: topic.color }}
+                    />
                   </div>
                 </div>
 
-                {/* Content */}
-                <div className="relative z-10">
-                  <h3 className="text-white font-bold text-lg mb-2 leading-tight">
+                {/* Content with street styling */}
+                <div className="relative z-10 px-6 pb-6">
+                  <h3 className="text-brand-cream font-bold text-lg mb-2 leading-tight">
                     {topic.title}
                   </h3>
-                  <p className="text-white/90 text-sm leading-relaxed mb-4">
+                  <p className="text-brand-cream/80 text-sm leading-relaxed mb-4">
                     {topic.description}
                   </p>
                   
-                  {/* CTA with arrow */}
-                  <div className="flex items-center text-white font-semibold text-sm group-hover:translate-x-1 transition-transform duration-300">
+                  {/* Street-style CTA */}
+                  <div 
+                    className="flex items-center font-semibold text-sm group-hover:translate-x-1 transition-transform duration-300 px-3 py-2 rounded-lg border backdrop-blur-sm"
+                    style={{
+                      color: topic.color,
+                      borderColor: `${topic.color}40`,
+                      background: `linear-gradient(135deg, ${topic.color}10 0%, transparent 100%)`
+                    }}
+                  >
                     <span>Learn More</span>
                     <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
                   </div>
                 </div>
 
-                {/* Graffiti-style accent */}
-                <div className="absolute top-4 right-4 w-8 h-8 opacity-30">
-                  <svg viewBox="0 0 32 32" className="w-full h-full text-white">
-                    <path
-                      d="M8,8 Q16,4 24,8 Q28,16 24,24 Q16,28 8,24 Q4,16 8,8 Z"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      transform="rotate(15)"
-                    />
-                  </svg>
-                </div>
+                {/* Urban grit bottom accent */}
+                <div 
+                  className="absolute bottom-0 left-0 right-0 h-1 opacity-60"
+                  style={{
+                    background: `linear-gradient(90deg, transparent 0%, ${topic.color} 50%, transparent 100%)`
+                  }}
+                />
 
-                {/* Hover effect overlay */}
-                <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
+                {/* Hover overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
               </div>
             );
           })}

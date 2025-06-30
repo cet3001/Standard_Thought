@@ -26,8 +26,14 @@ const BlogPage = () => {
     refetch: refetchPosts,
   } = useQuery({
     queryKey: ['posts'],
-    queryFn: getPosts,
-    retry: 2,
+    queryFn: async () => {
+      console.log('BlogPage: Executing getPosts query...');
+      const result = await getPosts();
+      console.log('BlogPage: getPosts query result:', result);
+      return result;
+    },
+    retry: 3,
+    retryDelay: 1000,
     staleTime: 5 * 60 * 1000, // 5 minutes
   });
 
@@ -38,13 +44,25 @@ const BlogPage = () => {
     error: categoriesError,
   } = useQuery({
     queryKey: ['categories'],
-    queryFn: getCategories,
-    retry: 2,
+    queryFn: async () => {
+      console.log('BlogPage: Executing getCategories query...');
+      const result = await getCategories();
+      console.log('BlogPage: getCategories query result:', result);
+      return result;
+    },
+    retry: 3,
+    retryDelay: 1000,
     staleTime: 5 * 60 * 1000, // 5 minutes
   });
 
-  console.log('BlogPage: Posts loading:', isPostsLoading, 'Posts data:', posts?.length);
-  console.log('BlogPage: Categories loading:', isCategoriesLoading, 'Categories data:', categories?.length);
+  console.log('BlogPage: Query states:', {
+    postsLoading: isPostsLoading,
+    postsData: posts?.length,
+    postsError: isPostsError,
+    categoriesLoading: isCategoriesLoading,
+    categoriesData: categories?.length,
+    categoriesError: isCategoriesError
+  });
 
   // Extract theme tags from posts
   const themeTags = posts 
@@ -52,7 +70,12 @@ const BlogPage = () => {
     : [];
 
   useEffect(() => {
-    console.log('BlogPage: Filtering posts...', { posts: posts?.length, searchTerm, selectedCategory, selectedThemeTag });
+    console.log('BlogPage: Filtering posts...', { 
+      postsLength: posts?.length, 
+      searchTerm, 
+      selectedCategory, 
+      selectedThemeTag 
+    });
     
     if (posts) {
       const filtered = posts.filter((post) => {
@@ -87,7 +110,12 @@ const BlogPage = () => {
   const hasError = isPostsError || isCategoriesError;
   const error = postsError || categoriesError;
 
-  console.log('BlogPage: Final state - Loading:', isLoading, 'Error:', hasError, 'Posts:', posts?.length, 'Filtered:', filteredPosts?.length);
+  console.log('BlogPage: Final render state:', {
+    isLoading,
+    hasError,
+    postsLength: posts?.length,
+    filteredLength: filteredPosts?.length
+  });
 
   if (isLoading) {
     console.log('BlogPage: Showing loading state');

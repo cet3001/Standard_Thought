@@ -10,7 +10,7 @@ const ResourcesCTA = () => {
         className="absolute inset-0 opacity-30"
         style={{
           backgroundImage: `
-            radial-gradient(circle at 20% 50%, rgba(36, 126, 255, 0.1) 1px, transparent 1px),
+            radial-gradient(circle at 20% 50%, rgba(255, 215, 0, 0.1) 1px, transparent 1px),
             radial-gradient(circle at 80% 20%, rgba(255, 215, 0, 0.08) 1px, transparent 1px)
           `,
           backgroundSize: '20px 20px, 35px 35px'

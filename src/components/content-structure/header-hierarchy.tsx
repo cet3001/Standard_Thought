@@ -9,7 +9,10 @@ interface HeaderHierarchyProps {
 }
 
 const HeaderHierarchy = ({ level, children, className = "", id }: HeaderHierarchyProps) => {
-  const baseClasses = "font-bold text-[#0A0A0A] dark:text-brand-cream leading-tight";
+  const baseClasses = "font-bold leading-tight";
+  
+  // Use yellow pearlescent color instead of brand-cream/black
+  const colorClasses = "text-transparent bg-clip-text bg-gradient-to-r from-yellow-600 via-yellow-500 to-yellow-400 dark:from-yellow-400 dark:via-yellow-300 dark:to-yellow-200";
   
   const levelClasses = {
     1: "text-4xl md:text-5xl mb-8",
@@ -24,10 +27,32 @@ const HeaderHierarchy = ({ level, children, className = "", id }: HeaderHierarch
   
   return (
     <Tag 
-      className={`${baseClasses} ${levelClasses[level]} ${className}`}
+      className={`${baseClasses} ${colorClasses} ${levelClasses[level]} ${className}`}
       id={id}
+      style={{
+        background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+        backgroundSize: '400% 400%',
+        WebkitBackgroundClip: 'text',
+        WebkitTextFillColor: 'transparent',
+        backgroundClip: 'text',
+        color: 'transparent',
+        animation: 'pearlescent 3s ease-in-out infinite'
+      }}
     >
       {children}
+      <style>{`
+        @keyframes pearlescent {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+      `}</style>
     </Tag>
   );
 };

@@ -1,3 +1,4 @@
+
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import HeaderHierarchy from "@/components/content-structure/header-hierarchy";
 import FAQSchema from "@/components/seo/faq-schema";
@@ -113,6 +114,15 @@ const ResourcesFAQSection = () => {
             background-position: 0% 50%;
           }
         }
+        
+        @keyframes tagGlow {
+          0%, 100% {
+            filter: drop-shadow(0 0 5px rgba(248, 231, 28, 0.6));
+          }
+          50% {
+            filter: drop-shadow(0 0 12px rgba(248, 231, 28, 0.9)) drop-shadow(0 0 20px rgba(248, 231, 28, 0.4));
+          }
+        }
       `}</style>
       
       <div className="text-center mb-8 md:mb-12 relative">
@@ -154,13 +164,81 @@ const ResourcesFAQSection = () => {
           </svg>
         </div>
 
-        <HeaderHierarchy level={2} className="text-2xl md:text-3xl font-bold mb-4" id="resources-faq-heading">
+        <HeaderHierarchy level={2} className="text-2xl md:text-3xl font-bold mb-6 relative" id="resources-faq-heading">
           Real Questions, Real Answers
         </HeaderHierarchy>
         
-        <p className="text-lg text-[#0A0A0A]/70 dark:text-brand-cream/70 max-w-2xl mx-auto">
-          No corporate BS, just straight talk about building wealth from the ground up.
-        </p>
+        {/* Enhanced subhead with graffiti styling */}
+        <div className="relative max-w-2xl mx-auto mb-2">
+          <p 
+            className="text-lg md:text-xl text-[#0A0A0A]/80 dark:text-brand-cream/80 font-bold relative z-10"
+            style={{
+              fontFamily: "'Permanent Marker', 'Kalam', cursive",
+              textShadow: '2px 2px 0px rgba(0,0,0,0.3)',
+              letterSpacing: '0.5px'
+            }}
+          >
+            No corporate BS, just straight talk about building wealth from the ground up.
+          </p>
+          
+          {/* Handwritten underline with graffiti effect */}
+          <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-3/4">
+            <svg viewBox="0 0 300 20" className="w-full h-5" style={{ animation: 'tagGlow 3s ease-in-out infinite' }}>
+              <defs>
+                <filter id="roughen">
+                  <feTurbulence baseFrequency="0.04" numOctaves="3" result="noise"/>
+                  <feDisplacementMap in="SourceGraphic" in2="noise" scale="1"/>
+                </filter>
+              </defs>
+              <path 
+                d="M10 12 Q75 8 150 10 Q225 12 290 8" 
+                stroke="#f8e71c" 
+                strokeWidth="3" 
+                fill="none" 
+                filter="url(#roughen)"
+                opacity="0.9"
+                strokeLinecap="round"
+              />
+              <path 
+                d="M15 14 Q80 10 155 12 Q230 14 285 10" 
+                stroke="#ffd700" 
+                strokeWidth="2" 
+                fill="none" 
+                filter="url(#roughen)"
+                opacity="0.7"
+                strokeLinecap="round"
+              />
+              {/* Spray dots */}
+              <circle cx="50" cy="15" r="1" fill="#f8e71c" opacity="0.6"/>
+              <circle cx="120" cy="6" r="0.8" fill="#ffd700" opacity="0.7"/>
+              <circle cx="200" cy="16" r="1.2" fill="#f8e71c" opacity="0.5"/>
+              <circle cx="250" cy="4" r="0.6" fill="#ffd700" opacity="0.8"/>
+            </svg>
+          </div>
+          
+          {/* Side graffiti tag */}
+          <div className="absolute -right-8 md:-right-12 top-1/2 transform -translate-y-1/2 rotate-12">
+            <svg viewBox="0 0 60 30" className="w-12 h-6 md:w-16 md:h-8">
+              <ellipse cx="30" cy="15" rx="25" ry="12" fill="#f8e71c" opacity="0.4"/>
+              <ellipse cx="28" cy="13" rx="20" ry="9" fill="#ffd700" opacity="0.6"/>
+              <text 
+                x="30" 
+                y="18" 
+                textAnchor="middle" 
+                style={{ 
+                  fontSize: '10px', 
+                  fontFamily: "'Permanent Marker', cursive",
+                  fontWeight: 'bold',
+                  fill: '#f8e71c',
+                  stroke: '#000',
+                  strokeWidth: '0.3px'
+                }}
+              >
+                REAL
+              </text>
+            </svg>
+          </div>
+        </div>
       </div>
       
       <div className="max-w-4xl mx-auto">

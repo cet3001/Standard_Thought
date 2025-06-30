@@ -42,7 +42,7 @@ const SuccessStoriesSection = ({ isVisible }: SuccessStoriesSectionProps) => {
         </p>
       </div>
 
-      {/* Polaroid-style Story Cards */}
+      {/* Polaroid-style Story Cards - Updated with new styling */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mb-16" role="group" aria-label="Community success stories">
         {stories.map((story, index) => (
           <div 
@@ -50,13 +50,55 @@ const SuccessStoriesSection = ({ isVisible }: SuccessStoriesSectionProps) => {
             className={`relative transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
             style={{ transitionDelay: `${800 + index * 200}ms` }}
           >
-            {/* Polaroid Frame */}
-            <div className="bg-white dark:bg-brand-cream shadow-xl transform rotate-1 hover:rotate-0 transition-all duration-300 hover:scale-105 p-4 pb-8 relative">
-              {/* Tape effect */}
-              <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-16 h-6 bg-yellow-200/60 rounded-sm rotate-3 shadow-sm"></div>
+            {/* Polaroid Frame - Updated with subtle grey transparent background */}
+            <div 
+              className="backdrop-blur-sm shadow-xl transform rotate-1 hover:rotate-0 transition-all duration-300 hover:scale-105 p-4 pb-8 relative overflow-hidden"
+              style={{
+                background: 'rgba(128, 128, 128, 0.15)',
+                borderRadius: '8px 12px 8px 15px',
+                boxShadow: '8px 12px 24px rgba(0,0,0,0.2), inset -1px -1px 2px rgba(0,0,0,0.05)'
+              }}
+            >
+              {/* Enhanced texture backgrounds */}
+              <div className="absolute inset-0 opacity-[0.06] bg-[radial-gradient(circle_at_2px_2px,_rgba(0,0,0,1)_1px,_transparent_0)] bg-[length:18px_18px]"></div>
+              <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(135deg,_transparent_46%,_rgba(0,0,0,0.6)_47%,_rgba(0,0,0,0.6)_53%,_transparent_54%)] bg-[length:8px_8px]"></div>
               
-              {/* Photo area */}
-              <div className="bg-gray-100 dark:bg-gray-200 h-32 mb-4 flex items-center justify-center relative overflow-hidden">
+              {/* Tape effects - Updated with yellow pearlescent effect */}
+              <div 
+                className="absolute -top-4 left-8 w-16 h-8 rounded-sm transform rotate-12 shadow-md"
+                style={{
+                  background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                  backgroundSize: '400% 400%',
+                  animation: 'pearlescent 3s ease-in-out infinite',
+                  opacity: 0.8,
+                  backdropFilter: 'blur(1px)'
+                }}
+              />
+              <div 
+                className="absolute -top-3 right-12 w-12 h-6 rounded-sm transform -rotate-6 shadow-md"
+                style={{
+                  background: 'rgba(128, 128, 128, 0.3)',
+                  backdropFilter: 'blur(2px)'
+                }}
+              />
+
+              {/* Street Cred Badge - Updated with yellow pearlescent effect */}
+              <div 
+                className="absolute -top-2 -right-2 text-black text-xs font-black px-3 py-1 rounded-full transform rotate-12 shadow-lg border-2 border-black"
+                style={{
+                  background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                  backgroundSize: '400% 400%',
+                  animation: 'pearlescent 3s ease-in-out infinite'
+                }}
+              >
+                REAL TALK
+              </div>
+
+              {/* Photo area - Updated styling */}
+              <div className="h-32 mb-4 flex items-center justify-center relative overflow-hidden" style={{
+                background: 'rgba(128, 128, 128, 0.1)',
+                backdropFilter: 'blur(2px)'
+              }}>
                 <div className={`w-12 h-12 ${story.bgColor} rounded-full flex items-center justify-center`}>
                   {story.icon}
                 </div>
@@ -65,20 +107,21 @@ const SuccessStoriesSection = ({ isVisible }: SuccessStoriesSectionProps) => {
                 <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/10 to-yellow-100/20 pointer-events-none"></div>
               </div>
               
-              {/* Handwritten quote */}
+              {/* Handwritten quote - Updated text color for better contrast */}
               <blockquote 
-                className="text-brand-black/90 text-sm mb-3 italic leading-relaxed"
+                className="text-brand-black/90 dark:text-brand-cream/90 text-sm mb-3 italic leading-relaxed"
                 style={{ 
                   fontFamily: "'Kalam', 'Comic Neue', cursive",
+                  fontWeight: '500',
                   transform: 'rotate(-0.5deg)'
                 }}
               >
                 "{story.quote}"
               </blockquote>
               
-              {/* Handwritten signature */}
+              {/* Handwritten signature - Updated text color */}
               <div 
-                className="text-right text-brand-black/80 text-sm font-medium"
+                className="text-right text-brand-black/80 dark:text-brand-cream/80 text-sm font-medium"
                 style={{ 
                   fontFamily: "'Kalam', 'Comic Neue', cursive",
                   transform: 'rotate(0.5deg)'
@@ -87,8 +130,10 @@ const SuccessStoriesSection = ({ isVisible }: SuccessStoriesSectionProps) => {
                 — {story.name}, {story.location}
               </div>
               
-              {/* Corner curl effect */}
-              <div className="absolute bottom-1 right-1 w-4 h-4 bg-gray-200 transform rotate-45 translate-x-2 translate-y-2 shadow-inner"></div>
+              {/* Corner curl effect - Updated with subtle grey */}
+              <div className="absolute bottom-1 right-1 w-4 h-4 transform rotate-45 translate-x-2 translate-y-2 shadow-inner" style={{
+                background: 'rgba(128, 128, 128, 0.2)'
+              }}></div>
             </div>
           </div>
         ))}
@@ -103,6 +148,20 @@ const SuccessStoriesSection = ({ isVisible }: SuccessStoriesSectionProps) => {
           ↑ Fresh stories every week from our community
         </p>
       </div>
+
+      <style>{`
+        @keyframes pearlescent {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+      `}</style>
     </div>
   );
 };

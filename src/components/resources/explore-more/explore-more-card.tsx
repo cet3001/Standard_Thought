@@ -112,16 +112,18 @@ const ExploreMoreCard = ({ topic, index }: ExploreMoreCardProps) => {
       {/* Enhanced street-style content */}
       <div className="relative z-10 px-6 pb-6">
         <h3 
-          className="text-brand-cream font-black text-lg mb-3 leading-tight uppercase tracking-wide"
+          className="text-brand-cream font-black text-xl mb-3 leading-tight uppercase tracking-wide transform -rotate-1"
           style={{
             fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
             textShadow: `
-              2px 2px 0px rgba(0,0,0,0.8), 
-              4px 4px 0px rgba(0,0,0,0.3),
-              1px 1px 0px ${topic.color}40
+              3px 3px 0px rgba(0,0,0,0.9), 
+              5px 5px 0px rgba(0,0,0,0.4),
+              2px 2px 0px ${topic.color}50,
+              -1px -1px 0px rgba(0,0,0,0.6)
             `,
-            transform: 'rotate(-0.5deg)',
-            color: topic.color
+            color: topic.color,
+            fontWeight: '900',
+            letterSpacing: '1px'
           }}
         >
           {topic.title}
@@ -130,36 +132,54 @@ const ExploreMoreCard = ({ topic, index }: ExploreMoreCardProps) => {
           {topic.description}
         </p>
         
-        {/* Enhanced hand-painted button with texture */}
+        {/* Spray-painted button with pearlescent yellow background */}
         <div 
-          className="inline-flex items-center font-bold text-sm group-hover:translate-x-1 group-hover:scale-105 transition-all duration-300 px-4 py-2 rounded-lg border-2 backdrop-blur-sm uppercase tracking-wider"
+          className="inline-flex items-center font-black text-sm group-hover:translate-x-1 group-hover:scale-105 transition-all duration-300 px-4 py-2.5 rounded-lg border-2 backdrop-blur-sm uppercase tracking-wider transform -rotate-1"
           style={{
             background: `
-              linear-gradient(135deg, ${topic.color}90 0%, ${topic.color}70 100%),
+              linear-gradient(135deg, 
+                #FFD700 0%, 
+                #FFF700 25%, 
+                #FFED4A 50%, 
+                #F9E71E 75%, 
+                #FFD700 100%
+              ),
               repeating-linear-gradient(
                 90deg,
-                rgba(255,255,255,0.1) 0px,
-                rgba(255,255,255,0.1) 1px,
+                rgba(255,255,255,0.2) 0px,
+                rgba(255,255,255,0.2) 1px,
                 transparent 1px,
-                transparent 3px
-              )
+                transparent 4px
+              ),
+              radial-gradient(circle at 20% 30%, rgba(255,255,255,0.3) 0%, transparent 60%),
+              radial-gradient(circle at 80% 70%, rgba(255,255,255,0.2) 0%, transparent 50%)
             `,
-            borderColor: `${topic.color}`,
+            borderColor: '#B8860B',
+            borderWidth: '3px',
+            borderStyle: 'solid',
             color: '#0A0A0A',
             fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
-            textShadow: '1px 1px 0px rgba(255,255,255,0.3)',
+            textShadow: '1px 1px 0px rgba(255,255,255,0.5), -1px -1px 0px rgba(0,0,0,0.2)',
             boxShadow: `
-              inset 1px 1px 2px rgba(255,255,255,0.3),
-              inset -1px -1px 2px rgba(0,0,0,0.2),
-              0 3px 8px rgba(0,0,0,0.4),
-              inset 0 0 10px rgba(0,0,0,0.05)
+              inset 2px 2px 4px rgba(255,255,255,0.4),
+              inset -2px -2px 4px rgba(0,0,0,0.15),
+              0 4px 12px rgba(0,0,0,0.5),
+              inset 0 0 15px rgba(255,255,255,0.1),
+              0 0 20px rgba(255, 215, 0, 0.3)
             `,
-            transform: 'rotate(-1deg)',
-            clipPath: 'polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%)' // Slight slant
+            clipPath: 'polygon(3% 0%, 97% 2%, 98% 98%, 2% 97%)', // Imperfect rough edges
+            fontSize: '13px',
+            fontWeight: '900'
           }}
         >
-          <span>Learn More</span>
-          <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+          <span>LEARN MORE</span>
+          <ArrowRight 
+            className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" 
+            style={{ 
+              strokeWidth: 3,
+              filter: 'drop-shadow(1px 1px 0px rgba(0,0,0,0.3))'
+            }}
+          />
         </div>
       </div>
 

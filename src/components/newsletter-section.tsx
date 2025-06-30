@@ -104,8 +104,8 @@ export const NewsletterSection = () => {
           <div className="relative backdrop-blur-sm overflow-hidden rounded-3xl p-8 border-2"
                style={{ 
                  background: 'rgba(128, 128, 128, 0.15)',
-                 borderColor: 'rgba(244, 208, 63, 0.3)',
-                 boxShadow: '0 20px 40px rgba(0, 0, 0, 0.1)'
+                 borderColor: 'rgba(255, 215, 0, 0.4)',
+                 boxShadow: '0 20px 40px rgba(255, 215, 0, 0.15)'
                }}>
             {/* Enhanced texture backgrounds */}
             <div className="absolute inset-0 opacity-[0.06] bg-[radial-gradient(circle_at_2px_2px,_rgba(0,0,0,1)_1px,_transparent_0)] bg-[length:18px_18px]"></div>
@@ -116,29 +116,30 @@ export const NewsletterSection = () => {
               className="absolute inset-0 opacity-10 pointer-events-none"
               style={{
                 backgroundImage: `
-                  linear-gradient(to right, #247EFF 1px, transparent 1px),
-                  linear-gradient(to bottom, #247EFF 1px, transparent 1px),
-                  linear-gradient(45deg, transparent 10px, rgba(36,126,255,0.05) 10px, rgba(36,126,255,0.05) 20px, transparent 20px),
-                  linear-gradient(-45deg, transparent 10px, rgba(36,126,255,0.03) 10px, rgba(36,126,255,0.03) 20px, transparent 20px)
+                  linear-gradient(to right, rgba(255, 215, 0, 0.6) 1px, transparent 1px),
+                  linear-gradient(to bottom, rgba(255, 215, 0, 0.6) 1px, transparent 1px),
+                  linear-gradient(45deg, transparent 10px, rgba(255, 215, 0, 0.05) 10px, rgba(255, 215, 0, 0.05) 20px, transparent 20px),
+                  linear-gradient(-45deg, transparent 10px, rgba(255, 215, 0, 0.03) 10px, rgba(255, 215, 0, 0.03) 20px, transparent 20px)
                 `,
                 backgroundSize: '20px 20px, 20px 20px, 40px 40px, 40px 40px',
                 backgroundPosition: '0 0, 0 0, 0 0, 20px 20px'
               }}
             />
 
-            {/* "Members Only" Stamp Overlay with yellow pearlescent effect */}
+            {/* "Members Only" Stamp Overlay with enhanced yellow pearlescent effect */}
             <div className="absolute top-6 right-6 z-10">
               <div 
-                className="text-black px-4 py-2 transform -rotate-12 shadow-lg border-2 border-black"
+                className="text-black px-4 py-2 transform -rotate-12 shadow-xl border-3 border-black"
                 style={{ 
-                  background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                  backgroundSize: '400% 400%',
-                  animation: 'pearlescent 3s ease-in-out infinite',
+                  background: 'linear-gradient(45deg, #ffd700, #ffed4e, #fff176, #ffeb3b, #f4d03f, #f7dc6f, #fdeaa7, #ffd700)',
+                  backgroundSize: '300% 300%',
+                  animation: 'enhanced-pearlescent 2.5s ease-in-out infinite',
                   fontFamily: "'IBM Plex Sans', 'Courier New', monospace",
                   fontSize: '14px',
                   fontWeight: 'bold',
                   letterSpacing: '1px',
-                  textTransform: 'uppercase'
+                  textTransform: 'uppercase',
+                  filter: 'drop-shadow(0 4px 8px rgba(255, 215, 0, 0.4))'
                 }}
               >
                 <Lock className="w-4 h-4 inline mr-2" />
@@ -150,13 +151,13 @@ export const NewsletterSection = () => {
               <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 border-2 shadow-lg"
                    style={{
                      background: 'rgba(128, 128, 128, 0.2)',
-                     borderColor: 'rgba(244, 208, 63, 0.4)'
+                     borderColor: 'rgba(255, 215, 0, 0.5)'
                    }}>
-                <Mail className="h-8 w-8 text-[#247EFF]" aria-label="Email newsletter icon" />
+                <Mail className="h-8 w-8 text-[#ffd700]" aria-label="Email newsletter icon" />
               </div>
               
               <h2 className="text-2xl sm:text-3xl font-black text-brand-black dark:text-brand-cream mb-4">
-                Unlock the <span className="text-[#247EFF]">Urban Wealth Blueprint</span>
+                Unlock the <span className="text-[#ffd700] drop-shadow-lg">Urban Wealth Blueprint</span>
               </h2>
               
               <p className="text-base sm:text-lg text-brand-black dark:text-brand-cream max-w-2xl mx-auto leading-relaxed mb-8">
@@ -166,101 +167,116 @@ export const NewsletterSection = () => {
               </p>
             </div>
             
+            {/* Enhanced Email Input Section */}
             <div className="p-6 sm:p-8 pt-0 relative z-10">
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                  <Input
-                    type="email"
-                    placeholder="Enter your email to unlock the blueprint..."
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="flex-1 px-4 py-3 sm:py-4 text-sm sm:text-base rounded-2xl"
-                    style={{
-                      background: 'rgba(128, 128, 128, 0.1)',
-                      borderColor: 'rgba(244, 208, 63, 0.3)',
-                      color: 'inherit'
-                    }}
-                    required
-                    disabled={isSubmitting}
-                  />
-                  <Button
-                    type="submit"
-                    disabled={isSubmitting || !email}
-                    className="w-full sm:w-auto font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-2xl hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-sm sm:text-base relative overflow-hidden border-2"
-                    style={{ 
-                      background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                      backgroundSize: '400% 400%',
-                      animation: 'pearlescent 3s ease-in-out infinite',
-                      color: 'black',
-                      borderColor: 'rgba(244, 208, 63, 0.6)',
-                      fontFamily: "'IBM Plex Sans', 'Courier New', monospace",
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.5px'
-                    }}
-                  >
-                    {/* Hand-drawn/spray-paint effect */}
-                    <div className="absolute inset-0 opacity-50" style={{
-                      background: 'linear-gradient(45deg, #f4d03f, #ffd700, #ffeb3b)',
-                      opacity: 0.3
-                    }}></div>
-                    <span className="relative z-10">
-                      {isSubmitting ? (
-                        <div className="flex items-center">
-                          <div className="w-4 h-4 border-2 border-black/30 border-t-black rounded-full animate-spin mr-2"></div>
-                          Getting Blueprint...
-                        </div>
-                      ) : (
-                        <>
-                          <Check className="mr-2 h-4 w-4 sm:h-5 sm:w-5" aria-label="Checkmark icon" />
-                          Get the Blueprint
-                        </>
-                      )}
-                    </span>
-                  </Button>
-                </div>
-                
-                {/* Quick line under the button */}
-                <div className="text-center mt-3">
-                  <p 
-                    className="text-sm font-semibold text-[#247EFF] italic"
-                    style={{ 
-                      fontFamily: "'IBM Plex Sans', 'Courier New', monospace"
-                    }}
-                  >
-                    Don't miss your shot—real wins start here.
-                  </p>
-                </div>
-                
-                <div className="flex items-center justify-center text-xs sm:text-sm text-brand-black dark:text-brand-cream space-x-4 pt-2">
-                  <div className="flex items-center">
-                    <Check className="h-3 w-3 sm:h-4 sm:w-4 text-[#247EFF] mr-1" aria-label="Check mark" />
-                    <span>Free blueprint</span>
+              <div 
+                className="relative p-6 rounded-2xl mb-4 border-2"
+                style={{
+                  background: 'rgba(255, 215, 0, 0.08)',
+                  borderColor: 'rgba(255, 215, 0, 0.4)',
+                  boxShadow: '0 8px 32px rgba(255, 215, 0, 0.2), inset 0 1px 4px rgba(255, 215, 0, 0.1)'
+                }}
+              >
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                    <Input
+                      type="email"
+                      placeholder="Enter your email to unlock the blueprint..."
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="flex-1 px-4 py-3 sm:py-4 text-sm sm:text-base rounded-2xl border-2 shadow-md"
+                      style={{
+                        background: 'rgba(255, 255, 255, 0.9)',
+                        borderColor: 'rgba(255, 215, 0, 0.5)',
+                        color: '#0A0A0A',
+                        boxShadow: '0 4px 16px rgba(255, 215, 0, 0.15)'
+                      }}
+                      required
+                      disabled={isSubmitting}
+                    />
+                    <Button
+                      type="submit"
+                      disabled={isSubmitting || !email}
+                      className="w-full sm:w-auto font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-2xl hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl text-sm sm:text-base relative overflow-hidden border-3"
+                      style={{ 
+                        background: 'linear-gradient(45deg, #ffd700, #ffed4e, #fff176, #ffeb3b, #f4d03f, #f7dc6f, #fdeaa7, #ffd700)',
+                        backgroundSize: '300% 300%',
+                        animation: 'enhanced-pearlescent 2.5s ease-in-out infinite',
+                        color: 'black',
+                        borderColor: 'rgba(255, 215, 0, 0.8)',
+                        fontFamily: "'IBM Plex Sans', 'Courier New', monospace",
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.5px',
+                        filter: 'drop-shadow(0 6px 12px rgba(255, 215, 0, 0.4))'
+                      }}
+                    >
+                      {/* Enhanced glow effect */}
+                      <div className="absolute inset-0 opacity-60" style={{
+                        background: 'linear-gradient(45deg, #ffd700, #ffeb3b, #fff176)',
+                        opacity: 0.4
+                      }}></div>
+                      <span className="relative z-10">
+                        {isSubmitting ? (
+                          <div className="flex items-center">
+                            <div className="w-4 h-4 border-2 border-black/30 border-t-black rounded-full animate-spin mr-2"></div>
+                            Getting Blueprint...
+                          </div>
+                        ) : (
+                          <>
+                            <Check className="mr-2 h-4 w-4 sm:h-5 sm:w-5" aria-label="Checkmark icon" />
+                            Get the Blueprint
+                          </>
+                        )}
+                      </span>
+                    </Button>
                   </div>
-                  <div className="flex items-center">
-                    <Check className="h-3 w-3 sm:h-4 sm:w-4 text-[#247EFF] mr-1" aria-label="Check mark" />
-                    <span>No spam, just value</span>
-                  </div>
-                  <div className="flex items-center">
-                    <Check className="h-3 w-3 sm:h-4 sm:w-4 text-[#247EFF] mr-1" aria-label="Check mark" />
-                    <span>Unsubscribe anytime</span>
-                  </div>
+                </form>
+              </div>
+              
+              {/* Quick line under the input section */}
+              <div className="text-center mt-3">
+                <p 
+                  className="text-sm font-semibold text-[#ffd700] italic drop-shadow-sm"
+                  style={{ 
+                    fontFamily: "'IBM Plex Sans', 'Courier New', monospace"
+                  }}
+                >
+                  Don't miss your shot—real wins start here.
+                </p>
+              </div>
+              
+              <div className="flex items-center justify-center text-xs sm:text-sm text-brand-black dark:text-brand-cream space-x-4 pt-4">
+                <div className="flex items-center">
+                  <Check className="h-3 w-3 sm:h-4 sm:w-4 text-[#ffd700] mr-1" aria-label="Check mark" />
+                  <span>Free blueprint</span>
                 </div>
-              </form>
+                <div className="flex items-center">
+                  <Check className="h-3 w-3 sm:h-4 sm:w-4 text-[#ffd700] mr-1" aria-label="Check mark" />
+                  <span>No spam, just value</span>
+                </div>
+                <div className="flex items-center">
+                  <Check className="h-3 w-3 sm:h-4 sm:w-4 text-[#ffd700] mr-1" aria-label="Check mark" />
+                  <span>Unsubscribe anytime</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <style>{`
-        @keyframes pearlescent {
+        @keyframes enhanced-pearlescent {
           0% {
             background-position: 0% 50%;
+            filter: drop-shadow(0 6px 12px rgba(255, 215, 0, 0.4)) brightness(1);
           }
           50% {
             background-position: 100% 50%;
+            filter: drop-shadow(0 8px 16px rgba(255, 215, 0, 0.6)) brightness(1.1);
           }
           100% {
             background-position: 0% 50%;
+            filter: drop-shadow(0 6px 12px rgba(255, 215, 0, 0.4)) brightness(1);
           }
         }
       `}</style>

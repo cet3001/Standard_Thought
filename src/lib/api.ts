@@ -46,7 +46,20 @@ export const getBlogPosts = async (): Promise<BlogPost[]> => {
   console.log('API: Starting getBlogPosts request...');
   
   try {
-    console.log('API: Querying Supabase for blog posts...');
+    // First check if we can connect to Supabase at all
+    console.log('API: Testing Supabase connection...');
+    const { data: connectionTest, error: connectionError } = await supabase
+      .from('blog_posts')
+      .select('count(*)', { count: 'exact', head: true });
+    
+    console.log('API: Connection test result:', { connectionTest, connectionError });
+    
+    if (connectionError) {
+      console.error('API: Connection test failed:', connectionError);
+      throw new Error(`Database connection failed: ${connectionError.message}`);
+    }
+
+    console.log('API: Connection successful, querying blog posts...');
     
     const { data, error, count } = await supabase
       .from('blog_posts')
@@ -54,12 +67,13 @@ export const getBlogPosts = async (): Promise<BlogPost[]> => {
       .eq('published', true)
       .order('created_at', { ascending: false });
 
-    console.log('API: Supabase response received');
-    console.log('API: Count from query:', count);
-    console.log('API: Data type:', typeof data);
-    console.log('API: Data is array:', Array.isArray(data));
-    console.log('API: Data length:', data?.length);
-    console.log('API: Error object:', error);
+    console.log('API: Raw Supabase response:');
+    console.log('API: - Data:', data);
+    console.log('API: - Error:', error);
+    console.log('API: - Count:', count);
+    console.log('API: - Data type:', typeof data);
+    console.log('API: - Data is array:', Array.isArray(data));
+    console.log('API: - Data length:', data?.length || 'N/A');
 
     if (error) {
       console.error('API: Supabase error details:', {
@@ -72,22 +86,35 @@ export const getBlogPosts = async (): Promise<BlogPost[]> => {
     }
 
     if (!data) {
-      console.log('API: No data returned, returning empty array');
+      console.log('API: No data returned (null/undefined), returning empty array');
       return [];
     }
 
+    if (!Array.isArray(data)) {
+      console.error('API: Data is not an array:', data);
+      throw new Error('Invalid data format received from database');
+    }
+
     console.log('API: Successfully fetched blog posts:', data.length);
-    console.log('API: Sample of first post:', data[0] ? {
-      id: data[0].id,
-      title: data[0].title,
-      featured: data[0].featured,
-      published: data[0].published
-    } : 'No posts available');
+    if (data.length > 0) {
+      console.log('API: Sample post structure:', {
+        id: data[0].id,
+        title: data[0].title,
+        featured: data[0].featured,
+        published: data[0].published,
+        created_at: data[0].created_at
+      });
+    }
     
     return data;
   } catch (error) {
     console.error('API: Unexpected error in getBlogPosts:', error);
-    console.error('API: Error stack:', error instanceof Error ? error.stack : 'No stack available');
+    console.error('API: Error type:', typeof error);
+    console.error('API: Error constructor:', error?.constructor?.name);
+    if (error instanceof Error) {
+      console.error('API: Error message:', error.message);
+      console.error('API: Error stack:', error.stack);
+    }
     throw error;
   }
 };

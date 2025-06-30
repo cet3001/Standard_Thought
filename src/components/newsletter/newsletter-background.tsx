@@ -5,7 +5,7 @@ export const NewsletterBackground = () => {
   const { textureImageUrl } = useUrbanTexture();
 
   return (
-    <div className="absolute inset-0 -z-10" aria-hidden="true">
+    <div className="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
       {/* AI-Generated or Curated Urban Texture - More Subtle */}
       {textureImageUrl && (
         <div 
@@ -18,8 +18,8 @@ export const NewsletterBackground = () => {
         />
       )}
       
-      {/* Subtle transparent grey overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-400/10 via-gray-500/8 to-gray-600/12"></div>
+      {/* Enhanced gradient overlay to complement the new grey tint */}
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-500/20 via-gray-500/16 to-gray-600/24"></div>
     </div>
   );
 };

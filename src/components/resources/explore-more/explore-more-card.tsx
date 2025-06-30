@@ -74,7 +74,7 @@ const ExploreMoreCard = ({ topic, index }: ExploreMoreCardProps) => {
         }}
       />
       
-      {/* Hand-drawn icon container with graffiti style */}
+      {/* Hand-drawn icon container with graffiti style - Second prominence */}
       <div className="relative z-10 p-6 pb-4">
         <div 
           className="w-16 h-16 rounded-2xl flex items-center justify-center backdrop-blur-sm border-2 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 mb-1"
@@ -109,10 +109,11 @@ const ExploreMoreCard = ({ topic, index }: ExploreMoreCardProps) => {
         </div>
       </div>
 
-      {/* Enhanced street-style content */}
+      {/* Enhanced street-style content with proper hierarchy */}
       <div className="relative z-10 px-6 pb-6">
+        {/* Card Title - Most prominent element with hover effect */}
         <h3 
-          className="text-brand-cream font-black text-xl mb-3 leading-tight uppercase tracking-wide transform -rotate-1"
+          className="text-brand-cream font-black text-xl mb-3 leading-tight uppercase tracking-wide transform -rotate-1 relative group/title"
           style={{
             fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
             textShadow: `
@@ -127,12 +128,30 @@ const ExploreMoreCard = ({ topic, index }: ExploreMoreCardProps) => {
           }}
         >
           {topic.title}
+          {/* Hover underline highlight */}
+          <div 
+            className="absolute -bottom-1 left-0 right-0 h-1 opacity-0 group-hover/title:opacity-80 transition-opacity duration-300"
+            style={{
+              background: `linear-gradient(90deg, transparent 5%, #FFD700 15%, #F4D03F 30%, #DDBF47 50%, #D4AF37 70%, #FFD700 85%, transparent 95%)`,
+              borderRadius: '20px 15px 25px 10px',
+              transform: 'rotate(1deg) skew(-1deg)',
+              filter: 'blur(0.3px)',
+              boxShadow: '0 0 8px rgba(255, 215, 0, 0.4)'
+            }}
+          />
         </h3>
-        <p className="text-brand-cream/85 text-sm leading-relaxed mb-4 font-medium">
+        
+        {/* Description - Third prominence with enhanced readability */}
+        <p className="text-brand-cream/95 text-sm leading-relaxed mb-4 font-medium" 
+           style={{
+             textShadow: '1px 1px 2px rgba(0,0,0,0.8)',
+             color: 'rgba(248, 248, 242, 0.95)', // Higher opacity for better readability
+             lineHeight: '1.6'
+           }}>
           {topic.description}
         </p>
         
-        {/* Spray-painted button with pearlescent yellow background */}
+        {/* Spray-painted button with pearlescent yellow background - Fourth prominence */}
         <div 
           className="inline-flex items-center font-black text-sm group-hover:translate-x-1 group-hover:scale-105 transition-all duration-300 px-4 py-2.5 rounded-lg border-2 backdrop-blur-sm uppercase tracking-wider transform -rotate-1"
           style={{

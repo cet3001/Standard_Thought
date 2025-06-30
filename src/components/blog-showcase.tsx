@@ -30,6 +30,7 @@ const BlogShowcase = () => {
     isLoading,
     isError,
     error,
+    isSuccess,
   } = useQuery({
     queryKey: ['showcase-posts'],
     queryFn: getBlogPosts,
@@ -37,22 +38,20 @@ const BlogShowcase = () => {
     staleTime: 5 * 60 * 1000, // 5 minutes
   });
 
-  console.log('BlogShowcase: Posts loading:', isLoading);
-  console.log('BlogShowcase: Posts data:', posts);
-  console.log('BlogShowcase: Posts length:', posts?.length);
-  console.log('BlogShowcase: Featured posts available:', posts?.filter(post => post.featured));
+  console.log('BlogShowcase: Query state - Loading:', isLoading, 'Success:', isSuccess, 'Error:', isError);
+  console.log('BlogShowcase: Raw posts data:', posts);
+  console.log('BlogShowcase: Posts array length:', Array.isArray(posts) ? posts.length : 'Not an array');
 
-  // Get featured posts first, then fall back to recent posts
-  const featuredPosts = posts ? 
-    posts.filter(post => post.featured).slice(0, 3) : [];
+  // Only process posts if we have successful data
+  const validPosts = isSuccess && Array.isArray(posts) ? posts : [];
   
-  const displayPosts = featuredPosts.length > 0 ? 
-    featuredPosts : 
-    (posts ? posts.slice(0, 3) : []);
+  // Get featured posts first, then fall back to recent posts
+  const featuredPosts = validPosts.filter(post => post.featured).slice(0, 3);
+  const displayPosts = featuredPosts.length > 0 ? featuredPosts : validPosts.slice(0, 3);
 
-  console.log('BlogShowcase: Featured posts count:', featuredPosts.length);
-  console.log('BlogShowcase: Display posts count:', displayPosts.length);
-  console.log('BlogShowcase: Display posts:', displayPosts);
+  console.log('BlogShowcase: Valid posts count:', validPosts.length);
+  console.log('BlogShowcase: Featured posts:', featuredPosts.map(p => ({ id: p.id, title: p.title, featured: p.featured })));
+  console.log('BlogShowcase: Display posts:', displayPosts.map(p => ({ id: p.id, title: p.title, featured: p.featured })));
 
   useEffect(() => {
     setIsVisible(true);
@@ -98,7 +97,7 @@ const BlogShowcase = () => {
         <BlogShowcaseGrid posts={displayPosts} loading={isLoading} isVisible={isVisible} />
         
         {/* Show message if no posts found */}
-        {!isLoading && displayPosts.length === 0 && (
+        {isSuccess && displayPosts.length === 0 && (
           <div className="text-center py-12">
             <p className="text-xl text-brand-black/70 dark:text-brand-cream/70">
               New stories coming soon. Check back for fresh content from the community.
@@ -106,15 +105,28 @@ const BlogShowcase = () => {
           </div>
         )}
 
+        {/* Show error message if there's an error */}
+        {isError && (
+          <div className="text-center py-12">
+            <p className="text-xl text-red-600 dark:text-red-400">
+              Unable to load stories right now. Please try again later.
+            </p>
+          </div>
+        )}
+
         {/* Debug info (remove in production) */}
         {process.env.NODE_ENV === 'development' && (
           <div className="mt-8 p-4 bg-gray-100 dark:bg-gray-800 rounded text-sm">
-            <p>Debug Info:</p>
+            <p><strong>Debug Info:</strong></p>
             <p>Loading: {isLoading ? 'Yes' : 'No'}</p>
+            <p>Success: {isSuccess ? 'Yes' : 'No'}</p>
             <p>Error: {isError ? 'Yes' : 'No'}</p>
-            <p>Total Posts: {posts?.length || 0}</p>
+            <p>Raw Data Type: {typeof posts}</p>
+            <p>Is Array: {Array.isArray(posts) ? 'Yes' : 'No'}</p>
+            <p>Valid Posts: {validPosts.length}</p>
             <p>Featured Posts: {featuredPosts.length}</p>
             <p>Display Posts: {displayPosts.length}</p>
+            {isError && <p>Error Message: {error?.message}</p>}
           </div>
         )}
       </div>

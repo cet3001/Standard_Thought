@@ -5,7 +5,7 @@ export const NewsletterBackground = () => {
   const { textureImageUrl } = useUrbanTexture();
 
   return (
-    <div className="absolute inset-0" aria-hidden="true">
+    <div className="absolute inset-0 -z-10" aria-hidden="true">
       {/* AI-Generated or Curated Urban Texture - More Subtle */}
       {textureImageUrl && (
         <div 

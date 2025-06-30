@@ -117,7 +117,7 @@ const Index = () => {
           {/* Hero Section */}
           <HomepageHero scrollToNewsletter={scrollToNewsletter} />
 
-          {/* Newsletter - Now without white background wrapper */}
+          {/* Newsletter - Now without any background wrapper */}
           <NewsletterSection />
 
           {/* Featured Blog Stories Section */}

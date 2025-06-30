@@ -30,6 +30,9 @@ export const NewsletterSection = () => {
     <section 
       data-section="newsletter" 
       className="py-16 sm:py-20 relative overflow-hidden"
+      style={{
+        background: 'rgba(128, 128, 128, 0.15)'
+      }}
     >
       {/* Urban Background - Matches Hero Section */}
       <NewsletterBackground />

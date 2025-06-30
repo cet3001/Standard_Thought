@@ -16,8 +16,6 @@ const BlogPage = () => {
   const [selectedThemeTag, setSelectedThemeTag] = useState("");
   const [filteredPosts, setFilteredPosts] = useState<Post[] | null>(null);
 
-  console.log('BlogPage: Component rendering...');
-
   const {
     data: posts,
     isLoading: isPostsLoading,
@@ -26,15 +24,10 @@ const BlogPage = () => {
     refetch: refetchPosts,
   } = useQuery({
     queryKey: ['posts'],
-    queryFn: async () => {
-      console.log('BlogPage: Executing getPosts query...');
-      const result = await getPosts();
-      console.log('BlogPage: getPosts query result:', result);
-      return result;
-    },
-    retry: 3,
-    retryDelay: 1000,
-    staleTime: 5 * 60 * 1000, // 5 minutes
+    queryFn: getPosts,
+    retry: 1, // Reduced retry attempts
+    retryDelay: 2000,
+    staleTime: 5 * 60 * 1000,
   });
 
   const {
@@ -44,24 +37,10 @@ const BlogPage = () => {
     error: categoriesError,
   } = useQuery({
     queryKey: ['categories'],
-    queryFn: async () => {
-      console.log('BlogPage: Executing getCategories query...');
-      const result = await getCategories();
-      console.log('BlogPage: getCategories query result:', result);
-      return result;
-    },
-    retry: 3,
-    retryDelay: 1000,
-    staleTime: 5 * 60 * 1000, // 5 minutes
-  });
-
-  console.log('BlogPage: Query states:', {
-    postsLoading: isPostsLoading,
-    postsData: posts?.length,
-    postsError: isPostsError,
-    categoriesLoading: isCategoriesLoading,
-    categoriesData: categories?.length,
-    categoriesError: isCategoriesError
+    queryFn: getCategories,
+    retry: 1, // Reduced retry attempts
+    retryDelay: 2000,
+    staleTime: 5 * 60 * 1000,
   });
 
   // Extract theme tags from posts
@@ -70,13 +49,6 @@ const BlogPage = () => {
     : [];
 
   useEffect(() => {
-    console.log('BlogPage: Filtering posts...', { 
-      postsLength: posts?.length, 
-      searchTerm, 
-      selectedCategory, 
-      selectedThemeTag 
-    });
-    
     if (posts) {
       const filtered = posts.filter((post) => {
         const searchRegex = new RegExp(searchTerm, "i");
@@ -94,7 +66,6 @@ const BlogPage = () => {
         );
       });
       
-      console.log('BlogPage: Filtered posts:', filtered.length);
       setFilteredPosts(filtered);
     } else {
       setFilteredPosts(null);
@@ -102,7 +73,6 @@ const BlogPage = () => {
   }, [posts, searchTerm, selectedCategory, selectedThemeTag]);
 
   const handleThemeTagClick = (tag: string) => {
-    console.log('BlogPage: Theme tag clicked:', tag);
     setSelectedThemeTag(tag);
   };
 
@@ -110,24 +80,13 @@ const BlogPage = () => {
   const hasError = isPostsError || isCategoriesError;
   const error = postsError || categoriesError;
 
-  console.log('BlogPage: Final render state:', {
-    isLoading,
-    hasError,
-    postsLength: posts?.length,
-    filteredLength: filteredPosts?.length
-  });
-
   if (isLoading) {
-    console.log('BlogPage: Showing loading state');
     return <Loading />;
   }
   
   if (hasError) {
-    console.log('BlogPage: Showing error state:', error);
     return <ErrorMessage error={error} onRetry={() => refetchPosts()} />;
   }
-
-  console.log('BlogPage: Rendering main content');
 
   return (
     <div className="min-h-screen bg-transparent">

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import BlogShowcaseHeader from "./blog-showcase-header";
 import BlogShowcaseGrid from "./blog-showcase-grid";
+import { useUrbanTexture } from "@/hooks/use-urban-texture";
 
 interface BlogPost {
   id: string;
@@ -21,6 +22,7 @@ const BlogShowcase = () => {
   const [featuredPosts, setFeaturedPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+  const { textureImageUrl } = useUrbanTexture();
 
   const fetchFeaturedPosts = useCallback(async () => {
     try {
@@ -34,8 +36,20 @@ const BlogShowcase = () => {
 
       if (error) {
         console.error('Error fetching featured posts:', error);
-        // Fallback to hardcoded posts if no featured posts exist
-        setFeaturedPosts(fallbackPosts);
+        // Fallback to any published posts if no featured posts exist
+        const { data: allPosts, error: allError } = await supabase
+          .from('blog_posts')
+          .select('*')
+          .eq('published', true)
+          .order('created_at', { ascending: false })
+          .limit(3);
+
+        if (allError) {
+          console.error('Error fetching all posts:', allError);
+          setFeaturedPosts(fallbackPosts);
+        } else {
+          setFeaturedPosts(allPosts || fallbackPosts);
+        }
       } else {
         setFeaturedPosts(data || fallbackPosts);
       }
@@ -89,7 +103,30 @@ const BlogShowcase = () => {
   const postsToShow = featuredPosts.length > 0 ? featuredPosts : fallbackPosts;
 
   return (
-    <section className="py-24 bg-brand-cream dark:bg-brand-black relative overflow-hidden" aria-labelledby="blog-showcase-heading">
+    <section className="py-24 relative overflow-hidden" aria-labelledby="blog-showcase-heading">
+      {/* Urban Background */}
+      <div className="fixed inset-0 -z-50" aria-hidden="true">
+        {/* AI-Generated or Curated Urban Texture */}
+        {textureImageUrl && (
+          <div 
+            className="absolute inset-0 opacity-40 bg-cover bg-center bg-fixed"
+            style={{
+              backgroundImage: `url(${textureImageUrl})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+              backgroundAttachment: 'fixed'
+            }}
+          />
+        )}
+        
+        {/* Background gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-800/50 via-slate-700/60 to-slate-900/50"></div>
+        
+        {/* Content overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/85 via-brand-cream/90 to-brand-cream/85 dark:from-brand-black/85 dark:via-brand-black/90 dark:to-brand-black/85"></div>
+      </div>
+
       {/* Background Elements */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div className="absolute top-20 right-10 w-32 h-32 rounded-full bg-accent/10 animate-float"></div>

@@ -300,7 +300,7 @@ const FeaturedGuidesSection = () => {
         </div>
       </div>
 
-      {/* Social Proof Section */}
+      {/* Social Proof Section - No Cards */}
       <div className="py-12 relative overflow-hidden">
         {/* Graffiti-style background elements */}
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
@@ -326,51 +326,48 @@ const FeaturedGuidesSection = () => {
         <div className="container mx-auto px-6 relative z-10">
           <div className="text-center">
             {/* Street-smart heading with graffiti effect */}
-            <div className="relative inline-block mb-6">
+            <div className="relative inline-block mb-8">
               <p 
-                className="text-lg font-black text-[#0A0A0A] dark:text-brand-cream tracking-wide uppercase relative z-10"
+                className="text-2xl md:text-3xl font-black text-[#0A0A0A] dark:text-brand-cream tracking-wide uppercase relative z-10"
                 style={{ 
                   fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
-                  textShadow: '2px 2px 0px rgba(36, 126, 255, 0.3)',
+                  textShadow: '3px 3px 0px rgba(36, 126, 255, 0.3)',
                   transform: 'rotate(-1deg)'
                 }}
               >
-                Street Cred 💯
+                💯 From Zero to Hero
               </p>
               {/* Hand-drawn underline effect */}
               <div 
-                className="absolute -bottom-2 left-0 right-0 h-1 bg-[#FFD700] opacity-70 transform -rotate-1"
+                className="absolute -bottom-2 left-0 right-0 h-1 opacity-80"
                 style={{
-                  background: 'linear-gradient(90deg, transparent 10%, #FFD700 50%, transparent 90%)',
-                  borderRadius: '50px'
+                  background: 'linear-gradient(90deg, transparent 5%, #FFD700 20%, #FFA500 80%, transparent 95%)',
+                  borderRadius: '50px',
+                  transform: 'rotate(1deg)'
                 }}
               />
             </div>
             
-            {/* Main trust badge with urban styling */}
-            <div className="inline-flex items-center bg-white/90 dark:bg-brand-black/90 border-2 border-[#247EFF]/30 rounded-2xl px-8 py-4 shadow-lg backdrop-blur-sm relative overflow-hidden mb-8">
-              
-              {/* Subtle graffiti texture overlay */}
-              <div className="absolute inset-0 opacity-[0.05] bg-[conic-gradient(from_0deg_at_2px_2px,_rgba(0,0,0,1)_90deg,_transparent_90deg)] bg-[length:8px_8px]"></div>
-              
-              <div className="flex items-center mr-6 relative z-10">
-                <Users className="w-6 h-6 text-[#247EFF] mr-3" />
-                <span className="text-[#0A0A0A] dark:text-brand-cream font-bold text-lg">
-                  Trusted by 1,000+ first-gen hustlers
+            {/* Main trust badge - no background card */}
+            <div className="mb-8">
+              <div className="flex items-center justify-center gap-4 mb-6">
+                <Users className="w-8 h-8 text-[#247EFF]" />
+                <span className="text-[#0A0A0A] dark:text-brand-cream font-bold text-xl md:text-2xl">
+                  2,500+ builders leveling up their game
                 </span>
               </div>
               
               {/* Hand-drawn style stars */}
-              <div className="flex items-center space-x-1 relative z-10">
+              <div className="flex items-center justify-center space-x-1">
                 {[1, 2, 3, 4, 5].map((star) => (
                   <svg 
                     key={star} 
-                    className="w-5 h-5 text-[#FFD700] transform hover:scale-110 transition-transform" 
+                    className="w-6 h-6 text-[#FFD700] transform hover:scale-110 transition-transform" 
                     fill="currentColor" 
                     viewBox="0 0 24 24"
                     style={{ 
                       transform: `rotate(${(star * 7) % 15 - 7}deg)`,
-                      filter: 'drop-shadow(1px 1px 0px rgba(0,0,0,0.2))'
+                      filter: 'drop-shadow(2px 2px 0px rgba(0,0,0,0.3))'
                     }}
                   >
                     <path d="M12 2l2.4 7.2h7.6l-6 4.8 2.4 7.2-6-4.8-6 4.8 2.4-7.2-6-4.8h7.6z" />
@@ -379,40 +376,37 @@ const FeaturedGuidesSection = () => {
               </div>
             </div>
 
-            {/* Rotating testimonials carousel */}
-            <div className="max-w-md mx-auto relative">
-              <div className="bg-white/70 dark:bg-brand-black/70 backdrop-blur-sm rounded-xl p-6 border border-[#247EFF]/20 relative overflow-hidden">
+            {/* Rotating testimonials - no card background */}
+            <div className="max-w-2xl mx-auto">
+              <div className="transition-all duration-500 ease-in-out">
+                <blockquote className="text-xl md:text-2xl text-[#0A0A0A] dark:text-brand-cream font-medium italic mb-6 leading-relaxed">
+                  "{testimonials[currentTestimonial].text}"
+                </blockquote>
                 
-                {/* Street cred badge */}
-                <div className="absolute top-2 right-2 bg-[#FFD700] text-black text-xs font-black px-2 py-1 rounded-full transform rotate-12 shadow-sm">
-                  VERIFIED
-                </div>
-
-                {/* Testimonial content */}
-                <div className="transition-all duration-500 ease-in-out">
-                  <p className="text-[#0A0A0A]/90 dark:text-brand-cream/90 font-medium text-base italic mb-3 leading-relaxed">
-                    "{testimonials[currentTestimonial].text}"
-                  </p>
-                  <div className="text-sm text-[#0A0A0A]/70 dark:text-brand-cream/70 font-semibold">
+                <div className="flex items-center justify-center gap-4 mb-6">
+                  <div className="text-base md:text-lg text-[#0A0A0A]/80 dark:text-brand-cream/80 font-semibold">
                     — {testimonials[currentTestimonial].author}, {testimonials[currentTestimonial].city}
                   </div>
+                  <div className="bg-[#FFD700] text-black px-3 py-1 rounded-full text-sm font-bold">
+                    VERIFIED ✓
+                  </div>
                 </div>
+              </div>
 
-                {/* Carousel indicators */}
-                <div className="flex justify-center mt-4 space-x-2">
-                  {testimonials.map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setCurrentTestimonial(index)}
-                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                        index === currentTestimonial 
-                          ? 'bg-[#247EFF] scale-125' 
-                          : 'bg-[#0A0A0A]/30 dark:bg-brand-cream/30 hover:bg-[#247EFF]/50'
-                      }`}
-                      aria-label={`Go to testimonial ${index + 1}`}
-                    />
-                  ))}
-                </div>
+              {/* Carousel indicators */}
+              <div className="flex justify-center space-x-2">
+                {testimonials.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentTestimonial(index)}
+                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                      index === currentTestimonial 
+                        ? 'bg-[#247EFF] scale-125' 
+                        : 'bg-[#0A0A0A]/30 dark:bg-brand-cream/30 hover:bg-[#247EFF]/50'
+                    }`}
+                    aria-label={`Go to testimonial ${index + 1}`}
+                  />
+                ))}
               </div>
             </div>
           </div>

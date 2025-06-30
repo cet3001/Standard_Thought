@@ -2,7 +2,6 @@
 import { useState } from "react";
 import ResourcesHero from "@/components/resources/resources-hero";
 import ResourcesCTA from "@/components/resources/resources-cta";
-import ResourcesTestimonial from "@/components/resources/resources-testimonial";
 import FeaturedGuidesSection from "@/components/resources/featured-guides-section";
 import ExploreMoreSection from "@/components/resources/explore-more-section";
 
@@ -21,9 +20,6 @@ const ResourcesContent = () => {
 
         {/* Featured Guides Section */}
         <FeaturedGuidesSection />
-
-        {/* Resources Testimonial */}
-        <ResourcesTestimonial />
 
         {/* Explore More Section - replaces all duplicate Q&A/framework content */}
         <ExploreMoreSection />

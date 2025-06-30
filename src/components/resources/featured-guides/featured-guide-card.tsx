@@ -28,10 +28,7 @@ const FeaturedGuideCard = () => {
     setIsSubscribing(true);
     
     try {
-      // First, subscribe them to the newsletter
       await subscribeToNewsletter(email);
-      
-      // Then trigger the guide download
       await downloadGuide('10k-starter-blueprint.pdf', email);
       
       toast({
@@ -69,8 +66,8 @@ const FeaturedGuideCard = () => {
       </div>
 
       <CardHeader className="p-0">
-        {/* Guide Cover Image - Fixed height container */}
-        <div className="relative overflow-hidden rounded-t-lg h-40 md:h-44 flex items-center justify-center">
+        {/* Guide Cover Image */}
+        <div className="relative overflow-hidden rounded-t-lg h-48 md:h-52 flex items-center justify-center">
           <OptimizedImage
             src="/lovable-uploads/b4e3b459-4253-40a2-bc9a-74ec02d85e18.png"
             alt="The $10K Starter Blueprint - Premium Investing Playbook Cover"
@@ -87,39 +84,12 @@ const FeaturedGuideCard = () => {
           </HeaderHierarchy>
         </CardTitle>
 
-        <CardDescription className="text-[#0A0A0A]/70 dark:text-brand-cream/70 text-sm md:text-base leading-relaxed mb-4">
-          Step-by-step, street-smart investing for first-gen hustlers and underestimated creatives. Real stories, no jargon, actionable moves.
+        <CardDescription className="text-[#0A0A0A]/70 dark:text-brand-cream/70 text-sm md:text-base leading-relaxed mb-6">
+          Step-by-step, street-smart investing for first-gen hustlers and underestimated creatives.
         </CardDescription>
 
-        {/* Key Benefits */}
-        <div className="mb-6">
-          <p className="text-xs font-medium text-[#0A0A0A]/60 dark:text-brand-cream/60 mb-3 uppercase tracking-wide">
-            What You'll Get:
-          </p>
-          <ul className="space-y-2" role="list">
-            {[
-              "Street-smart steps to your first $10K",
-              "Scam-avoidance tips", 
-              "No fluff—just real moves"
-            ].map((benefit, index) => (
-              <li key={index} className="flex items-start gap-3 text-[#0A0A0A]/80 dark:text-brand-cream/80 text-sm" role="listitem">
-                <div 
-                  className="w-2 h-2 rounded-full mt-2 flex-shrink-0"
-                  style={{ 
-                    background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                    backgroundSize: '400% 400%',
-                    animation: 'pearlescent 3s ease-in-out infinite'
-                  }}
-                  aria-hidden="true"
-                ></div>
-                <span className="leading-relaxed">{benefit}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Email Input + Download */}
-        <div className="space-y-3 mb-4">
+        {/* Email Input + Download CTA */}
+        <div className="space-y-3">
           <Input
             type="email"
             placeholder="Enter your email for instant download..."
@@ -131,7 +101,7 @@ const FeaturedGuideCard = () => {
           <Button 
             onClick={handleDownload}
             disabled={isSubscribing || isDownloading || !email}
-            className="w-full hover:scale-105 text-black min-h-[44px] touch-manipulation font-bold text-sm md:text-base transition-all duration-300 shadow-lg hover:shadow-xl border-0"
+            className="w-full hover:scale-105 text-black min-h-[48px] touch-manipulation font-bold text-base transition-all duration-300 shadow-lg hover:shadow-xl border-0"
             style={{ 
               background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
               backgroundSize: '400% 400%',
@@ -142,17 +112,13 @@ const FeaturedGuideCard = () => {
             {isSubscribing || isDownloading ? (
               <div className="flex items-center">
                 <div className="w-4 h-4 border-2 border-black/30 border-t-black rounded-full animate-spin mr-2"></div>
-                {isSubscribing ? 'Subscribing...' : 'Downloading...'}
+                {isSubscribing ? 'Getting Ready...' : 'Downloading...'}
               </div>
             ) : (
               'Download Free'
             )}
           </Button>
         </div>
-
-        <p className="text-xs text-[#0A0A0A]/60 dark:text-brand-cream/60 text-center">
-          You'll also join our newsletter for exclusive wealth-building tips
-        </p>
       </CardContent>
 
       <style>{`

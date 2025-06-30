@@ -1,14 +1,15 @@
 
-import { ReactNode } from "react";
+import { ReactNode, CSSProperties } from "react";
 
 interface HeaderHierarchyProps {
   level: 1 | 2 | 3 | 4 | 5 | 6;
   children: ReactNode;
   className?: string;
   id?: string;
+  style?: CSSProperties;
 }
 
-const HeaderHierarchy = ({ level, children, className = "", id }: HeaderHierarchyProps) => {
+const HeaderHierarchy = ({ level, children, className = "", id, style }: HeaderHierarchyProps) => {
   const baseClasses = "font-bold text-[#0A0A0A] dark:text-brand-cream leading-tight";
   
   const levelClasses = {
@@ -26,6 +27,7 @@ const HeaderHierarchy = ({ level, children, className = "", id }: HeaderHierarch
     <Tag 
       className={`${baseClasses} ${levelClasses[level]} ${className}`}
       id={id}
+      style={style}
     >
       {children}
     </Tag>

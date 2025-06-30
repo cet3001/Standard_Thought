@@ -8,7 +8,9 @@ const SiteNavigationHub = () => {
   const { textureImageUrl } = useUrbanTexture();
 
   const handleNavigationClick = () => {
-    console.log(`Navigating to Explore More: /blog`);
+    if (process.env.NODE_ENV !== 'production') {
+      console.log(`Navigating to Explore More: /blog`);
+    }
   };
 
   return (

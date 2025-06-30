@@ -13,19 +13,27 @@ const EditPost = () => {
 
   // Debug: Log current form values
   const watchedValues = form.watch();
-  console.log('EditPost - Current form values:', watchedValues);
+  if (process.env.NODE_ENV !== 'production') {
+    console.log('EditPost - Current form values:', watchedValues);
+  }
 
   if (loading) {
-    console.log('EditPost - Still loading...');
+    if (process.env.NODE_ENV !== 'production') {
+      console.log('EditPost - Still loading...');
+    }
     return <EditPostLoading />;
   }
 
   if (!isAdmin) {
-    console.log('EditPost - User is not admin, not rendering form');
+    if (process.env.NODE_ENV !== 'production') {
+      console.log('EditPost - User is not admin, not rendering form');
+    }
     return null;
   }
 
-  console.log('EditPost - Rendering form with post:', post);
+  if (process.env.NODE_ENV !== 'production') {
+    console.log('EditPost - Rendering form with post:', post);
+  }
 
   return (
     <div className="min-h-screen relative overflow-hidden">

@@ -1,9 +1,14 @@
 
+// Manual Playbook Sender
+// Purpose: Send the welcome playbook to a subscriber on demand.
+// Why: Useful for admins when automated flows miss someone.
 import { supabase } from '@/integrations/supabase/client'
 
 export const manualSendPlaybook = async (email: string) => {
   try {
-    console.log(`[MANUAL EMAIL] Starting manual playbook send for: ${email}`)
+    if (process.env.NODE_ENV !== 'production') {
+      console.log(`[MANUAL EMAIL] Starting manual playbook send for: ${email}`)
+    }
     
     // Check if user exists in subscribers - get the first one if multiple exist
     const { data: subscribers, error: subscriberError } = await supabase
@@ -23,7 +28,9 @@ export const manualSendPlaybook = async (email: string) => {
     }
 
     const subscriber = subscribers[0]
-    console.log(`[MANUAL EMAIL] Found subscriber for ${email}:`, subscriber)
+    if (process.env.NODE_ENV !== 'production') {
+      console.log(`[MANUAL EMAIL] Found subscriber for ${email}:`, subscriber)
+    }
 
     // Send welcome email with playbook
     const { data: emailData, error: emailError } = await supabase.functions.invoke('send-welcome-email', {
@@ -40,7 +47,9 @@ export const manualSendPlaybook = async (email: string) => {
       throw new Error(`Failed to send playbook: ${emailError.message}`)
     }
 
-    console.log(`[MANUAL EMAIL] Playbook sent successfully to ${email}:`, emailData)
+    if (process.env.NODE_ENV !== 'production') {
+      console.log(`[MANUAL EMAIL] Playbook sent successfully to ${email}:`, emailData)
+    }
     return { success: true, data: emailData }
 
   } catch (error) {

@@ -14,7 +14,9 @@ export const useLeadMagnetPopup = () => {
 
   // Enhanced session management with multiple storage checks
   useEffect(() => {
-    console.log("LeadMagnetPopup: Setting up triggers");
+    if (process.env.NODE_ENV !== 'production') {
+      console.log("LeadMagnetPopup: Setting up triggers");
+    }
     
     // Check multiple storage mechanisms to prevent excessive popups
     const hasSeenPopupSession = sessionStorage.getItem('leadMagnetShown');
@@ -26,12 +28,16 @@ export const useLeadMagnetPopup = () => {
     const now = Date.now();
     
     if (lastShownTime && (now - parseInt(lastShownTime)) < twentyFourHours) {
-      console.log("LeadMagnetPopup: Popup shown within last 24 hours, skipping");
+      if (process.env.NODE_ENV !== 'production') {
+        console.log("LeadMagnetPopup: Popup shown within last 24 hours, skipping");
+      }
       return;
     }
     
     if (hasSeenPopupSession || hasSeenPopupLocal) {
-      console.log("LeadMagnetPopup: Popup already shown, skipping");
+      if (process.env.NODE_ENV !== 'production') {
+        console.log("LeadMagnetPopup: Popup already shown, skipping");
+      }
       return;
     }
 
@@ -46,7 +52,9 @@ export const useLeadMagnetPopup = () => {
       const scrollPercentage = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
       
       if (scrollPercentage >= 70) {
-        console.log("LeadMagnetPopup: Scroll trigger activated!");
+        if (process.env.NODE_ENV !== 'production') {
+          console.log("LeadMagnetPopup: Scroll trigger activated!");
+        }
         scrollTriggered = true;
         setHasTriggered(true);
         setIsVisible(true);
@@ -60,7 +68,9 @@ export const useLeadMagnetPopup = () => {
       
       // Only trigger if mouse leaves from top and user has been on page for at least 10 seconds
       if (e.clientY <= 0 && performance.now() > 10000) {
-        console.log("LeadMagnetPopup: Exit intent trigger activated!");
+        if (process.env.NODE_ENV !== 'production') {
+          console.log("LeadMagnetPopup: Exit intent trigger activated!");
+        }
         exitTriggered = true;
         setHasTriggered(true);
         setIsVisible(true);
@@ -71,7 +81,9 @@ export const useLeadMagnetPopup = () => {
     // Time-based trigger (30 seconds instead of 500ms)
     const timeoutTrigger = setTimeout(() => {
       if (!hasTriggered && !scrollTriggered && !exitTriggered && !hasSeenPopupSession && !hasSeenPopupLocal) {
-        console.log("LeadMagnetPopup: Time trigger activated (30 seconds)!");
+        if (process.env.NODE_ENV !== 'production') {
+          console.log("LeadMagnetPopup: Time trigger activated (30 seconds)!");
+        }
         timeTriggered = true;
         setHasTriggered(true);
         setIsVisible(true);
@@ -79,12 +91,16 @@ export const useLeadMagnetPopup = () => {
       }
     }, 30000); // 30 seconds
 
-    console.log("LeadMagnetPopup: Adding event listeners");
+    if (process.env.NODE_ENV !== 'production') {
+      console.log("LeadMagnetPopup: Adding event listeners");
+    }
     window.addEventListener('scroll', handleScroll, { passive: true });
     document.addEventListener('mouseleave', handleMouseLeave);
 
     return () => {
-      console.log("LeadMagnetPopup: Cleaning up event listeners");
+      if (process.env.NODE_ENV !== 'production') {
+        console.log("LeadMagnetPopup: Cleaning up event listeners");
+      }
       window.removeEventListener('scroll', handleScroll);
       document.removeEventListener('mouseleave', handleMouseLeave);
       clearTimeout(timeoutTrigger);
@@ -108,12 +124,16 @@ export const useLeadMagnetPopup = () => {
 
   const generateBrickTexture = async () => {
     setIsGeneratingTexture(true);
-    console.log("🧱 Starting enhanced gritty urban brick texture generation...");
+    if (process.env.NODE_ENV !== 'production') {
+      console.log("🧱 Starting enhanced gritty urban brick texture generation...");
+    }
     
     try {
       const prompt = "Ultra-realistic weathered urban brick wall texture, dark burgundy and brown aged bricks with deep mortar lines, street graffiti stains, rust streaks, concrete dust patches, peeling paint, urban decay, gritty inner city aesthetic, high contrast shadows, worn industrial texture, close-up detailed pattern, street photography style, natural lighting";
       
-      console.log("🧱 Calling Supabase function with enhanced prompt");
+      if (process.env.NODE_ENV !== 'production') {
+        console.log("🧱 Calling Supabase function with enhanced prompt");
+      }
       
       const { data, error } = await supabase.functions.invoke('generate-image', {
         body: { 
@@ -130,11 +150,15 @@ export const useLeadMagnetPopup = () => {
 
       if (data && data.imageUrl) {
         setBrickTextureUrl(data.imageUrl);
-        console.log("🧱 Enhanced brick texture generated successfully:", data.imageUrl);
+        if (process.env.NODE_ENV !== 'production') {
+          console.log("🧱 Enhanced brick texture generated successfully:", data.imageUrl);
+        }
       }
     } catch (error) {
       console.error("🧱 Error generating enhanced brick texture:", error);
-      console.log("🧱 Will continue using immediate SVG fallback");
+      if (process.env.NODE_ENV !== 'production') {
+        console.log("🧱 Will continue using immediate SVG fallback");
+      }
     } finally {
       setIsGeneratingTexture(false);
     }
@@ -184,7 +208,9 @@ export const useLeadMagnetPopup = () => {
   };
 
   const handleClose = useCallback(() => {
-    console.log("Closing popup and marking as shown");
+    if (process.env.NODE_ENV !== 'production') {
+      console.log("Closing popup and marking as shown");
+    }
     setIsVisible(false);
     markPopupAsShown();
   }, []);

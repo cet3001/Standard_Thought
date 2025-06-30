@@ -1,3 +1,4 @@
+
 import {
   BrowserRouter,
   Routes,
@@ -23,7 +24,6 @@ import { AuthProvider } from "./contexts/AuthContext";
 import { Toaster } from "@/components/ui/toaster"
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import ImageGeneratorPage from "@/pages/ImageGenerator";
-import AdminDashboard from "@/pages/AdminDashboard";
 
 const queryClient = new QueryClient();
 
@@ -52,7 +52,6 @@ function App() {
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="/terms-of-service" element={<TermsOfService />} />
               <Route path="/image-generator" element={<ImageGeneratorPage />} />
-              <Route path="/admin-dashboard" element={<AdminDashboard />} />
             </Routes>
           </div>
         </AuthProvider>

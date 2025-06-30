@@ -167,29 +167,42 @@ export const NewsletterSection = () => {
               </p>
             </div>
             
-            {/* Enhanced Email Input Section */}
+            {/* Enhanced Email Input Section with stronger emphasis */}
             <div className="p-6 sm:p-8 pt-0 relative z-10">
               <div 
-                className="relative p-6 rounded-2xl mb-4 border-2"
+                className="relative p-8 rounded-2xl mb-4 border-3"
                 style={{
-                  background: 'rgba(255, 215, 0, 0.08)',
-                  borderColor: 'rgba(255, 215, 0, 0.4)',
-                  boxShadow: '0 8px 32px rgba(255, 215, 0, 0.2), inset 0 1px 4px rgba(255, 215, 0, 0.1)'
+                  background: 'linear-gradient(135deg, rgba(255, 215, 0, 0.12), rgba(255, 235, 59, 0.08), rgba(255, 193, 7, 0.12))',
+                  borderColor: 'rgba(255, 215, 0, 0.6)',
+                  boxShadow: '0 12px 40px rgba(255, 215, 0, 0.25), inset 0 2px 8px rgba(255, 215, 0, 0.15)',
+                  backdropFilter: 'blur(8px)'
                 }}
               >
-                <form onSubmit={handleSubmit} className="space-y-4">
+                {/* Enhanced glow effect around the form */}
+                <div 
+                  className="absolute inset-0 rounded-2xl opacity-40 pointer-events-none"
+                  style={{
+                    background: 'linear-gradient(45deg, #ffd700, #ffed4e, #fff176, #ffeb3b, #f4d03f, #f7dc6f, #fdeaa7, #ffd700)',
+                    backgroundSize: '400% 400%',
+                    animation: 'enhanced-pearlescent 3s ease-in-out infinite',
+                    filter: 'blur(8px)',
+                    zIndex: -1
+                  }}
+                />
+
+                <form onSubmit={handleSubmit} className="space-y-4 relative z-10">
                   <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                     <Input
                       type="email"
                       placeholder="Enter your email to unlock the blueprint..."
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="flex-1 px-4 py-3 sm:py-4 text-sm sm:text-base rounded-2xl border-2 shadow-md"
+                      className="flex-1 px-4 py-3 sm:py-4 text-sm sm:text-base rounded-2xl border-3 shadow-md"
                       style={{
-                        background: 'rgba(255, 255, 255, 0.9)',
-                        borderColor: 'rgba(255, 215, 0, 0.5)',
+                        background: 'rgba(255, 255, 255, 0.95)',
+                        borderColor: 'rgba(255, 215, 0, 0.7)',
                         color: '#0A0A0A',
-                        boxShadow: '0 4px 16px rgba(255, 215, 0, 0.15)'
+                        boxShadow: '0 6px 20px rgba(255, 215, 0, 0.2), inset 0 1px 3px rgba(255, 215, 0, 0.1)'
                       }}
                       required
                       disabled={isSubmitting}
@@ -207,7 +220,7 @@ export const NewsletterSection = () => {
                         fontFamily: "'IBM Plex Sans', 'Courier New', monospace",
                         textTransform: 'uppercase',
                         letterSpacing: '0.5px',
-                        filter: 'drop-shadow(0 6px 12px rgba(255, 215, 0, 0.4))'
+                        filter: 'drop-shadow(0 8px 16px rgba(255, 215, 0, 0.5))'
                       }}
                     >
                       {/* Enhanced glow effect */}
@@ -236,9 +249,16 @@ export const NewsletterSection = () => {
               {/* Quick line under the input section */}
               <div className="text-center mt-3">
                 <p 
-                  className="text-sm font-semibold text-[#ffd700] italic drop-shadow-sm"
+                  className="text-sm font-semibold italic drop-shadow-sm"
                   style={{ 
-                    fontFamily: "'IBM Plex Sans', 'Courier New', monospace"
+                    fontFamily: "'IBM Plex Sans', 'Courier New', monospace",
+                    background: 'linear-gradient(45deg, #ffd700, #ffed4e, #fff176, #ffeb3b, #f4d03f)',
+                    backgroundSize: '200% 200%',
+                    animation: 'enhanced-pearlescent 2s ease-in-out infinite',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                    filter: 'drop-shadow(0 2px 4px rgba(255, 215, 0, 0.3))'
                   }}
                 >
                   Don't miss your shot—real wins start here.

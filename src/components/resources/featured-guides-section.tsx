@@ -8,11 +8,14 @@ import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { subscribeToNewsletter } from "@/lib/email-utils";
+import { Lock } from "lucide-react";
 
 const FeaturedGuidesSection = () => {
   const { downloadGuide, isDownloading } = useGuideDownload();
   const [email, setEmail] = useState("");
+  const [waitlistEmail, setWaitlistEmail] = useState("");
   const [isSubscribing, setIsSubscribing] = useState(false);
+  const [isJoiningWaitlist, setIsJoiningWaitlist] = useState(false);
   const { toast } = useToast();
 
   const handleDownload = async () => {
@@ -32,7 +35,6 @@ const FeaturedGuidesSection = () => {
       await subscribeToNewsletter(email);
       
       // Then trigger the guide download
-      // Note: You'll need to replace 'your-guide-filename.pdf' with the actual filename
       await downloadGuide('10k-starter-blueprint.pdf', email);
       
       toast({
@@ -53,6 +55,52 @@ const FeaturedGuidesSection = () => {
     }
   };
 
+  const handleWaitlistSignup = async () => {
+    if (!waitlistEmail) {
+      toast({
+        title: "Email required",
+        description: "Please enter your email to join the waitlist.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsJoiningWaitlist(true);
+    
+    try {
+      await subscribeToNewsletter(waitlistEmail);
+      
+      toast({
+        title: "You're on the list! 🎯",
+        description: "We'll hit you up when new blueprints drop.",
+      });
+      
+      setWaitlistEmail("");
+    } catch (error) {
+      console.error('Waitlist signup error:', error);
+      toast({
+        title: "Something went wrong",
+        description: "Please try again or contact support.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsJoiningWaitlist(false);
+    }
+  };
+
+  const comingSoonGuides = [
+    {
+      title: "AI Side Hustles Blueprint",
+      teaser: "Dropping soon. Join the waitlist.",
+      image: "/lovable-uploads/319b9311-4018-46d0-9292-5c7220a671c7.png"
+    },
+    {
+      title: "Credit Repair Playbook", 
+      teaser: "Dropping soon. Join the waitlist.",
+      image: "/lovable-uploads/4696326a-6203-4b1e-b0bc-e1ccc29263be.png"
+    }
+  ];
+
   return (
     <section className="mb-16 md:mb-20">
       <div className="text-center mb-8 md:mb-12">
@@ -64,8 +112,8 @@ const FeaturedGuidesSection = () => {
         </p>
       </div>
 
-      {/* Flexible grid for future guides */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 px-4 md:px-0">
+      {/* Flexible grid for current and future guides */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 px-4 md:px-0 mb-12">
         {/* Featured Guide Card */}
         <Card className="border-[#247EFF]/20 hover:border-[#247EFF]/40 transition-all duration-300 hover:shadow-xl group relative overflow-hidden bg-gradient-to-br from-white/95 to-white/90 dark:from-[#0A0A0A]/95 dark:to-[#0A0A0A]/90 backdrop-blur-sm">
           {/* "FREE" Badge */}
@@ -150,6 +198,89 @@ const FeaturedGuidesSection = () => {
             </p>
           </CardContent>
         </Card>
+
+        {/* Coming Soon Cards */}
+        {comingSoonGuides.map((guide, index) => (
+          <Card key={index} className="border-[#247EFF]/10 relative overflow-hidden bg-gradient-to-br from-white/95 to-white/90 dark:from-[#0A0A0A]/95 dark:to-[#0A0A0A]/90 backdrop-blur-sm">
+            {/* Lock Badge */}
+            <div className="absolute top-4 right-4 z-20">
+              <span className="bg-gradient-to-r from-slate-400 to-slate-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg flex items-center gap-1">
+                <Lock className="w-3 h-3" />
+                LOCKED
+              </span>
+            </div>
+
+            <CardHeader className="p-0">
+              {/* Blurred Guide Cover Image */}
+              <div className="relative overflow-hidden rounded-t-lg h-48 md:h-52">
+                <OptimizedImage
+                  src={guide.image}
+                  alt={`${guide.title} - Coming Soon`}
+                  className="w-full h-full object-contain bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-900 p-2 filter blur-sm"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-black/20"></div>
+                
+                {/* Lock Icon Overlay */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="bg-white/90 dark:bg-black/90 rounded-full p-4 shadow-xl">
+                    <Lock className="w-8 h-8 text-slate-600 dark:text-slate-400" />
+                  </div>
+                </div>
+              </div>
+            </CardHeader>
+
+            <CardContent className="p-6">
+              <CardTitle className="text-[#0A0A0A] dark:text-brand-cream mb-3">
+                <HeaderHierarchy level={3} className="mb-0 text-lg md:text-xl leading-tight">
+                  {guide.title}
+                </HeaderHierarchy>
+              </CardTitle>
+
+              <CardDescription className="text-[#0A0A0A]/70 dark:text-brand-cream/70 text-sm md:text-base leading-relaxed mb-6">
+                {guide.teaser}
+              </CardDescription>
+
+              <Button 
+                disabled
+                className="w-full bg-gradient-to-r from-slate-300 to-slate-400 text-slate-600 min-h-[44px] font-bold text-sm md:text-base cursor-not-allowed opacity-75" 
+              >
+                Coming Soon
+              </Button>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+
+      {/* Waitlist Signup Section */}
+      <div className="text-center max-w-md mx-auto">
+        <HeaderHierarchy level={3} className="mb-4 text-lg md:text-xl">
+          Want first dibs? Get on the waitlist for new blueprints.
+        </HeaderHierarchy>
+        
+        <div className="space-y-3">
+          <Input
+            type="email"
+            placeholder="Enter your email for early access..."
+            value={waitlistEmail}
+            onChange={(e) => setWaitlistEmail(e.target.value)}
+            className="w-full"
+            disabled={isJoiningWaitlist}
+          />
+          <Button 
+            onClick={handleWaitlistSignup}
+            disabled={isJoiningWaitlist || !waitlistEmail}
+            className="w-full bg-gradient-to-r from-[#247EFF] to-[#0057FF] hover:scale-105 text-white min-h-[44px] touch-manipulation font-bold text-sm md:text-base transition-all duration-300 shadow-lg hover:shadow-xl border-0" 
+          >
+            {isJoiningWaitlist ? (
+              <div className="flex items-center">
+                <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2"></div>
+                Joining Waitlist...
+              </div>
+            ) : (
+              'Join Waitlist'
+            )}
+          </Button>
+        </div>
       </div>
     </section>
   );

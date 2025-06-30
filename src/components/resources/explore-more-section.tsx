@@ -72,7 +72,7 @@ const ExploreMoreSection = () => {
           </p>
         </div>
 
-        {/* Urban-Style Topic Cards Grid */}
+        {/* Enhanced Topic Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {topics.map((topic, index) => {
             const IconComponent = topic.icon;
@@ -81,9 +81,9 @@ const ExploreMoreSection = () => {
               <div
                 key={topic.title}
                 onClick={() => navigate(topic.route)}
-                className="group relative overflow-hidden bg-white/90 dark:bg-brand-black/90 backdrop-blur-sm rounded-2xl p-6 border-2 border-transparent hover:border-white/30 cursor-pointer transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl"
+                className="group relative overflow-hidden rounded-2xl p-6 cursor-pointer transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl"
                 style={{
-                  background: `linear-gradient(135deg, ${topic.gradient.split(' ')[1]} 0%, ${topic.gradient.split(' ')[3]} 100%)`,
+                  background: `linear-gradient(135deg, ${topic.gradient.includes('green') ? '#10b981' : topic.gradient.includes('blue') ? '#3b82f6' : topic.gradient.includes('purple') ? '#8b5cf6' : '#f97316'} 0%, ${topic.gradient.includes('green') ? '#059669' : topic.gradient.includes('blue') ? '#1d4ed8' : topic.gradient.includes('purple') ? '#7c3aed' : '#ea580c'} 100%)`,
                   animation: `float 3s ease-in-out infinite ${index * 0.5}s`
                 }}
               >

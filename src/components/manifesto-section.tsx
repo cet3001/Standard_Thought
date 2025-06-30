@@ -176,7 +176,9 @@ const ManifestoSection = () => {
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
-                  animation: 'pearlescent 3s ease-in-out infinite'
+                  animation: 'pearlescent 3s ease-in-out infinite',
+                  WebkitTextStroke: '2px #000000',
+                  textShadow: '3px 3px 0px rgba(0,0,0,0.8), 2px 2px 0px rgba(0,0,0,0.6), 1px 1px 0px rgba(0,0,0,0.4)'
                 }}
               >
                 Building Wealth
@@ -188,7 +190,8 @@ const ManifestoSection = () => {
                     background: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 350 25'%3E%3Cpath d='M8 18 Q80 8 170 15 Q260 22 342 12' stroke='%23FFD700' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3Cpath d='M12 20 Q85 10 175 17 Q265 24 340 14' stroke='%23FFD700' stroke-width='2' fill='none' stroke-linecap='round' opacity='0.6'/%3E%3C/svg%3E")`,
                     backgroundSize: 'contain',
                     backgroundRepeat: 'no-repeat',
-                    backgroundPosition: 'center'
+                    backgroundPosition: 'center',
+                    filter: 'drop-shadow(1px 1px 2px rgba(0,0,0,0.6))'
                   }}
                 ></div>
               </span>
@@ -208,7 +211,10 @@ const ManifestoSection = () => {
                 {/* Enhanced underline - changed to pearlescent yellow */}
                 <div 
                   className="absolute -bottom-2 left-0 w-full h-3 opacity-25 transform -rotate-1 blur-sm"
-                  style={{ backgroundColor: '#FFD700' }}
+                  style={{ 
+                    backgroundColor: '#FFD700',
+                    filter: 'drop-shadow(1px 1px 1px rgba(0,0,0,0.4))'
+                  }}
                 ></div>
               </span> Most wealth advice wasn't built for us. We're breaking cycles, flipping money trauma, and building legacy from the ground up.
             </p>
@@ -223,13 +229,15 @@ const ManifestoSection = () => {
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
-                  animation: 'pearlescent 3s ease-in-out infinite'
+                  animation: 'pearlescent 3s ease-in-out infinite',
+                  WebkitTextStroke: '1px #000000',
+                  textShadow: '2px 2px 0px rgba(0,0,0,0.7), 1px 1px 0px rgba(0,0,0,0.5)'
                 }}
               >
                 street-smart moves
                 {/* Enhanced handwritten circle effect - changed to pearlescent yellow */}
-                <div className="absolute -inset-2 border-3 border-[#FFD700] rounded-full opacity-50 transform rotate-2 border-dashed"></div>
-                <div className="absolute -inset-1 border-2 border-[#FFD700] rounded-full opacity-30 transform -rotate-1 border-dotted"></div>
+                <div className="absolute -inset-2 border-3 border-[#FFD700] rounded-full opacity-50 transform rotate-2 border-dashed" style={{ filter: 'drop-shadow(1px 1px 2px rgba(0,0,0,0.4))' }}></div>
+                <div className="absolute -inset-1 border-2 border-[#FFD700] rounded-full opacity-30 transform -rotate-1 border-dotted" style={{ filter: 'drop-shadow(1px 1px 1px rgba(0,0,0,0.3))' }}></div>
               </span>
               , real setbacks, and stacking paper for the long haul.
             </p>
@@ -244,12 +252,14 @@ const ManifestoSection = () => {
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
-                  animation: 'pearlescent 3s ease-in-out infinite'
+                  animation: 'pearlescent 3s ease-in-out infinite',
+                  WebkitTextStroke: '1px #000000',
+                  textShadow: '2px 2px 0px rgba(0,0,0,0.7), 1px 1px 0px rgba(0,0,0,0.5)'
                 }}
               >
                 blueprints that work in the real world
                 {/* Enhanced highlight with texture - changed to pearlescent yellow */}
-                <div className="absolute -inset-2 bg-[#FFD700] opacity-15 transform -rotate-1 -z-10 blur-sm"></div>
+                <div className="absolute -inset-2 bg-[#FFD700] opacity-15 transform -rotate-1 -z-10 blur-sm" style={{ filter: 'drop-shadow(1px 1px 2px rgba(0,0,0,0.3))' }}></div>
                 <div className="absolute -inset-1 bg-[#FFD700] opacity-10 transform rotate-1 -z-10"></div>
               </span>
               , you're in the right spot.
@@ -263,7 +273,9 @@ const ManifestoSection = () => {
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
-                animation: 'pearlescent 3s ease-in-out infinite'
+                animation: 'pearlescent 3s ease-in-out infinite',
+                WebkitTextStroke: '2px #000000',
+                textShadow: '3px 3px 0px rgba(0,0,0,0.8), 2px 2px 0px rgba(0,0,0,0.6), 1px 1px 0px rgba(0,0,0,0.4)'
               }}
             >
               <span className="relative">
@@ -274,7 +286,8 @@ const ManifestoSection = () => {
                   style={{
                     background: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 450 20'%3E%3Cpath d='M15 12 Q120 4 230 11 Q340 18 435 8' stroke='%23FFD700' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3Cpath d='M18 14 Q125 6 235 13 Q345 20 440 10' stroke='%23FFD700' stroke-width='2' fill='none' stroke-linecap='round' opacity='0.7'/%3E%3C/svg%3E")`,
                     backgroundSize: 'contain',
-                    backgroundRepeat: 'no-repeat'
+                    backgroundRepeat: 'no-repeat',
+                    filter: 'drop-shadow(1px 1px 2px rgba(0,0,0,0.6))'
                   }}
                 ></div>
               </span>
@@ -290,7 +303,9 @@ const ManifestoSection = () => {
                   fontFamily: "'IBM Plex Sans', 'Courier New', monospace",
                   background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
                   backgroundSize: '400% 400%',
-                  animation: 'pearlescent 3s ease-in-out infinite'
+                  animation: 'pearlescent 3s ease-in-out infinite',
+                  textShadow: '2px 2px 0px rgba(0,0,0,0.8), 1px 1px 0px rgba(0,0,0,0.6)',
+                  boxShadow: 'inset 0 0 0 2px rgba(0,0,0,0.3), 8px 8px 0px rgba(0,0,0,0.2)'
                 }}
               >
                 <span className="relative z-10">

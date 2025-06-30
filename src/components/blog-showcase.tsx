@@ -84,7 +84,7 @@ const BlogShowcase = () => {
         {/* Show message if no posts found but query was successful */}
         {!isLoading && !isError && displayPosts.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-xl text-brand-black/70 dark:text-brand-cream/70">
+            <p className="text-xl text-brand-black dark:text-brand-cream">
               New stories coming soon. Check back for fresh content from the community.
             </p>
           </div>

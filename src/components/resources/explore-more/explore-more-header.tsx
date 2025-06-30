@@ -25,7 +25,7 @@ const ExploreMoreHeader = () => {
           }}
         />
       </div>
-      <p className="text-[#0A0A0A]/70 dark:text-brand-cream/70 max-w-2xl mx-auto text-base md:text-lg font-medium">
+      <p className="text-[#0A0A0A] dark:text-brand-cream max-w-2xl mx-auto text-base md:text-lg font-medium">
         Deep dive into the strategies that actually work
       </p>
     </div>

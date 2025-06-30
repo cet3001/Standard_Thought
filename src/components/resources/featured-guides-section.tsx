@@ -4,6 +4,7 @@ import FeaturedGuideCard from "@/components/resources/featured-guides/featured-g
 import ComingSoonGuideCard from "@/components/resources/featured-guides/coming-soon-guide-card";
 import WaitlistSignup from "@/components/resources/featured-guides/waitlist-signup";
 import SocialProofSection from "@/components/resources/featured-guides/social-proof-section";
+import ExploreMoreSection from "@/components/resources/explore-more-section";
 import ResourcesFAQSection from "@/components/resources/resources-faq-section";
 
 const FeaturedGuidesSection = () => {
@@ -55,6 +56,9 @@ const FeaturedGuidesSection = () => {
 
       {/* Social Proof Section */}
       <SocialProofSection />
+
+      {/* Explore More Section - moved above Q&A */}
+      <ExploreMoreSection />
 
       {/* FAQ Section */}
       <ResourcesFAQSection />

@@ -101,7 +101,16 @@ export const NewsletterSection = () => {
 
       <div className="container mx-auto px-4 sm:px-6 max-w-4xl relative z-10">
         <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <Card className="relative bg-brand-cream/90 dark:bg-brand-black/90 backdrop-blur-sm border-[#247EFF]/30 shadow-2xl overflow-hidden">
+          <div className="relative backdrop-blur-sm overflow-hidden rounded-3xl p-8 border-2"
+               style={{ 
+                 background: 'rgba(128, 128, 128, 0.15)',
+                 borderColor: 'rgba(244, 208, 63, 0.3)',
+                 boxShadow: '0 20px 40px rgba(0, 0, 0, 0.1)'
+               }}>
+            {/* Enhanced texture backgrounds */}
+            <div className="absolute inset-0 opacity-[0.06] bg-[radial-gradient(circle_at_2px_2px,_rgba(0,0,0,1)_1px,_transparent_0)] bg-[length:18px_18px]"></div>
+            <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(135deg,_transparent_46%,_rgba(0,0,0,0.6)_47%,_rgba(0,0,0,0.6)_53%,_transparent_54%)] bg-[length:8px_8px]"></div>
+
             {/* Blueprint Paper Background */}
             <div 
               className="absolute inset-0 opacity-10 pointer-events-none"
@@ -117,11 +126,14 @@ export const NewsletterSection = () => {
               }}
             />
 
-            {/* "Members Only" Stamp Overlay */}
+            {/* "Members Only" Stamp Overlay with yellow pearlescent effect */}
             <div className="absolute top-6 right-6 z-10">
               <div 
-                className="bg-[#247EFF]/90 text-white px-4 py-2 transform -rotate-12 shadow-lg border-2 border-[#247EFF]"
+                className="text-black px-4 py-2 transform -rotate-12 shadow-lg border-2 border-black"
                 style={{ 
+                  background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                  backgroundSize: '400% 400%',
+                  animation: 'pearlescent 3s ease-in-out infinite',
                   fontFamily: "'IBM Plex Sans', 'Courier New', monospace",
                   fontSize: '14px',
                   fontWeight: 'bold',
@@ -134,21 +146,27 @@ export const NewsletterSection = () => {
               </div>
             </div>
 
-            <CardHeader className="text-center p-6 sm:p-8 relative z-10">
-              <div className="w-16 h-16 bg-[#247EFF]/20 rounded-2xl flex items-center justify-center mx-auto mb-4 border-2 border-[#247EFF]/30">
+            <div className="text-center p-6 sm:p-8 relative z-10">
+              <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 border-2 shadow-lg"
+                   style={{
+                     background: 'rgba(128, 128, 128, 0.2)',
+                     borderColor: 'rgba(244, 208, 63, 0.4)'
+                   }}>
                 <Mail className="h-8 w-8 text-[#247EFF]" aria-label="Email newsletter icon" />
               </div>
-              <CardTitle className="text-2xl sm:text-3xl font-black text-brand-black dark:text-brand-cream mb-4">
+              
+              <h2 className="text-2xl sm:text-3xl font-black text-brand-black dark:text-brand-cream mb-4">
                 Unlock the <span className="text-[#247EFF]">Urban Wealth Blueprint</span>
-              </CardTitle>
-              <CardDescription className="text-base sm:text-lg text-brand-black dark:text-brand-cream max-w-2xl mx-auto leading-relaxed">
+              </h2>
+              
+              <p className="text-base sm:text-lg text-brand-black dark:text-brand-cream max-w-2xl mx-auto leading-relaxed mb-8">
                 Join 1,000+ first-gen hustlers flipping the script on money. Get weekly street-smart strategies, 
                 exclusive AI side hustle plays, and real talk on breaking money trauma—straight to your inbox. 
                 No spam, no fluff—just blueprints that actually work.
-              </CardDescription>
-            </CardHeader>
+              </p>
+            </div>
             
-            <CardContent className="p-6 sm:p-8 pt-0 relative z-10">
+            <div className="p-6 sm:p-8 pt-0 relative z-10">
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                   <Input
@@ -156,26 +174,39 @@ export const NewsletterSection = () => {
                     placeholder="Enter your email to unlock the blueprint..."
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="flex-1 px-4 py-3 sm:py-4 text-sm sm:text-base border-[#247EFF]/30 focus:border-[#247EFF] bg-brand-cream dark:bg-brand-black/50 text-brand-black dark:text-brand-cream rounded-2xl"
+                    className="flex-1 px-4 py-3 sm:py-4 text-sm sm:text-base rounded-2xl"
+                    style={{
+                      background: 'rgba(128, 128, 128, 0.1)',
+                      borderColor: 'rgba(244, 208, 63, 0.3)',
+                      color: 'inherit'
+                    }}
                     required
                     disabled={isSubmitting}
                   />
                   <Button
                     type="submit"
                     disabled={isSubmitting || !email}
-                    className="w-full sm:w-auto bg-[#247EFF] hover:bg-[#0057FF] text-white font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-2xl hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-sm sm:text-base relative overflow-hidden border-2 border-[#247EFF] hover:border-[#0057FF]"
+                    className="w-full sm:w-auto font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-2xl hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-sm sm:text-base relative overflow-hidden border-2"
                     style={{ 
+                      background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                      backgroundSize: '400% 400%',
+                      animation: 'pearlescent 3s ease-in-out infinite',
+                      color: 'black',
+                      borderColor: 'rgba(244, 208, 63, 0.6)',
                       fontFamily: "'IBM Plex Sans', 'Courier New', monospace",
                       textTransform: 'uppercase',
                       letterSpacing: '0.5px'
                     }}
                   >
                     {/* Hand-drawn/spray-paint effect */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#247EFF]/20 via-transparent to-[#247EFF]/20 opacity-50"></div>
+                    <div className="absolute inset-0 opacity-50" style={{
+                      background: 'linear-gradient(45deg, #f4d03f, #ffd700, #ffeb3b)',
+                      opacity: 0.3
+                    }}></div>
                     <span className="relative z-10">
                       {isSubmitting ? (
                         <div className="flex items-center">
-                          <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2"></div>
+                          <div className="w-4 h-4 border-2 border-black/30 border-t-black rounded-full animate-spin mr-2"></div>
                           Getting Blueprint...
                         </div>
                       ) : (
@@ -215,10 +246,24 @@ export const NewsletterSection = () => {
                   </div>
                 </div>
               </form>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         </div>
       </div>
+
+      <style>{`
+        @keyframes pearlescent {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+      `}</style>
     </section>
   );
 };

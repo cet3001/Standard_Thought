@@ -19,7 +19,6 @@ import FreeInvestingGuide from "@/pages/FreeInvestingGuide";
 import StartInvestingGuide from "@/pages/StartInvestingGuide";
 import FinancialEducationGuide from "@/pages/FinancialEducationGuide";
 import WealthBuildingStrategies from "@/pages/WealthBuildingStrategies";
-import FAQ from "@/pages/FAQ";
 import { AuthProvider } from "./contexts/AuthContext";
 import { Toaster } from "@/components/ui/toaster"
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -44,7 +43,6 @@ function App() {
               <Route path="/edit-post/:id" element={<EditPost />} />
               <Route path="/auth" element={<Auth />} />
               <Route path="/resources" element={<Resources />} />
-              <Route path="/faq" element={<FAQ />} />
               <Route path="/free-investing-guide" element={<FreeInvestingGuide />} />
               <Route path="/start-investing-guide" element={<StartInvestingGuide />} />
               <Route path="/financial-education-guide" element={<FinancialEducationGuide />} />

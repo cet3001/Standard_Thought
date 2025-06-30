@@ -1,3 +1,4 @@
+
 import { Link, useLocation } from "react-router-dom";
 
 interface NavItemsProps {
@@ -13,7 +14,6 @@ const NavItems = ({ className = "hidden lg:flex space-x-8", showButton = false }
     { href: "/about", label: "Mindset Tools" },
     { href: "/blog", label: "Builder Stories" },
     { href: "/resources", label: "Success Strategies" },
-    { href: "/faq", label: "Wealth Wisdom" },
   ];
 
   return (

@@ -16,7 +16,6 @@ const MobileMenu = () => {
     { href: "/about", label: "Mindset Tools" },
     { href: "/blog", label: "Builder Stories" },
     { href: "/resources", label: "Success Strategies" },
-    { href: "/faq", label: "Wealth Wisdom" },
   ];
 
   const handleClose = () => {

@@ -16,6 +16,8 @@ const BlogPage = () => {
   const [selectedThemeTag, setSelectedThemeTag] = useState("");
   const [filteredPosts, setFilteredPosts] = useState<Post[] | null>(null);
 
+  console.log('BlogPage: Component rendering...');
+
   const {
     data: posts,
     isLoading: isPostsLoading,
@@ -25,6 +27,8 @@ const BlogPage = () => {
   } = useQuery({
     queryKey: ['posts'],
     queryFn: getPosts,
+    retry: 2,
+    staleTime: 5 * 60 * 1000, // 5 minutes
   });
 
   const {
@@ -35,13 +39,21 @@ const BlogPage = () => {
   } = useQuery({
     queryKey: ['categories'],
     queryFn: getCategories,
+    retry: 2,
+    staleTime: 5 * 60 * 1000, // 5 minutes
   });
 
+  console.log('BlogPage: Posts loading:', isPostsLoading, 'Posts data:', posts?.length);
+  console.log('BlogPage: Categories loading:', isCategoriesLoading, 'Categories data:', categories?.length);
+
+  // Extract theme tags from posts
   const themeTags = posts 
     ? [...new Set(posts.flatMap(post => post.theme_tags || []))]
     : [];
 
   useEffect(() => {
+    console.log('BlogPage: Filtering posts...', { posts: posts?.length, searchTerm, selectedCategory, selectedThemeTag });
+    
     if (posts) {
       const filtered = posts.filter((post) => {
         const searchRegex = new RegExp(searchTerm, "i");
@@ -58,17 +70,36 @@ const BlogPage = () => {
           themeTagMatch
         );
       });
+      
+      console.log('BlogPage: Filtered posts:', filtered.length);
       setFilteredPosts(filtered);
+    } else {
+      setFilteredPosts(null);
     }
   }, [posts, searchTerm, selectedCategory, selectedThemeTag]);
 
   const handleThemeTagClick = (tag: string) => {
+    console.log('BlogPage: Theme tag clicked:', tag);
     setSelectedThemeTag(tag);
   };
 
-  if (isPostsLoading || isCategoriesLoading) return <Loading />;
-  if (isPostsError || isCategoriesError)
-    return <ErrorMessage error={postsError || categoriesError} onRetry={() => refetchPosts()} />;
+  const isLoading = isPostsLoading || isCategoriesLoading;
+  const hasError = isPostsError || isCategoriesError;
+  const error = postsError || categoriesError;
+
+  console.log('BlogPage: Final state - Loading:', isLoading, 'Error:', hasError, 'Posts:', posts?.length, 'Filtered:', filteredPosts?.length);
+
+  if (isLoading) {
+    console.log('BlogPage: Showing loading state');
+    return <Loading />;
+  }
+  
+  if (hasError) {
+    console.log('BlogPage: Showing error state:', error);
+    return <ErrorMessage error={error} onRetry={() => refetchPosts()} />;
+  }
+
+  console.log('BlogPage: Rendering main content');
 
   return (
     <div className="min-h-screen bg-transparent">

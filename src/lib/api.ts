@@ -1,4 +1,3 @@
-
 import { supabase } from '@/integrations/supabase/client'
 
 export interface BlogPost {
@@ -44,71 +43,111 @@ export interface CreateBlogPostData {
 }
 
 export const getBlogPosts = async (): Promise<BlogPost[]> => {
-  console.log('Fetching blog posts...');
-  const { data, error } = await supabase
-    .from('blog_posts')
-    .select('*')
-    .eq('published', true)
-    .order('created_at', { ascending: false });
+  console.log('API: Fetching blog posts...');
+  
+  try {
+    const { data, error } = await supabase
+      .from('blog_posts')
+      .select('*')
+      .eq('published', true)
+      .order('created_at', { ascending: false });
 
-  if (error) {
-    console.error('Error fetching blog posts:', error);
+    if (error) {
+      console.error('API: Error fetching blog posts:', error);
+      throw new Error(`Failed to fetch blog posts: ${error.message}`);
+    }
+
+    console.log('API: Successfully fetched blog posts:', data?.length || 0);
+    return data || [];
+  } catch (error) {
+    console.error('API: Unexpected error in getBlogPosts:', error);
     throw error;
   }
-
-  console.log('Found blog posts:', data?.length || 0);
-  return data || [];
 };
 
 export const getPosts = async (): Promise<Post[]> => {
-  console.log('Fetching posts...');
-  const { data, error } = await supabase
-    .from('blog_posts')
-    .select('*')
-    .eq('published', true)
-    .order('created_at', { ascending: false });
+  console.log('API: Fetching posts...');
+  
+  try {
+    const { data, error } = await supabase
+      .from('blog_posts')
+      .select('*')
+      .eq('published', true)
+      .order('created_at', { ascending: false });
 
-  if (error) {
-    console.error('Error fetching posts:', error);
+    if (error) {
+      console.error('API: Error fetching posts:', error);
+      throw new Error(`Failed to fetch posts: ${error.message}`);
+    }
+
+    console.log('API: Successfully fetched posts:', data?.length || 0);
+    
+    // Transform the data to include theme_tags and other optional fields
+    const transformedData = (data || []).map(post => ({
+      ...post,
+      theme_tags: post.tags || [], // Use regular tags as theme_tags for now
+      is_editors_pick: post.featured || false,
+      is_popular: false,
+      view_count: 0
+    }));
+
+    console.log('API: Transformed posts data:', transformedData.length);
+    return transformedData;
+  } catch (error) {
+    console.error('API: Unexpected error in getPosts:', error);
     throw error;
   }
-
-  console.log('Found posts:', data?.length || 0);
-  return data || [];
 };
 
 export const getCategories = async (): Promise<string[]> => {
-  const { data, error } = await supabase
-    .from('blog_posts')
-    .select('category')
-    .eq('published', true);
+  console.log('API: Fetching categories...');
+  
+  try {
+    const { data, error } = await supabase
+      .from('blog_posts')
+      .select('category')
+      .eq('published', true);
 
-  if (error) {
-    console.error('Error fetching categories:', error);
+    if (error) {
+      console.error('API: Error fetching categories:', error);
+      throw new Error(`Failed to fetch categories: ${error.message}`);
+    }
+
+    const categories = [...new Set(data?.map(post => post.category) || [])];
+    console.log('API: Successfully fetched categories:', categories.length);
+    return categories;
+  } catch (error) {
+    console.error('API: Unexpected error in getCategories:', error);
     throw error;
   }
-
-  const categories = [...new Set(data?.map(post => post.category) || [])];
-  return categories;
 };
 
 export const getBlogPost = async (slug: string): Promise<BlogPost | null> => {
-  const { data, error } = await supabase
-    .from('blog_posts')
-    .select('*')
-    .eq('slug', slug)
-    .eq('published', true)
-    .single();
+  console.log('API: Fetching blog post by slug:', slug);
+  
+  try {
+    const { data, error } = await supabase
+      .from('blog_posts')
+      .select('*')
+      .eq('slug', slug)
+      .eq('published', true)
+      .single();
 
-  if (error) {
-    if (error.code === 'PGRST116') {
-      return null; // Post not found
+    if (error) {
+      if (error.code === 'PGRST116') {
+        console.log('API: Blog post not found for slug:', slug);
+        return null; // Post not found
+      }
+      console.error('API: Error fetching blog post:', error);
+      throw new Error(`Failed to fetch blog post: ${error.message}`);
     }
-    console.error('Error fetching blog post:', error);
+
+    console.log('API: Successfully fetched blog post:', data?.title);
+    return data;
+  } catch (error) {
+    console.error('API: Unexpected error in getBlogPost:', error);
     throw error;
   }
-
-  return data;
 };
 
 export const createBlogPost = async (postData: CreateBlogPostData): Promise<BlogPost> => {

@@ -176,16 +176,16 @@ const ValuePropsSection = ({ isVisible }: ValuePropsSectionProps) => {
                   e.currentTarget.style.color = 'transparent';
                   e.currentTarget.style.background = 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)';
                   e.currentTarget.style.backgroundSize = '400% 400%';
-                  e.currentTarget.style.WebkitBackgroundClip = 'text';
-                  e.currentTarget.style.WebkitTextFillColor = 'transparent';
+                  e.currentTarget.style.webkitBackgroundClip = 'text';
+                  e.currentTarget.style.webkitTextFillColor = 'transparent';
                   e.currentTarget.style.backgroundClip = 'text';
                   e.currentTarget.style.animation = 'pearlescent 3s ease-in-out infinite';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.color = '';
                   e.currentTarget.style.background = '';
-                  e.currentTarget.style.WebkitBackgroundClip = '';
-                  e.currentTarget.style.WebkitTextFillColor = '';
+                  e.currentTarget.style.webkitBackgroundClip = '';
+                  e.currentTarget.style.webkitTextFillColor = '';
                   e.currentTarget.style.backgroundClip = '';
                   e.currentTarget.style.animation = '';
                 }}

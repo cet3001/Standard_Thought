@@ -28,12 +28,24 @@ const ResourcesContent = () => {
 
         {/* Enhanced Tag Filter Display */}
         {selectedTag && (
-          <div className="mb-6 md:mb-8 p-4 md:p-6 bg-gradient-to-r from-[#247EFF]/10 to-[#247EFF]/5 border border-[#247EFF]/20 rounded-xl mx-4 md:mx-0" role="status" aria-live="polite">
+          <div className="mb-6 md:mb-8 p-4 md:p-6 bg-gradient-to-r from-yellow-100/20 to-yellow-50/10 border border-yellow-200/30 rounded-xl mx-4 md:mx-0" role="status" aria-live="polite">
             <div className="flex items-center justify-between flex-wrap gap-3">
               <div className="flex items-center gap-3">
-                <div className="w-2 h-2 bg-[#247EFF] rounded-full"></div>
-                <p className="text-sm md:text-base text-[#247EFF] font-medium">
-                  Showing resources tagged with: <strong className="font-bold text-[#0A0A0A] dark:text-brand-cream">{selectedTag}</strong>
+                <div className="w-2 h-2 rounded-full" style={{
+                  background: 'linear-gradient(45deg, #f4d03f, #ffd700, #ffeb3b)',
+                }}></div>
+                <p className="text-sm md:text-base font-medium">
+                  <span style={{
+                    background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                    backgroundSize: '400% 400%',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                    color: 'transparent',
+                    animation: 'pearlescent 3s ease-in-out infinite'
+                  }}>
+                    Showing resources tagged with:
+                  </span> <strong className="font-bold text-[#0A0A0A] dark:text-brand-cream">{selectedTag}</strong>
                 </p>
               </div>
               <button 
@@ -60,6 +72,20 @@ const ResourcesContent = () => {
         
         <ResourcesCTA />
       </div>
+
+      <style>{`
+        @keyframes pearlescent {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+      `}</style>
     </main>
   );
 };

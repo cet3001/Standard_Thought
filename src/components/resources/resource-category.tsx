@@ -31,7 +31,7 @@ const ResourceCategory = ({
   onTagClick 
 }: ResourceCategoryProps) => {
   return (
-    <Card className="border-[#247EFF]/20 hover:border-[#247EFF]/40 transition-colors relative mx-4 md:mx-0" role="article" aria-labelledby={`resource-${title.replace(/\s+/g, '-').toLowerCase()}`}>
+    <Card className="border-yellow-200/30 hover:border-yellow-300/50 transition-colors relative mx-4 md:mx-0" role="article" aria-labelledby={`resource-${title.replace(/\s+/g, '-').toLowerCase()}`}>
       {featured && (
         <div className="absolute top-3 md:top-4 right-3 md:right-4 z-10">
           <StoryBadge type={featured} />
@@ -40,7 +40,15 @@ const ResourceCategory = ({
       
       <CardHeader className="p-4 md:p-6">
         <div className="flex items-start md:items-center gap-3 md:gap-4 mb-3 md:mb-4">
-          <div className="text-[#247EFF] flex-shrink-0 mt-1 md:mt-0">
+          <div className="flex-shrink-0 mt-1 md:mt-0" style={{
+            color: 'transparent',
+            background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+            backgroundSize: '400% 400%',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            animation: 'pearlescent 3s ease-in-out infinite'
+          }}>
             {icon}
           </div>
           <div className="flex-1 min-w-0">
@@ -85,7 +93,9 @@ const ResourceCategory = ({
         <ul className="space-y-2 md:space-y-3 mb-6 md:mb-8" role="list">
           {topics.map((topic, topicIndex) => (
             <li key={topicIndex} className="flex items-start gap-3 text-[#0A0A0A]/80 dark:text-brand-cream/80 text-sm md:text-base" role="listitem">
-              <div className="w-2 h-2 bg-[#247EFF] rounded-full mt-2 flex-shrink-0" aria-hidden="true"></div>
+              <div className="w-2 h-2 rounded-full mt-2 flex-shrink-0" aria-hidden="true" style={{
+                background: 'linear-gradient(45deg, #f4d03f, #ffd700, #ffeb3b)',
+              }}></div>
               <span className="leading-relaxed">{topic}</span>
             </li>
           ))}
@@ -101,6 +111,20 @@ const ResourceCategory = ({
           </Link>
         </Button>
       </CardContent>
+
+      <style>{`
+        @keyframes pearlescent {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+      `}</style>
     </Card>
   );
 };

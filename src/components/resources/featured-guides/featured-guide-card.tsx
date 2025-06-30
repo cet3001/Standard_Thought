@@ -67,7 +67,7 @@ const FeaturedGuideCard = () => {
 
       <CardHeader className="p-0">
         {/* Guide Cover Image */}
-        <div className="relative overflow-hidden rounded-t-lg h-48 md:h-52 flex items-center justify-center">
+        <div className="relative overflow-hidden rounded-t-lg h-40 md:h-44 flex items-center justify-center">
           <OptimizedImage
             src="/lovable-uploads/b4e3b459-4253-40a2-bc9a-74ec02d85e18.png"
             alt="The $10K Starter Blueprint - Premium Investing Playbook Cover"
@@ -77,31 +77,31 @@ const FeaturedGuideCard = () => {
         </div>
       </CardHeader>
 
-      <CardContent className="p-6">
-        <CardTitle className="text-[#0A0A0A] dark:text-brand-cream mb-3">
-          <HeaderHierarchy level={3} className="mb-0 text-lg md:text-xl leading-tight">
+      <CardContent className="p-4">
+        <CardTitle className="text-[#0A0A0A] dark:text-brand-cream mb-2">
+          <HeaderHierarchy level={3} className="mb-0 text-base md:text-lg leading-tight">
             The $10K Starter Blueprint
           </HeaderHierarchy>
         </CardTitle>
 
-        <CardDescription className="text-[#0A0A0A]/70 dark:text-brand-cream/70 text-sm md:text-base leading-relaxed mb-6">
-          Step-by-step, street-smart investing for first-gen hustlers and underestimated creatives.
+        <CardDescription className="text-[#0A0A0A]/70 dark:text-brand-cream/70 text-sm leading-relaxed mb-4">
+          Step-by-step investing for first-gen hustlers and underestimated creatives.
         </CardDescription>
 
         {/* Email Input + Download CTA */}
-        <div className="space-y-3">
+        <div className="space-y-2">
           <Input
             type="email"
-            placeholder="Enter your email for instant download..."
+            placeholder="Enter email..."
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full"
+            className="w-full text-sm"
             disabled={isSubscribing || isDownloading}
           />
           <Button 
             onClick={handleDownload}
             disabled={isSubscribing || isDownloading || !email}
-            className="w-full hover:scale-105 text-black min-h-[48px] touch-manipulation font-bold text-base transition-all duration-300 shadow-lg hover:shadow-xl border-0"
+            className="w-full hover:scale-105 text-black min-h-[40px] touch-manipulation font-bold text-sm transition-all duration-300 shadow-lg hover:shadow-xl border-0"
             style={{ 
               background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
               backgroundSize: '400% 400%',
@@ -111,7 +111,7 @@ const FeaturedGuideCard = () => {
           >
             {isSubscribing || isDownloading ? (
               <div className="flex items-center">
-                <div className="w-4 h-4 border-2 border-black/30 border-t-black rounded-full animate-spin mr-2"></div>
+                <div className="w-3 h-3 border-2 border-black/30 border-t-black rounded-full animate-spin mr-2"></div>
                 {isSubscribing ? 'Getting Ready...' : 'Downloading...'}
               </div>
             ) : (

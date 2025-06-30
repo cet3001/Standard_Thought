@@ -16,7 +16,7 @@ const ComingSoonGuideCard = ({ title, teaser, image }: ComingSoonGuideCardProps)
     <Card className="relative overflow-hidden bg-gradient-to-br from-white/95 to-white/90 dark:from-[#0A0A0A]/95 dark:to-[#0A0A0A]/90 backdrop-blur-sm border border-[#0A0A0A]/10 dark:border-brand-cream/10 opacity-75">
       {/* Lock Badge */}
       <div className="absolute top-4 right-4 z-20">
-        <span className="bg-gradient-to-r from-slate-400 to-slate-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg flex items-center gap-1">
+        <span className="bg-gradient-to-r from-slate-400 to-slate-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg flex items-center gap-1">
           <Lock className="w-3 h-3" />
           LOCKED
         </span>
@@ -34,27 +34,27 @@ const ComingSoonGuideCard = ({ title, teaser, image }: ComingSoonGuideCardProps)
           
           {/* Lock Icon Overlay */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="bg-white/90 dark:bg-black/90 rounded-full p-4 shadow-xl">
-              <Lock className="w-8 h-8 text-slate-600 dark:text-slate-400" />
+            <div className="bg-white/90 dark:bg-black/90 rounded-full p-3 shadow-xl">
+              <Lock className="w-6 h-6 text-slate-600 dark:text-slate-400" />
             </div>
           </div>
         </div>
       </CardHeader>
 
-      <CardContent className="p-6">
-        <CardTitle className="text-[#0A0A0A] dark:text-brand-cream mb-3">
-          <HeaderHierarchy level={3} className="mb-0 text-lg md:text-xl leading-tight opacity-60">
+      <CardContent className="p-4">
+        <CardTitle className="text-[#0A0A0A] dark:text-brand-cream mb-2">
+          <HeaderHierarchy level={3} className="mb-0 text-base md:text-lg leading-tight opacity-60">
             {title}
           </HeaderHierarchy>
         </CardTitle>
 
-        <CardDescription className="text-[#0A0A0A]/50 dark:text-brand-cream/50 text-sm md:text-base leading-relaxed mb-6">
+        <CardDescription className="text-[#0A0A0A]/50 dark:text-brand-cream/50 text-sm leading-relaxed mb-4">
           {teaser}
         </CardDescription>
 
         <Button 
           disabled
-          className="w-full bg-gradient-to-r from-slate-300 to-slate-400 text-slate-600 min-h-[44px] font-bold text-sm md:text-base cursor-not-allowed opacity-75" 
+          className="w-full bg-gradient-to-r from-slate-300 to-slate-400 text-slate-600 min-h-[40px] font-bold text-sm cursor-not-allowed opacity-75" 
         >
           Coming Soon
         </Button>

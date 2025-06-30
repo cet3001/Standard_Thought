@@ -45,7 +45,7 @@ const WaitlistSignup = () => {
   };
 
   return (
-    <div className="text-center max-w-md mx-auto mb-16">
+    <div className="text-center max-w-md mx-auto">
       <HeaderHierarchy level={3} className="mb-4 text-lg md:text-xl">
         Want first dibs? Get on the waitlist for new blueprints.
       </HeaderHierarchy>

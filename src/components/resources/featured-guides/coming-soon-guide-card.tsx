@@ -13,7 +13,7 @@ interface ComingSoonGuideCardProps {
 
 const ComingSoonGuideCard = ({ title, teaser, image }: ComingSoonGuideCardProps) => {
   return (
-    <Card className="relative overflow-hidden bg-gradient-to-br from-white/95 to-white/90 dark:from-[#0A0A0A]/95 dark:to-[#0A0A0A]/90 backdrop-blur-sm border border-[#0A0A0A]/10 dark:border-brand-cream/10">
+    <Card className="relative overflow-hidden bg-gradient-to-br from-white/95 to-white/90 dark:from-[#0A0A0A]/95 dark:to-[#0A0A0A]/90 backdrop-blur-sm border border-[#0A0A0A]/10 dark:border-brand-cream/10 opacity-75">
       {/* Lock Badge */}
       <div className="absolute top-4 right-4 z-20">
         <span className="bg-gradient-to-r from-slate-400 to-slate-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg flex items-center gap-1">
@@ -28,9 +28,9 @@ const ComingSoonGuideCard = ({ title, teaser, image }: ComingSoonGuideCardProps)
           <OptimizedImage
             src={image}
             alt={`${title} - Coming Soon`}
-            className="max-w-full max-h-full object-contain p-2 filter blur-sm"
+            className="max-w-full max-h-full object-contain p-2 filter blur-lg grayscale"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-black/20"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-black/40"></div>
           
           {/* Lock Icon Overlay */}
           <div className="absolute inset-0 flex items-center justify-center">
@@ -43,12 +43,12 @@ const ComingSoonGuideCard = ({ title, teaser, image }: ComingSoonGuideCardProps)
 
       <CardContent className="p-6">
         <CardTitle className="text-[#0A0A0A] dark:text-brand-cream mb-3">
-          <HeaderHierarchy level={3} className="mb-0 text-lg md:text-xl leading-tight">
+          <HeaderHierarchy level={3} className="mb-0 text-lg md:text-xl leading-tight opacity-60">
             {title}
           </HeaderHierarchy>
         </CardTitle>
 
-        <CardDescription className="text-[#0A0A0A]/70 dark:text-brand-cream/70 text-sm md:text-base leading-relaxed mb-6">
+        <CardDescription className="text-[#0A0A0A]/50 dark:text-brand-cream/50 text-sm md:text-base leading-relaxed mb-6">
           {teaser}
         </CardDescription>
 

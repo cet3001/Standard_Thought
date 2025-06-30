@@ -13,7 +13,7 @@ interface ComingSoonGuideCardProps {
 
 const ComingSoonGuideCard = ({ title, teaser, image }: ComingSoonGuideCardProps) => {
   return (
-    <Card className="border-[#247EFF]/10 relative overflow-hidden bg-gradient-to-br from-white/95 to-white/90 dark:from-[#0A0A0A]/95 dark:to-[#0A0A0A]/90 backdrop-blur-sm">
+    <Card className="relative overflow-hidden bg-gradient-to-br from-white/95 to-white/90 dark:from-[#0A0A0A]/95 dark:to-[#0A0A0A]/90 backdrop-blur-sm border border-[#0A0A0A]/10 dark:border-brand-cream/10">
       {/* Lock Badge */}
       <div className="absolute top-4 right-4 z-20">
         <span className="bg-gradient-to-r from-slate-400 to-slate-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg flex items-center gap-1">

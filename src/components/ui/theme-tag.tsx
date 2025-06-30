@@ -60,11 +60,19 @@ const ThemeTag = ({ tag, onClick, className, isSelected = false }: ThemeTagProps
       className={cn(
         "text-xs font-semibold px-3 py-1.5 rounded-full cursor-pointer transition-all duration-200 min-h-[32px] touch-manipulation",
         "hover:shadow-md hover:scale-105 active:scale-95",
-        isSelected && "ring-2 ring-[#247EFF] bg-[#247EFF]/10 text-[#247EFF]",
+        isSelected && "ring-2 bg-opacity-10 text-black font-bold" + 
+        " ring-opacity-80 bg-gradient-to-r from-yellow-100 to-yellow-200" + 
+        " hover:from-yellow-200 hover:to-yellow-300",
         getTagStyles(tag),
         onClick && "hover:shadow-sm",
         className
       )}
+      style={isSelected ? {
+        background: 'linear-gradient(90deg, #f4d03f, #ffd700, #ffeb3b)',
+        color: '#000',
+        borderColor: '#f8e71c',
+        boxShadow: '0 0 0 2px rgba(248, 231, 28, 0.3)'
+      } : {}}
       onClick={handleClick}
       role="button"
       tabIndex={0}

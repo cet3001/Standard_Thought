@@ -53,10 +53,17 @@ const FeaturedGuideCard = () => {
   };
 
   return (
-    <Card className="border-[#247EFF]/20 hover:border-[#247EFF]/40 transition-all duration-300 hover:shadow-xl group relative overflow-hidden bg-gradient-to-br from-white/95 to-white/90 dark:from-[#0A0A0A]/95 dark:to-[#0A0A0A]/90 backdrop-blur-sm">
+    <Card className="hover:shadow-xl group relative overflow-hidden bg-gradient-to-br from-white/95 to-white/90 dark:from-[#0A0A0A]/95 dark:to-[#0A0A0A]/90 backdrop-blur-sm border border-[#0A0A0A]/10 dark:border-brand-cream/10 transition-all duration-300">
       {/* "FREE" Badge */}
       <div className="absolute top-4 right-4 z-10">
-        <span className="bg-gradient-to-r from-[#FFD700] to-[#FFA500] text-black text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+        <span 
+          className="text-black text-xs font-bold px-3 py-1 rounded-full shadow-lg"
+          style={{ 
+            background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+            backgroundSize: '400% 400%',
+            animation: 'pearlescent 3s ease-in-out infinite'
+          }}
+        >
           FREE
         </span>
       </div>
@@ -96,7 +103,15 @@ const FeaturedGuideCard = () => {
               "No fluff—just real moves"
             ].map((benefit, index) => (
               <li key={index} className="flex items-start gap-3 text-[#0A0A0A]/80 dark:text-brand-cream/80 text-sm" role="listitem">
-                <div className="w-2 h-2 bg-[#247EFF] rounded-full mt-2 flex-shrink-0" aria-hidden="true"></div>
+                <div 
+                  className="w-2 h-2 rounded-full mt-2 flex-shrink-0"
+                  style={{ 
+                    background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                    backgroundSize: '400% 400%',
+                    animation: 'pearlescent 3s ease-in-out infinite'
+                  }}
+                  aria-hidden="true"
+                ></div>
                 <span className="leading-relaxed">{benefit}</span>
               </li>
             ))}
@@ -116,7 +131,12 @@ const FeaturedGuideCard = () => {
           <Button 
             onClick={handleDownload}
             disabled={isSubscribing || isDownloading || !email}
-            className="w-full bg-gradient-to-r from-[#FFD700] to-[#FFA500] hover:scale-105 text-black min-h-[44px] touch-manipulation font-bold text-sm md:text-base transition-all duration-300 shadow-lg hover:shadow-xl border-0" 
+            className="w-full hover:scale-105 text-black min-h-[44px] touch-manipulation font-bold text-sm md:text-base transition-all duration-300 shadow-lg hover:shadow-xl border-0"
+            style={{ 
+              background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+              backgroundSize: '400% 400%',
+              animation: 'pearlescent 3s ease-in-out infinite'
+            }}
             aria-label="Download The $10K Starter Blueprint for free"
           >
             {isSubscribing || isDownloading ? (
@@ -134,6 +154,20 @@ const FeaturedGuideCard = () => {
           You'll also join our newsletter for exclusive wealth-building tips
         </p>
       </CardContent>
+
+      <style>{`
+        @keyframes pearlescent {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+      `}</style>
     </Card>
   );
 };

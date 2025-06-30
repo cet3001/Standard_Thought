@@ -32,7 +32,7 @@ const SocialProofSection = () => {
           <path
             d="M0,80 Q100,70 200,85 T400,75 Q500,80 600,70 T800,85 L800,120 Q700,110 600,125 T400,115 Q300,120 200,110 T0,125 Z"
             fill="currentColor"
-            className="text-[#247EFF]/30"
+            className="text-[#0A0A0A]/30 dark:text-brand-cream/30"
           />
           {/* Graffiti tag underline */}
           <path
@@ -40,9 +40,25 @@ const SocialProofSection = () => {
             stroke="currentColor"
             strokeWidth="3"
             fill="none"
-            className="text-[#FFD700]/40"
+            className="opacity-40"
+            style={{ 
+              stroke: 'url(#pearlescent-gradient)'
+            }}
             strokeLinecap="round"
           />
+
+          {/* Define the pearlescent gradient */}
+          <defs>
+            <linearGradient id="pearlescent-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#f4d03f" />
+              <stop offset="16.67%" stopColor="#f7dc6f" />
+              <stop offset="33.33%" stopColor="#fdeaa7" />
+              <stop offset="50%" stopColor="#f8e71c" />
+              <stop offset="66.67%" stopColor="#ffd700" />
+              <stop offset="83.33%" stopColor="#ffeb3b" />
+              <stop offset="100%" stopColor="#fff176" />
+            </linearGradient>
+          </defs>
         </svg>
       </div>
 
@@ -54,7 +70,7 @@ const SocialProofSection = () => {
               className="text-2xl md:text-3xl font-black text-[#0A0A0A] dark:text-brand-cream tracking-wide uppercase relative z-10"
               style={{ 
                 fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
-                textShadow: '3px 3px 0px rgba(36, 126, 255, 0.3)',
+                textShadow: '3px 3px 0px rgba(244, 208, 63, 0.3)',
                 transform: 'rotate(-1deg)'
               }}
             >
@@ -64,7 +80,7 @@ const SocialProofSection = () => {
             <div 
               className="absolute -bottom-2 left-0 right-0 h-1 opacity-80"
               style={{
-                background: 'linear-gradient(90deg, transparent 5%, #FFD700 20%, #FFA500 80%, transparent 95%)',
+                background: 'linear-gradient(90deg, transparent 5%, #f4d03f 20%, #ffd700 50%, #ffeb3b 80%, transparent 95%)',
                 borderRadius: '50px',
                 transform: 'rotate(1deg)'
               }}
@@ -74,7 +90,13 @@ const SocialProofSection = () => {
           {/* Main trust badge - no background card */}
           <div className="mb-8">
             <div className="flex items-center justify-center gap-4 mb-6">
-              <Users className="w-8 h-8 text-[#247EFF]" />
+              <Users 
+                className="w-8 h-8"
+                style={{ 
+                  color: '#f4d03f',
+                  filter: 'drop-shadow(1px 1px 2px rgba(244, 208, 63, 0.3))'
+                }}
+              />
               <span className="text-[#0A0A0A] dark:text-brand-cream font-bold text-xl md:text-2xl">
                 2,500+ builders leveling up their game
               </span>
@@ -85,12 +107,13 @@ const SocialProofSection = () => {
               {[1, 2, 3, 4, 5].map((star) => (
                 <svg 
                   key={star} 
-                  className="w-6 h-6 text-[#FFD700] transform hover:scale-110 transition-transform" 
+                  className="w-6 h-6 transform hover:scale-110 transition-transform" 
                   fill="currentColor" 
                   viewBox="0 0 24 24"
                   style={{ 
                     transform: `rotate(${(star * 7) % 15 - 7}deg)`,
-                    filter: 'drop-shadow(2px 2px 0px rgba(0,0,0,0.3))'
+                    filter: 'drop-shadow(2px 2px 0px rgba(0,0,0,0.3))',
+                    color: '#ffd700'
                   }}
                 >
                   <path d="M12 2l2.4 7.2h7.6l-6 4.8 2.4 7.2-6-4.8-6 4.8 2.4-7.2-6-4.8h7.6z" />
@@ -110,7 +133,14 @@ const SocialProofSection = () => {
                 <div className="text-base md:text-lg text-[#0A0A0A]/80 dark:text-brand-cream/80 font-semibold">
                   — {testimonials[currentTestimonial].author}, {testimonials[currentTestimonial].city}
                 </div>
-                <div className="bg-[#FFD700] text-black px-3 py-1 rounded-full text-sm font-bold">
+                <div 
+                  className="text-black px-3 py-1 rounded-full text-sm font-bold"
+                  style={{ 
+                    background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                    backgroundSize: '400% 400%',
+                    animation: 'pearlescent 3s ease-in-out infinite'
+                  }}
+                >
                   VERIFIED ✓
                 </div>
               </div>
@@ -124,9 +154,14 @@ const SocialProofSection = () => {
                   onClick={() => setCurrentTestimonial(index)}
                   className={`w-3 h-3 rounded-full transition-all duration-300 ${
                     index === currentTestimonial 
-                      ? 'bg-[#247EFF] scale-125' 
-                      : 'bg-[#0A0A0A]/30 dark:bg-brand-cream/30 hover:bg-[#247EFF]/50'
+                      ? 'scale-125' 
+                      : 'hover:scale-110'
                   }`}
+                  style={{
+                    background: index === currentTestimonial 
+                      ? 'linear-gradient(45deg, #f4d03f, #ffd700, #ffeb3b)'
+                      : 'rgba(10, 10, 10, 0.3)'
+                  }}
                   aria-label={`Go to testimonial ${index + 1}`}
                 />
               ))}
@@ -134,6 +169,20 @@ const SocialProofSection = () => {
           </div>
         </div>
       </div>
+
+      <style>{`
+        @keyframes pearlescent {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+      `}</style>
     </div>
   );
 };

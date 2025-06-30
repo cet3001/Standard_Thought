@@ -62,11 +62,16 @@ const WaitlistSignup = () => {
         <Button 
           onClick={handleWaitlistSignup}
           disabled={isJoiningWaitlist || !waitlistEmail}
-          className="w-full bg-gradient-to-r from-[#247EFF] to-[#0057FF] hover:scale-105 text-white min-h-[44px] touch-manipulation font-bold text-sm md:text-base transition-all duration-300 shadow-lg hover:shadow-xl border-0" 
+          className="w-full min-h-[44px] touch-manipulation font-bold text-sm md:text-base transition-all duration-300 shadow-lg hover:shadow-xl border-0 hover:scale-105 text-black relative overflow-hidden"
+          style={{ 
+            background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+            backgroundSize: '400% 400%',
+            animation: 'pearlescent 3s ease-in-out infinite'
+          }}
         >
           {isJoiningWaitlist ? (
             <div className="flex items-center">
-              <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2"></div>
+              <div className="w-4 h-4 border-2 border-black/30 border-t-black rounded-full animate-spin mr-2"></div>
               Joining Waitlist...
             </div>
           ) : (
@@ -74,6 +79,20 @@ const WaitlistSignup = () => {
           )}
         </Button>
       </div>
+
+      <style>{`
+        @keyframes pearlescent {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+      `}</style>
     </div>
   );
 };

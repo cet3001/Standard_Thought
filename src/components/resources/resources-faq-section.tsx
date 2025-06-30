@@ -17,29 +17,29 @@ const ResourcesFAQSection = () => {
         <div className="absolute -top-6 -right-4 md:-right-8 w-24 h-14 transform rotate-12" aria-hidden="true">
           <svg viewBox="0 0 96 56" className="w-full h-full">
             {/* Spray paint effect background */}
-            <ellipse cx="48" cy="28" rx="40" ry="22" fill="#FFD700" opacity="0.3"/>
-            <ellipse cx="45" cy="25" rx="35" ry="18" fill="#FFD700" opacity="0.5"/>
+            <ellipse cx="48" cy="28" rx="40" ry="22" fill="#ffd700" opacity="0.3"/>
+            <ellipse cx="45" cy="25" rx="35" ry="18" fill="#f4d03f" opacity="0.5"/>
             
             {/* Main tag text */}
             <text 
               x="48" 
               y="32" 
               textAnchor="middle" 
-              className="fill-[#247EFF]" 
               style={{ 
                 fontSize: '14px', 
                 fontFamily: "'Permanent Marker', 'Kalam', cursive",
                 fontWeight: 'bold',
-                textShadow: '1px 1px 0px rgba(0,0,0,0.3)'
+                textShadow: '1px 1px 0px rgba(0,0,0,0.3)',
+                fill: '#f8e71c'
               }}
             >
               Q&A
             </text>
             
             {/* Drip effects */}
-            <circle cx="30" cy="40" r="1.5" fill="#FFD700" opacity="0.6"/>
-            <circle cx="65" cy="42" r="1" fill="#247EFF" opacity="0.4"/>
-            <circle cx="50" cy="45" r="0.8" fill="#FFD700" opacity="0.5"/>
+            <circle cx="30" cy="40" r="1.5" fill="#ffd700" opacity="0.6"/>
+            <circle cx="65" cy="42" r="1" fill="#f4d03f" opacity="0.4"/>
+            <circle cx="50" cy="45" r="0.8" fill="#ffeb3b" opacity="0.5"/>
           </svg>
         </div>
 
@@ -58,15 +58,18 @@ const ResourcesFAQSection = () => {
             <AccordionItem 
               key={index} 
               value={`item-${index}`}
-              className="bg-white/80 dark:bg-[#0A0A0A]/60 backdrop-blur-sm border border-[#247EFF]/20 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-200"
+              className="bg-white/80 dark:bg-[#0A0A0A]/60 backdrop-blur-sm border border-[#0A0A0A]/10 dark:border-brand-cream/10 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-200"
             >
-              <AccordionTrigger className="text-left hover:no-underline px-6 py-6 hover:text-[#247EFF] transition-colors group">
+              <AccordionTrigger className="text-left hover:no-underline px-6 py-6 transition-colors group">
                 <div className="flex items-start gap-4">
                   {/* Graffiti-style question icon */}
                   <div className="flex-shrink-0 mt-1">
                     <div 
-                      className="w-8 h-8 flex items-center justify-center rounded-full bg-gradient-to-br from-[#FFD700] to-[#FFA500] transform group-hover:rotate-12 transition-transform duration-300"
+                      className="w-8 h-8 flex items-center justify-center rounded-full transform group-hover:rotate-12 transition-transform duration-300 text-black font-bold"
                       style={{
+                        background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                        backgroundSize: '400% 400%',
+                        animation: 'pearlescent 3s ease-in-out infinite',
                         boxShadow: '2px 2px 0px rgba(0,0,0,0.2)',
                         transform: `rotate(${(index * 5) % 15 - 7}deg)`
                       }}
@@ -77,7 +80,7 @@ const ResourcesFAQSection = () => {
                     </div>
                   </div>
                   
-                  <HeaderHierarchy level={3} className="mb-0 text-lg md:text-xl font-bold leading-tight flex-1 text-left">
+                  <HeaderHierarchy level={3} className="mb-0 text-lg md:text-xl font-bold leading-tight flex-1 text-left group-hover:text-[#f8e71c] transition-colors">
                     {faq.question}
                   </HeaderHierarchy>
                 </div>
@@ -94,6 +97,20 @@ const ResourcesFAQSection = () => {
           ))}
         </Accordion>
       </div>
+
+      <style>{`
+        @keyframes pearlescent {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+      `}</style>
     </section>
   );
 };

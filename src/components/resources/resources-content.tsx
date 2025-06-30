@@ -1,27 +1,14 @@
 
-import { useState } from "react";
 import ResourcesHero from "@/components/resources/resources-hero";
 import ResourcesCTA from "@/components/resources/resources-cta";
 import FeaturedGuidesSection from "@/components/resources/featured-guides-section";
-import ExploreMoreSection from "@/components/resources/explore-more-section";
 
 const ResourcesContent = () => {
-  const [selectedTag, setSelectedTag] = useState<string | null>(null);
-
-  const handleTagClick = (tag: string) => {
-    setSelectedTag(selectedTag === tag ? null : tag);
-    console.log(`Filter by tag: ${tag}`);
-  };
-
   return (
     <main className="pt-24 md:pt-32 pb-12 md:pb-16">
       <div className="container mx-auto px-4 md:px-6 max-w-7xl">
         <ResourcesHero />
-
-        {/* Featured Guides Section */}
         <FeaturedGuidesSection />
-
-        {/* Final CTA */}
         <ResourcesCTA />
       </div>
 

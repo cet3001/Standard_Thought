@@ -104,56 +104,35 @@ const ManifestoSection = () => {
         </svg>
       </div>
 
-      {/* Enhanced graffiti "Real Talk" overlay - changed to pearlescent yellow */}
+      {/* Enhanced graffiti "Real Talk" overlay */}
       <div className="absolute top-8 right-8 transform rotate-12 pointer-events-none" aria-hidden="true">
         <div 
-          className="text-4xl md:text-6xl font-black opacity-[0.15] relative"
+          className="text-[#247EFF] text-4xl md:text-6xl font-black opacity-[0.15] relative"
           style={{ 
             fontFamily: "'Permanent Marker', 'Kalam', cursive",
             textShadow: '3px 3px 0px rgba(0,0,0,0.3)',
-            filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.2))',
-            background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-            backgroundSize: '400% 400%',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
-            animation: 'pearlescent 3s ease-in-out infinite'
+            filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.2))'
           }}
         >
           Real Talk
-          {/* Spray paint texture - changed to pearlescent yellow */}
-          <div 
-            className="absolute inset-0 opacity-60 blur-sm"
-            style={{
-              background: 'linear-gradient(to right, transparent, rgba(255, 215, 0, 0.2), transparent)'
-            }}
-          ></div>
+          {/* Spray paint texture */}
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#247EFF]/20 to-transparent opacity-60 blur-sm"></div>
         </div>
         
-        {/* Enhanced drip effects - changed to pearlescent yellow */}
-        <div 
-          className="absolute -bottom-3 left-8 w-2 h-8 opacity-30 transform rotate-12 blur-sm"
-          style={{ backgroundColor: '#FFD700' }}
-        ></div>
-        <div 
-          className="absolute -bottom-2 left-12 w-1 h-6 opacity-20 transform rotate-15 blur-sm"
-          style={{ backgroundColor: '#FFD700' }}
-        ></div>
-        <div 
-          className="absolute -bottom-4 right-4 w-1 h-5 opacity-25 transform rotate-8 blur-sm"
-          style={{ backgroundColor: '#FFD700' }}
-        ></div>
+        {/* Enhanced drip effects */}
+        <div className="absolute -bottom-3 left-8 w-2 h-8 bg-[#247EFF] opacity-30 transform rotate-12 blur-sm"></div>
+        <div className="absolute -bottom-2 left-12 w-1 h-6 bg-[#247EFF] opacity-20 transform rotate-15 blur-sm"></div>
+        <div className="absolute -bottom-4 right-4 w-1 h-5 bg-[#247EFF] opacity-25 transform rotate-8 blur-sm"></div>
       </div>
 
       {/* Additional street tags */}
       <div className="absolute bottom-32 left-12 transform -rotate-3 pointer-events-none opacity-[0.08]" aria-hidden="true">
         <div 
-          className="text-2xl font-black"
+          className="text-[#FFD700] text-2xl font-black"
           style={{ 
             fontFamily: "'Permanent Marker', 'Kalam', cursive",
             textShadow: '2px 2px 0px rgba(0,0,0,0.2)',
-            filter: 'blur(0.3px)',
-            color: '#FFD700'
+            filter: 'blur(0.3px)'
           }}
         >
           HUSTLE
@@ -167,25 +146,14 @@ const ManifestoSection = () => {
             <div className="absolute inset-0 opacity-[0.06] bg-[conic-gradient(from_45deg,_transparent_60%,_rgba(0,0,0,0.4)_80%,_transparent_100%)] bg-[length:20px_20px]"></div>
             
             <h2 className="text-4xl md:text-5xl font-black mb-8 text-brand-black dark:text-brand-cream relative z-10">
-              The Real About{" "}
-              <span 
-                className="relative"
-                style={{
-                  background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                  backgroundSize: '400% 400%',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                  animation: 'pearlescent 3s ease-in-out infinite'
-                }}
-              >
+              The Real About <span className="text-[#247EFF] relative">
                 Building Wealth
                 
-                {/* Enhanced handwritten underline effect - changed to pearlescent yellow */}
+                {/* Enhanced handwritten underline effect */}
                 <div 
                   className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-72 h-4 opacity-70"
                   style={{
-                    background: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 350 25'%3E%3Cpath d='M8 18 Q80 8 170 15 Q260 22 342 12' stroke='%23FFD700' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3Cpath d='M12 20 Q85 10 175 17 Q265 24 340 14' stroke='%23FFD700' stroke-width='2' fill='none' stroke-linecap='round' opacity='0.6'/%3E%3C/svg%3E")`,
+                    background: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 350 25'%3E%3Cpath d='M8 18 Q80 8 170 15 Q260 22 342 12' stroke='%23247EFF' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3Cpath d='M12 20 Q85 10 175 17 Q265 24 340 14' stroke='%23247EFF' stroke-width='2' fill='none' stroke-linecap='round' opacity='0.6'/%3E%3C/svg%3E")`,
                     backgroundSize: 'contain',
                     backgroundRepeat: 'no-repeat',
                     backgroundPosition: 'center'
@@ -205,74 +173,39 @@ const ManifestoSection = () => {
             <p className="text-xl font-semibold relative z-10">
               <span className="relative">
                 Let's keep it 100:
-                {/* Enhanced underline - changed to pearlescent yellow */}
+                {/* Enhanced underline */}
                 <div 
-                  className="absolute -bottom-2 left-0 w-full h-3 opacity-25 transform -rotate-1 blur-sm"
-                  style={{ backgroundColor: '#FFD700' }}
+                  className="absolute -bottom-2 left-0 w-full h-3 bg-[#247EFF] opacity-25 transform -rotate-1 blur-sm"
                 ></div>
               </span> Most wealth advice wasn't built for us. We're breaking cycles, flipping money trauma, and building legacy from the ground up.
             </p>
             
             <p className="relative z-10">
-              This ain't about overnight success—it's about{" "}
-              <span 
-                className="relative font-semibold"
-                style={{
-                  background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                  backgroundSize: '400% 400%',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                  animation: 'pearlescent 3s ease-in-out infinite'
-                }}
-              >
+              This ain't about overnight success—it's about <span className="relative text-[#247EFF] font-semibold">
                 street-smart moves
-                {/* Enhanced handwritten circle effect - changed to pearlescent yellow */}
-                <div className="absolute -inset-2 border-3 border-[#FFD700] rounded-full opacity-50 transform rotate-2 border-dashed"></div>
-                <div className="absolute -inset-1 border-2 border-[#FFD700] rounded-full opacity-30 transform -rotate-1 border-dotted"></div>
-              </span>
-              , real setbacks, and stacking paper for the long haul.
+                {/* Enhanced handwritten circle effect */}
+                <div className="absolute -inset-2 border-3 border-[#247EFF] rounded-full opacity-50 transform rotate-2 border-dashed"></div>
+                <div className="absolute -inset-1 border-2 border-[#247EFF] rounded-full opacity-30 transform -rotate-1 border-dotted"></div>
+              </span>, real setbacks, and stacking paper for the long haul.
             </p>
 
             <p className="relative z-10">
-              If you're tired of fake gurus and ready for{" "}
-              <span 
-                className="relative font-semibold"
-                style={{
-                  background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                  backgroundSize: '400% 400%',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                  animation: 'pearlescent 3s ease-in-out infinite'
-                }}
-              >
+              If you're tired of fake gurus and ready for <span className="relative text-[#247EFF] font-semibold">
                 blueprints that work in the real world
-                {/* Enhanced highlight with texture - changed to pearlescent yellow */}
-                <div className="absolute -inset-2 bg-[#FFD700] opacity-15 transform -rotate-1 -z-10 blur-sm"></div>
-                <div className="absolute -inset-1 bg-[#FFD700] opacity-10 transform rotate-1 -z-10"></div>
-              </span>
-              , you're in the right spot.
+                {/* Enhanced highlight with texture */}
+                <div className="absolute -inset-2 bg-[#247EFF] opacity-15 transform -rotate-1 -z-10 blur-sm"></div>
+                <div className="absolute -inset-1 bg-[#247EFF] opacity-10 transform rotate-1 -z-10"></div>
+              </span>, you're in the right spot.
             </p>
 
-            <p 
-              className="text-xl font-bold text-center mt-8 relative z-10"
-              style={{
-                background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                backgroundSize: '400% 400%',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                animation: 'pearlescent 3s ease-in-out infinite'
-              }}
-            >
+            <p className="text-xl font-bold text-[#247EFF] text-center mt-8 relative z-10">
               <span className="relative">
                 Real builders. Real strategies. Real results.
-                {/* Enhanced handwritten underline with multiple layers - changed to pearlescent yellow */}
+                {/* Enhanced handwritten underline with multiple layers */}
                 <div 
                   className="absolute -bottom-3 left-0 w-full h-3 opacity-70"
                   style={{
-                    background: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 450 20'%3E%3Cpath d='M15 12 Q120 4 230 11 Q340 18 435 8' stroke='%23FFD700' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3Cpath d='M18 14 Q125 6 235 13 Q345 20 440 10' stroke='%23FFD700' stroke-width='2' fill='none' stroke-linecap='round' opacity='0.7'/%3E%3C/svg%3E")`,
+                    background: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 450 20'%3E%3Cpath d='M15 12 Q120 4 230 11 Q340 18 435 8' stroke='%23247EFF' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3Cpath d='M18 14 Q125 6 235 13 Q345 20 440 10' stroke='%23247EFF' stroke-width='2' fill='none' stroke-linecap='round' opacity='0.7'/%3E%3C/svg%3E")`,
                     backgroundSize: 'contain',
                     backgroundRepeat: 'no-repeat'
                   }}
@@ -285,12 +218,9 @@ const ManifestoSection = () => {
             <Link to="/resources">
               <Button 
                 size="lg"
-                className="font-bold px-8 py-4 rounded-3xl hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl relative overflow-hidden text-black border-0"
+                className="bg-[#247EFF] hover:bg-[#0057FF] text-white font-bold px-8 py-4 rounded-3xl hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl relative overflow-hidden"
                 style={{ 
-                  fontFamily: "'IBM Plex Sans', 'Courier New', monospace",
-                  background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                  backgroundSize: '400% 400%',
-                  animation: 'pearlescent 3s ease-in-out infinite'
+                  fontFamily: "'IBM Plex Sans', 'Courier New', monospace"
                 }}
               >
                 <span className="relative z-10">
@@ -302,20 +232,6 @@ const ManifestoSection = () => {
           </div>
         </div>
       </div>
-
-      <style>{`
-        @keyframes pearlescent {
-          0% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-          100% {
-            background-position: 0% 50%;
-          }
-        }
-      `}</style>
     </section>
   );
 };

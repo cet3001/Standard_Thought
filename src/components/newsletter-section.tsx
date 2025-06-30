@@ -29,7 +29,7 @@ export const NewsletterSection = () => {
   return (
     <section 
       data-section="newsletter" 
-      className="py-16 sm:py-20 relative overflow-hidden bg-[rgba(128,128,128,0.25)]"
+      className="py-16 sm:py-20 relative overflow-hidden bg-[rgba(96,96,96,0.4)]"
     >
       {/* Urban Background - Now pushed behind with -z-10 */}
       <NewsletterBackground />
@@ -38,9 +38,9 @@ export const NewsletterSection = () => {
         <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="relative backdrop-blur-sm overflow-hidden rounded-3xl p-8 border-2"
                style={{ 
-                 background: 'transparent',
+                 background: 'rgba(128, 128, 128, 0.3)',
                  borderColor: 'rgba(255, 215, 0, 0.4)',
-                 boxShadow: '0 20px 40px rgba(255, 215, 0, 0.15)'
+                 boxShadow: '0 20px 40px rgba(0, 0, 0, 0.15)'
                }}>
             {/* Enhanced texture backgrounds */}
             <div className="absolute inset-0 opacity-[0.06] bg-[radial-gradient(circle_at_2px_2px,_rgba(0,0,0,1)_1px,_transparent_0)] bg-[length:18px_18px]"></div>

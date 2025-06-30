@@ -21,7 +21,7 @@ const ExploreMoreCard = ({ topic, index }: ExploreMoreCardProps) => {
   return (
     <div
       onClick={() => navigate(topic.route)}
-      className={`group relative overflow-hidden cursor-pointer transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl bg-gradient-to-br ${topic.bgGradient}`}
+      className="group relative overflow-hidden cursor-pointer transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl bg-transparent backdrop-blur-sm"
       style={{
         borderRadius: '12px 20px 15px 18px', // Uneven, hand-cut borders
         filter: `
@@ -37,33 +37,6 @@ const ExploreMoreCard = ({ topic, index }: ExploreMoreCardProps) => {
         )` // Torn-paper effect
       }}
     >
-      {/* Heavy concrete texture overlay */}
-      <div 
-        className="absolute inset-0 opacity-30 mix-blend-multiply"
-        style={{
-          backgroundImage: `
-            repeating-conic-gradient(from 0deg at 50% 50%, 
-              rgba(0,0,0,0.15) 0deg, transparent 2deg, rgba(0,0,0,0.08) 4deg, transparent 6deg),
-            radial-gradient(circle at 30% 70%, rgba(255,255,255,0.03) 0%, transparent 50%),
-            repeating-linear-gradient(
-              45deg,
-              rgba(0,0,0,0.05) 0px,
-              rgba(0,0,0,0.05) 1px,
-              transparent 1px,
-              transparent 3px
-            ),
-            repeating-linear-gradient(
-              -45deg,
-              rgba(0,0,0,0.03) 0px,
-              rgba(0,0,0,0.03) 1px,
-              transparent 1px,
-              transparent 4px
-            )
-          `,
-          backgroundSize: '8px 8px, 100px 100px, 4px 4px, 6px 6px'
-        }}
-      />
-      
       {/* Street art corner accent with torn edge */}
       <div 
         className="absolute top-0 right-0 w-16 h-16 opacity-40"
@@ -79,11 +52,7 @@ const ExploreMoreCard = ({ topic, index }: ExploreMoreCardProps) => {
         <div 
           className="w-16 h-16 rounded-2xl flex items-center justify-center backdrop-blur-sm border-2 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 mb-1"
           style={{
-            background: `
-              linear-gradient(135deg, ${topic.color}25 0%, rgba(0,0,0,0.3) 100%),
-              repeating-conic-gradient(from 0deg at 50% 50%, 
-                rgba(255,255,255,0.02) 0deg, transparent 30deg)
-            `,
+            background: 'transparent',
             borderColor: `${topic.color}80`,
             boxShadow: `
               inset 2px 2px 4px rgba(255,255,255,0.1),
@@ -103,7 +72,8 @@ const ExploreMoreCard = ({ topic, index }: ExploreMoreCardProps) => {
                 drop-shadow(1px 1px 2px rgba(0,0,0,0.5))
                 drop-shadow(0 0 4px ${topic.color}40)
               `,
-              strokeWidth: 2.5 // Thicker strokes for hand-drawn feel
+              strokeWidth: 2.5, // Thicker strokes for hand-drawn feel
+              opacity: 1 // Fully opaque icons
             }}
           />
         </div>

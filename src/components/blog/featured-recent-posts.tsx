@@ -30,9 +30,10 @@ interface BlogPost {
 interface FeaturedRecentPostsProps {
   posts: BlogPost[];
   onThemeTagClick?: (tag: string) => void;
+  onPostDeleted?: () => void;
 }
 
-const FeaturedRecentPosts = ({ posts, onThemeTagClick }: FeaturedRecentPostsProps) => {
+const FeaturedRecentPosts = ({ posts, onThemeTagClick, onPostDeleted }: FeaturedRecentPostsProps) => {
   const navigate = useNavigate();
   const { isAdmin } = useAuth();
 
@@ -174,13 +175,13 @@ const FeaturedRecentPosts = ({ posts, onThemeTagClick }: FeaturedRecentPostsProp
               </div>
 
               {/* Admin actions - prevent card click propagation */}
-              {isAdmin && (
+              {isAdmin && onPostDeleted && (
                 <div className="mt-4" onClick={(e) => e.stopPropagation()}>
                   <BlogPostActions
                     postId={post.id}
                     postTitle={post.title}
                     postSlug={post.slug}
-                    onDelete={() => {}}
+                    onDelete={onPostDeleted}
                   />
                 </div>
               )}

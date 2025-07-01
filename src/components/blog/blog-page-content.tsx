@@ -59,6 +59,7 @@ const BlogPageContent = ({
         <FeaturedRecentPosts 
           posts={recentPosts} 
           onThemeTagClick={onThemeTagClick}
+          onPostDeleted={onPostDeleted}
         />
       )}
       

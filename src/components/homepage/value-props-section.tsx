@@ -1,8 +1,8 @@
 
-import HeaderHierarchy from "@/components/content-structure/header-hierarchy";
+import { useUrbanTexture } from "@/hooks/use-urban-texture";
 import ValuePropCard from "./value-props/value-prop-card";
-import ValuePropsBackground from "./value-props/value-props-background";
 import ValuePropsArrow from "./value-props/value-props-arrow";
+import ValuePropsBackground from "./value-props/value-props-background";
 import { valuePropsData } from "./value-props/value-props-data";
 
 interface ValuePropsSectionProps {
@@ -10,63 +10,46 @@ interface ValuePropsSectionProps {
 }
 
 const ValuePropsSection = ({ isVisible }: ValuePropsSectionProps) => {
+  const { textureImageUrl } = useUrbanTexture();
+
   return (
-    <div className="mb-12 sm:mb-16 relative">
-      <ValuePropsBackground />
+    <div className={`mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+      {/* Subtle light grey transparent background */}
+      <div className="relative bg-gray-200/30 dark:bg-gray-800/30 backdrop-blur-sm rounded-2xl p-8 border border-gray-300/20 dark:border-gray-700/20">
+        <ValuePropsBackground textureImageUrl={textureImageUrl} />
+        
+        <div className="text-center mb-12 relative z-10">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-6 text-brand-black dark:text-brand-cream leading-tight">
+            Ready to Flip the Script?{" "}
+            <span 
+              className="text-[#FFD700]"
+              style={{
+                background: 'linear-gradient(45deg, #FFD700, #FFF8DC, #FFA500, #FFD700)',
+                backgroundSize: '400% 400%',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                animation: 'shimmer 3s ease-in-out infinite'
+              }}
+            >
+              Start Here
+            </span>
+          </h2>
+          
+          <p className="text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto text-brand-black dark:text-brand-cream leading-relaxed px-4">
+            Pick your lane. Stack your wins. Build your legacy.
+          </p>
+        </div>
 
-      <HeaderHierarchy 
-        level={2} 
-        className={`text-center mb-8 sm:mb-12 text-brand-black dark:text-brand-cream transition-all duration-1000 delay-400 relative z-10 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-      >
-        Ready to Flip the Script? Start Here
-      </HeaderHierarchy>
-      
-      <div className={`grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 px-4 max-w-4xl mx-auto transition-all duration-1000 delay-600 relative z-10 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-        {valuePropsData.map((prop, index) => {
-          const IconComponent = prop.icon;
-          return (
-            <ValuePropCard
-              key={index}
-              icon={
-                <IconComponent 
-                  className="h-12 w-12" 
-                  style={{
-                    color: 'transparent',
-                    background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                    backgroundSize: '400% 400%',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
-                    animation: 'pearlescent 3s ease-in-out infinite'
-                  }} 
-                  aria-label={`${prop.title} icon`} 
-                />
-              }
-              title={prop.title}
-              description={prop.description}
-              link={prop.link}
-              index={index}
-              isVisible={isVisible}
-            />
-          );
-        })}
+        <div className="grid md:grid-cols-2 gap-8 mb-12 relative z-10">
+          {valuePropsData.map((prop, index) => (
+            <div key={index} className="relative">
+              <ValuePropCard {...prop} />
+              {index === 0 && <ValuePropsArrow />}
+            </div>
+          ))}
+        </div>
       </div>
-
-      <ValuePropsArrow />
-
-      <style>{`
-        @keyframes pearlescent {
-          0% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-          100% {
-            background-position: 0% 50%;
-          }
-        }
-      `}</style>
     </div>
   );
 };

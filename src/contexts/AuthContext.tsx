@@ -3,11 +3,12 @@
 // Purpose: Handles Supabase auth state and provides user info across the app.
 // Why: Centralizes login logic so pages stay clean.
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
-import { User } from '@supabase/supabase-js';
+import { User, Session } from '@supabase/supabase-js';
 import { supabase } from '@/integrations/supabase/client';
 
 interface AuthContextType {
   user: User | null;
+  session: Session | null;
   profile: UserProfile | null;
   loading: boolean;
   isAdmin: boolean;
@@ -26,6 +27,7 @@ interface UserProfile {
 
 const defaultValue: AuthContextType = {
   user: null,
+  session: null,
   profile: null,
   loading: true,
   isAdmin: false,
@@ -46,28 +48,25 @@ export const useAuth = () => {
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
+  const [session, setSession] = useState<Session | null>(null);
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const [loading, setLoading] = useState(true);
 
   const fetchProfile = useCallback(async (userId: string) => {
     try {
-      if (process.env.NODE_ENV !== 'production') {
-        console.log('Fetching profile for user:', userId);
-      }
+      console.log('Fetching profile for user:', userId);
       const { data, error } = await supabase
         .from('profiles')
         .select('*')
         .eq('id', userId)
-        .single();
+        .maybeSingle();
 
       if (error) {
         console.error('Error fetching profile:', error);
         return;
       }
 
-      if (process.env.NODE_ENV !== 'production') {
-        console.log('Profile fetched:', data);
-      }
+      console.log('Profile fetched:', data);
       setProfile(data);
     } catch (error: unknown) {
       console.error('Error fetching profile:', error);
@@ -75,50 +74,59 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, []);
 
   useEffect(() => {
-    // Get initial session
+    console.log('🔐 Setting up Supabase auth...');
+    
+    // Set up auth state listener FIRST
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      async (event, session) => {
+        console.log('Auth state change:', event, session?.user?.email);
+        setSession(session);
+        setUser(session?.user ?? null);
+        
+        if (session?.user) {
+          // Defer profile fetch to avoid blocking auth state update
+          setTimeout(() => {
+            fetchProfile(session.user.id);
+          }, 0);
+        } else {
+          setProfile(null);
+        }
+        
+        setLoading(false);
+      }
+    );
+
+    // THEN check for existing session
     supabase.auth.getSession().then(({ data: { session }, error }) => {
       if (error) {
         console.error('Error getting session:', error);
       }
       
-      if (process.env.NODE_ENV !== 'production') {
-        console.log('Initial session:', session);
-      }
+      console.log('Initial session:', session?.user?.email);
+      setSession(session);
       setUser(session?.user ?? null);
+      
       if (session?.user) {
         fetchProfile(session.user.id);
       }
       setLoading(false);
     });
 
-    // Listen for auth changes
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange(async (event, session) => {
-      if (process.env.NODE_ENV !== 'production') {
-        console.log('Auth state change:', event, session);
-      }
-      setUser(session?.user ?? null);
-      
-      if (session?.user) {
-        await fetchProfile(session.user.id);
-      } else {
-        setProfile(null);
-      }
-      
-      setLoading(false);
-    });
-
-    return () => subscription.unsubscribe();
+    return () => {
+      console.log('🔐 Cleaning up auth subscription');
+      subscription.unsubscribe();
+    };
   }, [fetchProfile]);
 
   const signOut = async () => {
     try {
+      console.log('Signing out user...');
       const { error } = await supabase.auth.signOut();
       if (error) {
         console.error('Error signing out:', error);
         throw error;
       }
+      console.log('User signed out successfully');
     } catch (error: unknown) {
       console.error('Sign out error:', error);
       throw error;
@@ -127,10 +135,17 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const signIn = async (email: string, password: string) => {
     try {
+      console.log('Signing in user:', email);
       const { data, error } = await supabase.auth.signInWithPassword({
         email,
         password,
       });
+
+      if (error) {
+        console.error('Sign in error:', error);
+      } else {
+        console.log('User signed in successfully:', data.user?.email);
+      }
 
       return { error };
     } catch (error: unknown) {
@@ -141,6 +156,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const signUp = async (email: string, password: string) => {
     try {
+      console.log('Signing up user:', email);
       const redirectUrl = `${window.location.origin}/`;
       const { error } = await supabase.auth.signUp({
         email,
@@ -149,6 +165,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
           emailRedirectTo: redirectUrl
         }
       });
+      
+      if (error) {
+        console.error('Sign up error:', error);
+      } else {
+        console.log('User signed up successfully - check email for confirmation');
+      }
+      
       return { error };
     } catch (error: unknown) {
       console.error('Sign up error:', error);
@@ -159,12 +182,16 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   // You're an admin if your profile says so. That's it.
   const isAdmin = profile?.role === 'admin';
 
-  if (process.env.NODE_ENV !== 'production') {
-    console.log('Current auth state:', { user: user?.email, profile, isAdmin, loading });
-  }
+  console.log('Current auth state:', { 
+    user: user?.email, 
+    profile: profile?.email, 
+    isAdmin, 
+    loading 
+  });
 
   const value = {
     user,
+    session,
     profile,
     loading,
     isAdmin,

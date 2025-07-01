@@ -1,3 +1,4 @@
+
 import { supabase } from '@/integrations/supabase/client'
 
 export interface BlogPost {
@@ -56,6 +57,7 @@ const validatePostData = (data: any[]): BlogPost[] => {
 
 export const getBlogPosts = async (): Promise<BlogPost[]> => {
   try {
+    console.log('Fetching blog posts from Supabase...');
     const { data, error } = await supabase
       .from('blog_posts')
       .select('*')
@@ -64,18 +66,20 @@ export const getBlogPosts = async (): Promise<BlogPost[]> => {
 
     if (error) {
       console.error('getBlogPosts error:', error);
-      return [];
+      throw error;
     }
 
+    console.log('Blog posts fetched successfully:', data?.length || 0);
     return validatePostData(data || []);
   } catch (error) {
     console.error('getBlogPosts caught error:', error);
-    return [];
+    throw error;
   }
 };
 
 export const getPosts = async (): Promise<Post[]> => {
   try {
+    console.log('Fetching posts from Supabase...');
     const { data, error } = await supabase
       .from('blog_posts')
       .select('*')
@@ -84,7 +88,7 @@ export const getPosts = async (): Promise<Post[]> => {
 
     if (error) {
       console.error('getPosts error:', error);
-      return [];
+      throw error;
     }
 
     const validatedData = validatePostData(data || []);
@@ -97,15 +101,17 @@ export const getPosts = async (): Promise<Post[]> => {
       view_count: 0
     }));
 
+    console.log('Posts transformed successfully:', transformedData.length);
     return transformedData;
   } catch (error) {
     console.error('getPosts caught error:', error);
-    return [];
+    throw error;
   }
 };
 
 export const getCategories = async (): Promise<string[]> => {
   try {
+    console.log('Fetching categories from Supabase...');
     const { data, error } = await supabase
       .from('blog_posts')
       .select('category')
@@ -113,7 +119,7 @@ export const getCategories = async (): Promise<string[]> => {
 
     if (error) {
       console.error('getCategories error:', error);
-      return [];
+      throw error;
     }
 
     if (!Array.isArray(data)) return [];
@@ -122,10 +128,12 @@ export const getCategories = async (): Promise<string[]> => {
       .map(post => post?.category)
       .filter(category => typeof category === 'string' && category.length > 0);
     
-    return [...new Set(categories)];
+    const uniqueCategories = [...new Set(categories)];
+    console.log('Categories fetched successfully:', uniqueCategories);
+    return uniqueCategories;
   } catch (error) {
     console.error('getCategories caught error:', error);
-    return [];
+    throw error;
   }
 };
 
@@ -133,6 +141,7 @@ export const getBlogPost = async (slug: string): Promise<BlogPost | null> => {
   try {
     if (!slug || typeof slug !== 'string') return null;
 
+    console.log('Fetching blog post by slug:', slug);
     const { data, error } = await supabase
       .from('blog_posts')
       .select('*')
@@ -142,10 +151,11 @@ export const getBlogPost = async (slug: string): Promise<BlogPost | null> => {
 
     if (error) {
       if (error.code === 'PGRST116') {
+        console.log('Blog post not found:', slug);
         return null;
       }
       console.error('getBlogPost error:', error);
-      return null;
+      throw error;
     }
 
     // Validate the returned data
@@ -153,14 +163,16 @@ export const getBlogPost = async (slug: string): Promise<BlogPost | null> => {
       return null;
     }
 
+    console.log('Blog post fetched successfully:', data.title);
     return data;
   } catch (error) {
     console.error('getBlogPost caught error:', error);
-    return null;
+    throw error;
   }
 };
 
 export const createBlogPost = async (postData: CreateBlogPostData): Promise<BlogPost> => {
+  console.log('Creating blog post:', postData.title);
   const { data, error } = await supabase
     .from('blog_posts')
     .insert({
@@ -185,13 +197,18 @@ export const createBlogPost = async (postData: CreateBlogPostData): Promise<Blog
     throw error;
   }
 
+  console.log('Blog post created successfully:', data.title);
   return data;
 };
 
 export const updateBlogPost = async (id: string, updates: Partial<BlogPost>): Promise<BlogPost> => {
+  console.log('Updating blog post:', id);
   const { data, error } = await supabase
     .from('blog_posts')
-    .update(updates)
+    .update({
+      ...updates,
+      updated_at: new Date().toISOString()
+    })
     .eq('id', id)
     .select()
     .single();
@@ -201,5 +218,127 @@ export const updateBlogPost = async (id: string, updates: Partial<BlogPost>): Pr
     throw error;
   }
 
+  console.log('Blog post updated successfully:', data.title);
   return data;
+};
+
+export const deleteBlogPost = async (id: string): Promise<void> => {
+  console.log('Deleting blog post:', id);
+  const { error } = await supabase
+    .from('blog_posts')
+    .delete()
+    .eq('id', id);
+
+  if (error) {
+    console.error('Error deleting blog post:', error);
+    throw error;
+  }
+
+  console.log('Blog post deleted successfully');
+};
+
+// Subscriber functions
+export const getSubscribers = async () => {
+  try {
+    console.log('Fetching subscribers from Supabase...');
+    const { data, error } = await supabase
+      .from('Subscribers')
+      .select('*')
+      .eq('unsubscribed', false)
+      .order('created_at', { ascending: false });
+
+    if (error) {
+      console.error('getSubscribers error:', error);
+      throw error;
+    }
+
+    console.log('Subscribers fetched successfully:', data?.length || 0);
+    return data || [];
+  } catch (error) {
+    console.error('getSubscribers caught error:', error);
+    throw error;
+  }
+};
+
+export const addSubscriber = async (email: string, name?: string) => {
+  try {
+    console.log('Adding subscriber:', email);
+    const { data, error } = await supabase
+      .from('Subscribers')
+      .insert({
+        email,
+        name: name || null,
+        unsubscribe_token: crypto.randomUUID()
+      })
+      .select()
+      .single();
+
+    if (error) {
+      console.error('addSubscriber error:', error);
+      throw error;
+    }
+
+    console.log('Subscriber added successfully:', email);
+    return data;
+  } catch (error) {
+    console.error('addSubscriber caught error:', error);
+    throw error;
+  }
+};
+
+// Comments functions
+export const getComments = async (blogPostId: string) => {
+  try {
+    console.log('Fetching comments for post:', blogPostId);
+    const { data, error } = await supabase
+      .from('comments')
+      .select('*')
+      .eq('blog_post_id', blogPostId)
+      .eq('approved', true)
+      .order('created_at', { ascending: false });
+
+    if (error) {
+      console.error('getComments error:', error);
+      throw error;
+    }
+
+    console.log('Comments fetched successfully:', data?.length || 0);
+    return data || [];
+  } catch (error) {
+    console.error('getComments caught error:', error);
+    throw error;
+  }
+};
+
+export const addComment = async (commentData: {
+  blog_post_id: string;
+  author_name: string;
+  author_email: string;
+  content: string;
+}) => {
+  try {
+    console.log('Adding comment to post:', commentData.blog_post_id);
+    const { data, error } = await supabase
+      .from('comments')
+      .insert({
+        blog_post_id: commentData.blog_post_id,
+        author_name: commentData.author_name,
+        author_email: commentData.author_email,
+        content: commentData.content,
+        approved: false // Comments need approval by default
+      })
+      .select()
+      .single();
+
+    if (error) {
+      console.error('addComment error:', error);
+      throw error;
+    }
+
+    console.log('Comment added successfully');
+    return data;
+  } catch (error) {
+    console.error('addComment caught error:', error);
+    throw error;
+  }
 };

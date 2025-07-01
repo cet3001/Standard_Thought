@@ -38,10 +38,9 @@ const BlogPage = () => {
   } = useQuery({
     queryKey: ['posts'],
     queryFn: getPosts,
-    retry: 1,
-    staleTime: 10 * 60 * 1000,
+    retry: 2,
+    staleTime: 5 * 60 * 1000,
     refetchOnWindowFocus: false,
-    refetchOnMount: false,
   });
 
   const {
@@ -52,10 +51,9 @@ const BlogPage = () => {
   } = useQuery({
     queryKey: ['categories'],
     queryFn: getCategories,
-    retry: 1,
-    staleTime: 10 * 60 * 1000,
+    retry: 2,
+    staleTime: 5 * 60 * 1000,
     refetchOnWindowFocus: false,
-    refetchOnMount: false,
   });
 
   // Memoize derived data to prevent unnecessary recalculations
@@ -88,12 +86,23 @@ const BlogPage = () => {
     setSelectedThemeTag(tag);
   };
 
+  // Debug logging
+  console.log('BlogPage state:', {
+    postsCount: posts?.length || 0,
+    categoriesCount: categories?.length || 0,
+    isPostsLoading,
+    isCategoriesLoading,
+    isPostsError,
+    isCategoriesError,
+    timedOut
+  });
+
   // Loading takes too long? show folks an error instead of a spinner
   if (isPostsLoading || isCategoriesLoading) {
     if (timedOut) {
       return (
         <ErrorMessage
-          error={new Error('Request timed out')}
+          error={new Error('Request timed out - check your Supabase connection')}
           onRetry={() => {
             setTimedOut(false);
             refetchPosts();
@@ -107,7 +116,16 @@ const BlogPage = () => {
   // Show error state with retry option
   if (isPostsError || isCategoriesError) {
     const error = postsError || categoriesError;
-    return <ErrorMessage error={error} onRetry={() => refetchPosts()} />;
+    console.error('Blog page error:', error);
+    return (
+      <ErrorMessage 
+        error={error} 
+        onRetry={() => {
+          refetchPosts();
+          queryClient.refetchQueries({ queryKey: ['categories'] });
+        }} 
+      />
+    );
   }
 
   return (

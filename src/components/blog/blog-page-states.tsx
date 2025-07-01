@@ -3,18 +3,13 @@ import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import Loading from "@/components/ui/loading";
 
-interface BlogPageStatesProps {
-  isLoading: boolean;
-  isError: boolean;
-  error: Error | null;
-  onRetry: () => void;
-}
-
 export const BlogPageLoadingState = () => (
   <div className="min-h-screen bg-transparent">
     <Navigation />
     <main className="pt-32 pb-16">
-      <Loading />
+      <div className="container mx-auto px-6 max-w-7xl">
+        <Loading />
+      </div>
     </main>
     <Footer />
   </div>

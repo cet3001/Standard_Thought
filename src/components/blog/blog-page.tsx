@@ -28,16 +28,31 @@ const BlogPage = () => {
     handleThemeTagClick,
   } = useBlogData();
 
+  // Debug logging to help identify the issue
+  console.log('BlogPage render state:', {
+    isPostsLoading,
+    isCategoriesLoading,
+    isPostsError,
+    isCategoriesError,
+    postsCount: posts?.length,
+    categoriesCount: categories?.length,
+    hasFilteredPosts: filteredPosts?.length
+  });
+
   // Show loading state
   if (isPostsLoading || isCategoriesLoading) {
+    console.log('Showing loading state');
     return <BlogPageLoadingState />;
   }
 
   // Show error state with retry option
   if (isPostsError || isCategoriesError) {
     const error = postsError || categoriesError;
+    console.log('Showing error state:', error);
     return <BlogPageErrorState error={error} onRetry={refetchPosts} />;
   }
+
+  console.log('Rendering main blog page content');
 
   return (
     <div className="min-h-screen bg-transparent">

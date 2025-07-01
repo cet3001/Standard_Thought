@@ -38,6 +38,7 @@ const FloatingCTA = () => {
           onClick={handleDismiss}
           className="absolute top-2 right-2 w-6 h-6 rounded-full bg-[#247EFF]/20 hover:bg-[#247EFF]/30 flex items-center justify-center transition-all duration-200 z-10"
           aria-label="Close call to action popup"
+          title="Close popup"
           type="button"
         >
           <X size={12} className="text-[#247EFF]" aria-hidden="true" />
@@ -55,6 +56,7 @@ const FloatingCTA = () => {
               textShadow: '1px 1px 0px rgba(0,0,0,0.2)' 
             }}
             aria-label="Start building your wealth - Get free blueprint"
+            title="Start building your wealth"
           >
             Let's Build
           </Button>

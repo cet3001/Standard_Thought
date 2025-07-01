@@ -37,7 +37,7 @@ const SuccessStoriesSection = ({ isVisible }: SuccessStoriesSectionProps) => {
         <h2 className="text-3xl md:text-4xl font-bold mb-4 text-brand-black dark:text-brand-cream">
           Real People. Real Progress.
         </h2>
-        <p className="text-lg text-brand-black/70 dark:text-brand-cream/70 max-w-2xl mx-auto">
+        <p className="text-lg text-brand-black dark:text-brand-cream max-w-2xl mx-auto">
           Our community is flipping the script—one win at a time. Here's how folks just like you are turning hustle into legacy.
         </p>
       </div>
@@ -107,9 +107,9 @@ const SuccessStoriesSection = ({ isVisible }: SuccessStoriesSectionProps) => {
                 <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/10 to-yellow-100/20 pointer-events-none"></div>
               </div>
               
-              {/* Handwritten quote - Updated text color for better contrast */}
+              {/* Handwritten quote - Updated to black text */}
               <blockquote 
-                className="text-brand-black/90 dark:text-brand-cream/90 text-sm mb-3 italic leading-relaxed"
+                className="text-brand-black dark:text-brand-cream text-sm mb-3 italic leading-relaxed"
                 style={{ 
                   fontFamily: "'Kalam', 'Comic Neue', cursive",
                   fontWeight: '500',
@@ -119,9 +119,9 @@ const SuccessStoriesSection = ({ isVisible }: SuccessStoriesSectionProps) => {
                 "{story.quote}"
               </blockquote>
               
-              {/* Handwritten signature - Updated text color */}
+              {/* Handwritten signature - Updated to black text */}
               <div 
-                className="text-right text-brand-black/80 dark:text-brand-cream/80 text-sm font-medium"
+                className="text-right text-brand-black dark:text-brand-cream text-sm font-medium"
                 style={{ 
                   fontFamily: "'Kalam', 'Comic Neue', cursive",
                   transform: 'rotate(0.5deg)'

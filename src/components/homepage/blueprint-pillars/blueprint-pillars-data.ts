@@ -1,9 +1,9 @@
 
-import { Brain, Rocket, Shield } from "lucide-react";
+import { Zap, Target, TrendingUp } from "lucide-react";
 
 export const blueprintPillarsData = [
   {
-    icon: Brain,
+    icon: Zap,
     title: "Mindset Flips",
     description: "Flip your mindset from survival to stacking—heal money trauma and unlock your power to build.",
     link: "/about",
@@ -12,7 +12,7 @@ export const blueprintPillarsData = [
     iconColor: "text-purple-600"
   },
   {
-    icon: Rocket,
+    icon: Target,
     title: "Hustle Systems", 
     description: "Systemize your side hustles—turn random moves into consistent money with AI and automation.",
     link: "/blog/ai-side-hustles-guide",
@@ -21,7 +21,7 @@ export const blueprintPillarsData = [
     iconColor: "text-[#247EFF]"
   },
   {
-    icon: Shield,
+    icon: TrendingUp,
     title: "Legacy Moves",
     description: "Turn today's grind into tomorrow's legacy—stack assets, break cycles, build generational wealth.",
     link: "/start-investing-guide",

@@ -23,7 +23,7 @@ const BlueprintPillarCard = ({
 }: BlueprintPillarCardProps) => {
   return (
     <Link to={link} className="block group">
-      <div className="p-6 text-center hover:scale-105 hover:shadow-xl transition-all duration-300 cursor-pointer relative overflow-hidden">
+      <div className="p-6 text-center hover:scale-105 hover:shadow-xl transition-all duration-300 cursor-pointer relative overflow-hidden bg-black/10 dark:bg-white/5 backdrop-blur-sm rounded-lg border border-black/20 dark:border-white/10">
         
         {/* Enhanced texture backgrounds */}
         <div className="absolute inset-0 opacity-[0.06] bg-[radial-gradient(circle_at_2px_2px,_rgba(0,0,0,1)_1px,_transparent_0)] bg-[length:18px_18px]"></div>

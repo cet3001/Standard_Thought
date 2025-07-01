@@ -1,15 +1,22 @@
 
 // Supabase Client
-// Purpose: Connects the app to Supabase using env vars.
-// Why: Keeps secrets out of the repo and makes swapping keys painless.
-import { createClient } from '@supabase/supabase-js';
-import type { Database } from './types';
+// Purpose: Links our app to Supabase using Vite env vars.
+// Why: Keeps secrets out the repo and lets us swap keys without stress.
+import { createClient } from '@supabase/supabase-js'
+import type { Database } from './types'
 
-// Use the hardcoded values since env vars aren't working in Lovable preview
-const SUPABASE_URL = 'https://zedewynjmeyhbjysnxld.supabase.co';
-const SUPABASE_PUBLISHABLE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InplZGV3eW5qbWV5aGJqeXNueGxkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDkwNjQ3OTcsImV4cCI6MjA2NDY0MDc5N30.AHawgYUm8V74I_LoLbU2HUmOwV3A35cvL-QTJ-ZVuyA';
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL
+const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY
+
+if (!SUPABASE_URL) {
+  throw new Error('VITE_SUPABASE_URL is missing. Check your .env setup.')
+}
+
+if (!SUPABASE_ANON_KEY) {
+  throw new Error('VITE_SUPABASE_ANON_KEY is missing. Check your .env setup.')
+}
 
 export const supabase = createClient<Database>(
   SUPABASE_URL,
-  SUPABASE_PUBLISHABLE_KEY
-);
+  SUPABASE_ANON_KEY
+)

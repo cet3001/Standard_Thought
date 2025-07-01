@@ -37,7 +37,12 @@ const BlogPage = () => {
     refetch: refetchPosts,
   } = useQuery({
     queryKey: ['posts'],
-    queryFn: getPosts,
+    queryFn: async () => {
+      console.log('Fetching posts...');
+      const result = await getPosts();
+      console.log('Posts fetched:', result);
+      return result;
+    },
     retry: 1,
     staleTime: 10 * 60 * 1000,
     refetchOnWindowFocus: false,
@@ -51,7 +56,12 @@ const BlogPage = () => {
     error: categoriesError,
   } = useQuery({
     queryKey: ['categories'],
-    queryFn: getCategories,
+    queryFn: async () => {
+      console.log('Fetching categories...');
+      const result = await getCategories();
+      console.log('Categories fetched:', result);
+      return result;
+    },
     retry: 1,
     staleTime: 10 * 60 * 1000,
     refetchOnWindowFocus: false,
@@ -61,13 +71,18 @@ const BlogPage = () => {
   // Memoize derived data to prevent unnecessary recalculations
   const themeTags = useMemo(() => {
     if (!posts || posts.length === 0) return [];
-    return [...new Set(posts.flatMap(post => post.theme_tags || []))];
+    const tags = [...new Set(posts.flatMap(post => post.theme_tags || []))];
+    console.log('Theme tags generated:', tags);
+    return tags;
   }, [posts]);
 
   const filteredPosts = useMemo(() => {
-    if (!posts || posts.length === 0) return [];
+    if (!posts || posts.length === 0) {
+      console.log('No posts to filter');
+      return [];
+    }
 
-    return posts.filter((post) => {
+    const filtered = posts.filter((post) => {
       const searchRegex = new RegExp(searchTerm, "i");
       const categoryMatch = selectedCategory === "All" || selectedCategory === ""
         ? true
@@ -82,32 +97,86 @@ const BlogPage = () => {
         themeTagMatch
       );
     });
+
+    console.log('Filtered posts:', filtered);
+    return filtered;
   }, [posts, searchTerm, selectedCategory, selectedThemeTag]);
 
   const handleThemeTagClick = (tag: string) => {
+    console.log('Theme tag clicked:', tag);
     setSelectedThemeTag(tag);
   };
+
+  // Debug logging
+  console.log('Blog page state:', {
+    isPostsLoading,
+    isCategoriesLoading,
+    isPostsError,
+    isCategoriesError,
+    postsCount: posts?.length || 0,
+    categoriesCount: categories?.length || 0,
+    timedOut
+  });
 
   // Loading takes too long? show folks an error instead of a spinner
   if (isPostsLoading || isCategoriesLoading) {
     if (timedOut) {
       return (
-        <ErrorMessage
-          error={new Error('Request timed out')}
-          onRetry={() => {
-            setTimedOut(false);
-            refetchPosts();
-          }}
-        />
+        <div className="min-h-screen bg-transparent">
+          <Navigation />
+          <main className="pt-32 pb-16">
+            <div className="container mx-auto px-6 max-w-7xl text-center">
+              <h1 className="text-2xl font-bold text-red-600 mb-4">Loading Timeout</h1>
+              <p className="text-gray-600 mb-4">The blog posts are taking too long to load.</p>
+              <button 
+                onClick={() => {
+                  setTimedOut(false);
+                  refetchPosts();
+                }} 
+                className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+              >
+                Try Again
+              </button>
+            </div>
+          </main>
+          <Footer />
+        </div>
       );
     }
-    return <Loading />;
+    return (
+      <div className="min-h-screen bg-transparent">
+        <Navigation />
+        <main className="pt-32 pb-16">
+          <Loading />
+        </main>
+        <Footer />
+      </div>
+    );
   }
 
   // Show error state with retry option
   if (isPostsError || isCategoriesError) {
     const error = postsError || categoriesError;
-    return <ErrorMessage error={error} onRetry={() => refetchPosts()} />;
+    return (
+      <div className="min-h-screen bg-transparent">
+        <Navigation />
+        <main className="pt-32 pb-16">
+          <div className="container mx-auto px-6 max-w-7xl text-center">
+            <h1 className="text-2xl font-bold text-red-600 mb-4">Error Loading Blog</h1>
+            <p className="text-gray-600 mb-4">
+              {error?.message || 'Failed to load blog posts'}
+            </p>
+            <button 
+              onClick={() => refetchPosts()} 
+              className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+            >
+              Retry
+            </button>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    );
   }
 
   return (

@@ -29,7 +29,7 @@ export const useBlogData = () => {
     retry: 2,
     staleTime: 5 * 60 * 1000,
     refetchOnWindowFocus: false,
-    refetchOnMount: false,
+    // Remove refetchOnMount: false to allow initial data loading
   });
 
   const {
@@ -48,7 +48,7 @@ export const useBlogData = () => {
     retry: 2,
     staleTime: 5 * 60 * 1000,
     refetchOnWindowFocus: false,
-    refetchOnMount: false,
+    // Remove refetchOnMount: false to allow initial data loading
   });
 
   // Memoize derived data to prevent unnecessary recalculations

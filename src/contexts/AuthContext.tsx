@@ -22,7 +22,6 @@ interface UserProfile {
   role: 'admin' | 'user';
   created_at: string;
   updated_at: string;
-  last_login_at: string | null;
 }
 
 const defaultValue: AuthContextType = {
@@ -99,12 +98,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       if (process.env.NODE_ENV !== 'production') {
         console.log('Auth state change:', event, session);
       }
-      if (event === 'SIGNED_IN' && session?.user) {
-        await supabase
-          .from('profiles')
-          .update({ last_login_at: new Date().toISOString() })
-          .eq('id', session.user.id);
-      }
       setUser(session?.user ?? null);
       
       if (session?.user) {
@@ -138,13 +131,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         email,
         password,
       });
-
-      if (!error && data?.user) {
-        await supabase
-          .from('profiles')
-          .update({ last_login_at: new Date().toISOString() })
-          .eq('id', data.user.id);
-      }
 
       return { error };
     } catch (error: unknown) {

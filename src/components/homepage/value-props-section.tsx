@@ -16,10 +16,10 @@ const ValuePropsSection = ({ isVisible }: ValuePropsSectionProps) => {
     <div className={`mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
       {/* Subtle light grey transparent background */}
       <div className="relative bg-gray-200/30 dark:bg-gray-800/30 backdrop-blur-sm rounded-2xl p-8 border border-gray-300/20 dark:border-gray-700/20">
-        <ValuePropsBackground textureImageUrl={textureImageUrl} />
+        <ValuePropsBackground />
         
         <div className="text-center mb-12 relative z-10">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-6 text-brand-black dark:text-brand-cream leading-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-6 text-black dark:text-brand-cream leading-tight">
             Ready to Flip the Script?{" "}
             <span 
               className="text-[#FFD700]"
@@ -36,7 +36,7 @@ const ValuePropsSection = ({ isVisible }: ValuePropsSectionProps) => {
             </span>
           </h2>
           
-          <p className="text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto text-brand-black dark:text-brand-cream leading-relaxed px-4">
+          <p className="text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto text-black dark:text-brand-cream leading-relaxed px-4">
             Pick your lane. Stack your wins. Build your legacy.
           </p>
         </div>

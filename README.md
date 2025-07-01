@@ -71,6 +71,16 @@ This project is built with:
    - `SUPABASE_SERVICE_ROLE_KEY`
    - `ADMIN_NOTIFICATION_EMAIL`
 
+## Seed the Blog Locally
+
+After your env vars are set, run the seeder to drop in sample posts:
+
+```bash
+npm run seed:blog
+```
+
+You'll get real-looking content in seconds so you can focus on the UI.
+
 ## How can I deploy this project?
 
 Simply open [Lovable](https://lovable.dev/projects/77b99b38-7590-4686-8b21-9653b11d193b) and click on Share -> Publish.

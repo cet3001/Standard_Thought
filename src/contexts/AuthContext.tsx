@@ -156,8 +156,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   };
 
-  // Check if user is admin - either by profile role or by email
-  const isAdmin = profile?.role === 'admin' || user?.email === 'cet3001@gmail.com';
+  // You're an admin if your profile says so. That's it.
+  const isAdmin = profile?.role === 'admin';
 
   if (process.env.NODE_ENV !== 'production') {
     console.log('Current auth state:', { user: user?.email, profile, isAdmin, loading });

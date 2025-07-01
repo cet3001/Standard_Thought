@@ -86,3 +86,11 @@ Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-trick
 ## Admin Manual Playbook Send
 
 Admins must enter an email before hitting **Send Playbook** in the dashboard. The tool doesn't fire without a target inbox.
+
+## Set up an admin in Supabase
+
+1. Head to your Supabase project and open the `profiles` table.
+2. Find the user and set their `role` column to `admin`.
+3. Save it. The app picks up the change on next login.
+
+That's it—no more hardcoded emails.

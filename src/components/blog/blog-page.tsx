@@ -23,8 +23,8 @@ const BlogPage = () => {
     const timer = setTimeout(() => setTimedOut(true), 10000);
     return () => {
       clearTimeout(timer);
-      queryClient.cancelQueries(['posts']);
-      queryClient.cancelQueries(['categories']);
+      queryClient.cancelQueries({ queryKey: ['posts'] });
+      queryClient.cancelQueries({ queryKey: ['categories'] });
     };
   }, [queryClient]);
 

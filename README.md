@@ -71,6 +71,21 @@ This project is built with:
    - `SUPABASE_SERVICE_ROLE_KEY`
    - `ADMIN_NOTIFICATION_EMAIL`
 
+## Supabase Project Setup
+
+1. Sign up at [Supabase](https://supabase.com) and create a new project.
+2. Grab your project's URL, **anon** key, and **service role** key from **Settings > API**.
+3. Drop those values into `.env` and match them in the `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` fields.
+4. Keep these keys private; never commit them.
+
+## Seed the Blog
+
+Run `npm run seed:blog` to load the starter posts into your Supabase database.
+
+## Start the Dev Server
+
+Kick things off with `npm run dev`. When the server says it's ready, head to `http://localhost:8080/blog` and make sure the posts show up.
+
 ## How can I deploy this project?
 
 Simply open [Lovable](https://lovable.dev/projects/77b99b38-7590-4686-8b21-9653b11d193b) and click on Share -> Publish.

@@ -3,56 +3,112 @@ import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import BlogMetadata from "./blog-metadata";
 import BlogPageContent from "./blog-page-content";
-import { useBlogData } from "@/hooks/use-blog-data";
-import { BlogPageLoadingState, BlogPageErrorState } from "./blog-page-states";
+import { useState, useEffect, useMemo } from "react";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { getPosts, getCategories } from "@/lib/api";
+import { Post } from "@/lib/api";
+import Loading from "@/components/ui/loading";
+import ErrorMessage from "@/components/ui/error-message";
 
 const BlogPage = () => {
-  const {
-    posts,
-    categories,
-    themeTags,
-    filteredPosts,
-    isPostsLoading,
-    isCategoriesLoading,
-    isPostsError,
-    isCategoriesError,
-    postsError,
-    categoriesError,
-    searchTerm,
-    setSearchTerm,
-    selectedCategory,
-    setSelectedCategory,
-    selectedThemeTag,
-    setSelectedThemeTag,
-    refetchPosts,
-    handleThemeTagClick,
-  } = useBlogData();
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedThemeTag, setSelectedThemeTag] = useState("");
+  const [timedOut, setTimedOut] = useState(false);
 
-  // Debug logging to help identify the issue
-  console.log('BlogPage render state:', {
-    isPostsLoading,
-    isCategoriesLoading,
-    isPostsError,
-    isCategoriesError,
-    postsCount: posts?.length,
-    categoriesCount: categories?.length,
-    hasFilteredPosts: filteredPosts?.length
+  const queryClient = useQueryClient();
+
+  // Bail out if loading drags on too long
+  useEffect(() => {
+    const timer = setTimeout(() => setTimedOut(true), 10000);
+    return () => {
+      clearTimeout(timer);
+      queryClient.cancelQueries({ queryKey: ['posts'] });
+      queryClient.cancelQueries({ queryKey: ['categories'] });
+    };
+  }, [queryClient]);
+
+  // Fetch posts with error boundaries
+  const {
+    data: posts = [],
+    isLoading: isPostsLoading,
+    isError: isPostsError,
+    error: postsError,
+    refetch: refetchPosts,
+  } = useQuery({
+    queryKey: ['posts'],
+    queryFn: getPosts,
+    retry: 1,
+    staleTime: 10 * 60 * 1000,
+    refetchOnWindowFocus: false,
+    refetchOnMount: false,
   });
 
-  // Show loading state
+  const {
+    data: categories = [],
+    isLoading: isCategoriesLoading,
+    isError: isCategoriesError,
+    error: categoriesError,
+  } = useQuery({
+    queryKey: ['categories'],
+    queryFn: getCategories,
+    retry: 1,
+    staleTime: 10 * 60 * 1000,
+    refetchOnWindowFocus: false,
+    refetchOnMount: false,
+  });
+
+  // Memoize derived data to prevent unnecessary recalculations
+  const themeTags = useMemo(() => {
+    if (!posts || posts.length === 0) return [];
+    return [...new Set(posts.flatMap(post => post.theme_tags || []))];
+  }, [posts]);
+
+  const filteredPosts = useMemo(() => {
+    if (!posts || posts.length === 0) return [];
+
+    return posts.filter((post) => {
+      const searchRegex = new RegExp(searchTerm, "i");
+      const categoryMatch = selectedCategory === "All" || selectedCategory === ""
+        ? true
+        : post.category === selectedCategory;
+      const themeTagMatch = selectedThemeTag === ""
+        ? true
+        : post.theme_tags?.includes(selectedThemeTag);
+      
+      return (
+        searchRegex.test(post.title) &&
+        categoryMatch &&
+        themeTagMatch
+      );
+    });
+  }, [posts, searchTerm, selectedCategory, selectedThemeTag]);
+
+  const handleThemeTagClick = (tag: string) => {
+    setSelectedThemeTag(tag);
+  };
+
+  // Loading takes too long? show folks an error instead of a spinner
   if (isPostsLoading || isCategoriesLoading) {
-    console.log('Showing loading state');
-    return <BlogPageLoadingState />;
+    if (timedOut) {
+      return (
+        <ErrorMessage
+          error={new Error('Request timed out')}
+          onRetry={() => {
+            setTimedOut(false);
+            refetchPosts();
+          }}
+        />
+      );
+    }
+    return <Loading />;
   }
 
   // Show error state with retry option
   if (isPostsError || isCategoriesError) {
     const error = postsError || categoriesError;
-    console.log('Showing error state:', error);
-    return <BlogPageErrorState error={error} onRetry={refetchPosts} />;
+    return <ErrorMessage error={error} onRetry={() => refetchPosts()} />;
   }
-
-  console.log('Rendering main blog page content');
 
   return (
     <div className="min-h-screen bg-transparent">

@@ -44,32 +44,18 @@ export interface CreateBlogPostData {
 
 // Safe data validation helper
 const validatePostData = (data: any[]): BlogPost[] => {
-  if (!Array.isArray(data)) {
-    console.error('validatePostData: data is not an array:', data);
-    return [];
-  }
+  if (!Array.isArray(data)) return [];
   
-  const validPosts = data.filter(post => {
-    const isValid = post && 
+  return data.filter(post => {
+    return post && 
            typeof post.id === 'string' && 
            typeof post.title === 'string' && 
            typeof post.slug === 'string';
-    
-    if (!isValid) {
-      console.warn('Invalid post data:', post);
-    }
-    
-    return isValid;
   });
-
-  console.log(`validatePostData: ${validPosts.length} valid posts out of ${data.length} total`);
-  return validPosts;
 };
 
 export const getBlogPosts = async (): Promise<BlogPost[]> => {
   try {
-    console.log('getBlogPosts: Starting fetch...');
-    
     const { data, error } = await supabase
       .from('blog_posts')
       .select('*')
@@ -78,34 +64,18 @@ export const getBlogPosts = async (): Promise<BlogPost[]> => {
 
     if (error) {
       console.error('getBlogPosts error:', error);
-      throw new Error(`Database error: ${error.message}`);
-    }
-
-    console.log('getBlogPosts: Raw data received:', data);
-
-    if (!data) {
-      console.log('getBlogPosts: No data returned');
       return [];
     }
 
-    const validatedPosts = validatePostData(data);
-    console.log('getBlogPosts: Returning', validatedPosts.length, 'posts');
-    
-    return validatedPosts;
+    return validatePostData(data || []);
   } catch (error) {
     console.error('getBlogPosts caught error:', error);
-    throw error; // Re-throw to let React Query handle it
+    return [];
   }
 };
 
 export const getPosts = async (): Promise<Post[]> => {
   try {
-    console.log('getPosts: Starting fetch...');
-    
-    // Test connection first
-    const { data: testData, error: testError } = await supabase.from('blog_posts').select('count').single();
-    console.log('Connection test:', { testData, testError });
-    
     const { data, error } = await supabase
       .from('blog_posts')
       .select('*')
@@ -114,17 +84,10 @@ export const getPosts = async (): Promise<Post[]> => {
 
     if (error) {
       console.error('getPosts error:', error);
-      throw new Error(`Database error: ${error.message}`);
-    }
-
-    console.log('getPosts: Raw data received:', data);
-
-    if (!data) {
-      console.log('getPosts: No data returned');
       return [];
     }
 
-    const validatedData = validatePostData(data);
+    const validatedData = validatePostData(data || []);
 
     const transformedData = validatedData.map(post => ({
       ...post,
@@ -134,18 +97,15 @@ export const getPosts = async (): Promise<Post[]> => {
       view_count: 0
     }));
 
-    console.log('getPosts: Returning', transformedData.length, 'transformed posts');
     return transformedData;
   } catch (error) {
     console.error('getPosts caught error:', error);
-    throw error; // Re-throw to let React Query handle it
+    return [];
   }
 };
 
 export const getCategories = async (): Promise<string[]> => {
   try {
-    console.log('getCategories: Starting fetch...');
-    
     const { data, error } = await supabase
       .from('blog_posts')
       .select('category')
@@ -153,27 +113,19 @@ export const getCategories = async (): Promise<string[]> => {
 
     if (error) {
       console.error('getCategories error:', error);
-      throw new Error(`Database error: ${error.message}`);
-    }
-
-    console.log('getCategories: Raw data received:', data);
-
-    if (!Array.isArray(data)) {
-      console.log('getCategories: Invalid data format');
       return [];
     }
+
+    if (!Array.isArray(data)) return [];
 
     const categories = data
       .map(post => post?.category)
       .filter(category => typeof category === 'string' && category.length > 0);
     
-    const uniqueCategories = [...new Set(categories)];
-    console.log('getCategories: Returning', uniqueCategories.length, 'unique categories:', uniqueCategories);
-    
-    return uniqueCategories;
+    return [...new Set(categories)];
   } catch (error) {
     console.error('getCategories caught error:', error);
-    throw error; // Re-throw to let React Query handle it
+    return [];
   }
 };
 

@@ -1,3 +1,4 @@
+
 import BlogHero from "./blog-hero";
 import FeaturedRecentPosts from "./featured-recent-posts";
 import FeaturedStoriesSection from "./featured-stories-section";
@@ -37,21 +38,15 @@ const BlogPageContent = ({
   onPostDeleted,
   onThemeTagClick
 }: BlogPageContentProps) => {
-  // Ensure we have arrays to work with, even if data is null
-  const safePosts = posts || [];
-  const safeFilteredPosts = filteredPosts || [];
-  const safeCategories = categories || [];
-  const safeThemeTags = themeTags || [];
-
-  const hasPosts = safeFilteredPosts.length > 0;
+  const hasPosts = filteredPosts && filteredPosts.length > 0;
 
   // Get the 3 most recent posts for featured section
-  const recentPosts = safePosts.length > 0 ? [...safePosts].sort((a, b) => 
+  const recentPosts = posts ? [...posts].sort((a, b) => 
     new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
   ).slice(0, 3) : [];
 
   // Get remaining posts (excluding the 3 most recent)
-  const remainingPosts = safeFilteredPosts.length > 0 ? safeFilteredPosts.filter(post => 
+  const remainingPosts = filteredPosts ? filteredPosts.filter(post => 
     !recentPosts.some(recent => recent.id === post.id)
   ) : [];
 
@@ -76,8 +71,8 @@ const BlogPageContent = ({
         setSelectedCategory={setSelectedCategory}
         selectedThemeTag={selectedThemeTag}
         setSelectedThemeTag={setSelectedThemeTag}
-        categories={safeCategories}
-        themeTags={safeThemeTags}
+        categories={categories}
+        themeTags={themeTags}
       />
 
       {/* Remaining Posts Grid */}
@@ -119,7 +114,7 @@ const BlogPageContent = ({
       </div>
       
       {/* Keep the other sections below */}
-      {safePosts.length > 0 && <FeaturedStoriesSection posts={safePosts} />}
+      {posts && <FeaturedStoriesSection posts={posts} />}
     </div>
   );
 };

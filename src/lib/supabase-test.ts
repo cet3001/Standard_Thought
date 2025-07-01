@@ -18,23 +18,26 @@ export const testSupabaseConnection = async () => {
     
     console.log('✅ Basic Supabase connection successful');
     
-    // Test all tables
-    const tables = ['blog_posts', 'Subscribers', 'comments', 'profiles', 'guide_downloads'];
+    // Test all tables with proper typing
+    const tableTests = [
+      { name: 'blog_posts', test: () => supabase.from('blog_posts').select('*').limit(1) },
+      { name: 'Subscribers', test: () => supabase.from('Subscribers').select('*').limit(1) },
+      { name: 'comments', test: () => supabase.from('comments').select('*').limit(1) },
+      { name: 'profiles', test: () => supabase.from('profiles').select('*').limit(1) },
+      { name: 'guide_downloads', test: () => supabase.from('guide_downloads').select('*').limit(1) }
+    ];
     
-    for (const table of tables) {
+    for (const { name, test } of tableTests) {
       try {
-        const { data, error } = await supabase
-          .from(table)
-          .select('*')
-          .limit(1);
+        const { data, error } = await test();
         
         if (error) {
-          console.error(`❌ Table ${table} access failed:`, error);
+          console.error(`❌ Table ${name} access failed:`, error);
         } else {
-          console.log(`✅ Table ${table} accessible`);
+          console.log(`✅ Table ${name} accessible`);
         }
       } catch (err) {
-        console.error(`❌ Table ${table} test failed:`, err);
+        console.error(`❌ Table ${name} test failed:`, err);
       }
     }
     

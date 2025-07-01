@@ -14,19 +14,8 @@ const BlogPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedThemeTag, setSelectedThemeTag] = useState("");
-  const [timedOut, setTimedOut] = useState(false);
 
   const queryClient = useQueryClient();
-
-  // Bail out if loading drags on too long
-  useEffect(() => {
-    const timer = setTimeout(() => setTimedOut(true), 10000);
-    return () => {
-      clearTimeout(timer);
-      queryClient.cancelQueries({ queryKey: ['posts'] });
-      queryClient.cancelQueries({ queryKey: ['categories'] });
-    };
-  }, [queryClient]);
 
   // Fetch posts with error boundaries
   const {
@@ -43,8 +32,8 @@ const BlogPage = () => {
       console.log('Posts fetched:', result);
       return result;
     },
-    retry: 1,
-    staleTime: 10 * 60 * 1000,
+    retry: 2,
+    staleTime: 5 * 60 * 1000,
     refetchOnWindowFocus: false,
     refetchOnMount: false,
   });
@@ -62,8 +51,8 @@ const BlogPage = () => {
       console.log('Categories fetched:', result);
       return result;
     },
-    retry: 1,
-    staleTime: 10 * 60 * 1000,
+    retry: 2,
+    staleTime: 5 * 60 * 1000,
     refetchOnWindowFocus: false,
     refetchOnMount: false,
   });
@@ -115,34 +104,10 @@ const BlogPage = () => {
     isCategoriesError,
     postsCount: posts?.length || 0,
     categoriesCount: categories?.length || 0,
-    timedOut
   });
 
-  // Loading takes too long? show folks an error instead of a spinner
+  // Show loading state
   if (isPostsLoading || isCategoriesLoading) {
-    if (timedOut) {
-      return (
-        <div className="min-h-screen bg-transparent">
-          <Navigation />
-          <main className="pt-32 pb-16">
-            <div className="container mx-auto px-6 max-w-7xl text-center">
-              <h1 className="text-2xl font-bold text-red-600 mb-4">Loading Timeout</h1>
-              <p className="text-gray-600 mb-4">The blog posts are taking too long to load.</p>
-              <button 
-                onClick={() => {
-                  setTimedOut(false);
-                  refetchPosts();
-                }} 
-                className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-              >
-                Try Again
-              </button>
-            </div>
-          </main>
-          <Footer />
-        </div>
-      );
-    }
     return (
       <div className="min-h-screen bg-transparent">
         <Navigation />

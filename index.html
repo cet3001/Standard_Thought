@@ -6,38 +6,17 @@
     <link rel="icon" type="image/png" href="/lovable-uploads/5316a53a-9afb-4437-8f49-d3b521d18e44.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Standard Thought</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=Kalam:wght@400;700&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <!-- Local fonts are loaded via @fontsource to avoid external requests -->
     <style>
-      /* Fallback fonts for immediate loading */
+      /* Use local Inter font directly */
       body {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
-      }
-      /* Progressive enhancement when Google Fonts load */
-      .fonts-loaded body {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
       }
     </style>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-    <script>
-      // Font loading detection to prevent layout shift
-      if ('fonts' in document) {
-        Promise.all([
-          document.fonts.load('400 16px Inter'),
-          document.fonts.load('700 16px Inter'),
-          document.fonts.load('400 16px IBM Plex Sans'),
-          document.fonts.load('400 16px Kalam'),
-          document.fonts.load('400 16px Permanent Marker')
-        ]).then(() => {
-          document.documentElement.classList.add('fonts-loaded');
-        }).catch(() => {
-          console.warn('Some fonts failed to load, using fallbacks');
-        });
-      }
-    </script>
+    <!-- Fonts are loaded locally so no async check needed -->
   </body>
 </html>

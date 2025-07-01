@@ -4,7 +4,7 @@ import Footer from "@/components/footer";
 import BlogMetadata from "./blog-metadata";
 import BlogPageContent from "./blog-page-content";
 import { useState, useEffect, useMemo } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { getPosts, getCategories } from "@/lib/api";
 import { Post } from "@/lib/api";
 import Loading from "@/components/ui/loading";
@@ -14,6 +14,19 @@ const BlogPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedThemeTag, setSelectedThemeTag] = useState("");
+  const [timedOut, setTimedOut] = useState(false);
+
+  const queryClient = useQueryClient();
+
+  // Bail out if loading drags on too long
+  useEffect(() => {
+    const timer = setTimeout(() => setTimedOut(true), 10000);
+    return () => {
+      clearTimeout(timer);
+      queryClient.cancelQueries(['posts']);
+      queryClient.cancelQueries(['categories']);
+    };
+  }, [queryClient]);
 
   // Fetch posts with error boundaries
   const {
@@ -75,11 +88,22 @@ const BlogPage = () => {
     setSelectedThemeTag(tag);
   };
 
-  // Show loading state
+  // Loading takes too long? show folks an error instead of a spinner
   if (isPostsLoading || isCategoriesLoading) {
+    if (timedOut) {
+      return (
+        <ErrorMessage
+          error={new Error('Request timed out')}
+          onRetry={() => {
+            setTimedOut(false);
+            refetchPosts();
+          }}
+        />
+      );
+    }
     return <Loading />;
   }
-  
+
   // Show error state with retry option
   if (isPostsError || isCategoriesError) {
     const error = postsError || categoriesError;

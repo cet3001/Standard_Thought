@@ -29,9 +29,6 @@ const MindsetFirstSection = () => {
         
         {/* Background gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-slate-800/20 via-slate-700/30 to-slate-900/20"></div>
-        
-        {/* Content overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/75 to-white/80 dark:from-brand-black/70 dark:via-brand-black/75 dark:to-brand-black/80"></div>
       </div>
 
       <div className="container mx-auto px-6 relative z-10">

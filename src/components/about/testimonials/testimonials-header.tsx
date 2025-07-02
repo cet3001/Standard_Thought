@@ -2,7 +2,7 @@
 const TestimonialsHeader = () => {
   return (
     <div className="text-center mb-16">
-      <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+      <h2 className="text-4xl md:text-5xl font-bold mb-6 text-black dark:text-white">
         Real People. Real Results.{" "}
         <span 
           className="font-black"
@@ -19,7 +19,7 @@ const TestimonialsHeader = () => {
           Real Talk.
         </span>
       </h2>
-      <p className="text-xl text-white/80 max-w-2xl mx-auto">
+      <p className="text-xl text-black/80 dark:text-white/80 max-w-2xl mx-auto">
         See what happens when you stop settling for average
       </p>
 

@@ -86,8 +86,32 @@ const TestimonialsCarousel = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="bg-white/10 border-white/20 text-[#247EFF] hover:bg-[#247EFF] hover:text-white -left-12" aria-label="Previous testimonial" />
-            <CarouselNext className="bg-white/10 border-white/20 text-[#247EFF] hover:bg-[#247EFF] hover:text-white -right-12" aria-label="Next testimonial" />
+            <CarouselPrevious 
+              className="bg-white/10 border-white/20 hover:bg-white/20 -left-12" 
+              aria-label="Previous testimonial"
+              style={{
+                color: '#FFD700',
+                background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                backgroundSize: '400% 400%',
+                animation: 'pearlescent 3s ease-in-out infinite',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text'
+              }}
+            />
+            <CarouselNext 
+              className="bg-white/10 border-white/20 hover:bg-white/20 -right-12" 
+              aria-label="Next testimonial"
+              style={{
+                color: '#FFD700',
+                background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                backgroundSize: '400% 400%',
+                animation: 'pearlescent 3s ease-in-out infinite',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text'
+              }}
+            />
           </Carousel>
         </div>
 

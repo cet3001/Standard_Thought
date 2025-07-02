@@ -55,7 +55,7 @@ const FAQSection = ({ title, faqs, className = "" }: FAQSectionProps) => {
           {title}
         </HeaderHierarchy>
         
-        <p className="text-lg text-brand-black/90 dark:text-brand-cream/90 mt-4 max-w-2xl mx-auto font-medium">
+        <p className="text-lg text-brand-black dark:text-brand-cream mt-4 max-w-2xl mx-auto font-medium">
           Real questions, real answers. No corporate BS, just straight talk about building wealth.
         </p>
       </div>

@@ -95,7 +95,7 @@ const MindsetPrincipleCard = ({ principle, index, isVisible }: MindsetPrincipleC
 
   return (
     <div 
-      className={`bg-white/90 dark:bg-brand-black/80 backdrop-blur-sm border border-[#247EFF]/20 rounded-3xl p-8 text-center transition-all duration-1000 hover:scale-105 hover:shadow-lg hover:shadow-[#247EFF]/20 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+      className={`bg-white/10 dark:bg-brand-black/10 backdrop-blur-sm border border-[#247EFF]/20 rounded-3xl p-8 text-center transition-all duration-1000 hover:scale-105 hover:shadow-lg hover:shadow-[#247EFF]/20 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
       style={{ animationDelay: `${600 + index * 200}ms` }}
     >
       <div className="mb-6 flex justify-center items-center h-16">

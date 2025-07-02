@@ -14,6 +14,7 @@ const MindsetFirstSection = () => {
     <section className="py-24 relative overflow-hidden">
 
       <div className="container mx-auto px-6 relative z-10">
+        <div className="bg-gray-400/10 dark:bg-gray-600/10 backdrop-blur-sm rounded-3xl p-8 md:p-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <div className={`transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
             <div className="relative">
@@ -98,6 +99,7 @@ const MindsetFirstSection = () => {
               </p>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </section>

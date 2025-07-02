@@ -4,7 +4,7 @@ import HomepageHero from "@/components/homepage-hero";
 import LeadMagnetPopup from "@/components/lead-magnet-popup";
 import ManifestoSection from "@/components/manifesto-section";
 import { NewsletterSection } from "@/components/newsletter-section";
-import TrustBadgeSection from "@/components/trust-badge-section";
+
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import SEO from "@/components/seo";
@@ -167,8 +167,6 @@ const Index = () => {
           {/* Navigation Hub */}
           <SiteNavigationHub />
 
-          {/* Trust Badge Section */}
-          <TrustBadgeSection />
         </main>
 
         {/* Footer */}

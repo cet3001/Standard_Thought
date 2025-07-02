@@ -8,7 +8,6 @@ import BlogGrid from "./blog-grid";
 import RealBuilderWinsStrip from "./real-builder-wins-strip";
 import Empty from "@/components/ui/empty";
 import { Post } from "@/lib/api";
-import { SectionWrapper } from "@/components/layout";
 
 interface BlogPageContentProps {
   posts: Post[] | null;
@@ -53,9 +52,7 @@ const BlogPageContent = ({
 
   return (
     <div className="container mx-auto px-6 max-w-7xl">
-      <SectionWrapper>
-        <BlogHero isVisible={true} />
-      </SectionWrapper>
+      <BlogHero isVisible={true} />
       
       {/* Featured Recent Posts - 3 Large Cards */}
       {recentPosts.length > 0 && (

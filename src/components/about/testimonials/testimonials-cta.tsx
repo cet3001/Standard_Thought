@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 const TestimonialsCTA = () => {
   return (
     <div className="text-center">
-      <h3 className="text-2xl font-bold text-white mb-6">
+      <h3 className="text-2xl font-bold text-black dark:text-white mb-6">
         Ready to write your own success story?
       </h3>
       <Button 
@@ -31,7 +31,7 @@ const TestimonialsCTA = () => {
       
       {/* Added line under the button */}
       <p 
-        className="mt-4 text-white/80 text-sm italic"
+        className="mt-4 text-black/80 dark:text-white/80 text-sm italic"
         style={{ 
           fontFamily: "'Kalam', 'Comic Neue', cursive",
           textShadow: '1px 1px 0px rgba(0,0,0,0.3)'

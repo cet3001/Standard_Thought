@@ -58,12 +58,18 @@ const MindsetFirstSection = () => {
             <h2 className="text-4xl font-bold mb-6 text-[#0A0A0A] dark:text-brand-cream">Why Mindset First?</h2>
             
             {/* Handwritten Pull-Quote */}
-            <div className="relative mb-8 p-6 bg-gradient-to-r from-yellow-50/80 to-orange-50/80 dark:from-yellow-900/20 dark:to-orange-900/20 rounded-2xl border-l-4 border-yellow-400">
+            <div className="relative mb-8 p-6 bg-gray-200/20 dark:bg-gray-800/20 backdrop-blur-sm rounded-2xl border-l-4 border-yellow-400">
               <blockquote 
                 className="text-2xl font-bold text-center"
                 style={{
                   fontFamily: "'Kalam', cursive",
-                  color: '#FFD700',
+                  background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                  backgroundSize: '400% 400%',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                  color: 'transparent',
+                  animation: 'pearlescent 3s ease-in-out infinite',
                   textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
                   transform: 'rotate(-1deg)',
                   letterSpacing: '0.5px'
@@ -97,7 +103,18 @@ const MindsetFirstSection = () => {
                 We know what it's like to go from "I can't afford it" to "How can I afford it?" Mindset ain't hype—it's the foundation every real move is built on.
               </p>
               <p>
-                We're here for the long haul—helping you build the mental foundation for <span className="text-[#247EFF] font-medium">generational progress</span>. 
+                We're here for the long haul—helping you build the mental foundation for <span 
+                  className="font-medium"
+                  style={{
+                    background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                    backgroundSize: '400% 400%',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                    color: 'transparent',
+                    animation: 'pearlescent 3s ease-in-out infinite'
+                  }}
+                >generational progress</span>. 
                 Because when your mindset is right, the money moves follow.
               </p>
             </div>

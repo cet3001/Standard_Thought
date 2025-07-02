@@ -76,12 +76,12 @@ const BlogSearchFilter = ({
       
       {/* Theme Filter Dropdown */}
       <div className="flex flex-col md:flex-row gap-4">
-        <Select value={selectedThemeTag} onValueChange={setSelectedThemeTag}>
+        <Select value={selectedThemeTag || "all"} onValueChange={(value) => setSelectedThemeTag(value === "all" ? "" : value)}>
           <SelectTrigger className="w-full md:w-64 bg-white/80 dark:bg-brand-black/80 border-[#247EFF]/20 rounded-2xl">
             <SelectValue placeholder="All Themes" />
           </SelectTrigger>
           <SelectContent className="bg-white dark:bg-brand-black border-[#247EFF]/20 max-h-72">
-            <SelectItem value="">All Themes</SelectItem>
+            <SelectItem value="all">All Themes</SelectItem>
             {themeTags.map((tag) => (
               <SelectItem key={tag} value={tag}>
                 {tag}

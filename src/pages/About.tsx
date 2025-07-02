@@ -13,7 +13,7 @@ const About = () => {
 
   return (
     <div className="min-h-screen relative overflow-hidden">
-      {/* Main Urban Background */}
+      {/* Main Urban Background - Enhanced with testimonials-style overlay */}
       <div className="fixed inset-0 z-0" aria-hidden="true">
         {textureImageUrl && (
           <div 
@@ -27,10 +27,10 @@ const About = () => {
           />
         )}
         
-        {/* Background gradient overlay */}
+        {/* Background gradient overlay - darker like testimonials */}
         <div className="absolute inset-0 bg-gradient-to-br from-slate-800/25 via-slate-700/35 to-slate-900/25"></div>
         
-        {/* Content overlay for text readability */}
+        {/* Content overlay for text readability - matching testimonials opacity */}
         <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/65 via-brand-cream/70 to-brand-cream/75 dark:from-brand-black/65 dark:via-brand-black/70 dark:to-brand-black/75"></div>
       </div>
       

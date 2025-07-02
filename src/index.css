@@ -1,4 +1,17 @@
 
+/* Pearlescent animation for yellow elements */
+@keyframes pearlescent {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 /* Tailwind entry file with local fonts for speed and stability */
 @import '@fontsource/inter/300.css';
 @import '@fontsource/inter/400.css';

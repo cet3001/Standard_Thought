@@ -55,68 +55,71 @@ const MindsetFirstSection = () => {
             </div>
           </div>
           <div className={`transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}>
-            <h2 className="text-4xl font-bold mb-6 text-[#0A0A0A] dark:text-brand-cream">Why Mindset First?</h2>
-            
-            {/* Handwritten Pull-Quote */}
-            <div className="relative mb-8 p-6 bg-gray-200/20 dark:bg-gray-800/20 backdrop-blur-sm rounded-2xl border-l-4 border-yellow-400">
-              <blockquote 
-                className="text-2xl font-bold text-center"
-                style={{
-                  fontFamily: "'Kalam', cursive",
-                  background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                  backgroundSize: '400% 400%',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                  color: 'transparent',
-                  animation: 'pearlescent 3s ease-in-out infinite',
-                  textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
-                  transform: 'rotate(-1deg)',
-                  letterSpacing: '0.5px'
-                }}
-              >
-                "Flip your mindset, flip your money."
-              </blockquote>
-              {/* Handwritten underline */}
-              <svg 
-                className="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-48 h-2" 
-                viewBox="0 0 200 10" 
-                preserveAspectRatio="none"
-              >
-                <path 
-                  d="M5,7 Q50,3 95,6 T185,4" 
-                  stroke="#FFD700" 
-                  strokeWidth="2" 
-                  fill="none" 
-                  strokeLinecap="round"
-                  opacity="0.8"
-                />
-              </svg>
-            </div>
-
-            <div className="space-y-4 text-[#0A0A0A]/70 dark:text-brand-cream/70">
-              <p>
-                Every wealth move starts in your head. StandardThought was built for those who had to teach themselves 
-                how to think bigger, push past doubt, and turn setbacks into setups.
-              </p>
-              <p>
-                We know what it's like to go from "I can't afford it" to "How can I afford it?" Mindset ain't hype—it's the foundation every real move is built on.
-              </p>
-              <p>
-                We're here for the long haul—helping you build the mental foundation for <span 
-                  className="font-medium"
+            {/* Subtle background container for text content */}
+            <div className="bg-gray-200/20 dark:bg-gray-800/20 backdrop-blur-sm rounded-3xl p-8 border border-gray-300/10 dark:border-gray-600/10">
+              <h2 className="text-4xl font-bold mb-6 text-[#0A0A0A] dark:text-brand-cream">Why Mindset First?</h2>
+              
+              {/* Handwritten Pull-Quote */}
+              <div className="relative mb-8 p-6 rounded-2xl border-l-4 border-yellow-400">
+                <blockquote 
+                  className="text-2xl font-bold text-center"
                   style={{
+                    fontFamily: "'Kalam', cursive",
                     background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
                     backgroundSize: '400% 400%',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                     backgroundClip: 'text',
                     color: 'transparent',
-                    animation: 'pearlescent 3s ease-in-out infinite'
+                    animation: 'pearlescent 3s ease-in-out infinite',
+                    textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
+                    transform: 'rotate(-1deg)',
+                    letterSpacing: '0.5px'
                   }}
-                >generational progress</span>. 
-                Because when your mindset is right, the money moves follow.
-              </p>
+                >
+                  "Flip your mindset, flip your money."
+                </blockquote>
+                {/* Handwritten underline */}
+                <svg 
+                  className="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-48 h-2" 
+                  viewBox="0 0 200 10" 
+                  preserveAspectRatio="none"
+                >
+                  <path 
+                    d="M5,7 Q50,3 95,6 T185,4" 
+                    stroke="#FFD700" 
+                    strokeWidth="2" 
+                    fill="none" 
+                    strokeLinecap="round"
+                    opacity="0.8"
+                  />
+                </svg>
+              </div>
+
+              <div className="space-y-4 text-[#0A0A0A]/70 dark:text-brand-cream/70">
+                <p>
+                  Every wealth move starts in your head. StandardThought was built for those who had to teach themselves 
+                  how to think bigger, push past doubt, and turn setbacks into setups.
+                </p>
+                <p>
+                  We know what it's like to go from "I can't afford it" to "How can I afford it?" Mindset ain't hype—it's the foundation every real move is built on.
+                </p>
+                <p>
+                  We're here for the long haul—helping you build the mental foundation for <span 
+                    className="font-medium"
+                    style={{
+                      background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                      backgroundSize: '400% 400%',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                      color: 'transparent',
+                      animation: 'pearlescent 3s ease-in-out infinite'
+                    }}
+                  >generational progress</span>. 
+                  Because when your mindset is right, the money moves follow.
+                </p>
+              </div>
             </div>
           </div>
         </div>

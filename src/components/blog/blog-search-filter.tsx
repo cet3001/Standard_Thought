@@ -74,26 +74,21 @@ const BlogSearchFilter = ({
         )}
       </div>
       
-      {/* Theme Tags Filter */}
-      <div className="space-y-3">
-        <h3 className="text-sm font-medium text-[#0A0A0A]/70 dark:text-brand-cream/70">
-          Filter by Theme:
-        </h3>
-        <div className="flex flex-wrap gap-2">
-          <ThemeTag
-            tag="All Themes"
-            onClick={() => setSelectedThemeTag("")}
-            className={selectedThemeTag === "" ? "bg-[#247EFF] text-white border-[#247EFF]" : ""}
-          />
-          {themeTags.map((tag) => (
-            <ThemeTag
-              key={tag}
-              tag={tag}
-              onClick={() => setSelectedThemeTag(tag)}
-              className={selectedThemeTag === tag ? "ring-2 ring-[#247EFF] ring-offset-2" : ""}
-            />
-          ))}
-        </div>
+      {/* Theme Filter Dropdown */}
+      <div className="flex flex-col md:flex-row gap-4">
+        <Select value={selectedThemeTag} onValueChange={setSelectedThemeTag}>
+          <SelectTrigger className="w-full md:w-64 bg-white/80 dark:bg-brand-black/80 border-[#247EFF]/20 rounded-2xl">
+            <SelectValue placeholder="All Themes" />
+          </SelectTrigger>
+          <SelectContent className="bg-white dark:bg-brand-black border-[#247EFF]/20 max-h-72">
+            <SelectItem value="">All Themes</SelectItem>
+            {themeTags.map((tag) => (
+              <SelectItem key={tag} value={tag}>
+                {tag}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
       </div>
     </div>
   );

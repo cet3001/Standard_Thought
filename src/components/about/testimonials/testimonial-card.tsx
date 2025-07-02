@@ -9,9 +9,9 @@ interface TestimonialCardProps {
 const TestimonialCard = ({ testimonial }: TestimonialCardProps) => {
   return (
     <div className="mx-4 flex justify-center">
-      {/* Polaroid/Sticky Note Container */}
+      {/* Polaroid/Sticky Note Container - Transparent background */}
       <div 
-        className="bg-white p-6 shadow-2xl transform hover:scale-105 transition-all duration-300 relative max-w-md"
+        className="bg-transparent backdrop-blur-sm p-6 shadow-2xl transform hover:scale-105 transition-all duration-300 relative max-w-md border border-yellow-400/20"
         style={{
           borderRadius: '8px 12px 8px 15px',
           transform: `rotate(${Math.random() * 4 - 2}deg)`,
@@ -61,11 +61,11 @@ const TestimonialCard = ({ testimonial }: TestimonialCardProps) => {
 
         {/* Quote - Handwritten Style */}
         <blockquote 
-          className="text-gray-800 text-lg leading-relaxed mb-6 min-h-[120px] flex items-center"
+          className="text-black text-lg leading-relaxed mb-6 min-h-[120px] flex items-center"
           style={{
             fontFamily: "'Kalam', 'Comic Neue', cursive",
             fontWeight: '500',
-            color: '#2c2c2c'
+            color: '#0A0A0A'
           }}
         >
           "{testimonial.quote}"
@@ -80,8 +80,11 @@ const TestimonialCard = ({ testimonial }: TestimonialCardProps) => {
         <div className="flex items-center space-x-4">
           {/* Avatar with graffiti style */}
           <div 
-            className="w-16 h-16 bg-gradient-to-br from-[#247EFF] to-[#0057FF] rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg border-3 border-white"
+            className="w-16 h-16 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg border-3 border-white"
             style={{
+              background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+              backgroundSize: '400% 400%',
+              animation: 'pearlescent 3s ease-in-out infinite',
               textShadow: '1px 1px 0px rgba(0,0,0,0.3)'
             }}
             aria-hidden="true"
@@ -91,14 +94,22 @@ const TestimonialCard = ({ testimonial }: TestimonialCardProps) => {
           
           <div className="text-left flex-1">
             <div 
-              className="font-bold text-gray-800 text-base mb-1"
+              className="font-bold text-black text-base mb-1"
               style={{ fontFamily: "'Kalam', cursive" }}
             >
               {testimonial.name}
             </div>
             <div 
-              className="text-[#247EFF] text-sm font-medium"
-              style={{ fontFamily: "'Inter', sans-serif" }}
+              className="text-sm font-medium"
+              style={{ 
+                fontFamily: "'Inter', sans-serif",
+                background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                backgroundSize: '400% 400%',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                animation: 'pearlescent 3s ease-in-out infinite'
+              }}
             >
               {testimonial.title}
             </div>
@@ -106,7 +117,12 @@ const TestimonialCard = ({ testimonial }: TestimonialCardProps) => {
         </div>
 
         {/* Small graffiti dots for decoration */}
-        <div className="absolute bottom-2 right-4 w-2 h-2 bg-[#247EFF] rounded-full opacity-60"></div>
+        <div 
+          className="absolute bottom-2 right-4 w-2 h-2 rounded-full opacity-60"
+          style={{
+            background: 'linear-gradient(45deg, #f4d03f, #ffd700)',
+          }}
+        ></div>
         <div className="absolute top-16 right-2 w-1.5 h-1.5 bg-[#FFD700] rounded-full opacity-80"></div>
       </div>
 

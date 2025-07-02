@@ -55,7 +55,7 @@ const FAQSection = ({ title, faqs, className = "" }: FAQSectionProps) => {
           {title}
         </HeaderHierarchy>
         
-        <p className="text-lg text-brand-black/70 dark:text-brand-cream/70 mt-4 max-w-2xl mx-auto">
+        <p className="text-lg text-brand-black/90 dark:text-brand-cream/90 mt-4 max-w-2xl mx-auto font-medium">
           Real questions, real answers. No corporate BS, just straight talk about building wealth.
         </p>
       </div>
@@ -65,7 +65,7 @@ const FAQSection = ({ title, faqs, className = "" }: FAQSectionProps) => {
           <AccordionItem 
             key={index} 
             value={`item-${index}`}
-            className="bg-white/70 dark:bg-brand-black/50 backdrop-blur-sm border border-[#247EFF]/20 rounded-xl px-6 py-4 shadow-sm hover:shadow-md transition-all duration-200"
+            className="bg-gray-100/40 dark:bg-gray-800/30 backdrop-blur-sm border border-gray-300/30 dark:border-gray-600/30 rounded-xl px-6 py-4 shadow-sm hover:shadow-md transition-all duration-200"
           >
             <AccordionTrigger className="text-left hover:no-underline py-4 hover:text-[#247EFF] transition-colors">
               <HeaderHierarchy level={3} className="mb-0 text-lg md:text-xl font-semibold leading-tight pr-4">

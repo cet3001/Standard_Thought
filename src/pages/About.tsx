@@ -6,6 +6,7 @@ import AboutHero from "@/components/about/about-hero";
 import MindsetFirstSection from "@/components/about/mindset-first-section";
 import ValuesSection from "@/components/about/values-section";
 import TestimonialsCarousel from "@/components/about/testimonials-carousel";
+import { SectionWrapper } from "@/components/layout";
 import { useUrbanTexture } from "@/hooks/use-urban-texture";
 
 const About = () => {
@@ -46,16 +47,24 @@ const About = () => {
         <Navigation />
         
         {/* Hero Section */}
-        <AboutHero />
+        <SectionWrapper>
+          <AboutHero />
+        </SectionWrapper>
 
         {/* Why Mindset First Section */}
-        <MindsetFirstSection />
+        <SectionWrapper>
+          <MindsetFirstSection />
+        </SectionWrapper>
 
         {/* Values Section */}
-        <ValuesSection />
+        <SectionWrapper>
+          <ValuesSection />
+        </SectionWrapper>
 
         {/* Testimonials Carousel Section */}
-        <TestimonialsCarousel />
+        <SectionWrapper>
+          <TestimonialsCarousel />
+        </SectionWrapper>
 
         <Footer />
       </div>

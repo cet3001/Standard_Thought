@@ -55,7 +55,7 @@ const MindsetFirstSection = () => {
             <h2 className="text-4xl font-bold mb-6 text-[#0A0A0A] dark:text-brand-cream">Why Mindset First?</h2>
             
             {/* Handwritten Pull-Quote */}
-            <div className="relative mb-8 p-6 bg-gray-200/5 dark:bg-gray-800/5 backdrop-blur-sm rounded-2xl border-l-4 border-yellow-400">
+            <div className="relative mb-8 p-6 bg-gray-500/15 dark:bg-gray-600/15 backdrop-blur-sm rounded-2xl border-l-4 border-yellow-400">
               <blockquote 
                 className="text-2xl font-bold text-center"
                 style={{

@@ -12,24 +12,6 @@ const MindsetFirstSection = () => {
 
   return (
     <section className="py-24 relative overflow-hidden">
-      {/* Urban Background - Matches homepage styling */}
-      <div className="absolute inset-0" aria-hidden="true">
-        {/* AI-Generated or Curated Urban Texture */}
-        {textureImageUrl && (
-          <div 
-            className="absolute inset-0 opacity-40 bg-cover bg-center"
-            style={{
-              backgroundImage: `url(${textureImageUrl})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat'
-            }}
-          />
-        )}
-        
-        {/* Background gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-800/20 via-slate-700/30 to-slate-900/20"></div>
-      </div>
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">

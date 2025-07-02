@@ -61,55 +61,57 @@ const BlogHero = ({ isVisible }: BlogHeroProps) => {
           </h1>
 
           {/* Direct, community-rooted intro */}
-          <p className="text-xl md:text-2xl text-[#0A0A0A] dark:text-brand-cream leading-relaxed mb-8 font-semibold">
-            This ain't theory—this is raw game from hustlers who built it brick by brick. 
-            If you had to figure it out with nothing but vision and grind, these stories are for you.
-          </p>
+          <div className="highlight rounded-2xl p-8 mb-8">
+            <p className="text-xl md:text-2xl text-[#0A0A0A] dark:text-brand-cream leading-relaxed mb-8 font-semibold">
+              This ain't theory—this is raw game from hustlers who built it brick by brick. 
+              If you had to figure it out with nothing but vision and grind, these stories are for you.
+            </p>
 
-          {/* Handwritten-style pull-quote */}
-          <div className="relative mb-8">
-            <blockquote 
-              className="text-2xl md:text-3xl text-[#0A0A0A] dark:text-brand-cream transform -rotate-1 relative inline-block px-8 py-6"
-              style={{ 
-                fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
-                textShadow: '2px 2px 0px rgba(255,215,0,0.4)',
-                letterSpacing: '0.5px'
-              }}
-            >
-              "No trust funds. No shortcuts. Just real blueprints for stacking bread and breaking cycles."
-              
-              {/* Hand-drawn style quotation marks */}
-              <span 
-                className="absolute -top-4 -left-2 text-[#FFD700] text-6xl opacity-60"
+            {/* Handwritten-style pull-quote */}
+            <div className="relative">
+              <blockquote 
+                className="text-2xl md:text-3xl text-[#0A0A0A] dark:text-brand-cream transform -rotate-1 relative inline-block px-8 py-6"
                 style={{ 
                   fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
-                  transform: 'rotate(-15deg)'
+                  textShadow: '2px 2px 0px rgba(255,215,0,0.4)',
+                  letterSpacing: '0.5px'
                 }}
               >
-                "
-              </span>
-              <span 
-                className="absolute -bottom-8 -right-2 text-[#FFD700] text-6xl opacity-60"
-                style={{ 
-                  fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
-                  transform: 'rotate(15deg)'
-                }}
-              >
-                "
-              </span>
-              
-              {/* Underline scribble */}
-              <div 
-                className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-80 h-3 opacity-70"
-                style={{
-                  backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 20'%3E%3Cpath d='M5 15 Q 40 5, 80 12 T 160 8 T 240 13 T 315 10' stroke='%23FFD700' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E")`,
-                  backgroundSize: 'contain',
-                  backgroundRepeat: 'no-repeat',
-                  backgroundPosition: 'center'
-                }}
-              >
-              </div>
-            </blockquote>
+                "No trust funds. No shortcuts. Just real blueprints for stacking bread and breaking cycles."
+                
+                {/* Hand-drawn style quotation marks */}
+                <span 
+                  className="absolute -top-4 -left-2 text-[#FFD700] text-6xl opacity-60"
+                  style={{ 
+                    fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
+                    transform: 'rotate(-15deg)'
+                  }}
+                >
+                  "
+                </span>
+                <span 
+                  className="absolute -bottom-8 -right-2 text-[#FFD700] text-6xl opacity-60"
+                  style={{ 
+                    fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
+                    transform: 'rotate(15deg)'
+                  }}
+                >
+                  "
+                </span>
+                
+                {/* Underline scribble */}
+                <div 
+                  className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-80 h-3 opacity-70"
+                  style={{
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 20'%3E%3Cpath d='M5 15 Q 40 5, 80 12 T 160 8 T 240 13 T 315 10' stroke='%23FFD700' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E")`,
+                    backgroundSize: 'contain',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundPosition: 'center'
+                  }}
+                >
+                </div>
+              </blockquote>
+            </div>
           </div>
           
           {/* Enhanced CTA buttons with consistent pearlescent styling */}

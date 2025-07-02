@@ -4,7 +4,7 @@ import { Mail, Instagram, Twitter, Linkedin } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-50/20 dark:bg-gray-800/10 backdrop-blur-sm border-t border-gray-200/20 dark:border-gray-700/20 text-brand-black dark:text-brand-cream py-12 relative overflow-hidden">
+    <footer className="bg-[#0A0A0A] text-brand-cream py-12 relative overflow-hidden">
       {/* City Skyline Silhouette Background */}
       <div className="absolute bottom-0 left-0 right-0 h-32 opacity-20 pointer-events-none" aria-hidden="true">
         <svg 
@@ -79,7 +79,7 @@ const Footer = () => {
             <div className="mb-4">
               <Link 
                 to="/" 
-                className="text-2xl font-bold text-brand-black dark:text-brand-cream hover:text-[#247EFF] transition-colors transform -rotate-1 inline-block"
+                className="text-2xl font-bold text-brand-cream hover:text-[#247EFF] transition-colors transform -rotate-1 inline-block"
                 style={{ 
                   fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
                   textShadow: '2px 2px 0px rgba(0,0,0,0.3)',
@@ -89,7 +89,7 @@ const Footer = () => {
                 Standardthought
               </Link>
             </div>
-            <p className="text-brand-black/80 dark:text-brand-cream/80 text-sm leading-relaxed mb-4">
+            <p className="text-brand-cream/80 text-sm leading-relaxed mb-4">
               Empowering underestimated creators to build generational wealth from the ground up.
             </p>
             
@@ -108,19 +108,19 @@ const Footer = () => {
           {/* Navigation Links */}
           <div className="lg:col-span-2">
             <nav className="flex flex-wrap gap-x-8 gap-y-2 text-sm">
-              <Link to="/about" className="text-brand-black/80 dark:text-brand-cream/80 hover:text-[#247EFF] transition-colors">
+              <Link to="/about" className="text-brand-cream/80 hover:text-[#247EFF] transition-colors">
                 About
               </Link>
-              <Link to="/blog" className="text-brand-black/80 dark:text-brand-cream/80 hover:text-[#247EFF] transition-colors">
+              <Link to="/blog" className="text-brand-cream/80 hover:text-[#247EFF] transition-colors">
                 Builder Stories
               </Link>
-              <Link to="/about" className="text-brand-black/80 dark:text-brand-cream/80 hover:text-[#247EFF] transition-colors">
+              <Link to="/about" className="text-brand-cream/80 hover:text-[#247EFF] transition-colors">
                 Mindset Tools
               </Link>
-              <Link to="/resources" className="text-brand-black/80 dark:text-brand-cream/80 hover:text-[#247EFF] transition-colors">
+              <Link to="/resources" className="text-brand-cream/80 hover:text-[#247EFF] transition-colors">
                 Success Strategies
               </Link>
-              <Link to="/auth" className="text-brand-black/80 dark:text-brand-cream/80 hover:text-[#247EFF] transition-colors">
+              <Link to="/auth" className="text-brand-cream/80 hover:text-[#247EFF] transition-colors">
                 Contact
               </Link>
             </nav>
@@ -131,7 +131,7 @@ const Footer = () => {
             <div className="flex flex-col space-y-3">
               <a 
                 href="mailto:hello@standardthought.com" 
-                className="flex items-center space-x-2 text-brand-black/80 dark:text-brand-cream/80 hover:text-[#247EFF] transition-colors text-sm"
+                className="flex items-center space-x-2 text-brand-cream/80 hover:text-[#247EFF] transition-colors text-sm"
               >
                 <Mail className="h-4 w-4" />
                 <span>hello@standardthought.com</span>
@@ -142,7 +142,7 @@ const Footer = () => {
                   href="https://instagram.com/standardthought" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-brand-black/80 dark:text-brand-cream/80 hover:text-[#247EFF] transition-colors"
+                  className="text-brand-cream/80 hover:text-[#247EFF] transition-colors"
                   aria-label="Follow us on Instagram"
                 >
                   <Instagram className="h-5 w-5" />
@@ -151,7 +151,7 @@ const Footer = () => {
                   href="https://twitter.com/standardthought" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-brand-black/80 dark:text-brand-cream/80 hover:text-[#247EFF] transition-colors"
+                  className="text-brand-cream/80 hover:text-[#247EFF] transition-colors"
                   aria-label="Follow us on Twitter"
                 >
                   <Twitter className="h-5 w-5" />
@@ -160,7 +160,7 @@ const Footer = () => {
                   href="https://linkedin.com/company/standardthought" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-brand-black/80 dark:text-brand-cream/80 hover:text-[#247EFF] transition-colors"
+                  className="text-brand-cream/80 hover:text-[#247EFF] transition-colors"
                   aria-label="Connect with us on LinkedIn"
                 >
                   <Linkedin className="h-5 w-5" />
@@ -171,17 +171,17 @@ const Footer = () => {
         </div>
 
         {/* Legal Links & Copyright */}
-        <div className="border-t border-gray-300/30 dark:border-gray-600/30 pt-6">
+        <div className="border-t border-brand-cream/20 pt-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
-              <Link to="/privacy-policy" className="text-brand-black/70 dark:text-brand-cream/70 hover:text-[#247EFF] transition-colors">
+              <Link to="/privacy-policy" className="text-brand-cream/70 hover:text-[#247EFF] transition-colors">
                 Privacy Policy
               </Link>
-              <Link to="/terms-of-service" className="text-brand-black/70 dark:text-brand-cream/70 hover:text-[#247EFF] transition-colors">
+              <Link to="/terms-of-service" className="text-brand-cream/70 hover:text-[#247EFF] transition-colors">
                 Terms of Use
               </Link>
             </div>
-            <div className="text-sm text-brand-black/60 dark:text-brand-cream/60">
+            <div className="text-sm text-brand-cream/60">
               © 2025 Standardthought. All rights reserved.
             </div>
           </div>

@@ -28,8 +28,7 @@ const About = () => {
             }}
           />
         )}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-800/50 via-slate-700/60 to-slate-900/50"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/85 via-brand-cream/90 to-brand-cream/85 dark:from-brand-black/85 dark:via-brand-black/90 dark:to-brand-black/85"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/90 via-brand-cream/95 to-brand-cream/90 dark:from-brand-black/90 dark:via-brand-black/95 dark:to-brand-black/90"></div>
       </div>
       
       <div className="relative z-10">

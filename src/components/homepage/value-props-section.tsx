@@ -2,7 +2,7 @@
 import { useUrbanTexture } from "@/hooks/use-urban-texture";
 import ValuePropCard from "./value-props/value-prop-card";
 import ValuePropsArrow from "./value-props/value-props-arrow";
-import ValuePropsBackground from "./value-props/value-props-background";
+import { SectionOverlayBox } from "@/components/layout";
 import { valuePropsData } from "./value-props/value-props-data";
 
 interface ValuePropsSectionProps {
@@ -13,10 +13,7 @@ const ValuePropsSection = ({ isVisible }: ValuePropsSectionProps) => {
   const { textureImageUrl } = useUrbanTexture();
 
   return (
-    <div className={`mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-      {/* More transparent background */}
-      <div className="relative bg-gray-200/10 dark:bg-gray-800/10 backdrop-blur-sm rounded-2xl p-8 border border-gray-300/10 dark:border-gray-700/10">
-        <ValuePropsBackground />
+    <SectionOverlayBox className={`mb-16 duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         
         <div className="text-center mb-12 relative z-10">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-6 text-black dark:text-brand-cream leading-tight">
@@ -49,8 +46,7 @@ const ValuePropsSection = ({ isVisible }: ValuePropsSectionProps) => {
             </div>
           ))}
         </div>
-      </div>
-    </div>
+      </SectionOverlayBox>
   );
 };
 

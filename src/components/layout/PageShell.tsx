@@ -7,7 +7,7 @@ interface PageShellProps {
 const PageShell = ({ children }: PageShellProps) => {
   return (
     <div className="relative min-h-screen bg-dots bg-brand-black text-brand-cream">
-      <div className="bg-hero-fade" />
+      <div className="absolute inset-0 -z-10 bg-hero-fade" />
       {children}
     </div>
   );

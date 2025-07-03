@@ -8,7 +8,13 @@ interface GlassPanelProps {
 
 const GlassPanel = ({ children, className }: GlassPanelProps) => {
   return (
-    <section className={cn("glass-panel", className)}>
+    <section
+      className={cn(
+        "relative isolate rounded-2xl bg-brand-black/60 backdrop-blur-md",
+        "ring-1 ring-white/10 shadow-inner shadow-brand-black/40",
+        className
+      )}
+    >
       {children}
     </section>
   );

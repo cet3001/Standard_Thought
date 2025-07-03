@@ -85,6 +85,26 @@
     -webkit-text-size-adjust: 100%;
     -moz-text-size-adjust: 100%;
     text-size-adjust: 100%;
-  }
+}
+
+/* Custom utility classes */
+
+/* 1. Make sure the radial overlay always sits behind content */
+.bg-hero-fade {
+  @apply absolute inset-0 -z-10 pointer-events-none
+         bg-[radial-gradient(circle_at_center,rgba(10,10,10,0)_0%,rgba(10,10,10,.85)_100%)]
+         mix-blend-normal;
+}
+
+/* 2. Glass panel adjustments */
+.glass-panel {
+  @apply relative isolate rounded-2xl bg-brand-black/25
+         backdrop-blur-sm ring-1 ring-white/10 shadow-inner
+         shadow-brand-black/40;
+}
+
+/* 3. Remove accidental clipping on hero heading */
+.hero-heading-wrapper {
+  @apply overflow-visible;
 }
 

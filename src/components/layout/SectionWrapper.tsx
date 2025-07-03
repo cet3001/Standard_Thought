@@ -1,7 +1,4 @@
 import { ReactNode } from "react";
-import SectionOverlayBox from "./SectionOverlayBox";
-
-// Wrapper that now leans on SectionOverlayBox for the standardized look.
 
 interface SectionWrapperProps {
   children: ReactNode;
@@ -11,9 +8,18 @@ interface SectionWrapperProps {
 const SectionWrapper = ({ children, className = "" }: SectionWrapperProps) => {
   return (
     <section className={`relative ${className}`}>
-      <SectionOverlayBox>
+      {/* Full-bleed radial gradient overlay */}
+      <div 
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: `radial-gradient(circle, rgba(10,10,10,0) 0%, rgba(10,10,10,0.85) 100%)`
+        }}
+      />
+      
+      {/* Content */}
+      <div className="relative z-10">
         {children}
-      </SectionOverlayBox>
+      </div>
     </section>
   );
 };

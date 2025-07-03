@@ -1,22 +1,16 @@
 import { ReactNode } from "react";
 
-// Component: SectionOverlayBox
-// Purpose: Wraps content in the new unified section overlay. The vibe stays
-// gritty but consistent – one overlay, no clutter.
-
 interface SectionOverlayBoxProps {
   children: ReactNode;
   className?: string;
-  style?: React.CSSProperties;
 }
 
-const SectionOverlayBox = ({ children, className = "", style }: SectionOverlayBoxProps) => {
+const SectionOverlayBox = ({ children, className = "" }: SectionOverlayBoxProps) => {
   return (
-    <div
-      className={`relative border border-gray-300/20 rounded-3xl p-8 mb-16 overflow-hidden transition-all bg-white/95 dark:bg-brand-black/95 ${className}`}
+    <div 
+      className={`relative border border-gray-300/20 rounded-3xl p-8 mb-16 overflow-hidden bg-white/95 dark:bg-brand-black/95 ${className}`}
       style={{
-        background: 'rgba(128, 128, 128, 0.1)',
-        ...style
+        background: 'rgba(128, 128, 128, 0.1)'
       }}
     >
       {/* Torn Paper Effect Background - SVG Overlay */}

@@ -64,16 +64,18 @@ const BlogPageContent = ({
       )}
       
       {/* Filters Section */}
-      <BlogFiltersSection
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-        selectedCategory={selectedCategory}
-        setSelectedCategory={setSelectedCategory}
-        selectedThemeTag={selectedThemeTag}
-        setSelectedThemeTag={setSelectedThemeTag}
-        categories={categories}
-        themeTags={themeTags}
-      />
+      <div className="mb-8">
+        <BlogFiltersSection
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+          selectedThemeTag={selectedThemeTag}
+          setSelectedThemeTag={setSelectedThemeTag}
+          categories={categories}
+          themeTags={themeTags}
+        />
+      </div>
 
       {/* Remaining Posts Grid */}
       {!hasPosts ? (

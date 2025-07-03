@@ -1,7 +1,7 @@
 
 import BlogPage from "@/components/blog/blog-page";
 import { useUrbanTexture } from "@/hooks/use-urban-texture";
-import { SectionWrapper } from "@/components/layout";
+import { SectionWrapper, SectionOverlayBox } from "@/components/layout";
 
 const Blog = () => {
   const { textureImageUrl } = useUrbanTexture();
@@ -33,7 +33,9 @@ const Blog = () => {
 
       <div className="relative z-10">
         <SectionWrapper>
-          <BlogPage />
+          <SectionOverlayBox>
+            <BlogPage />
+          </SectionOverlayBox>
         </SectionWrapper>
       </div>
 

@@ -7,7 +7,6 @@ import BlogFiltersSection from "./blog-filters-section";
 import BlogGrid from "./blog-grid";
 import RealBuilderWinsStrip from "./real-builder-wins-strip";
 import Empty from "@/components/ui/empty";
-import { SectionOverlayBox } from "@/components/layout";
 import { Post } from "@/lib/api";
 
 interface BlogPageContentProps {
@@ -65,24 +64,22 @@ const BlogPageContent = ({
       )}
       
       {/* Filters Section */}
-      <div className="mb-8">
-        <BlogFiltersSection
-          searchTerm={searchTerm}
-          setSearchTerm={setSearchTerm}
-          selectedCategory={selectedCategory}
-          setSelectedCategory={setSelectedCategory}
-          selectedThemeTag={selectedThemeTag}
-          setSelectedThemeTag={setSelectedThemeTag}
-          categories={categories}
-          themeTags={themeTags}
-        />
-      </div>
+      <BlogFiltersSection
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        selectedCategory={selectedCategory}
+        setSelectedCategory={setSelectedCategory}
+        selectedThemeTag={selectedThemeTag}
+        setSelectedThemeTag={setSelectedThemeTag}
+        categories={categories}
+        themeTags={themeTags}
+      />
 
       {/* Remaining Posts Grid */}
       {!hasPosts ? (
         <Empty message="No posts found." />
       ) : remainingPosts.length > 0 ? (
-        <SectionOverlayBox>
+        <div className="mb-12">
           <h2 className="text-2xl font-bold text-[#0A0A0A] dark:text-brand-cream mb-6">
             More Stories
           </h2>
@@ -91,7 +88,7 @@ const BlogPageContent = ({
             onPostDeleted={onPostDeleted} 
             onThemeTagClick={onThemeTagClick}
           />
-        </SectionOverlayBox>
+        </div>
       ) : null}
 
       {/* Real Builder Wins Testimonial Strip */}

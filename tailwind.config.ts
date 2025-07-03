@@ -32,6 +32,11 @@ const config: Config = {
       borderRadius,
       keyframes: animations.keyframes,
       animation: animations.animation,
+      backgroundImage: {
+        "hero-fade":
+          "radial-gradient(circle at center,rgba(10,10,10,0)_0%,rgba(10,10,10,.85)_100%)",
+        dots: "url('/img/dots.svg')",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

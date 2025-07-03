@@ -1,7 +1,7 @@
 
 import BlueprintPillarsHeader from "./blueprint-pillars/blueprint-pillars-header";
 import BlueprintPillarCard from "./blueprint-pillars/blueprint-pillar-card";
-import BlueprintPillarsBackground from "./blueprint-pillars/blueprint-pillars-background";
+import { SectionOverlayBox } from "@/components/layout";
 import { blueprintPillarsData } from "./blueprint-pillars/blueprint-pillars-data";
 
 interface BlueprintPillarsSectionProps {
@@ -10,10 +10,7 @@ interface BlueprintPillarsSectionProps {
 
 const BlueprintPillarsSection = ({ isVisible }: BlueprintPillarsSectionProps) => {
   return (
-    <div className={`mb-16 relative transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-      {/* More transparent background */}
-      <div className="relative bg-gray-200/5 dark:bg-gray-800/5 backdrop-blur-sm rounded-2xl p-8 border border-gray-300/5 dark:border-gray-700/5">
-        <BlueprintPillarsBackground />
+    <SectionOverlayBox className={`mb-16 relative duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
 
         <BlueprintPillarsHeader />
 
@@ -36,8 +33,7 @@ const BlueprintPillarsSection = ({ isVisible }: BlueprintPillarsSectionProps) =>
             }
           }
         `}</style>
-      </div>
-    </div>
+      </SectionOverlayBox>
   );
 };
 

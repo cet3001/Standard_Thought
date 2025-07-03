@@ -2,6 +2,7 @@
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import SEO from "@/components/seo";
+import { PageShell } from "@/components/layout";
 import FeaturedSnippets from "@/components/seo/featured-snippets";
 import LSIContent from "@/components/lsi-content";
 import SemanticContentEnhancer from "@/components/seo/semantic-content-enhancer";
@@ -51,7 +52,7 @@ const Resources = () => {
   }, []);
 
   return (
-    <div className="min-h-screen relative overflow-hidden">
+    <PageShell>
       <SEO 
         title="Hood Financial Literacy: Wealth Building Resources"
         description="Master urban investing, AI side hustles, and credit building. Complete guide to generational wealth building for beginners with street-smart money strategies."
@@ -78,7 +79,7 @@ const Resources = () => {
       </div>
 
       <ResourcesAnimations />
-    </div>
+    </PageShell>
   );
 };
 

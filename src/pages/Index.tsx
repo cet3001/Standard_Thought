@@ -7,6 +7,7 @@ import { NewsletterSection } from "@/components/newsletter-section";
 
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
+import { PageShell } from "@/components/layout";
 import SEO from "@/components/seo";
 import KeywordOptimization from "@/components/seo/keyword-optimization";
 import VoiceSearchOptimization from "@/components/seo/voice-search-optimization";
@@ -84,10 +85,9 @@ const Index = () => {
     console.log('Index.tsx: About to render JSX');
 
     return (
-      <div className="min-h-screen relative overflow-hidden">
-        {/* Site-wide Urban Background */}
-        <div className="fixed inset-0 -z-50" aria-hidden="true">
-          {/* AI-Generated or Curated Urban Texture */}
+      <PageShell>
+        {/* Background texture for enhanced visual */}
+        <div className="fixed inset-0 -z-40" aria-hidden="true">
           {textureImageUrl && (
             <div 
               className="absolute inset-0 opacity-40 bg-cover bg-center bg-fixed"
@@ -100,11 +100,7 @@ const Index = () => {
               }}
             />
           )}
-          
-          {/* Background gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-br from-slate-800/50 via-slate-700/60 to-slate-900/50"></div>
-          
-          {/* Content overlay for text readability */}
           <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/85 via-brand-cream/90 to-brand-cream/85 dark:from-brand-black/85 dark:via-brand-black/90 dark:to-brand-black/85"></div>
         </div>
 
@@ -174,7 +170,7 @@ const Index = () => {
 
         {/* Lead Magnet Popup */}
         <LeadMagnetPopup />
-      </div>
+      </PageShell>
     );
   } catch (error) {
     console.error('Index.tsx: Error in Index component:', error);

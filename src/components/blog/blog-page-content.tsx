@@ -7,6 +7,7 @@ import BlogFiltersSection from "./blog-filters-section";
 import BlogGrid from "./blog-grid";
 import RealBuilderWinsStrip from "./real-builder-wins-strip";
 import Empty from "@/components/ui/empty";
+import { SectionOverlayBox } from "@/components/layout";
 import { Post } from "@/lib/api";
 
 interface BlogPageContentProps {
@@ -81,7 +82,7 @@ const BlogPageContent = ({
       {!hasPosts ? (
         <Empty message="No posts found." />
       ) : remainingPosts.length > 0 ? (
-        <div className="mb-12">
+        <SectionOverlayBox>
           <h2 className="text-2xl font-bold text-[#0A0A0A] dark:text-brand-cream mb-6">
             More Stories
           </h2>
@@ -90,7 +91,7 @@ const BlogPageContent = ({
             onPostDeleted={onPostDeleted} 
             onThemeTagClick={onThemeTagClick}
           />
-        </div>
+        </SectionOverlayBox>
       ) : null}
 
       {/* Real Builder Wins Testimonial Strip */}

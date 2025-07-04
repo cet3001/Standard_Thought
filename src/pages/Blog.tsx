@@ -7,15 +7,17 @@ import { useMobilePerformance } from "@/hooks/use-mobile-performance";
 import { useUrbanTexture } from "@/hooks/use-urban-texture";
 import { useBuilderStories } from "@/hooks/use-builder-stories";
 import { getBlogPosts, BlogPost } from "@/lib/api";
-import { ExternalLink, Clock, Tag } from "lucide-react";
+import { ExternalLink, Clock, Tag, Quote } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const Blog = () => {
   useMobilePerformance();
   const { textureImageUrl } = useUrbanTexture();
   const { stories, loading } = useBuilderStories(5);
+  const { stories: testimonials } = useBuilderStories(15); // Get more for testimonials
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   const [blogLoading, setBlogLoading] = useState(true);
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const navigate = useNavigate();
 
@@ -37,6 +39,17 @@ const Blog = () => {
     
     fetchBlogPosts();
   }, []);
+
+  // Rotate testimonials every 4 seconds
+  useEffect(() => {
+    if (testimonials.length > 0) {
+      const interval = setInterval(() => {
+        setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+      }, 4000);
+      
+      return () => clearInterval(interval);
+    }
+  }, [testimonials.length]);
 
   const breadcrumbs = [
     { name: "Home", url: "https://www.standardthought.com", position: 1 },
@@ -432,6 +445,97 @@ const Blog = () => {
                 </div>
               </div>
             )}
+          </SectionOverlayBox>
+
+          {/* Real Builder Wins (Testimonial Strip) */}
+          <SectionOverlayBox className={`mb-24 transition-all duration-700 delay-900 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            {/* Street Cred Badge */}
+            <div className="flex items-center justify-center mb-8">
+              <div className="relative">
+                {/* Graffiti-style badge */}
+                <div className="bg-[#FFD700] px-6 py-3 transform -rotate-2 shadow-lg relative">
+                  {/* Hand-drawn border */}
+                  <svg
+                    className="absolute inset-0 w-full h-full text-gray-900"
+                    viewBox="0 0 150 50"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M3 3L147 4L146 47L4 46Z"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      fill="none"
+                      opacity="0.4"
+                      strokeDasharray="2,1"
+                    />
+                  </svg>
+                  <span className="relative font-permanent-marker text-lg text-gray-900 font-bold">
+                    STREET CRED ✓
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Rotating Testimonial */}
+            {testimonials.length > 0 && (
+              <div className="text-center relative">
+                {/* Background decorative quotes */}
+                <div className="absolute -top-4 -left-4 text-[#FFD700]/20 text-6xl font-bold">
+                  <Quote size={60} />
+                </div>
+                <div className="absolute -bottom-4 -right-4 text-[#FFD700]/20 text-6xl font-bold transform rotate-180">
+                  <Quote size={60} />
+                </div>
+
+                {/* Main testimonial */}
+                <div className="relative z-10 max-w-4xl mx-auto">
+                  <blockquote className="text-2xl md:text-3xl font-kalam text-brand-black dark:text-brand-cream leading-relaxed mb-6 italic transform transition-all duration-500">
+                    "{testimonials[currentTestimonial]?.quote}"
+                  </blockquote>
+                  
+                  {/* Attribution */}
+                  <div className="flex items-center justify-center">
+                    <div className="font-comic-neue text-lg text-brand-black/80 dark:text-brand-cream/80">
+                      <span className="font-bold">—{testimonials[currentTestimonial]?.name}</span>
+                      <span className="text-[#FFD700] mx-2">•</span>
+                      <span>{testimonials[currentTestimonial]?.city_area}</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Testimonial indicators */}
+                <div className="flex justify-center mt-8 space-x-2">
+                  {testimonials.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentTestimonial(index)}
+                      className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                        index === currentTestimonial
+                          ? 'bg-[#FFD700] scale-125'
+                          : 'bg-gray-300 dark:bg-gray-600 hover:bg-[#FFD700]/50'
+                      }`}
+                      aria-label={`View testimonial ${index + 1}`}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Handwritten note effect */}
+            <div className="absolute -bottom-6 -right-6 transform rotate-12">
+              <div className="bg-yellow-200 p-3 shadow-lg">
+                <p className="font-kalam text-sm text-gray-800 leading-tight">
+                  Real builders<br />
+                  Real wins ✨
+                </p>
+              </div>
+            </div>
+
+            {/* Urban texture overlay */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-5" aria-hidden="true">
+              <div className="absolute bottom-10 left-10 w-24 h-24 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTAgMEg0MFY0MEgwVjBaIiBmaWxsPSJibGFjayIgZmlsbC1vcGFjaXR5PSIwLjEiLz4KPHBhdGggZD0iTTIwIDJMMzggMjBMMjAgMzhMMiAyMEwyMCAyWiIgZmlsbD0iYmxhY2siIGZpbGwtb3BhY2l0eT0iMC4wNSIvPgo8L3N2Zz4K')] opacity-30"></div>
+            </div>
           </SectionOverlayBox>
 
           {/* Coming Soon Content */}

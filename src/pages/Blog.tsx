@@ -924,18 +924,27 @@ const Blog = () => {
                   About the Journey
                   {/* Handwritten underline */}
                   <svg
-                    className="absolute -bottom-3 left-0 w-full h-4 text-[#FFD700]/50"
+                    className="absolute -bottom-3 left-0 w-full h-4"
                     viewBox="0 0 400 20"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M5 15C25 12 45 8 65 10C85 12 105 8 125 12C145 16 165 8 185 12C205 16 225 12 245 15C265 18 285 10 305 14C325 18 345 12 365 16C385 20 395 18 395 16"
-                      stroke="currentColor"
+                      stroke="url(#gradient8)"
                       strokeWidth="2"
                       strokeLinecap="round"
                       fill="none"
                     />
+                    <defs>
+                      <linearGradient id="gradient8" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style={{ stopColor: '#f4d03f' }} />
+                        <stop offset="25%" style={{ stopColor: '#ffd700' }} />
+                        <stop offset="50%" style={{ stopColor: '#ffeb3b' }} />
+                        <stop offset="75%" style={{ stopColor: '#fff176' }} />
+                        <stop offset="100%" style={{ stopColor: '#f4d03f' }} />
+                      </linearGradient>
+                    </defs>
                   </svg>
                 </h3>
               </div>
@@ -1142,7 +1151,10 @@ const Blog = () => {
                 We're collecting authentic stories from builders who made it out the struggle. 
                 First-gen entrepreneurs, street-smart hustlers, and folks who turned vision into reality.
               </p>
-              <div className="bg-[#FFD700]/20 rounded-lg p-4 border border-[#FFD700]/30">
+                <div className="rounded-lg p-4 border" style={{
+                  background: 'linear-gradient(45deg, rgba(244, 208, 63, 0.2), rgba(255, 215, 0, 0.2))',
+                  borderColor: 'rgba(255, 215, 0, 0.3)'
+                }}>
                 <p className="text-brand-black dark:text-brand-cream font-medium">
                   Got a story to share? Your journey could inspire the next builder.
                 </p>

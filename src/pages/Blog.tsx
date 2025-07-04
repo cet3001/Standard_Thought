@@ -353,9 +353,13 @@ const Blog = () => {
             <div className="text-center mb-8 relative z-10">
               <div className="relative inline-block mb-6">
                 <h3 className="text-4xl md:text-5xl font-black text-brand-black dark:text-brand-cream font-ibm-plex-mono">
-                  BLOG{" "}
+                  STACKED{" "}
                   <span className="font-permanent-marker text-[#FFD700] transform -rotate-1">
-                    LIBRARY
+                    STORIES
+                  </span>
+                  <br />
+                  <span className="text-2xl md:text-3xl font-permanent-marker text-brand-black dark:text-brand-cream transform rotate-1">
+                    The Hustler's Collection
                   </span>
                   {/* Torn paper underline */}
                   <svg
@@ -375,7 +379,7 @@ const Blog = () => {
                 </h3>
               </div>
               <p className="text-lg text-brand-black/70 dark:text-brand-cream/70 max-w-2xl mx-auto font-kalam mb-8">
-                Dive deep into the vault. Filter by topic and find exactly what you need to level up your game.
+                From setbacks to stacks—browse by category and get the real game from those who built it brick by brick.
               </p>
               
               {/* Category Filter Dropdown */}

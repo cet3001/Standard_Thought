@@ -2,9 +2,14 @@
 import Logo from "./navigation/logo";
 import MobileMenu from "./navigation/mobile-menu";
 import { useUrbanTexture } from "@/hooks/use-urban-texture";
+import { useAuth } from "@/contexts/AuthContext";
+import { Link } from "react-router-dom";
+import { Plus } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const Navigation = () => {
   const { textureImageUrl } = useUrbanTexture();
+  const { isAdmin } = useAuth();
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50">
@@ -49,9 +54,28 @@ const Navigation = () => {
               <Logo />
             </div>
 
-            {/* Right side - empty for now */}
+            {/* Right side - Create Story button for admins */}
             <div className="flex items-center flex-shrink-0">
-              {/* Removed Create Story button */}
+              {isAdmin && (
+                <Link to="/create-post">
+                  <Button
+                    className="bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFA500] text-black font-bold px-4 py-2 rounded-2xl hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl border-0 font-ibm-plex-mono"
+                  >
+                    <Plus className="mr-2 h-4 w-4" />
+                    <span 
+                      style={{ 
+                        fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
+                        textShadow: '1px 1px 0px rgba(0,0,0,0.3)',
+                        transform: 'rotate(-1deg)',
+                        display: 'inline-block',
+                        fontSize: '14px'
+                      }}
+                    >
+                      Create Story
+                    </span>
+                  </Button>
+                </Link>
+              )}
             </div>
           </div>
         </div>

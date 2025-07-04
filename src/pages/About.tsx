@@ -67,6 +67,12 @@ const About = () => {
       <main className="relative z-10">
         {/* Hero Section: "Unlock Your Mindset Arsenal" */}
         <section className="pt-40 pb-32 relative overflow-hidden">
+          {/* Floating Elements */}
+          <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+            <div className="absolute top-20 right-10 w-32 h-32 rounded-full bg-[#FFD700]/10 animate-float"></div>
+            <div className="absolute bottom-40 left-10 w-24 h-24 rounded-2xl bg-[#f4d03f]/15 animate-float" style={{ animationDelay: '2s' }}></div>
+          </div>
+
           <div className="container mx-auto px-6 relative z-10">
             <div className="max-w-6xl mx-auto">
               
@@ -162,6 +168,23 @@ const About = () => {
 
         {/* The Real About Mindset Section */}
         <section className="py-32 relative overflow-hidden">
+          {/* Torn paper grain overlay effects */}
+          <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+            <div 
+              className="absolute inset-0 opacity-15"
+              style={{
+                background: `
+                  radial-gradient(circle at 20% 30%, rgba(244,208,63,0.08) 1px, transparent 1px),
+                  radial-gradient(circle at 70% 60%, rgba(255,215,0,0.06) 1px, transparent 1px),
+                  radial-gradient(circle at 40% 80%, rgba(244,208,63,0.04) 1px, transparent 1px)
+                `,
+                backgroundSize: '15px 15px, 25px 25px, 35px 35px'
+              }}
+            ></div>
+            <div className="absolute top-32 left-10 w-20 h-20 rounded-lg bg-[#f4d03f]/10 animate-float" style={{ animationDelay: '1s' }}></div>
+            <div className="absolute bottom-20 right-16 w-16 h-16 rounded-full bg-[#ffd700]/15 animate-float" style={{ animationDelay: '3s' }}></div>
+          </div>
+
           <div className="container mx-auto px-6 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
               
@@ -284,6 +307,23 @@ const About = () => {
 
         {/* Standard Thought Codes Section */}
         <section className="py-32 relative overflow-hidden">
+          {/* Spray-paint overlay effects */}
+          <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+            <div 
+              className="absolute inset-0 opacity-12"
+              style={{
+                background: `
+                  radial-gradient(ellipse at 10% 20%, rgba(244,208,63,0.08) 0%, transparent 50%),
+                  radial-gradient(ellipse at 80% 70%, rgba(255,215,0,0.06) 0%, transparent 50%),
+                  radial-gradient(ellipse at 40% 40%, rgba(244,208,63,0.04) 0%, transparent 50%)
+                `,
+                backgroundSize: '300px 200px, 250px 300px, 400px 250px'
+              }}
+            ></div>
+            <div className="absolute top-20 right-20 w-28 h-28 rounded-2xl bg-[#f4d03f]/8 animate-float" style={{ animationDelay: '2.5s' }}></div>
+            <div className="absolute bottom-32 left-16 w-20 h-20 rounded-full bg-[#ffd700]/12 animate-float" style={{ animationDelay: '4s' }}></div>
+          </div>
+
           <div className="container mx-auto px-6 relative z-10">
             <div className="max-w-6xl mx-auto">
               
@@ -485,6 +525,22 @@ const About = () => {
 
         {/* Featured Mindset Tools Section */}
         <section className="py-32 relative overflow-hidden">
+          {/* Hand-cut border overlay effects */}
+          <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+            <div 
+              className="absolute inset-0 opacity-8"
+              style={{
+                background: `
+                  repeating-linear-gradient(45deg, rgba(244,208,63,0.06) 0px, transparent 2px, transparent 8px, rgba(244,208,63,0.03) 10px),
+                  repeating-linear-gradient(-45deg, rgba(255,215,0,0.04) 0px, transparent 3px, transparent 12px, rgba(255,215,0,0.02) 15px)
+                `,
+                backgroundSize: '20px 20px, 25px 25px'
+              }}
+            ></div>
+            <div className="absolute top-40 left-12 w-24 h-24 rounded-lg bg-[#f4d03f]/8 animate-float" style={{ animationDelay: '1.5s' }}></div>
+            <div className="absolute bottom-28 right-20 w-20 h-20 rounded-full bg-[#ffd700]/10 animate-float" style={{ animationDelay: '3.5s' }}></div>
+          </div>
+
           <div className="container mx-auto px-6 relative z-10">
             <div className="max-w-6xl mx-auto">
               
@@ -703,6 +759,24 @@ const About = () => {
 
         {/* Real Builder Stories Section */}
         <section className="py-32 relative overflow-hidden">
+          {/* Polaroid photo overlay effects */}
+          <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+            <div 
+              className="absolute inset-0 opacity-6"
+              style={{
+                background: `
+                  radial-gradient(circle at 25% 25%, rgba(244,208,63,0.04) 0%, transparent 40%),
+                  radial-gradient(circle at 75% 75%, rgba(255,215,0,0.03) 0%, transparent 40%),
+                  radial-gradient(circle at 50% 90%, rgba(244,208,63,0.02) 0%, transparent 30%)
+                `,
+                backgroundSize: '400px 400px, 350px 350px, 300px 300px'
+              }}
+            ></div>
+            <div className="absolute top-24 right-12 w-16 h-16 rounded-lg bg-[#f4d03f]/6 animate-float" style={{ animationDelay: '2s' }}></div>
+            <div className="absolute bottom-40 left-20 w-12 h-12 rounded-full bg-[#ffd700]/8 animate-float" style={{ animationDelay: '4.5s' }}></div>
+            <div className="absolute top-1/2 left-8 w-8 h-8 rounded-sm bg-[#f4d03f]/5 animate-float" style={{ animationDelay: '1.5s' }}></div>
+          </div>
+
           <div className="container mx-auto px-6 relative z-10">
             <div className="max-w-6xl mx-auto">
               

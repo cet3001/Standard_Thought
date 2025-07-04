@@ -439,77 +439,80 @@ const Blog = () => {
                   <CarouselContent className="-ml-2 md:-ml-4">
                     {getFilteredPosts().map((post, index) => (
                       <CarouselItem key={post.id} className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/4">
-                        <div
-                          className="group cursor-pointer transform transition-all duration-300 hover:scale-105 hover:-translate-y-2"
-                          onClick={() => navigate(`/blog/${post.slug}`)}
-                        >
-                          {/* Sticky Note Card */}
-                          <div className="relative">
-                            {/* Torn paper background */}
-                            <div className="absolute -inset-1 bg-yellow-100 dark:bg-yellow-200 transform rotate-1 rounded-lg shadow-lg"></div>
-                            <div className="relative bg-white dark:bg-gray-900 rounded-lg overflow-hidden shadow-lg border-2 border-gray-200 dark:border-gray-700 transform -rotate-1 group-hover:rotate-0 transition-transform duration-300">
-                              
-                              {/* Urban texture overlay */}
-                              <div className="absolute inset-0 bg-gradient-to-br from-transparent via-[#FFD700]/5 to-transparent opacity-60"></div>
-                              
-                              {/* Featured image or placeholder */}
-                              <div className="relative h-36 bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800 overflow-hidden">
-                                {post.image_url ? (
-                                  <img
-                                    src={post.image_url}
-                                    alt={post.title}
-                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                                  />
-                                ) : (
-                                  <div className="w-full h-full flex items-center justify-center">
-                                    <div className="text-4xl font-permanent-marker text-[#FFD700]/60 transform -rotate-12">
-                                      ST
-                                    </div>
-                                  </div>
-                                )}
-                                
-                                {/* Category badge */}
-                                <div className="absolute top-2 left-2">
-                                  <div className="bg-[#FFD700] px-2 py-1 transform -rotate-3 shadow-md">
-                                    <span className="text-xs font-bold text-gray-900 uppercase tracking-wide">
-                                      {post.category}
-                                    </span>
-                                  </div>
-                                </div>
+                         <div
+                           className="group cursor-pointer transform transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1"
+                           onClick={() => navigate(`/blog/${post.slug}`)}
+                         >
+                           {/* Glass Card */}
+                           <div className="relative h-full">
+                             {/* Glass background with backdrop blur */}
+                             <div className="relative bg-white/20 dark:bg-gray-900/25 backdrop-blur-md rounded-xl overflow-hidden shadow-2xl border border-white/30 dark:border-gray-700/40 transform transition-all duration-500 group-hover:bg-white/30 dark:group-hover:bg-gray-900/35 group-hover:shadow-3xl group-hover:border-white/40 dark:group-hover:border-gray-600/50">
+                               
+                               {/* Grain texture overlay */}
+                               <div className="absolute inset-0 opacity-[0.015] bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8ZGVmcz4KICAgIDxmaWx0ZXIgaWQ9Im5vaXNlRmlsdGVyIj4KICAgICAgPGZlVHVyYnVsZW5jZSBiYXNlRnJlcXVlbmN5PSIwLjkiIG51bU9jdGF2ZXM9IjQiIHNlZWQ9IjIiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjbm9pc2VGaWx0ZXIpIiBvcGFjaXR5PSIwLjQiLz4KPC9zdmc+')] pointer-events-none"></div>
+                               
+                               {/* Featured image or placeholder */}
+                               <div className="relative h-36 bg-gradient-to-br from-gray-400/20 to-gray-600/20 dark:from-gray-600/20 dark:to-gray-800/20 overflow-hidden">
+                                 {post.image_url ? (
+                                   <img
+                                     src={post.image_url}
+                                     alt={post.title}
+                                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-90"
+                                   />
+                                 ) : (
+                                   <div className="w-full h-full flex items-center justify-center">
+                                     <div className="text-4xl font-permanent-marker text-brand-pearlescent-light/60 transform -rotate-12 drop-shadow-lg">
+                                       ST
+                                     </div>
+                                   </div>
+                                 )}
+                                 
+                                 {/* Glass overlay on image */}
+                                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+                                 
+                                 {/* Category badge - Graffiti style */}
+                                 <div className="absolute top-3 left-3">
+                                   <div className="bg-brand-pearlescent-light/90 px-3 py-1.5 transform -rotate-2 shadow-lg backdrop-blur-sm border border-yellow-400/30 rounded-sm">
+                                     <span className="text-xs font-bold text-gray-900 uppercase tracking-wide font-permanent-marker drop-shadow-sm">
+                                       {post.category}
+                                     </span>
+                                   </div>
+                                 </div>
 
-                                {/* Read time */}
-                                <div className="absolute bottom-2 right-2 bg-black/60 backdrop-blur-sm rounded-full px-2 py-1 flex items-center gap-1">
-                                  <Clock size={10} className="text-white" />
-                                  <span className="text-xs text-white">
-                                    {Math.ceil(post.content.length / 1000)}m
-                                  </span>
-                                </div>
-                              </div>
+                                 {/* Read time */}
+                                 <div className="absolute bottom-3 right-3 bg-black/70 backdrop-blur-md rounded-full px-3 py-1.5 flex items-center gap-1.5 border border-white/20">
+                                   <Clock size={11} className="text-white" />
+                                   <span className="text-xs text-white font-medium">
+                                     {Math.ceil(post.content.length / 1000)}m
+                                   </span>
+                                 </div>
+                               </div>
 
-                              {/* Content */}
-                              <div className="p-4 relative">
-                                {/* Typewriter title */}
-                                <h4 className="font-bold text-lg text-brand-black dark:text-brand-cream mb-2 font-ibm-plex-mono leading-tight group-hover:text-[#FFD700] dark:group-hover:text-[#FFD700] transition-colors duration-200 line-clamp-2">
-                                  {post.title}
-                                </h4>
+                               {/* Content */}
+                               <div className="p-5 relative">
+                                 {/* Typewriter title */}
+                                 <h4 className="font-bold text-lg text-white dark:text-brand-cream mb-3 font-ibm-plex-mono leading-tight group-hover:text-brand-pearlescent-light transition-colors duration-300 line-clamp-2 drop-shadow-sm">
+                                   {post.title}
+                                 </h4>
 
-                                {/* Excerpt */}
-                                <p className="text-brand-black/70 dark:text-brand-cream/70 text-sm leading-relaxed mb-3 line-clamp-2">
-                                  {post.excerpt}
-                                </p>
+                                 {/* Excerpt */}
+                                 <p className="text-white/80 dark:text-brand-cream/80 text-sm leading-relaxed mb-4 line-clamp-2">
+                                   {post.excerpt}
+                                 </p>
 
-                                {/* Read More */}
-                                <div className="flex items-center gap-1 text-[#FFD700] group-hover:translate-x-1 transition-transform duration-200">
-                                  <span className="text-sm font-bold">Read</span>
-                                  <ExternalLink size={12} />
-                                </div>
-                              </div>
+                                 {/* Read More Button - Spray painted style */}
+                                 <div className="inline-flex items-center gap-2 bg-brand-pearlescent-light/90 hover:bg-brand-pearlescent-light text-gray-900 px-4 py-2 rounded-lg font-bold text-sm transform hover:scale-105 transition-all duration-200 shadow-lg border border-yellow-400/30 backdrop-blur-sm">
+                                   <span className="font-permanent-marker">Read Story</span>
+                                   <ExternalLink size={14} className="group-hover:translate-x-0.5 transition-transform duration-200" />
+                                 </div>
+                               </div>
 
-                              {/* Tape effect */}
-                              <div className="absolute top-4 -right-2 w-8 h-4 bg-yellow-300/60 transform rotate-45 shadow-sm"></div>
-                            </div>
-                          </div>
-                        </div>
+                               {/* Irregular edge effect */}
+                               <div className="absolute top-2 right-2 w-6 h-6 bg-brand-pearlescent-light/20 transform rotate-45 rounded-sm opacity-60"></div>
+                               <div className="absolute bottom-2 left-2 w-4 h-4 bg-white/10 transform -rotate-12 rounded-full opacity-40"></div>
+                             </div>
+                           </div>
+                         </div>
                       </CarouselItem>
                     ))}
                   </CarouselContent>

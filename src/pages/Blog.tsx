@@ -262,13 +262,13 @@ const Blog = () => {
                            </div>
                          </div>
 
-                         {/* Read time estimate */}
-                         <div className="absolute bottom-3 right-3 bg-black/70 backdrop-blur-md rounded-full px-3 py-1.5 flex items-center gap-1.5 border border-white/20">
-                           <Clock size={12} className="text-white" />
-                           <span className="text-xs text-white font-medium">
-                             {Math.ceil(post.content.length / 1000)} min
-                           </span>
-                         </div>
+                          {/* Read time estimate */}
+                          <div className="absolute bottom-3 right-3 bg-black/70 backdrop-blur-md rounded-full px-3 py-1.5 flex items-center gap-1.5 border border-white/20">
+                            <Clock size={12} className="text-brand-pearlescent-light" />
+                            <span className="text-xs text-brand-pearlescent-light font-medium">
+                              {Math.ceil(post.content.length / 1000)} min
+                            </span>
+                          </div>
                        </div>
 
                        {/* Content */}
@@ -289,10 +289,10 @@ const Blog = () => {
                              {post.tags.slice(0, 3).map((tag, tagIndex) => (
                                <div
                                  key={tagIndex}
-                                 className="flex items-center gap-1 bg-white/10 backdrop-blur-sm px-2 py-1 rounded-full border border-white/20"
+                                 className="flex items-center gap-1 bg-brand-pearlescent-light/20 backdrop-blur-sm px-2 py-1 rounded-full border border-brand-pearlescent-light/30"
                                >
                                  <Tag size={10} className="text-brand-pearlescent-light" />
-                                 <span className="text-xs text-white font-medium">
+                                 <span className="text-xs text-brand-pearlescent-light font-medium">
                                    {tag}
                                  </span>
                                </div>
@@ -302,10 +302,10 @@ const Blog = () => {
 
                          {/* Read More link */}
                          <div className="flex items-center justify-between">
-                           <span className="text-sm text-white/60 dark:text-brand-cream/60">
+                           <span className="text-sm text-brand-pearlescent-light/80">
                              {new Date(post.created_at).toLocaleDateString()}
                            </span>
-                           <div className="inline-flex items-center gap-2 bg-brand-pearlescent-light/90 hover:bg-brand-pearlescent-light text-gray-900 px-3 py-1.5 rounded-lg font-bold text-sm transform hover:scale-105 transition-all duration-200 shadow-lg border border-yellow-400/30 backdrop-blur-sm">
+                           <div className="inline-flex items-center gap-2 bg-brand-pearlescent-light text-gray-900 px-3 py-1.5 rounded-lg font-bold text-sm transform hover:scale-105 transition-all duration-200 shadow-lg border border-yellow-400/30 backdrop-blur-sm hover:bg-brand-pearlescent-light/90">
                              <span className="font-permanent-marker">Read More</span>
                              <ExternalLink size={14} className="group-hover:translate-x-0.5 transition-transform duration-200" />
                            </div>
@@ -468,13 +468,13 @@ const Blog = () => {
                                    </div>
                                  </div>
 
-                                 {/* Read time */}
-                                 <div className="absolute bottom-3 right-3 bg-black/70 backdrop-blur-md rounded-full px-3 py-1.5 flex items-center gap-1.5 border border-white/20">
-                                   <Clock size={11} className="text-white" />
-                                   <span className="text-xs text-white font-medium">
-                                     {Math.ceil(post.content.length / 1000)}m
-                                   </span>
-                                 </div>
+                                  {/* Read time */}
+                                  <div className="absolute bottom-3 right-3 bg-black/70 backdrop-blur-md rounded-full px-3 py-1.5 flex items-center gap-1.5 border border-white/20">
+                                    <Clock size={11} className="text-brand-pearlescent-light" />
+                                    <span className="text-xs text-brand-pearlescent-light font-medium">
+                                      {Math.ceil(post.content.length / 1000)}m
+                                    </span>
+                                  </div>
                                </div>
 
                                {/* Content */}

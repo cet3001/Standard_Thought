@@ -910,9 +910,17 @@ const Blog = () => {
             <div className="text-center mb-12 relative z-10">
               <div className="relative inline-block mb-6">
                 <h3 className="text-4xl md:text-5xl font-black text-brand-black dark:text-brand-cream relative">
-                  <span className="font-permanent-marker text-[#FFD700] transform -rotate-1 mr-4">
-                    REAL TALK
-                  </span>
+                   <span className="font-permanent-marker transform -rotate-1 mr-4" style={{
+                     color: 'transparent',
+                     background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                     backgroundSize: '400% 400%',
+                     WebkitBackgroundClip: 'text',
+                     WebkitTextFillColor: 'transparent',
+                     backgroundClip: 'text',
+                     animation: 'pearlescent 3s ease-in-out infinite'
+                   }}>
+                     REAL TALK
+                   </span>
                   About the Journey
                   {/* Handwritten underline */}
                   <svg
@@ -941,13 +949,16 @@ const Blog = () => {
               
               {/* FAQ 1 */}
               <div className="group">
-                <div className="flex items-start gap-4 p-6 bg-white/50 dark:bg-gray-900/50 rounded-lg border-l-4 border-[#FFD700] hover:bg-white/70 dark:hover:bg-gray-900/70 transition-all duration-300">
-                  {/* Graffiti icon */}
-                  <div className="flex-shrink-0 mt-1">
-                    <div className="relative">
-                      <div className="w-12 h-12 bg-[#FFD700] rounded-full flex items-center justify-center transform -rotate-6 group-hover:rotate-0 transition-transform duration-300">
-                        <TrendingUp size={24} className="text-gray-900" />
-                      </div>
+                 <div className="flex items-start gap-4 p-6 bg-white/50 dark:bg-gray-900/50 rounded-lg border-l-4 hover:bg-white/70 dark:hover:bg-gray-900/70 transition-all duration-300" style={{ borderLeftColor: '#ffd700' }}>
+                   <div className="flex-shrink-0 mt-1">
+                     <div className="relative">
+                       <div className="w-12 h-12 rounded-full flex items-center justify-center transform -rotate-6 group-hover:rotate-0 transition-transform duration-300" style={{
+                         background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                         backgroundSize: '400% 400%',
+                         animation: 'pearlescent 3s ease-in-out infinite'
+                       }}>
+                         <TrendingUp size={24} className="text-gray-900" />
+                       </div>
                       {/* Hand-drawn circle */}
                       <svg
                         className="absolute inset-0 w-full h-full text-[#FFD700]/60"

@@ -65,34 +65,6 @@ const About = () => {
       <main className="relative z-10">
         {/* Hero Section: "Unlock Your Mindset Arsenal" */}
         <section className="pt-40 pb-32 relative overflow-hidden">
-          {/* Enhanced Urban Background with Better Texture Visibility - Identical overlay pattern */}
-          <div className="absolute inset-0" aria-hidden="true">
-            {/* AI-Generated or Curated Urban Texture */}
-            {textureImageUrl && (
-              <div 
-                className="absolute inset-0 opacity-50 bg-cover bg-center"
-                style={{
-                  backgroundImage: `url(${textureImageUrl})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  backgroundRepeat: 'no-repeat'
-                }}
-              />
-            )}
-            
-            {/* Background gradient overlay - lighter for better texture visibility */}
-            <div className="absolute inset-0 bg-gradient-to-br from-slate-800/40 via-slate-700/50 to-slate-900/40"></div>
-            
-            {/* Content overlay for text readability - reduced opacity */}
-            <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/70 via-brand-cream/75 to-brand-cream/80 dark:from-brand-black/70 dark:via-brand-black/75 dark:to-brand-black/80"></div>
-          </div>
-
-          {/* Floating Elements - Same as homepage */}
-          <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-            <div className="absolute top-20 right-10 w-32 h-32 rounded-full bg-[#FFD700]/10 animate-float"></div>
-            <div className="absolute bottom-40 left-10 w-24 h-24 rounded-2xl bg-[#247EFF]/20 animate-float" style={{ animationDelay: '2s' }}></div>
-          </div>
-
           <div className="container mx-auto px-6 relative z-10">
             <div className="max-w-6xl mx-auto">
               
@@ -188,38 +160,6 @@ const About = () => {
 
         {/* The Real About Mindset Section */}
         <section className="py-32 relative overflow-hidden">
-          {/* Torn-paper/Grain overlay background */}
-          <div className="absolute inset-0" aria-hidden="true">
-            {/* Base texture layer */}
-            {textureImageUrl && (
-              <div 
-                className="absolute inset-0 opacity-30 bg-cover bg-center"
-                style={{
-                  backgroundImage: `url(${textureImageUrl})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  backgroundRepeat: 'no-repeat'
-                }}
-              />
-            )}
-            
-            {/* Torn paper effect overlay */}
-            <div 
-              className="absolute inset-0 opacity-20"
-              style={{
-                background: `
-                  radial-gradient(circle at 20% 30%, rgba(0,0,0,0.1) 1px, transparent 1px),
-                  radial-gradient(circle at 70% 60%, rgba(0,0,0,0.08) 1px, transparent 1px),
-                  radial-gradient(circle at 40% 80%, rgba(0,0,0,0.06) 1px, transparent 1px)
-                `,
-                backgroundSize: '15px 15px, 25px 25px, 35px 35px'
-              }}
-            ></div>
-            
-            {/* Content overlay */}
-            <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/95 via-brand-cream/98 to-brand-cream/95 dark:from-brand-black/95 dark:via-brand-black/98 dark:to-brand-black/95"></div>
-          </div>
-
           <div className="container mx-auto px-6 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
               
@@ -342,38 +282,6 @@ const About = () => {
 
         {/* Standard Thought Codes Section */}
         <section className="py-32 relative overflow-hidden">
-          {/* Spray-paint/torn-paper background effects */}
-          <div className="absolute inset-0" aria-hidden="true">
-            {/* Base urban texture */}
-            {textureImageUrl && (
-              <div 
-                className="absolute inset-0 opacity-25 bg-cover bg-center"
-                style={{
-                  backgroundImage: `url(${textureImageUrl})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  backgroundRepeat: 'no-repeat'
-                }}
-              />
-            )}
-            
-            {/* Spray-paint effect overlay */}
-            <div 
-              className="absolute inset-0 opacity-15"
-              style={{
-                background: `
-                  radial-gradient(ellipse at 10% 20%, rgba(244,208,63,0.1) 0%, transparent 50%),
-                  radial-gradient(ellipse at 80% 70%, rgba(255,215,0,0.08) 0%, transparent 50%),
-                  radial-gradient(ellipse at 40% 40%, rgba(244,208,63,0.06) 0%, transparent 50%)
-                `,
-                backgroundSize: '300px 200px, 250px 300px, 400px 250px'
-              }}
-            ></div>
-            
-            {/* Content overlay */}
-            <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/92 via-brand-cream/95 to-brand-cream/92 dark:from-brand-black/92 dark:via-brand-black/95 dark:to-brand-black/92"></div>
-          </div>
-
           <div className="container mx-auto px-6 relative z-10">
             <div className="max-w-6xl mx-auto">
               
@@ -575,37 +483,6 @@ const About = () => {
 
         {/* Featured Mindset Tools Section */}
         <section className="py-32 relative overflow-hidden">
-          {/* Urban texture background */}
-          <div className="absolute inset-0" aria-hidden="true">
-            {/* Base urban texture */}
-            {textureImageUrl && (
-              <div 
-                className="absolute inset-0 opacity-30 bg-cover bg-center"
-                style={{
-                  backgroundImage: `url(${textureImageUrl})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  backgroundRepeat: 'no-repeat'
-                }}
-              />
-            )}
-            
-            {/* Hand-cut border effect overlay */}
-            <div 
-              className="absolute inset-0 opacity-10"
-              style={{
-                background: `
-                  repeating-linear-gradient(45deg, rgba(244,208,63,0.1) 0px, transparent 2px, transparent 8px, rgba(244,208,63,0.05) 10px),
-                  repeating-linear-gradient(-45deg, rgba(255,215,0,0.08) 0px, transparent 3px, transparent 12px, rgba(255,215,0,0.04) 15px)
-                `,
-                backgroundSize: '20px 20px, 25px 25px'
-              }}
-            ></div>
-            
-            {/* Content overlay */}
-            <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/93 via-brand-cream/96 to-brand-cream/93 dark:from-brand-black/93 dark:via-brand-black/96 dark:to-brand-black/93"></div>
-          </div>
-
           <div className="container mx-auto px-6 relative z-10">
             <div className="max-w-6xl mx-auto">
               

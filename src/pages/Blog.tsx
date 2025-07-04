@@ -6,16 +6,36 @@ import { SectionOverlayBox } from "@/components/layout";
 import { useMobilePerformance } from "@/hooks/use-mobile-performance";
 import { useUrbanTexture } from "@/hooks/use-urban-texture";
 import { useBuilderStories } from "@/hooks/use-builder-stories";
-import { ExternalLink } from "lucide-react";
+import { getBlogPosts, BlogPost } from "@/lib/api";
+import { ExternalLink, Clock, Tag } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Blog = () => {
   useMobilePerformance();
   const { textureImageUrl } = useUrbanTexture();
   const { stories, loading } = useBuilderStories(5);
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
+  const [blogLoading, setBlogLoading] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsVisible(true);
+    
+    // Fetch blog posts
+    const fetchBlogPosts = async () => {
+      try {
+        setBlogLoading(true);
+        const posts = await getBlogPosts();
+        setBlogPosts(posts);
+      } catch (error) {
+        console.error('Error fetching blog posts:', error);
+      } finally {
+        setBlogLoading(false);
+      }
+    };
+    
+    fetchBlogPosts();
   }, []);
 
   const breadcrumbs = [
@@ -256,6 +276,162 @@ const Blog = () => {
             <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-5" aria-hidden="true">
               <div className="absolute top-10 right-10 w-32 h-32 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTAgMEg0MFY0MEgwVjBaIiBmaWxsPSJibGFjayIgZmlsbC1vcGFjaXR5PSIwLjEiLz4KPHBhdGggZD0iTTIwIDJMMzggMjBMMjAgMzhMMiAyMEwyMCAyWiIgZmlsbD0iYmxhY2siIGZpbGwtb3BhY2l0eT0iMC4wNSIvPgo8L3N2Zz4K')] opacity-30"></div>
             </div>
+          </SectionOverlayBox>
+
+          {/* Latest Stories Blog Grid */}
+          <SectionOverlayBox className={`mb-24 transition-all duration-700 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            {/* Section Header */}
+            <div className="text-center mb-12">
+              <div className="relative inline-block mb-6">
+                <h3 className="text-4xl md:text-5xl font-black text-brand-black dark:text-brand-cream font-ibm-plex-mono">
+                  LATEST{" "}
+                  <span className="font-permanent-marker text-[#FFD700] transform rotate-1">
+                    STORIES
+                  </span>
+                  {/* Typewriter underline */}
+                  <svg
+                    className="absolute -bottom-2 left-0 w-full h-2 text-[#FFD700]/40"
+                    viewBox="0 0 300 12"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <rect x="0" y="8" width="300" height="2" fill="currentColor" opacity="0.6" />
+                    <rect x="0" y="10" width="280" height="1" fill="currentColor" opacity="0.3" />
+                  </svg>
+                </h3>
+              </div>
+              <p className="text-lg text-brand-black/70 dark:text-brand-cream/70 max-w-2xl mx-auto">
+                Fresh blueprints and real talk from builders making moves in the streets and boardrooms.
+              </p>
+            </div>
+
+            {/* Blog Posts Grid */}
+            {blogLoading ? (
+              <div className="text-center py-12">
+                <p className="text-brand-black/60 dark:text-brand-cream/60">Loading latest stories...</p>
+              </div>
+            ) : blogPosts.length > 0 ? (
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {blogPosts.map((post, index) => (
+                  <div
+                    key={post.id}
+                    className="group cursor-pointer transform transition-all duration-300 hover:scale-105 hover:-translate-y-1"
+                    onClick={() => navigate(`/blog/${post.slug}`)}
+                    style={{ animationDelay: `${index * 150}ms` }}
+                  >
+                    {/* Card */}
+                    <div className="relative bg-white dark:bg-gray-900 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200 dark:border-gray-700">
+                      {/* Urban texture overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-transparent via-[#FFD700]/5 to-transparent opacity-50"></div>
+                      
+                      {/* Featured image or placeholder */}
+                      <div className="relative h-48 bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800 overflow-hidden">
+                        {post.image_url ? (
+                          <img
+                            src={post.image_url}
+                            alt={post.title}
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center">
+                            <div className="text-6xl font-permanent-marker text-[#FFD700]/60 transform -rotate-12">
+                              ST
+                            </div>
+                          </div>
+                        )}
+                        
+                        {/* Category badge - hand-drawn style */}
+                        <div className="absolute top-3 left-3">
+                          <div className="relative bg-[#FFD700] px-3 py-1 transform -rotate-2 shadow-lg">
+                            {/* Hand-drawn border effect */}
+                            <svg
+                              className="absolute inset-0 w-full h-full text-gray-900"
+                              viewBox="0 0 100 30"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M2 2L98 3L97 28L3 27Z"
+                                stroke="currentColor"
+                                strokeWidth="1"
+                                fill="none"
+                                opacity="0.3"
+                              />
+                            </svg>
+                            <span className="relative text-xs font-bold text-gray-900 uppercase tracking-wide">
+                              {post.category}
+                            </span>
+                          </div>
+                        </div>
+
+                        {/* Read time estimate */}
+                        <div className="absolute bottom-3 right-3 bg-black/60 backdrop-blur-sm rounded-full px-2 py-1 flex items-center gap-1">
+                          <Clock size={12} className="text-white" />
+                          <span className="text-xs text-white">
+                            {Math.ceil(post.content.length / 1000)} min
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Content */}
+                      <div className="p-6 relative">
+                        {/* Typewriter-style title */}
+                        <h4 className="font-bold text-xl text-brand-black dark:text-brand-cream mb-3 font-ibm-plex-mono leading-tight group-hover:text-[#FFD700] dark:group-hover:text-[#FFD700] transition-colors duration-200">
+                          {post.title}
+                        </h4>
+
+                        {/* Excerpt */}
+                        <p className="text-brand-black/70 dark:text-brand-cream/70 text-sm leading-relaxed mb-4 line-clamp-3">
+                          {post.excerpt}
+                        </p>
+
+                        {/* Tags */}
+                        {post.tags && post.tags.length > 0 && (
+                          <div className="flex flex-wrap gap-2 mb-4">
+                            {post.tags.slice(0, 3).map((tag, tagIndex) => (
+                              <div
+                                key={tagIndex}
+                                className="flex items-center gap-1 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded-full"
+                              >
+                                <Tag size={10} className="text-[#FFD700]" />
+                                <span className="text-xs text-brand-black dark:text-brand-cream font-medium">
+                                  {tag}
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+
+                        {/* Read More link */}
+                        <div className="flex items-center justify-between">
+                          <span className="text-sm text-brand-black/50 dark:text-brand-cream/50">
+                            {new Date(post.created_at).toLocaleDateString()}
+                          </span>
+                          <div className="flex items-center gap-1 text-[#FFD700] group-hover:translate-x-1 transition-transform duration-200">
+                            <span className="text-sm font-bold">Read More</span>
+                            <ExternalLink size={14} />
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Torn paper effect at bottom */}
+                      <div className="absolute bottom-0 left-0 w-full h-2 bg-gradient-to-r from-transparent via-[#FFD700]/20 to-transparent"></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-12">
+                <div className="bg-[#FFD700]/10 rounded-lg p-8 border border-[#FFD700]/30">
+                  <p className="text-brand-black dark:text-brand-cream font-bold text-lg mb-2">
+                    Stories Coming Soon
+                  </p>
+                  <p className="text-brand-black/70 dark:text-brand-cream/70">
+                    We're working on some fire content. Check back soon for real builder stories and blueprints.
+                  </p>
+                </div>
+              </div>
+            )}
           </SectionOverlayBox>
 
           {/* Coming Soon Content */}

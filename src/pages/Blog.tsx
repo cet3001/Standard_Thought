@@ -7,8 +7,10 @@ import { useMobilePerformance } from "@/hooks/use-mobile-performance";
 import { useUrbanTexture } from "@/hooks/use-urban-texture";
 import { useBuilderStories } from "@/hooks/use-builder-stories";
 import { getBlogPosts, BlogPost } from "@/lib/api";
-import { ExternalLink, Clock, Tag, Quote, HelpCircle, TrendingUp, Heart, DollarSign } from "lucide-react";
+import { ExternalLink, Clock, Tag, Quote, HelpCircle, TrendingUp, Heart, DollarSign, ChevronLeft, ChevronRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 const Blog = () => {
   useMobilePerformance();
@@ -19,7 +21,22 @@ const Blog = () => {
   const [blogLoading, setBlogLoading] = useState(true);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const navigate = useNavigate();
+
+  // Get unique categories from blog posts
+  const getUniqueCategories = () => {
+    const categories = blogPosts.map(post => post.category);
+    return ["All", ...Array.from(new Set(categories))];
+  };
+
+  // Filter posts by selected category
+  const getFilteredPosts = () => {
+    if (selectedCategory === "All") {
+      return blogPosts;
+    }
+    return blogPosts.filter(post => post.category === selectedCategory);
+  };
 
   useEffect(() => {
     setIsVisible(true);
@@ -325,6 +342,208 @@ const Blog = () => {
                 </div>
               </div>
             )}
+          </SectionOverlayBox>
+
+          {/* Blog Library Section */}
+          <SectionOverlayBox className={`mb-24 transition-all duration-700 delay-800 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            {/* Grain overlay */}
+            <div className="absolute inset-0 opacity-[0.02] bg-[radial-gradient(circle_at_2px_2px,_rgba(0,0,0,1)_1px,_transparent_0)] bg-[length:20px_20px]"></div>
+            
+            {/* Section Header */}
+            <div className="text-center mb-8 relative z-10">
+              <div className="relative inline-block mb-6">
+                <h3 className="text-4xl md:text-5xl font-black text-brand-black dark:text-brand-cream font-ibm-plex-mono">
+                  BLOG{" "}
+                  <span className="font-permanent-marker text-[#FFD700] transform -rotate-1">
+                    LIBRARY
+                  </span>
+                  {/* Torn paper underline */}
+                  <svg
+                    className="absolute -bottom-3 left-0 w-full h-4 text-[#FFD700]/40"
+                    viewBox="0 0 300 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M2 12C12 8 22 14 32 10C42 6 52 16 62 12C72 8 82 18 92 14C102 10 112 20 122 16C132 12 142 22 152 18C162 14 172 24 182 20C192 16 202 26 212 22C222 18 232 8 242 12C252 16 262 6 272 10C282 14 292 4 298 8"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      fill="none"
+                    />
+                  </svg>
+                </h3>
+              </div>
+              <p className="text-lg text-brand-black/70 dark:text-brand-cream/70 max-w-2xl mx-auto font-kalam mb-8">
+                Dive deep into the vault. Filter by topic and find exactly what you need to level up your game.
+              </p>
+              
+              {/* Category Filter Dropdown */}
+              <div className="flex justify-center mb-8">
+                <div className="relative">
+                  {/* Sticky note effect */}
+                  <div className="absolute -inset-2 bg-yellow-200 transform rotate-1 rounded-lg shadow-lg"></div>
+                  <div className="relative bg-white dark:bg-gray-900 border-2 border-[#FFD700] rounded-lg p-1 transform -rotate-1">
+                    <Select value={selectedCategory} onValueChange={setSelectedCategory}>
+                      <SelectTrigger className="w-[200px] border-none bg-transparent font-permanent-marker text-gray-900 dark:text-brand-cream">
+                        <SelectValue placeholder="Filter by category" />
+                      </SelectTrigger>
+                      <SelectContent className="bg-white dark:bg-gray-900 border-2 border-[#FFD700]">
+                        {getUniqueCategories().map((category) => (
+                          <SelectItem key={category} value={category} className="font-permanent-marker">
+                            {category}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  {/* Hand-drawn arrow */}
+                  <div className="absolute -right-8 -top-2 transform rotate-12">
+                    <svg
+                      className="w-6 h-6 text-[#FFD700]"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M7 17L17 7M17 7H7M17 7V17"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Blog Carousel */}
+            {blogLoading ? (
+              <div className="text-center py-12">
+                <p className="text-brand-black/60 dark:text-brand-cream/60">Loading library...</p>
+              </div>
+            ) : getFilteredPosts().length > 0 ? (
+              <div className="relative">
+                <Carousel
+                  opts={{
+                    align: "start",
+                    loop: false,
+                  }}
+                  className="w-full"
+                >
+                  <CarouselContent className="-ml-2 md:-ml-4">
+                    {getFilteredPosts().map((post, index) => (
+                      <CarouselItem key={post.id} className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/4">
+                        <div
+                          className="group cursor-pointer transform transition-all duration-300 hover:scale-105 hover:-translate-y-2"
+                          onClick={() => navigate(`/blog/${post.slug}`)}
+                        >
+                          {/* Sticky Note Card */}
+                          <div className="relative">
+                            {/* Torn paper background */}
+                            <div className="absolute -inset-1 bg-yellow-100 dark:bg-yellow-200 transform rotate-1 rounded-lg shadow-lg"></div>
+                            <div className="relative bg-white dark:bg-gray-900 rounded-lg overflow-hidden shadow-lg border-2 border-gray-200 dark:border-gray-700 transform -rotate-1 group-hover:rotate-0 transition-transform duration-300">
+                              
+                              {/* Urban texture overlay */}
+                              <div className="absolute inset-0 bg-gradient-to-br from-transparent via-[#FFD700]/5 to-transparent opacity-60"></div>
+                              
+                              {/* Featured image or placeholder */}
+                              <div className="relative h-36 bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800 overflow-hidden">
+                                {post.image_url ? (
+                                  <img
+                                    src={post.image_url}
+                                    alt={post.title}
+                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                  />
+                                ) : (
+                                  <div className="w-full h-full flex items-center justify-center">
+                                    <div className="text-4xl font-permanent-marker text-[#FFD700]/60 transform -rotate-12">
+                                      ST
+                                    </div>
+                                  </div>
+                                )}
+                                
+                                {/* Category badge */}
+                                <div className="absolute top-2 left-2">
+                                  <div className="bg-[#FFD700] px-2 py-1 transform -rotate-3 shadow-md">
+                                    <span className="text-xs font-bold text-gray-900 uppercase tracking-wide">
+                                      {post.category}
+                                    </span>
+                                  </div>
+                                </div>
+
+                                {/* Read time */}
+                                <div className="absolute bottom-2 right-2 bg-black/60 backdrop-blur-sm rounded-full px-2 py-1 flex items-center gap-1">
+                                  <Clock size={10} className="text-white" />
+                                  <span className="text-xs text-white">
+                                    {Math.ceil(post.content.length / 1000)}m
+                                  </span>
+                                </div>
+                              </div>
+
+                              {/* Content */}
+                              <div className="p-4 relative">
+                                {/* Typewriter title */}
+                                <h4 className="font-bold text-lg text-brand-black dark:text-brand-cream mb-2 font-ibm-plex-mono leading-tight group-hover:text-[#FFD700] dark:group-hover:text-[#FFD700] transition-colors duration-200 line-clamp-2">
+                                  {post.title}
+                                </h4>
+
+                                {/* Excerpt */}
+                                <p className="text-brand-black/70 dark:text-brand-cream/70 text-sm leading-relaxed mb-3 line-clamp-2">
+                                  {post.excerpt}
+                                </p>
+
+                                {/* Read More */}
+                                <div className="flex items-center gap-1 text-[#FFD700] group-hover:translate-x-1 transition-transform duration-200">
+                                  <span className="text-sm font-bold">Read</span>
+                                  <ExternalLink size={12} />
+                                </div>
+                              </div>
+
+                              {/* Tape effect */}
+                              <div className="absolute top-4 -right-2 w-8 h-4 bg-yellow-300/60 transform rotate-45 shadow-sm"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  
+                  {/* Custom Navigation Arrows */}
+                  {getFilteredPosts().length > 4 && (
+                    <>
+                      <CarouselPrevious className="absolute -left-16 top-1/2 transform -translate-y-1/2 bg-[#FFD700] hover:bg-[#FFD700]/80 border-2 border-gray-900 text-gray-900 shadow-lg rotate-3 hover:rotate-0 transition-all duration-300" />
+                      <CarouselNext className="absolute -right-16 top-1/2 transform -translate-y-1/2 bg-[#FFD700] hover:bg-[#FFD700]/80 border-2 border-gray-900 text-gray-900 shadow-lg rotate-3 hover:rotate-0 transition-all duration-300" />
+                    </>
+                  )}
+                </Carousel>
+
+                {/* Hand-drawn instruction note */}
+                <div className="absolute -bottom-8 -left-8 transform -rotate-12 hidden lg:block">
+                  <div className="bg-pink-200 p-2 shadow-lg border border-pink-300 rounded">
+                    <p className="font-kalam text-xs text-gray-800 leading-tight">
+                      Swipe or click<br />
+                      to explore ➡️
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="text-center py-12">
+                <div className="bg-[#FFD700]/10 rounded-lg p-8 border border-[#FFD700]/30 transform rotate-1">
+                  <p className="text-brand-black dark:text-brand-cream font-bold text-lg mb-2 font-permanent-marker">
+                    No Stories in "{selectedCategory}"
+                  </p>
+                  <p className="text-brand-black/70 dark:text-brand-cream/70 font-kalam">
+                    Try a different category or check back soon for fresh content.
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {/* Urban street elements */}
+            <div className="absolute top-10 right-10 w-16 h-16 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTAgMEg0MFY0MEgwVjBaIiBmaWxsPSJibGFjayIgZmlsbC1vcGFjaXR5PSIwLjA1Ii8+Cjwvc3ZnPgo=')] opacity-20 transform rotate-45"></div>
           </SectionOverlayBox>
 
           {/* Real Builder Wins (Testimonial Strip) */}

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Zap, Download, Lock, CheckCircle, Star } from "lucide-react";
+import { Zap, Download, Lock, CheckCircle, Star, ArrowRight, CreditCard, TrendingUp, Bot, DollarSign } from "lucide-react";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import SEO from "@/components/seo";
@@ -53,6 +53,26 @@ const Sales = () => {
   const handleDownloadGuide = () => {
     trackButtonClick('Download Free', 'featured_guides', 'download_10k_blueprint');
     // TODO: Add download functionality
+  };
+
+  const handleExploreCredit = () => {
+    trackButtonClick('Explore Credit', 'explore_blueprints', 'credit_blueprint');
+    // TODO: Navigate to /credit-blueprint page
+  };
+
+  const handleExploreInvesting = () => {
+    trackButtonClick('Explore Investing', 'explore_blueprints', 'investing_blueprint');
+    // TODO: Navigate to /investing-blueprint page
+  };
+
+  const handleExploreAI = () => {
+    trackButtonClick('Explore AI', 'explore_blueprints', 'ai_blueprint');
+    // TODO: Navigate to /ai-blueprint page
+  };
+
+  const handleExploreCash = () => {
+    trackButtonClick('Explore Cash Management', 'explore_blueprints', 'cash_blueprint');
+    // TODO: Navigate to /cash-blueprint page
   };
 
   return (
@@ -536,6 +556,189 @@ const Sales = () => {
               <div className="text-center">
                 <p className="text-brand-black dark:text-brand-cream text-lg font-kalam opacity-80">
                   Real people, real results—no fake testimonials, no BS promises.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Explore More Blueprints Section */}
+        <section className="py-20 relative overflow-hidden">
+          {/* Urban background effects */}
+          <div className="absolute inset-0" aria-hidden="true">
+            {/* Scattered urban elements */}
+            <div className="absolute top-16 left-24 w-12 h-12 bg-[#247EFF]/5 rounded-lg blur-sm transform rotate-45"></div>
+            <div className="absolute top-32 right-20 w-8 h-8 bg-[#FFD700]/8 rounded-full blur-md"></div>
+            <div className="absolute bottom-24 left-16 w-16 h-16 bg-[#FFD700]/5 rounded-full blur-lg"></div>
+            
+            {/* Subtle texture */}
+            <div className="absolute inset-0 opacity-[0.02] bg-[linear-gradient(60deg,_transparent_48%,_rgba(0,0,0,0.4)_49%,_rgba(0,0,0,0.4)_51%,_transparent_52%)] bg-[length:8px_8px]"></div>
+          </div>
+
+          <div className="container mx-auto px-6 relative z-10">
+            <div className="max-w-6xl mx-auto">
+              
+              {/* Section Header */}
+              <div className="text-center mb-16">
+                <h2 className="text-4xl md:text-5xl font-black mb-6 text-brand-black dark:text-brand-cream relative">
+                  Explore More{" "}
+                  <span 
+                    className="text-[#FFD700] relative overflow-hidden"
+                    style={{
+                      background: 'linear-gradient(45deg, #FFD700, #FFF8DC, #FFA500, #FFD700)',
+                      backgroundSize: '400% 400%',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                      animation: 'shimmer 3s ease-in-out infinite'
+                    }}
+                  >
+                    Blueprints
+                    {/* Pearlescent overlay */}
+                    <div 
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-60 animate-[shimmer_2s_ease-in-out_infinite]"
+                      style={{
+                        background: 'linear-gradient(90deg, transparent 25%, rgba(255,255,255,0.4) 50%, transparent 75%)',
+                        backgroundSize: '200% 100%',
+                        mixBlendMode: 'overlay'
+                      }}
+                    />
+                  </span>
+                </h2>
+                <p className="text-lg text-brand-black dark:text-brand-cream opacity-80 font-kalam max-w-2xl mx-auto">
+                  Deep-dive into specific areas where you want to level up your money game
+                </p>
+              </div>
+
+              {/* Blueprint Cards Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                {/* Credit Blueprint */}
+                <Card 
+                  className="backdrop-blur-sm border-2 border-[#247EFF]/30 shadow-2xl hover:scale-105 hover:border-[#247EFF]/50 transition-all duration-300 cursor-pointer group relative overflow-hidden"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(36,126,255,0.1), rgba(36,126,255,0.05))',
+                  }}
+                  onClick={handleExploreCredit}
+                >
+                  {/* Urban texture background */}
+                  <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(circle_at_1px_1px,_rgba(36,126,255,0.8)_1px,_transparent_0)] bg-[length:6px_6px]"></div>
+                  
+                  <CardContent className="p-6 text-center relative z-10">
+                    <div className="mb-4 flex justify-center">
+                      <div className="p-4 rounded-2xl bg-[#247EFF]/20 group-hover:bg-[#247EFF]/30 transition-all duration-300">
+                        <CreditCard className="h-8 w-8 text-[#247EFF]" />
+                      </div>
+                    </div>
+                    <h3 className="text-xl font-black mb-3 text-brand-black dark:text-brand-cream font-ibm-plex-mono">
+                      Credit
+                    </h3>
+                    <p className="text-sm text-brand-black dark:text-brand-cream opacity-80 mb-4 font-kalam">
+                      Fix your credit, build your score, unlock better rates
+                    </p>
+                    <div className="flex items-center justify-center text-[#247EFF] group-hover:text-[#247EFF] transition-colors duration-300">
+                      <span className="text-sm font-ibm-plex-mono mr-2">Learn More</span>
+                      <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform duration-300" />
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Investing Blueprint */}
+                <Card 
+                  className="backdrop-blur-sm border-2 border-[#22C55E]/30 shadow-2xl hover:scale-105 hover:border-[#22C55E]/50 transition-all duration-300 cursor-pointer group relative overflow-hidden"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(34,197,94,0.1), rgba(34,197,94,0.05))',
+                  }}
+                  onClick={handleExploreInvesting}
+                >
+                  {/* Urban texture background */}
+                  <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(circle_at_1px_1px,_rgba(34,197,94,0.8)_1px,_transparent_0)] bg-[length:6px_6px]"></div>
+                  
+                  <CardContent className="p-6 text-center relative z-10">
+                    <div className="mb-4 flex justify-center">
+                      <div className="p-4 rounded-2xl bg-[#22C55E]/20 group-hover:bg-[#22C55E]/30 transition-all duration-300">
+                        <TrendingUp className="h-8 w-8 text-[#22C55E]" />
+                      </div>
+                    </div>
+                    <h3 className="text-xl font-black mb-3 text-brand-black dark:text-brand-cream font-ibm-plex-mono">
+                      Investing
+                    </h3>
+                    <p className="text-sm text-brand-black dark:text-brand-cream opacity-80 mb-4 font-kalam">
+                      Smart moves for building wealth over time
+                    </p>
+                    <div className="flex items-center justify-center text-[#22C55E] group-hover:text-[#22C55E] transition-colors duration-300">
+                      <span className="text-sm font-ibm-plex-mono mr-2">Learn More</span>
+                      <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform duration-300" />
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* AI Side Hustles Blueprint */}
+                <Card 
+                  className="backdrop-blur-sm border-2 border-[#8B5CF6]/30 shadow-2xl hover:scale-105 hover:border-[#8B5CF6]/50 transition-all duration-300 cursor-pointer group relative overflow-hidden"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(139,92,246,0.1), rgba(139,92,246,0.05))',
+                  }}
+                  onClick={handleExploreAI}
+                >
+                  {/* Urban texture background */}
+                  <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(circle_at_1px_1px,_rgba(139,92,246,0.8)_1px,_transparent_0)] bg-[length:6px_6px]"></div>
+                  
+                  <CardContent className="p-6 text-center relative z-10">
+                    <div className="mb-4 flex justify-center">
+                      <div className="p-4 rounded-2xl bg-[#8B5CF6]/20 group-hover:bg-[#8B5CF6]/30 transition-all duration-300">
+                        <Bot className="h-8 w-8 text-[#8B5CF6]" />
+                      </div>
+                    </div>
+                    <h3 className="text-xl font-black mb-3 text-brand-black dark:text-brand-cream font-ibm-plex-mono">
+                      AI Side Hustles
+                    </h3>
+                    <p className="text-sm text-brand-black dark:text-brand-cream opacity-80 mb-4 font-kalam">
+                      Turn AI tools into consistent income streams
+                    </p>
+                    <div className="flex items-center justify-center text-[#8B5CF6] group-hover:text-[#8B5CF6] transition-colors duration-300">
+                      <span className="text-sm font-ibm-plex-mono mr-2">Learn More</span>
+                      <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform duration-300" />
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Cash Management Blueprint */}
+                <Card 
+                  className="backdrop-blur-sm border-2 border-[#FFD700]/30 shadow-2xl hover:scale-105 hover:border-[#FFD700]/50 transition-all duration-300 cursor-pointer group relative overflow-hidden"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(255,215,0,0.1), rgba(255,215,0,0.05))',
+                  }}
+                  onClick={handleExploreCash}
+                >
+                  {/* Urban texture background */}
+                  <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(circle_at_1px_1px,_rgba(255,215,0,0.8)_1px,_transparent_0)] bg-[length:6px_6px]"></div>
+                  
+                  <CardContent className="p-6 text-center relative z-10">
+                    <div className="mb-4 flex justify-center">
+                      <div className="p-4 rounded-2xl bg-[#FFD700]/20 group-hover:bg-[#FFD700]/30 transition-all duration-300">
+                        <DollarSign className="h-8 w-8 text-[#FFD700]" />
+                      </div>
+                    </div>
+                    <h3 className="text-xl font-black mb-3 text-brand-black dark:text-brand-cream font-ibm-plex-mono">
+                      Cash Management
+                    </h3>
+                    <p className="text-sm text-brand-black dark:text-brand-cream opacity-80 mb-4 font-kalam">
+                      Master budgeting, saving, and cash flow
+                    </p>
+                    <div className="flex items-center justify-center text-[#FFD700] group-hover:text-[#FFD700] transition-colors duration-300">
+                      <span className="text-sm font-ibm-plex-mono mr-2">Learn More</span>
+                      <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform duration-300" />
+                    </div>
+                  </CardContent>
+                </Card>
+
+              </div>
+
+              {/* Call-to-Action Message */}
+              <div className="text-center mt-12">
+                <p className="text-brand-black dark:text-brand-cream text-lg font-kalam opacity-70">
+                  Each blueprint includes step-by-step guides, templates, and real-world examples
                 </p>
               </div>
             </div>

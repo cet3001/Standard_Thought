@@ -1,6 +1,6 @@
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import HeaderHierarchy from "@/components/content-structure/header-hierarchy";
+import HeaderHierarchy from "@/components/ui/header-hierarchy";
 import FAQSchema from "@/components/seo/faq-schema";
 
 interface FAQItem {

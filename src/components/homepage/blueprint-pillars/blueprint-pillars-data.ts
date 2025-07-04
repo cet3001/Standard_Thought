@@ -6,7 +6,7 @@ export const blueprintPillarsData = [
     icon: Zap,
     title: "Mindset Flips",
     description: "Flip your mindset from survival to stacking—heal money trauma and unlock your power to build.",
-    link: "/about",
+    link: "/",
     bgColor: "bg-purple-500/10",
     hoverBgColor: "group-hover:bg-purple-500/20",
     iconColor: "text-purple-600"
@@ -15,7 +15,7 @@ export const blueprintPillarsData = [
     icon: Target,
     title: "Hustle Systems", 
     description: "Systemize your side hustles—turn random moves into consistent money with AI and automation.",
-    link: "/blog/ai-side-hustles-guide",
+    link: "/",
     bgColor: "bg-[#247EFF]/10",
     hoverBgColor: "group-hover:bg-[#247EFF]/20",
     iconColor: "text-[#247EFF]"
@@ -24,7 +24,7 @@ export const blueprintPillarsData = [
     icon: TrendingUp,
     title: "Legacy Moves",
     description: "Turn today's grind into tomorrow's legacy—stack assets, break cycles, build generational wealth.",
-    link: "/start-investing-guide",
+    link: "/",
     bgColor: "bg-amber-500/10",
     hoverBgColor: "group-hover:bg-amber-500/20",
     iconColor: "text-amber-600"

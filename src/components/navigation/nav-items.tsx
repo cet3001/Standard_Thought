@@ -11,9 +11,6 @@ const NavItems = ({ className = "hidden lg:flex space-x-8", showButton = false }
 
   const navItems = [
     { href: "/", label: "Start Here" },
-    { href: "/about", label: "Mindset Tools" },
-    { href: "/blog", label: "Builder Stories" },
-    { href: "/resources", label: "Success Strategies" },
   ];
 
   return (

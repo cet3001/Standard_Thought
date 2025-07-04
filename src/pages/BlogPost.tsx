@@ -1,98 +1,41 @@
 
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import SEO from "@/components/seo";
-import CommentsSection from "@/components/comments-section";
-import BlogPostHeader from "@/components/blog-post/blog-post-header";
-import BlogPostContent from "@/components/blog-post/blog-post-content";
-import BlogPostShare from "@/components/blog-post/blog-post-share";
-import BlogPostLoading from "@/components/blog-post/blog-post-loading";
-import BlogPostError from "@/components/blog-post/blog-post-error";
-import BlogPostNavigation from "@/components/blog-post/blog-post-navigation";
-import BlogPostLayout from "@/components/blog-post/blog-post-layout";
-import BreadcrumbSchema from "@/components/seo/breadcrumb-schema";
-import { useBlogPost } from "@/hooks/use-blog-post";
-import { getReadTime, getWordCount, generateBlogPostSEO } from "@/components/blog-post/blog-post-utils";
+import Navigation from "@/components/navigation";
+import Footer from "@/components/footer";
 
 const BlogPost = () => {
-  const { slug } = useParams();
   const navigate = useNavigate();
-  const { post, loading, error } = useBlogPost(slug);
 
-  const handlePostDeleted = () => {
-    navigate("/blog");
-  };
-
-  const handleBackClick = () => {
-    navigate("/blog");
-  };
-
-  if (loading) {
-    return <BlogPostLoading />;
-  }
-
-  if (error || !post) {
-    return <BlogPostError error={error || 'Unknown error'} slug={slug} />;
-  }
-
-  const { metaDescription, metaKeywords, pageTitle } = generateBlogPostSEO(post);
-  const wordCount = getWordCount(post.content);
+  useEffect(() => {
+    // Redirect to home page since blog functionality has been removed
+    navigate("/", { replace: true });
+  }, [navigate]);
 
   return (
-    <>
+    <div className="min-h-screen">
       <SEO 
-        title={pageTitle}
-        description={metaDescription}
-        keywords={metaKeywords}
-        image={post.image_url || undefined}
-        url={`/blog/${post.slug}`}
-        type="article"
-        publishedTime={post.created_at}
-        modifiedTime={post.created_at}
-        category={post.category}
-        tags={post.tags}
-        author="Standardthought"
-        wordCount={wordCount}
+        title="Page Not Found | Standardthought"
+        description="This page is no longer available. Visit our homepage for urban wealth building strategies and AI side hustles."
+        url="/blog"
       />
-
-      <BreadcrumbSchema />
-
-      <BlogPostLayout>
-        <BlogPostNavigation
-          onBackClick={handleBackClick}
-          postId={post.id}
-          postTitle={post.title}
-          postSlug={post.slug}
-          onDelete={handlePostDeleted}
-        />
-
-        <div className="flex flex-wrap items-center justify-between gap-4 py-6 border-y border-[#247EFF]/20">
-          <BlogPostHeader
-            category={post.category}
-            featured={post.featured}
-            title={post.title}
-            excerpt={post.excerpt}
-            createdAt={post.created_at}
-            readTime={getReadTime(post.content)}
-          />
-          <BlogPostShare title={post.title} />
+      
+      <Navigation />
+      
+      <main className="pt-32 pb-16">
+        <div className="container mx-auto px-6 text-center max-w-2xl">
+          <h1 className="text-3xl font-bold text-black dark:text-brand-cream mb-4">
+            Page Not Available
+          </h1>
+          <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
+            This content has been moved. Redirecting you to our homepage...
+          </p>
         </div>
-
-        <BlogPostContent
-          content={post.content}
-          imageUrl={post.image_url}
-          imageMetaDescription=""
-          title={post.title}
-          tags={post.tags}
-        />
-
-        <BlogPostShare title={post.title} showFullSection />
-
-        <CommentsSection 
-          blogPostId={post.id} 
-          commentsEnabled={post.comments_enabled || false} 
-        />
-      </BlogPostLayout>
-    </>
+      </main>
+      
+      <Footer />
+    </div>
   );
 };
 

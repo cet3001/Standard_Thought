@@ -1,5 +1,5 @@
 
-import HeaderHierarchy from "../content-structure/header-hierarchy";
+import HeaderHierarchy from "@/components/ui/header-hierarchy";
 import { Card, CardContent } from "@/components/ui/card";
 
 interface SnippetOptimizedContentProps {

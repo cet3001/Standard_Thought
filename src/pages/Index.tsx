@@ -12,7 +12,7 @@ import KeywordOptimization from "@/components/seo/keyword-optimization";
 import VoiceSearchOptimization from "@/components/seo/voice-search-optimization";
 import FeaturedSnippets from "@/components/seo/featured-snippets";
 import FAQSection from "@/components/faq/faq-section";
-import BlogShowcase from "@/components/blog-showcase";
+
 import LSIContent from "@/components/lsi-content";
 import SiteNavigationHub from "@/components/site-navigation-hub";
 import SemanticContentEnhancer from "@/components/seo/semantic-content-enhancer";
@@ -143,10 +143,6 @@ const Index = () => {
           {/* Newsletter */}
           <NewsletterSection />
 
-          {/* Featured Blog Stories Section */}
-          <section className="py-16">
-            <BlogShowcase />
-          </section>
 
           {/* Manifesto */}
           <section className="py-16">

@@ -434,7 +434,7 @@ const About = () => {
               <div className="grid md:grid-cols-3 gap-8 mb-16">
                 
                 {/* Code 1: Level Up Over Easy */}
-                <div className="group relative bg-gradient-to-br from-white/80 to-white/60 dark:from-gray-900/80 dark:to-gray-800/60 backdrop-blur-sm rounded-2xl p-8 border-2 border-[#f4d03f]/30 hover:border-[#ffd700]/60 transition-all duration-300 hover:transform hover:scale-105">
+                <div className="group relative bg-gradient-to-br from-gray-100/40 to-gray-200/30 dark:from-gray-700/30 dark:to-gray-800/20 backdrop-blur-md rounded-2xl p-8 border border-white/20 dark:border-gray-600/20 hover:border-[#ffd700]/40 transition-all duration-300 hover:transform hover:scale-105 shadow-lg hover:shadow-xl">
                   {/* Graffiti-style icon */}
                   <div className="mb-6 relative">
                     <div 
@@ -467,7 +467,7 @@ const About = () => {
                 </div>
 
                 {/* Code 2: We All Eat */}
-                <div className="group relative bg-gradient-to-br from-white/80 to-white/60 dark:from-gray-900/80 dark:to-gray-800/60 backdrop-blur-sm rounded-2xl p-8 border-2 border-[#f4d03f]/30 hover:border-[#ffd700]/60 transition-all duration-300 hover:transform hover:scale-105">
+                <div className="group relative bg-gradient-to-br from-gray-100/40 to-gray-200/30 dark:from-gray-700/30 dark:to-gray-800/20 backdrop-blur-md rounded-2xl p-8 border border-white/20 dark:border-gray-600/20 hover:border-[#ffd700]/40 transition-all duration-300 hover:transform hover:scale-105 shadow-lg hover:shadow-xl">
                   {/* Graffiti-style icon */}
                   <div className="mb-6 relative">
                     <div 
@@ -499,7 +499,7 @@ const About = () => {
                 </div>
 
                 {/* Code 3: Legacy Moves Only */}
-                <div className="group relative bg-gradient-to-br from-white/80 to-white/60 dark:from-gray-900/80 dark:to-gray-800/60 backdrop-blur-sm rounded-2xl p-8 border-2 border-[#f4d03f]/30 hover:border-[#ffd700]/60 transition-all duration-300 hover:transform hover:scale-105">
+                <div className="group relative bg-gradient-to-br from-gray-100/40 to-gray-200/30 dark:from-gray-700/30 dark:to-gray-800/20 backdrop-blur-md rounded-2xl p-8 border border-white/20 dark:border-gray-600/20 hover:border-[#ffd700]/40 transition-all duration-300 hover:transform hover:scale-105 shadow-lg hover:shadow-xl">
                   {/* Graffiti-style icon */}
                   <div className="mb-6 relative">
                     <div 

@@ -244,9 +244,9 @@ const Blog = () => {
                            />
                          ) : (
                            <div className="w-full h-full flex items-center justify-center">
-                             <div className="text-6xl font-permanent-marker text-brand-pearlescent-light/60 transform -rotate-12 drop-shadow-lg">
-                               ST
-                             </div>
+                              <div className="text-6xl font-permanent-marker text-[#FFD700]/60 transform -rotate-12 drop-shadow-lg">
+                                ST
+                              </div>
                            </div>
                          )}
                          
@@ -255,65 +255,64 @@ const Blog = () => {
                          
                          {/* Category badge - Graffiti style */}
                          <div className="absolute top-3 left-3">
-                           <div className="bg-brand-pearlescent-light/90 px-3 py-1.5 transform -rotate-2 shadow-lg backdrop-blur-sm border border-yellow-400/30 rounded-sm">
-                             <span className="text-xs font-bold text-gray-900 uppercase tracking-wide font-permanent-marker drop-shadow-sm">
-                               {post.category}
-                             </span>
-                           </div>
+                            <div className="bg-[#FFD700]/90 px-3 py-1.5 transform -rotate-2 shadow-lg backdrop-blur-sm border border-yellow-400/30 rounded-sm">
+                              <span className="text-xs font-bold text-gray-900 uppercase tracking-wide font-permanent-marker drop-shadow-sm">
+                                {post.category}
+                              </span>
+                            </div>
                          </div>
 
-                          {/* Read time estimate */}
-                          <div className="absolute bottom-3 right-3 bg-black/70 backdrop-blur-md rounded-full px-3 py-1.5 flex items-center gap-1.5 border border-white/20">
-                            <Clock size={12} className="text-brand-pearlescent-light" />
-                            <span className="text-xs text-brand-pearlescent-light font-medium">
-                              {Math.ceil(post.content.length / 1000)} min
-                            </span>
-                          </div>
+                           <div className="absolute bottom-3 right-3 bg-black/70 backdrop-blur-md rounded-full px-3 py-1.5 flex items-center gap-1.5 border border-white/20">
+                             <Clock size={12} className="text-[#FFD700]" />
+                             <span className="text-xs text-[#FFD700] font-medium">
+                               {Math.ceil(post.content.length / 1000)} min
+                             </span>
+                           </div>
                        </div>
 
                        {/* Content */}
                        <div className="p-6 relative">
                          {/* Typewriter-style title */}
-                         <h4 className="font-bold text-xl text-white dark:text-brand-cream mb-3 font-ibm-plex-mono leading-tight group-hover:text-brand-pearlescent-light transition-colors duration-300 drop-shadow-sm">
-                           {post.title}
-                         </h4>
+                          <h4 className="font-bold text-xl text-white dark:text-brand-cream mb-3 font-ibm-plex-mono leading-tight group-hover:text-[#FFD700] transition-colors duration-300 drop-shadow-sm">
+                            {post.title}
+                          </h4>
 
                          {/* Excerpt */}
                          <p className="text-white/80 dark:text-brand-cream/80 text-sm leading-relaxed mb-4 line-clamp-3">
                            {post.excerpt}
                          </p>
 
-                         {/* Tags */}
-                         {post.tags && post.tags.length > 0 && (
-                           <div className="flex flex-wrap gap-2 mb-4">
-                             {post.tags.slice(0, 3).map((tag, tagIndex) => (
-                               <div
-                                 key={tagIndex}
-                                 className="flex items-center gap-1 bg-brand-pearlescent-light/20 backdrop-blur-sm px-2 py-1 rounded-full border border-brand-pearlescent-light/30"
-                               >
-                                 <Tag size={10} className="text-brand-pearlescent-light" />
-                                 <span className="text-xs text-brand-pearlescent-light font-medium">
-                                   {tag}
-                                 </span>
-                               </div>
-                             ))}
-                           </div>
-                         )}
+                          {/* Tags */}
+                          {post.tags && post.tags.length > 0 && (
+                            <div className="flex flex-wrap gap-2 mb-4">
+                              {post.tags.slice(0, 3).map((tag, tagIndex) => (
+                                <div
+                                  key={tagIndex}
+                                  className="flex items-center gap-1 bg-[#FFD700]/20 backdrop-blur-sm px-2 py-1 rounded-full border border-[#FFD700]/30"
+                                >
+                                  <Tag size={10} className="text-[#FFD700]" />
+                                  <span className="text-xs text-[#FFD700] font-medium">
+                                    {tag}
+                                  </span>
+                                </div>
+                              ))}
+                            </div>
+                          )}
 
-                         {/* Read More link */}
-                         <div className="flex items-center justify-between">
-                           <span className="text-sm text-brand-pearlescent-light/80">
-                             {new Date(post.created_at).toLocaleDateString()}
-                           </span>
-                           <div className="inline-flex items-center gap-2 bg-brand-pearlescent-light text-gray-900 px-3 py-1.5 rounded-lg font-bold text-sm transform hover:scale-105 transition-all duration-200 shadow-lg border border-yellow-400/30 backdrop-blur-sm hover:bg-brand-pearlescent-light/90">
-                             <span className="font-permanent-marker">Read More</span>
-                             <ExternalLink size={14} className="group-hover:translate-x-0.5 transition-transform duration-200" />
-                           </div>
-                         </div>
+                          {/* Read More link */}
+                          <div className="flex items-center justify-between">
+                            <span className="text-sm text-[#FFD700]/80">
+                              {new Date(post.created_at).toLocaleDateString()}
+                            </span>
+                            <div className="inline-flex items-center gap-2 bg-[#FFD700] hover:bg-[#FFD700]/90 text-gray-900 px-3 py-1.5 rounded-lg font-bold text-sm transform hover:scale-105 transition-all duration-200 shadow-lg border border-yellow-400/30 backdrop-blur-sm">
+                              <span className="font-permanent-marker">Read More</span>
+                              <ExternalLink size={14} className="group-hover:translate-x-0.5 transition-transform duration-200" />
+                            </div>
+                          </div>
                        </div>
 
                        {/* Irregular edge effects */}
-                       <div className="absolute top-3 right-3 w-6 h-6 bg-brand-pearlescent-light/20 transform rotate-45 rounded-sm opacity-60"></div>
+                       <div className="absolute top-3 right-3 w-6 h-6 bg-[#FFD700]/20 transform rotate-45 rounded-sm opacity-60"></div>
                        <div className="absolute bottom-3 left-3 w-4 h-4 bg-white/10 transform -rotate-12 rounded-full opacity-40"></div>
                      </div>
                   </div>
@@ -450,9 +449,9 @@ const Blog = () => {
                                    />
                                  ) : (
                                    <div className="w-full h-full flex items-center justify-center">
-                                     <div className="text-4xl font-permanent-marker text-brand-pearlescent-light/60 transform -rotate-12 drop-shadow-lg">
-                                       ST
-                                     </div>
+                                      <div className="text-4xl font-permanent-marker text-[#FFD700]/60 transform -rotate-12 drop-shadow-lg">
+                                        ST
+                                      </div>
                                    </div>
                                  )}
                                  
@@ -461,28 +460,27 @@ const Blog = () => {
                                  
                                  {/* Category badge - Graffiti style */}
                                  <div className="absolute top-3 left-3">
-                                   <div className="bg-brand-pearlescent-light/90 px-3 py-1.5 transform -rotate-2 shadow-lg backdrop-blur-sm border border-yellow-400/30 rounded-sm">
-                                     <span className="text-xs font-bold text-gray-900 uppercase tracking-wide font-permanent-marker drop-shadow-sm">
-                                       {post.category}
-                                     </span>
-                                   </div>
+                                    <div className="bg-[#FFD700]/90 px-3 py-1.5 transform -rotate-2 shadow-lg backdrop-blur-sm border border-yellow-400/30 rounded-sm">
+                                      <span className="text-xs font-bold text-gray-900 uppercase tracking-wide font-permanent-marker drop-shadow-sm">
+                                        {post.category}
+                                      </span>
+                                    </div>
                                  </div>
 
-                                  {/* Read time */}
-                                  <div className="absolute bottom-3 right-3 bg-black/70 backdrop-blur-md rounded-full px-3 py-1.5 flex items-center gap-1.5 border border-white/20">
-                                    <Clock size={11} className="text-brand-pearlescent-light" />
-                                    <span className="text-xs text-brand-pearlescent-light font-medium">
-                                      {Math.ceil(post.content.length / 1000)}m
-                                    </span>
-                                  </div>
+                                   <div className="absolute bottom-3 right-3 bg-black/70 backdrop-blur-md rounded-full px-3 py-1.5 flex items-center gap-1.5 border border-white/20">
+                                     <Clock size={11} className="text-[#FFD700]" />
+                                     <span className="text-xs text-[#FFD700] font-medium">
+                                       {Math.ceil(post.content.length / 1000)}m
+                                     </span>
+                                   </div>
                                </div>
 
                                {/* Content */}
                                <div className="p-5 relative">
                                  {/* Typewriter title */}
-                                 <h4 className="font-bold text-lg text-white dark:text-brand-cream mb-3 font-ibm-plex-mono leading-tight group-hover:text-brand-pearlescent-light transition-colors duration-300 line-clamp-2 drop-shadow-sm">
-                                   {post.title}
-                                 </h4>
+                                  <h4 className="font-bold text-lg text-white dark:text-brand-cream mb-3 font-ibm-plex-mono leading-tight group-hover:text-[#FFD700] transition-colors duration-300 line-clamp-2 drop-shadow-sm">
+                                    {post.title}
+                                  </h4>
 
                                  {/* Excerpt */}
                                  <p className="text-white/80 dark:text-brand-cream/80 text-sm leading-relaxed mb-4 line-clamp-2">
@@ -490,14 +488,14 @@ const Blog = () => {
                                  </p>
 
                                  {/* Read More Button - Spray painted style */}
-                                 <div className="inline-flex items-center gap-2 bg-brand-pearlescent-light/90 hover:bg-brand-pearlescent-light text-gray-900 px-4 py-2 rounded-lg font-bold text-sm transform hover:scale-105 transition-all duration-200 shadow-lg border border-yellow-400/30 backdrop-blur-sm">
-                                   <span className="font-permanent-marker">Read Story</span>
-                                   <ExternalLink size={14} className="group-hover:translate-x-0.5 transition-transform duration-200" />
-                                 </div>
+                                  <div className="inline-flex items-center gap-2 bg-[#FFD700]/90 hover:bg-[#FFD700] text-gray-900 px-4 py-2 rounded-lg font-bold text-sm transform hover:scale-105 transition-all duration-200 shadow-lg border border-yellow-400/30 backdrop-blur-sm">
+                                    <span className="font-permanent-marker">Read Story</span>
+                                    <ExternalLink size={14} className="group-hover:translate-x-0.5 transition-transform duration-200" />
+                                  </div>
                                </div>
 
                                {/* Irregular edge effect */}
-                               <div className="absolute top-2 right-2 w-6 h-6 bg-brand-pearlescent-light/20 transform rotate-45 rounded-sm opacity-60"></div>
+                               <div className="absolute top-2 right-2 w-6 h-6 bg-[#FFD700]/20 transform rotate-45 rounded-sm opacity-60"></div>
                                <div className="absolute bottom-2 left-2 w-4 h-4 bg-white/10 transform -rotate-12 rounded-full opacity-40"></div>
                              </div>
                            </div>

@@ -149,13 +149,13 @@ const About = () => {
                     <span 
                       className="font-black"
                       style={{ 
-                        background: 'linear-gradient(45deg, #247EFF, #4A90E2, #6BB6FF)',
-                        backgroundSize: '200% 200%',
+                        background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                        backgroundSize: '400% 400%',
                         WebkitBackgroundClip: 'text',
                         WebkitTextFillColor: 'transparent',
                         backgroundClip: 'text',
                         color: 'transparent',
-                        animation: 'pearlescent 4s ease-in-out infinite'
+                        animation: 'pearlescent 3s ease-in-out infinite'
                       }}
                     >
                       flipping your story

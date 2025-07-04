@@ -244,9 +244,33 @@ const About = () => {
               <div className="mb-16">
                 <p className="text-lg md:text-xl lg:text-2xl text-[#0A0A0A] font-semibold leading-relaxed max-w-3xl mx-auto">
                   We know what it's like to go from{" "}
-                  <span className="font-black text-[#247EFF]">'I can't afford it'</span>{" "}
+                  <span 
+                    className="font-black"
+                    style={{ 
+                      background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                      backgroundSize: '400% 400%',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                      animation: 'pearlescent 3s ease-in-out infinite'
+                    }}
+                  >
+                    'I can't afford it'
+                  </span>{" "}
                   to{" "}
-                  <span className="font-black text-[#247EFF]">'How can I afford it?'</span>{" "}
+                  <span 
+                    className="font-black"
+                    style={{ 
+                      background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                      backgroundSize: '400% 400%',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                      animation: 'pearlescent 3s ease-in-out infinite'
+                    }}
+                  >
+                    'How can I afford it?'
+                  </span>{" "}
                   Mindset ain't hype—it's the foundation every real move is built on. 
                   If you ever had to build your own blueprint, you're in the right spot.
                 </p>

@@ -66,6 +66,39 @@ export type Database = {
         }
         Relationships: []
       }
+      builder_stories: {
+        Row: {
+          avatar_url: string | null
+          city_area: string
+          created_at: string
+          id: string
+          is_active: boolean
+          name: string
+          quote: string
+          updated_at: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          city_area: string
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          name: string
+          quote: string
+          updated_at?: string
+        }
+        Update: {
+          avatar_url?: string | null
+          city_area?: string
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          name?: string
+          quote?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       comments: {
         Row: {
           approved: boolean

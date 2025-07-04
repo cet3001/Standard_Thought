@@ -5,11 +5,13 @@ import SEO from "@/components/seo";
 import Analytics from "@/components/analytics";
 import { useUrbanTexture } from "@/hooks/use-urban-texture";
 import { useMobilePerformance } from "@/hooks/use-mobile-performance";
+import { useBuilderStories } from "@/hooks/use-builder-stories";
 
 const About = () => {
   useMobilePerformance();
   const [isVisible, setIsVisible] = useState(false);
   const { textureImageUrl } = useUrbanTexture();
+  const { stories, loading, error, refreshStories } = useBuilderStories(3);
 
   useEffect(() => {
     setIsVisible(true);
@@ -690,6 +692,176 @@ const About = () => {
                   </button>
                 </div>
 
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* Section Spacer */}
+        <div className="py-8"></div>
+
+        {/* Real Builder Stories Section */}
+        <section className="py-32 relative overflow-hidden">
+          <div className="container mx-auto px-6 relative z-10">
+            <div className="max-w-6xl mx-auto">
+              
+              {/* Section Header */}
+              <div className="text-center mb-20">
+                <h2 
+                  className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 text-[#0A0A0A] transform -rotate-1 relative"
+                  style={{ 
+                    fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
+                    textShadow: '4px 4px 0px rgba(244,208,63,0.3), 3px 3px 0px rgba(0,0,0,0.1)',
+                    letterSpacing: '2px'
+                  }}
+                >
+                  Real{" "}
+                  <span 
+                    className="relative inline-block"
+                    style={{ 
+                      background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                      backgroundSize: '400% 400%',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                      animation: 'pearlescent 3s ease-in-out infinite'
+                    }}
+                  >
+                    Builder
+                  </span>{" "}
+                  Stories
+                  
+                  {/* Polaroid-style underline effect */}
+                  <svg 
+                    className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-full max-w-xl h-6" 
+                    viewBox="0 0 400 20" 
+                  >
+                    <path 
+                      d="M10,12 C100,6 200,18 300,8 Q350,12 390,10" 
+                      stroke="#f4d03f"
+                      strokeWidth="4" 
+                      fill="none" 
+                      strokeLinecap="round"
+                      opacity="0.8"
+                      style={{ 
+                        filter: 'drop-shadow(1px 1px 0px rgba(0,0,0,0.2))'
+                      }}
+                    />
+                  </svg>
+                </h2>
+              </div>
+
+              {/* Polaroid Stories Grid */}
+              {loading ? (
+                <div className="text-center py-12">
+                  <div className="text-lg font-semibold text-[#0A0A0A]">Loading builder stories...</div>
+                </div>
+              ) : error ? (
+                <div className="text-center py-12">
+                  <div className="text-lg font-semibold text-red-600">Unable to load stories. Please try again later.</div>
+                </div>
+              ) : (
+                <div className="grid md:grid-cols-3 gap-8 mb-12">
+                  {stories.map((story, index) => (
+                    <div 
+                      key={story.id}
+                      className="group relative transform hover:scale-105 transition-all duration-300"
+                      style={{ 
+                        transform: `rotate(${index % 2 === 0 ? '-' : ''}${Math.random() * 3 + 1}deg)`,
+                        animationDelay: `${index * 200}ms`
+                      }}
+                    >
+                      {/* Polaroid Frame */}
+                      <div 
+                        className="bg-white p-4 pb-12 shadow-xl hover:shadow-2xl transition-shadow duration-300 relative"
+                        style={{
+                          boxShadow: '0 8px 32px rgba(0,0,0,0.3), 0 2px 8px rgba(0,0,0,0.2)',
+                          transform: 'perspective(1000px) rotateX(0deg)',
+                          background: 'linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%)'
+                        }}
+                      >
+                        {/* Photo */}
+                        <div className="aspect-square bg-gray-200 rounded-sm mb-4 overflow-hidden">
+                          {story.avatar_url ? (
+                            <img 
+                              src={story.avatar_url} 
+                              alt={`${story.name} from ${story.city_area}`}
+                              className="w-full h-full object-cover"
+                            />
+                          ) : (
+                            <div className="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center">
+                              <svg className="w-16 h-16 text-gray-500" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                              </svg>
+                            </div>
+                          )}
+                        </div>
+                        
+                        {/* Handwritten Quote */}
+                        <div className="mb-4">
+                          <p 
+                            className="text-sm leading-relaxed text-gray-800"
+                            style={{ 
+                              fontFamily: "'Kalam', 'Comic Neue', cursive",
+                              transform: 'rotate(-0.5deg)',
+                              textShadow: '0.5px 0.5px 0px rgba(0,0,0,0.1)'
+                            }}
+                          >
+                            "{story.quote}"
+                          </p>
+                        </div>
+                        
+                        {/* Name and Location */}
+                        <div 
+                          className="absolute bottom-3 left-4 right-4"
+                          style={{ 
+                            fontFamily: "'Kalam', 'Comic Neue', cursive",
+                            transform: 'rotate(0.5deg)'
+                          }}
+                        >
+                          <div className="text-xs font-bold text-gray-700">
+                            {story.name}
+                          </div>
+                          <div className="text-xs text-gray-600">
+                            {story.city_area}
+                          </div>
+                        </div>
+                        
+                        {/* Tape Effect */}
+                        <div 
+                          className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-16 h-8 opacity-60"
+                          style={{
+                            background: 'linear-gradient(45deg, #ffeaa7 0%, #fdcb6e 100%)',
+                            borderRadius: '2px',
+                            boxShadow: '0 2px 4px rgba(0,0,0,0.2)'
+                          }}
+                        ></div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* Refresh Button */}
+              <div className="text-center">
+                <button
+                  onClick={refreshStories}
+                  className="group relative inline-flex items-center gap-2 text-black font-bold py-3 px-8 rounded-xl transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-black/10"
+                  style={{
+                    background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                    backgroundSize: '400% 400%',
+                    animation: 'pearlescent 3s ease-in-out infinite',
+                    fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
+                    textShadow: "1px 1px 0px rgba(0,0,0,0.2)",
+                    letterSpacing: '1px'
+                  }}
+                >
+                  <svg className="w-4 h-4 group-hover:rotate-180 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M17.65,6.35C16.2,4.9 14.21,4 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20C15.73,20 18.84,17.45 19.73,14H17.65C16.83,16.33 14.61,18 12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6C13.66,6 15.14,6.69 16.22,7.78L13,11H20V4L17.65,6.35Z"/>
+                  </svg>
+                  More Stories
+                </button>
               </div>
 
             </div>

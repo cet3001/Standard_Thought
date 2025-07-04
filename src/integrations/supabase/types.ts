@@ -167,6 +167,51 @@ export type Database = {
         }
         Relationships: []
       }
+      guides: {
+        Row: {
+          bullets: string[] | null
+          created_at: string
+          created_by: string
+          description: string
+          file_name: string | null
+          file_path: string | null
+          id: string
+          is_active: boolean
+          price: number
+          sort_order: number
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          bullets?: string[] | null
+          created_at?: string
+          created_by: string
+          description: string
+          file_name?: string | null
+          file_path?: string | null
+          id?: string
+          is_active?: boolean
+          price?: number
+          sort_order?: number
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          bullets?: string[] | null
+          created_at?: string
+          created_by?: string
+          description?: string
+          file_name?: string | null
+          file_path?: string | null
+          id?: string
+          is_active?: boolean
+          price?: number
+          sort_order?: number
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           created_at: string

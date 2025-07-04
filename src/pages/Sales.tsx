@@ -9,12 +9,16 @@ import SEO from "@/components/seo";
 import { useUrbanTexture } from "@/hooks/use-urban-texture";
 import { useMobilePerformance } from "@/hooks/use-mobile-performance";
 import { trackButtonClick } from "@/lib/analytics-utils";
+import { useGuides } from "@/hooks/use-guides";
+import { useGuideDownload } from "@/hooks/use-guide-download";
 
 const Sales = () => {
   useMobilePerformance();
   const { textureImageUrl } = useUrbanTexture();
   const [isVisible, setIsVisible] = useState(false);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const { guides, loading: guidesLoading } = useGuides();
+  const { downloadGuide, isDownloading } = useGuideDownload();
 
   // Testimonials array with 15 diverse testimonials
   const testimonials = [
@@ -51,9 +55,20 @@ const Sales = () => {
     // TODO: Add scroll to products section when created
   };
 
-  const handleDownloadGuide = () => {
-    trackButtonClick('Download Free', 'featured_guides', 'download_10k_blueprint');
-    // TODO: Add download functionality
+  const handleDownloadGuide = async (guide: any) => {
+    trackButtonClick('Download Guide', 'featured_guides', `download_${guide.title}`);
+    
+    if (guide.price > 0) {
+      // Handle paid guide - could redirect to payment page
+      // For now, just show a message
+      alert(`This guide costs $${guide.price}. Payment processing coming soon!`);
+      return;
+    }
+    
+    // Handle free guide download
+    if (guide.file_path) {
+      await downloadGuide(guide.title, '');
+    }
   };
 
   const handleExploreCredit = () => {
@@ -293,144 +308,122 @@ const Sales = () => {
 
               {/* Guides Grid */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                
-                {/* The $10K Starter Blueprint - Available */}
-                <Card className="backdrop-blur-sm border-2 border-yellow-400/30 shadow-2xl hover:scale-105 transition-all duration-300 relative overflow-hidden" style={{
-                  background: 'linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05))',
-                }}>
-                  <CardHeader className="pb-3">
-                    <CardTitle className="text-xl font-black text-brand-black dark:text-brand-cream font-ibm-plex-mono">
-                      The $10K Starter Blueprint
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <p className="text-brand-black dark:text-brand-cream text-sm leading-relaxed font-kalam">
-                      Step-by-step, street-smart investing for first-gen hustlers and underestimated creatives. Real stories, no jargon, actionable moves.
+                {guidesLoading ? (
+                  // Loading skeleton
+                  Array.from({ length: 3 }).map((_, index) => (
+                    <Card key={index} className="backdrop-blur-sm border-2 border-gray-400/30 shadow-2xl relative overflow-hidden animate-pulse">
+                      <CardHeader className="pb-3">
+                        <div className="h-6 bg-gray-400/20 rounded w-3/4"></div>
+                      </CardHeader>
+                      <CardContent className="space-y-4">
+                        <div className="h-4 bg-gray-400/20 rounded w-full"></div>
+                        <div className="h-4 bg-gray-400/20 rounded w-2/3"></div>
+                        <div className="space-y-2">
+                          <div className="h-3 bg-gray-400/20 rounded w-5/6"></div>
+                          <div className="h-3 bg-gray-400/20 rounded w-4/5"></div>
+                          <div className="h-3 bg-gray-400/20 rounded w-3/4"></div>
+                        </div>
+                        <div className="h-10 bg-gray-400/20 rounded w-full mt-6"></div>
+                      </CardContent>
+                    </Card>
+                  ))
+                ) : guides.length === 0 ? (
+                  // No guides message
+                  <div className="col-span-full text-center py-12">
+                    <p className="text-brand-black/60 dark:text-brand-cream/60 text-lg font-kalam">
+                      No guides available at the moment. Check back soon!
                     </p>
-                    
-                    {/* Bullets */}
-                    <ul className="space-y-2">
-                      <li className="flex items-start text-brand-black dark:text-brand-cream text-sm font-kalam">
-                        <CheckCircle className="h-4 w-4 text-[#FFD700] mr-2 mt-0.5 flex-shrink-0" />
-                        Street-smart steps to your first $10K
-                      </li>
-                      <li className="flex items-start text-brand-black dark:text-brand-cream text-sm font-kalam">
-                        <CheckCircle className="h-4 w-4 text-[#FFD700] mr-2 mt-0.5 flex-shrink-0" />
-                        Scam-avoidance tips
-                      </li>
-                      <li className="flex items-start text-brand-black dark:text-brand-cream text-sm font-kalam">
-                        <CheckCircle className="h-4 w-4 text-[#FFD700] mr-2 mt-0.5 flex-shrink-0" />
-                        No fluff—just real moves
-                      </li>
-                    </ul>
-
-                    {/* CTA Button */}
-                    <Button 
-                      onClick={handleDownloadGuide}
-                      className="w-full bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFA500] text-black font-bold py-3 rounded-2xl hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl border-0 mt-6"
+                  </div>
+                ) : (
+                  // Dynamic guides
+                  guides.map((guide) => (
+                    <Card 
+                      key={guide.id} 
+                      className={`backdrop-blur-sm border-2 shadow-2xl hover:scale-105 transition-all duration-300 relative overflow-hidden ${
+                        guide.price === 0 
+                          ? 'border-yellow-400/30' 
+                          : 'border-blue-400/30'
+                      }`}
+                      style={{
+                        background: 'linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05))',
+                      }}
                     >
-                      <Download className="mr-2 h-4 w-4" />
-                      <span 
-                        style={{ 
-                          fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
-                          textShadow: '1px 1px 0px rgba(0,0,0,0.2)',
-                          transform: 'rotate(-1deg)',
-                          display: 'inline-block'
-                        }}
-                      >
-                        Download Free
-                      </span>
-                    </Button>
-                  </CardContent>
-                </Card>
+                      {/* Price badge for paid guides */}
+                      {guide.price > 0 && (
+                        <div className="absolute top-4 right-4 z-10">
+                          <div className="bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-bold">
+                            ${guide.price}
+                          </div>
+                        </div>
+                      )}
+                      
+                      <CardHeader className="pb-3">
+                        <CardTitle className="text-xl font-black text-brand-black dark:text-brand-cream font-ibm-plex-mono">
+                          {guide.title}
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent className="space-y-4">
+                        <p className="text-brand-black dark:text-brand-cream text-sm leading-relaxed font-kalam">
+                          {guide.description}
+                        </p>
+                        
+                        {/* Bullets */}
+                        {guide.bullets && guide.bullets.length > 0 && (
+                          <ul className="space-y-2">
+                            {guide.bullets.map((bullet, index) => (
+                              <li key={index} className="flex items-start text-brand-black dark:text-brand-cream text-sm font-kalam">
+                                <CheckCircle className="h-4 w-4 text-[#FFD700] mr-2 mt-0.5 flex-shrink-0" />
+                                {bullet}
+                              </li>
+                            ))}
+                          </ul>
+                        )}
 
-                {/* Credit Repair Playbook - Coming Soon */}
-                <Card className="backdrop-blur-sm border-2 border-gray-400/30 shadow-2xl relative overflow-hidden opacity-75" style={{
-                  background: 'linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02))',
-                }}>
-                  {/* Lock Icon */}
-                  <div className="absolute top-4 right-4 z-10">
-                    <Lock className="h-6 w-6 text-gray-500" />
-                  </div>
-                  
-                  <CardHeader className="pb-3">
-                    <CardTitle className="text-xl font-black text-brand-black/60 dark:text-brand-cream/60 font-ibm-plex-mono">
-                      Credit Repair Playbook
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <p className="text-brand-black/60 dark:text-brand-cream/60 text-sm leading-relaxed font-kalam">
-                      Fix your credit fast with proven strategies that actually work. No credit repair company needed—do it yourself and save thousands.
-                    </p>
-                    
-                    {/* Bullets */}
-                    <ul className="space-y-2">
-                      <li className="flex items-start text-brand-black/60 dark:text-brand-cream/60 text-sm font-kalam">
-                        <CheckCircle className="h-4 w-4 text-gray-400 mr-2 mt-0.5 flex-shrink-0" />
-                        Dispute letter templates that work
-                      </li>
-                      <li className="flex items-start text-brand-black/60 dark:text-brand-cream/60 text-sm font-kalam">
-                        <CheckCircle className="h-4 w-4 text-gray-400 mr-2 mt-0.5 flex-shrink-0" />
-                        Timeline and tracking systems
-                      </li>
-                      <li className="flex items-start text-brand-black/60 dark:text-brand-cream/60 text-sm font-kalam">
-                        <CheckCircle className="h-4 w-4 text-gray-400 mr-2 mt-0.5 flex-shrink-0" />
-                        Credit building strategies
-                      </li>
-                    </ul>
-
-                    {/* Coming Soon Label */}
-                    <div className="text-center py-4">
-                      <span className="bg-gray-500/20 text-gray-600 dark:text-gray-400 px-4 py-2 rounded-full text-sm font-ibm-plex-mono">
-                        Coming Soon
-                      </span>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* AI Side Hustle Masterclass - Coming Soon */}
-                <Card className="backdrop-blur-sm border-2 border-gray-400/30 shadow-2xl relative overflow-hidden opacity-75" style={{
-                  background: 'linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02))',
-                }}>
-                  {/* Lock Icon */}
-                  <div className="absolute top-4 right-4 z-10">
-                    <Lock className="h-6 w-6 text-gray-500" />
-                  </div>
-                  
-                  <CardHeader className="pb-3">
-                    <CardTitle className="text-xl font-black text-brand-black/60 dark:text-brand-cream/60 font-ibm-plex-mono">
-                      AI Side Hustle Masterclass
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <p className="text-brand-black/60 dark:text-brand-cream/60 text-sm leading-relaxed font-kalam">
-                      Turn AI tools into consistent income streams. Real case studies from people making $2K-$10K monthly with ChatGPT, Midjourney, and more.
-                    </p>
-                    
-                    {/* Bullets */}
-                    <ul className="space-y-2">
-                      <li className="flex items-start text-brand-black/60 dark:text-brand-cream/60 text-sm font-kalam">
-                        <CheckCircle className="h-4 w-4 text-gray-400 mr-2 mt-0.5 flex-shrink-0" />
-                        Step-by-step AI business setups
-                      </li>
-                      <li className="flex items-start text-brand-black/60 dark:text-brand-cream/60 text-sm font-kalam">
-                        <CheckCircle className="h-4 w-4 text-gray-400 mr-2 mt-0.5 flex-shrink-0" />
-                        Client acquisition templates
-                      </li>
-                      <li className="flex items-start text-brand-black/60 dark:text-brand-cream/60 text-sm font-kalam">
-                        <CheckCircle className="h-4 w-4 text-gray-400 mr-2 mt-0.5 flex-shrink-0" />
-                        Pricing and scaling strategies
-                      </li>
-                    </ul>
-
-                    {/* Coming Soon Label */}
-                    <div className="text-center py-4">
-                      <span className="bg-gray-500/20 text-gray-600 dark:text-gray-400 px-4 py-2 rounded-full text-sm font-ibm-plex-mono">
-                        Coming Soon
-                      </span>
-                    </div>
-                  </CardContent>
-                </Card>
+                        {/* CTA Button */}
+                        <Button 
+                          onClick={() => handleDownloadGuide(guide)}
+                          disabled={isDownloading || !guide.file_path}
+                          className={`w-full font-bold py-3 rounded-2xl hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl border-0 mt-6 ${
+                            guide.price === 0 
+                              ? 'bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFA500] text-black'
+                              : 'bg-gradient-to-r from-[#247EFF] via-[#87CEEB] to-[#0066CC] text-white'
+                          }`}
+                        >
+                          {isDownloading ? (
+                            <>
+                              <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-current mr-2"></div>
+                              Loading...
+                            </>
+                          ) : (
+                            <>
+                              {guide.price === 0 ? (
+                                <Download className="mr-2 h-4 w-4" />
+                              ) : (
+                                <CreditCard className="mr-2 h-4 w-4" />
+                              )}
+                              <span 
+                                style={{ 
+                                  fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
+                                  textShadow: '1px 1px 0px rgba(0,0,0,0.2)',
+                                  transform: 'rotate(-1deg)',
+                                  display: 'inline-block'
+                                }}
+                              >
+                                {guide.price === 0 ? 'Download Free' : `Get for $${guide.price}`}
+                              </span>
+                            </>
+                          )}
+                        </Button>
+                        
+                        {!guide.file_path && (
+                          <p className="text-center text-sm text-brand-black/60 dark:text-brand-cream/60">
+                            File not available yet
+                          </p>
+                        )}
+                      </CardContent>
+                    </Card>
+                  ))
+                )}
 
               </div>
             </div>

@@ -70,20 +70,36 @@ const MobileMenu = () => {
 
           {/* Admin Dashboard Link - Only visible to admins */}
           {isAdmin && (
-            <Link
-              to="/admin-dashboard"
-              className="group relative text-xl font-bold text-[#FF6B6B] hover:text-[#FF5252] transition-all duration-300 border-b border-[#FF6B6B]/20 pb-3 pl-4"
-              aria-label="Navigate to Admin Dashboard"
-              onClick={handleClose}
-              style={{ 
-                textShadow: '2px 2px 4px rgba(0,0,0,0.1)',
-                fontFamily: "'Inter', system-ui, sans-serif"
-              }}
-            >
-              <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#FF6B6B] to-[#FFD700] transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top rounded-r"></div>
-              <div className="absolute inset-0 bg-gradient-to-r from-[#FF6B6B]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg -mx-2 -my-1"></div>
-              <span className="relative z-10">Admin Dashboard</span>
-            </Link>
+            <>
+              <Link
+                to="/admin/guides"
+                className="group relative text-xl font-bold text-[#FF6B6B] hover:text-[#FF5252] transition-all duration-300 border-b border-[#FF6B6B]/20 pb-3 pl-4"
+                aria-label="Navigate to Guide Management"
+                onClick={handleClose}
+                style={{ 
+                  textShadow: '2px 2px 4px rgba(0,0,0,0.1)',
+                  fontFamily: "'Inter', system-ui, sans-serif"
+                }}
+              >
+                <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#FF6B6B] to-[#FFD700] transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top rounded-r"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-[#FF6B6B]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg -mx-2 -my-1"></div>
+                <span className="relative z-10">Manage Guides</span>
+              </Link>
+              <Link
+                to="/admin-dashboard"
+                className="group relative text-xl font-bold text-[#FF6B6B] hover:text-[#FF5252] transition-all duration-300 border-b border-[#FF6B6B]/20 pb-3 pl-4"
+                aria-label="Navigate to Admin Dashboard"
+                onClick={handleClose}
+                style={{ 
+                  textShadow: '2px 2px 4px rgba(0,0,0,0.1)',
+                  fontFamily: "'Inter', system-ui, sans-serif"
+                }}
+              >
+                <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#FF6B6B] to-[#FFD700] transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top rounded-r"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-[#FF6B6B]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg -mx-2 -my-1"></div>
+                <span className="relative z-10">Admin Dashboard</span>
+              </Link>
+            </>
           )}
 
           {/* Auth Section */}

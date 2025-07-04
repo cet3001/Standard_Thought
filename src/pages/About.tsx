@@ -183,6 +183,133 @@ const About = () => {
           `}</style>
         </section>
 
+        {/* The Real About Mindset Section */}
+        <section className="py-24 relative overflow-hidden">
+          {/* Torn-paper/Grain overlay background */}
+          <div className="absolute inset-0" aria-hidden="true">
+            {/* Base texture layer */}
+            {textureImageUrl && (
+              <div 
+                className="absolute inset-0 opacity-30 bg-cover bg-center"
+                style={{
+                  backgroundImage: `url(${textureImageUrl})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  backgroundRepeat: 'no-repeat'
+                }}
+              />
+            )}
+            
+            {/* Torn paper effect overlay */}
+            <div 
+              className="absolute inset-0 opacity-20"
+              style={{
+                background: `
+                  radial-gradient(circle at 20% 30%, rgba(0,0,0,0.1) 1px, transparent 1px),
+                  radial-gradient(circle at 70% 60%, rgba(0,0,0,0.08) 1px, transparent 1px),
+                  radial-gradient(circle at 40% 80%, rgba(0,0,0,0.06) 1px, transparent 1px)
+                `,
+                backgroundSize: '15px 15px, 25px 25px, 35px 35px'
+              }}
+            ></div>
+            
+            {/* Content overlay */}
+            <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/95 via-brand-cream/98 to-brand-cream/95 dark:from-brand-black/95 dark:via-brand-black/98 dark:to-brand-black/95"></div>
+          </div>
+
+          <div className="container mx-auto px-6 relative z-10">
+            <div className="max-w-4xl mx-auto text-center">
+              
+              {/* Section Header */}
+              <div className="mb-16">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-8 text-[#0A0A0A] leading-tight">
+                  The Real About{" "}
+                  <span 
+                    className="relative inline-block font-black"
+                    style={{ 
+                      background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                      backgroundSize: '400% 400%',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                      animation: 'pearlescent 3s ease-in-out infinite'
+                    }}
+                  >
+                    Mindset
+                  </span>
+                </h2>
+              </div>
+
+              {/* Main Content */}
+              <div className="mb-16">
+                <p className="text-lg md:text-xl lg:text-2xl text-[#0A0A0A] font-semibold leading-relaxed max-w-3xl mx-auto">
+                  We know what it's like to go from{" "}
+                  <span className="font-black text-[#247EFF]">'I can't afford it'</span>{" "}
+                  to{" "}
+                  <span className="font-black text-[#247EFF]">'How can I afford it?'</span>{" "}
+                  Mindset ain't hype—it's the foundation every real move is built on. 
+                  If you ever had to build your own blueprint, you're in the right spot.
+                </p>
+              </div>
+
+              {/* Pull Quote */}
+              <div className="relative">
+                <div 
+                  className="text-4xl md:text-5xl lg:text-6xl font-black text-[#0A0A0A] transform -rotate-1 relative z-10"
+                  style={{ 
+                    fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
+                    textShadow: '3px 3px 0px rgba(255,215,0,0.3), 2px 2px 0px rgba(0,0,0,0.1)',
+                    letterSpacing: '2px'
+                  }}
+                >
+                  "Flip your mindset,{" "}
+                  <span 
+                    className="relative inline-block"
+                    style={{ 
+                      background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                      backgroundSize: '400% 400%',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                      animation: 'pearlescent 3s ease-in-out infinite'
+                    }}
+                  >
+                    flip your money
+                  </span>."
+                </div>
+                
+                {/* Handwritten underline effect */}
+                <svg 
+                  className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-full max-w-lg h-8" 
+                  viewBox="0 0 400 30" 
+                  style={{ filter: 'drop-shadow(2px 2px 0px rgba(0,0,0,0.1))' }}
+                >
+                  <path 
+                    d="M10,20 Q100,8 200,15 Q300,22 390,12" 
+                    stroke="#f4d03f"
+                    strokeWidth="4" 
+                    fill="none" 
+                    strokeLinecap="round"
+                    opacity="0.7"
+                    style={{ 
+                      filter: 'drop-shadow(1px 1px 0px rgba(0,0,0,0.2))'
+                    }}
+                  />
+                  <path 
+                    d="M15,22 Q105,10 205,17 Q305,24 385,14" 
+                    stroke="#ffd700"
+                    strokeWidth="2" 
+                    fill="none" 
+                    strokeLinecap="round"
+                    opacity="0.5"
+                  />
+                </svg>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
       </main>
 
       {/* Footer - Static across all pages */}

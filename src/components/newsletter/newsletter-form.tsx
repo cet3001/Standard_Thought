@@ -121,7 +121,16 @@ export const NewsletterForm = () => {
                 ) : (
                   <>
                     <Check className="mr-2 h-4 w-4 sm:h-5 sm:w-5" aria-label="Checkmark icon" />
-                    Get the Blueprint
+                    <span 
+                      style={{ 
+                        fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
+                        textShadow: '2px 2px 0px rgba(0,0,0,0.3), 1px 1px 0px rgba(255,255,255,0.1)',
+                        transform: 'rotate(-0.5deg)',
+                        display: 'inline-block'
+                      }}
+                    >
+                      Get the Blueprint
+                    </span>
                   </>
                 )}
               </span>

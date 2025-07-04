@@ -116,7 +116,16 @@ const HeroContent = ({ isVisible, scrollToNewsletter }: HeroContentProps) => {
             aria-label="Get the wealth building blueprint - scroll to newsletter signup"
           >
             <Zap className="mr-3 h-5 w-5 sm:h-6 sm:w-6" aria-label="Lightning bolt icon representing fast action" />
-            Get the Blueprint
+            <span 
+              style={{ 
+                fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
+                textShadow: '2px 2px 0px rgba(0,0,0,0.3), 1px 1px 0px rgba(255,255,255,0.1)',
+                transform: 'rotate(-1deg)',
+                display: 'inline-block'
+              }}
+            >
+              Get the Blueprint
+            </span>
           </Button>
         </div>
       </div>

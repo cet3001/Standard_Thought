@@ -55,7 +55,16 @@ const ValuePropsArrow = () => {
           backgroundClip: 'text',
           animation: 'pearlescent 3s ease-in-out infinite'
         }}>
-          Get the Blueprint ↓
+          <span 
+            style={{ 
+              fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
+              textShadow: '2px 2px 0px rgba(0,0,0,0.3), 1px 1px 0px rgba(255,255,255,0.1)',
+              transform: 'rotate(-1deg)',
+              display: 'inline-block'
+            }}
+          >
+            Get the Blueprint ↓
+          </span>
           {/* Subtle spray effect */}
           <div className="absolute inset-0 opacity-60 blur-md -z-10" style={{
             background: 'linear-gradient(to right, transparent, rgba(244, 208, 63, 0.2), transparent)'

@@ -58,7 +58,16 @@ const FloatingCTA = () => {
             aria-label="Start building your wealth - Get free blueprint"
             title="Start building your wealth"
           >
-            Let's Build
+            <span 
+              style={{ 
+                fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
+                textShadow: '2px 2px 0px rgba(0,0,0,0.3), 1px 1px 0px rgba(255,255,255,0.1)',
+                transform: 'rotate(-0.5deg)',
+                display: 'inline-block'
+              }}
+            >
+              Let's Build
+            </span>
           </Button>
         </div>
 

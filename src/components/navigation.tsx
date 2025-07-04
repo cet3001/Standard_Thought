@@ -1,6 +1,7 @@
 
 import Logo from "./navigation/logo";
 import MobileMenu from "./navigation/mobile-menu";
+import DynamicTicker from "./navigation/dynamic-ticker";
 import { useUrbanTexture } from "@/hooks/use-urban-texture";
 import { useAuth } from "@/contexts/AuthContext";
 import { Link } from "react-router-dom";
@@ -13,10 +14,8 @@ const Navigation = () => {
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50">
-      {/* Community Trust Banner with improved styling */}
-      <div className="bg-gradient-to-r from-slate-600 via-slate-500 to-slate-700 text-brand-cream text-center py-2 text-sm font-medium shadow-md">
-        💡 Real strategies, real results—join builders creating wealth from scratch
-      </div>
+      {/* Dynamic Community Trust Banner */}
+      <DynamicTicker />
       
       {/* Main Navigation with Enhanced Urban Texture Background */}
       <nav className="relative backdrop-blur-md border-b border-[#247EFF]/20 shadow-sm overflow-hidden">

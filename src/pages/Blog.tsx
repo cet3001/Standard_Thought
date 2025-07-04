@@ -64,11 +64,11 @@ const Blog = () => {
           
           {/* Hero Section */}
           <SectionOverlayBox className={`mb-24 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            {/* Floating Elements */}
-            <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-              <div className="absolute -top-4 -right-4 w-20 h-20 rounded-full bg-[#FFD700]/20 animate-float"></div>
-              <div className="absolute -bottom-4 -left-4 w-16 h-16 rounded-2xl bg-[#247EFF]/15 animate-float" style={{ animationDelay: '1.5s' }}></div>
-            </div>
+              {/* Floating Elements */}
+              <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+                <div className="absolute -top-4 -right-4 w-20 h-20 rounded-full bg-[#FFD700]/20 animate-float"></div>
+                <div className="absolute -bottom-4 -left-4 w-16 h-16 rounded-2xl bg-[#FFD700]/15 animate-float" style={{ animationDelay: '1.5s' }}></div>
+              </div>
 
             <div className="text-center relative z-10">
               {/* Main Headline */}
@@ -99,12 +99,12 @@ const Blog = () => {
                 <h2 className="text-3xl md:text-4xl font-bold text-brand-black dark:text-brand-cream">
                   Real{" "}
                   <span className="relative inline-block">
-                    <span className="font-permanent-marker text-[#247EFF] transform rotate-1">
+                    <span className="font-permanent-marker text-[#FFD700] transform rotate-1">
                       Builder Stories
                     </span>
                     {/* Graffiti underline */}
                     <svg
-                      className="absolute -bottom-1 left-0 w-full h-3 text-[#247EFF]/50"
+                      className="absolute -bottom-1 left-0 w-full h-3 text-[#FFD700]/50"
                       viewBox="0 0 140 16"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
@@ -127,7 +127,7 @@ const Blog = () => {
               </p>
 
               {/* Pull Quote */}
-              <div className="relative bg-gradient-to-r from-[#FFD700]/10 to-[#247EFF]/10 rounded-xl p-6 border-l-4 border-[#FFD700] max-w-3xl mx-auto">
+              <div className="relative bg-gradient-to-r from-[#FFD700]/10 to-[#FFD700]/10 rounded-xl p-6 border-l-4 border-[#FFD700] max-w-3xl mx-auto">
                 <blockquote className="text-lg md:text-xl font-medium text-brand-black dark:text-brand-cream italic">
                   "If you had to figure it out with nothing but vision and grind, these stories are for you."
                 </blockquote>

@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Zap, Download, Lock, CheckCircle, Star, ArrowRight, CreditCard, TrendingUp, Bot, DollarSign } from "lucide-react";
+import { Zap, Download, Lock, CheckCircle, Star, ArrowRight, CreditCard, TrendingUp, Bot, DollarSign, ChevronDown } from "lucide-react";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import SEO from "@/components/seo";
@@ -739,6 +740,227 @@ const Sales = () => {
               <div className="text-center mt-12">
                 <p className="text-brand-black dark:text-brand-cream text-lg font-kalam opacity-70">
                   Each blueprint includes step-by-step guides, templates, and real-world examples
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ: Real Talk About the Blueprints Section */}
+        <section className="py-20 relative overflow-hidden">
+          {/* Urban background effects */}
+          <div className="absolute inset-0" aria-hidden="true">
+            {/* Graffiti-style splatters */}
+            <div className="absolute top-20 right-32 w-10 h-10 bg-[#247EFF]/8 rounded-full blur-md transform rotate-45"></div>
+            <div className="absolute bottom-32 left-20 w-14 h-14 bg-[#FFD700]/6 rounded-lg blur-lg transform -rotate-12"></div>
+            
+            {/* Urban texture overlay */}
+            <div className="absolute inset-0 opacity-[0.02] bg-[conic-gradient(from_45deg,_transparent_60%,_rgba(0,0,0,0.3)_80%,_transparent_100%)] bg-[length:10px_10px]"></div>
+          </div>
+
+          <div className="container mx-auto px-6 relative z-10">
+            <div className="max-w-4xl mx-auto">
+              
+              {/* Section Header with Graffiti Style */}
+              <div className="text-center mb-16 relative">
+                {/* Background graffiti tag */}
+                <div className="absolute top-4 right-8 transform rotate-6 opacity-[0.06] pointer-events-none" aria-hidden="true">
+                  <div 
+                    className="text-[#247EFF] text-3xl font-black"
+                    style={{ 
+                      fontFamily: "'Permanent Marker', cursive",
+                      filter: 'blur(1px)'
+                    }}
+                  >
+                    FACTS
+                  </div>
+                </div>
+
+                <h2 className="text-4xl md:text-5xl font-black mb-6 text-brand-black dark:text-brand-cream relative">
+                  <span 
+                    className="text-[#FFD700] relative overflow-hidden"
+                    style={{
+                      background: 'linear-gradient(45deg, #FFD700, #FFF8DC, #FFA500, #FFD700)',
+                      backgroundSize: '400% 400%',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                      animation: 'shimmer 3s ease-in-out infinite'
+                    }}
+                  >
+                    Real Questions,
+                    {/* Pearlescent overlay */}
+                    <div 
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-60 animate-[shimmer_2s_ease-in-out_infinite]"
+                      style={{
+                        background: 'linear-gradient(90deg, transparent 25%, rgba(255,255,255,0.4) 50%, transparent 75%)',
+                        backgroundSize: '200% 100%',
+                        mixBlendMode: 'overlay'
+                      }}
+                    />
+                  </span><br />
+                  Real Answers
+                </h2>
+                <p className="text-lg text-brand-black dark:text-brand-cream opacity-80 font-kalam">
+                  No sugar-coating, no BS—just real talk about building wealth from nothing
+                </p>
+              </div>
+
+              {/* FAQ Accordion */}
+              <div className="space-y-6">
+                <Accordion type="single" collapsible className="w-full space-y-4">
+                  
+                  {/* Q1: What if I'm broke? */}
+                  <AccordionItem 
+                    value="broke" 
+                    className="backdrop-blur-sm border-2 border-[#FFD700]/20 rounded-2xl shadow-lg overflow-hidden"
+                    style={{
+                      background: 'linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03))',
+                    }}
+                  >
+                    <AccordionTrigger className="px-6 py-4 hover:no-underline text-left group">
+                      <div className="flex items-start space-x-4">
+                        {/* Handwritten-style question mark */}
+                        <div className="flex-shrink-0 mt-1">
+                          <div 
+                            className="text-[#FFD700] text-2xl font-black transform -rotate-12"
+                            style={{ 
+                              fontFamily: "'Permanent Marker', cursive",
+                              textShadow: '2px 2px 0px rgba(0,0,0,0.3)'
+                            }}
+                          >
+                            ?
+                          </div>
+                        </div>
+                        <span className="text-lg md:text-xl font-bold text-brand-black dark:text-brand-cream font-ibm-plex-mono group-hover:text-[#FFD700] transition-colors duration-300">
+                          What if I'm broke?
+                        </span>
+                      </div>
+                    </AccordionTrigger>
+                    <AccordionContent className="px-6 pb-6 pt-2">
+                      <div className="pl-12">
+                        <p className="text-brand-black dark:text-brand-cream leading-relaxed font-kalam text-base">
+                          <strong className="text-[#FFD700]">Real talk:</strong> You can start with $10 and a vision. This blueprint is built for folks who had to figure it out with nothing but hustle. We start with what you have, not what you wish you had.
+                        </p>
+                      </div>
+                    </AccordionContent>
+                  </AccordionItem>
+
+                  {/* Q2: Can I use this if my credit's shot? */}
+                  <AccordionItem 
+                    value="credit" 
+                    className="backdrop-blur-sm border-2 border-[#247EFF]/20 rounded-2xl shadow-lg overflow-hidden"
+                    style={{
+                      background: 'linear-gradient(135deg, rgba(36,126,255,0.08), rgba(36,126,255,0.03))',
+                    }}
+                  >
+                    <AccordionTrigger className="px-6 py-4 hover:no-underline text-left group">
+                      <div className="flex items-start space-x-4">
+                        {/* Handwritten-style question mark */}
+                        <div className="flex-shrink-0 mt-1">
+                          <div 
+                            className="text-[#247EFF] text-2xl font-black transform rotate-6"
+                            style={{ 
+                              fontFamily: "'Permanent Marker', cursive",
+                              textShadow: '2px 2px 0px rgba(0,0,0,0.3)'
+                            }}
+                          >
+                            ?
+                          </div>
+                        </div>
+                        <span className="text-lg md:text-xl font-bold text-brand-black dark:text-brand-cream font-ibm-plex-mono group-hover:text-[#247EFF] transition-colors duration-300">
+                          Can I use this if my credit's shot?
+                        </span>
+                      </div>
+                    </AccordionTrigger>
+                    <AccordionContent className="px-6 pb-6 pt-2">
+                      <div className="pl-12">
+                        <p className="text-brand-black dark:text-brand-cream leading-relaxed font-kalam text-base">
+                          <strong className="text-[#247EFF]">Absolutely.</strong> We show you how to build from zero—no cosigner, no cap. Bad credit is just a starting point, not a life sentence. We've got the roadmap to get you where you need to be.
+                        </p>
+                      </div>
+                    </AccordionContent>
+                  </AccordionItem>
+
+                  {/* Q3: How fast will I really build $10K? */}
+                  <AccordionItem 
+                    value="timeline" 
+                    className="backdrop-blur-sm border-2 border-[#22C55E]/20 rounded-2xl shadow-lg overflow-hidden"
+                    style={{
+                      background: 'linear-gradient(135deg, rgba(34,197,94,0.08), rgba(34,197,94,0.03))',
+                    }}
+                  >
+                    <AccordionTrigger className="px-6 py-4 hover:no-underline text-left group">
+                      <div className="flex items-start space-x-4">
+                        {/* Handwritten-style question mark */}
+                        <div className="flex-shrink-0 mt-1">
+                          <div 
+                            className="text-[#22C55E] text-2xl font-black transform -rotate-3"
+                            style={{ 
+                              fontFamily: "'Permanent Marker', cursive",
+                              textShadow: '2px 2px 0px rgba(0,0,0,0.3)'
+                            }}
+                          >
+                            ?
+                          </div>
+                        </div>
+                        <span className="text-lg md:text-xl font-bold text-brand-black dark:text-brand-cream font-ibm-plex-mono group-hover:text-[#22C55E] transition-colors duration-300">
+                          How fast will I really build $10K?
+                        </span>
+                      </div>
+                    </AccordionTrigger>
+                    <AccordionContent className="px-6 pb-6 pt-2">
+                      <div className="pl-12">
+                        <p className="text-brand-black dark:text-brand-cream leading-relaxed font-kalam text-base">
+                          <strong className="text-[#22C55E]">No overnight hype.</strong> We give you the real timeline, the setbacks, and the shortcuts that actually work. Most people see their first $1K in 2-3 months, $10K in 12-18 months if they stay consistent. It's about playing the long game smart.
+                        </p>
+                      </div>
+                    </AccordionContent>
+                  </AccordionItem>
+
+                  {/* Q4: Is this just another get-rich-quick scheme? */}
+                  <AccordionItem 
+                    value="scheme" 
+                    className="backdrop-blur-sm border-2 border-[#8B5CF6]/20 rounded-2xl shadow-lg overflow-hidden"
+                    style={{
+                      background: 'linear-gradient(135deg, rgba(139,92,246,0.08), rgba(139,92,246,0.03))',
+                    }}
+                  >
+                    <AccordionTrigger className="px-6 py-4 hover:no-underline text-left group">
+                      <div className="flex items-start space-x-4">
+                        {/* Handwritten-style question mark */}
+                        <div className="flex-shrink-0 mt-1">
+                          <div 
+                            className="text-[#8B5CF6] text-2xl font-black transform rotate-12"
+                            style={{ 
+                              fontFamily: "'Permanent Marker', cursive",
+                              textShadow: '2px 2px 0px rgba(0,0,0,0.3)'
+                            }}
+                          >
+                            ?
+                          </div>
+                        </div>
+                        <span className="text-lg md:text-xl font-bold text-brand-black dark:text-brand-cream font-ibm-plex-mono group-hover:text-[#8B5CF6] transition-colors duration-300">
+                          Is this just another get-rich-quick scheme?
+                        </span>
+                      </div>
+                    </AccordionTrigger>
+                    <AccordionContent className="px-6 pb-6 pt-2">
+                      <div className="pl-12">
+                        <p className="text-brand-black dark:text-brand-cream leading-relaxed font-kalam text-base">
+                          <strong className="text-[#8B5CF6]">Hell no.</strong> We're the opposite of that noise. This is about building sustainable wealth through proven strategies—budgeting, investing, side hustles, credit building. No pyramids, no crypto promises, just real financial education for real people.
+                        </p>
+                      </div>
+                    </AccordionContent>
+                  </AccordionItem>
+
+                </Accordion>
+              </div>
+
+              {/* Bottom messaging */}
+              <div className="text-center mt-12">
+                <p className="text-brand-black dark:text-brand-cream text-lg font-kalam opacity-70">
+                  Got more questions? We keep it 100% real, always.
                 </p>
               </div>
             </div>

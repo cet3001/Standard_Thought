@@ -116,7 +116,7 @@ const Blog = () => {
         <div className="container mx-auto px-6 max-w-6xl">
           
           {/* Hero Section */}
-          <SectionOverlayBox className={`mb-24 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className={`mb-24 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               {/* Floating Elements */}
               <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
                 <div className="absolute -top-4 -right-4 w-20 h-20 rounded-full animate-float" style={{
@@ -234,7 +234,7 @@ const Blog = () => {
                 </blockquote>
               </div>
             </div>
-          </SectionOverlayBox>
+          </div>
 
           {/* Latest Stories Blog Grid */}
           <SectionOverlayBox className={`mb-24 transition-all duration-700 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>

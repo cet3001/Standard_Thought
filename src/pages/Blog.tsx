@@ -320,26 +320,10 @@ const Blog = () => {
                                      opacity: 0.9
                                    }}
                                 >
-                                  <Tag size={10} style={{
-                                    color: 'transparent',
-                                    background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                                    backgroundSize: '400% 400%',
-                                    WebkitBackgroundClip: 'text',
-                                    WebkitTextFillColor: 'transparent',
-                                    backgroundClip: 'text',
-                                    animation: 'pearlescent 3s ease-in-out infinite'
-                                  }} />
-                                  <span className="text-xs font-medium" style={{
-                                    color: 'transparent',
-                                    background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                                    backgroundSize: '400% 400%',
-                                    WebkitBackgroundClip: 'text',
-                                    WebkitTextFillColor: 'transparent',
-                                    backgroundClip: 'text',
-                                    animation: 'pearlescent 3s ease-in-out infinite'
-                                  }}>
-                                    {tag}
-                                  </span>
+                                   <Tag size={10} className="text-gray-900" />
+                                   <span className="text-xs font-medium text-gray-900 font-bold">
+                                     {tag}
+                                   </span>
                                 </div>
                               ))}
                             </div>
@@ -365,11 +349,13 @@ const Blog = () => {
                                  background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
                                  backgroundSize: '400% 400%',
                                  animation: 'pearlescent 3s ease-in-out infinite',
-                                 textShadow: '1px 1px 0px rgba(0,0,0,0.3)'
+                                 textShadow: '2px 2px 0px rgba(0,0,0,0.4), -1px -1px 0px rgba(255,255,255,0.3)',
+                                 letterSpacing: '0.5px'
                                }}
                              >
-                               <span>Read More</span>
-                               <ExternalLink size={14} className="group-hover:translate-x-0.5 transition-transform duration-200" />
+                               <span style={{ transform: 'rotate(-1deg)', display: 'inline-block' }}>Read</span>
+                               <span style={{ transform: 'rotate(1deg)', display: 'inline-block' }}>More</span>
+                               <ExternalLink size={14} className="group-hover:translate-x-0.5 transition-transform duration-200" style={{ transform: 'rotate(-0.5deg)' }} />
                              </div>
                           </div>
                        </div>
@@ -581,11 +567,13 @@ const Blog = () => {
                                        background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
                                        backgroundSize: '400% 400%',
                                        animation: 'pearlescent 3s ease-in-out infinite',
-                                       textShadow: '1px 1px 0px rgba(0,0,0,0.3)'
+                                       textShadow: '2px 2px 0px rgba(0,0,0,0.4), -1px -1px 0px rgba(255,255,255,0.3)',
+                                       letterSpacing: '0.5px'
                                      }}
                                    >
-                                     <span>Read Story</span>
-                                     <ExternalLink size={14} className="group-hover:translate-x-0.5 transition-transform duration-200" />
+                                     <span style={{ transform: 'rotate(-1deg)', display: 'inline-block' }}>Read</span>
+                                     <span style={{ transform: 'rotate(1deg)', display: 'inline-block' }}>Story</span>
+                                     <ExternalLink size={14} className="group-hover:translate-x-0.5 transition-transform duration-200" style={{ transform: 'rotate(-0.5deg)' }} />
                                    </div>
                                </div>
 

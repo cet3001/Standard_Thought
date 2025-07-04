@@ -16,7 +16,6 @@ import { AuthProvider } from "./contexts/AuthContext";
 import { Toaster } from "@/components/ui/toaster"
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import ImageGeneratorPage from "@/pages/ImageGenerator";
-import Sales from "@/pages/Sales";
 import ErrorBoundary from "@/components/error-boundary";
 
 console.log('App.tsx: Component loaded');
@@ -50,7 +49,6 @@ function App() {
                   <Route path="/auth" element={<Auth />} />
                   <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                   <Route path="/terms-of-service" element={<TermsOfService />} />
-                  <Route path="/sales" element={<Sales />} />
                   <Route path="/image-generator" element={<ImageGeneratorPage />} />
                 </Routes>
               </div>

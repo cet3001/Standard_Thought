@@ -81,9 +81,18 @@ const Navigation = () => {
               <Logo />
             </div>
 
-            {/* Right side - empty for now */}
+            {/* Right side - Admin Create Story Button */}
             <div className="flex items-center flex-shrink-0">
-              {/* Removed Get Blueprint button */}
+              {isAdmin && (
+                <Button
+                  onClick={() => navigate('/create-post')}
+                  size="sm"
+                  className="bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFA500] text-black font-bold px-4 py-2 rounded-lg hover:scale-105 transition-all duration-300 shadow-lg text-sm border-0 relative overflow-hidden"
+                >
+                  <Plus size={16} className="mr-2" />
+                  <span className="font-kalam font-bold">Create Story</span>
+                </Button>
+              )}
             </div>
           </div>
         </div>

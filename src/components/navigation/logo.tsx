@@ -34,7 +34,15 @@ const Logo = () => {
               Thought
             </span>
           </div>
-          <div className="text-sm font-medium text-[#0A0A0A]/60 mt-1">
+          <div 
+            className="text-sm font-black text-[#0A0A0A] mt-1"
+            style={{ 
+              fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
+              textShadow: '2px 2px 0px rgba(0,0,0,0.3), 1px 1px 0px rgba(255,255,255,0.8)',
+              transform: 'rotate(-0.5deg)',
+              letterSpacing: '0.5px'
+            }}
+          >
             Urban Wealth. Real Progress.
           </div>
         </div>

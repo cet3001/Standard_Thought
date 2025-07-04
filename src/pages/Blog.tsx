@@ -253,14 +253,19 @@ const Blog = () => {
                          {/* Glass overlay on image */}
                          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
                          
-                         {/* Category badge - Graffiti style */}
-                         <div className="absolute top-3 left-3">
-                            <div className="bg-[#FFD700]/90 px-3 py-1.5 transform -rotate-2 shadow-lg backdrop-blur-sm border border-yellow-400/30 rounded-sm">
-                              <span className="text-xs font-bold text-gray-900 uppercase tracking-wide font-permanent-marker drop-shadow-sm">
-                                {post.category}
-                              </span>
-                            </div>
-                         </div>
+                          {/* Category badge - Graffiti style */}
+                          <div className="absolute top-3 left-3">
+                             <div className="px-3 py-1.5 transform -rotate-2 shadow-lg backdrop-blur-sm border-2 border-gray-900 rounded-sm font-kalam font-bold" style={{
+                               background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                               backgroundSize: '400% 400%',
+                               animation: 'pearlescent 3s ease-in-out infinite',
+                               textShadow: '1px 1px 0px rgba(0,0,0,0.3), -1px -1px 0px rgba(255,255,255,0.2)'
+                             }}>
+                               <span className="text-xs font-bold text-gray-900 uppercase tracking-wide transform rotate-1 inline-block" style={{ letterSpacing: '1px' }}>
+                                 {post.category}
+                               </span>
+                             </div>
+                          </div>
 
                            <div className="absolute bottom-3 right-3 bg-black/70 backdrop-blur-md rounded-full px-3 py-1.5 flex items-center gap-1.5 border border-white/20">
                              <Clock size={12} style={{
@@ -507,14 +512,19 @@ const Blog = () => {
                                  {/* Glass overlay on image */}
                                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
                                  
-                                 {/* Category badge - Graffiti style */}
-                                 <div className="absolute top-3 left-3">
-                                    <div className="bg-[#FFD700]/90 px-3 py-1.5 transform -rotate-2 shadow-lg backdrop-blur-sm border border-yellow-400/30 rounded-sm">
-                                      <span className="text-xs font-bold text-gray-900 uppercase tracking-wide font-permanent-marker drop-shadow-sm">
-                                        {post.category}
-                                      </span>
-                                    </div>
-                                 </div>
+                                  {/* Category badge - Graffiti style */}
+                                  <div className="absolute top-3 left-3">
+                                     <div className="px-3 py-1.5 transform -rotate-2 shadow-lg backdrop-blur-sm border-2 border-gray-900 rounded-sm font-kalam font-bold" style={{
+                                       background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                                       backgroundSize: '400% 400%',
+                                       animation: 'pearlescent 3s ease-in-out infinite',
+                                       textShadow: '1px 1px 0px rgba(0,0,0,0.3), -1px -1px 0px rgba(255,255,255,0.2)'
+                                     }}>
+                                       <span className="text-xs font-bold text-gray-900 uppercase tracking-wide transform rotate-1 inline-block" style={{ letterSpacing: '1px' }}>
+                                         {post.category}
+                                       </span>
+                                     </div>
+                                  </div>
 
                                    <div className="absolute bottom-3 right-3 bg-black/70 backdrop-blur-md rounded-full px-3 py-1.5 flex items-center gap-1.5 border border-white/20">
                                      <Clock size={11} style={{

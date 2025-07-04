@@ -263,8 +263,24 @@ const Blog = () => {
                          </div>
 
                            <div className="absolute bottom-3 right-3 bg-black/70 backdrop-blur-md rounded-full px-3 py-1.5 flex items-center gap-1.5 border border-white/20">
-                             <Clock size={12} className="text-[#FFD700]" />
-                             <span className="text-xs text-[#FFD700] font-medium">
+                             <Clock size={12} style={{
+                               color: 'transparent',
+                               background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                               backgroundSize: '400% 400%',
+                               WebkitBackgroundClip: 'text',
+                               WebkitTextFillColor: 'transparent',
+                               backgroundClip: 'text',
+                               animation: 'pearlescent 3s ease-in-out infinite'
+                             }} />
+                             <span className="text-xs font-medium" style={{
+                               color: 'transparent',
+                               background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                               backgroundSize: '400% 400%',
+                               WebkitBackgroundClip: 'text',
+                               WebkitTextFillColor: 'transparent',  
+                               backgroundClip: 'text',
+                               animation: 'pearlescent 3s ease-in-out infinite'
+                             }}>
                                {Math.ceil(post.content.length / 1000)} min
                              </span>
                            </div>
@@ -273,7 +289,7 @@ const Blog = () => {
                        {/* Content */}
                        <div className="p-6 relative">
                          {/* Typewriter-style title */}
-                          <h4 className="font-bold text-xl text-white dark:text-brand-cream mb-3 font-ibm-plex-mono leading-tight group-hover:text-[#FFD700] transition-colors duration-300 drop-shadow-sm">
+                          <h4 className="font-bold text-xl text-white dark:text-brand-cream mb-3 font-ibm-plex-mono leading-tight transition-colors duration-300 drop-shadow-sm group-hover:bg-clip-text group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-yellow-300 group-hover:to-yellow-500">
                             {post.title}
                           </h4>
 
@@ -288,10 +304,32 @@ const Blog = () => {
                               {post.tags.slice(0, 3).map((tag, tagIndex) => (
                                 <div
                                   key={tagIndex}
-                                  className="flex items-center gap-1 bg-[#FFD700]/20 backdrop-blur-sm px-2 py-1 rounded-full border border-[#FFD700]/30"
+                                  className="flex items-center gap-1 backdrop-blur-sm px-2 py-1 rounded-full border border-yellow-400/30"
+                                  style={{
+                                    background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                                    backgroundSize: '400% 400%',
+                                    animation: 'pearlescent 3s ease-in-out infinite',
+                                    opacity: 0.2
+                                  }}
                                 >
-                                  <Tag size={10} className="text-[#FFD700]" />
-                                  <span className="text-xs text-[#FFD700] font-medium">
+                                  <Tag size={10} style={{
+                                    color: 'transparent',
+                                    background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                                    backgroundSize: '400% 400%',
+                                    WebkitBackgroundClip: 'text',
+                                    WebkitTextFillColor: 'transparent',
+                                    backgroundClip: 'text',
+                                    animation: 'pearlescent 3s ease-in-out infinite'
+                                  }} />
+                                  <span className="text-xs font-medium" style={{
+                                    color: 'transparent',
+                                    background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                                    backgroundSize: '400% 400%',
+                                    WebkitBackgroundClip: 'text',
+                                    WebkitTextFillColor: 'transparent',
+                                    backgroundClip: 'text',
+                                    animation: 'pearlescent 3s ease-in-out infinite'
+                                  }}>
                                     {tag}
                                   </span>
                                 </div>
@@ -301,11 +339,27 @@ const Blog = () => {
 
                           {/* Read More link */}
                           <div className="flex items-center justify-between">
-                            <span className="text-sm text-[#FFD700]/80">
+                            <span className="text-sm" style={{
+                              color: 'transparent',
+                              background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                              backgroundSize: '400% 400%',
+                              WebkitBackgroundClip: 'text',
+                              WebkitTextFillColor: 'transparent',
+                              backgroundClip: 'text',
+                              animation: 'pearlescent 3s ease-in-out infinite',
+                              opacity: 0.8
+                            }}>
                               {new Date(post.created_at).toLocaleDateString()}
                             </span>
-                            <div className="inline-flex items-center gap-2 bg-[#FFD700] hover:bg-[#FFD700]/90 text-gray-900 px-3 py-1.5 rounded-lg font-bold text-sm transform hover:scale-105 transition-all duration-200 shadow-lg border border-yellow-400/30 backdrop-blur-sm">
-                              <span className="font-permanent-marker">Read More</span>
+                            <div 
+                              className="inline-flex items-center gap-2 text-gray-900 px-4 py-2 rounded-lg font-bold text-sm transform hover:scale-105 transition-all duration-200 shadow-lg border border-yellow-400/30 backdrop-blur-sm font-permanent-marker transform -rotate-1 hover:rotate-0"
+                              style={{
+                                background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                                backgroundSize: '400% 400%',
+                                animation: 'pearlescent 3s ease-in-out infinite'
+                              }}
+                            >
+                              <span>Read More</span>
                               <ExternalLink size={14} className="group-hover:translate-x-0.5 transition-transform duration-200" />
                             </div>
                           </div>
@@ -468,8 +522,24 @@ const Blog = () => {
                                  </div>
 
                                    <div className="absolute bottom-3 right-3 bg-black/70 backdrop-blur-md rounded-full px-3 py-1.5 flex items-center gap-1.5 border border-white/20">
-                                     <Clock size={11} className="text-[#FFD700]" />
-                                     <span className="text-xs text-[#FFD700] font-medium">
+                                     <Clock size={11} style={{
+                                       color: 'transparent',
+                                       background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                                       backgroundSize: '400% 400%',
+                                       WebkitBackgroundClip: 'text',
+                                       WebkitTextFillColor: 'transparent',
+                                       backgroundClip: 'text',
+                                       animation: 'pearlescent 3s ease-in-out infinite'
+                                     }} />
+                                     <span className="text-xs font-medium" style={{
+                                       color: 'transparent',
+                                       background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                                       backgroundSize: '400% 400%',
+                                       WebkitBackgroundClip: 'text',
+                                       WebkitTextFillColor: 'transparent',
+                                       backgroundClip: 'text',
+                                       animation: 'pearlescent 3s ease-in-out infinite'
+                                     }}>
                                        {Math.ceil(post.content.length / 1000)}m
                                      </span>
                                    </div>
@@ -478,7 +548,7 @@ const Blog = () => {
                                {/* Content */}
                                <div className="p-5 relative">
                                  {/* Typewriter title */}
-                                  <h4 className="font-bold text-lg text-white dark:text-brand-cream mb-3 font-ibm-plex-mono leading-tight group-hover:text-[#FFD700] transition-colors duration-300 line-clamp-2 drop-shadow-sm">
+                                  <h4 className="font-bold text-lg text-white dark:text-brand-cream mb-3 font-ibm-plex-mono leading-tight transition-colors duration-300 line-clamp-2 drop-shadow-sm group-hover:bg-clip-text group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-yellow-300 group-hover:to-yellow-500">
                                     {post.title}
                                   </h4>
 
@@ -488,8 +558,15 @@ const Blog = () => {
                                  </p>
 
                                  {/* Read More Button - Spray painted style */}
-                                  <div className="inline-flex items-center gap-2 bg-[#FFD700]/90 hover:bg-[#FFD700] text-gray-900 px-4 py-2 rounded-lg font-bold text-sm transform hover:scale-105 transition-all duration-200 shadow-lg border border-yellow-400/30 backdrop-blur-sm">
-                                    <span className="font-permanent-marker">Read Story</span>
+                                  <div 
+                                    className="inline-flex items-center gap-2 text-gray-900 px-4 py-2 rounded-lg font-bold text-sm transform hover:scale-105 transition-all duration-200 shadow-lg border border-yellow-400/30 backdrop-blur-sm font-permanent-marker transform -rotate-1 hover:rotate-0"
+                                    style={{
+                                      background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                                      backgroundSize: '400% 400%',
+                                      animation: 'pearlescent 3s ease-in-out infinite'
+                                    }}
+                                  >
+                                    <span>Read Story</span>
                                     <ExternalLink size={14} className="group-hover:translate-x-0.5 transition-transform duration-200" />
                                   </div>
                                </div>

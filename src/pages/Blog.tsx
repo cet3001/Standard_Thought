@@ -222,7 +222,7 @@ const Blog = () => {
               </div>
             ) : blogPosts.length > 0 ? (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {blogPosts.map((post, index) => (
+                {blogPosts.slice(0, 5).map((post, index) => (
                   <div
                     key={post.id}
                     className="group cursor-pointer transform transition-all duration-300 hover:scale-105 hover:-translate-y-1"

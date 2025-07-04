@@ -2,9 +2,15 @@
 import Logo from "./navigation/logo";
 import MobileMenu from "./navigation/mobile-menu";
 import { useUrbanTexture } from "@/hooks/use-urban-texture";
+import { useAuth } from "@/contexts/AuthContext";
+import { Button } from "@/components/ui/button";
+import { Plus } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Navigation = () => {
   const { textureImageUrl } = useUrbanTexture();
+  const { isAdmin } = useAuth();
+  const navigate = useNavigate();
 
   const scrollToNewsletter = () => {
     const newsletterSection = document.querySelector('[data-section="newsletter"]');

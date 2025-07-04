@@ -7,14 +7,20 @@ import { useMobilePerformance } from "@/hooks/use-mobile-performance";
 import { useUrbanTexture } from "@/hooks/use-urban-texture";
 import { useBuilderStories } from "@/hooks/use-builder-stories";
 import { getBlogPosts, BlogPost } from "@/lib/api";
-import { ExternalLink, Clock, Tag, Quote, HelpCircle, TrendingUp, Heart, DollarSign, ChevronLeft, ChevronRight } from "lucide-react";
+import { ExternalLink, Clock, Tag, Quote, HelpCircle, TrendingUp, Heart, DollarSign, ChevronLeft, ChevronRight, Edit, Trash2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { useAuth } from "@/contexts/AuthContext";
+import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 const Blog = () => {
   useMobilePerformance();
   const { textureImageUrl } = useUrbanTexture();
+  const { isAdmin } = useAuth();
+  const { toast } = useToast();
   const { stories, loading } = useBuilderStories(5);
   const { stories: testimonials } = useBuilderStories(15); // Get more for testimonials
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
@@ -67,6 +73,44 @@ const Blog = () => {
       return () => clearInterval(interval);
     }
   }, [testimonials.length]);
+
+  // Admin functions
+  const handleDeletePost = async (postId: string, postTitle: string, e: React.MouseEvent) => {
+    e.stopPropagation(); // Prevent navigation when clicking delete
+    
+    if (!window.confirm(`Are you sure you want to delete "${postTitle}"?`)) {
+      return;
+    }
+
+    try {
+      const { error } = await supabase
+        .from('blog_posts')
+        .delete()
+        .eq('id', postId);
+
+      if (error) throw error;
+
+      // Update local state
+      setBlogPosts(prev => prev.filter(post => post.id !== postId));
+      
+      toast({
+        title: "Post deleted",
+        description: `"${postTitle}" has been deleted successfully.`,
+      });
+    } catch (error) {
+      console.error('Error deleting post:', error);
+      toast({
+        title: "Error",
+        description: "Failed to delete the post. Please try again.",
+        variant: "destructive",
+      });
+    }
+  };
+
+  const handleEditPost = (postId: string, e: React.MouseEvent) => {
+    e.stopPropagation(); // Prevent navigation when clicking edit
+    navigate(`/edit-post/${postId}`);
+  };
 
   const breadcrumbs = [
     { name: "Home", url: "https://www.standardthought.com", position: 1 },
@@ -405,6 +449,30 @@ const Blog = () => {
                                    </span>
                                 </div>
                               ))}
+                            </div>
+                           )}
+
+                          {/* Admin Controls */}
+                          {isAdmin && (
+                            <div className="flex items-center gap-2 mb-4">
+                              <Button
+                                size="sm"
+                                variant="outline"
+                                onClick={(e) => handleEditPost(post.id, e)}
+                                className="flex items-center gap-1 text-xs bg-blue-500/20 border-blue-400/30 text-blue-300 hover:bg-blue-500/30 hover:text-blue-200"
+                              >
+                                <Edit size={12} />
+                                Edit
+                              </Button>
+                              <Button
+                                size="sm"
+                                variant="outline"
+                                onClick={(e) => handleDeletePost(post.id, post.title, e)}
+                                className="flex items-center gap-1 text-xs bg-red-500/20 border-red-400/30 text-red-300 hover:bg-red-500/30 hover:text-red-200"
+                              >
+                                <Trash2 size={12} />
+                                Delete
+                              </Button>
                             </div>
                           )}
 

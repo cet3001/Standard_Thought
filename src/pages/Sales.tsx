@@ -425,6 +425,117 @@ const Sales = () => {
                   ))
                 )}
 
+                {/* Placeholder Cards */}
+                <Card className="backdrop-blur-sm border-2 border-gray-400/30 shadow-2xl hover:scale-105 transition-all duration-300 relative overflow-hidden bg-white/50 dark:bg-black/30">
+                  {/* Lock Icon */}
+                  <div className="absolute top-4 right-4 z-10">
+                    <div className="bg-gray-500/80 text-white p-2 rounded-full shadow-lg">
+                      <Lock className="h-4 w-4" />
+                    </div>
+                  </div>
+
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-xl font-black text-brand-black dark:text-brand-cream font-ibm-plex-mono">
+                      Credit Repair Master Class
+                    </CardTitle>
+                  </CardHeader>
+                  
+                  <CardContent className="space-y-4">
+                    <p className="text-brand-black/60 dark:text-brand-cream/60 text-sm leading-relaxed font-kalam">
+                      Deep dive into credit repair strategies, dispute techniques, and building a bulletproof credit profile.
+                    </p>
+                    
+                    {/* Benefits */}
+                    <ul className="space-y-2">
+                      <li className="flex items-start text-brand-black/50 dark:text-brand-cream/50 text-sm font-kalam">
+                        <CheckCircle className="h-4 w-4 text-gray-400 mr-2 mt-0.5 flex-shrink-0" />
+                        Advanced Dispute Strategies
+                      </li>
+                      <li className="flex items-start text-brand-black/50 dark:text-brand-cream/50 text-sm font-kalam">
+                        <CheckCircle className="h-4 w-4 text-gray-400 mr-2 mt-0.5 flex-shrink-0" />
+                        Credit Building Templates
+                      </li>
+                      <li className="flex items-start text-brand-black/50 dark:text-brand-cream/50 text-sm font-kalam">
+                        <CheckCircle className="h-4 w-4 text-gray-400 mr-2 mt-0.5 flex-shrink-0" />
+                        Score Optimization Tactics
+                      </li>
+                    </ul>
+                    
+                    {/* CTA Button */}
+                    <Button 
+                      disabled
+                      className="w-full font-bold py-3 rounded-2xl bg-gray-400/50 text-gray-600 dark:text-gray-400 cursor-not-allowed border-0 mt-6"
+                    >
+                      <Lock className="mr-2 h-4 w-4" />
+                      <span 
+                        style={{ 
+                          fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
+                          textShadow: '1px 1px 0px rgba(0,0,0,0.2)',
+                          transform: 'rotate(-1deg)',
+                          display: 'inline-block'
+                        }}
+                      >
+                        Coming Soon
+                      </span>
+                    </Button>
+                  </CardContent>
+                </Card>
+
+                <Card className="backdrop-blur-sm border-2 border-gray-400/30 shadow-2xl hover:scale-105 transition-all duration-300 relative overflow-hidden bg-white/50 dark:bg-black/30">
+                  {/* Lock Icon */}
+                  <div className="absolute top-4 right-4 z-10">
+                    <div className="bg-gray-500/80 text-white p-2 rounded-full shadow-lg">
+                      <Lock className="h-4 w-4" />
+                    </div>
+                  </div>
+
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-xl font-black text-brand-black dark:text-brand-cream font-ibm-plex-mono">
+                      Side Hustle Blueprint
+                    </CardTitle>
+                  </CardHeader>
+                  
+                  <CardContent className="space-y-4">
+                    <p className="text-brand-black/60 dark:text-brand-cream/60 text-sm leading-relaxed font-kalam">
+                      Turn your skills into multiple income streams with proven side hustle strategies that actually work.
+                    </p>
+                    
+                    {/* Benefits */}
+                    <ul className="space-y-2">
+                      <li className="flex items-start text-brand-black/50 dark:text-brand-cream/50 text-sm font-kalam">
+                        <CheckCircle className="h-4 w-4 text-gray-400 mr-2 mt-0.5 flex-shrink-0" />
+                        Skill-to-Income Mapping
+                      </li>
+                      <li className="flex items-start text-brand-black/50 dark:text-brand-cream/50 text-sm font-kalam">
+                        <CheckCircle className="h-4 w-4 text-gray-400 mr-2 mt-0.5 flex-shrink-0" />
+                        Platform Setup Guides
+                      </li>
+                      <li className="flex items-start text-brand-black/50 dark:text-brand-cream/50 text-sm font-kalam">
+                        <CheckCircle className="h-4 w-4 text-gray-400 mr-2 mt-0.5 flex-shrink-0" />
+                        Scaling Strategies
+                      </li>
+                    </ul>
+                    
+                    {/* CTA Button */}
+                    <Button 
+                      disabled
+                      className="w-full font-bold py-3 rounded-2xl bg-gray-400/50 text-gray-600 dark:text-gray-400 cursor-not-allowed border-0 mt-6"
+                    >
+                      <Lock className="mr-2 h-4 w-4" />
+                      <span 
+                        style={{ 
+                          fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
+                          textShadow: '1px 1px 0px rgba(0,0,0,0.2)',
+                          transform: 'rotate(-1deg)',
+                          display: 'inline-block'
+                        }}
+                      >
+                        Coming Soon
+                      </span>
+                    </Button>
+                  </CardContent>
+                </Card>
+
               </div>
             </div>
           </div>

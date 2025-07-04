@@ -5,6 +5,7 @@ import {
   Route,
 } from "react-router-dom";
 import Index from "@/pages/Index";
+import About from "@/pages/About";
 import BlogPost from "@/pages/BlogPost";
 import CreatePost from "@/pages/CreatePost";
 import EditPost from "@/pages/EditPost";
@@ -41,6 +42,7 @@ function App() {
                 <Toaster />
                 <Routes>
                   <Route path="/" element={<Index />} />
+                  <Route path="/about" element={<About />} />
                   <Route path="/blog/:slug" element={<BlogPost />} />
                   <Route path="/create-post" element={<CreatePost />} />
                   <Route path="/edit-post/:id" element={<EditPost />} />

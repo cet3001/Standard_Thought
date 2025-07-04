@@ -2,41 +2,9 @@
 import Logo from "./navigation/logo";
 import MobileMenu from "./navigation/mobile-menu";
 import { useUrbanTexture } from "@/hooks/use-urban-texture";
-import { useAuth } from "@/contexts/AuthContext";
-import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
-import { useNavigate } from "react-router-dom";
 
 const Navigation = () => {
   const { textureImageUrl } = useUrbanTexture();
-  const { isAdmin } = useAuth();
-  const navigate = useNavigate();
-
-  const scrollToNewsletter = () => {
-    const newsletterSection = document.querySelector('[data-section="newsletter"]');
-    if (newsletterSection) {
-      const formElement = newsletterSection.querySelector('form');
-      
-      if (formElement) {
-        const formRect = formElement.getBoundingClientRect();
-        const targetPosition = window.pageYOffset + formRect.top;
-        const offset = window.innerWidth < 768 ? window.innerHeight * 0.3 : 100;
-        
-        window.scrollTo({
-          top: targetPosition - offset,
-          behavior: 'smooth'
-        });
-      } else {
-        const offsetTop = newsletterSection.getBoundingClientRect().top + window.pageYOffset;
-        const offset = window.innerWidth < 768 ? 300 : 150;
-        
-        window.scrollTo({
-          top: offsetTop - offset,
-          behavior: 'smooth'
-        });
-      }
-    }
-  };
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50">
@@ -81,18 +49,9 @@ const Navigation = () => {
               <Logo />
             </div>
 
-            {/* Right side - Admin Create Story Button */}
+            {/* Right side - empty for now */}
             <div className="flex items-center flex-shrink-0">
-              {isAdmin && (
-                <Button
-                  onClick={() => navigate('/create-post')}
-                  size="sm"
-                  className="bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFA500] text-black font-bold px-4 py-2 rounded-lg hover:scale-105 transition-all duration-300 shadow-lg text-sm border-0 relative overflow-hidden"
-                >
-                  <Plus size={16} className="mr-2" />
-                  <span className="font-kalam font-bold">Create Story</span>
-                </Button>
-              )}
+              {/* Removed Create Story button */}
             </div>
           </div>
         </div>

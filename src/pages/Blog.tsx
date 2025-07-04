@@ -119,8 +119,19 @@ const Blog = () => {
           <SectionOverlayBox className={`mb-24 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               {/* Floating Elements */}
               <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-                <div className="absolute -top-4 -right-4 w-20 h-20 rounded-full bg-[#FFD700]/20 animate-float"></div>
-                <div className="absolute -bottom-4 -left-4 w-16 h-16 rounded-2xl bg-[#FFD700]/15 animate-float" style={{ animationDelay: '1.5s' }}></div>
+                <div className="absolute -top-4 -right-4 w-20 h-20 rounded-full animate-float" style={{
+                  background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                  backgroundSize: '400% 400%',
+                  animation: 'pearlescent 3s ease-in-out infinite, float 6s ease-in-out infinite',
+                  opacity: 0.2
+                }}></div>
+                <div className="absolute -bottom-4 -left-4 w-16 h-16 rounded-2xl animate-float" style={{ 
+                  background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                  backgroundSize: '400% 400%',
+                  animation: 'pearlescent 3s ease-in-out infinite, float 6s ease-in-out infinite',
+                  animationDelay: '1.5s',
+                  opacity: 0.15 
+                }}></div>
               </div>
 
             <div className="text-center relative z-10">
@@ -129,46 +140,80 @@ const Blog = () => {
                 <h1 className="text-5xl md:text-7xl font-black text-brand-black dark:text-brand-cream mb-4 relative">
                   Out the{" "}
                   <span className="relative inline-block">
-                    <span className="relative z-10 font-permanent-marker text-[#FFD700] transform -rotate-1 inline-block">
+                    <span className="relative z-10 font-permanent-marker transform -rotate-1 inline-block" style={{
+                      color: 'transparent',
+                      background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                      backgroundSize: '400% 400%',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                      animation: 'pearlescent 3s ease-in-out infinite'
+                    }}>
                       Mud
                     </span>
                     {/* Graffiti underline */}
                     <svg
-                      className="absolute -bottom-2 left-0 w-full h-4 text-[#FFD700]/60"
+                      className="absolute -bottom-2 left-0 w-full h-4"
                       viewBox="0 0 120 20"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         d="M2 15C8 12 15 8 25 10C35 12 45 8 55 12C65 16 75 8 85 12C95 16 105 12 115 15"
-                        stroke="currentColor"
+                        stroke="url(#gradient1)"
                         strokeWidth="3"
                         strokeLinecap="round"
                         fill="none"
                       />
+                      <defs>
+                        <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+                          <stop offset="0%" style={{ stopColor: '#f4d03f' }} />
+                          <stop offset="25%" style={{ stopColor: '#ffd700' }} />
+                          <stop offset="50%" style={{ stopColor: '#ffeb3b' }} />
+                          <stop offset="75%" style={{ stopColor: '#fff176' }} />
+                          <stop offset="100%" style={{ stopColor: '#f4d03f' }} />
+                        </linearGradient>
+                      </defs>
                     </svg>
                   </span>
                 </h1>
                 <h2 className="text-3xl md:text-4xl font-bold text-brand-black dark:text-brand-cream">
                   Real{" "}
                   <span className="relative inline-block">
-                    <span className="font-permanent-marker text-[#FFD700] transform rotate-1">
+                    <span className="font-permanent-marker transform rotate-1" style={{
+                      color: 'transparent',
+                      background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                      backgroundSize: '400% 400%',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                      animation: 'pearlescent 3s ease-in-out infinite'
+                    }}>
                       Builder Stories
                     </span>
                     {/* Graffiti underline */}
                     <svg
-                      className="absolute -bottom-1 left-0 w-full h-3 text-[#FFD700]/50"
+                      className="absolute -bottom-1 left-0 w-full h-3"
                       viewBox="0 0 140 16"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         d="M2 12C12 8 22 10 32 8C42 6 52 12 62 8C72 4 82 12 92 8C102 4 112 10 132 12"
-                        stroke="currentColor"
+                        stroke="url(#gradient2)"
                         strokeWidth="2.5"
                         strokeLinecap="round"
                         fill="none"
                       />
+                      <defs>
+                        <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+                          <stop offset="0%" style={{ stopColor: '#f4d03f' }} />
+                          <stop offset="25%" style={{ stopColor: '#ffd700' }} />
+                          <stop offset="50%" style={{ stopColor: '#ffeb3b' }} />
+                          <stop offset="75%" style={{ stopColor: '#fff176' }} />
+                          <stop offset="100%" style={{ stopColor: '#f4d03f' }} />
+                        </linearGradient>
+                      </defs>
                     </svg>
                   </span>
                 </h2>
@@ -180,7 +225,10 @@ const Blog = () => {
               </p>
 
               {/* Pull Quote */}
-              <div className="relative bg-gradient-to-r from-[#FFD700]/10 to-[#FFD700]/10 rounded-xl p-6 border-l-4 border-[#FFD700] max-w-3xl mx-auto">
+              <div className="relative rounded-xl p-6 border-l-4 max-w-3xl mx-auto" style={{
+                background: 'linear-gradient(90deg, rgba(244, 208, 63, 0.1), rgba(255, 215, 0, 0.1))',
+                borderLeftColor: '#ffd700'
+              }}>
                 <blockquote className="text-lg md:text-xl font-medium text-brand-black dark:text-brand-cream italic">
                   "If you had to figure it out with nothing but vision and grind, these stories are for you."
                 </blockquote>
@@ -195,18 +243,35 @@ const Blog = () => {
               <div className="relative inline-block mb-6">
                 <h3 className="text-4xl md:text-5xl font-black text-brand-black dark:text-brand-cream font-ibm-plex-mono">
                   LATEST{" "}
-                  <span className="font-permanent-marker text-[#FFD700] transform rotate-1">
+                  <span className="font-permanent-marker transform rotate-1" style={{
+                    color: 'transparent',
+                    background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                    backgroundSize: '400% 400%',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                    animation: 'pearlescent 3s ease-in-out infinite'
+                  }}>
                     STORIES
                   </span>
                   {/* Typewriter underline */}
                   <svg
-                    className="absolute -bottom-2 left-0 w-full h-2 text-[#FFD700]/40"
+                    className="absolute -bottom-2 left-0 w-full h-2"
                     viewBox="0 0 300 12"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <rect x="0" y="8" width="300" height="2" fill="currentColor" opacity="0.6" />
-                    <rect x="0" y="10" width="280" height="1" fill="currentColor" opacity="0.3" />
+                    <rect x="0" y="8" width="300" height="2" fill="url(#gradient3)" opacity="0.6" />
+                    <rect x="0" y="10" width="280" height="1" fill="url(#gradient3)" opacity="0.3" />
+                    <defs>
+                      <linearGradient id="gradient3" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style={{ stopColor: '#f4d03f' }} />
+                        <stop offset="25%" style={{ stopColor: '#ffd700' }} />
+                        <stop offset="50%" style={{ stopColor: '#ffeb3b' }} />
+                        <stop offset="75%" style={{ stopColor: '#fff176' }} />
+                        <stop offset="100%" style={{ stopColor: '#f4d03f' }} />
+                      </linearGradient>
+                    </defs>
                   </svg>
                 </h3>
               </div>
@@ -244,9 +309,18 @@ const Blog = () => {
                            />
                          ) : (
                            <div className="w-full h-full flex items-center justify-center">
-                              <div className="text-6xl font-permanent-marker text-[#FFD700]/60 transform -rotate-12 drop-shadow-lg">
-                                ST
-                              </div>
+                               <div className="text-6xl font-permanent-marker transform -rotate-12 drop-shadow-lg" style={{
+                                 color: 'transparent',
+                                 background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                                 backgroundSize: '400% 400%',
+                                 WebkitBackgroundClip: 'text',
+                                 WebkitTextFillColor: 'transparent',
+                                 backgroundClip: 'text',
+                                 animation: 'pearlescent 3s ease-in-out infinite',
+                                 opacity: 0.6
+                               }}>
+                                 ST
+                               </div>
                            </div>
                          )}
                          
@@ -366,7 +440,12 @@ const Blog = () => {
                        </div>
 
                        {/* Irregular edge effects */}
-                       <div className="absolute top-3 right-3 w-6 h-6 bg-[#FFD700]/20 transform rotate-45 rounded-sm opacity-60"></div>
+                        <div className="absolute top-3 right-3 w-6 h-6 transform rotate-45 rounded-sm opacity-60" style={{
+                          background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                          backgroundSize: '400% 400%',
+                          animation: 'pearlescent 3s ease-in-out infinite',
+                          opacity: 0.2
+                        }}></div>
                        <div className="absolute bottom-3 left-3 w-4 h-4 bg-white/10 transform -rotate-12 rounded-full opacity-40"></div>
                      </div>
                   </div>
@@ -374,7 +453,10 @@ const Blog = () => {
               </div>
             ) : (
               <div className="text-center py-12">
-                <div className="bg-[#FFD700]/10 rounded-lg p-8 border border-[#FFD700]/30">
+                <div className="rounded-lg p-8 border" style={{
+                  background: 'linear-gradient(45deg, rgba(244, 208, 63, 0.1), rgba(255, 215, 0, 0.1))',
+                  borderColor: 'rgba(255, 215, 0, 0.3)'
+                }}>
                   <p className="text-brand-black dark:text-brand-cream font-bold text-lg mb-2">
                     Stories Coming Soon
                   </p>
@@ -396,7 +478,15 @@ const Blog = () => {
               <div className="relative inline-block mb-6">
                 <h3 className="text-4xl md:text-5xl font-black text-brand-black dark:text-brand-cream font-ibm-plex-mono">
                   STACKED{" "}
-                  <span className="font-permanent-marker text-[#FFD700] transform -rotate-1">
+                  <span className="font-permanent-marker transform -rotate-1" style={{
+                    color: 'transparent',
+                    background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                    backgroundSize: '400% 400%',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                    animation: 'pearlescent 3s ease-in-out infinite'
+                  }}>
                     STORIES
                   </span>
                   <br />
@@ -405,18 +495,27 @@ const Blog = () => {
                   </span>
                   {/* Torn paper underline */}
                   <svg
-                    className="absolute -bottom-3 left-0 w-full h-4 text-[#FFD700]/40"
+                    className="absolute -bottom-3 left-0 w-full h-4"
                     viewBox="0 0 300 20"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M2 12C12 8 22 14 32 10C42 6 52 16 62 12C72 8 82 18 92 14C102 10 112 20 122 16C132 12 142 22 152 18C162 14 172 24 182 20C192 16 202 26 212 22C222 18 232 8 242 12C252 16 262 6 272 10C282 14 292 4 298 8"
-                      stroke="currentColor"
+                      stroke="url(#gradient4)"
                       strokeWidth="2"
                       strokeLinecap="round"
                       fill="none"
                     />
+                    <defs>
+                      <linearGradient id="gradient4" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style={{ stopColor: '#f4d03f' }} />
+                        <stop offset="25%" style={{ stopColor: '#ffd700' }} />
+                        <stop offset="50%" style={{ stopColor: '#ffeb3b' }} />
+                        <stop offset="75%" style={{ stopColor: '#fff176' }} />
+                        <stop offset="100%" style={{ stopColor: '#f4d03f' }} />
+                      </linearGradient>
+                    </defs>
                   </svg>
                 </h3>
               </div>
@@ -428,13 +527,22 @@ const Blog = () => {
               <div className="flex justify-center mb-8">
                 <div className="relative">
                   {/* Sticky note effect */}
-                  <div className="absolute -inset-2 bg-yellow-200 transform rotate-1 rounded-lg shadow-lg"></div>
-                  <div className="relative bg-white dark:bg-gray-900 border-2 border-[#FFD700] rounded-lg p-1 transform -rotate-1">
+                  <div className="absolute -inset-2 transform rotate-1 rounded-lg shadow-lg" style={{
+                    background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                    backgroundSize: '400% 400%',
+                    animation: 'pearlescent 3s ease-in-out infinite',
+                    opacity: 0.8
+                  }}></div>
+                  <div className="relative bg-white dark:bg-gray-900 border-2 rounded-lg p-1 transform -rotate-1" style={{
+                    borderColor: '#ffd700'
+                  }}>
                     <Select value={selectedCategory} onValueChange={setSelectedCategory}>
                       <SelectTrigger className="w-[200px] border-none bg-transparent font-permanent-marker text-gray-900 dark:text-brand-cream">
                         <SelectValue placeholder="Filter by category" />
                       </SelectTrigger>
-                      <SelectContent className="bg-white dark:bg-gray-900 border-2 border-[#FFD700]">
+                        <SelectContent className="bg-white dark:bg-gray-900 border-2" style={{
+                          borderColor: '#ffd700'
+                        }}>
                         {getUniqueCategories().map((category) => (
                           <SelectItem key={category} value={category} className="font-permanent-marker">
                             {category}
@@ -446,18 +554,27 @@ const Blog = () => {
                   {/* Hand-drawn arrow */}
                   <div className="absolute -right-8 -top-2 transform rotate-12">
                     <svg
-                      className="w-6 h-6 text-[#FFD700]"
+                      className="w-6 h-6"
                       viewBox="0 0 24 24"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         d="M7 17L17 7M17 7H7M17 7V17"
-                        stroke="currentColor"
+                        stroke="url(#gradient5)"
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
                       />
+                      <defs>
+                        <linearGradient id="gradient5" x1="0%" y1="0%" x2="100%" y2="0%">
+                          <stop offset="0%" style={{ stopColor: '#f4d03f' }} />
+                          <stop offset="25%" style={{ stopColor: '#ffd700' }} />
+                          <stop offset="50%" style={{ stopColor: '#ffeb3b' }} />
+                          <stop offset="75%" style={{ stopColor: '#fff176' }} />
+                          <stop offset="100%" style={{ stopColor: '#f4d03f' }} />
+                        </linearGradient>
+                      </defs>
                     </svg>
                   </div>
                 </div>
@@ -503,9 +620,18 @@ const Blog = () => {
                                    />
                                  ) : (
                                    <div className="w-full h-full flex items-center justify-center">
-                                      <div className="text-4xl font-permanent-marker text-[#FFD700]/60 transform -rotate-12 drop-shadow-lg">
-                                        ST
-                                      </div>
+                                       <div className="text-4xl font-permanent-marker transform -rotate-12 drop-shadow-lg" style={{
+                                         color: 'transparent',
+                                         background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                                         backgroundSize: '400% 400%',
+                                         WebkitBackgroundClip: 'text',
+                                         WebkitTextFillColor: 'transparent',
+                                         backgroundClip: 'text',
+                                         animation: 'pearlescent 3s ease-in-out infinite',
+                                         opacity: 0.6
+                                       }}>
+                                         ST
+                                       </div>
                                    </div>
                                  )}
                                  
@@ -588,7 +714,12 @@ const Blog = () => {
                                </div>
 
                                {/* Irregular edge effect */}
-                               <div className="absolute top-2 right-2 w-6 h-6 bg-[#FFD700]/20 transform rotate-45 rounded-sm opacity-60"></div>
+                                <div className="absolute top-2 right-2 w-6 h-6 transform rotate-45 rounded-sm opacity-60" style={{
+                                  background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                                  backgroundSize: '400% 400%',
+                                  animation: 'pearlescent 3s ease-in-out infinite',
+                                  opacity: 0.2
+                                }}></div>
                                <div className="absolute bottom-2 left-2 w-4 h-4 bg-white/10 transform -rotate-12 rounded-full opacity-40"></div>
                              </div>
                            </div>
@@ -600,8 +731,16 @@ const Blog = () => {
                   {/* Custom Navigation Arrows */}
                   {getFilteredPosts().length > 4 && (
                     <>
-                      <CarouselPrevious className="absolute -left-16 top-1/2 transform -translate-y-1/2 bg-[#FFD700] hover:bg-[#FFD700]/80 border-2 border-gray-900 text-gray-900 shadow-lg rotate-3 hover:rotate-0 transition-all duration-300" />
-                      <CarouselNext className="absolute -right-16 top-1/2 transform -translate-y-1/2 bg-[#FFD700] hover:bg-[#FFD700]/80 border-2 border-gray-900 text-gray-900 shadow-lg rotate-3 hover:rotate-0 transition-all duration-300" />
+                       <CarouselPrevious className="absolute -left-16 top-1/2 transform -translate-y-1/2 border-2 border-gray-900 text-gray-900 shadow-lg rotate-3 hover:rotate-0 transition-all duration-300" style={{
+                         background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                         backgroundSize: '400% 400%',
+                         animation: 'pearlescent 3s ease-in-out infinite'
+                       }} />
+                       <CarouselNext className="absolute -right-16 top-1/2 transform -translate-y-1/2 border-2 border-gray-900 text-gray-900 shadow-lg rotate-3 hover:rotate-0 transition-all duration-300" style={{
+                         background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                         backgroundSize: '400% 400%',
+                         animation: 'pearlescent 3s ease-in-out infinite'
+                       }} />
                     </>
                   )}
                 </Carousel>
@@ -618,7 +757,10 @@ const Blog = () => {
               </div>
             ) : (
               <div className="text-center py-12">
-                <div className="bg-[#FFD700]/10 rounded-lg p-8 border border-[#FFD700]/30 transform rotate-1">
+                <div className="rounded-lg p-8 border transform rotate-1" style={{
+                  background: 'linear-gradient(45deg, rgba(244, 208, 63, 0.1), rgba(255, 215, 0, 0.1))',
+                  borderColor: 'rgba(255, 215, 0, 0.3)'
+                }}>
                   <p className="text-brand-black dark:text-brand-cream font-bold text-lg mb-2 font-permanent-marker">
                     No Stories in "{selectedCategory}"
                   </p>
@@ -639,7 +781,11 @@ const Blog = () => {
             <div className="flex items-center justify-center mb-8">
               <div className="relative">
                 {/* Graffiti-style badge */}
-                <div className="bg-[#FFD700] px-6 py-3 transform -rotate-2 shadow-lg relative">
+                <div className="px-6 py-3 transform -rotate-2 shadow-lg relative" style={{
+                  background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                  backgroundSize: '400% 400%',
+                  animation: 'pearlescent 3s ease-in-out infinite'
+                }}>
                   {/* Hand-drawn border */}
                   <svg
                     className="absolute inset-0 w-full h-full text-gray-900"
@@ -667,10 +813,28 @@ const Blog = () => {
             {testimonials.length > 0 && (
               <div className="text-center relative">
                 {/* Background decorative quotes */}
-                <div className="absolute -top-4 -left-4 text-[#FFD700]/20 text-6xl font-bold">
+                <div className="absolute -top-4 -left-4 text-6xl font-bold" style={{
+                  color: 'transparent',
+                  background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                  backgroundSize: '400% 400%',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                  animation: 'pearlescent 3s ease-in-out infinite',
+                  opacity: 0.2
+                }}>
                   <Quote size={60} />
                 </div>
-                <div className="absolute -bottom-4 -right-4 text-[#FFD700]/20 text-6xl font-bold transform rotate-180">
+                <div className="absolute -bottom-4 -right-4 text-6xl font-bold transform rotate-180" style={{
+                  color: 'transparent',
+                  background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                  backgroundSize: '400% 400%',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                  animation: 'pearlescent 3s ease-in-out infinite',
+                  opacity: 0.2
+                }}>
                   <Quote size={60} />
                 </div>
 
@@ -684,7 +848,15 @@ const Blog = () => {
                   <div className="flex items-center justify-center">
                     <div className="font-comic-neue text-lg text-brand-black/80 dark:text-brand-cream/80">
                       <span className="font-bold">—{testimonials[currentTestimonial]?.name}</span>
-                      <span className="text-[#FFD700] mx-2">•</span>
+                      <span className="mx-2" style={{
+                        color: 'transparent',
+                        background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                        backgroundSize: '400% 400%',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        backgroundClip: 'text',
+                        animation: 'pearlescent 3s ease-in-out infinite'
+                      }}>•</span>
                       <span>{testimonials[currentTestimonial]?.city_area}</span>
                     </div>
                   </div>
@@ -698,9 +870,14 @@ const Blog = () => {
                       onClick={() => setCurrentTestimonial(index)}
                       className={`w-3 h-3 rounded-full transition-all duration-300 ${
                         index === currentTestimonial
-                          ? 'bg-[#FFD700] scale-125'
-                          : 'bg-gray-300 dark:bg-gray-600 hover:bg-[#FFD700]/50'
-                      }`}
+                          ? 'scale-125'
+                          : 'bg-gray-300 dark:bg-gray-600 hover:bg-gray-400/50'
+                        } ${index === currentTestimonial ? '' : 'hover:scale-110'}`}
+                        style={index === currentTestimonial ? {
+                          background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                          backgroundSize: '400% 400%',
+                          animation: 'pearlescent 3s ease-in-out infinite'
+                        } : {}}
                       aria-label={`View testimonial ${index + 1}`}
                     />
                   ))}

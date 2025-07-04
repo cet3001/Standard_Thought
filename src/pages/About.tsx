@@ -741,6 +741,316 @@ const About = () => {
         {/* Section Spacer */}
         <div className="py-8"></div>
 
+        {/* FAQ: Mindset & Motivation Section */}
+        <div className="container mx-auto px-6">
+          <SectionOverlayBox>
+            <div className="max-w-4xl mx-auto">
+              
+              {/* Section Header */}
+              <div className="text-center mb-16">
+                <h2 
+                  className="text-3xl md:text-4xl lg:text-5xl font-black mb-6 text-[#0A0A0A] transform rotate-1 relative"
+                  style={{ 
+                    fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
+                    textShadow: '4px 4px 0px rgba(244,208,63,0.3), 3px 3px 0px rgba(0,0,0,0.1)',
+                    letterSpacing: '2px'
+                  }}
+                >
+                  FAQ:{" "}
+                  <span 
+                    className="relative inline-block"
+                    style={{ 
+                      background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                      backgroundSize: '400% 400%',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                      animation: 'pearlescent 3s ease-in-out infinite'
+                    }}
+                  >
+                    Mindset
+                  </span>{" "}
+                  & Motivation
+                  
+                  {/* Graffiti underline effect */}
+                  <svg 
+                    className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-full max-w-2xl h-6" 
+                    viewBox="0 0 500 20" 
+                  >
+                    <path 
+                      d="M10,12 C120,6 250,18 380,8 Q420,12 490,10" 
+                      stroke="#f4d03f"
+                      strokeWidth="4" 
+                      fill="none" 
+                      strokeLinecap="round"
+                      opacity="0.8"
+                      style={{ 
+                        filter: 'drop-shadow(1px 1px 0px rgba(0,0,0,0.2))'
+                      }}
+                    />
+                  </svg>
+                </h2>
+              </div>
+
+              {/* FAQ Items */}
+              <div className="space-y-8">
+                
+                {/* FAQ 1 */}
+                <div className="relative border-l-4 border-[#f4d03f] pl-8 py-4">
+                  <div className="flex items-start gap-4">
+                    {/* Graffiti icon */}
+                    <div 
+                      className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 transform -rotate-2"
+                      style={{
+                        background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                        backgroundSize: '400% 400%',
+                        animation: 'pearlescent 3s ease-in-out infinite',
+                        boxShadow: '3px 3px 0px rgba(0,0,0,0.1), 1px 1px 0px rgba(244,208,63,0.3)'
+                      }}
+                    >
+                      <span className="text-lg font-black text-black">Q</span>
+                    </div>
+                    
+                    <div>
+                      <h3 
+                        className="text-xl md:text-2xl font-black mb-4 text-[#0A0A0A] transform -rotate-1"
+                        style={{ 
+                          fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
+                          textShadow: '2px 2px 0px rgba(244,208,63,0.2)'
+                        }}
+                      >
+                        "What if I keep falling off?"
+                      </h3>
+                      <p className="text-base md:text-lg text-[#0A0A0A] font-semibold leading-relaxed">
+                        Real talk—everybody falls off. The difference is how fast you get back up. Don't make "falling off" mean you're weak. Make it mean you're human. The goal isn't perfection, it's consistency over time. Start with 10 minutes a day, not 10 hours. Build the habit first, then build the intensity.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* FAQ 2 */}
+                <div className="relative border-l-4 border-[#f4d03f] pl-8 py-4">
+                  <div className="flex items-start gap-4">
+                    {/* Graffiti icon */}
+                    <div 
+                      className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 transform rotate-1"
+                      style={{
+                        background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                        backgroundSize: '400% 400%',
+                        animation: 'pearlescent 3s ease-in-out infinite',
+                        boxShadow: '3px 3px 0px rgba(0,0,0,0.1), 1px 1px 0px rgba(244,208,63,0.3)'
+                      }}
+                    >
+                      <span className="text-lg font-black text-black">Q</span>
+                    </div>
+                    
+                    <div>
+                      <h3 
+                        className="text-xl md:text-2xl font-black mb-4 text-[#0A0A0A] transform rotate-1"
+                        style={{ 
+                          fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
+                          textShadow: '2px 2px 0px rgba(244,208,63,0.2)'
+                        }}
+                      >
+                        "How do I stay motivated when nothing's working?"
+                      </h3>
+                      <p className="text-base md:text-lg text-[#0A0A0A] font-semibold leading-relaxed">
+                        Motivation is trash. You need systems, not feelings. When nothing's working, that means you're in the learning phase—not the failing phase. Adjust your approach, not your goal. Find one small win every day and stack them. Progress isn't always visible, but it's always happening when you stay consistent.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* FAQ 3 */}
+                <div className="relative border-l-4 border-[#f4d03f] pl-8 py-4">
+                  <div className="flex items-start gap-4">
+                    {/* Graffiti icon */}
+                    <div 
+                      className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 transform -rotate-1"
+                      style={{
+                        background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                        backgroundSize: '400% 400%',
+                        animation: 'pearlescent 3s ease-in-out infinite',
+                        boxShadow: '3px 3px 0px rgba(0,0,0,0.1), 1px 1px 0px rgba(244,208,63,0.3)'
+                      }}
+                    >
+                      <span className="text-lg font-black text-black">Q</span>
+                    </div>
+                    
+                    <div>
+                      <h3 
+                        className="text-xl md:text-2xl font-black mb-4 text-[#0A0A0A] transform -rotate-1"
+                        style={{ 
+                          fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
+                          textShadow: '2px 2px 0px rgba(244,208,63,0.2)'
+                        }}
+                      >
+                        "Can I really break money trauma if I've never seen wealth?"
+                      </h3>
+                      <p className="text-base md:text-lg text-[#0A0A0A] font-semibold leading-relaxed">
+                        Absolutely. Money trauma comes from the stories we tell ourselves, not the bank account we inherited. You don't need to see wealth to create it—you need to study it, understand it, and start building it one decision at a time. Your background is your starting point, not your ceiling. Every wealthy person was broke at some point. The difference is what they chose to believe and do next.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* FAQ 4 */}
+                <div className="relative border-l-4 border-[#f4d03f] pl-8 py-4">
+                  <div className="flex items-start gap-4">
+                    {/* Graffiti icon */}
+                    <div 
+                      className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 transform rotate-2"
+                      style={{
+                        background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                        backgroundSize: '400% 400%',
+                        animation: 'pearlescent 3s ease-in-out infinite',
+                        boxShadow: '3px 3px 0px rgba(0,0,0,0.1), 1px 1px 0px rgba(244,208,63,0.3)'
+                      }}
+                    >
+                      <span className="text-lg font-black text-black">Q</span>
+                    </div>
+                    
+                    <div>
+                      <h3 
+                        className="text-xl md:text-2xl font-black mb-4 text-[#0A0A0A] transform rotate-1"
+                        style={{ 
+                          fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
+                          textShadow: '2px 2px 0px rgba(244,208,63,0.2)'
+                        }}
+                      >
+                        "How long before I see real changes?"
+                      </h3>
+                      <p className="text-base md:text-lg text-[#0A0A0A] font-semibold leading-relaxed">
+                        Mindset shifts happen fast—sometimes in days. Behavior changes take 30-90 days to stick. Financial results? That depends on how you apply what you learn. But here's what's real: you'll feel different within weeks, think different within months, and live different within a year. The key is starting today, not waiting for perfect conditions.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </SectionOverlayBox>
+        </div>
+
+        {/* Section Spacer */}
+        <div className="py-8"></div>
+
+        {/* CTA: Join the Movement Section */}
+        <div className="container mx-auto px-6">
+          <SectionOverlayBox>
+            <div className="max-w-4xl mx-auto text-center">
+              
+              {/* Section Header */}
+              <div className="mb-12">
+                <h2 
+                  className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 text-[#0A0A0A] transform -rotate-1 relative"
+                  style={{ 
+                    fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
+                    textShadow: '4px 4px 0px rgba(244,208,63,0.3), 3px 3px 0px rgba(0,0,0,0.1)',
+                    letterSpacing: '2px'
+                  }}
+                >
+                  Join the{" "}
+                  <span 
+                    className="relative inline-block"
+                    style={{ 
+                      background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                      backgroundSize: '400% 400%',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                      animation: 'pearlescent 3s ease-in-out infinite'
+                    }}
+                  >
+                    Movement
+                  </span>
+                  
+                  {/* Hand-drawn underline effect */}
+                  <svg 
+                    className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-full max-w-xl h-8" 
+                    viewBox="0 0 400 25" 
+                  >
+                    <path 
+                      d="M10,15 C100,8 200,22 300,12 Q350,16 390,14" 
+                      stroke="#f4d03f"
+                      strokeWidth="5" 
+                      fill="none" 
+                      strokeLinecap="round"
+                      opacity="0.7"
+                      style={{ 
+                        filter: 'drop-shadow(2px 2px 0px rgba(0,0,0,0.2))'
+                      }}
+                    />
+                    <path 
+                      d="M15,17 Q105,10 205,19 Q305,24 385,16" 
+                      stroke="#ffd700"
+                      strokeWidth="2" 
+                      fill="none" 
+                      strokeLinecap="round"
+                      opacity="0.5"
+                    />
+                  </svg>
+                </h2>
+                
+                <p className="text-lg md:text-xl text-[#0A0A0A] font-semibold leading-relaxed max-w-2xl mx-auto">
+                  Ready to flip your mindset and start building? Get your free mindset tool and join thousands of builders who are already transforming their lives.
+                </p>
+              </div>
+
+              {/* CTA Button and Form */}
+              <div className="space-y-6">
+                <button 
+                  className="group relative inline-flex items-center gap-3 text-black font-bold py-4 px-10 rounded-2xl transform hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-3xl border-3 border-black/20 text-lg md:text-xl"
+                  style={{
+                    background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                    backgroundSize: '400% 400%',
+                    animation: 'pearlescent 3s ease-in-out infinite',
+                    fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
+                    textShadow: "2px 2px 0px rgba(0,0,0,0.2)",
+                    letterSpacing: '2px',
+                    transform: 'rotate(-1deg)'
+                  }}
+                  onClick={() => {
+                    const newsletterSection = document.querySelector('[data-section="newsletter"]');
+                    if (newsletterSection) {
+                      const formElement = newsletterSection.querySelector('form');
+                      if (formElement) {
+                        const formRect = formElement.getBoundingClientRect();
+                        const targetPosition = window.pageYOffset + formRect.top;
+                        const offset = window.innerWidth < 768 ? window.innerHeight * 0.3 : 100;
+                        window.scrollTo({
+                          top: targetPosition - offset,
+                          behavior: 'smooth'
+                        });
+                      }
+                    }
+                  }}
+                >
+                  <svg className="w-6 h-6 group-hover:rotate-12 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12,2A3,3 0 0,1 15,5V11A3,3 0 0,1 12,14A3,3 0 0,1 9,11V5A3,3 0 0,1 12,2M19,11C19,14.53 16.39,17.44 13,17.93V21H11V17.93C7.61,17.44 5,14.53 5,11H7A5,5 0 0,0 12,16A5,5 0 0,0 17,11H19Z"/>
+                  </svg>
+                  Get Your Free Mindset Tool
+                </button>
+                
+                <p 
+                  className="text-sm text-[#0A0A0A] font-semibold transform rotate-1"
+                  style={{ 
+                    fontFamily: "'Kalam', 'Comic Neue', cursive",
+                    textShadow: '1px 1px 0px rgba(244,208,63,0.3)'
+                  }}
+                >
+                  No spam, just real blueprints.
+                </p>
+              </div>
+
+            </div>
+          </SectionOverlayBox>
+        </div>
+
+        {/* Section Spacer */}
+        <div className="py-8"></div>
+
         {/* Real Builder Stories Section */}
         <section className="py-32 relative overflow-hidden">
           {/* Polaroid photo overlay effects */}

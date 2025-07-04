@@ -673,7 +673,9 @@ const About = () => {
                     <div 
                       className="w-16 h-16 rounded-lg flex items-center justify-center transform -rotate-2 group-hover:rotate-0 transition-transform duration-300"
                       style={{
-                        background: 'linear-gradient(45deg, #f4d03f, #ffd700)',
+                        background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                        backgroundSize: '400% 400%',
+                        animation: 'pearlescent 3s ease-in-out infinite',
                         boxShadow: '4px 4px 0px rgba(0,0,0,0.1), 2px 2px 0px rgba(244,208,63,0.3)',
                         border: '2px solid rgba(0,0,0,0.1)'
                       }}
@@ -699,8 +701,11 @@ const About = () => {
                   </p>
                   
                   <button 
-                    className="w-full bg-gradient-to-r from-[#f4d03f] via-[#ffd700] to-[#f4d03f] text-black font-bold py-3 px-6 rounded-xl transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-black/10"
+                    className="w-full text-black font-bold py-3 px-6 rounded-xl transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-black/10"
                     style={{
+                      background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                      backgroundSize: '400% 400%',
+                      animation: 'pearlescent 3s ease-in-out infinite',
                       fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
                       textShadow: "1px 1px 0px rgba(0,0,0,0.2)",
                       letterSpacing: '1px'
@@ -717,7 +722,9 @@ const About = () => {
                     <div 
                       className="w-16 h-16 rounded-lg flex items-center justify-center transform rotate-1 group-hover:rotate-0 transition-transform duration-300"
                       style={{
-                        background: 'linear-gradient(45deg, #f4d03f, #ffd700)',
+                        background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                        backgroundSize: '400% 400%',
+                        animation: 'pearlescent 3s ease-in-out infinite',
                         boxShadow: '4px 4px 0px rgba(0,0,0,0.1), 2px 2px 0px rgba(244,208,63,0.3)',
                         border: '2px solid rgba(0,0,0,0.1)'
                       }}
@@ -743,8 +750,11 @@ const About = () => {
                   </p>
                   
                   <button 
-                    className="w-full bg-gradient-to-r from-[#f4d03f] via-[#ffd700] to-[#f4d03f] text-black font-bold py-3 px-6 rounded-xl transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-black/10"
+                    className="w-full text-black font-bold py-3 px-6 rounded-xl transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-black/10"
                     style={{
+                      background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                      backgroundSize: '400% 400%',
+                      animation: 'pearlescent 3s ease-in-out infinite',
                       fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
                       textShadow: "1px 1px 0px rgba(0,0,0,0.2)",
                       letterSpacing: '1px'
@@ -761,7 +771,9 @@ const About = () => {
                     <div 
                       className="w-16 h-16 rounded-lg flex items-center justify-center transform -rotate-1 group-hover:rotate-0 transition-transform duration-300"
                       style={{
-                        background: 'linear-gradient(45deg, #f4d03f, #ffd700)',
+                        background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                        backgroundSize: '400% 400%',
+                        animation: 'pearlescent 3s ease-in-out infinite',
                         boxShadow: '4px 4px 0px rgba(0,0,0,0.1), 2px 2px 0px rgba(244,208,63,0.3)',
                         border: '2px solid rgba(0,0,0,0.1)'
                       }}
@@ -787,8 +799,11 @@ const About = () => {
                   </p>
                   
                   <button 
-                    className="w-full bg-gradient-to-r from-[#f4d03f] via-[#ffd700] to-[#f4d03f] text-black font-bold py-3 px-6 rounded-xl transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-black/10"
+                    className="w-full text-black font-bold py-3 px-6 rounded-xl transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-black/10"
                     style={{
+                      background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                      backgroundSize: '400% 400%',
+                      animation: 'pearlescent 3s ease-in-out infinite',
                       fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
                       textShadow: "1px 1px 0px rgba(0,0,0,0.2)",
                       letterSpacing: '1px'

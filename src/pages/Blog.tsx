@@ -288,10 +288,18 @@ const Blog = () => {
 
                        {/* Content */}
                        <div className="p-6 relative">
-                         {/* Typewriter-style title */}
-                          <h4 className="font-bold text-xl text-white dark:text-brand-cream mb-3 font-ibm-plex-mono leading-tight transition-colors duration-300 drop-shadow-sm group-hover:bg-clip-text group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-yellow-300 group-hover:to-yellow-500">
-                            {post.title}
-                          </h4>
+                          {/* Typewriter-style title */}
+                           <h4 className="font-bold text-xl mb-3 font-ibm-plex-mono leading-tight transition-colors duration-300 drop-shadow-sm" style={{
+                             color: 'transparent',
+                             background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                             backgroundSize: '400% 400%',
+                             WebkitBackgroundClip: 'text',
+                             WebkitTextFillColor: 'transparent',
+                             backgroundClip: 'text',
+                             animation: 'pearlescent 3s ease-in-out infinite'
+                           }}>
+                             {post.title}
+                           </h4>
 
                          {/* Excerpt */}
                          <p className="text-white/80 dark:text-brand-cream/80 text-sm leading-relaxed mb-4 line-clamp-3">
@@ -304,13 +312,13 @@ const Blog = () => {
                               {post.tags.slice(0, 3).map((tag, tagIndex) => (
                                 <div
                                   key={tagIndex}
-                                  className="flex items-center gap-1 backdrop-blur-sm px-2 py-1 rounded-full border border-yellow-400/30"
-                                  style={{
-                                    background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                                    backgroundSize: '400% 400%',
-                                    animation: 'pearlescent 3s ease-in-out infinite',
-                                    opacity: 0.2
-                                  }}
+                                   className="flex items-center gap-1 backdrop-blur-sm px-2 py-1 rounded-full border border-yellow-400/30"
+                                   style={{
+                                     background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                                     backgroundSize: '400% 400%',
+                                     animation: 'pearlescent 3s ease-in-out infinite',
+                                     opacity: 0.9
+                                   }}
                                 >
                                   <Tag size={10} style={{
                                     color: 'transparent',
@@ -351,17 +359,18 @@ const Blog = () => {
                             }}>
                               {new Date(post.created_at).toLocaleDateString()}
                             </span>
-                            <div 
-                              className="inline-flex items-center gap-2 text-gray-900 px-4 py-2 rounded-lg font-bold text-sm transform hover:scale-105 transition-all duration-200 shadow-lg border border-yellow-400/30 backdrop-blur-sm font-permanent-marker transform -rotate-1 hover:rotate-0"
-                              style={{
-                                background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                                backgroundSize: '400% 400%',
-                                animation: 'pearlescent 3s ease-in-out infinite'
-                              }}
-                            >
-                              <span>Read More</span>
-                              <ExternalLink size={14} className="group-hover:translate-x-0.5 transition-transform duration-200" />
-                            </div>
+                             <div 
+                               className="inline-flex items-center gap-2 text-gray-900 px-4 py-2 rounded-lg font-bold text-sm transform hover:scale-105 transition-all duration-200 shadow-lg border-2 border-gray-900 backdrop-blur-sm font-kalam text-base transform -rotate-2 hover:rotate-1 hover:scale-110"
+                               style={{
+                                 background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                                 backgroundSize: '400% 400%',
+                                 animation: 'pearlescent 3s ease-in-out infinite',
+                                 textShadow: '1px 1px 0px rgba(0,0,0,0.3)'
+                               }}
+                             >
+                               <span>Read More</span>
+                               <ExternalLink size={14} className="group-hover:translate-x-0.5 transition-transform duration-200" />
+                             </div>
                           </div>
                        </div>
 
@@ -547,28 +556,37 @@ const Blog = () => {
 
                                {/* Content */}
                                <div className="p-5 relative">
-                                 {/* Typewriter title */}
-                                  <h4 className="font-bold text-lg text-white dark:text-brand-cream mb-3 font-ibm-plex-mono leading-tight transition-colors duration-300 line-clamp-2 drop-shadow-sm group-hover:bg-clip-text group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-yellow-300 group-hover:to-yellow-500">
-                                    {post.title}
-                                  </h4>
+                                  {/* Typewriter title */}
+                                   <h4 className="font-bold text-lg mb-3 font-ibm-plex-mono leading-tight transition-colors duration-300 line-clamp-2 drop-shadow-sm" style={{
+                                     color: 'transparent',
+                                     background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                                     backgroundSize: '400% 400%',
+                                     WebkitBackgroundClip: 'text',
+                                     WebkitTextFillColor: 'transparent',
+                                     backgroundClip: 'text',
+                                     animation: 'pearlescent 3s ease-in-out infinite'
+                                   }}>
+                                     {post.title}
+                                   </h4>
 
                                  {/* Excerpt */}
                                  <p className="text-white/80 dark:text-brand-cream/80 text-sm leading-relaxed mb-4 line-clamp-2">
                                    {post.excerpt}
                                  </p>
 
-                                 {/* Read More Button - Spray painted style */}
-                                  <div 
-                                    className="inline-flex items-center gap-2 text-gray-900 px-4 py-2 rounded-lg font-bold text-sm transform hover:scale-105 transition-all duration-200 shadow-lg border border-yellow-400/30 backdrop-blur-sm font-permanent-marker transform -rotate-1 hover:rotate-0"
-                                    style={{
-                                      background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                                      backgroundSize: '400% 400%',
-                                      animation: 'pearlescent 3s ease-in-out infinite'
-                                    }}
-                                  >
-                                    <span>Read Story</span>
-                                    <ExternalLink size={14} className="group-hover:translate-x-0.5 transition-transform duration-200" />
-                                  </div>
+                                  {/* Read More Button - Hand-drawn style */}
+                                   <div 
+                                     className="inline-flex items-center gap-2 text-gray-900 px-4 py-2 rounded-lg font-bold text-sm transform hover:scale-105 transition-all duration-200 shadow-lg border-2 border-gray-900 backdrop-blur-sm font-kalam text-base transform -rotate-2 hover:rotate-1 hover:scale-110"
+                                     style={{
+                                       background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                                       backgroundSize: '400% 400%',
+                                       animation: 'pearlescent 3s ease-in-out infinite',
+                                       textShadow: '1px 1px 0px rgba(0,0,0,0.3)'
+                                     }}
+                                   >
+                                     <span>Read Story</span>
+                                     <ExternalLink size={14} className="group-hover:translate-x-0.5 transition-transform duration-200" />
+                                   </div>
                                </div>
 
                                {/* Irregular edge effect */}

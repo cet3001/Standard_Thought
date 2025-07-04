@@ -334,6 +334,236 @@ const About = () => {
           </div>
         </section>
 
+        {/* Standard Thought Codes Section */}
+        <section className="py-24 relative overflow-hidden">
+          {/* Spray-paint/torn-paper background effects */}
+          <div className="absolute inset-0" aria-hidden="true">
+            {/* Base urban texture */}
+            {textureImageUrl && (
+              <div 
+                className="absolute inset-0 opacity-25 bg-cover bg-center"
+                style={{
+                  backgroundImage: `url(${textureImageUrl})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  backgroundRepeat: 'no-repeat'
+                }}
+              />
+            )}
+            
+            {/* Spray-paint effect overlay */}
+            <div 
+              className="absolute inset-0 opacity-15"
+              style={{
+                background: `
+                  radial-gradient(ellipse at 10% 20%, rgba(244,208,63,0.1) 0%, transparent 50%),
+                  radial-gradient(ellipse at 80% 70%, rgba(255,215,0,0.08) 0%, transparent 50%),
+                  radial-gradient(ellipse at 40% 40%, rgba(244,208,63,0.06) 0%, transparent 50%)
+                `,
+                backgroundSize: '300px 200px, 250px 300px, 400px 250px'
+              }}
+            ></div>
+            
+            {/* Content overlay */}
+            <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/92 via-brand-cream/95 to-brand-cream/92 dark:from-brand-black/92 dark:via-brand-black/95 dark:to-brand-black/92"></div>
+          </div>
+
+          <div className="container mx-auto px-6 relative z-10">
+            <div className="max-w-6xl mx-auto">
+              
+              {/* Section Header with spray-paint effect */}
+              <div className="text-center mb-20">
+                <h2 
+                  className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 text-[#0A0A0A] transform -rotate-1 relative"
+                  style={{ 
+                    fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
+                    textShadow: '4px 4px 0px rgba(244,208,63,0.3), 3px 3px 0px rgba(0,0,0,0.1)',
+                    letterSpacing: '3px'
+                  }}
+                >
+                  Standard Thought{" "}
+                  <span 
+                    className="relative inline-block"
+                    style={{ 
+                      background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                      backgroundSize: '400% 400%',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                      animation: 'pearlescent 3s ease-in-out infinite'
+                    }}
+                  >
+                    Codes
+                  </span>
+                  
+                  {/* Spray paint underline effect */}
+                  <svg 
+                    className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-full max-w-2xl h-8" 
+                    viewBox="0 0 500 25" 
+                  >
+                    <path 
+                      d="M10,15 Q125,5 250,12 Q375,19 490,8" 
+                      stroke="#f4d03f"
+                      strokeWidth="6" 
+                      fill="none" 
+                      strokeLinecap="round"
+                      opacity="0.6"
+                      style={{ 
+                        filter: 'drop-shadow(2px 2px 0px rgba(0,0,0,0.2))'
+                      }}
+                    />
+                    <path 
+                      d="M15,17 Q130,7 255,14 Q380,21 485,10" 
+                      stroke="#ffd700"
+                      strokeWidth="3" 
+                      fill="none" 
+                      strokeLinecap="round"
+                      opacity="0.8"
+                    />
+                  </svg>
+                </h2>
+              </div>
+
+              {/* Three Codes Grid */}
+              <div className="grid md:grid-cols-3 gap-8 mb-16">
+                
+                {/* Code 1: Level Up Over Easy */}
+                <div className="group relative bg-gradient-to-br from-white/80 to-white/60 dark:from-gray-900/80 dark:to-gray-800/60 backdrop-blur-sm rounded-2xl p-8 border-2 border-[#f4d03f]/30 hover:border-[#ffd700]/60 transition-all duration-300 hover:transform hover:scale-105">
+                  {/* Graffiti-style icon */}
+                  <div className="mb-6 relative">
+                    <div 
+                      className="w-16 h-16 rounded-full flex items-center justify-center transform -rotate-3 group-hover:rotate-0 transition-transform duration-300"
+                      style={{
+                        background: 'linear-gradient(45deg, #f4d03f, #ffd700)',
+                        boxShadow: '4px 4px 0px rgba(0,0,0,0.1), 2px 2px 0px rgba(244,208,63,0.3)'
+                      }}
+                    >
+                      <svg className="w-8 h-8 text-black" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M13 7.5L16.5 11L13 14.5V12H8V11H13V7.5Z"/>
+                        <path d="M12 2L15.09 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.91 8.26L12 2Z"/>
+                      </svg>
+                    </div>
+                  </div>
+                  
+                  <h3 
+                    className="text-2xl font-black mb-4 text-[#0A0A0A] transform -rotate-1"
+                    style={{ 
+                      fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
+                      textShadow: '2px 2px 0px rgba(244,208,63,0.2)'
+                    }}
+                  >
+                    Level Up Over Easy
+                  </h3>
+                  
+                  <p className="text-lg font-semibold text-[#0A0A0A] leading-relaxed">
+                    "We don't play it safe. Every challenge is a shot to level up."
+                  </p>
+                </div>
+
+                {/* Code 2: We All Eat */}
+                <div className="group relative bg-gradient-to-br from-white/80 to-white/60 dark:from-gray-900/80 dark:to-gray-800/60 backdrop-blur-sm rounded-2xl p-8 border-2 border-[#f4d03f]/30 hover:border-[#ffd700]/60 transition-all duration-300 hover:transform hover:scale-105">
+                  {/* Graffiti-style icon */}
+                  <div className="mb-6 relative">
+                    <div 
+                      className="w-16 h-16 rounded-full flex items-center justify-center transform rotate-2 group-hover:rotate-0 transition-transform duration-300"
+                      style={{
+                        background: 'linear-gradient(45deg, #f4d03f, #ffd700)',
+                        boxShadow: '4px 4px 0px rgba(0,0,0,0.1), 2px 2px 0px rgba(244,208,63,0.3)'
+                      }}
+                    >
+                      <svg className="w-8 h-8 text-black" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 7.5V9M15 11V9L21 8.5V11M15 13V11L21 11.5V13M15 15V13L21 13.5V15M9 13C11.67 13 14.5 14.34 14.5 16V20H9.5V16C9.5 15.65 8.77 15 7.5 15S5.5 15.65 5.5 16V20H3.5V16C3.5 14.34 6.33 13 9 13Z"/>
+                      </svg>
+                    </div>
+                  </div>
+                  
+                  <h3 
+                    className="text-2xl font-black mb-4 text-[#0A0A0A] transform rotate-1"
+                    style={{ 
+                      fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
+                      textShadow: '2px 2px 0px rgba(244,208,63,0.2)'
+                    }}
+                  >
+                    We All Eat
+                  </h3>
+                  
+                  <p className="text-lg font-semibold text-[#0A0A0A] leading-relaxed">
+                    "We rise together—nobody builds alone."
+                  </p>
+                </div>
+
+                {/* Code 3: Legacy Moves Only */}
+                <div className="group relative bg-gradient-to-br from-white/80 to-white/60 dark:from-gray-900/80 dark:to-gray-800/60 backdrop-blur-sm rounded-2xl p-8 border-2 border-[#f4d03f]/30 hover:border-[#ffd700]/60 transition-all duration-300 hover:transform hover:scale-105">
+                  {/* Graffiti-style icon */}
+                  <div className="mb-6 relative">
+                    <div 
+                      className="w-16 h-16 rounded-full flex items-center justify-center transform -rotate-2 group-hover:rotate-0 transition-transform duration-300"
+                      style={{
+                        background: 'linear-gradient(45deg, #f4d03f, #ffd700)',
+                        boxShadow: '4px 4px 0px rgba(0,0,0,0.1), 2px 2px 0px rgba(244,208,63,0.3)'
+                      }}
+                    >
+                      <svg className="w-8 h-8 text-black" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M5 16L3 5H1V3H4L6 14H18L20 7H8L8.5 5H21.95L19.7 16H5ZM12 2L15.39 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.61 8.26L12 2Z"/>
+                      </svg>
+                    </div>
+                  </div>
+                  
+                  <h3 
+                    className="text-2xl font-black mb-4 text-[#0A0A0A] transform rotate-1"
+                    style={{ 
+                      fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
+                      textShadow: '2px 2px 0px rgba(244,208,63,0.2)'
+                    }}
+                  >
+                    Legacy Moves Only
+                  </h3>
+                  
+                  <p className="text-lg font-semibold text-[#0A0A0A] leading-relaxed">
+                    "Every move is about legacy. Build today, eat tomorrow."
+                  </p>
+                </div>
+
+              </div>
+
+              {/* Instructional Callout */}
+              <div className="text-center">
+                <div 
+                  className="inline-block bg-gradient-to-r from-[#f4d03f]/20 to-[#ffd700]/20 backdrop-blur-sm border-2 border-[#f4d03f]/40 rounded-2xl px-8 py-6 transform -rotate-1"
+                  style={{
+                    boxShadow: '6px 6px 0px rgba(244,208,63,0.2), 3px 3px 0px rgba(0,0,0,0.1)'
+                  }}
+                >
+                  <p 
+                    className="text-lg md:text-xl font-black text-[#0A0A0A]"
+                    style={{ 
+                      fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
+                      textShadow: '2px 2px 0px rgba(244,208,63,0.3)',
+                      letterSpacing: '1px'
+                    }}
+                  >
+                    📱 Screenshot this page and make it your mental reset button.{" "}
+                    <span 
+                      className="relative inline-block"
+                      style={{ 
+                        background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                        backgroundSize: '400% 400%',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        backgroundClip: 'text',
+                        animation: 'pearlescent 3s ease-in-out infinite'
+                      }}
+                    >
+                      These codes are how we move different.
+                    </span>
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
       </main>
 
       {/* Footer - Static across all pages */}

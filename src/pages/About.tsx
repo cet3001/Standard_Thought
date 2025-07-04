@@ -6,6 +6,7 @@ import Analytics from "@/components/analytics";
 import { useUrbanTexture } from "@/hooks/use-urban-texture";
 import { useMobilePerformance } from "@/hooks/use-mobile-performance";
 import { useBuilderStories } from "@/hooks/use-builder-stories";
+import SectionOverlayBox from "@/components/layout/SectionOverlayBox";
 
 const About = () => {
   useMobilePerformance();
@@ -167,25 +168,8 @@ const About = () => {
         <div className="py-8"></div>
 
         {/* The Real About Mindset Section */}
-        <section className="py-32 relative overflow-hidden">
-          {/* Torn paper grain overlay effects */}
-          <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-            <div 
-              className="absolute inset-0 opacity-15"
-              style={{
-                background: `
-                  radial-gradient(circle at 20% 30%, rgba(244,208,63,0.08) 1px, transparent 1px),
-                  radial-gradient(circle at 70% 60%, rgba(255,215,0,0.06) 1px, transparent 1px),
-                  radial-gradient(circle at 40% 80%, rgba(244,208,63,0.04) 1px, transparent 1px)
-                `,
-                backgroundSize: '15px 15px, 25px 25px, 35px 35px'
-              }}
-            ></div>
-            <div className="absolute top-32 left-10 w-20 h-20 rounded-lg bg-[#f4d03f]/10 animate-float" style={{ animationDelay: '1s' }}></div>
-            <div className="absolute bottom-20 right-16 w-16 h-16 rounded-full bg-[#ffd700]/15 animate-float" style={{ animationDelay: '3s' }}></div>
-          </div>
-
-          <div className="container mx-auto px-6 relative z-10">
+        <div className="container mx-auto px-6">
+          <SectionOverlayBox>
             <div className="max-w-4xl mx-auto text-center">
               
               {/* Section Header */}
@@ -299,8 +283,8 @@ const About = () => {
               </div>
 
             </div>
-          </div>
-        </section>
+          </SectionOverlayBox>
+        </div>
 
         {/* Section Spacer */}
         <div className="py-8"></div>

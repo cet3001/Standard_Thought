@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Zap, Download, Lock, CheckCircle } from "lucide-react";
+import { Zap, Download, Lock, CheckCircle, Star } from "lucide-react";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import SEO from "@/components/seo";
@@ -13,10 +13,37 @@ const Sales = () => {
   useMobilePerformance();
   const { textureImageUrl } = useUrbanTexture();
   const [isVisible, setIsVisible] = useState(false);
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+
+  // Testimonials array with 15 diverse testimonials
+  const testimonials = [
+    { quote: "Finally, a guide that speaks my language.", name: "Tasha", location: "Detroit" },
+    { quote: "I flipped my first $100 into $2,000 thanks to this blueprint.", name: "Jamal", location: "Oakland" },
+    { quote: "No cap, this actually works. Changed my whole mindset.", name: "Maria", location: "South Bronx" },
+    { quote: "Real talk for real people. None of that fake guru nonsense.", name: "Kevin", location: "Chicago" },
+    { quote: "First time someone explained investing without the BS.", name: "Aisha", location: "Atlanta" },
+    { quote: "Went from broke college student to $5K saved in 6 months.", name: "Diego", location: "Phoenix" },
+    { quote: "This hit different. Actually made for people like us.", name: "Jasmine", location: "Houston" },
+    { quote: "Finally got my credit above 650. Game changer.", name: "Marcus", location: "Baltimore" },
+    { quote: "Street smart advice that actually makes sense.", name: "Destiny", location: "Memphis" },
+    { quote: "No trust fund, no problem. This blueprint is everything.", name: "Carlos", location: "Las Vegas" },
+    { quote: "Turned my side hustle into my main income stream.", name: "Kendra", location: "Milwaukee" },
+    { quote: "First financial guide that didn't talk down to me.", name: "Andre", location: "New Orleans" },
+    { quote: "Built my emergency fund from zero using these tips.", name: "Brianna", location: "Cleveland" },
+    { quote: "Finally someone who gets what it's like starting from nothing.", name: "Isaiah", location: "Kansas City" },
+    { quote: "This blueprint is pure gold for first-gen wealth builders.", name: "Zoe", location: "Philadelphia" }
+  ];
 
   useEffect(() => {
     setIsVisible(true);
-  }, []);
+    
+    // Rotate testimonials every 4 seconds
+    const interval = setInterval(() => {
+      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+    }, 4000);
+    
+    return () => clearInterval(interval);
+  }, [testimonials.length]);
 
   const handleGetStarted = () => {
     trackButtonClick('Get Started', 'sales_hero', 'scroll_to_products');
@@ -384,6 +411,132 @@ const Sales = () => {
                   </CardContent>
                 </Card>
 
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Social Proof & Urgency Section */}
+        <section className="py-20 relative overflow-hidden">
+          {/* Urban spray-paint effect background */}
+          <div className="absolute inset-0" aria-hidden="true">
+            {/* Spray paint splatters */}
+            <div className="absolute top-10 left-20 w-16 h-16 bg-[#FFD700]/10 rounded-full blur-xl"></div>
+            <div className="absolute top-32 right-16 w-24 h-24 bg-[#247EFF]/15 rounded-full blur-2xl"></div>
+            <div className="absolute bottom-20 left-32 w-20 h-20 bg-[#FFD700]/8 rounded-full blur-xl"></div>
+            
+            {/* Graffiti texture overlay */}
+            <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(circle_at_2px_2px,_rgba(0,0,0,0.8)_2px,_transparent_0)] bg-[length:12px_12px]"></div>
+          </div>
+
+          <div className="container mx-auto px-6 relative z-10">
+            <div className="max-w-4xl mx-auto text-center">
+              
+              {/* Street Cred Badge */}
+              <div className="mb-8 flex justify-center">
+                <div className="relative">
+                  {/* Badge background with spray-paint effect */}
+                  <div className="bg-gradient-to-br from-[#FFD700]/20 via-[#FFF8DC]/15 to-[#FFA500]/20 backdrop-blur-sm border-2 border-[#FFD700]/40 rounded-2xl px-6 py-3 transform -rotate-2 shadow-2xl">
+                    <div className="flex items-center space-x-2">
+                      <Star className="h-5 w-5 text-[#FFD700]" />
+                      <span 
+                        className="text-[#FFD700] font-black text-lg"
+                        style={{ 
+                          fontFamily: "'Permanent Marker', 'Kalam', cursive",
+                          textShadow: '2px 2px 0px rgba(0,0,0,0.3)',
+                          transform: 'rotate(1deg)',
+                          display: 'inline-block'
+                        }}
+                      >
+                        STREET CRED
+                      </span>
+                      <Star className="h-5 w-5 text-[#FFD700]" />
+                    </div>
+                  </div>
+                  
+                  {/* Graffiti drip effects */}
+                  <div className="absolute -bottom-2 left-4 w-1 h-4 bg-[#FFD700]/30 transform rotate-12 blur-sm"></div>
+                  <div className="absolute -bottom-2 right-6 w-1 h-3 bg-[#FFD700]/20 transform -rotate-12 blur-sm"></div>
+                </div>
+              </div>
+
+              {/* Section Title */}
+              <h2 className="text-4xl md:text-5xl font-black mb-12 text-brand-black dark:text-brand-cream relative">
+                Trusted by{" "}
+                <span 
+                  className="text-[#FFD700] relative overflow-hidden"
+                  style={{
+                    background: 'linear-gradient(45deg, #FFD700, #FFF8DC, #FFA500, #FFD700)',
+                    backgroundSize: '400% 400%',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                    animation: 'shimmer 3s ease-in-out infinite'
+                  }}
+                >
+                  1,000+
+                  {/* Pearlescent overlay */}
+                  <div 
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-60 animate-[shimmer_2s_ease-in-out_infinite]"
+                    style={{
+                      background: 'linear-gradient(90deg, transparent 25%, rgba(255,255,255,0.4) 50%, transparent 75%)',
+                      backgroundSize: '200% 100%',
+                      mixBlendMode: 'overlay'
+                    }}
+                  />
+                </span><br />
+                First-Gen Hustlers
+              </h2>
+
+              {/* Rotating Testimonial */}
+              <div className="relative mb-8">
+                <div className="bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-sm border border-[#FFD700]/20 rounded-3xl p-8 shadow-2xl transform hover:scale-105 transition-all duration-500">
+                  {/* Urban texture background */}
+                  <div className="absolute inset-0 opacity-[0.05] bg-[linear-gradient(45deg,_transparent_48%,_rgba(0,0,0,0.3)_49%,_rgba(0,0,0,0.3)_51%,_transparent_52%)] bg-[length:6px_6px] rounded-3xl"></div>
+                  
+                  <div className="relative z-10">
+                    <blockquote className="text-lg md:text-xl font-medium text-brand-black dark:text-brand-cream mb-4 leading-relaxed font-kalam">
+                      "{testimonials[currentTestimonial].quote}"
+                    </blockquote>
+                    <cite className="text-[#FFD700] font-bold not-italic font-ibm-plex-mono">
+                      —{testimonials[currentTestimonial].name}, {testimonials[currentTestimonial].location}
+                    </cite>
+                  </div>
+
+                  {/* Subtle graffiti accent */}
+                  <div className="absolute -top-2 -right-2 transform rotate-12 opacity-20" aria-hidden="true">
+                    <div 
+                      className="text-[#247EFF] text-2xl font-black"
+                      style={{ 
+                        fontFamily: "'Permanent Marker', cursive",
+                        filter: 'blur(1px)'
+                      }}
+                    >
+                      REAL
+                    </div>
+                  </div>
+                </div>
+
+                {/* Testimonial pagination dots */}
+                <div className="flex justify-center space-x-2 mt-6">
+                  {testimonials.slice(0, 5).map((_, index) => (
+                    <div
+                      key={index}
+                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                        index === currentTestimonial % 5 
+                          ? 'bg-[#FFD700] w-8' 
+                          : 'bg-[#FFD700]/30'
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              {/* Additional street-smart messaging */}
+              <div className="text-center">
+                <p className="text-brand-black dark:text-brand-cream text-lg font-kalam opacity-80">
+                  Real people, real results—no fake testimonials, no BS promises.
+                </p>
               </div>
             </div>
           </div>

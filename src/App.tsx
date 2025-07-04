@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import Index from "@/pages/Index";
 import About from "@/pages/About";
+import Blog from "@/pages/Blog";
 import BlogPost from "@/pages/BlogPost";
 import CreatePost from "@/pages/CreatePost";
 import EditPost from "@/pages/EditPost";
@@ -43,6 +44,7 @@ function App() {
                 <Routes>
                   <Route path="/" element={<Index />} />
                   <Route path="/about" element={<About />} />
+                  <Route path="/blog" element={<Blog />} />
                   <Route path="/blog/:slug" element={<BlogPost />} />
                   <Route path="/create-post" element={<CreatePost />} />
                   <Route path="/edit-post/:id" element={<EditPost />} />

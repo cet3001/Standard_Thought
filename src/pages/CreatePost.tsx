@@ -1,7 +1,8 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
+import { updateBlogPost, BlogPost } from "@/lib/api";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import { Button } from "@/components/ui/button";
@@ -20,10 +21,16 @@ const CreatePost = () => {
   useMobilePerformance();
   const { user, isAdmin, loading } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   const { textureImageUrl } = useUrbanTexture();
   const [submitting, setSubmitting] = useState(false);
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
+  
+  // Check if we're editing an existing post
+  const editPost = location.state?.editPost as BlogPost | undefined;
+  const isEditing = !!editPost;
+  
   const [formData, setFormData] = useState({
     title: "",
     body: "",
@@ -40,6 +47,26 @@ const CreatePost = () => {
     navigate("/auth");
     return null;
   }
+
+  // Populate form data when editing
+  useEffect(() => {
+    if (editPost) {
+      setFormData({
+        title: editPost.title,
+        body: editPost.content,
+        metaTitle: editPost.meta_description || "",
+        metaDescription: editPost.meta_description || "",
+        tags: editPost.tags?.join(', ') || "",
+        metaTags: editPost.meta_keywords || "",
+        featured: editPost.featured || false,
+        uploadNow: true,
+      });
+      
+      if (editPost.image_url) {
+        setImagePreview(editPost.image_url);
+      }
+    }
+  }, [editPost]);
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -84,7 +111,8 @@ const CreatePost = () => {
     setSubmitting(true);
 
     try {
-      let imageUrl = null;
+      let imageUrl = editPost?.image_url || null;
+      
       if (imageFile && formData.uploadNow) {
         imageUrl = await uploadImage();
         if (!imageUrl) {
@@ -104,33 +132,54 @@ const CreatePost = () => {
         .map(tag => tag.trim())
         .filter(tag => tag.length > 0);
 
-      const postData = {
-        title: formData.title,
-        excerpt: formData.body.substring(0, 200) + (formData.body.length > 200 ? '...' : ''),
-        content: formData.body,
-        category: "Blog", // Default category
-        tags: tagsArray,
-        meta_description: formData.metaDescription,
-        meta_keywords: metaTagsArray.join(', '),
-        featured: formData.featured,
-        published: true,
-        comments_enabled: true,
-        image_url: imageUrl,
-        author_id: user?.id,
-      };
+      if (isEditing && editPost) {
+        // Update existing post
+        const updateData = {
+          title: formData.title,
+          excerpt: formData.body.substring(0, 200) + (formData.body.length > 200 ? '...' : ''),
+          content: formData.body,
+          tags: tagsArray,
+          meta_description: formData.metaDescription,
+          meta_keywords: metaTagsArray.join(', '),
+          featured: formData.featured,
+          ...(imageUrl && { image_url: imageUrl }),
+        };
 
-      const { data, error } = await supabase
-        .from('blog_posts')
-        .insert(postData)
-        .select();
-
-      if (error) {
-        console.error('Error creating post:', error);
-        toast.error(`Failed to create post: ${error.message}`);
+        await updateBlogPost(editPost.id, updateData);
+        toast.success("Post updated successfully!");
       } else {
+        // Create new post
+        const postData = {
+          title: formData.title,
+          excerpt: formData.body.substring(0, 200) + (formData.body.length > 200 ? '...' : ''),
+          content: formData.body,
+          category: "Blog", // Default category
+          tags: tagsArray,
+          meta_description: formData.metaDescription,
+          meta_keywords: metaTagsArray.join(', '),
+          featured: formData.featured,
+          published: true,
+          comments_enabled: true,
+          image_url: imageUrl,
+          author_id: user?.id,
+        };
+
+        const { data, error } = await supabase
+          .from('blog_posts')
+          .insert(postData)
+          .select();
+
+        if (error) {
+          console.error('Error creating post:', error);
+          toast.error(`Failed to create post: ${error.message}`);
+          setSubmitting(false);
+          return;
+        }
+        
         toast.success("Post created successfully!");
-        navigate("/blog");
       }
+      
+      navigate("/blog");
     } catch (error) {
       console.error('Unexpected error:', error);
       toast.error("An unexpected error occurred");
@@ -234,10 +283,10 @@ const CreatePost = () => {
               backgroundClip: 'text',
               animation: 'pearlescent 3s ease-in-out infinite'
             }}>
-              Create Story
+              {isEditing ? "Edit Story" : "Create Story"}
             </div>
             <p className="text-brand-black/70 dark:text-brand-cream/70 text-lg font-ibm-plex-mono">
-              Share your builder journey with the community
+              {isEditing ? "Update your builder journey" : "Share your builder journey with the community"}
             </p>
           </div>
 
@@ -411,7 +460,7 @@ const CreatePost = () => {
                         display: 'inline-block'
                       }}
                     >
-                      {submitting ? "Publishing..." : "Publish Story"}
+                      {submitting ? (isEditing ? "Updating..." : "Publishing...") : (isEditing ? "Update Story" : "Publish Story")}
                     </span>
                   </Button>
                   <Button

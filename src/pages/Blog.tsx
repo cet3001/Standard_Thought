@@ -6,17 +6,20 @@ import { SectionOverlayBox } from "@/components/layout";
 import { useMobilePerformance } from "@/hooks/use-mobile-performance";
 import { useUrbanTexture } from "@/hooks/use-urban-texture";
 import { useBuilderStories } from "@/hooks/use-builder-stories";
-import { getBlogPosts, BlogPost } from "@/lib/api";
-import { ExternalLink, Clock, Tag, Quote, HelpCircle, TrendingUp, Heart, DollarSign, ChevronLeft, ChevronRight } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
+import { getBlogPosts, BlogPost, deleteBlogPost } from "@/lib/api";
+import { ExternalLink, Clock, Tag, Quote, HelpCircle, TrendingUp, Heart, DollarSign, ChevronLeft, ChevronRight, Edit, Trash2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { toast } from "sonner";
 
 const Blog = () => {
   useMobilePerformance();
   const { textureImageUrl } = useUrbanTexture();
   const { stories, loading } = useBuilderStories(5);
   const { stories: testimonials } = useBuilderStories(15); // Get more for testimonials
+  const { isAdmin } = useAuth();
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   const [blogLoading, setBlogLoading] = useState(true);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
@@ -36,6 +39,26 @@ const Blog = () => {
       return blogPosts;
     }
     return blogPosts.filter(post => post.category === selectedCategory);
+  };
+
+  const handleDeletePost = async (postId: string, e: React.MouseEvent) => {
+    e.stopPropagation(); // Prevent card click navigation
+    
+    if (window.confirm("Are you sure you want to delete this post? This action cannot be undone.")) {
+      try {
+        await deleteBlogPost(postId);
+        setBlogPosts(prev => prev.filter(post => post.id !== postId));
+        toast.success("Post deleted successfully");
+      } catch (error) {
+        console.error('Error deleting post:', error);
+        toast.error("Failed to delete post");
+      }
+    }
+  };
+
+  const handleEditPost = (post: BlogPost, e: React.MouseEvent) => {
+    e.stopPropagation(); // Prevent card click navigation
+    navigate(`/create-post`, { state: { editPost: post } });
   };
 
   useEffect(() => {
@@ -327,19 +350,39 @@ const Blog = () => {
                          {/* Glass overlay on image */}
                          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
                          
-                          {/* Category badge - Graffiti style */}
-                          <div className="absolute top-3 left-3">
-                             <div className="px-3 py-1.5 transform -rotate-2 shadow-lg backdrop-blur-sm border-2 border-gray-900 rounded-sm font-kalam font-bold" style={{
-                               background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                               backgroundSize: '400% 400%',
-                               animation: 'pearlescent 3s ease-in-out infinite',
-                               textShadow: '1px 1px 0px rgba(0,0,0,0.3), -1px -1px 0px rgba(255,255,255,0.2)'
-                             }}>
-                               <span className="text-xs font-bold text-gray-900 uppercase tracking-wide transform rotate-1 inline-block" style={{ letterSpacing: '1px' }}>
-                                 {post.category}
-                               </span>
+                           {/* Category badge - Graffiti style */}
+                           <div className="absolute top-3 left-3">
+                              <div className="px-3 py-1.5 transform -rotate-2 shadow-lg backdrop-blur-sm border-2 border-gray-900 rounded-sm font-kalam font-bold" style={{
+                                background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                                backgroundSize: '400% 400%',
+                                animation: 'pearlescent 3s ease-in-out infinite',
+                                textShadow: '1px 1px 0px rgba(0,0,0,0.3), -1px -1px 0px rgba(255,255,255,0.2)'
+                              }}>
+                                <span className="text-xs font-bold text-gray-900 uppercase tracking-wide transform rotate-1 inline-block" style={{ letterSpacing: '1px' }}>
+                                  {post.category}
+                                </span>
+                              </div>
+                           </div>
+
+                           {/* Admin Controls - Top Right */}
+                           {isAdmin && (
+                             <div className="absolute top-3 right-3 flex gap-2">
+                               <button
+                                 onClick={(e) => handleEditPost(post, e)}
+                                 className="bg-blue-600/80 hover:bg-blue-700/90 backdrop-blur-sm rounded-full p-2 transition-all duration-200 border border-white/20 hover:scale-110"
+                                 title="Edit Post"
+                               >
+                                 <Edit size={14} className="text-white" />
+                               </button>
+                               <button
+                                 onClick={(e) => handleDeletePost(post.id, e)}
+                                 className="bg-red-600/80 hover:bg-red-700/90 backdrop-blur-sm rounded-full p-2 transition-all duration-200 border border-white/20 hover:scale-110"
+                                 title="Delete Post"
+                               >
+                                 <Trash2 size={14} className="text-white" />
+                               </button>
                              </div>
-                          </div>
+                           )}
 
                            <div className="absolute bottom-3 right-3 bg-black/70 backdrop-blur-md rounded-full px-3 py-1.5 flex items-center gap-1.5 border border-white/20">
                              <Clock size={12} style={{

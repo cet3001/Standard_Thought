@@ -7,7 +7,7 @@ import { useMobilePerformance } from "@/hooks/use-mobile-performance";
 import { useUrbanTexture } from "@/hooks/use-urban-texture";
 import { useBuilderStories } from "@/hooks/use-builder-stories";
 import { getBlogPosts, BlogPost } from "@/lib/api";
-import { ExternalLink, Clock, Tag, Quote } from "lucide-react";
+import { ExternalLink, Clock, Tag, Quote, HelpCircle, TrendingUp, Heart, DollarSign } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const Blog = () => {
@@ -535,6 +535,226 @@ const Blog = () => {
             {/* Urban texture overlay */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-5" aria-hidden="true">
               <div className="absolute bottom-10 left-10 w-24 h-24 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTAgMEg0MFY0MEgwVjBaIiBmaWxsPSJibGFjayIgZmlsbC1vcGFjaXR5PSIwLjEiLz4KPHBhdGggZD0iTTIwIDJMMzggMjBMMjAgMzhMMiAyMEwyMCAyWiIgZmlsbD0iYmxhY2siIGZpbGwtb3BhY2l0eT0iMC4wNSIvPgo8L3N2Zz4K')] opacity-30"></div>
+            </div>
+          </SectionOverlayBox>
+
+          {/* FAQ: Real Talk About the Journey */}
+          <SectionOverlayBox className={`mb-24 transition-all duration-700 delay-1100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            {/* Grain overlay */}
+            <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(circle_at_2px_2px,_rgba(0,0,0,1)_1px,_transparent_0)] bg-[length:15px_15px]"></div>
+            
+            {/* Section Header */}
+            <div className="text-center mb-12 relative z-10">
+              <div className="relative inline-block mb-6">
+                <h3 className="text-4xl md:text-5xl font-black text-brand-black dark:text-brand-cream relative">
+                  <span className="font-permanent-marker text-[#FFD700] transform -rotate-1 mr-4">
+                    REAL TALK
+                  </span>
+                  About the Journey
+                  {/* Handwritten underline */}
+                  <svg
+                    className="absolute -bottom-3 left-0 w-full h-4 text-[#FFD700]/50"
+                    viewBox="0 0 400 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M5 15C25 12 45 8 65 10C85 12 105 8 125 12C145 16 165 8 185 12C205 16 225 12 245 15C265 18 285 10 305 14C325 18 345 12 365 16C385 20 395 18 395 16"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      fill="none"
+                    />
+                  </svg>
+                </h3>
+              </div>
+              <p className="text-lg text-brand-black/70 dark:text-brand-cream/70 max-w-2xl mx-auto font-kalam">
+                The questions we all got but nobody talks about. Here's the real.
+              </p>
+            </div>
+
+            {/* FAQ Items */}
+            <div className="space-y-8 relative z-10">
+              
+              {/* FAQ 1 */}
+              <div className="group">
+                <div className="flex items-start gap-4 p-6 bg-white/50 dark:bg-gray-900/50 rounded-lg border-l-4 border-[#FFD700] hover:bg-white/70 dark:hover:bg-gray-900/70 transition-all duration-300">
+                  {/* Graffiti icon */}
+                  <div className="flex-shrink-0 mt-1">
+                    <div className="relative">
+                      <div className="w-12 h-12 bg-[#FFD700] rounded-full flex items-center justify-center transform -rotate-6 group-hover:rotate-0 transition-transform duration-300">
+                        <TrendingUp size={24} className="text-gray-900" />
+                      </div>
+                      {/* Hand-drawn circle */}
+                      <svg
+                        className="absolute inset-0 w-full h-full text-[#FFD700]/60"
+                        viewBox="0 0 50 50"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <circle
+                          cx="25"
+                          cy="25"
+                          r="23"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          fill="none"
+                          strokeDasharray="3,2"
+                          opacity="0.5"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <h4 className="text-xl font-bold text-brand-black dark:text-brand-cream mb-3 font-permanent-marker transform -rotate-1">
+                      "What if I keep falling off?"
+                    </h4>
+                    <p className="text-brand-black/80 dark:text-brand-cream/80 leading-relaxed">
+                      Listen, falling off is part of the process—it's not failure, it's data. Every time you "fall off," you're learning what doesn't work for YOUR situation. 
+                      <br /><br />
+                      The key is building systems that work WITH your life, not against it. Start smaller than you think you need to. Can't do an hour? Do 15 minutes. Can't save $100? Save $10. 
+                      <br /><br />
+                      Progress isn't about perfection—it's about getting back up one more time than you fall down. Your comeback is always stronger than your setback.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* FAQ 2 */}
+              <div className="group">
+                <div className="flex items-start gap-4 p-6 bg-white/50 dark:bg-gray-900/50 rounded-lg border-l-4 border-[#FFD700] hover:bg-white/70 dark:hover:bg-gray-900/70 transition-all duration-300">
+                  <div className="flex-shrink-0 mt-1">
+                    <div className="relative">
+                      <div className="w-12 h-12 bg-[#FFD700] rounded-full flex items-center justify-center transform rotate-6 group-hover:rotate-0 transition-transform duration-300">
+                        <Heart size={24} className="text-gray-900" />
+                      </div>
+                      <svg
+                        className="absolute inset-0 w-full h-full text-[#FFD700]/60"
+                        viewBox="0 0 50 50"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M5 25L15 15L25 25L35 15L45 25L35 35L25 25L15 35Z"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          fill="none"
+                          opacity="0.4"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <h4 className="text-xl font-bold text-brand-black dark:text-brand-cream mb-3 font-permanent-marker transform rotate-1">
+                      "How do I stay motivated when nothing's working?"
+                    </h4>
+                    <p className="text-brand-black/80 dark:text-brand-cream/80 leading-relaxed">
+                      Real talk: motivation is trash. It comes and goes like the weather. What you need is momentum and community.
+                      <br /><br />
+                      Start documenting SMALL wins—even saving $5 counts. Connect with others on the same journey who get where you're coming from. When you can't see your own progress, they'll remind you how far you've come.
+                      <br /><br />
+                      And remember: "nothing's working" usually means the timeline is different than you expected, not that you're failing. The strongest trees grow slowly underground before you see them break through.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* FAQ 3 */}
+              <div className="group">
+                <div className="flex items-start gap-4 p-6 bg-white/50 dark:bg-gray-900/50 rounded-lg border-l-4 border-[#FFD700] hover:bg-white/70 dark:hover:bg-gray-900/70 transition-all duration-300">
+                  <div className="flex-shrink-0 mt-1">
+                    <div className="relative">
+                      <div className="w-12 h-12 bg-[#FFD700] rounded-full flex items-center justify-center transform -rotate-12 group-hover:rotate-0 transition-transform duration-300">
+                        <DollarSign size={24} className="text-gray-900" />
+                      </div>
+                      <svg
+                        className="absolute inset-0 w-full h-full text-[#FFD700]/60"
+                        viewBox="0 0 50 50"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <rect
+                          x="5"
+                          y="5"
+                          width="40"
+                          height="40"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          fill="none"
+                          opacity="0.3"
+                          transform="rotate(15 25 25)"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <h4 className="text-xl font-bold text-brand-black dark:text-brand-cream mb-3 font-permanent-marker transform -rotate-1">
+                      "Can I really break money trauma if I've never seen wealth?"
+                    </h4>
+                    <p className="text-brand-black/80 dark:text-brand-cream/80 leading-relaxed">
+                      Absolutely. You don't need to have seen wealth to create it—you just need to understand that money trauma is real and it's been passed down for generations.
+                      <br /><br />
+                      Start by recognizing the stories you tell yourself about money. "Money doesn't grow on trees," "Rich people are greedy," "We can't afford that"—these aren't facts, they're beliefs that can be changed.
+                      <br /><br />
+                      Every wealthy person you admire was once broke too. The difference? They changed their relationship with money first, then their bank account followed. You're not behind—you're exactly where you need to be to start building something different.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* FAQ 4 */}
+              <div className="group">
+                <div className="flex items-start gap-4 p-6 bg-white/50 dark:bg-gray-900/50 rounded-lg border-l-4 border-[#FFD700] hover:bg-white/70 dark:hover:bg-gray-900/70 transition-all duration-300">
+                  <div className="flex-shrink-0 mt-1">
+                    <div className="relative">
+                      <div className="w-12 h-12 bg-[#FFD700] rounded-full flex items-center justify-center transform rotate-12 group-hover:rotate-0 transition-transform duration-300">
+                        <HelpCircle size={24} className="text-gray-900" />
+                      </div>
+                      <svg
+                        className="absolute inset-0 w-full h-full text-[#FFD700]/60"
+                        viewBox="0 0 50 50"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <polygon
+                          points="25,5 45,20 35,45 15,45 5,20"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          fill="none"
+                          opacity="0.4"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <h4 className="text-xl font-bold text-brand-black dark:text-brand-cream mb-3 font-permanent-marker transform rotate-1">
+                      "How do I know if this stuff actually works?"
+                    </h4>
+                    <p className="text-brand-black/80 dark:text-brand-cream/80 leading-relaxed">
+                      Look at the receipts. These aren't theoretical concepts—they're proven strategies that work for people who started exactly where you are.
+                      <br /><br />
+                      Start with one thing: track your money for 30 days. Just track it. See where it goes. That simple step shows most people they have more control than they thought. From there, every other strategy becomes easier to implement.
+                      <br /><br />
+                      You don't have to trust us—trust the process, track your progress, and let the results speak for themselves.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            {/* Handwritten note */}
+            <div className="absolute -bottom-4 -left-4 transform -rotate-6">
+              <div className="bg-yellow-200 p-3 shadow-lg border border-yellow-300">
+                <p className="font-kalam text-sm text-gray-800 leading-tight">
+                  Keep it 💯<br />
+                  Always ✨
+                </p>
+              </div>
             </div>
           </SectionOverlayBox>
 

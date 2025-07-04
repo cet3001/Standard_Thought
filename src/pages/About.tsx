@@ -154,7 +154,6 @@ const About = () => {
                         WebkitBackgroundClip: 'text',
                         WebkitTextFillColor: 'transparent',
                         backgroundClip: 'text',
-                        color: 'transparent',
                         animation: 'pearlescent 3s ease-in-out infinite'
                       }}
                     >

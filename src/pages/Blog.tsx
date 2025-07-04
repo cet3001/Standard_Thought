@@ -229,104 +229,93 @@ const Blog = () => {
                     onClick={() => navigate(`/blog/${post.slug}`)}
                     style={{ animationDelay: `${index * 150}ms` }}
                   >
-                    {/* Card */}
-                    <div className="relative bg-white dark:bg-gray-900 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200 dark:border-gray-700">
-                      {/* Urban texture overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-transparent via-[#FFD700]/5 to-transparent opacity-50"></div>
-                      
-                      {/* Featured image or placeholder */}
-                      <div className="relative h-48 bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800 overflow-hidden">
-                        {post.image_url ? (
-                          <img
-                            src={post.image_url}
-                            alt={post.title}
-                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                          />
-                        ) : (
-                          <div className="w-full h-full flex items-center justify-center">
-                            <div className="text-6xl font-permanent-marker text-[#FFD700]/60 transform -rotate-12">
-                              ST
-                            </div>
-                          </div>
-                        )}
-                        
-                        {/* Category badge - hand-drawn style */}
-                        <div className="absolute top-3 left-3">
-                          <div className="relative bg-[#FFD700] px-3 py-1 transform -rotate-2 shadow-lg">
-                            {/* Hand-drawn border effect */}
-                            <svg
-                              className="absolute inset-0 w-full h-full text-gray-900"
-                              viewBox="0 0 100 30"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                d="M2 2L98 3L97 28L3 27Z"
-                                stroke="currentColor"
-                                strokeWidth="1"
-                                fill="none"
-                                opacity="0.3"
-                              />
-                            </svg>
-                            <span className="relative text-xs font-bold text-gray-900 uppercase tracking-wide">
-                              {post.category}
-                            </span>
-                          </div>
-                        </div>
+                     {/* Glass Card */}
+                     <div className="relative bg-white/20 dark:bg-gray-900/25 backdrop-blur-md rounded-xl overflow-hidden shadow-2xl border border-white/30 dark:border-gray-700/40 hover:bg-white/30 dark:hover:bg-gray-900/35 hover:shadow-3xl hover:border-white/40 dark:hover:border-gray-600/50 transition-all duration-500">
+                       {/* Grain texture overlay */}
+                       <div className="absolute inset-0 opacity-[0.015] bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8ZGVmcz4KICAgIDxmaWx0ZXIgaWQ9Im5vaXNlRmlsdGVyIj4KICAgICAgPGZlVHVyYnVsZW5jZSBiYXNlRnJlcXVlbmN5PSIwLjkiIG51bU9jdGF2ZXM9IjQiIHNlZWQ9IjIiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjbm9pc2VGaWx0ZXIpIiBvcGFjaXR5PSIwLjQiLz4KPC9zdmc+')] pointer-events-none"></div>
+                       
+                       {/* Featured image or placeholder */}
+                       <div className="relative h-48 bg-gradient-to-br from-gray-400/20 to-gray-600/20 dark:from-gray-600/20 dark:to-gray-800/20 overflow-hidden">
+                         {post.image_url ? (
+                           <img
+                             src={post.image_url}
+                             alt={post.title}
+                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-90"
+                           />
+                         ) : (
+                           <div className="w-full h-full flex items-center justify-center">
+                             <div className="text-6xl font-permanent-marker text-brand-pearlescent-light/60 transform -rotate-12 drop-shadow-lg">
+                               ST
+                             </div>
+                           </div>
+                         )}
+                         
+                         {/* Glass overlay on image */}
+                         <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+                         
+                         {/* Category badge - Graffiti style */}
+                         <div className="absolute top-3 left-3">
+                           <div className="bg-brand-pearlescent-light/90 px-3 py-1.5 transform -rotate-2 shadow-lg backdrop-blur-sm border border-yellow-400/30 rounded-sm">
+                             <span className="text-xs font-bold text-gray-900 uppercase tracking-wide font-permanent-marker drop-shadow-sm">
+                               {post.category}
+                             </span>
+                           </div>
+                         </div>
 
-                        {/* Read time estimate */}
-                        <div className="absolute bottom-3 right-3 bg-black/60 backdrop-blur-sm rounded-full px-2 py-1 flex items-center gap-1">
-                          <Clock size={12} className="text-white" />
-                          <span className="text-xs text-white">
-                            {Math.ceil(post.content.length / 1000)} min
-                          </span>
-                        </div>
-                      </div>
+                         {/* Read time estimate */}
+                         <div className="absolute bottom-3 right-3 bg-black/70 backdrop-blur-md rounded-full px-3 py-1.5 flex items-center gap-1.5 border border-white/20">
+                           <Clock size={12} className="text-white" />
+                           <span className="text-xs text-white font-medium">
+                             {Math.ceil(post.content.length / 1000)} min
+                           </span>
+                         </div>
+                       </div>
 
-                      {/* Content */}
-                      <div className="p-6 relative">
-                        {/* Typewriter-style title */}
-                        <h4 className="font-bold text-xl text-brand-black dark:text-brand-cream mb-3 font-ibm-plex-mono leading-tight group-hover:text-[#FFD700] dark:group-hover:text-[#FFD700] transition-colors duration-200">
-                          {post.title}
-                        </h4>
+                       {/* Content */}
+                       <div className="p-6 relative">
+                         {/* Typewriter-style title */}
+                         <h4 className="font-bold text-xl text-white dark:text-brand-cream mb-3 font-ibm-plex-mono leading-tight group-hover:text-brand-pearlescent-light transition-colors duration-300 drop-shadow-sm">
+                           {post.title}
+                         </h4>
 
-                        {/* Excerpt */}
-                        <p className="text-brand-black/70 dark:text-brand-cream/70 text-sm leading-relaxed mb-4 line-clamp-3">
-                          {post.excerpt}
-                        </p>
+                         {/* Excerpt */}
+                         <p className="text-white/80 dark:text-brand-cream/80 text-sm leading-relaxed mb-4 line-clamp-3">
+                           {post.excerpt}
+                         </p>
 
-                        {/* Tags */}
-                        {post.tags && post.tags.length > 0 && (
-                          <div className="flex flex-wrap gap-2 mb-4">
-                            {post.tags.slice(0, 3).map((tag, tagIndex) => (
-                              <div
-                                key={tagIndex}
-                                className="flex items-center gap-1 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded-full"
-                              >
-                                <Tag size={10} className="text-[#FFD700]" />
-                                <span className="text-xs text-brand-black dark:text-brand-cream font-medium">
-                                  {tag}
-                                </span>
-                              </div>
-                            ))}
-                          </div>
-                        )}
+                         {/* Tags */}
+                         {post.tags && post.tags.length > 0 && (
+                           <div className="flex flex-wrap gap-2 mb-4">
+                             {post.tags.slice(0, 3).map((tag, tagIndex) => (
+                               <div
+                                 key={tagIndex}
+                                 className="flex items-center gap-1 bg-white/10 backdrop-blur-sm px-2 py-1 rounded-full border border-white/20"
+                               >
+                                 <Tag size={10} className="text-brand-pearlescent-light" />
+                                 <span className="text-xs text-white font-medium">
+                                   {tag}
+                                 </span>
+                               </div>
+                             ))}
+                           </div>
+                         )}
 
-                        {/* Read More link */}
-                        <div className="flex items-center justify-between">
-                          <span className="text-sm text-brand-black/50 dark:text-brand-cream/50">
-                            {new Date(post.created_at).toLocaleDateString()}
-                          </span>
-                          <div className="flex items-center gap-1 text-[#FFD700] group-hover:translate-x-1 transition-transform duration-200">
-                            <span className="text-sm font-bold">Read More</span>
-                            <ExternalLink size={14} />
-                          </div>
-                        </div>
-                      </div>
+                         {/* Read More link */}
+                         <div className="flex items-center justify-between">
+                           <span className="text-sm text-white/60 dark:text-brand-cream/60">
+                             {new Date(post.created_at).toLocaleDateString()}
+                           </span>
+                           <div className="inline-flex items-center gap-2 bg-brand-pearlescent-light/90 hover:bg-brand-pearlescent-light text-gray-900 px-3 py-1.5 rounded-lg font-bold text-sm transform hover:scale-105 transition-all duration-200 shadow-lg border border-yellow-400/30 backdrop-blur-sm">
+                             <span className="font-permanent-marker">Read More</span>
+                             <ExternalLink size={14} className="group-hover:translate-x-0.5 transition-transform duration-200" />
+                           </div>
+                         </div>
+                       </div>
 
-                      {/* Torn paper effect at bottom */}
-                      <div className="absolute bottom-0 left-0 w-full h-2 bg-gradient-to-r from-transparent via-[#FFD700]/20 to-transparent"></div>
-                    </div>
+                       {/* Irregular edge effects */}
+                       <div className="absolute top-3 right-3 w-6 h-6 bg-brand-pearlescent-light/20 transform rotate-45 rounded-sm opacity-60"></div>
+                       <div className="absolute bottom-3 left-3 w-4 h-4 bg-white/10 transform -rotate-12 rounded-full opacity-40"></div>
+                     </div>
                   </div>
                 ))}
               </div>

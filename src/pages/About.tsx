@@ -64,7 +64,7 @@ const About = () => {
       {/* Main Content */}
       <main className="relative z-10">
         {/* Hero Section: "Unlock Your Mindset Arsenal" */}
-        <section className="pt-40 pb-24 relative overflow-hidden">
+        <section className="pt-40 pb-32 relative overflow-hidden">
           {/* Enhanced Urban Background with Better Texture Visibility - Identical overlay pattern */}
           <div className="absolute inset-0" aria-hidden="true">
             {/* AI-Generated or Curated Urban Texture */}
@@ -183,8 +183,11 @@ const About = () => {
           `}</style>
         </section>
 
+        {/* Section Spacer */}
+        <div className="py-8"></div>
+
         {/* The Real About Mindset Section */}
-        <section className="py-24 relative overflow-hidden">
+        <section className="py-32 relative overflow-hidden">
           {/* Torn-paper/Grain overlay background */}
           <div className="absolute inset-0" aria-hidden="true">
             {/* Base texture layer */}
@@ -334,8 +337,11 @@ const About = () => {
           </div>
         </section>
 
+        {/* Section Spacer */}
+        <div className="py-8"></div>
+
         {/* Standard Thought Codes Section */}
-        <section className="py-24 relative overflow-hidden">
+        <section className="py-32 relative overflow-hidden">
           {/* Spray-paint/torn-paper background effects */}
           <div className="absolute inset-0" aria-hidden="true">
             {/* Base urban texture */}

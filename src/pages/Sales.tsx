@@ -745,19 +745,19 @@ const Sales = () => {
                 
                 {/* Credit Blueprint */}
                 <Card 
-                  className="backdrop-blur-sm border-2 border-[#247EFF]/30 shadow-2xl hover:scale-105 hover:border-[#247EFF]/50 transition-all duration-300 cursor-pointer group relative overflow-hidden"
+                  className="backdrop-blur-sm border-2 border-[#FFD700]/30 shadow-2xl hover:scale-105 hover:border-[#FFD700]/50 transition-all duration-300 cursor-pointer group relative overflow-hidden"
                   style={{
-                    background: 'linear-gradient(135deg, rgba(36,126,255,0.1), rgba(36,126,255,0.05))',
+                    background: 'linear-gradient(135deg, rgba(255,215,0,0.1), rgba(255,215,0,0.05))',
                   }}
                   onClick={handleExploreCredit}
                 >
                   {/* Urban texture background */}
-                  <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(circle_at_1px_1px,_rgba(36,126,255,0.8)_1px,_transparent_0)] bg-[length:6px_6px]"></div>
+                  <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(circle_at_1px_1px,_rgba(255,215,0,0.8)_1px,_transparent_0)] bg-[length:6px_6px]"></div>
                   
                   <CardContent className="p-6 text-center relative z-10">
                     <div className="mb-4 flex justify-center">
-                      <div className="p-4 rounded-2xl bg-[#247EFF]/20 group-hover:bg-[#247EFF]/30 transition-all duration-300">
-                        <CreditCard className="h-8 w-8 text-[#247EFF]" />
+                      <div className="p-4 rounded-2xl bg-[#FFD700]/20 group-hover:bg-[#FFD700]/30 transition-all duration-300">
+                        <CreditCard className="h-8 w-8 text-[#FFD700]" />
                       </div>
                     </div>
                     <h3 className="text-xl font-black mb-3 text-brand-black dark:text-brand-cream font-ibm-plex-mono">
@@ -766,7 +766,7 @@ const Sales = () => {
                     <p className="text-sm text-brand-black dark:text-brand-cream opacity-80 mb-4 font-kalam">
                       Fix your credit, build your score, unlock better rates
                     </p>
-                    <div className="flex items-center justify-center text-[#247EFF] group-hover:text-[#247EFF] transition-colors duration-300">
+                    <div className="flex items-center justify-center text-[#FFD700] group-hover:text-[#FFD700] transition-colors duration-300">
                       <span className="text-sm font-ibm-plex-mono mr-2">Learn More</span>
                       <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform duration-300" />
                     </div>
@@ -775,19 +775,19 @@ const Sales = () => {
 
                 {/* Investing Blueprint */}
                 <Card 
-                  className="backdrop-blur-sm border-2 border-[#22C55E]/30 shadow-2xl hover:scale-105 hover:border-[#22C55E]/50 transition-all duration-300 cursor-pointer group relative overflow-hidden"
+                  className="backdrop-blur-sm border-2 border-[#FFD700]/30 shadow-2xl hover:scale-105 hover:border-[#FFD700]/50 transition-all duration-300 cursor-pointer group relative overflow-hidden"
                   style={{
-                    background: 'linear-gradient(135deg, rgba(34,197,94,0.1), rgba(34,197,94,0.05))',
+                    background: 'linear-gradient(135deg, rgba(255,215,0,0.1), rgba(255,215,0,0.05))',
                   }}
                   onClick={handleExploreInvesting}
                 >
                   {/* Urban texture background */}
-                  <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(circle_at_1px_1px,_rgba(34,197,94,0.8)_1px,_transparent_0)] bg-[length:6px_6px]"></div>
+                  <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(circle_at_1px_1px,_rgba(255,215,0,0.8)_1px,_transparent_0)] bg-[length:6px_6px]"></div>
                   
                   <CardContent className="p-6 text-center relative z-10">
                     <div className="mb-4 flex justify-center">
-                      <div className="p-4 rounded-2xl bg-[#22C55E]/20 group-hover:bg-[#22C55E]/30 transition-all duration-300">
-                        <TrendingUp className="h-8 w-8 text-[#22C55E]" />
+                      <div className="p-4 rounded-2xl bg-[#FFD700]/20 group-hover:bg-[#FFD700]/30 transition-all duration-300">
+                        <TrendingUp className="h-8 w-8 text-[#FFD700]" />
                       </div>
                     </div>
                     <h3 className="text-xl font-black mb-3 text-brand-black dark:text-brand-cream font-ibm-plex-mono">
@@ -796,7 +796,7 @@ const Sales = () => {
                     <p className="text-sm text-brand-black dark:text-brand-cream opacity-80 mb-4 font-kalam">
                       Smart moves for building wealth over time
                     </p>
-                    <div className="flex items-center justify-center text-[#22C55E] group-hover:text-[#22C55E] transition-colors duration-300">
+                    <div className="flex items-center justify-center text-[#FFD700] group-hover:text-[#FFD700] transition-colors duration-300">
                       <span className="text-sm font-ibm-plex-mono mr-2">Learn More</span>
                       <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform duration-300" />
                     </div>
@@ -805,19 +805,19 @@ const Sales = () => {
 
                 {/* AI Side Hustles Blueprint */}
                 <Card 
-                  className="backdrop-blur-sm border-2 border-[#8B5CF6]/30 shadow-2xl hover:scale-105 hover:border-[#8B5CF6]/50 transition-all duration-300 cursor-pointer group relative overflow-hidden"
+                  className="backdrop-blur-sm border-2 border-[#FFD700]/30 shadow-2xl hover:scale-105 hover:border-[#FFD700]/50 transition-all duration-300 cursor-pointer group relative overflow-hidden"
                   style={{
-                    background: 'linear-gradient(135deg, rgba(139,92,246,0.1), rgba(139,92,246,0.05))',
+                    background: 'linear-gradient(135deg, rgba(255,215,0,0.1), rgba(255,215,0,0.05))',
                   }}
                   onClick={handleExploreAI}
                 >
                   {/* Urban texture background */}
-                  <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(circle_at_1px_1px,_rgba(139,92,246,0.8)_1px,_transparent_0)] bg-[length:6px_6px]"></div>
+                  <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(circle_at_1px_1px,_rgba(255,215,0,0.8)_1px,_transparent_0)] bg-[length:6px_6px]"></div>
                   
                   <CardContent className="p-6 text-center relative z-10">
                     <div className="mb-4 flex justify-center">
-                      <div className="p-4 rounded-2xl bg-[#8B5CF6]/20 group-hover:bg-[#8B5CF6]/30 transition-all duration-300">
-                        <Bot className="h-8 w-8 text-[#8B5CF6]" />
+                      <div className="p-4 rounded-2xl bg-[#FFD700]/20 group-hover:bg-[#FFD700]/30 transition-all duration-300">
+                        <Bot className="h-8 w-8 text-[#FFD700]" />
                       </div>
                     </div>
                     <h3 className="text-xl font-black mb-3 text-brand-black dark:text-brand-cream font-ibm-plex-mono">
@@ -826,7 +826,7 @@ const Sales = () => {
                     <p className="text-sm text-brand-black dark:text-brand-cream opacity-80 mb-4 font-kalam">
                       Turn AI tools into consistent income streams
                     </p>
-                    <div className="flex items-center justify-center text-[#8B5CF6] group-hover:text-[#8B5CF6] transition-colors duration-300">
+                    <div className="flex items-center justify-center text-[#FFD700] group-hover:text-[#FFD700] transition-colors duration-300">
                       <span className="text-sm font-ibm-plex-mono mr-2">Learn More</span>
                       <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform duration-300" />
                     </div>

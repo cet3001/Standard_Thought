@@ -149,7 +149,7 @@ const Credit = () => {
         <section className="py-16 sm:py-24 relative">
           {/* Back Button - Left aligned */}
           <div className="container mx-auto px-6 max-w-4xl relative z-10">
-            <button onClick={() => navigate(-1)} className="mb-8 group inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#FFD700]/20 to-[#FFA500]/20 backdrop-blur-sm border-2 border-[#FFD700] text-[#FFD700] font-bold rounded-xl transition-all duration-300 hover:bg-[#FFD700]/30 hover:scale-105 transform rotate-1 hover:rotate-0" style={{
+            <button onClick={() => navigate('/sales')} className="mb-8 group inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#FFD700]/20 to-[#FFA500]/20 backdrop-blur-sm border-2 border-[#FFD700] text-[#FFD700] font-bold rounded-xl transition-all duration-300 hover:bg-[#FFD700]/30 hover:scale-105 transform rotate-1 hover:rotate-0" style={{
             fontFamily: 'Permanent Marker, cursive',
             textShadow: '2px 2px 4px rgba(0,0,0,0.1)',
             filter: 'drop-shadow(0 2px 4px rgba(255,215,0,0.3))'

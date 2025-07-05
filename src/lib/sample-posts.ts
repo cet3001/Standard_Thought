@@ -165,7 +165,7 @@ Stop letting a three-digit number control your destiny. Learn the rules, play th
       featured: true,
       published: true,
       is_popular: true,
-      image_url: "/lovable-uploads/5316a53a-9afb-4437-8f49-d3b521d18e44.png",
+      image_url: "/lovable-uploads/ab84a6d6-c2ac-4910-be5f-7bb666463fb8.png",
       meta_description: "How to go from 480 to 800 credit score in 18 months. Real strategies that work, no credit repair company needed.",
       meta_keywords: "credit repair strategies, improve credit score fast, 480 to 800 credit transformation, DIY credit repair",
       author_id: "00000000-0000-0000-0000-000000000000"

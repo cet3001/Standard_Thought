@@ -10,7 +10,7 @@ const Logo = () => {
     >
       <div className="w-16 h-16 md:w-20 md:h-20 flex-shrink-0">
         <img 
-          src="/lovable-uploads/5316a53a-9afb-4437-8f49-d3b521d18e44.png" 
+          src="/lovable-uploads/ab84a6d6-c2ac-4910-be5f-7bb666463fb8.png" 
           alt="Standardthought logo - Urban entrepreneurship and wealth building" 
           className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300" 
         />

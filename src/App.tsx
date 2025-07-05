@@ -12,6 +12,7 @@ import CreatePost from "@/pages/CreatePost";
 import Sales from "@/pages/Sales";
 import Auth from "@/pages/Auth";
 import AdminGuides from "@/pages/AdminGuides";
+import AdminEmail from "@/pages/AdminEmail";
 import PrivacyPolicy from "@/pages/PrivacyPolicy";
 import TermsOfService from "@/pages/TermsOfService";
 import { AuthProvider } from "./contexts/AuthContext";
@@ -49,6 +50,7 @@ function App() {
                   <Route path="/blog/:slug" element={<BlogPost />} />
                   <Route path="/create-post" element={<CreatePost />} />
                   <Route path="/admin/guides" element={<AdminGuides />} />
+                  <Route path="/admin/email" element={<AdminEmail />} />
                   <Route path="/sales" element={<Sales />} />
                   <Route path="/auth" element={<Auth />} />
                   <Route path="/privacy-policy" element={<PrivacyPolicy />} />

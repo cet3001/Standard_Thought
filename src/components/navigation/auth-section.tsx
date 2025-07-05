@@ -75,7 +75,19 @@ const AuthSection = ({ onAction }: AuthSectionProps) => {
       )}
       <div className="hidden sm:flex items-center space-x-2" role="status" aria-label="Current user">
         <User className="h-4 w-4 text-[#247EFF]" aria-hidden="true" />
-        <span className="text-sm text-[#0A0A0A] dark:text-brand-cream">
+        <span 
+          className="text-sm font-bold transform -rotate-1 inline-block"
+          style={{
+            background: 'linear-gradient(45deg, #FFD700, #F4D03F, #FFEB3B, #D4AF37)',
+            backgroundSize: '200% 200%',
+            animation: 'pearlescent 3s ease-in-out infinite',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            textShadow: '2px 2px 4px rgba(0,0,0,0.3)',
+            fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive"
+          }}
+        >
           {user.email?.split('@')[0]}
         </span>
       </div>

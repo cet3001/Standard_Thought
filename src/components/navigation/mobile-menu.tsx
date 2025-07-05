@@ -31,9 +31,16 @@ const MobileMenu = () => {
           aria-label="Open navigation menu"
           aria-expanded={isOpen}
           aria-controls="navigation-menu"
-          className="hover:bg-[#247EFF]/10"
+          className="hover:bg-[#FFD700]/10 p-2"
         >
-          <Menu className="h-6 w-6 text-[#0A0A0A]" aria-hidden="true" />
+          <Menu 
+            className="h-7 w-7" 
+            aria-hidden="true"
+            style={{
+              color: '#FFD700',
+              filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))'
+            }}
+          />
         </Button>
       </SheetTrigger>
       <SheetContent

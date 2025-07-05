@@ -1,4 +1,85 @@
+import { useGuides } from "@/hooks/use-guides";
+import { useGuideDownload } from "@/hooks/use-guide-download";
+import { trackButtonClick } from "@/lib/analytics-utils";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "@/hooks/use-toast";
+import { useState } from "react";
+
 const CreditCTA = () => {
+  const { guides, loading: guidesLoading } = useGuides();
+  const { downloadGuide, isDownloading } = useGuideDownload();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  // Find the credit building guide
+  const creditGuide = guides?.find(guide => 
+    guide.title.toLowerCase().includes('credit building action plan')
+  );
+
+  const handleJoinCommunity = async () => {
+    trackButtonClick('Join Community', 'credit_page', 'credit_cta');
+    
+    if (!creditGuide) {
+      toast({
+        title: "Guide not found",
+        description: "The credit building guide is not available right now. Please try again later.",
+        variant: "destructive",
+      });
+      return;
+    }
+    
+    // Simple email collection
+    const email = prompt('Enter your email to join the community and get the Credit Building Blueprint:');
+    if (!email) return;
+    
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      toast({
+        title: "Invalid email",
+        description: "Please enter a valid email address",
+        variant: "destructive",
+      });
+      return;
+    }
+    
+    setIsSubmitting(true);
+    
+    try {
+      // Subscribe to newsletter
+      const { error: subscribeError } = await supabase
+        .from('Subscribers')
+        .insert([{ email }]);
+      
+      if (subscribeError && !subscribeError.message.includes('duplicate')) {
+        console.error('Newsletter subscription error:', subscribeError);
+        toast({
+          title: "Subscription failed",
+          description: "There was an issue subscribing you to our newsletter. Please try again.",
+          variant: "destructive",
+        });
+        return;
+      }
+      
+      // Download the guide
+      await downloadGuide(creditGuide.file_path || creditGuide.file_name || 'Credit Building Action Plan.pdf', email);
+      
+      toast({
+        title: "Welcome to the community!",
+        description: "You've been subscribed to our newsletter and the guide is downloading now.",
+      });
+      
+    } catch (error) {
+      console.error('Error joining community:', error);
+      toast({
+        title: "Something went wrong",
+        description: "There was an issue processing your request. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section className="py-16 relative">
       <div className="container mx-auto px-6 max-w-4xl relative z-10">
@@ -14,14 +95,16 @@ const CreditCTA = () => {
             </p>
             
             <button 
-              className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#FFD700] to-[#FFA500] text-black font-black text-xl rounded-xl transition-all duration-300 hover:scale-105 transform rotate-1 hover:rotate-0 shadow-lg hover:shadow-xl mb-4"
+              onClick={handleJoinCommunity}
+              disabled={isSubmitting || isDownloading || guidesLoading}
+              className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#FFD700] to-[#FFA500] text-black font-black text-xl rounded-xl transition-all duration-300 hover:scale-105 transform rotate-1 hover:rotate-0 shadow-lg hover:shadow-xl mb-4 disabled:opacity-50 disabled:cursor-not-allowed"
               style={{
                 fontFamily: 'Permanent Marker, cursive',
                 textShadow: '1px 1px 2px rgba(0,0,0,0.1)',
                 filter: 'drop-shadow(0 4px 8px rgba(255,215,0,0.4))'
               }}
             >
-              Get More Credit Moves—Join the Community
+              {isSubmitting || isDownloading ? 'Joining Community...' : 'Get More Credit Moves—Join the Community'}
               <div className="w-8 h-8 bg-black/20 rounded-full flex items-center justify-center group-hover:bg-black/30 transition-colors">
                 <svg 
                   width="16" 
@@ -40,7 +123,7 @@ const CreditCTA = () => {
             </button>
             
             <p className="text-sm text-black/70 dark:text-brand-cream/70">
-              No spam, just real blueprints and updates.
+              Get the Credit Building Blueprint + join our newsletter • No spam, just real strategies
             </p>
           </div>
         </div>

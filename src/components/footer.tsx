@@ -101,7 +101,7 @@ const Footer = () => {
                 textShadow: '1px 1px 0px rgba(0,0,0,0.5)'
               }}
             >
-              Built from the ground up in Brooklyn
+              Built from the ground up
             </div>
           </div>
 

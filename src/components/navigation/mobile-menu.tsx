@@ -15,7 +15,7 @@ const MobileMenu = () => {
     { href: "/", label: "Start Here" },
     { href: "/about", label: "Mindset Tools" },
     { href: "/blog", label: "Builder Stories" },
-    { href: "/resources", label: "Success Strategies" },
+    { href: "/sales", label: "Success Strategies" },
   ];
 
   const handleClose = () => {

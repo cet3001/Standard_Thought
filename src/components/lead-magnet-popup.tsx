@@ -50,13 +50,12 @@ const LeadMagnetPopup = () => {
       <div 
         className={cn(
           "relative w-full max-w-md mx-auto",
-          "bg-gray-500/20 backdrop-blur-md",
           "rounded-xl shadow-2xl",
           "border-2 border-transparent"
         )}
         style={{
           backgroundImage: `
-            url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23007cba' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3Cpath d='M30 20L30 10M30 50L30 40M40 30L50 30M10 30L20 30'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")
+            url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3Cpath d='M30 20L30 10M30 50L30 40M40 30L50 30M10 30L20 30'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")
           `,
           backgroundSize: '60px 60px',
           border: '2px solid transparent',
@@ -71,7 +70,12 @@ const LeadMagnetPopup = () => {
             backgroundSize: '200% 200%'
           }}
         >
-          <div className="w-full h-full rounded-[10px] bg-gray-500/20 backdrop-blur-md" />
+          <div 
+            className="w-full h-full rounded-[10px] backdrop-blur-md"
+            style={{
+              background: 'rgba(128, 128, 128, 0.2)'
+            }}
+          />
         </div>
 
         {/* Content */}

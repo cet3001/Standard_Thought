@@ -7,6 +7,7 @@ import { useUrbanTexture } from "@/hooks/use-urban-texture";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import WhyInvestingMatters from "@/components/investing/WhyInvestingMatters";
+import InvestingMythsRealities from "@/components/investing/InvestingMythsRealities";
 
 const Investing = () => {
   useMobilePerformance();
@@ -98,6 +99,8 @@ const Investing = () => {
         </section>
 
         <WhyInvestingMatters />
+
+        <InvestingMythsRealities />
 
         {/* Coming Soon Placeholder */}
         <section className="py-16 relative">

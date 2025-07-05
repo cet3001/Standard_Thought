@@ -96,10 +96,12 @@ const MobileMenu = () => {
                     {item.label}
                   </span>
                   <div 
-                    className="text-xs text-brand-cream/70 mt-1 italic font-normal"
+                    className="text-xs text-brand-cream/90 mt-1 italic font-normal"
                     style={{
                       fontFamily: "'Kalam', 'Comic Neue', cursive",
-                      transform: 'rotate(0.5deg)'
+                      transform: 'rotate(0.5deg)',
+                      textShadow: '1px 1px 2px rgba(0,0,0,0.8), 0 0 4px rgba(255,215,0,0.3)',
+                      color: '#FFF8DC'
                     }}
                   >
                     {item.tagline}

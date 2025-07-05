@@ -127,7 +127,7 @@ const Unsubscribe = () => {
     <div className="min-h-screen bg-brand-cream dark:bg-brand-black">
       <Navigation />
       
-      <main className="pt-32 pb-16">
+      <main className="pt-36 pb-16">
         <div className="container mx-auto px-6">
           <div className="max-w-2xl mx-auto">
             <div className="bg-white/90 dark:bg-brand-black/90 backdrop-blur-sm border border-[#247EFF]/20 rounded-3xl overflow-hidden">

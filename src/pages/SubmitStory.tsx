@@ -17,7 +17,7 @@ const SubmitStory = () => {
       
       <Navigation />
       
-      <main className="pt-24 pb-16">
+      <main className="pt-28 pb-16">
         <div className="container mx-auto px-6 max-w-4xl">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold text-[#0A0A0A] dark:text-brand-cream mb-6">

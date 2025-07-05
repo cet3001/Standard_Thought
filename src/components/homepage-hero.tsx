@@ -21,7 +21,7 @@ const HomepageHero = ({ scrollToNewsletter }: HomepageHeroProps) => {
   }, []);
 
   return (
-    <section className="pt-40 pb-24 relative overflow-hidden">
+    <section className="pt-44 pb-24 relative overflow-hidden">
       {/* Enhanced Urban Background with Better Texture Visibility */}
       <div className="absolute inset-0" aria-hidden="true">
         {/* AI-Generated or Curated Urban Texture */}

@@ -22,7 +22,7 @@ const EditPost = () => {
       
       <Navigation />
       
-      <main className="pt-32 pb-16">
+      <main className="pt-36 pb-16">
         <div className="container mx-auto px-6 text-center max-w-2xl">
           <h1 className="text-3xl font-bold text-black dark:text-brand-cream mb-4">
             Page Not Available

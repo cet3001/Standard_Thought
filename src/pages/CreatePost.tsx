@@ -84,7 +84,7 @@ const CreatePost = () => {
 
       <Navigation />
       
-      <main className="relative z-10 pt-32 pb-16">
+      <main className="relative z-10 pt-36 pb-16">
         <div className="container mx-auto px-6 max-w-4xl">
           <PageHeader 
             isEditing={isEditing} 

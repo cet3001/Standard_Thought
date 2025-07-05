@@ -81,14 +81,6 @@ const Credit = () => {
               Here's how to flip your score, even if you're starting at zero.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              <button className="px-8 py-4 bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFA500] text-black font-bold text-lg rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105">
-                Get Credit Blueprint
-              </button>
-              <button className="px-8 py-4 border-2 border-[#FFD700] text-[#FFD700] font-bold text-lg rounded-xl hover:bg-[#FFD700]/10 transition-all duration-300">
-                Watch Free Training
-              </button>
-            </div>
           </div>
         </section>
 

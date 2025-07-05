@@ -11,6 +11,7 @@ import InvestingMythsRealities from "@/components/investing/InvestingMythsRealit
 import InvestingBlueprint from "@/components/investing/InvestingBlueprint";
 import InvestingActionPlan from "@/components/investing/InvestingActionPlan";
 import InvestingTestimonials from "@/components/investing/InvestingTestimonials";
+import InvestingFAQ from "@/components/investing/InvestingFAQ";
 
 const Investing = () => {
   useMobilePerformance();
@@ -110,6 +111,8 @@ const Investing = () => {
         <InvestingActionPlan />
 
         <InvestingTestimonials />
+
+        <InvestingFAQ />
 
         {/* Coming Soon Placeholder */}
         <section className="py-16 relative">

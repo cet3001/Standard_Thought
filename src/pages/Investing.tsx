@@ -9,6 +9,7 @@ import { ArrowLeft } from "lucide-react";
 import WhyInvestingMatters from "@/components/investing/WhyInvestingMatters";
 import InvestingMythsRealities from "@/components/investing/InvestingMythsRealities";
 import InvestingBlueprint from "@/components/investing/InvestingBlueprint";
+import InvestingActionPlan from "@/components/investing/InvestingActionPlan";
 
 const Investing = () => {
   useMobilePerformance();
@@ -104,6 +105,8 @@ const Investing = () => {
         <InvestingMythsRealities />
 
         <InvestingBlueprint />
+
+        <InvestingActionPlan />
 
         {/* Coming Soon Placeholder */}
         <section className="py-16 relative">

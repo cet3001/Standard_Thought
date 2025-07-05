@@ -1,5 +1,6 @@
 
 import Logo from "./navigation/logo";
+import NavItems from "./navigation/nav-items";
 import MobileMenu from "./navigation/mobile-menu";
 import DynamicTicker from "./navigation/dynamic-ticker";
 import { useUrbanTexture } from "@/hooks/use-urban-texture";
@@ -43,14 +44,19 @@ const Navigation = () => {
 
         <div className="container mx-auto px-4 sm:px-6 py-4 relative z-10">
           <div className="flex items-center justify-between">
-            {/* Hamburger Menu */}
-            <div className="flex items-center flex-shrink-0">
+            {/* Hamburger Menu - Mobile Only */}
+            <div className="flex items-center flex-shrink-0 lg:hidden">
               <MobileMenu />
             </div>
 
-            {/* Centered Logo */}
-            <div className="flex-1 flex justify-center min-w-0">
+            {/* Left side for desktop - Logo */}
+            <div className="flex items-center flex-shrink-0">
               <Logo />
+            </div>
+
+            {/* Center - Desktop Navigation */}
+            <div className="hidden lg:flex flex-1 justify-center">
+              <NavItems className="flex items-center space-x-6 xl:space-x-8" />
             </div>
 
             {/* Right side - Create Story button for admins */}

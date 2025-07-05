@@ -1,4 +1,4 @@
-import { DollarSign, Smartphone, BookOpen, Target, Repeat, TrendingUp } from "lucide-react";
+import { Target, Smartphone, RefreshCw, PieChart, Shield, TrendingUp } from "lucide-react";
 
 const InvestingBlueprint = () => {
   return (
@@ -15,30 +15,30 @@ const InvestingBlueprint = () => {
             <div className="space-y-8">
               {/* Step 1 */}
               <div className="flex items-start gap-6">
-                <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-green-500 to-green-600 rounded-full flex items-center justify-center">
-                  <DollarSign className="w-6 h-6 text-white" />
+                <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center">
+                  <Target className="w-6 h-6 text-white" />
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl sm:text-2xl font-bold text-black dark:text-brand-cream mb-3">
-                    1. Start With What You Got
+                    1. Set Your Goal
                   </h3>
                   <p className="text-lg text-black dark:text-brand-cream leading-relaxed">
-                    Got $10? That's your starting point. Don't wait for the "perfect amount"—the best time to start was yesterday, the second best time is right now. Even pocket change can grow into something real.
+                    What are you investing for? Emergency fund to break the paycheck-to-paycheck cycle? First home down payment? Building generational wealth so your kids don't start from zero? Your "why" keeps you consistent when the market gets shaky.
                   </p>
                 </div>
               </div>
 
               {/* Step 2 */}
               <div className="flex items-start gap-6">
-                <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center">
+                <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-green-500 to-green-600 rounded-full flex items-center justify-center">
                   <Smartphone className="w-6 h-6 text-white" />
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl sm:text-2xl font-bold text-black dark:text-brand-cream mb-3">
-                    2. Get Your Account Set Up
+                    2. Pick Your Platform
                   </h3>
                   <p className="text-lg text-black dark:text-brand-cream leading-relaxed">
-                    Download a beginner-friendly app like Robinhood, Cash App, or Fidelity. Most let you start with no minimum balance. Takes 10 minutes to set up—less time than waiting in line at the corner store.
+                    Look for free or low-cost apps with no minimums and no hidden fees. Fidelity, Schwab, and Vanguard are solid choices. Avoid anything promising "get rich quick" or charging monthly fees—those are designed to take your money, not help you build it.
                   </p>
                 </div>
               </div>
@@ -46,14 +46,14 @@ const InvestingBlueprint = () => {
               {/* Step 3 */}
               <div className="flex items-start gap-6">
                 <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full flex items-center justify-center">
-                  <BookOpen className="w-6 h-6 text-white" />
+                  <RefreshCw className="w-6 h-6 text-white" />
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl sm:text-2xl font-bold text-black dark:text-brand-cream mb-3">
-                    3. Learn the Basics (Keep It Simple)
+                    3. Start Small, Stack Consistent
                   </h3>
                   <p className="text-lg text-black dark:text-brand-cream leading-relaxed">
-                    Start with index funds or ETFs—these are like buying a piece of the whole market instead of gambling on individual stocks. Think of it as buying the entire corner store instead of just one product.
+                    Set up automatic investing of $10–$50 a week, even on a tight budget. Skip one takeout meal or find $2 a day somewhere. Consistency beats big lump sums—$25 a week becomes $1,300 a year, and that's before any growth.
                   </p>
                 </div>
               </div>
@@ -61,14 +61,14 @@ const InvestingBlueprint = () => {
               {/* Step 4 */}
               <div className="flex items-start gap-6">
                 <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full flex items-center justify-center">
-                  <Target className="w-6 h-6 text-white" />
+                  <PieChart className="w-6 h-6 text-white" />
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl sm:text-2xl font-bold text-black dark:text-brand-cream mb-3">
-                    4. Make Your First Move
+                    4. Diversify the Bag
                   </h3>
                   <p className="text-lg text-black dark:text-brand-cream leading-relaxed">
-                    Put that first $10-50 into a broad market index fund (like SPY or VTI). Don't overthink it—this is about building the habit, not hitting it big on day one.
+                    Start with broad market index funds (like VTI or SPY)—these own pieces of hundreds of companies, so you're not betting everything on one stock. Think of it like owning a slice of the entire economy instead of gambling on individual players.
                   </p>
                 </div>
               </div>
@@ -76,14 +76,14 @@ const InvestingBlueprint = () => {
               {/* Step 5 */}
               <div className="flex items-start gap-6">
                 <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-red-500 to-red-600 rounded-full flex items-center justify-center">
-                  <Repeat className="w-6 h-6 text-white" />
+                  <Shield className="w-6 h-6 text-white" />
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl sm:text-2xl font-bold text-black dark:text-brand-cream mb-3">
-                    5. Automate the Game
+                    5. Avoid the Traps
                   </h3>
                   <p className="text-lg text-black dark:text-brand-cream leading-relaxed">
-                    Set up automatic investing—even $25 a week adds up to $1,300 a year. Make it automatic so you don't have to think about it or be tempted to spend it elsewhere.
+                    Stay away from anything promising 50% returns in a month, crypto "sure things," or day trading schemes. If someone's sliding into your DMs with investment "opportunities," block them. Real wealth building is boring—that's what makes it work.
                   </p>
                 </div>
               </div>
@@ -95,10 +95,10 @@ const InvestingBlueprint = () => {
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl sm:text-2xl font-bold text-black dark:text-brand-cream mb-3">
-                    6. Stack and Scale
+                    6. Level Up
                   </h3>
                   <p className="text-lg text-black dark:text-brand-cream leading-relaxed">
-                    After 6 months of consistent investing, start exploring other options—maybe some individual stocks, REITs, or crypto (but keep most of your money in the safe stuff). This is about building wealth, not gambling.
+                    After 12+ months of consistent investing and building your foundation, explore real estate (REITs to start), business investing, or higher-risk plays with money you can afford to lose. But keep 80% of your portfolio in the boring, proven stuff.
                   </p>
                 </div>
               </div>

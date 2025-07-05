@@ -323,7 +323,20 @@ const BlogPost = () => {
           )}
 
           {/* Article Content */}
-          <div className={`transition-all duration-700 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className={`relative transition-all duration-700 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            {/* Subtle ST Logo Watermark */}
+            <Link 
+              to="/" 
+              className="absolute top-4 right-4 z-10 opacity-5 hover:opacity-20 transition-opacity duration-300"
+              aria-label="Return to Standardthought home"
+            >
+              <img 
+                src="/lovable-uploads/ab84a6d6-c2ac-4910-be5f-7bb666463fb8.png" 
+                alt="ST Logo" 
+                className="w-12 h-12 object-contain"
+              />
+            </Link>
+            
             <div 
               className="prose prose-lg max-w-none text-brand-black dark:text-brand-cream prose-headings:text-brand-black dark:prose-headings:text-brand-cream prose-a:text-[#247EFF] prose-strong:text-brand-black dark:prose-strong:text-brand-cream prose-code:text-[#247EFF] prose-blockquote:border-[#FFD700] prose-blockquote:text-brand-black/80 dark:prose-blockquote:text-brand-cream/80"
               dangerouslySetInnerHTML={{ 

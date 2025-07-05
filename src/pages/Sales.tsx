@@ -362,6 +362,17 @@ const Sales = () => {
                         background: 'linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05))',
                       }}
                     >
+                      {/* Subtle ST Logo Watermark */}
+                      <div className="absolute top-2 left-2 z-5 opacity-5">
+                        <a href="/" aria-label="Return to Standardthought home">
+                          <img 
+                            src="/lovable-uploads/ab84a6d6-c2ac-4910-be5f-7bb666463fb8.png" 
+                            alt="ST Logo" 
+                            className="w-8 h-8 object-contain"
+                          />
+                        </a>
+                      </div>
+                      
                       {/* Price badge for paid guides */}
                       {guide.price > 0 && (
                         <div className="absolute top-4 right-4 z-10">

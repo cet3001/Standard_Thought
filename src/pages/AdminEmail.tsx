@@ -319,7 +319,16 @@ const AdminEmail = () => {
               </CardHeader>
               <CardContent>
                 {showPreview && subject && body ? (
-                  <div className="bg-white dark:bg-gray-900 rounded-lg p-6 border shadow-inner">
+                  <div className="bg-white dark:bg-gray-900 rounded-lg p-6 border shadow-inner relative">
+                    {/* Subtle watermark logo */}
+                    <div className="absolute top-4 right-4 opacity-10">
+                      <img 
+                        src="/lovable-uploads/ab84a6d6-c2ac-4910-be5f-7bb666463fb8.png" 
+                        alt="ST Logo" 
+                        className="w-10 h-10 object-contain"
+                      />
+                    </div>
+                    
                     {/* Email Header */}
                     <div className="border-b pb-4 mb-6">
                       <div className="flex items-center gap-3 mb-2">
@@ -357,8 +366,21 @@ const AdminEmail = () => {
                       <div className="text-sm text-gray-600 dark:text-gray-400">
                         <p className="mb-2">Keep building, keep growing.</p>
                         <p className="font-bold text-[#FFD700]">— The Standardthought Team</p>
+                        
+                        {/* Footer ST Logo */}
+                        <div className="my-4">
+                          <img 
+                            src="/lovable-uploads/ab84a6d6-c2ac-4910-be5f-7bb666463fb8.png" 
+                            alt="Standardthought Logo" 
+                            className="w-8 h-8 mx-auto opacity-60"
+                          />
+                        </div>
+                        
                         <p className="mt-4 text-xs">
                           You're receiving this because you're part of the Standardthought community.
+                        </p>
+                        <p className="text-xs text-[#FFD700] font-medium">
+                          Building generational wealth one step at a time.
                         </p>
                       </div>
                     </div>

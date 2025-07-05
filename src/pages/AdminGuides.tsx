@@ -66,7 +66,18 @@ const AdminGuides = () => {
   }
 
   return (
-    <div className="min-h-screen bg-brand-black text-brand-cream p-4 md:p-8">
+    <div className="min-h-screen bg-brand-black text-brand-cream p-4 md:p-8 relative">
+      {/* Subtle ST Logo Watermark */}
+      <div className="fixed top-4 right-4 z-50 opacity-5 hover:opacity-15 transition-opacity duration-300">
+        <a href="/" aria-label="Return to Standardthought home">
+          <img 
+            src="/lovable-uploads/ab84a6d6-c2ac-4910-be5f-7bb666463fb8.png" 
+            alt="ST Logo" 
+            className="w-16 h-16 object-contain"
+          />
+        </a>
+      </div>
+      
       <div className="max-w-6xl mx-auto">
         <div className="flex justify-between items-center mb-8">
           <div>

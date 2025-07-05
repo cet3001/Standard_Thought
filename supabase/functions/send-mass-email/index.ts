@@ -166,6 +166,17 @@ function generateEmailHTML(body: string, subject: string): string {
           border-radius: 12px;
           padding: 30px;
           box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          position: relative;
+        }
+        .subtle-logo {
+          position: absolute;
+          top: 15px;
+          right: 15px;
+          opacity: 0.1;
+          transition: opacity 0.3s ease;
+        }
+        .subtle-logo:hover {
+          opacity: 0.3;
         }
         .header {
           text-align: center;
@@ -225,14 +236,26 @@ function generateEmailHTML(body: string, subject: string): string {
           color: #FFD700;
           font-weight: bold;
         }
+        .footer-logo {
+          display: inline-block;
+          margin-top: 10px;
+        }
       </style>
     </head>
     <body>
       <div class="email-container">
+        <!-- Subtle watermark logo -->
+        <a href="https://www.standardthought.com" class="subtle-logo">
+          <img src="https://www.standardthought.com/lovable-uploads/ab84a6d6-c2ac-4910-be5f-7bb666463fb8.png" 
+               alt="ST Logo" width="40" height="40" style="opacity: 0.1;">
+        </a>
+        
         <div class="header">
-          <div class="logo">ST</div>
-          <div class="brand-name">Standardthought</div>
-          <div class="tagline">Urban Wealth. Real Progress.</div>
+          <a href="https://www.standardthought.com" style="text-decoration: none; color: inherit;">
+            <div class="logo">ST</div>
+            <div class="brand-name">Standardthought</div>
+            <div class="tagline">Urban Wealth. Real Progress.</div>
+          </a>
         </div>
         
         <div class="content">${body}</div>
@@ -240,6 +263,13 @@ function generateEmailHTML(body: string, subject: string): string {
         <div class="footer">
           <p>Keep building, keep growing.</p>
           <p class="signature">— The Standardthought Team</p>
+          
+          <div class="footer-logo">
+            <a href="https://www.standardthought.com" style="text-decoration: none;">
+              <img src="https://www.standardthought.com/lovable-uploads/ab84a6d6-c2ac-4910-be5f-7bb666463fb8.png" 
+                   alt="Standardthought Logo" width="30" height="30" style="opacity: 0.6;">
+            </a>
+          </div>
           
           <div class="unsubscribe">
             <p>You're receiving this because you're part of the Standardthought community.</p>

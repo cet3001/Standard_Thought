@@ -35,12 +35,18 @@ const Logo = () => {
             </span>
           </div>
           <div 
-            className="text-sm font-black text-[#0A0A0A] mt-1"
+            className="text-base font-black mt-1 transform -rotate-1"
             style={{ 
               fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
-              textShadow: '2px 2px 0px rgba(0,0,0,0.3), 1px 1px 0px rgba(255,255,255,0.8)',
-              transform: 'rotate(-0.5deg)',
-              letterSpacing: '0.5px'
+              background: 'linear-gradient(45deg, #FFD700, #F4D03F, #FFEB3B, #D4AF37)',
+              backgroundSize: '200% 200%',
+              animation: 'pearlescent 3s ease-in-out infinite',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              textShadow: '2px 2px 4px rgba(0,0,0,0.4), 1px 1px 0px rgba(255,255,255,0.2)',
+              letterSpacing: '0.5px',
+              filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))'
             }}
           >
             Urban Wealth. Real Progress.

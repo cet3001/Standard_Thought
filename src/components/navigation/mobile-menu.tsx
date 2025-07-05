@@ -38,7 +38,7 @@ const MobileMenu = () => {
       </SheetTrigger>
       <SheetContent
         side="left"
-        className="w-[300px] sm:w-[400px] bg-white border-r border-[#247EFF]/20 z-[100] shadow-2xl"
+        className="w-[300px] sm:w-[400px] bg-gray-900/20 backdrop-blur-md border-r border-[#247EFF]/30 z-[100] shadow-2xl"
         aria-label="Navigation menu"
         id="navigation-menu"
       >
@@ -53,18 +53,40 @@ const MobileMenu = () => {
             <Link
               key={item.href}
               to={item.href}
-              className="group relative text-xl font-bold text-[#0A0A0A] hover:text-[#247EFF] transition-all duration-300 border-b border-[#247EFF]/20 pb-3 pl-4"
+              className="group relative text-xl font-bold transition-all duration-300 border-b border-[#FFD700]/30 pb-3 pl-4"
               aria-label={`Navigate to ${item.label} page`}
               onClick={handleClose}
               style={{ 
                 animationDelay: `${index * 50}ms`,
-                textShadow: '2px 2px 4px rgba(0,0,0,0.1)',
-                fontFamily: "'Inter', system-ui, sans-serif"
+                fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive"
               }}
             >
-              <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#247EFF] to-[#FFD700] transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top rounded-r"></div>
-              <div className="absolute inset-0 bg-gradient-to-r from-[#247EFF]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg -mx-2 -my-1"></div>
-              <span className="relative z-10">{item.label}</span>
+              <div className="absolute left-0 top-0 bottom-0 w-1 transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top rounded-r"
+                style={{
+                  background: 'linear-gradient(180deg, #FFD700, #F4D03F, #FFEB3B, #D4AF37)',
+                  backgroundSize: '100% 200%',
+                  animation: 'pearlescent 3s ease-in-out infinite'
+                }}
+              ></div>
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg -mx-2 -my-1"
+                style={{
+                  background: 'linear-gradient(90deg, rgba(255,215,0,0.1), transparent)',
+                }}
+              ></div>
+              <span 
+                className="relative z-10 transform -rotate-1 inline-block"
+                style={{
+                  background: 'linear-gradient(45deg, #FFD700, #F4D03F, #FFEB3B, #D4AF37)',
+                  backgroundSize: '200% 200%',
+                  animation: 'pearlescent 3s ease-in-out infinite',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                  textShadow: '2px 2px 4px rgba(0,0,0,0.3)'
+                }}
+              >
+                {item.label}
+              </span>
             </Link>
           ))}
 
@@ -73,38 +95,52 @@ const MobileMenu = () => {
             <>
               <Link
                 to="/admin/guides"
-                className="group relative text-xl font-bold text-[#FF6B6B] hover:text-[#FF5252] transition-all duration-300 border-b border-[#FF6B6B]/20 pb-3 pl-4"
+                className="group relative text-xl font-bold transition-all duration-300 border-b border-[#FF6B6B]/30 pb-3 pl-4"
                 aria-label="Navigate to Guide Management"
                 onClick={handleClose}
                 style={{ 
-                  textShadow: '2px 2px 4px rgba(0,0,0,0.1)',
-                  fontFamily: "'Inter', system-ui, sans-serif"
+                  fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive"
                 }}
               >
-                <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#FF6B6B] to-[#FFD700] transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top rounded-r"></div>
-                <div className="absolute inset-0 bg-gradient-to-r from-[#FF6B6B]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg -mx-2 -my-1"></div>
-                <span className="relative z-10">Manage Guides</span>
+                <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#FF6B6B] to-[#FF3333] transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top rounded-r"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-[#FF6B6B]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg -mx-2 -my-1"></div>
+                <span 
+                  className="relative z-10 transform rotate-1 inline-block"
+                  style={{
+                    color: '#FF6B6B',
+                    textShadow: '2px 2px 4px rgba(0,0,0,0.3), 1px 1px 0px rgba(255,255,255,0.1)'
+                  }}
+                >
+                  Manage Guides
+                </span>
               </Link>
               <Link
                 to="/admin-dashboard"
-                className="group relative text-xl font-bold text-[#FF6B6B] hover:text-[#FF5252] transition-all duration-300 border-b border-[#FF6B6B]/20 pb-3 pl-4"
+                className="group relative text-xl font-bold transition-all duration-300 border-b border-[#FF6B6B]/30 pb-3 pl-4"
                 aria-label="Navigate to Admin Dashboard"
                 onClick={handleClose}
                 style={{ 
-                  textShadow: '2px 2px 4px rgba(0,0,0,0.1)',
-                  fontFamily: "'Inter', system-ui, sans-serif"
+                  fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive"
                 }}
               >
-                <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#FF6B6B] to-[#FFD700] transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top rounded-r"></div>
-                <div className="absolute inset-0 bg-gradient-to-r from-[#FF6B6B]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg -mx-2 -my-1"></div>
-                <span className="relative z-10">Admin Dashboard</span>
+                <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#FF6B6B] to-[#FF3333] transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top rounded-r"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-[#FF6B6B]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg -mx-2 -my-1"></div>
+                <span 
+                  className="relative z-10 transform -rotate-1 inline-block"
+                  style={{
+                    color: '#FF6B6B',
+                    textShadow: '2px 2px 4px rgba(0,0,0,0.3), 1px 1px 0px rgba(255,255,255,0.1)'
+                  }}
+                >
+                  Admin Dashboard
+                </span>
               </Link>
             </>
           )}
 
           {/* Auth Section */}
-          <div className="pt-6 border-t border-[#247EFF]/20 relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-[#FDF6E3]/20 to-transparent rounded-lg -mx-4 -my-2"></div>
+          <div className="pt-6 border-t border-[#FFD700]/30 relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-[#FFD700]/10 to-transparent rounded-lg -mx-4 -my-2"></div>
             <div className="relative z-10">
               <AuthSection onAction={handleClose} />
             </div>

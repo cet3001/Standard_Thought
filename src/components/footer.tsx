@@ -107,23 +107,23 @@ const Footer = () => {
 
           {/* Navigation Links */}
           <div className="lg:col-span-2">
-            <nav className="flex flex-wrap gap-x-8 gap-y-2 text-sm">
-              <Link to="/about" className="text-brand-cream/80 hover:text-[#247EFF] transition-colors">
-                About
-              </Link>
-              <Link to="/blog" className="text-brand-cream/80 hover:text-[#247EFF] transition-colors">
-                Builder Stories
-              </Link>
-              <Link to="/about" className="text-brand-cream/80 hover:text-[#247EFF] transition-colors">
-                Mindset Tools
-              </Link>
-              <Link to="/resources" className="text-brand-cream/80 hover:text-[#247EFF] transition-colors">
-                Success Strategies
-              </Link>
-              <Link to="/auth" className="text-brand-cream/80 hover:text-[#247EFF] transition-colors">
-                Contact
-              </Link>
-            </nav>
+          <nav className="flex flex-wrap gap-x-8 gap-y-2 text-sm">
+            <Link to="/" className="text-brand-cream/80 hover:text-[#247EFF] transition-colors">
+              Homebase
+            </Link>
+            <Link to="/about" className="text-brand-cream/80 hover:text-[#247EFF] transition-colors">
+              About + Mindset Tools
+            </Link>
+            <Link to="/blog" className="text-brand-cream/80 hover:text-[#247EFF] transition-colors">
+              Builder Stories
+            </Link>
+            <Link to="/sales" className="text-brand-cream/80 hover:text-[#247EFF] transition-colors">
+              Blueprints & Offers
+            </Link>
+            <Link to="/auth" className="text-brand-cream/80 hover:text-[#247EFF] transition-colors">
+              Contact
+            </Link>
+          </nav>
           </div>
 
           {/* Contact & Social */}

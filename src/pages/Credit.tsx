@@ -210,7 +210,7 @@ const Credit = () => {
                         1. Check Your Credit (for Free)
                       </h3>
                       <p className="text-lg text-black dark:text-brand-cream leading-relaxed">
-                        Where to get your report, what to look for, and how to spot errors.
+                        Go to annualcreditreport.com and pull your reports from all three bureaus (Experian, Equifax, TransUnion). Look for accounts you don't recognize, incorrect balances, or late payments that aren't yours.
                       </p>
                     </div>
                   </div>
@@ -225,7 +225,7 @@ const Credit = () => {
                         2. Dispute the B.S.
                       </h3>
                       <p className="text-lg text-black dark:text-brand-cream leading-relaxed">
-                        How to challenge mistakes and clean up your report.
+                        File disputes online through each bureau's website for any errors you found. Keep records of everything and follow up if they don't respond within 30 days.
                       </p>
                     </div>
                   </div>
@@ -240,7 +240,7 @@ const Credit = () => {
                         3. Start with a Secured Card or Builder Loan
                       </h3>
                       <p className="text-lg text-black dark:text-brand-cream leading-relaxed">
-                        No cosigner needed, low deposit options, how to use them right.
+                        Apply for a secured credit card with a $200-500 deposit or a credit builder loan from a credit union. Use the card for small purchases like gas or groceries, then pay it off immediately.
                       </p>
                     </div>
                   </div>
@@ -255,7 +255,7 @@ const Credit = () => {
                         4. Pay On Time, Every Time
                       </h3>
                       <p className="text-lg text-black dark:text-brand-cream leading-relaxed">
-                        Set up auto-pay, reminders, and why one late payment can set you back.
+                        Set up automatic payments for at least the minimum amount due. Add phone reminders 2-3 days before your due date as backup—one late payment can drop your score 60-100 points.
                       </p>
                     </div>
                   </div>
@@ -270,7 +270,7 @@ const Credit = () => {
                         5. Keep Utilization Low
                       </h3>
                       <p className="text-lg text-black dark:text-brand-cream leading-relaxed">
-                        The "30% rule" explained in real talk.
+                        Never use more than 30% of your available credit, but aim for under 10% for the best scores. If your limit is $500, keep your balance under $50 when statements close.
                       </p>
                     </div>
                   </div>
@@ -285,7 +285,7 @@ const Credit = () => {
                         6. Level Up
                       </h3>
                       <p className="text-lg text-black dark:text-brand-cream leading-relaxed">
-                        When and how to move to unsecured cards, credit lines, or bigger loans.
+                        After 6-12 months of good history, apply for an unsecured card with rewards or request credit limit increases. Don't close old accounts—keep them open to maintain your credit history length.
                       </p>
                     </div>
                   </div>

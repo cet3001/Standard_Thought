@@ -12,10 +12,10 @@ const MobileMenu = () => {
   const { user, isAdmin } = useAuth();
 
   const navItems = [
-    { href: "/", label: "Homebase", tagline: "The Movement Begins Here" },
-    { href: "/about", label: "About + Mindset Tools", tagline: "Our Story & Your Growth Tools" },
-    { href: "/blog", label: "Builder Stories", tagline: "Real People. Real Hustle. Real Results." },
-    { href: "/sales", label: "Blueprints & Offers", tagline: "Game Plans, Guides & Opportunities" },
+    { href: "/", label: "Start Here" },
+    { href: "/about", label: "Mindset Tools" },
+    { href: "/blog", label: "Builder Stories" },
+    { href: "/sales", label: "Success Strategies" },
   ];
 
   const handleClose = () => {
@@ -60,11 +60,12 @@ const MobileMenu = () => {
             <Link
               key={item.href}
               to={item.href}
-              className="group relative transition-all duration-300 border-b border-[#FFD700]/30 pb-4 pl-4"
+              className="group relative text-xl font-bold transition-all duration-300 border-b border-[#FFD700]/30 pb-3 pl-4"
               aria-label={`Navigate to ${item.label} page`}
               onClick={handleClose}
               style={{ 
                 animationDelay: `${index * 50}ms`,
+                fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive"
               }}
             >
               <div className="absolute left-0 top-0 bottom-0 w-1 transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top rounded-r"
@@ -79,33 +80,20 @@ const MobileMenu = () => {
                   background: 'linear-gradient(90deg, rgba(255,215,0,0.1), transparent)',
                 }}
               ></div>
-              <div className="relative z-10 flex flex-col">
-                <span 
-                  className="text-lg font-bold transform -rotate-1 inline-block mb-1"
-                  style={{
-                    background: 'linear-gradient(45deg, #FFD700, #F4D03F, #FFEB3B, #D4AF37)',
-                    backgroundSize: '200% 200%',
-                    animation: 'pearlescent 3s ease-in-out infinite',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
-                    textShadow: '2px 2px 4px rgba(0,0,0,0.3)',
-                    fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive"
-                  }}
-                >
-                  {item.label}
-                </span>
-                <span 
-                  className="text-sm opacity-80 transform rotate-1 inline-block"
-                  style={{
-                    color: '#FFD700',
-                    textShadow: '1px 1px 2px rgba(0,0,0,0.5)',
-                    fontFamily: "'Kalam', 'Comic Neue', cursive"
-                  }}
-                >
-                  {item.tagline}
-                </span>
-              </div>
+              <span 
+                className="relative z-10 transform -rotate-1 inline-block"
+                style={{
+                  background: 'linear-gradient(45deg, #FFD700, #F4D03F, #FFEB3B, #D4AF37)',
+                  backgroundSize: '200% 200%',
+                  animation: 'pearlescent 3s ease-in-out infinite',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                  textShadow: '2px 2px 4px rgba(0,0,0,0.3)'
+                }}
+              >
+                {item.label}
+              </span>
             </Link>
           ))}
 

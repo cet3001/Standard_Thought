@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Zap, Download, Lock, CheckCircle, Star, ArrowRight, CreditCard, TrendingUp, Bot, DollarSign, ChevronDown } from "lucide-react";
@@ -744,34 +745,35 @@ const Sales = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 
                 {/* Credit Blueprint */}
-                <Card 
-                  className="backdrop-blur-sm border-2 border-[#FFD700]/30 shadow-2xl hover:scale-105 hover:border-[#FFD700]/50 transition-all duration-300 cursor-pointer group relative overflow-hidden"
-                  style={{
-                    background: 'linear-gradient(135deg, rgba(255,215,0,0.1), rgba(255,215,0,0.05))',
-                  }}
-                  onClick={handleExploreCredit}
-                >
-                  {/* Urban texture background */}
-                  <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(circle_at_1px_1px,_rgba(255,215,0,0.8)_1px,_transparent_0)] bg-[length:6px_6px]"></div>
-                  
-                  <CardContent className="p-6 text-center relative z-10">
-                    <div className="mb-4 flex justify-center">
-                      <div className="p-4 rounded-2xl bg-[#FFD700]/20 group-hover:bg-[#FFD700]/30 transition-all duration-300">
-                        <CreditCard className="h-8 w-8 text-[#FFD700]" />
+                <Link to="/credit">
+                  <Card 
+                    className="backdrop-blur-sm border-2 border-[#FFD700]/30 shadow-2xl hover:scale-105 hover:border-[#FFD700]/50 transition-all duration-300 cursor-pointer group relative overflow-hidden"
+                    style={{
+                      background: 'linear-gradient(135deg, rgba(255,215,0,0.1), rgba(255,215,0,0.05))',
+                    }}
+                  >
+                    {/* Urban texture background */}
+                    <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(circle_at_1px_1px,_rgba(255,215,0,0.8)_1px,_transparent_0)] bg-[length:6px_6px]"></div>
+                    
+                    <CardContent className="p-6 text-center relative z-10">
+                      <div className="mb-4 flex justify-center">
+                        <div className="p-4 rounded-2xl bg-[#FFD700]/20 group-hover:bg-[#FFD700]/30 transition-all duration-300">
+                          <CreditCard className="h-8 w-8 text-[#FFD700]" />
+                        </div>
                       </div>
-                    </div>
-                    <h3 className="text-xl font-black mb-3 text-brand-black dark:text-brand-cream font-ibm-plex-mono">
-                      Credit
-                    </h3>
-                    <p className="text-sm text-brand-black dark:text-brand-cream opacity-80 mb-4 font-kalam">
-                      Fix your credit, build your score, unlock better rates
-                    </p>
-                    <div className="flex items-center justify-center text-[#FFD700] group-hover:text-[#FFD700] transition-colors duration-300">
-                      <span className="text-sm font-ibm-plex-mono mr-2">Learn More</span>
-                      <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform duration-300" />
-                    </div>
-                  </CardContent>
-                </Card>
+                      <h3 className="text-xl font-black mb-3 text-brand-black dark:text-brand-cream font-ibm-plex-mono">
+                        Credit
+                      </h3>
+                      <p className="text-sm text-brand-black dark:text-brand-cream opacity-80 mb-4 font-kalam">
+                        Fix your credit, build your score, unlock better rates
+                      </p>
+                      <div className="flex items-center justify-center text-[#FFD700] group-hover:text-[#FFD700] transition-colors duration-300">
+                        <span className="text-sm font-ibm-plex-mono mr-2">Learn More</span>
+                        <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform duration-300" />
+                      </div>
+                    </CardContent>
+                  </Card>
+                </Link>
 
                 {/* Investing Blueprint */}
                 <Card 

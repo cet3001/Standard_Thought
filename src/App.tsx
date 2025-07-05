@@ -10,6 +10,7 @@ import Blog from "@/pages/Blog";
 import BlogPost from "@/pages/BlogPost";
 import CreatePost from "@/pages/CreatePost";
 import Sales from "@/pages/Sales";
+import Credit from "@/pages/Credit";
 import Auth from "@/pages/Auth";
 import AdminGuides from "@/pages/AdminGuides";
 import AdminEmail from "@/pages/AdminEmail";
@@ -52,6 +53,7 @@ function App() {
                   <Route path="/admin/guides" element={<AdminGuides />} />
                   <Route path="/admin/email" element={<AdminEmail />} />
                   <Route path="/sales" element={<Sales />} />
+                  <Route path="/credit" element={<Credit />} />
                   <Route path="/auth" element={<Auth />} />
                   <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                   <Route path="/terms-of-service" element={<TermsOfService />} />

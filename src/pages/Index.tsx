@@ -1,6 +1,7 @@
 
 import Analytics from "@/components/analytics";
 import HomepageHero from "@/components/homepage-hero";
+import LeadMagnetPopup from "@/components/lead-magnet-popup";
 
 import ManifestoSection from "@/components/manifesto-section";
 import { NewsletterSection } from "@/components/newsletter-section";
@@ -170,6 +171,9 @@ const Index = () => {
 
         {/* Footer */}
         <Footer />
+
+        {/* Lead Magnet Popup */}
+        <LeadMagnetPopup />
 
       </div>
     );

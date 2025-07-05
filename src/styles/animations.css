@@ -41,6 +41,10 @@
   }
 }
 
+.animate-pearlescent {
+  animation: pearlescent 3s ease-in-out infinite;
+}
+
 /* Line clamp utilities */
 .line-clamp-2 {
   display: -webkit-box;

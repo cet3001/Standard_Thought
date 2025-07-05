@@ -50,24 +50,15 @@ const LeadMagnetPopup = () => {
       <div 
         className={cn(
           "relative w-full max-w-md mx-auto",
-          "bg-gradient-to-br from-brand-cream/95 via-brand-cream/90 to-brand-cream/95",
-          "dark:from-brand-black/95 dark:via-brand-black/90 dark:to-brand-black/95",
+          "bg-gray-500/20 backdrop-blur-md",
           "rounded-xl shadow-2xl",
-          "border-2 border-transparent",
-          "animate-pearlescent"
+          "border-2 border-transparent"
         )}
         style={{
           backgroundImage: `
-            linear-gradient(135deg, 
-              rgba(255, 215, 0, 0.3) 0%, 
-              rgba(255, 215, 0, 0.1) 25%, 
-              rgba(255, 215, 0, 0.3) 50%, 
-              rgba(255, 215, 0, 0.1) 75%, 
-              rgba(255, 215, 0, 0.3) 100%
-            ),
             url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23007cba' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3Cpath d='M30 20L30 10M30 50L30 40M40 30L50 30M10 30L20 30'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")
           `,
-          backgroundSize: '40px 40px, 60px 60px',
+          backgroundSize: '60px 60px',
           border: '2px solid transparent',
           backgroundClip: 'padding-box'
         }}
@@ -80,7 +71,7 @@ const LeadMagnetPopup = () => {
             backgroundSize: '200% 200%'
           }}
         >
-          <div className="w-full h-full rounded-[10px] bg-gradient-to-br from-brand-cream/95 via-brand-cream/90 to-brand-cream/95 dark:from-brand-black/95 dark:via-brand-black/90 dark:to-brand-black/95" />
+          <div className="w-full h-full rounded-[10px] bg-gray-500/20 backdrop-blur-md" />
         </div>
 
         {/* Content */}
@@ -112,7 +103,16 @@ const LeadMagnetPopup = () => {
             <h2 className="text-xl font-bold text-brand-black dark:text-brand-cream mb-2">
               Get the moves that actually build wealth—
             </h2>
-            <p className="text-lg font-semibold text-[#007cba]">
+            <p 
+              className="text-lg font-semibold animate-pearlescent bg-clip-text text-transparent"
+              style={{
+                background: 'linear-gradient(45deg, #FFD700, #FFA500, #FFD700, #FFA500)',
+                backgroundSize: '200% 200%',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text'
+              }}
+            >
               no theory, just action.
             </p>
           </div>

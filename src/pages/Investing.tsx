@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import WhyInvestingMatters from "@/components/investing/WhyInvestingMatters";
 import InvestingMythsRealities from "@/components/investing/InvestingMythsRealities";
+import InvestingBlueprint from "@/components/investing/InvestingBlueprint";
 
 const Investing = () => {
   useMobilePerformance();
@@ -101,6 +102,8 @@ const Investing = () => {
         <WhyInvestingMatters />
 
         <InvestingMythsRealities />
+
+        <InvestingBlueprint />
 
         {/* Coming Soon Placeholder */}
         <section className="py-16 relative">

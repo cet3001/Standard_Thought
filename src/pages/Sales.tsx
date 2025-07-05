@@ -173,9 +173,15 @@ const Sales = () => {
                 {/* Subtle graffiti tags background */}
                 <div className="absolute top-10 right-10 transform rotate-12 opacity-[0.08] pointer-events-none" aria-hidden="true">
                   <div 
-                    className="text-[#247EFF] text-6xl font-black"
+                    className="text-6xl font-black"
                     style={{ 
                       fontFamily: "'Permanent Marker', 'Kalam', cursive",
+                      background: 'linear-gradient(45deg, #FFD700, #F4D03F, #FFEB3B, #D4AF37)',
+                      backgroundSize: '200% 200%',
+                      animation: 'pearlescent 3s ease-in-out infinite',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
                       textShadow: '2px 2px 0px rgba(0,0,0,0.3)',
                       filter: 'blur(0.5px)'
                     }}
@@ -183,7 +189,10 @@ const Sales = () => {
                     BLUEPRINT
                   </div>
                   {/* Drip effect */}
-                  <div className="absolute bottom-0 left-8 w-2 h-8 bg-[#247EFF] opacity-40 transform rotate-12 blur-sm"></div>
+                  <div className="absolute bottom-0 left-8 w-2 h-8 opacity-40 transform rotate-12 blur-sm"
+                       style={{
+                         background: 'linear-gradient(45deg, #FFD700, #F4D03F, #FFEB3B, #D4AF37)'
+                       }}></div>
                 </div>
 
                 <div className="absolute bottom-20 left-10 transform -rotate-6 opacity-[0.06] pointer-events-none" aria-hidden="true">

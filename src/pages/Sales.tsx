@@ -156,7 +156,12 @@ const Sales = () => {
           {/* Floating Elements */}
           <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
             <div className="absolute top-20 right-10 w-32 h-32 rounded-full bg-[#FFD700]/10 animate-float"></div>
-            <div className="absolute bottom-40 left-10 w-24 h-24 rounded-2xl bg-[#247EFF]/20 animate-float" style={{ animationDelay: '2s' }}></div>
+            <div className="absolute bottom-40 left-10 w-24 h-24 rounded-2xl animate-float" 
+                 style={{ 
+                   animationDelay: '2s',
+                   background: 'linear-gradient(45deg, #FFD700, #F4D03F, #FFEB3B, #D4AF37)',
+                   opacity: '0.2'
+                 }}></div>
           </div>
 
           <div className="container mx-auto px-6 relative z-10">

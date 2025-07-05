@@ -9,6 +9,8 @@ import { useMobilePerformance } from "@/hooks/use-mobile-performance";
 import { Clock, Tag, ArrowLeft, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BlogPost as BlogPostType } from "@/lib/api";
+import BlogBreadcrumbs from "@/components/blog/BlogBreadcrumbs";
+import RelatedPosts from "@/components/blog/RelatedPosts";
 
 const BlogPost = () => {
   useMobilePerformance();
@@ -217,6 +219,11 @@ const BlogPost = () => {
             </Link>
           </div>
 
+          {/* Breadcrumbs */}
+          <div className={`mb-8 transition-all duration-700 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <BlogBreadcrumbs category={post.category} title={post.title} />
+          </div>
+
           {/* Article Header */}
           <header className={`mb-12 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             
@@ -345,8 +352,17 @@ const BlogPost = () => {
             />
           </div>
 
+          {/* Related Posts */}
+          <div className={`transition-all duration-700 delay-900 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <RelatedPosts 
+              currentPostId={post.id} 
+              category={post.category} 
+              tags={post.tags || []} 
+            />
+          </div>
+
           {/* Article Footer */}
-          <footer className={`mt-16 pt-8 border-t border-brand-black/20 dark:border-brand-cream/20 transition-all duration-700 delay-800 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <footer className={`mt-16 pt-8 border-t border-brand-black/20 dark:border-brand-cream/20 transition-all duration-700 delay-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <div className="text-center">
               <Button
                 onClick={() => navigate('/blog')}

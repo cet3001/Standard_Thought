@@ -42,6 +42,8 @@
 }
 
 .animate-pearlescent {
+  background: linear-gradient(45deg, #FFD700, #FFA500, #FFD700, #FFA500);
+  background-size: 200% 200%;
   animation: pearlescent 3s ease-in-out infinite;
 }
 

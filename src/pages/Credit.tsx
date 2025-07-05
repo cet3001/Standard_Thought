@@ -5,7 +5,7 @@ import SEO from "@/components/seo";
 import { useMobilePerformance } from "@/hooks/use-mobile-performance";
 import { useUrbanTexture } from "@/hooks/use-urban-texture";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, CheckSquare, Eye, Shield, CreditCard, Clock, TrendingUp } from "lucide-react";
 const Credit = () => {
   useMobilePerformance();
   const {
@@ -181,6 +181,113 @@ const Credit = () => {
                     <p className="text-lg sm:text-xl text-black dark:text-brand-cream leading-relaxed font-medium">
                       <span className="text-green-600 dark:text-green-400 font-bold">Reality:</span> If you play it smart, they're tools for stacking points and building history.
                     </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Step-by-Step Credit Building Blueprint Section */}
+        <section className="py-16 relative">
+          <div className="container mx-auto px-6 max-w-4xl relative z-10">
+            <div className="bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm rounded-2xl p-8 sm:p-12 border border-gray-300/10 dark:border-gray-700/10">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-4 text-black dark:text-brand-cream text-center">
+                Step-by-Step:{" "}
+                <span className="text-[#FFD700]">From No Score to Power Moves</span>
+              </h2>
+              
+              <div className="max-w-3xl mx-auto mt-12">
+                {/* Timeline Steps */}
+                <div className="space-y-8">
+                  {/* Step 1 */}
+                  <div className="flex items-start gap-6">
+                    <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center">
+                      <Eye className="w-6 h-6 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-xl sm:text-2xl font-bold text-black dark:text-brand-cream mb-3">
+                        1. Check Your Credit (for Free)
+                      </h3>
+                      <p className="text-lg text-black dark:text-brand-cream leading-relaxed">
+                        Where to get your report, what to look for, and how to spot errors.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Step 2 */}
+                  <div className="flex items-start gap-6">
+                    <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-red-500 to-red-600 rounded-full flex items-center justify-center">
+                      <Shield className="w-6 h-6 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-xl sm:text-2xl font-bold text-black dark:text-brand-cream mb-3">
+                        2. Dispute the B.S.
+                      </h3>
+                      <p className="text-lg text-black dark:text-brand-cream leading-relaxed">
+                        How to challenge mistakes and clean up your report.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Step 3 */}
+                  <div className="flex items-start gap-6">
+                    <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-green-500 to-green-600 rounded-full flex items-center justify-center">
+                      <CreditCard className="w-6 h-6 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-xl sm:text-2xl font-bold text-black dark:text-brand-cream mb-3">
+                        3. Start with a Secured Card or Builder Loan
+                      </h3>
+                      <p className="text-lg text-black dark:text-brand-cream leading-relaxed">
+                        No cosigner needed, low deposit options, how to use them right.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Step 4 */}
+                  <div className="flex items-start gap-6">
+                    <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full flex items-center justify-center">
+                      <Clock className="w-6 h-6 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-xl sm:text-2xl font-bold text-black dark:text-brand-cream mb-3">
+                        4. Pay On Time, Every Time
+                      </h3>
+                      <p className="text-lg text-black dark:text-brand-cream leading-relaxed">
+                        Set up auto-pay, reminders, and why one late payment can set you back.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Step 5 */}
+                  <div className="flex items-start gap-6">
+                    <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full flex items-center justify-center">
+                      <CheckSquare className="w-6 h-6 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-xl sm:text-2xl font-bold text-black dark:text-brand-cream mb-3">
+                        5. Keep Utilization Low
+                      </h3>
+                      <p className="text-lg text-black dark:text-brand-cream leading-relaxed">
+                        The "30% rule" explained in real talk.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Step 6 */}
+                  <div className="flex items-start gap-6">
+                    <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-[#FFD700] to-[#FFA500] rounded-full flex items-center justify-center">
+                      <TrendingUp className="w-6 h-6 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-xl sm:text-2xl font-bold text-black dark:text-brand-cream mb-3">
+                        6. Level Up
+                      </h3>
+                      <p className="text-lg text-black dark:text-brand-cream leading-relaxed">
+                        When and how to move to unsecured cards, credit lines, or bigger loans.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>

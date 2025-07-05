@@ -6,6 +6,7 @@ import { useMobilePerformance } from "@/hooks/use-mobile-performance";
 import { useUrbanTexture } from "@/hooks/use-urban-texture";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
+import WhyInvestingMatters from "@/components/investing/WhyInvestingMatters";
 
 const Investing = () => {
   useMobilePerformance();
@@ -95,6 +96,8 @@ const Investing = () => {
             </p>
           </div>
         </section>
+
+        <WhyInvestingMatters />
 
         {/* Coming Soon Placeholder */}
         <section className="py-16 relative">

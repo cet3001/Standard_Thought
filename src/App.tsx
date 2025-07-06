@@ -13,6 +13,7 @@ import Sales from "@/pages/Sales";
 import Credit from "@/pages/Credit";
 import Investing from "@/pages/Investing";
 import AISideHustles from "@/pages/AISideHustles";
+import CashManagement from "@/pages/CashManagement";
 import Auth from "@/pages/Auth";
 import AdminGuides from "@/pages/AdminGuides";
 import AdminEmail from "@/pages/AdminEmail";
@@ -58,6 +59,7 @@ function App() {
                   <Route path="/credit" element={<Credit />} />
                   <Route path="/investing" element={<Investing />} />
                   <Route path="/ai-side-hustles" element={<AISideHustles />} />
+                  <Route path="/cash-management" element={<CashManagement />} />
                   <Route path="/auth" element={<Auth />} />
                   <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                   <Route path="/terms-of-service" element={<TermsOfService />} />

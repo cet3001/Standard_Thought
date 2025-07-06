@@ -1,0 +1,1 @@
+export { default as CashManagementHero } from './CashManagementHero';

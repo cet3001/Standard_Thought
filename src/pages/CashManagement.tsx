@@ -6,6 +6,8 @@ import { useMobilePerformance } from "@/hooks/use-mobile-performance";
 import { useUrbanTexture } from "@/hooks/use-urban-texture";
 import { CashManagementHero, WhyCashManagementMatters, CashMythsRealities, CashManagementBlueprint, CashManagementActionPlan, RealBuilderWins, CashManagementFAQ, CashManagementCTA } from "@/components/cash-management";
 import { generateFAQSchema } from "@/components/seo/schemas";
+import OptimizedHeroImage from "@/components/optimized-hero-image";
+import heroCashManagement from "@/assets/hero-cash-management.jpg";
 import InternalLinkingHub from "@/components/seo/internal-linking-hub";
 
 const CashManagement = () => {

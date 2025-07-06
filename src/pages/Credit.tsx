@@ -5,6 +5,8 @@ import SEO from "@/components/seo";
 import { useMobilePerformance } from "@/hooks/use-mobile-performance";
 import { useUrbanTexture } from "@/hooks/use-urban-texture";
 import { generateFAQSchema } from "@/components/seo/schemas";
+import OptimizedHeroImage from "@/components/optimized-hero-image";
+import heroCreditBuilding from "@/assets/hero-credit-building.jpg";
 import InternalLinkingHub from "@/components/seo/internal-linking-hub";
 import {
   CreditHero,

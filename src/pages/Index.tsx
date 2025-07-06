@@ -21,6 +21,8 @@ import { useMobilePerformance } from "@/hooks/use-mobile-performance";
 import { useAuth } from "@/contexts/AuthContext";
 import { useUrbanTexture } from "@/hooks/use-urban-texture";
 import PerformanceOptimizer from "@/components/performance/performance-optimizer";
+import PerformanceTester from "@/components/performance/performance-tester";
+import MobilePerformanceGuide from "@/components/performance/mobile-performance-guide";
 
 console.log('Index.tsx: Component loaded');
 
@@ -122,6 +124,12 @@ const Index = () => {
 
         {/* Performance Optimizer */}
         <PerformanceOptimizer />
+        
+        {/* Performance Tester (Dev Only) */}
+        <PerformanceTester />
+        
+        {/* Mobile Performance Guide (Dev Only) */}
+        <MobilePerformanceGuide />
 
         {/* SEO Enhancement Components */}
         <LSIContent primaryKeyword="entrepreneurship" context="entrepreneurship" />

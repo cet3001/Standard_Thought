@@ -4,7 +4,7 @@ import Footer from "@/components/footer";
 import SEO from "@/components/seo";
 import { useMobilePerformance } from "@/hooks/use-mobile-performance";
 import { useUrbanTexture } from "@/hooks/use-urban-texture";
-import { CashManagementHero, WhyCashManagementMatters, CashMythsRealities, CashManagementBlueprint, CashManagementActionPlan } from "@/components/cash-management";
+import { CashManagementHero, WhyCashManagementMatters, CashMythsRealities, CashManagementBlueprint, CashManagementActionPlan, RealBuilderWins } from "@/components/cash-management";
 
 const CashManagement = () => {
   useMobilePerformance();
@@ -62,6 +62,7 @@ const CashManagement = () => {
         <CashMythsRealities />
         <CashManagementBlueprint />
         <CashManagementActionPlan />
+        <RealBuilderWins />
       </main>
 
       {/* Footer */}

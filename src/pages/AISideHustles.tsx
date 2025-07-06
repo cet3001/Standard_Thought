@@ -276,6 +276,143 @@ const AISideHustles = () => {
           </div>
         </section>
 
+        {/* Step-by-Step AI Side Hustle Blueprint Section */}
+        <section className="py-16 relative">
+          <div className="container mx-auto px-6 max-w-4xl relative z-10">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-8 text-black dark:text-brand-cream leading-tight">
+                Step-by-Step: From Zero to Your First{" "}
+                <span className="text-[#FFD700]" style={{
+                  background: 'linear-gradient(45deg, #FFD700, #FFF8DC, #FFA500, #FFD700)',
+                  backgroundSize: '400% 400%',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                  animation: 'shimmer 3s ease-in-out infinite'
+                }}>
+                  AI Bag
+                </span>
+              </h2>
+            </div>
+
+            <div className="space-y-8">
+              {/* Step 1 */}
+              <div className="bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm rounded-xl p-6 border border-gray-300/10 dark:border-gray-700/10">
+                <div className="flex items-start gap-6">
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 bg-[#FFD700]/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-[#FFD700]/30">
+                      <span className="text-xl font-bold text-[#FFD700]">1</span>
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl sm:text-2xl font-bold mb-3 text-black dark:text-brand-cream">
+                      Pick Your Hustle
+                    </h3>
+                    <p className="text-black dark:text-brand-cream leading-relaxed">
+                      AI writing, art/design, chatbots, voiceovers, social media automation, print-on-demand, and more.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Step 2 */}
+              <div className="bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm rounded-xl p-6 border border-gray-300/10 dark:border-gray-700/10">
+                <div className="flex items-start gap-6">
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 bg-[#FFD700]/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-[#FFD700]/30">
+                      <span className="text-xl font-bold text-[#FFD700]">2</span>
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl sm:text-2xl font-bold mb-3 text-black dark:text-brand-cream">
+                      Choose Your Tool
+                    </h3>
+                    <p className="text-black dark:text-brand-cream leading-relaxed">
+                      Free/affordable AI platforms (e.g., ChatGPT, Canva, ElevenLabs, Midjourney, etc.).
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Step 3 */}
+              <div className="bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm rounded-xl p-6 border border-gray-300/10 dark:border-gray-700/10">
+                <div className="flex items-start gap-6">
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 bg-[#FFD700]/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-[#FFD700]/30">
+                      <span className="text-xl font-bold text-[#FFD700]">3</span>
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl sm:text-2xl font-bold mb-3 text-black dark:text-brand-cream">
+                      Set Up Your Offer
+                    </h3>
+                    <p className="text-black dark:text-brand-cream leading-relaxed">
+                      How to package your service or product for real people and small businesses.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Step 4 */}
+              <div className="bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm rounded-xl p-6 border border-gray-300/10 dark:border-gray-700/10">
+                <div className="flex items-start gap-6">
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 bg-[#FFD700]/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-[#FFD700]/30">
+                      <span className="text-xl font-bold text-[#FFD700]">4</span>
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl sm:text-2xl font-bold mb-3 text-black dark:text-brand-cream">
+                      Automate the Grind
+                    </h3>
+                    <p className="text-black dark:text-brand-cream leading-relaxed">
+                      Use AI to handle the boring stuff—emails, scheduling, content creation.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Step 5 */}
+              <div className="bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm rounded-xl p-6 border border-gray-300/10 dark:border-gray-700/10">
+                <div className="flex items-start gap-6">
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 bg-[#FFD700]/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-[#FFD700]/30">
+                      <span className="text-xl font-bold text-[#FFD700]">5</span>
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl sm:text-2xl font-bold mb-3 text-black dark:text-brand-cream">
+                      Get Your First Client or Sale
+                    </h3>
+                    <p className="text-black dark:text-brand-cream leading-relaxed">
+                      Where to find your first customer (IG, Fiverr, Upwork, local businesses).
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Step 6 */}
+              <div className="bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm rounded-xl p-6 border border-gray-300/10 dark:border-gray-700/10">
+                <div className="flex items-start gap-6">
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 bg-[#FFD700]/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-[#FFD700]/30">
+                      <span className="text-xl font-bold text-[#FFD700]">6</span>
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl sm:text-2xl font-bold mb-3 text-black dark:text-brand-cream">
+                      Scale Up
+                    </h3>
+                    <p className="text-black dark:text-brand-cream leading-relaxed">
+                      Turn one-off gigs into recurring income, upsell, and build your own brand.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Coming Soon Placeholder */}
         <section className="py-16 relative">
           <div className="container mx-auto px-6 max-w-4xl text-center relative z-10">

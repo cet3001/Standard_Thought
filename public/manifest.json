@@ -1,0 +1,75 @@
+{
+  "name": "Standard Thought - Urban Wealth Building",
+  "short_name": "StandardThought",
+  "description": "Master urban wealth building with proven AI side hustles and financial education designed for first-gen entrepreneurs.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F5F5DC",
+  "theme_color": "#FFD700",
+  "orientation": "portrait-primary",
+  "categories": ["education", "finance", "business"],
+  "lang": "en-US",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "/lovable-uploads/ab84a6d6-c2ac-4910-be5f-7bb666463fb8.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/lovable-uploads/ab84a6d6-c2ac-4910-be5f-7bb666463fb8.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Cash Management",
+      "short_name": "Cash Flow",
+      "description": "Learn to manage money and break the paycheck cycle",
+      "url": "/cash-management",
+      "icons": [
+        {
+          "src": "/lovable-uploads/ab84a6d6-c2ac-4910-be5f-7bb666463fb8.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Credit Building",
+      "short_name": "Credit",
+      "description": "Build credit from nothing without cosigner",
+      "url": "/credit",
+      "icons": [
+        {
+          "src": "/lovable-uploads/ab84a6d6-c2ac-4910-be5f-7bb666463fb8.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Blog",
+      "short_name": "Blog",
+      "description": "Latest financial education and wealth building content",
+      "url": "/blog",
+      "icons": [
+        {
+          "src": "/lovable-uploads/ab84a6d6-c2ac-4910-be5f-7bb666463fb8.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "screenshots": [
+    {
+      "src": "/lovable-uploads/a8faab87-8319-4fa0-ae53-35597c6f8fc5.png",
+      "type": "image/png",
+      "sizes": "1280x720",
+      "form_factor": "wide"
+    }
+  ]
+}

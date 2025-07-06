@@ -9,6 +9,7 @@ import { generateFAQSchema } from "@/components/seo/schemas";
 import OptimizedHeroImage from "@/components/optimized-hero-image";
 import heroCashManagement from "@/assets/hero-cash-management.jpg";
 import InternalLinkingHub from "@/components/seo/internal-linking-hub";
+import AnswerEngineOptimizer from "@/components/seo/answer-engine-optimizer";
 
 const CashManagement = () => {
   useMobilePerformance();
@@ -94,6 +95,17 @@ const CashManagement = () => {
         <RealBuilderWins />
         <CashManagementFAQ />
         <CashManagementCTA />
+        
+        {/* Answer Engine Optimization */}
+        <AnswerEngineOptimizer 
+          primaryTopic="cash-management"
+          targetQuestions={[
+            "How to manage money with irregular income?",
+            "What is the best budgeting method for beginners?",
+            "How to stop living paycheck to paycheck?",
+            "How to save money when you are broke?"
+          ]}
+        />
         
         {/* Internal Linking for SEO */}
         <InternalLinkingHub currentPage="/cash-management" showPillarsOnly={true} limit={3} />

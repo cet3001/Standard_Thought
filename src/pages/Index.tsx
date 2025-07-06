@@ -23,6 +23,12 @@ import { useUrbanTexture } from "@/hooks/use-urban-texture";
 import PerformanceOptimizer from "@/components/performance/performance-optimizer";
 import PerformanceTester from "@/components/performance/performance-tester";
 import MobilePerformanceGuide from "@/components/performance/mobile-performance-guide";
+import AltTextOptimizer from "@/components/seo/alt-text-optimizer";
+import HeadingStructureValidator from "@/components/seo/heading-structure-validator";
+import ComprehensiveSiteAuditor from "@/components/audit/comprehensive-site-auditor";
+import CookieBanner from "@/components/legal/cookie-banner";
+import PWAInstaller from "@/components/pwa/pwa-installer";
+import FinalAuditChecklist from "@/components/audit/final-audit-checklist";
 
 console.log('Index.tsx: Component loaded');
 
@@ -130,6 +136,22 @@ const Index = () => {
         
         {/* Mobile Performance Guide (Dev Only) */}
         <MobilePerformanceGuide />
+
+        {/* Development Audit Tools */}
+        <AltTextOptimizer />
+        <HeadingStructureValidator />
+        
+        {/* Comprehensive Site Auditor */}
+        <ComprehensiveSiteAuditor />
+        
+        {/* Cookie Banner */}
+        <CookieBanner />
+        
+        {/* PWA Installer */}
+        <PWAInstaller />
+        
+        {/* Final Audit Checklist (Dev Only) */}
+        <FinalAuditChecklist />
 
         {/* SEO Enhancement Components */}
         <LSIContent primaryKeyword="entrepreneurship" context="entrepreneurship" />

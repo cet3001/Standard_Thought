@@ -4,6 +4,8 @@ import Footer from "@/components/footer";
 import SEO from "@/components/seo";
 import { useMobilePerformance } from "@/hooks/use-mobile-performance";
 import { useUrbanTexture } from "@/hooks/use-urban-texture";
+import { generateFAQSchema } from "@/components/seo/schemas";
+import InternalLinkingHub from "@/components/seo/internal-linking-hub";
 import {
   CreditHero,
   WhyCreditMatters,
@@ -28,6 +30,28 @@ const Credit = () => {
     url: "https://www.standardthought.com/credit",
     position: 2
   }];
+
+  // FAQ data for schema markup
+  const faqData = [
+    {
+      question: "What if I got denied before?",
+      answer: "You can always bounce back. We show you how to rebuild, even after setbacks. Every denial is just feedback—use it to come back stronger with the right strategy."
+    },
+    {
+      question: "Can I build credit with no job?",
+      answer: "Yes—secured cards and builder loans don't require a big income, just consistency. Even with irregular income, you can start building as long as you can make small, regular payments."
+    },
+    {
+      question: "How long before I see results?",
+      answer: "Most see a score jump in 3–6 months if they follow the blueprint. The key is consistent payments and keeping utilization low—patience pays off big time."
+    },
+    {
+      question: "Will checking my credit hurt my score?",
+      answer: "Nah, checking your own credit is a 'soft pull' and won't hurt your score at all. You should actually check it regularly to track your progress and catch any errors early."
+    }
+  ];
+
+  const faqSchema = generateFAQSchema({ faqs: faqData });
 
   return (
     <div className="min-h-screen relative overflow-hidden">
@@ -58,6 +82,13 @@ const Credit = () => {
         breadcrumbs={breadcrumbs} 
       />
 
+      {/* FAQ Schema */}
+      {faqSchema && (
+        <script type="application/ld+json">
+          {JSON.stringify(faqSchema)}
+        </script>
+      )}
+
       {/* Analytics */}
       <Analytics />
 
@@ -74,6 +105,9 @@ const Credit = () => {
         <CreditTestimonials />
         <CreditFAQ />
         <CreditCTA />
+
+        {/* Internal Linking for SEO */}
+        <InternalLinkingHub currentPage="/credit" showPillarsOnly={true} limit={3} />
 
         {/* Coming Soon Placeholder */}
         <section className="py-16 relative">

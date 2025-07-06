@@ -6,6 +6,8 @@ import { useMobilePerformance } from "@/hooks/use-mobile-performance";
 import { useUrbanTexture } from "@/hooks/use-urban-texture";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
+import { generateFAQSchema } from "@/components/seo/schemas";
+import InternalLinkingHub from "@/components/seo/internal-linking-hub";
 import WhyInvestingMatters from "@/components/investing/WhyInvestingMatters";
 import InvestingMythsRealities from "@/components/investing/InvestingMythsRealities";
 import InvestingBlueprint from "@/components/investing/InvestingBlueprint";
@@ -28,6 +30,28 @@ const Investing = () => {
     url: "https://www.standardthought.com/investing",
     position: 2
   }];
+
+  // FAQ data for schema markup
+  const faqData = [
+    {
+      question: "What if I'm broke?",
+      answer: "You can start with $10 and consistency. The key is to start—no amount is too small. Skip one coffee this week, invest that $5. Every dollar you put to work today is building your future freedom."
+    },
+    {
+      question: "How risky is this, really?",
+      answer: "We show you how to move smart, avoid scams, and build slow if you need to. The biggest risk is doing nothing while inflation eats your money. Smart investing with index funds is way safer than gambling or staying broke."
+    },
+    {
+      question: "How fast will I see results?",
+      answer: "No overnight hype. Real investing is about stacking slow and steady wins. You might see some growth in months, but real wealth building happens over years. The goal is financial freedom, not quick flips."
+    },
+    {
+      question: "Do I need to watch the market all day?",
+      answer: "Nah, that's day trading—which is basically gambling. Real investing is set-it-and-forget-it. Put your money in solid index funds, automate your investments, and check in maybe once a month. Your time is better spent building your income."
+    }
+  ];
+
+  const faqSchema = generateFAQSchema({ faqs: faqData });
 
   return (
     <div className="min-h-screen relative overflow-hidden">
@@ -57,6 +81,13 @@ const Investing = () => {
         type="article" 
         breadcrumbs={breadcrumbs} 
       />
+
+      {/* FAQ Schema */}
+      {faqSchema && (
+        <script type="application/ld+json">
+          {JSON.stringify(faqSchema)}
+        </script>
+      )}
 
       {/* Analytics */}
       <Analytics />
@@ -116,6 +147,9 @@ const Investing = () => {
         <InvestingFAQ />
 
         <InvestingCTA />
+
+        {/* Internal Linking for SEO */}
+        <InternalLinkingHub currentPage="/investing" showPillarsOnly={true} limit={3} />
 
         {/* Coming Soon Placeholder */}
         <section className="py-16 relative">

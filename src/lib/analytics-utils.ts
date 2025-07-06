@@ -86,6 +86,33 @@ export const trackNewsletterSignup = (email: string, source: string = 'newslette
     currency: 'USD'
   };
   trackEvent('newsletter_signup', params);
+  
+  // Also track as conversion
+  trackNewsletterConversion(email, source);
+};
+
+// Track newsletter signup conversions
+export const trackNewsletterConversion = (email: string, source: string = 'newsletter_form') => {
+  if (typeof window !== 'undefined' && window.gtag) {
+    // Goal conversion for GA4
+    window.gtag('event', 'conversion', {
+      send_to: 'G-PT7T8CDJZS/newsletter_signup',
+      value: 1.0,
+      currency: 'USD',
+      email_address: email,
+      conversion_source: source
+    });
+    
+    // Custom event for detailed tracking
+    window.gtag('event', 'newsletter_signup', {
+      method: source,
+      user_email: email,
+      conversion_value: 1,
+      currency: 'USD',
+      event_category: 'Lead Generation',
+      event_label: 'Newsletter Subscription'
+    });
+  }
 };
 
 export const trackButtonClick = (buttonName: string, location: string, action: string = 'click') => {

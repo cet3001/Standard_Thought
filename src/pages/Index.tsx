@@ -20,6 +20,7 @@ import SemanticContentEnhancer from "@/components/seo/semantic-content-enhancer"
 import { useMobilePerformance } from "@/hooks/use-mobile-performance";
 import { useAuth } from "@/contexts/AuthContext";
 import { useUrbanTexture } from "@/hooks/use-urban-texture";
+import PerformanceOptimizer from "@/components/performance/performance-optimizer";
 
 console.log('Index.tsx: Component loaded');
 
@@ -118,6 +119,9 @@ const Index = () => {
           type="website"
           breadcrumbs={breadcrumbs}
         />
+
+        {/* Performance Optimizer */}
+        <PerformanceOptimizer />
 
         {/* SEO Enhancement Components */}
         <LSIContent primaryKeyword="entrepreneurship" context="entrepreneurship" />

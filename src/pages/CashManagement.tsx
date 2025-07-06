@@ -4,7 +4,7 @@ import Footer from "@/components/footer";
 import SEO from "@/components/seo";
 import { useMobilePerformance } from "@/hooks/use-mobile-performance";
 import { useUrbanTexture } from "@/hooks/use-urban-texture";
-import { CashManagementHero } from "@/components/cash-management";
+import { CashManagementHero, WhyCashManagementMatters } from "@/components/cash-management";
 
 const CashManagement = () => {
   useMobilePerformance();
@@ -58,6 +58,7 @@ const CashManagement = () => {
       {/* Main Content */}
       <main className="relative z-10 mt-20">
         <CashManagementHero />
+        <WhyCashManagementMatters />
       </main>
 
       {/* Footer */}

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Zap, Download, Lock, CheckCircle, Star, ArrowRight, CreditCard, TrendingUp, Bot, DollarSign, ChevronDown } from "lucide-react";
@@ -16,6 +16,7 @@ import { useGuideDownload } from "@/hooks/use-guide-download";
 const Sales = () => {
   useMobilePerformance();
   const { textureImageUrl } = useUrbanTexture();
+  const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const { guides, loading: guidesLoading } = useGuides();
@@ -79,17 +80,17 @@ const Sales = () => {
 
   const handleExploreInvesting = () => {
     trackButtonClick('Explore Investing', 'explore_blueprints', 'investing_blueprint');
-    // TODO: Navigate to /investing-blueprint page
+    navigate('/investing');
   };
 
   const handleExploreAI = () => {
     trackButtonClick('Explore AI', 'explore_blueprints', 'ai_blueprint');
-    // TODO: Navigate to /ai-blueprint page
+    navigate('/ai-side-hustles');
   };
 
   const handleExploreCash = () => {
     trackButtonClick('Explore Cash Management', 'explore_blueprints', 'cash_blueprint');
-    // TODO: Navigate to /cash-blueprint page
+    navigate('/cash-management');
   };
 
   return (

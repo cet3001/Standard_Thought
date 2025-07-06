@@ -5,6 +5,8 @@ import SEO from "@/components/seo";
 import { useMobilePerformance } from "@/hooks/use-mobile-performance";
 import { useUrbanTexture } from "@/hooks/use-urban-texture";
 import { CashManagementHero, WhyCashManagementMatters, CashMythsRealities, CashManagementBlueprint, CashManagementActionPlan, RealBuilderWins, CashManagementFAQ, CashManagementCTA } from "@/components/cash-management";
+import { generateFAQSchema } from "@/components/seo/schemas";
+import InternalLinkingHub from "@/components/seo/internal-linking-hub";
 
 const CashManagement = () => {
   useMobilePerformance();
@@ -19,6 +21,24 @@ const CashManagement = () => {
     url: "https://www.standardthought.com/cash-management",
     position: 2
   }];
+
+  // FAQ data for schema markup
+  const faqData = [
+    {
+      question: "What if my income changes every week?",
+      answer: "We show you how to build a flexible system that works with hustle money, gig work, and side jobs. Instead of traditional budgeting, you'll learn the 'percentage method'—allocating portions of whatever you make that week, whether it's $50 or $500. Plus we'll teach you how to smooth out those income peaks and valleys."
+    },
+    {
+      question: "Can I save if I'm already behind on bills?",
+      answer: "Yes—start small, even $1 at a time. The key is building the habit, not the amount. We'll show you the 'bills first, then save' method that ensures you don't fall further behind while still building your financial future. Every dollar you save is a dollar working for you, not against you."
+    },
+    {
+      question: "How do I stop overdrafting?",
+      answer: "We break down how to set up alerts, use cash envelopes, and avoid the traps banks set for us. You'll learn the 'buffer system' to keep a small cushion in your account, plus how to time your bill payments so you're never caught off guard. No more $35 fees eating up your money."
+    }
+  ];
+
+  const faqSchema = generateFAQSchema({ faqs: faqData });
 
   return (
     <div className="min-h-screen relative overflow-hidden">
@@ -49,6 +69,13 @@ const CashManagement = () => {
         breadcrumbs={breadcrumbs} 
       />
 
+      {/* FAQ Schema */}
+      {faqSchema && (
+        <script type="application/ld+json">
+          {JSON.stringify(faqSchema)}
+        </script>
+      )}
+
       {/* Analytics */}
       <Analytics />
 
@@ -65,6 +92,9 @@ const CashManagement = () => {
         <RealBuilderWins />
         <CashManagementFAQ />
         <CashManagementCTA />
+        
+        {/* Internal Linking for SEO */}
+        <InternalLinkingHub currentPage="/cash-management" showPillarsOnly={true} limit={3} />
       </main>
 
       {/* Footer */}

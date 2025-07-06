@@ -1,80 +1,146 @@
-
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
+import SEO from "@/components/seo";
+import Analytics from "@/components/analytics";
+import { useUrbanTexture } from "@/hooks/use-urban-texture";
+import { useMobilePerformance } from "@/hooks/use-mobile-performance";
 
 const CookiePolicy = () => {
+  useMobilePerformance();
+  const { textureImageUrl } = useUrbanTexture();
+
+  const breadcrumbs = [
+    { name: "Home", url: "https://www.standardthought.com", position: 1 },
+    { name: "Cookie Policy", url: "https://www.standardthought.com/cookie-policy", position: 2 }
+  ];
+
   return (
-    <div className="min-h-screen bg-brand-cream dark:bg-brand-black">
+    <div className="min-h-screen relative overflow-hidden">
+      {/* Site-wide Urban Background */}
+      <div className="fixed inset-0 -z-50" aria-hidden="true">
+        {textureImageUrl && (
+          <div 
+            className="absolute inset-0 opacity-40 bg-cover bg-center bg-fixed"
+            style={{
+              backgroundImage: `url(${textureImageUrl})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+              backgroundAttachment: 'fixed'
+            }}
+          />
+        )}
+        
+        {/* Background gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-800/50 via-slate-700/60 to-slate-900/50"></div>
+        
+        {/* Content overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/85 via-brand-cream/90 to-brand-cream/85 dark:from-brand-black/85 dark:via-brand-black/90 dark:to-brand-black/85"></div>
+      </div>
+
+      {/* SEO */}
+      <SEO
+        title="Cookie Policy | Standardthought"
+        description="Learn how Standardthought uses cookies to improve your experience on our website."
+        keywords="cookie policy, privacy, data collection, website cookies"
+        url="/cookie-policy"
+        type="website"
+        breadcrumbs={breadcrumbs}
+      />
+
+      {/* Analytics */}
+      <Analytics />
+
+      {/* Navigation Header */}
       <Navigation />
-      
-      <main className="pt-36 pb-16">
+
+      {/* Main Content */}
+      <main className="relative z-10 pt-28 pb-16">
         <div className="container mx-auto px-6 max-w-4xl">
-          <h1 className="text-4xl font-bold mb-8 text-[#0A0A0A] dark:text-brand-cream">Cookie Policy</h1>
-          <div className="prose prose-lg max-w-none text-[#0A0A0A] dark:text-brand-cream">
-            <p className="text-sm text-[#0A0A0A]/60 dark:text-brand-cream/60 mb-8">Last updated: December 2024</p>
+          <div className="bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm rounded-2xl p-8 sm:p-12 border border-gray-300/20 dark:border-gray-700/20 shadow-xl">
             
-            <h2 className="text-2xl font-bold mb-4 text-[#247EFF]">What Are Cookies?</h2>
-            <p className="mb-6">Cookies are small text files that are placed on your computer or mobile device when you visit a website. They are widely used to make websites work more efficiently and provide information to website owners.</p>
-
-            <h2 className="text-2xl font-bold mb-4 text-[#247EFF]">How We Use Cookies</h2>
-            <p className="mb-4">Standardthought uses cookies to:</p>
-            <ul className="mb-6 list-disc pl-6">
-              <li>Remember your preferences and settings</li>
-              <li>Understand how you use our website</li>
-              <li>Improve your browsing experience</li>
-              <li>Analyze website traffic and performance</li>
-              <li>Provide relevant content recommendations</li>
-            </ul>
-
-            <h2 className="text-2xl font-bold mb-4 text-[#247EFF]">Types of Cookies We Use</h2>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-black mb-8 text-black dark:text-brand-cream leading-tight">
+              Cookie Policy
+            </h1>
             
-            <h3 className="text-xl font-semibold mb-3 text-[#0A0A0A] dark:text-brand-cream">Essential Cookies</h3>
-            <p className="mb-4">These cookies are necessary for the website to function properly. They enable basic functions like page navigation, access to secure areas, and remembering your login status.</p>
+            <div className="prose prose-lg max-w-none text-black dark:text-brand-cream">
+              <p className="text-sm text-gray-600 dark:text-gray-400 mb-8">
+                <strong>Last updated:</strong> July 6, 2025
+              </p>
 
-            <h3 className="text-xl font-semibold mb-3 text-[#0A0A0A] dark:text-brand-cream">Analytics Cookies</h3>
-            <p className="mb-4">We use analytics cookies to understand how visitors interact with our website. This helps us improve our content and user experience. These cookies collect information anonymously.</p>
+              <section className="mb-8">
+                <h2 className="text-2xl font-bold mb-4 text-black dark:text-brand-cream">What Are Cookies?</h2>
+                <p className="mb-4 leading-relaxed">
+                  Cookies are small text files that are stored on your device when you visit our website. 
+                  They help us provide you with a better experience by remembering your preferences and 
+                  analyzing how you use our site.
+                </p>
+              </section>
 
-            <h3 className="text-xl font-semibold mb-3 text-[#0A0A0A] dark:text-brand-cream">Functional Cookies</h3>
-            <p className="mb-4">These cookies enable enhanced functionality and personalization, such as remembering your theme preference (light/dark mode) and language settings.</p>
+              <section className="mb-8">
+                <h2 className="text-2xl font-bold mb-4 text-black dark:text-brand-cream">How We Use Cookies</h2>
+                <div className="space-y-4">
+                  <div>
+                    <h3 className="text-xl font-semibold mb-2 text-black dark:text-brand-cream">Essential Cookies</h3>
+                    <p className="leading-relaxed">
+                      These cookies are necessary for the website to function properly. They enable core functionality 
+                      such as security, network management, and accessibility.
+                    </p>
+                  </div>
+                  
+                  <div>
+                    <h3 className="text-xl font-semibold mb-2 text-black dark:text-brand-cream">Analytics Cookies</h3>
+                    <p className="leading-relaxed">
+                      We use Google Analytics to understand how visitors interact with our website. 
+                      This helps us improve our content and user experience.
+                    </p>
+                  </div>
+                  
+                  <div>
+                    <h3 className="text-xl font-semibold mb-2 text-black dark:text-brand-cream">Functional Cookies</h3>
+                    <p className="leading-relaxed">
+                      These cookies remember your preferences (like theme settings) to provide a more 
+                      personalized experience.
+                    </p>
+                  </div>
+                </div>
+              </section>
 
-            <h3 className="text-xl font-semibold mb-3 text-[#0A0A0A] dark:text-brand-cream">Marketing Cookies</h3>
-            <p className="mb-6">We may use marketing cookies to track visitors across websites to display relevant advertisements and measure the effectiveness of our marketing campaigns.</p>
+              <section className="mb-8">
+                <h2 className="text-2xl font-bold mb-4 text-black dark:text-brand-cream">Managing Cookies</h2>
+                <p className="mb-4 leading-relaxed">
+                  You can control and manage cookies in your browser settings. Please note that disabling 
+                  certain cookies may impact the functionality of our website.
+                </p>
+                <p className="leading-relaxed">
+                  For more information on how to manage cookies in your specific browser, please refer to 
+                  your browser's help documentation.
+                </p>
+              </section>
 
-            <h2 className="text-2xl font-bold mb-4 text-[#247EFF]">Third-Party Cookies</h2>
-            <p className="mb-4">We may also use third-party services that set cookies on our behalf. These include:</p>
-            <ul className="mb-6 list-disc pl-6">
-              <li>Google Analytics for website analytics</li>
-              <li>Social media platforms for content sharing</li>
-              <li>Email service providers for newsletter management</li>
-            </ul>
+              <section className="mb-8">
+                <h2 className="text-2xl font-bold mb-4 text-black dark:text-brand-cream">Third-Party Cookies</h2>
+                <p className="leading-relaxed">
+                  We may use third-party services such as Google Analytics that place cookies on your device. 
+                  These services have their own privacy policies governing the use of cookies.
+                </p>
+              </section>
 
-            <h2 className="text-2xl font-bold mb-4 text-[#247EFF]">Managing Cookies</h2>
-            <p className="mb-4">You can control and manage cookies in several ways:</p>
-            <ul className="mb-4 list-disc pl-6">
-              <li>Browser Settings: Most browsers allow you to block or delete cookies</li>
-              <li>Opt-out Tools: Many advertising networks provide opt-out tools</li>
-              <li>Privacy Settings: Some websites offer cookie preference centers</li>
-            </ul>
-            <p className="mb-6">Please note that blocking certain cookies may impact your experience on our website and limit some functionality.</p>
-
-            <h2 className="text-2xl font-bold mb-4 text-[#247EFF]">Cookie Retention</h2>
-            <p className="mb-4">Different cookies have different lifespans:</p>
-            <ul className="mb-6 list-disc pl-6">
-              <li>Session cookies: Deleted when you close your browser</li>
-              <li>Persistent cookies: Remain on your device for a set period or until deleted</li>
-              <li>First-party cookies: Set by our website</li>
-              <li>Third-party cookies: Set by external services we use</li>
-            </ul>
-
-            <h2 className="text-2xl font-bold mb-4 text-[#247EFF]">Updates to This Policy</h2>
-            <p className="mb-6">We may update this Cookie Policy from time to time to reflect changes in technology, legislation, or our business practices. Please check this page periodically for updates.</p>
-
-            <h2 className="text-2xl font-bold mb-4 text-[#247EFF]">Contact Us</h2>
-            <p className="mb-6">If you have any questions about our use of cookies or this Cookie Policy, please contact us through our website.</p>
+              <section className="mb-8">
+                <h2 className="text-2xl font-bold mb-4 text-black dark:text-brand-cream">Contact Us</h2>
+                <p className="leading-relaxed">
+                  If you have any questions about our use of cookies, please contact us at{" "}
+                  <a href="mailto:hello@standardthought.com" className="text-[#FFD700] font-semibold hover:underline">
+                    hello@standardthought.com
+                  </a>
+                </p>
+              </section>
+            </div>
           </div>
         </div>
       </main>
 
+      {/* Footer */}
       <Footer />
     </div>
   );

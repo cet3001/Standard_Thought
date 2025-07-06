@@ -19,6 +19,7 @@ import AdminGuides from "@/pages/AdminGuides";
 import AdminEmail from "@/pages/AdminEmail";
 import PrivacyPolicy from "@/pages/PrivacyPolicy";
 import TermsOfService from "@/pages/TermsOfService";
+import CookiePolicy from "@/pages/CookiePolicy";
 import { AuthProvider } from "./contexts/AuthContext";
 import { Toaster } from "@/components/ui/toaster"
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -63,6 +64,7 @@ function App() {
                   <Route path="/auth" element={<Auth />} />
                   <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                   <Route path="/terms-of-service" element={<TermsOfService />} />
+                  <Route path="/cookie-policy" element={<CookiePolicy />} />
                   <Route path="/image-generator" element={<ImageGeneratorPage />} />
                 </Routes>
               </div>

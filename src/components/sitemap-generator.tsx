@@ -13,6 +13,14 @@ const SitemapGenerator = () => {
         { url: '/about', changefreq: 'monthly', priority: '0.8' },
         { url: '/blog', changefreq: 'daily', priority: '0.9' },
         { url: '/sales', changefreq: 'monthly', priority: '0.7' },
+        
+        // Pillar Content Pages - High Priority
+        { url: '/cash-management', changefreq: 'monthly', priority: '0.8' },
+        { url: '/credit', changefreq: 'monthly', priority: '0.8' },
+        { url: '/investing', changefreq: 'monthly', priority: '0.8' },
+        { url: '/ai-side-hustles', changefreq: 'monthly', priority: '0.8' },
+        
+        // Utility Pages
         { url: '/auth', changefreq: 'yearly', priority: '0.3' },
         { url: '/privacy-policy', changefreq: 'yearly', priority: '0.2' },
         { url: '/terms-of-service', changefreq: 'yearly', priority: '0.2' },

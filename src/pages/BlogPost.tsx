@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { BlogPost as BlogPostType } from "@/lib/api";
 import BlogBreadcrumbs from "@/components/blog/BlogBreadcrumbs";
 import RelatedPosts from "@/components/blog/RelatedPosts";
+import { sanitizeHtml } from "@/lib/security-utils";
 
 const BlogPost = () => {
   useMobilePerformance();
@@ -353,7 +354,7 @@ const BlogPost = () => {
             <div 
               className="prose prose-lg max-w-none text-brand-black dark:text-brand-cream prose-headings:text-brand-black dark:prose-headings:text-brand-cream prose-a:text-[#247EFF] prose-strong:text-brand-black dark:prose-strong:text-brand-cream prose-code:text-[#247EFF] prose-blockquote:border-[#FFD700] prose-blockquote:text-brand-black/80 dark:prose-blockquote:text-brand-cream/80"
               dangerouslySetInnerHTML={{ 
-                __html: post.content.replace(/\n/g, '<br>') 
+                __html: sanitizeHtml(post.content.replace(/\n/g, '<br>')) 
               }}
             />
           </div>

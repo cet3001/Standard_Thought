@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { Send, User, Mail, FileText, Target } from "lucide-react";
+import { useSecureFormValidation, storySubmissionRateLimiter, getClientIdentifier, sanitizeText } from "@/lib/security-utils";
 
 const StorySubmissionForm = () => {
   const [formData, setFormData] = useState({
@@ -18,7 +19,9 @@ const StorySubmissionForm = () => {
     advice: ""
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
   const { toast } = useToast();
+  const { validateForm } = useSecureFormValidation();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -30,12 +33,56 @@ const StorySubmissionForm = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setErrors({});
+
+    // Sanitize all inputs
+    const sanitizedData = {
+      name: sanitizeText(formData.name),
+      email: sanitizeText(formData.email),
+      title: sanitizeText(formData.title),
+      story: sanitizeText(formData.story),
+      outcome: sanitizeText(formData.outcome),
+      advice: sanitizeText(formData.advice)
+    };
+
+    // Validate form
+    const validation = validateForm(sanitizedData, {
+      name: { required: true, type: 'text', minLength: 2, maxLength: 100 },
+      email: { required: true, type: 'email' },
+      title: { required: true, type: 'text', minLength: 5, maxLength: 200 },
+      story: { required: true, type: 'text', minLength: 50, maxLength: 2000 },
+      outcome: { required: true, type: 'text', minLength: 20, maxLength: 1000 },
+      advice: { required: true, type: 'text', minLength: 20, maxLength: 1000 }
+    });
+
+    if (!validation.isValid) {
+      setErrors(validation.errors);
+      toast({
+        title: "Validation Error",
+        description: "Please fix the errors in the form and try again.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // Rate limiting check
+    const clientId = getClientIdentifier();
+    if (!storySubmissionRateLimiter.isAllowed(clientId)) {
+      const remainingTime = Math.ceil(storySubmissionRateLimiter.getRemainingTime(clientId) / 1000 / 60);
+      toast({
+        title: "Too many attempts",
+        description: `Please wait ${remainingTime} minutes before submitting another story.`,
+        variant: "destructive",
+      });
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
       // Here you would typically send the data to your backend
       // For now, we'll just show a success message
-      console.log("Story submission:", formData);
+      console.log("Story submission:", sanitizedData);
       
       toast({
         title: "Story Submitted!",

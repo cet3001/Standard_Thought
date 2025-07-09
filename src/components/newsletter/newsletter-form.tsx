@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Check, Lock } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { trackNewsletterSignup } from "@/lib/analytics-utils";
+import { validateEmail, newsletterRateLimiter, getClientIdentifier, sanitizeText } from "@/lib/security-utils";
 
 export const NewsletterForm = () => {
   const [email, setEmail] = useState("");
@@ -15,6 +16,29 @@ export const NewsletterForm = () => {
     e.preventDefault();
     if (!email) return;
 
+    // Sanitize and validate input
+    const sanitizedEmail = sanitizeText(email);
+    if (!validateEmail(sanitizedEmail)) {
+      toast({
+        title: "Invalid email",
+        description: "Please enter a valid email address.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // Rate limiting check
+    const clientId = getClientIdentifier();
+    if (!newsletterRateLimiter.isAllowed(clientId)) {
+      const remainingTime = Math.ceil(newsletterRateLimiter.getRemainingTime(clientId) / 1000 / 60);
+      toast({
+        title: "Too many attempts",
+        description: `Please wait ${remainingTime} minutes before trying again.`,
+        variant: "destructive",
+      });
+      return;
+    }
+
     setIsSubmitting(true);
     
     try {
@@ -23,12 +47,12 @@ export const NewsletterForm = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email: sanitizedEmail }),
       });
 
       if (response.ok) {
         // Track successful newsletter signup
-        trackNewsletterSignup(email, 'newsletter_section');
+        trackNewsletterSignup(sanitizedEmail, 'newsletter_section');
         
         toast({
           title: "Welcome to the movement! 🔥",

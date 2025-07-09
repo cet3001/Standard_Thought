@@ -74,8 +74,8 @@ const Investing = () => {
 
       {/* SEO */}
       <SEO 
-        title="Investing From the Ground Up | Real Investment Strategies for First-Gen Builders | Standardthought" 
-        description="Learn how to start investing with no trust fund or connections. Real strategies for building wealth, stacking assets, and creating generational progress from your first $100." 
+        title="Investing for Beginners: Start with $100 | StandardThought" 
+        description="Start investing without trust funds or connections. Real strategies for building wealth from your first $100." 
         keywords="investing from nothing, first time investing, investment strategies beginners, build wealth from zero, asset building, generational wealth, urban investing" 
         url="/investing" 
         type="article" 

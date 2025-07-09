@@ -76,8 +76,8 @@ const Credit = () => {
 
       {/* SEO */}
       <SEO 
-        title="Build Credit From Nothing | Credit Building for First-Gen Entrepreneurs | Standardthought" 
-        description="Learn how to build credit from zero without a cosigner. Real strategies for fixing your credit score, unlocking better rates, and making generational progress with street-smart credit building." 
+        title="Build Credit from Zero: Complete Guide | StandardThought" 
+        description="Build credit without family help or cosigners. Real strategies for fixing your score and unlocking better rates fast." 
         keywords="build credit from nothing, credit building without cosigner, fix credit score, credit for first generation, urban credit building, credit repair strategies, improve credit rating" 
         url="/credit" 
         type="article" 

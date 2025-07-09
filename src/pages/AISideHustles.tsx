@@ -51,8 +51,8 @@ const AISideHustles = () => {
 
       {/* SEO */}
       <SEO 
-        title="AI Side Hustles - Stack Bread with Bots | Real AI Money-Making Strategies | Standardthought" 
-        description="Turn AI tools into consistent income streams. Learn how to use free and low-cost AI to build side hustles, automate your grind, and make money with your phone or laptop." 
+        title="AI Side Hustles: Make Money with AI Tools | StandardThought" 
+        description="Turn AI into income streams. Learn to use ChatGPT, automation tools, and AI apps to build profitable side hustles from your phone." 
         keywords="AI side hustles, make money with AI, AI tools income, automated income, AI business ideas, artificial intelligence money making" 
         url="/ai-side-hustles" 
         type="article" 

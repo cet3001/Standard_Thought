@@ -132,8 +132,8 @@ const Blog = () => {
 
       {/* SEO */}
       <SEO
-        title="Out the Mud: Real Builder Stories | Standardthought - First-Gen Entrepreneur Success Stories"
-        description="Real stories from first-gen hustlers and underestimated creators who built wealth brick by brick. No trust funds, no shortcuts—just proven blueprints from people who figured it out."
+        title="First-Gen Success Stories & Wealth Tips | StandardThought"
+        description="Real stories from hustlers who built wealth from zero. No trust funds, just proven strategies for credit, investing, and AI income."
         keywords="first-gen entrepreneur stories, urban wealth building success stories, hood to wealth stories, self-made entrepreneur stories, building from nothing success stories"
         url="/blog"
         type="website"

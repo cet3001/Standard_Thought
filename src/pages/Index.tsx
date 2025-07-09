@@ -120,8 +120,8 @@ const Index = () => {
 
         {/* Enhanced SEO with targeted keywords */}
         <SEO
-          title="Urban Wealth Building & AI Side Hustles | Standardthought - Financial Education for First-Gen Entrepreneurs"
-          description="Master urban wealth building with proven AI side hustles and financial education designed for first-gen entrepreneurs. Join 1000+ builders creating generational wealth from nothing using street-smart strategies."
+          title="Build Urban Wealth From Nothing | StandardThought"
+          description="Join 1000+ first-gen builders mastering AI side hustles, credit repair, and wealth strategies. Break cycles, build legacies."
           keywords="urban wealth building, AI side hustles, financial education for first-gen entrepreneurs, generational wealth building from nothing, street smart money moves, urban entrepreneurship hub, hood financial literacy, first generation wealth builders, AI business ideas for beginners, urban investing strategies"
           url="/"
           type="website"

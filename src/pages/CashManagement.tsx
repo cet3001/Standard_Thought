@@ -64,8 +64,8 @@ const CashManagement = () => {
 
       {/* SEO */}
       <SEO 
-        title="Master Your Cash Flow - Cash Management | Real Money Strategies | Standardthought" 
-        description="Learn to stack, save, and move smart with proven cash management strategies. Break the paycheck-to-paycheck cycle and build systems that work even when starting with nothing." 
+        title="Smart Cash Flow for First-Gen Builders | StandardThought" 
+        description="Break paycheck-to-paycheck cycles. Learn to stack, save, and invest your money with proven cash management strategies." 
         keywords="cash management, cash flow control, paycheck to paycheck, money management, budgeting, financial systems, cash flow strategies" 
         url="/cash-management" 
         type="article" 

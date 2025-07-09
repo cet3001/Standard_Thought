@@ -1,7 +1,21 @@
+import { useGuides } from "@/hooks/use-guides";
+import { useGuideDownload } from "@/hooks/use-guide-download";
+
 const CashManagementActionPlan = () => {
-  const handleDownload = () => {
-    // This would connect to your existing guide download system
-    console.log('Download Cash Flow Action Plan triggered');
+  const { guides, loading: guidesLoading } = useGuides();
+  const { downloadGuide, isDownloading } = useGuideDownload();
+
+  const handleDownload = async () => {
+    if (guides && guides.length > 0) {
+      const cashGuide = guides.find(g => g.title.toLowerCase().includes('cash') || g.title.toLowerCase().includes('flow'));
+      if (cashGuide) {
+        await downloadGuide(cashGuide.id, 'cash-management-action-plan');
+      } else {
+        console.log('Cash management guide not found');
+      }
+    } else {
+      console.log('No guides available');
+    }
   };
 
   return (
@@ -55,7 +69,8 @@ const CashManagementActionPlan = () => {
             {/* Hand-drawn style button */}
             <button 
               onClick={handleDownload}
-              className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-black to-gray-800 dark:from-white dark:to-gray-200 text-white dark:text-black font-black text-xl rounded-2xl transition-all duration-300 hover:scale-105 transform -rotate-1 hover:rotate-0 shadow-lg hover:shadow-xl" 
+              disabled={isDownloading || guidesLoading}
+              className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-black to-gray-800 dark:from-white dark:to-gray-200 text-white dark:text-black font-black text-xl rounded-2xl transition-all duration-300 hover:scale-105 transform -rotate-1 hover:rotate-0 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed" 
               style={{
                 fontFamily: 'Permanent Marker, cursive',
                 textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
@@ -64,7 +79,9 @@ const CashManagementActionPlan = () => {
                 borderRadius: '15px'
               }}
             >
-              <span className="relative z-10">Get the Plan</span>
+              <span className="relative z-10">
+                {isDownloading ? 'Downloading...' : 'Get the Plan'}
+              </span>
               <div className="absolute inset-0 bg-gradient-to-r from-[#FFD700]/10 to-[#FFA500]/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </button>
             

@@ -27,9 +27,55 @@ const FeaturedBlogSection = ({ isVisible }: FeaturedBlogSectionProps) => {
     };
 
     fetchFeaturedPosts();
+    
+    // Timeout to prevent loading state from persisting beyond 1.5s
+    const timeout = setTimeout(() => {
+      if (loading) {
+        setLoading(false);
+      }
+    }, 1500);
+
+    return () => clearTimeout(timeout);
   }, []);
 
-  if (loading || featuredPosts.length === 0) {
+  if (loading) {
+    return (
+      <section className="py-24 relative">
+        <div className="container mx-auto px-6 max-w-6xl">
+          <div className={`transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div className="text-center mb-16">
+              <div className="h-16 w-1/2 mx-auto bg-gradient-to-r from-yellow-300/30 via-yellow-400/30 to-yellow-300/30 rounded-lg animate-pulse"></div>
+              <div className="h-6 w-1/3 mx-auto mt-4 bg-gradient-to-r from-gray-200/30 via-gray-300/30 to-gray-200/30 rounded animate-pulse"></div>
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+              {[...Array(3)].map((_, i) => (
+                <div key={i} className="bg-white/20 dark:bg-gray-900/25 backdrop-blur-md rounded-xl overflow-hidden shadow-2xl border border-white/30 dark:border-gray-700/40">
+                  <div className="h-48 bg-gradient-to-r from-gray-200/20 via-gray-300/20 to-gray-200/20 animate-pulse"></div>
+                  <div className="p-6 space-y-4">
+                    <div className="w-16 h-6 bg-gradient-to-r from-yellow-300/30 to-yellow-400/30 rounded-full animate-pulse"></div>
+                    <div className="space-y-2">
+                      <div className="h-6 bg-gradient-to-r from-gray-200/30 via-gray-300/30 to-gray-200/30 rounded animate-pulse"></div>
+                      <div className="h-4 w-3/4 bg-gradient-to-r from-gray-200/30 via-gray-300/30 to-gray-200/30 rounded animate-pulse"></div>
+                    </div>
+                    <div className="space-y-2">
+                      <div className="h-3 bg-gradient-to-r from-gray-200/20 via-gray-300/20 to-gray-200/20 rounded animate-pulse"></div>
+                      <div className="h-3 w-5/6 bg-gradient-to-r from-gray-200/20 via-gray-300/20 to-gray-200/20 rounded animate-pulse"></div>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <div className="h-4 w-24 bg-gradient-to-r from-gray-200/20 via-gray-300/20 to-gray-200/20 rounded animate-pulse"></div>
+                      <div className="h-8 w-16 bg-gradient-to-r from-yellow-300/30 to-yellow-400/30 rounded-lg animate-pulse"></div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (featuredPosts.length === 0) {
     return null;
   }
 

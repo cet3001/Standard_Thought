@@ -63,9 +63,46 @@ const RelatedPosts = ({ currentPostId, category, tags }: RelatedPostsProps) => {
     };
 
     fetchRelatedPosts();
+    
+    // Timeout to prevent loading state from persisting beyond 1.5s
+    const timeout = setTimeout(() => {
+      if (loading) {
+        setLoading(false);
+      }
+    }, 1500);
+
+    return () => clearTimeout(timeout);
   }, [currentPostId, category, tags]);
 
-  if (loading || relatedPosts.length === 0) {
+  if (loading) {
+    return (
+      <section className="mt-16 pt-8 border-t border-brand-black/20 dark:border-brand-cream/20">
+        <h3 className="text-2xl font-bold text-brand-black dark:text-brand-cream mb-8 font-ibm-plex-mono">
+          Related Stories
+        </h3>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {[...Array(3)].map((_, i) => (
+            <div key={i} className="bg-brand-cream/10 dark:bg-brand-black/20 backdrop-blur-sm rounded-2xl overflow-hidden border border-brand-black/10 dark:border-brand-cream/10">
+              <div className="aspect-video bg-gradient-to-r from-gray-200/20 via-gray-300/20 to-gray-200/20 animate-pulse"></div>
+              <div className="p-6 space-y-4">
+                <div className="w-16 h-6 bg-gradient-to-r from-yellow-300/30 to-yellow-400/30 rounded-full animate-pulse"></div>
+                <div className="space-y-2">
+                  <div className="h-5 bg-gradient-to-r from-gray-200/30 via-gray-300/30 to-gray-200/30 rounded animate-pulse"></div>
+                  <div className="h-4 w-3/4 bg-gradient-to-r from-gray-200/30 via-gray-300/30 to-gray-200/30 rounded animate-pulse"></div>
+                </div>
+                <div className="space-y-2">
+                  <div className="h-3 bg-gradient-to-r from-gray-200/20 via-gray-300/20 to-gray-200/20 rounded animate-pulse"></div>
+                  <div className="h-3 w-5/6 bg-gradient-to-r from-gray-200/20 via-gray-300/20 to-gray-200/20 rounded animate-pulse"></div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    );
+  }
+
+  if (relatedPosts.length === 0) {
     return null;
   }
 

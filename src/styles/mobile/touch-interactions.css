@@ -2,19 +2,30 @@
 /* Touch-friendly interactive elements and inputs */
 
 @media (max-width: 768px) {
-  /* Touch-friendly interactive elements */
+  /* Enhanced touch-friendly interactive elements */
   button, a, input, textarea, select, [role="button"] {
-    min-height: 44px;
-    min-width: 44px;
+    min-height: 48px; /* Increased from 44px for better accessibility */
+    min-width: 48px;
+    padding: 12px 16px;
     touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
   }
 
+  /* CTA buttons - make them more prominent on mobile */
+  .cta-button, button[class*="cta"], [class*="CTA"] {
+    min-height: 56px;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 16px 24px;
+  }
+
   /* Optimize form inputs */
-  input, textarea {
+  input, textarea, select {
     font-size: 16px; /* Prevent zoom on iOS */
-    border-radius: 0.5rem; /* Consistent with design */
+    border-radius: 8px;
+    padding: 14px 16px;
     -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
   }
 
   /* Optimize navigation for mobile */
@@ -22,5 +33,20 @@
     position: fixed;
     transform: translateZ(0);
     will-change: transform;
+    z-index: 9999;
+  }
+
+  /* Mobile menu overlay */
+  .mobile-menu-overlay {
+    z-index: 9998;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+  }
+
+  /* Ensure mobile sheet/modal is on top */
+  [data-state="open"] {
+    z-index: 10000;
   }
 }

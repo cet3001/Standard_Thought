@@ -1,0 +1,161 @@
+/* Device-specific mobile optimizations */
+
+/* iPhone SE and ultra-small screens */
+@media screen and (max-width: 375px) and (max-height: 667px) {
+  /* Compact hero sections */
+  .hero-section {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  /* Reduce large text dramatically */
+  .text-7xl, .text-6xl, .text-5xl {
+    font-size: 1.875rem !important;
+    line-height: 1.2;
+  }
+
+  /* Optimize navigation */
+  .mobile-nav {
+    height: 60px;
+  }
+
+  /* Compact forms */
+  .form-container {
+    padding: 1rem;
+  }
+
+  /* Reduce button padding */
+  button {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+}
+
+/* Standard iPhone (390px-414px) */
+@media screen and (min-width: 376px) and (max-width: 414px) {
+  /* Standard mobile optimizations */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Balanced text scaling */
+  .text-6xl { font-size: 2.5rem; }
+  .text-5xl { font-size: 2rem; }
+  .text-4xl { font-size: 1.75rem; }
+}
+
+/* Large phones (iPhone 14 Pro Max, etc.) */
+@media screen and (min-width: 415px) and (max-width: 480px) {
+  /* More generous spacing */
+  .container {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  /* Slightly larger text */
+  .text-6xl { font-size: 3rem; }
+  .text-5xl { font-size: 2.25rem; }
+  .text-4xl { font-size: 2rem; }
+}
+
+/* Android small screens (360px-390px) */
+@media screen and (min-width: 360px) and (max-width: 390px) {
+  /* Android-specific touch targets */
+  button, a, input {
+    min-height: 48px; /* Material Design guideline */
+  }
+
+  /* Optimize for Android Chrome */
+  input, textarea {
+    font-size: 16px; /* Prevent zoom */
+    -webkit-text-size-adjust: 100%;
+  }
+}
+
+/* Landscape mobile optimizations */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+  /* Compact vertical spacing */
+  .py-16 { padding-top: 1rem; padding-bottom: 1rem; }
+  .py-12 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+  .py-8 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+
+  /* Navigation adjustments */
+  .mobile-nav {
+    height: 50px;
+  }
+
+  /* Hero sections */
+  .hero-section {
+    min-height: auto;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  /* Text scaling for landscape */
+  .text-6xl { font-size: 2rem; }
+  .text-5xl { font-size: 1.75rem; }
+  .text-4xl { font-size: 1.5rem; }
+}
+
+/* High DPI screens (Retina) */
+@media screen and (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+  /* Optimize for crisp text on high DPI */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Sharper images */
+  img {
+    image-rendering: -webkit-optimize-contrast;
+  }
+}
+
+/* Dark mode mobile optimizations */
+@media (prefers-color-scheme: dark) and (max-width: 768px) {
+  /* Increase contrast for mobile dark mode */
+  .text-brand-cream {
+    color: #FFFFFF;
+  }
+
+  .text-brand-black {
+    color: #F5F5F5;
+  }
+
+  /* Improve readability */
+  body {
+    background-color: #0A0A0A;
+  }
+}
+
+/* Accessibility - Reduce motion for mobile users who prefer it */
+@media (prefers-reduced-motion: reduce) and (max-width: 768px) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Performance optimizations for slower mobile connections */
+@media (max-width: 768px) {
+  /* Reduce expensive effects on mobile */
+  .backdrop-blur-md {
+    backdrop-filter: blur(8px);
+  }
+
+  .backdrop-blur-sm {
+    backdrop-filter: blur(4px);
+  }
+
+  /* Optimize animations */
+  .animate-pulse {
+    animation-duration: 1s;
+  }
+
+  /* Reduce shadow complexity */
+  .shadow-2xl {
+    box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1);
+  }
+}

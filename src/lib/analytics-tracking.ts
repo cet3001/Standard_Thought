@@ -10,7 +10,7 @@ export const isGALoaded = (): boolean => {
 export const trackPageView = (path: string, title?: string) => {
   if (!isGALoaded()) return;
   
-  window.gtag('config', 'GA_MEASUREMENT_ID', {
+  window.gtag('config', 'G-PT7T8CDJZS', {
     page_title: title || document.title,
     page_location: `${window.location.origin}${path}`,
     page_path: path,

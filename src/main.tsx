@@ -20,8 +20,12 @@ import '@fontsource/kalam/700.css';
 import '@fontsource/permanent-marker/400.css';
 import '@fontsource/comic-neue/400.css';
 import '@fontsource/comic-neue/700.css';
+import { applyCspMeta } from './lib/security-headers';
 
 console.log('main.tsx: Starting application...');
+
+// Apply security headers
+applyCspMeta();
 
 // Add global error handler
 window.addEventListener('error', (event) => {

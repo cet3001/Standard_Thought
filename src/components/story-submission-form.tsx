@@ -136,8 +136,9 @@ const StorySubmissionForm = () => {
                 onChange={handleInputChange}
                 placeholder="What should we call you?"
                 required
-                className="rounded-2xl border-[#247EFF]/20 focus:border-[#247EFF]"
+                className={`rounded-2xl border-[#247EFF]/20 focus:border-[#247EFF] ${errors.name ? 'border-red-500' : ''}`}
               />
+              {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
             </div>
             
             <div className="space-y-2">
@@ -153,8 +154,9 @@ const StorySubmissionForm = () => {
                 onChange={handleInputChange}
                 placeholder="your@email.com"
                 required
-                className="rounded-2xl border-[#247EFF]/20 focus:border-[#247EFF]"
+                className={`rounded-2xl border-[#247EFF]/20 focus:border-[#247EFF] ${errors.email ? 'border-red-500' : ''}`}
               />
+              {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
             </div>
           </div>
 
@@ -171,8 +173,9 @@ const StorySubmissionForm = () => {
               onChange={handleInputChange}
               placeholder="Give your story a compelling title"
               required
-              className="rounded-2xl border-[#247EFF]/20 focus:border-[#247EFF]"
+              className={`rounded-2xl border-[#247EFF]/20 focus:border-[#247EFF] ${errors.title ? 'border-red-500' : ''}`}
             />
+            {errors.title && <p className="text-red-500 text-sm mt-1">{errors.title}</p>}
           </div>
 
           <div className="space-y-2">
@@ -187,8 +190,9 @@ const StorySubmissionForm = () => {
               placeholder="Tell us about your struggle and how you overcame it. What was your starting point? What challenges did you face? How did you push through?"
               required
               rows={6}
-              className="rounded-2xl border-[#247EFF]/20 focus:border-[#247EFF] resize-none"
+              className={`rounded-2xl border-[#247EFF]/20 focus:border-[#247EFF] resize-none ${errors.story ? 'border-red-500' : ''}`}
             />
+            {errors.story && <p className="text-red-500 text-sm mt-1">{errors.story}</p>}
           </div>
 
           <div className="space-y-2">
@@ -204,8 +208,9 @@ const StorySubmissionForm = () => {
               placeholder="What did you achieve? How has your life changed? Be specific about the results."
               required
               rows={4}
-              className="rounded-2xl border-[#247EFF]/20 focus:border-[#247EFF] resize-none"
+              className={`rounded-2xl border-[#247EFF]/20 focus:border-[#247EFF] resize-none ${errors.outcome ? 'border-red-500' : ''}`}
             />
+            {errors.outcome && <p className="text-red-500 text-sm mt-1">{errors.outcome}</p>}
           </div>
 
           <div className="space-y-2">
@@ -220,8 +225,9 @@ const StorySubmissionForm = () => {
               placeholder="What would you tell someone in your old situation? What's the most important lesson you learned?"
               required
               rows={4}
-              className="rounded-2xl border-[#247EFF]/20 focus:border-[#247EFF] resize-none"
+              className={`rounded-2xl border-[#247EFF]/20 focus:border-[#247EFF] resize-none ${errors.advice ? 'border-red-500' : ''}`}
             />
+            {errors.advice && <p className="text-red-500 text-sm mt-1">{errors.advice}</p>}
           </div>
 
           <Button

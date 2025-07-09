@@ -200,6 +200,12 @@ const BlogPost = () => {
         keywords={post.meta_keywords || post.tags?.join(', ') || ''}
         url={`/blog/${post.slug}`}
         type="article"
+        publishedTime={post.created_at}
+        modifiedTime={post.updated_at}
+        author="Standardthought"
+        category={post.category}
+        tags={post.tags || []}
+        wordCount={post.content.length}
         breadcrumbs={breadcrumbs}
       />
 

@@ -7,6 +7,7 @@ import {
   generateWebSiteSchema,
   generateBreadcrumbSchema 
 } from "./schemas";
+import { generateBlogPostingSchema } from "./enhanced-schemas";
 import { MetaTags } from "./meta-tags";
 import { RobotsDirectives } from "./robots-directives";
 import { EnhancedMeta } from "./enhanced-meta";
@@ -85,9 +86,9 @@ const SEO = ({
     
     structuredData = [organizationSchema, webSiteSchema];
   } else {
-    // For articles, use Article schema
-    const articleSchema = generateArticleSchema({
-      title: fullTitle,
+    // For articles, use enhanced BlogPosting schema
+    const blogPostingSchema = generateBlogPostingSchema({
+      headline: fullTitle,
       description: optimizedDescription,
       url: canonicalUrl,
       image: fullImageUrl,
@@ -96,10 +97,11 @@ const SEO = ({
       modifiedTime,
       category: category || "Business",
       tags,
-      wordCount
+      wordCount,
+      readingTime: wordCount ? `PT${Math.ceil(wordCount / 200)}M` : undefined
     });
     
-    structuredData = [articleSchema];
+    structuredData = [blogPostingSchema];
   }
 
   // Add breadcrumb schema if provided

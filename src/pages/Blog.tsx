@@ -10,39 +10,79 @@ import { useAuth } from "@/contexts/AuthContext";
 import { getBlogPosts, BlogPost, deleteBlogPost } from "@/lib/api";
 import { ExternalLink, Clock, Tag, Quote, HelpCircle, TrendingUp, Heart, DollarSign, ChevronLeft, ChevronRight, Edit, Trash2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { toast } from "sonner";
+import { BlogFilters, BlogCategory, BlogTag, SortOption } from "@/components/blog/BlogFilters";
 
 const Blog = () => {
   useMobilePerformance();
   const { textureImageUrl } = useUrbanTexture();
   const { stories, loading } = useBuilderStories(5);
-  const { stories: testimonials } = useBuilderStories(15); // Get more for testimonials
+  const { stories: testimonials } = useBuilderStories(15);
   const { isAdmin } = useAuth();
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   const [blogLoading, setBlogLoading] = useState(true);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState<string>("All");
+  const [selectedCategory, setSelectedCategory] = useState<BlogCategory>("All Categories");
+  const [selectedTags, setSelectedTags] = useState<BlogTag[]>([]);
+  const [sortBy, setSortBy] = useState<SortOption>("newest");
   const navigate = useNavigate();
 
-  // Get unique categories from blog posts
-  const getUniqueCategories = () => {
-    const categories = blogPosts.map(post => post.category);
-    return ["All", ...Array.from(new Set(categories))];
+  // Filter and sort posts
+  const getFilteredPosts = () => {
+    let filtered = blogPosts;
+    
+    // Filter by category
+    if (selectedCategory !== "All Categories") {
+      filtered = filtered.filter(post => post.category === selectedCategory);
+    }
+    
+    // Filter by tags
+    if (selectedTags.length > 0) {
+      filtered = filtered.filter(post => 
+        selectedTags.some(tag => post.tags?.includes(tag))
+      );
+    }
+    
+    // Sort posts
+    switch (sortBy) {
+      case "oldest":
+        return filtered.sort((a, b) => new Date(a.created_at).getTime() - new Date(b.created_at).getTime());
+      case "title-asc":
+        return filtered.sort((a, b) => a.title.localeCompare(b.title));
+      case "title-desc":
+        return filtered.sort((a, b) => b.title.localeCompare(a.title));
+      case "newest":
+      default:
+        return filtered.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
+    }
   };
 
-  // Filter posts by selected category
-  const getFilteredPosts = () => {
-    if (selectedCategory === "All") {
-      return blogPosts;
-    }
-    return blogPosts.filter(post => post.category === selectedCategory);
+  const handleCategoryChange = (category: BlogCategory) => {
+    setSelectedCategory(category);
+  };
+
+  const handleTagToggle = (tag: BlogTag) => {
+    setSelectedTags(prev => 
+      prev.includes(tag) 
+        ? prev.filter(t => t !== tag)
+        : [...prev, tag]
+    );
+  };
+
+  const handleSortChange = (sort: SortOption) => {
+    setSortBy(sort);
+  };
+
+  const handleClearFilters = () => {
+    setSelectedCategory("All Categories");
+    setSelectedTags([]);
+    setSortBy("newest");
   };
 
   const handleDeletePost = async (postId: string, e: React.MouseEvent) => {
-    e.stopPropagation(); // Prevent card click navigation
+    e.stopPropagation();
     
     if (window.confirm("Are you sure you want to delete this post? This action cannot be undone.")) {
       try {
@@ -57,14 +97,13 @@ const Blog = () => {
   };
 
   const handleEditPost = (post: BlogPost, e: React.MouseEvent) => {
-    e.stopPropagation(); // Prevent card click navigation
+    e.stopPropagation();
     navigate(`/create-post`, { state: { editPost: post } });
   };
 
   useEffect(() => {
     setIsVisible(true);
     
-    // Fetch blog posts
     const fetchBlogPosts = async () => {
       try {
         setBlogLoading(true);
@@ -79,7 +118,6 @@ const Blog = () => {
     
     fetchBlogPosts();
     
-    // Timeout to prevent loading state from persisting beyond 1.5s
     const timeout = setTimeout(() => {
       if (blogLoading) {
         setBlogLoading(false);
@@ -109,7 +147,6 @@ const Blog = () => {
     <div className="min-h-screen relative overflow-hidden">
       {/* Site-wide Urban Background */}
       <div className="fixed inset-0 -z-50" aria-hidden="true">
-        {/* AI-Generated or Curated Urban Texture */}
         {textureImageUrl && (
           <div 
             className="absolute inset-0 opacity-40 bg-cover bg-center bg-fixed"
@@ -123,10 +160,7 @@ const Blog = () => {
           />
         )}
         
-        {/* Background gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-slate-800/50 via-slate-700/60 to-slate-900/50"></div>
-        
-        {/* Content overlay for text readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/85 via-brand-cream/90 to-brand-cream/85 dark:from-brand-black/85 dark:via-brand-black/90 dark:to-brand-black/85"></div>
       </div>
 
@@ -145,29 +179,11 @@ const Blog = () => {
 
       {/* Main Content */}
       <main className="relative z-10 pt-36 pb-16">
-        <div className="container mx-auto px-6 max-w-6xl">
+        <div className="container mx-auto px-6 max-w-7xl">
           
           {/* Hero Section */}
           <div className={`mb-24 p-8 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-              {/* Floating Elements */}
-              <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-                <div className="absolute -top-4 -right-4 w-20 h-20 rounded-full animate-float" style={{
-                  background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                  backgroundSize: '400% 400%',
-                  animation: 'pearlescent 3s ease-in-out infinite, float 6s ease-in-out infinite',
-                  opacity: 0.2
-                }}></div>
-                <div className="absolute -bottom-4 -left-4 w-16 h-16 rounded-2xl animate-float" style={{ 
-                  background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                  backgroundSize: '400% 400%',
-                  animation: 'pearlescent 3s ease-in-out infinite, float 6s ease-in-out infinite',
-                  animationDelay: '1.5s',
-                  opacity: 0.15 
-                }}></div>
-              </div>
-
             <div className="text-center relative z-10">
-              {/* Main Headline */}
               <div className="relative inline-block mb-6">
                 <h1 className="text-5xl md:text-7xl font-black text-brand-black dark:text-brand-cream mb-4 relative">
                   Out the{" "}
@@ -183,30 +199,6 @@ const Blog = () => {
                     }}>
                       Mud
                     </span>
-                    {/* Graffiti underline */}
-                    <svg
-                      className="absolute -bottom-2 left-0 w-full h-4"
-                      viewBox="0 0 120 20"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M2 15C8 12 15 8 25 10C35 12 45 8 55 12C65 16 75 8 85 12C95 16 105 12 115 15"
-                        stroke="url(#gradient1)"
-                        strokeWidth="3"
-                        strokeLinecap="round"
-                        fill="none"
-                      />
-                      <defs>
-                        <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
-                          <stop offset="0%" style={{ stopColor: '#f4d03f' }} />
-                          <stop offset="25%" style={{ stopColor: '#ffd700' }} />
-                          <stop offset="50%" style={{ stopColor: '#ffeb3b' }} />
-                          <stop offset="75%" style={{ stopColor: '#fff176' }} />
-                          <stop offset="100%" style={{ stopColor: '#f4d03f' }} />
-                        </linearGradient>
-                      </defs>
-                    </svg>
                   </span>
                 </h1>
                 <h2 className="text-3xl md:text-4xl font-bold text-brand-black dark:text-brand-cream">
@@ -223,40 +215,14 @@ const Blog = () => {
                     }}>
                       Builder Stories
                     </span>
-                    {/* Graffiti underline */}
-                    <svg
-                      className="absolute -bottom-1 left-0 w-full h-3"
-                      viewBox="0 0 140 16"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M2 12C12 8 22 10 32 8C42 6 52 12 62 8C72 4 82 12 92 8C102 4 112 10 132 12"
-                        stroke="url(#gradient2)"
-                        strokeWidth="2.5"
-                        strokeLinecap="round"
-                        fill="none"
-                      />
-                      <defs>
-                        <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="0%">
-                          <stop offset="0%" style={{ stopColor: '#f4d03f' }} />
-                          <stop offset="25%" style={{ stopColor: '#ffd700' }} />
-                          <stop offset="50%" style={{ stopColor: '#ffeb3b' }} />
-                          <stop offset="75%" style={{ stopColor: '#fff176' }} />
-                          <stop offset="100%" style={{ stopColor: '#f4d03f' }} />
-                        </linearGradient>
-                      </defs>
-                    </svg>
                   </span>
                 </h2>
               </div>
 
-              {/* Subhead */}
               <p className="text-xl md:text-2xl text-brand-black/80 dark:text-brand-cream/80 mb-8 max-w-4xl mx-auto leading-relaxed">
                 No trust funds. No shortcuts. Just real blueprints from folks who built it brick by brick.
               </p>
 
-              {/* Pull Quote */}
               <div className="relative rounded-xl p-6 border-l-4 max-w-3xl mx-auto" style={{
                 background: 'linear-gradient(90deg, rgba(244, 208, 63, 0.1), rgba(255, 215, 0, 0.1))',
                 borderLeftColor: '#ffd700'
@@ -268,13 +234,183 @@ const Blog = () => {
             </div>
           </div>
 
-          {/* Latest Stories Blog Grid */}
+          {/* Main Blog Section */}
           <SectionOverlayBox className={`mb-24 transition-all duration-700 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             {/* Section Header */}
             <div className="text-center mb-12">
-              <div className="relative inline-block mb-6">
-                <h3 className="text-4xl md:text-5xl font-black text-brand-black dark:text-brand-cream font-ibm-plex-mono">
-                  LATEST{" "}
+              <h3 className="text-4xl md:text-5xl font-black text-brand-black dark:text-brand-cream font-ibm-plex-mono mb-6">
+                FILTER &{" "}
+                <span className="font-permanent-marker transform rotate-1" style={{
+                  color: 'transparent',
+                  background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                  backgroundSize: '400% 400%',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                  animation: 'pearlescent 3s ease-in-out infinite'
+                }}>
+                  EXPLORE
+                </span>
+              </h3>
+              <p className="text-lg text-brand-black/70 dark:text-brand-cream/70 max-w-2xl mx-auto">
+                From setbacks to stacks—browse by category and get the real game from those who built it brick by brick.
+              </p>
+            </div>
+
+            {/* Filter and Content Grid */}
+            <div className="grid lg:grid-cols-4 gap-8">
+              {/* Filters Sidebar */}
+              <div className="lg:col-span-1">
+                <BlogFilters
+                  selectedCategory={selectedCategory}
+                  selectedTags={selectedTags}
+                  sortBy={sortBy}
+                  onCategoryChange={handleCategoryChange}
+                  onTagToggle={handleTagToggle}
+                  onSortChange={handleSortChange}
+                  onClearFilters={handleClearFilters}
+                  articleCount={getFilteredPosts().length}
+                />
+              </div>
+
+              {/* Blog Posts Grid */}
+              <div className="lg:col-span-3">
+                {blogLoading ? (
+                  <div className="grid md:grid-cols-2 gap-6">
+                    {[...Array(6)].map((_, i) => (
+                      <div key={i} className="bg-white/20 dark:bg-gray-900/25 backdrop-blur-md rounded-xl overflow-hidden shadow-2xl border border-white/30 dark:border-gray-700/40">
+                        <div className="h-48 bg-gradient-to-r from-gray-200/20 via-gray-300/20 to-gray-200/20 animate-pulse"></div>
+                        <div className="p-6 space-y-4">
+                          <div className="w-16 h-6 bg-gradient-to-r from-yellow-300/30 to-yellow-400/30 rounded-full animate-pulse"></div>
+                          <div className="space-y-2">
+                            <div className="h-6 bg-gradient-to-r from-gray-200/30 via-gray-300/30 to-gray-200/30 rounded animate-pulse"></div>
+                            <div className="h-4 w-3/4 bg-gradient-to-r from-gray-200/30 via-gray-300/30 to-gray-200/30 rounded animate-pulse"></div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : getFilteredPosts().length > 0 ? (
+                  <div className="grid md:grid-cols-2 gap-6">
+                    {getFilteredPosts().map((post, index) => (
+                      <div
+                        key={post.id}
+                        className="group cursor-pointer transform transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1"
+                        onClick={() => navigate(`/blog/${post.slug}`)}
+                        style={{ animationDelay: `${index * 100}ms` }}
+                      >
+                        <div className="relative h-full bg-white/20 dark:bg-gray-900/25 backdrop-blur-md rounded-xl overflow-hidden shadow-2xl border border-white/30 dark:border-gray-700/40 transform transition-all duration-500 group-hover:bg-white/30 dark:group-hover:bg-gray-900/35 group-hover:shadow-3xl group-hover:border-white/40 dark:group-hover:border-gray-600/50">
+                          
+                          {/* Image */}
+                          {post.image_url && (
+                            <div className="relative h-48 overflow-hidden">
+                              <img
+                                src={post.image_url}
+                                alt={post.title}
+                                className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                            </div>
+                          )}
+                          
+                          {/* Content */}
+                          <div className="p-6">
+                            {/* Category Badge */}
+                            <div className="flex items-center gap-2 mb-3">
+                              <span className="px-3 py-1 text-xs font-medium rounded-full" style={{
+                                background: 'linear-gradient(45deg, rgba(244, 208, 63, 0.2), rgba(255, 215, 0, 0.2))',
+                                color: '#b45309'
+                              }}>
+                                {post.category}
+                              </span>
+                            </div>
+                            
+                            {/* Title */}
+                            <h4 className="text-lg font-bold text-brand-black dark:text-brand-cream mb-3 line-clamp-2 group-hover:text-primary transition-colors">
+                              {post.title}
+                            </h4>
+                            
+                            {/* Excerpt */}
+                            <p className="text-sm text-brand-black/70 dark:text-brand-cream/70 mb-4 line-clamp-3 leading-relaxed">
+                              {post.excerpt}
+                            </p>
+                            
+                            {/* Tags */}
+                            {post.tags && post.tags.length > 0 && (
+                              <div className="flex flex-wrap gap-1 mb-4">
+                                {post.tags.slice(0, 3).map((tag) => (
+                                  <span
+                                    key={tag}
+                                    className="text-xs px-2 py-1 bg-muted/50 text-muted-foreground rounded"
+                                  >
+                                    {tag.replace(/-/g, ' ')}
+                                  </span>
+                                ))}
+                                {post.tags.length > 3 && (
+                                  <span className="text-xs px-2 py-1 bg-muted/50 text-muted-foreground rounded">
+                                    +{post.tags.length - 3} more
+                                  </span>
+                                )}
+                              </div>
+                            )}
+                            
+                            {/* Footer */}
+                            <div className="flex items-center justify-between">
+                              <div className="flex items-center gap-2 text-xs text-brand-black/60 dark:text-brand-cream/60">
+                                <Clock className="w-3 h-3" />
+                                <span>{new Date(post.created_at).toLocaleDateString()}</span>
+                              </div>
+                              
+                              {/* Admin Actions */}
+                              {isAdmin && (
+                                <div className="flex gap-2">
+                                  <button
+                                    onClick={(e) => handleEditPost(post, e)}
+                                    className="p-2 rounded-lg bg-blue-500/20 text-blue-600 hover:bg-blue-500/30 transition-colors"
+                                    title="Edit Post"
+                                  >
+                                    <Edit className="w-4 h-4" />
+                                  </button>
+                                  <button
+                                    onClick={(e) => handleDeletePost(post.id, e)}
+                                    className="p-2 rounded-lg bg-red-500/20 text-red-600 hover:bg-red-500/30 transition-colors"
+                                    title="Delete Post"
+                                  >
+                                    <Trash2 className="w-4 h-4" />
+                                  </button>
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="text-center py-12">
+                    <div className="rounded-lg p-8 border transform rotate-1" style={{
+                      background: 'linear-gradient(45deg, rgba(244, 208, 63, 0.1), rgba(255, 215, 0, 0.1))',
+                      borderColor: 'rgba(255, 215, 0, 0.3)'
+                    }}>
+                      <p className="text-brand-black dark:text-brand-cream font-bold text-lg mb-2 font-permanent-marker">
+                        No Stories Found
+                      </p>
+                      <p className="text-brand-black/70 dark:text-brand-cream/70 font-kalam">
+                        Try adjusting your filters or check back soon for fresh content.
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </SectionOverlayBox>
+
+          {/* Testimonials Section */}
+          {!loading && testimonials.length > 0 && (
+            <SectionOverlayBox className={`mb-24 transition-all duration-700 delay-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              <div className="text-center mb-12">
+                <h3 className="text-4xl md:text-5xl font-black text-brand-black dark:text-brand-cream font-ibm-plex-mono mb-6">
+                  REAL{" "}
                   <span className="font-permanent-marker transform rotate-1" style={{
                     color: 'transparent',
                     background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
@@ -284,955 +420,52 @@ const Blog = () => {
                     backgroundClip: 'text',
                     animation: 'pearlescent 3s ease-in-out infinite'
                   }}>
-                    STORIES
+                    BUILDERS
                   </span>
-                  {/* Typewriter underline */}
-                  <svg
-                    className="absolute -bottom-2 left-0 w-full h-2"
-                    viewBox="0 0 300 12"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <rect x="0" y="8" width="300" height="2" fill="url(#gradient3)" opacity="0.6" />
-                    <rect x="0" y="10" width="280" height="1" fill="url(#gradient3)" opacity="0.3" />
-                    <defs>
-                      <linearGradient id="gradient3" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" style={{ stopColor: '#f4d03f' }} />
-                        <stop offset="25%" style={{ stopColor: '#ffd700' }} />
-                        <stop offset="50%" style={{ stopColor: '#ffeb3b' }} />
-                        <stop offset="75%" style={{ stopColor: '#fff176' }} />
-                        <stop offset="100%" style={{ stopColor: '#f4d03f' }} />
-                      </linearGradient>
-                    </defs>
-                  </svg>
                 </h3>
               </div>
-              <p className="text-lg text-brand-black/70 dark:text-brand-cream/70 max-w-2xl mx-auto">
-                Fresh blueprints and real talk from builders making moves in the streets and boardrooms.
-              </p>
-            </div>
-
-            {/* Blog Posts Grid */}
-            {blogLoading ? (
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {[...Array(6)].map((_, i) => (
-                  <div key={i} className="bg-white/20 dark:bg-gray-900/25 backdrop-blur-md rounded-xl overflow-hidden shadow-2xl border border-white/30 dark:border-gray-700/40">
-                    <div className="h-48 bg-gradient-to-r from-gray-200/20 via-gray-300/20 to-gray-200/20 animate-pulse"></div>
-                    <div className="p-6 space-y-4">
-                      <div className="w-16 h-6 bg-gradient-to-r from-yellow-300/30 to-yellow-400/30 rounded-full animate-pulse"></div>
-                      <div className="space-y-2">
-                        <div className="h-6 bg-gradient-to-r from-gray-200/30 via-gray-300/30 to-gray-200/30 rounded animate-pulse"></div>
-                        <div className="h-4 w-3/4 bg-gradient-to-r from-gray-200/30 via-gray-300/30 to-gray-200/30 rounded animate-pulse"></div>
-                      </div>
-                      <div className="space-y-2">
-                        <div className="h-3 bg-gradient-to-r from-gray-200/20 via-gray-300/20 to-gray-200/20 rounded animate-pulse"></div>
-                        <div className="h-3 w-5/6 bg-gradient-to-r from-gray-200/20 via-gray-300/20 to-gray-200/20 rounded animate-pulse"></div>
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <div className="h-4 w-24 bg-gradient-to-r from-gray-200/20 via-gray-300/20 to-gray-200/20 rounded animate-pulse"></div>
-                        <div className="h-8 w-16 bg-gradient-to-r from-yellow-300/30 to-yellow-400/30 rounded-lg animate-pulse"></div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            ) : blogPosts.length > 0 ? (
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {blogPosts.slice(0, 5).map((post, index) => (
+              
+              <div className="relative h-48 flex items-center justify-center">
+                {testimonials.map((testimonial, index) => (
                   <div
-                    key={post.id}
-                    className="group cursor-pointer transform transition-all duration-300 hover:scale-105 hover:-translate-y-1"
-                    onClick={() => navigate(`/blog/${post.slug}`)}
-                    style={{ animationDelay: `${index * 150}ms` }}
+                    key={testimonial.id}
+                    className={`absolute inset-0 transition-all duration-1000 ${
+                      index === currentTestimonial 
+                        ? 'opacity-100 translate-x-0' 
+                        : index < currentTestimonial 
+                          ? 'opacity-0 -translate-x-full' 
+                          : 'opacity-0 translate-x-full'
+                    }`}
                   >
-                     {/* Glass Card */}
-                     <div className="relative bg-white/20 dark:bg-gray-900/25 backdrop-blur-md rounded-xl overflow-hidden shadow-2xl border border-white/30 dark:border-gray-700/40 hover:bg-white/30 dark:hover:bg-gray-900/35 hover:shadow-3xl hover:border-white/40 dark:hover:border-gray-600/50 transition-all duration-500">
-                       {/* Grain texture overlay */}
-                       <div className="absolute inset-0 opacity-[0.015] bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8ZGVmcz4KICAgIDxmaWx0ZXIgaWQ9Im5vaXNlRmlsdGVyIj4KICAgICAgPGZlVHVyYnVsZW5jZSBiYXNlRnJlcXVlbmN5PSIwLjkiIG51bU9jdGF2ZXM9IjQiIHNlZWQ9IjIiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjbm9pc2VGaWx0ZXIpIiBvcGFjaXR5PSIwLjQiLz4KPC9zdmc+')] pointer-events-none"></div>
-                       
-                       {/* Featured image or placeholder */}
-                       <div className="relative h-48 bg-gradient-to-br from-gray-400/20 to-gray-600/20 dark:from-gray-600/20 dark:to-gray-800/20 overflow-hidden">
-                         {post.image_url ? (
-                           <img
-                             src={post.image_url}
-                             alt={post.title}
-                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-90"
-                           />
-                         ) : (
-                           <div className="w-full h-full flex items-center justify-center">
-                               <div className="text-6xl font-permanent-marker transform -rotate-12 drop-shadow-lg" style={{
-                                 color: 'transparent',
-                                 background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                                 backgroundSize: '400% 400%',
-                                 WebkitBackgroundClip: 'text',
-                                 WebkitTextFillColor: 'transparent',
-                                 backgroundClip: 'text',
-                                 animation: 'pearlescent 3s ease-in-out infinite',
-                                 opacity: 0.6
-                               }}>
-                                 ST
-                               </div>
-                           </div>
-                         )}
-                         
-                         {/* Glass overlay on image */}
-                         <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
-                         
-                           {/* Category badge - Graffiti style */}
-                           <div className="absolute top-3 left-3">
-                              <div className="px-3 py-1.5 transform -rotate-2 shadow-lg backdrop-blur-sm border-2 border-gray-900 rounded-sm font-kalam font-bold" style={{
-                                background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                                backgroundSize: '400% 400%',
-                                animation: 'pearlescent 3s ease-in-out infinite',
-                                textShadow: '1px 1px 0px rgba(0,0,0,0.3), -1px -1px 0px rgba(255,255,255,0.2)'
-                              }}>
-                                <span className="text-xs font-bold text-gray-900 uppercase tracking-wide transform rotate-1 inline-block" style={{ letterSpacing: '1px' }}>
-                                  {post.category}
-                                </span>
-                              </div>
-                           </div>
-
-                           {/* Admin Controls - Top Right */}
-                           {isAdmin && (
-                             <div className="absolute top-3 right-3 flex gap-2">
-                               <button
-                                 onClick={(e) => handleEditPost(post, e)}
-                                 className="bg-blue-600/80 hover:bg-blue-700/90 backdrop-blur-sm rounded-full p-2 transition-all duration-200 border border-white/20 hover:scale-110"
-                                 title="Edit Post"
-                               >
-                                 <Edit size={14} className="text-white" />
-                               </button>
-                               <button
-                                 onClick={(e) => handleDeletePost(post.id, e)}
-                                 className="bg-red-600/80 hover:bg-red-700/90 backdrop-blur-sm rounded-full p-2 transition-all duration-200 border border-white/20 hover:scale-110"
-                                 title="Delete Post"
-                               >
-                                 <Trash2 size={14} className="text-white" />
-                               </button>
-                             </div>
-                           )}
-
-                           <div className="absolute bottom-3 right-3 bg-black/70 backdrop-blur-md rounded-full px-3 py-1.5 flex items-center gap-1.5 border border-white/20">
-                             <Clock size={12} style={{
-                               color: 'transparent',
-                               background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                               backgroundSize: '400% 400%',
-                               WebkitBackgroundClip: 'text',
-                               WebkitTextFillColor: 'transparent',
-                               backgroundClip: 'text',
-                               animation: 'pearlescent 3s ease-in-out infinite'
-                             }} />
-                             <span className="text-xs font-medium" style={{
-                               color: 'transparent',
-                               background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                               backgroundSize: '400% 400%',
-                               WebkitBackgroundClip: 'text',
-                               WebkitTextFillColor: 'transparent',  
-                               backgroundClip: 'text',
-                               animation: 'pearlescent 3s ease-in-out infinite'
-                             }}>
-                               {Math.ceil(post.content.length / 1000)} min
-                             </span>
-                           </div>
-                       </div>
-
-                       {/* Content */}
-                       <div className="p-6 relative">
-                          {/* Typewriter-style title */}
-                           <h4 className="font-bold text-xl mb-3 font-ibm-plex-mono leading-tight transition-colors duration-300 drop-shadow-sm" style={{
-                             color: 'transparent',
-                             background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                             backgroundSize: '400% 400%',
-                             WebkitBackgroundClip: 'text',
-                             WebkitTextFillColor: 'transparent',
-                             backgroundClip: 'text',
-                             animation: 'pearlescent 3s ease-in-out infinite'
-                           }}>
-                             {post.title}
-                           </h4>
-
-                         {/* Excerpt */}
-                         <p className="text-white/80 dark:text-brand-cream/80 text-sm leading-relaxed mb-4 line-clamp-3">
-                           {post.excerpt}
-                         </p>
-
-                          {/* Tags */}
-                          {post.tags && post.tags.length > 0 && (
-                            <div className="flex flex-wrap gap-2 mb-4">
-                              {post.tags.slice(0, 3).map((tag, tagIndex) => (
-                                <div
-                                  key={tagIndex}
-                                   className="flex items-center gap-1 backdrop-blur-sm px-2 py-1 rounded-full border border-yellow-400/30"
-                                   style={{
-                                     background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                                     backgroundSize: '400% 400%',
-                                     animation: 'pearlescent 3s ease-in-out infinite',
-                                     opacity: 0.9
-                                   }}
-                                >
-                                   <Tag size={10} className="text-gray-900" />
-                                   <span className="text-xs font-medium text-gray-900 font-bold">
-                                     {tag}
-                                   </span>
-                                </div>
-                              ))}
-                            </div>
-                           )}
-
-                          {/* Read More link */}
-                          <div className="flex items-center justify-between">
-                            <span className="text-sm" style={{
-                              color: 'transparent',
-                              background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                              backgroundSize: '400% 400%',
-                              WebkitBackgroundClip: 'text',
-                              WebkitTextFillColor: 'transparent',
-                              backgroundClip: 'text',
-                              animation: 'pearlescent 3s ease-in-out infinite',
-                              opacity: 0.8
-                            }}>
-                              {new Date(post.created_at).toLocaleDateString()}
-                            </span>
-                             <div 
-                               className="inline-flex items-center gap-2 text-gray-900 px-4 py-2 rounded-lg font-bold text-sm transform hover:scale-105 transition-all duration-200 shadow-lg border-2 border-gray-900 backdrop-blur-sm font-kalam text-base transform -rotate-2 hover:rotate-1 hover:scale-110"
-                               style={{
-                                 background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                                 backgroundSize: '400% 400%',
-                                 animation: 'pearlescent 3s ease-in-out infinite',
-                                 textShadow: '2px 2px 0px rgba(0,0,0,0.4), -1px -1px 0px rgba(255,255,255,0.3)',
-                                 letterSpacing: '0.5px'
-                               }}
-                             >
-                               <span style={{ transform: 'rotate(-1deg)', display: 'inline-block' }}>Read</span>
-                               <span style={{ transform: 'rotate(1deg)', display: 'inline-block' }}>More</span>
-                               <ExternalLink size={14} className="group-hover:translate-x-0.5 transition-transform duration-200" style={{ transform: 'rotate(-0.5deg)' }} />
-                             </div>
-                          </div>
-                       </div>
-
-                       {/* Irregular edge effects */}
-                        <div className="absolute top-3 right-3 w-6 h-6 transform rotate-45 rounded-sm opacity-60" style={{
-                          background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                          backgroundSize: '400% 400%',
-                          animation: 'pearlescent 3s ease-in-out infinite',
-                          opacity: 0.2
-                        }}></div>
-                       <div className="absolute bottom-3 left-3 w-4 h-4 bg-white/10 transform -rotate-12 rounded-full opacity-40"></div>
-                     </div>
+                    <div className="text-center p-8">
+                      <Quote className="w-8 h-8 text-primary mx-auto mb-4 opacity-60" />
+                      <blockquote className="text-xl md:text-2xl font-medium text-brand-black dark:text-brand-cream mb-6 italic leading-relaxed">
+                        "{testimonial.quote}"
+                      </blockquote>
+                      <div className="flex items-center justify-center gap-4">
+                        {testimonial.avatar_url && (
+                          <img
+                            src={testimonial.avatar_url}
+                            alt={testimonial.name}
+                            className="w-12 h-12 rounded-full object-cover border-2"
+                            style={{ borderColor: '#ffd700' }}
+                          />
+                        )}
+                        <div className="text-left">
+                          <p className="font-bold text-brand-black dark:text-brand-cream">
+                            {testimonial.name}
+                          </p>
+                          <p className="text-sm text-brand-black/70 dark:text-brand-cream/70">
+                            {testimonial.city_area}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 ))}
               </div>
-            ) : (
-              <div className="text-center py-12">
-                <div className="rounded-lg p-8 border" style={{
-                  background: 'linear-gradient(45deg, rgba(244, 208, 63, 0.1), rgba(255, 215, 0, 0.1))',
-                  borderColor: 'rgba(255, 215, 0, 0.3)'
-                }}>
-                  <p className="text-brand-black dark:text-brand-cream font-bold text-lg mb-2">
-                    Stories Coming Soon
-                  </p>
-                  <p className="text-brand-black/70 dark:text-brand-cream/70">
-                    We're working on some fire content. Check back soon for real builder stories and blueprints.
-                  </p>
-                </div>
-              </div>
-            )}
-          </SectionOverlayBox>
-
-          {/* Blog Library Section */}
-          <SectionOverlayBox className={`mb-24 transition-all duration-700 delay-800 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            {/* Grain overlay */}
-            <div className="absolute inset-0 opacity-[0.02] bg-[radial-gradient(circle_at_2px_2px,_rgba(0,0,0,1)_1px,_transparent_0)] bg-[length:20px_20px]"></div>
-            
-            {/* Section Header */}
-            <div className="text-center mb-8 relative z-10">
-              <div className="relative inline-block mb-6">
-                <h3 className="text-4xl md:text-5xl font-black text-brand-black dark:text-brand-cream font-ibm-plex-mono">
-                  STACKED{" "}
-                  <span className="font-permanent-marker transform -rotate-1" style={{
-                    color: 'transparent',
-                    background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                    backgroundSize: '400% 400%',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
-                    animation: 'pearlescent 3s ease-in-out infinite'
-                  }}>
-                    STORIES
-                  </span>
-                  <br />
-                  <span className="text-2xl md:text-3xl font-permanent-marker text-brand-black dark:text-brand-cream transform rotate-1">
-                    The Hustler's Collection
-                  </span>
-                  {/* Torn paper underline */}
-                  <svg
-                    className="absolute -bottom-3 left-0 w-full h-4"
-                    viewBox="0 0 300 20"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M2 12C12 8 22 14 32 10C42 6 52 16 62 12C72 8 82 18 92 14C102 10 112 20 122 16C132 12 142 22 152 18C162 14 172 24 182 20C192 16 202 26 212 22C222 18 232 8 242 12C252 16 262 6 272 10C282 14 292 4 298 8"
-                      stroke="url(#gradient4)"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      fill="none"
-                    />
-                    <defs>
-                      <linearGradient id="gradient4" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" style={{ stopColor: '#f4d03f' }} />
-                        <stop offset="25%" style={{ stopColor: '#ffd700' }} />
-                        <stop offset="50%" style={{ stopColor: '#ffeb3b' }} />
-                        <stop offset="75%" style={{ stopColor: '#fff176' }} />
-                        <stop offset="100%" style={{ stopColor: '#f4d03f' }} />
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                </h3>
-              </div>
-              <p className="text-lg text-brand-black/70 dark:text-brand-cream/70 max-w-2xl mx-auto font-kalam mb-8">
-                From setbacks to stacks—browse by category and get the real game from those who built it brick by brick.
-              </p>
-              
-              {/* Category Filter Dropdown */}
-              <div className="flex justify-center mb-8">
-                <div className="relative">
-                  {/* Sticky note effect */}
-                  <div className="absolute -inset-2 transform rotate-1 rounded-lg shadow-lg" style={{
-                    background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                    backgroundSize: '400% 400%',
-                    animation: 'pearlescent 3s ease-in-out infinite',
-                    opacity: 0.8
-                  }}></div>
-                  <div className="relative bg-white dark:bg-gray-900 border-2 rounded-lg p-1 transform -rotate-1" style={{
-                    borderColor: '#ffd700'
-                  }}>
-                    <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-                      <SelectTrigger className="w-[200px] border-none bg-transparent font-permanent-marker text-gray-900 dark:text-brand-cream">
-                        <SelectValue placeholder="Filter by category" />
-                      </SelectTrigger>
-                        <SelectContent className="bg-white dark:bg-gray-900 border-2" style={{
-                          borderColor: '#ffd700'
-                        }}>
-                        {getUniqueCategories().map((category) => (
-                          <SelectItem key={category} value={category} className="font-permanent-marker">
-                            {category}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  {/* Hand-drawn arrow */}
-                  <div className="absolute -right-8 -top-2 transform rotate-12">
-                    <svg
-                      className="w-6 h-6"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M7 17L17 7M17 7H7M17 7V17"
-                        stroke="url(#gradient5)"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                      <defs>
-                        <linearGradient id="gradient5" x1="0%" y1="0%" x2="100%" y2="0%">
-                          <stop offset="0%" style={{ stopColor: '#f4d03f' }} />
-                          <stop offset="25%" style={{ stopColor: '#ffd700' }} />
-                          <stop offset="50%" style={{ stopColor: '#ffeb3b' }} />
-                          <stop offset="75%" style={{ stopColor: '#fff176' }} />
-                          <stop offset="100%" style={{ stopColor: '#f4d03f' }} />
-                        </linearGradient>
-                      </defs>
-                    </svg>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Blog Carousel */}
-            {blogLoading ? (
-              <div className="text-center py-12">
-                <p className="text-brand-black/60 dark:text-brand-cream/60">Loading library...</p>
-              </div>
-            ) : getFilteredPosts().length > 0 ? (
-              <div className="relative">
-                <Carousel
-                  opts={{
-                    align: "start",
-                    loop: false,
-                  }}
-                  className="w-full"
-                >
-                  <CarouselContent className="-ml-2 md:-ml-4">
-                    {getFilteredPosts().map((post, index) => (
-                      <CarouselItem key={post.id} className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/4">
-                         <div
-                           className="group cursor-pointer transform transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1"
-                           onClick={() => navigate(`/blog/${post.slug}`)}
-                         >
-                           {/* Glass Card */}
-                           <div className="relative h-full">
-                             {/* Glass background with backdrop blur */}
-                             <div className="relative bg-white/20 dark:bg-gray-900/25 backdrop-blur-md rounded-xl overflow-hidden shadow-2xl border border-white/30 dark:border-gray-700/40 transform transition-all duration-500 group-hover:bg-white/30 dark:group-hover:bg-gray-900/35 group-hover:shadow-3xl group-hover:border-white/40 dark:group-hover:border-gray-600/50">
-                               
-                               {/* Grain texture overlay */}
-                               <div className="absolute inset-0 opacity-[0.015] bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8ZGVmcz4KICAgIDxmaWx0ZXIgaWQ9Im5vaXNlRmlsdGVyIj4KICAgICAgPGZlVHVyYnVsZW5jZSBiYXNlRnJlcXVlbmN5PSIwLjkiIG51bU9jdGF2ZXM9IjQiIHNlZWQ9IjIiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjbm9pc2VGaWx0ZXIpIiBvcGFjaXR5PSIwLjQiLz4KPC9zdmc+')] pointer-events-none"></div>
-                               
-                               {/* Featured image or placeholder */}
-                               <div className="relative h-36 bg-gradient-to-br from-gray-400/20 to-gray-600/20 dark:from-gray-600/20 dark:to-gray-800/20 overflow-hidden">
-                                 {post.image_url ? (
-                                   <img
-                                     src={post.image_url}
-                                     alt={post.title}
-                                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-90"
-                                   />
-                                 ) : (
-                                   <div className="w-full h-full flex items-center justify-center">
-                                       <div className="text-4xl font-permanent-marker transform -rotate-12 drop-shadow-lg" style={{
-                                         color: 'transparent',
-                                         background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                                         backgroundSize: '400% 400%',
-                                         WebkitBackgroundClip: 'text',
-                                         WebkitTextFillColor: 'transparent',
-                                         backgroundClip: 'text',
-                                         animation: 'pearlescent 3s ease-in-out infinite',
-                                         opacity: 0.6
-                                       }}>
-                                         ST
-                                       </div>
-                                   </div>
-                                 )}
-                                 
-                                 {/* Glass overlay on image */}
-                                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
-                                 
-                                  {/* Category badge - Graffiti style */}
-                                  <div className="absolute top-3 left-3">
-                                     <div className="px-3 py-1.5 transform -rotate-2 shadow-lg backdrop-blur-sm border-2 border-gray-900 rounded-sm font-kalam font-bold" style={{
-                                       background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                                       backgroundSize: '400% 400%',
-                                       animation: 'pearlescent 3s ease-in-out infinite',
-                                       textShadow: '1px 1px 0px rgba(0,0,0,0.3), -1px -1px 0px rgba(255,255,255,0.2)'
-                                     }}>
-                                       <span className="text-xs font-bold text-gray-900 uppercase tracking-wide transform rotate-1 inline-block" style={{ letterSpacing: '1px' }}>
-                                         {post.category}
-                                       </span>
-                                     </div>
-                                  </div>
-
-                                   <div className="absolute bottom-3 right-3 bg-black/70 backdrop-blur-md rounded-full px-3 py-1.5 flex items-center gap-1.5 border border-white/20">
-                                     <Clock size={11} style={{
-                                       color: 'transparent',
-                                       background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                                       backgroundSize: '400% 400%',
-                                       WebkitBackgroundClip: 'text',
-                                       WebkitTextFillColor: 'transparent',
-                                       backgroundClip: 'text',
-                                       animation: 'pearlescent 3s ease-in-out infinite'
-                                     }} />
-                                     <span className="text-xs font-medium" style={{
-                                       color: 'transparent',
-                                       background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                                       backgroundSize: '400% 400%',
-                                       WebkitBackgroundClip: 'text',
-                                       WebkitTextFillColor: 'transparent',
-                                       backgroundClip: 'text',
-                                       animation: 'pearlescent 3s ease-in-out infinite'
-                                     }}>
-                                       {Math.ceil(post.content.length / 1000)}m
-                                     </span>
-                                   </div>
-                               </div>
-
-                               {/* Content */}
-                               <div className="p-5 relative">
-                                  {/* Typewriter title */}
-                                   <h4 className="font-bold text-lg mb-3 font-ibm-plex-mono leading-tight transition-colors duration-300 line-clamp-2 drop-shadow-sm" style={{
-                                     color: 'transparent',
-                                     background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                                     backgroundSize: '400% 400%',
-                                     WebkitBackgroundClip: 'text',
-                                     WebkitTextFillColor: 'transparent',
-                                     backgroundClip: 'text',
-                                     animation: 'pearlescent 3s ease-in-out infinite'
-                                   }}>
-                                     {post.title}
-                                   </h4>
-
-                                 {/* Excerpt */}
-                                 <p className="text-white/80 dark:text-brand-cream/80 text-sm leading-relaxed mb-4 line-clamp-2">
-                                   {post.excerpt}
-                                 </p>
-
-                                  {/* Read More Button - Hand-drawn style */}
-                                   <div 
-                                     className="inline-flex items-center gap-2 text-gray-900 px-4 py-2 rounded-lg font-bold text-sm transform hover:scale-105 transition-all duration-200 shadow-lg border-2 border-gray-900 backdrop-blur-sm font-kalam text-base transform -rotate-2 hover:rotate-1 hover:scale-110"
-                                     style={{
-                                       background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                                       backgroundSize: '400% 400%',
-                                       animation: 'pearlescent 3s ease-in-out infinite',
-                                       textShadow: '2px 2px 0px rgba(0,0,0,0.4), -1px -1px 0px rgba(255,255,255,0.3)',
-                                       letterSpacing: '0.5px'
-                                     }}
-                                   >
-                                     <span style={{ transform: 'rotate(-1deg)', display: 'inline-block' }}>Read</span>
-                                     <span style={{ transform: 'rotate(1deg)', display: 'inline-block' }}>Story</span>
-                                     <ExternalLink size={14} className="group-hover:translate-x-0.5 transition-transform duration-200" style={{ transform: 'rotate(-0.5deg)' }} />
-                                   </div>
-                               </div>
-
-                               {/* Irregular edge effect */}
-                                <div className="absolute top-2 right-2 w-6 h-6 transform rotate-45 rounded-sm opacity-60" style={{
-                                  background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                                  backgroundSize: '400% 400%',
-                                  animation: 'pearlescent 3s ease-in-out infinite',
-                                  opacity: 0.2
-                                }}></div>
-                               <div className="absolute bottom-2 left-2 w-4 h-4 bg-white/10 transform -rotate-12 rounded-full opacity-40"></div>
-                             </div>
-                           </div>
-                         </div>
-                      </CarouselItem>
-                    ))}
-                  </CarouselContent>
-                  
-                  {/* Custom Navigation Arrows */}
-                  {getFilteredPosts().length > 4 && (
-                    <>
-                       <CarouselPrevious className="absolute -left-16 top-1/2 transform -translate-y-1/2 border-2 border-gray-900 text-gray-900 shadow-lg rotate-3 hover:rotate-0 transition-all duration-300" style={{
-                         background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                         backgroundSize: '400% 400%',
-                         animation: 'pearlescent 3s ease-in-out infinite'
-                       }} />
-                       <CarouselNext className="absolute -right-16 top-1/2 transform -translate-y-1/2 border-2 border-gray-900 text-gray-900 shadow-lg rotate-3 hover:rotate-0 transition-all duration-300" style={{
-                         background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                         backgroundSize: '400% 400%',
-                         animation: 'pearlescent 3s ease-in-out infinite'
-                       }} />
-                    </>
-                  )}
-                </Carousel>
-
-                {/* Hand-drawn instruction note */}
-                <div className="absolute -bottom-8 -left-8 transform -rotate-12 hidden lg:block">
-                  <div className="bg-pink-200 p-2 shadow-lg border border-pink-300 rounded">
-                    <p className="font-kalam text-xs text-gray-800 leading-tight">
-                      Swipe or click<br />
-                      to explore ➡️
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ) : (
-              <div className="text-center py-12">
-                <div className="rounded-lg p-8 border transform rotate-1" style={{
-                  background: 'linear-gradient(45deg, rgba(244, 208, 63, 0.1), rgba(255, 215, 0, 0.1))',
-                  borderColor: 'rgba(255, 215, 0, 0.3)'
-                }}>
-                  <p className="text-brand-black dark:text-brand-cream font-bold text-lg mb-2 font-permanent-marker">
-                    No Stories in "{selectedCategory}"
-                  </p>
-                  <p className="text-brand-black/70 dark:text-brand-cream/70 font-kalam">
-                    Try a different category or check back soon for fresh content.
-                  </p>
-                </div>
-              </div>
-            )}
-
-            {/* Urban street elements */}
-            <div className="absolute top-10 right-10 w-16 h-16 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTAgMEg0MFY0MEgwVjBaIiBmaWxsPSJibGFjayIgZmlsbC1vcGFjaXR5PSIwLjA1Ii8+Cjwvc3ZnPgo=')] opacity-20 transform rotate-45"></div>
-          </SectionOverlayBox>
-
-          {/* Real Builder Wins (Testimonial Strip) */}
-          <SectionOverlayBox className={`mb-24 transition-all duration-700 delay-900 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            {/* Street Cred Badge */}
-            <div className="flex items-center justify-center mb-8">
-              <div className="relative">
-                {/* Graffiti-style badge */}
-                <div className="px-6 py-3 transform -rotate-2 shadow-lg relative" style={{
-                  background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                  backgroundSize: '400% 400%',
-                  animation: 'pearlescent 3s ease-in-out infinite'
-                }}>
-                  {/* Hand-drawn border */}
-                  <svg
-                    className="absolute inset-0 w-full h-full text-gray-900"
-                    viewBox="0 0 150 50"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M3 3L147 4L146 47L4 46Z"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      fill="none"
-                      opacity="0.4"
-                      strokeDasharray="2,1"
-                    />
-                  </svg>
-                  <span className="relative font-permanent-marker text-lg text-gray-900 font-bold">
-                    STREET CRED ✓
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* Rotating Testimonial */}
-            {testimonials.length > 0 && (
-              <div className="text-center relative">
-                {/* Background decorative quotes */}
-                <div className="absolute -top-4 -left-4 text-6xl font-bold" style={{
-                  color: 'transparent',
-                  background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                  backgroundSize: '400% 400%',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                  animation: 'pearlescent 3s ease-in-out infinite',
-                  opacity: 0.2
-                }}>
-                  <Quote size={60} />
-                </div>
-                <div className="absolute -bottom-4 -right-4 text-6xl font-bold transform rotate-180" style={{
-                  color: 'transparent',
-                  background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                  backgroundSize: '400% 400%',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                  animation: 'pearlescent 3s ease-in-out infinite',
-                  opacity: 0.2
-                }}>
-                  <Quote size={60} />
-                </div>
-
-                {/* Main testimonial */}
-                <div className="relative z-10 max-w-4xl mx-auto">
-                  <blockquote className="text-2xl md:text-3xl font-kalam text-brand-black dark:text-brand-cream leading-relaxed mb-6 italic transform transition-all duration-500">
-                    "{testimonials[currentTestimonial]?.quote}"
-                  </blockquote>
-                  
-                  {/* Attribution */}
-                  <div className="flex items-center justify-center">
-                    <div className="font-comic-neue text-lg text-brand-black/80 dark:text-brand-cream/80">
-                      <span className="font-bold">—{testimonials[currentTestimonial]?.name}</span>
-                      <span className="mx-2" style={{
-                        color: 'transparent',
-                        background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                        backgroundSize: '400% 400%',
-                        WebkitBackgroundClip: 'text',
-                        WebkitTextFillColor: 'transparent',
-                        backgroundClip: 'text',
-                        animation: 'pearlescent 3s ease-in-out infinite'
-                      }}>•</span>
-                      <span>{testimonials[currentTestimonial]?.city_area}</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Testimonial indicators */}
-                <div className="flex justify-center mt-8 space-x-2">
-                  {testimonials.map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setCurrentTestimonial(index)}
-                      className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                        index === currentTestimonial
-                          ? 'scale-125'
-                          : 'bg-gray-300 dark:bg-gray-600 hover:bg-gray-400/50'
-                        } ${index === currentTestimonial ? '' : 'hover:scale-110'}`}
-                        style={index === currentTestimonial ? {
-                          background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                          backgroundSize: '400% 400%',
-                          animation: 'pearlescent 3s ease-in-out infinite'
-                        } : {}}
-                      aria-label={`View testimonial ${index + 1}`}
-                    />
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Handwritten note effect */}
-            <div className="absolute -bottom-6 -right-6 transform rotate-12">
-              <div className="bg-yellow-200 p-3 shadow-lg">
-                <p className="font-kalam text-sm text-gray-800 leading-tight">
-                  Real builders<br />
-                  Real wins ✨
-                </p>
-              </div>
-            </div>
-
-            {/* Urban texture overlay */}
-            <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-5" aria-hidden="true">
-              <div className="absolute bottom-10 left-10 w-24 h-24 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTAgMEg0MFY0MEgwVjBaIiBmaWxsPSJibGFjayIgZmlsbC1vcGFjaXR5PSIwLjEiLz4KPHBhdGggZD0iTTIwIDJMMzggMjBMMjAgMzhMMiAyMEwyMCAyWiIgZmlsbD0iYmxhY2siIGZpbGwtb3BhY2l0eT0iMC4wNSIvPgo8L3N2Zz4K')] opacity-30"></div>
-            </div>
-          </SectionOverlayBox>
-
-          {/* FAQ: Real Talk About the Journey */}
-          <SectionOverlayBox className={`mb-24 transition-all duration-700 delay-1100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            {/* Grain overlay */}
-            <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(circle_at_2px_2px,_rgba(0,0,0,1)_1px,_transparent_0)] bg-[length:15px_15px]"></div>
-            
-            {/* Section Header */}
-            <div className="text-center mb-12 relative z-10">
-              <div className="relative inline-block mb-6">
-                <h3 className="text-4xl md:text-5xl font-black text-brand-black dark:text-brand-cream relative">
-                   <span className="font-permanent-marker transform -rotate-1 mr-4" style={{
-                     color: 'transparent',
-                     background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                     backgroundSize: '400% 400%',
-                     WebkitBackgroundClip: 'text',
-                     WebkitTextFillColor: 'transparent',
-                     backgroundClip: 'text',
-                     animation: 'pearlescent 3s ease-in-out infinite'
-                   }}>
-                     REAL TALK
-                   </span>
-                  About the Journey
-                  {/* Handwritten underline */}
-                  <svg
-                    className="absolute -bottom-3 left-0 w-full h-4"
-                    viewBox="0 0 400 20"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M5 15C25 12 45 8 65 10C85 12 105 8 125 12C145 16 165 8 185 12C205 16 225 12 245 15C265 18 285 10 305 14C325 18 345 12 365 16C385 20 395 18 395 16"
-                      stroke="url(#gradient8)"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      fill="none"
-                    />
-                    <defs>
-                      <linearGradient id="gradient8" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" style={{ stopColor: '#f4d03f' }} />
-                        <stop offset="25%" style={{ stopColor: '#ffd700' }} />
-                        <stop offset="50%" style={{ stopColor: '#ffeb3b' }} />
-                        <stop offset="75%" style={{ stopColor: '#fff176' }} />
-                        <stop offset="100%" style={{ stopColor: '#f4d03f' }} />
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                </h3>
-              </div>
-              <p className="text-lg text-brand-black/70 dark:text-brand-cream/70 max-w-2xl mx-auto font-kalam">
-                The questions we all got but nobody talks about. Here's the real.
-              </p>
-            </div>
-
-            {/* FAQ Items */}
-            <div className="space-y-8 relative z-10">
-              
-              {/* FAQ 1 */}
-              <div className="group">
-                 <div className="flex items-start gap-4 p-6 bg-white/50 dark:bg-gray-900/50 rounded-lg border-l-4 hover:bg-white/70 dark:hover:bg-gray-900/70 transition-all duration-300" style={{ borderLeftColor: '#ffd700' }}>
-                   <div className="flex-shrink-0 mt-1">
-                     <div className="relative">
-                       <div className="w-12 h-12 rounded-full flex items-center justify-center transform -rotate-6 group-hover:rotate-0 transition-transform duration-300" style={{
-                         background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                         backgroundSize: '400% 400%',
-                         animation: 'pearlescent 3s ease-in-out infinite'
-                       }}>
-                         <TrendingUp size={24} className="text-gray-900" />
-                       </div>
-                      {/* Hand-drawn circle */}
-                      <svg
-                        className="absolute inset-0 w-full h-full text-[#FFD700]/60"
-                        viewBox="0 0 50 50"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <circle
-                          cx="25"
-                          cy="25"
-                          r="23"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          fill="none"
-                          strokeDasharray="3,2"
-                          opacity="0.5"
-                        />
-                      </svg>
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <h4 className="text-xl font-bold text-brand-black dark:text-brand-cream mb-3 font-permanent-marker transform -rotate-1">
-                      "What if I keep falling off?"
-                    </h4>
-                    <p className="text-brand-black/80 dark:text-brand-cream/80 leading-relaxed">
-                      Listen, falling off is part of the process—it's not failure, it's data. Every time you "fall off," you're learning what doesn't work for YOUR situation. 
-                      <br /><br />
-                      The key is building systems that work WITH your life, not against it. Start smaller than you think you need to. Can't do an hour? Do 15 minutes. Can't save $100? Save $10. 
-                      <br /><br />
-                      Progress isn't about perfection—it's about getting back up one more time than you fall down. Your comeback is always stronger than your setback.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* FAQ 2 */}
-              <div className="group">
-                <div className="flex items-start gap-4 p-6 bg-white/50 dark:bg-gray-900/50 rounded-lg border-l-4 border-[#FFD700] hover:bg-white/70 dark:hover:bg-gray-900/70 transition-all duration-300">
-                  <div className="flex-shrink-0 mt-1">
-                    <div className="relative">
-                      <div className="w-12 h-12 bg-[#FFD700] rounded-full flex items-center justify-center transform rotate-6 group-hover:rotate-0 transition-transform duration-300">
-                        <Heart size={24} className="text-gray-900" />
-                      </div>
-                      <svg
-                        className="absolute inset-0 w-full h-full text-[#FFD700]/60"
-                        viewBox="0 0 50 50"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M5 25L15 15L25 25L35 15L45 25L35 35L25 25L15 35Z"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          fill="none"
-                          opacity="0.4"
-                        />
-                      </svg>
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <h4 className="text-xl font-bold text-brand-black dark:text-brand-cream mb-3 font-permanent-marker transform rotate-1">
-                      "How do I stay motivated when nothing's working?"
-                    </h4>
-                    <p className="text-brand-black/80 dark:text-brand-cream/80 leading-relaxed">
-                      Real talk: motivation is trash. It comes and goes like the weather. What you need is momentum and community.
-                      <br /><br />
-                      Start documenting SMALL wins—even saving $5 counts. Connect with others on the same journey who get where you're coming from. When you can't see your own progress, they'll remind you how far you've come.
-                      <br /><br />
-                      And remember: "nothing's working" usually means the timeline is different than you expected, not that you're failing. The strongest trees grow slowly underground before you see them break through.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* FAQ 3 */}
-              <div className="group">
-                <div className="flex items-start gap-4 p-6 bg-white/50 dark:bg-gray-900/50 rounded-lg border-l-4 border-[#FFD700] hover:bg-white/70 dark:hover:bg-gray-900/70 transition-all duration-300">
-                  <div className="flex-shrink-0 mt-1">
-                    <div className="relative">
-                      <div className="w-12 h-12 bg-[#FFD700] rounded-full flex items-center justify-center transform -rotate-12 group-hover:rotate-0 transition-transform duration-300">
-                        <DollarSign size={24} className="text-gray-900" />
-                      </div>
-                      <svg
-                        className="absolute inset-0 w-full h-full text-[#FFD700]/60"
-                        viewBox="0 0 50 50"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <rect
-                          x="5"
-                          y="5"
-                          width="40"
-                          height="40"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          fill="none"
-                          opacity="0.3"
-                          transform="rotate(15 25 25)"
-                        />
-                      </svg>
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <h4 className="text-xl font-bold text-brand-black dark:text-brand-cream mb-3 font-permanent-marker transform -rotate-1">
-                      "Can I really break money trauma if I've never seen wealth?"
-                    </h4>
-                    <p className="text-brand-black/80 dark:text-brand-cream/80 leading-relaxed">
-                      Absolutely. You don't need to have seen wealth to create it—you just need to understand that money trauma is real and it's been passed down for generations.
-                      <br /><br />
-                      Start by recognizing the stories you tell yourself about money. "Money doesn't grow on trees," "Rich people are greedy," "We can't afford that"—these aren't facts, they're beliefs that can be changed.
-                      <br /><br />
-                      Every wealthy person you admire was once broke too. The difference? They changed their relationship with money first, then their bank account followed. You're not behind—you're exactly where you need to be to start building something different.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* FAQ 4 */}
-              <div className="group">
-                <div className="flex items-start gap-4 p-6 bg-white/50 dark:bg-gray-900/50 rounded-lg border-l-4 border-[#FFD700] hover:bg-white/70 dark:hover:bg-gray-900/70 transition-all duration-300">
-                  <div className="flex-shrink-0 mt-1">
-                    <div className="relative">
-                      <div className="w-12 h-12 bg-[#FFD700] rounded-full flex items-center justify-center transform rotate-12 group-hover:rotate-0 transition-transform duration-300">
-                        <HelpCircle size={24} className="text-gray-900" />
-                      </div>
-                      <svg
-                        className="absolute inset-0 w-full h-full text-[#FFD700]/60"
-                        viewBox="0 0 50 50"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <polygon
-                          points="25,5 45,20 35,45 15,45 5,20"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          fill="none"
-                          opacity="0.4"
-                        />
-                      </svg>
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <h4 className="text-xl font-bold text-brand-black dark:text-brand-cream mb-3 font-permanent-marker transform rotate-1">
-                      "How do I know if this stuff actually works?"
-                    </h4>
-                    <p className="text-brand-black/80 dark:text-brand-cream/80 leading-relaxed">
-                      Look at the receipts. These aren't theoretical concepts—they're proven strategies that work for people who started exactly where you are.
-                      <br /><br />
-                      Start with one thing: track your money for 30 days. Just track it. See where it goes. That simple step shows most people they have more control than they thought. From there, every other strategy becomes easier to implement.
-                      <br /><br />
-                      You don't have to trust us—trust the process, track your progress, and let the results speak for themselves.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-            {/* Handwritten note */}
-            <div className="absolute -bottom-4 -left-4 transform -rotate-6">
-              <div className="bg-yellow-200 p-3 shadow-lg border border-yellow-300">
-                <p className="font-kalam text-sm text-gray-800 leading-tight">
-                  Keep it 💯<br />
-                  Always ✨
-                </p>
-              </div>
-            </div>
-          </SectionOverlayBox>
-
-          {/* Coming Soon Content */}
-          <SectionOverlayBox className={`transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <div className="text-center">
-              <h3 className="text-2xl font-bold text-brand-black dark:text-brand-cream mb-4">
-                Real Stories Coming Soon
-              </h3>
-              <p className="text-lg text-brand-black/70 dark:text-brand-cream/70 mb-6">
-                We're collecting authentic stories from builders who made it out the struggle. 
-                First-gen entrepreneurs, street-smart hustlers, and folks who turned vision into reality.
-              </p>
-                <div className="rounded-lg p-4 border" style={{
-                  background: 'linear-gradient(45deg, rgba(244, 208, 63, 0.2), rgba(255, 215, 0, 0.2))',
-                  borderColor: 'rgba(255, 215, 0, 0.3)'
-                }}>
-                <p className="text-brand-black dark:text-brand-cream font-medium">
-                  Got a story to share? Your journey could inspire the next builder.
-                </p>
-              </div>
-            </div>
-          </SectionOverlayBox>
-
+            </SectionOverlayBox>
+          )}
         </div>
       </main>
 

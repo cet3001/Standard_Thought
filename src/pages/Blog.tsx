@@ -55,7 +55,7 @@ const Blog = () => {
       <Navigation />
 
       {/* Main Content */}
-      <main className="relative z-10 pt-36 md:pt-36 pb-16 mobile:pt-44 sm:pt-40">
+      <main className="relative z-10 pt-36 pb-16" style={{ paddingTop: 'clamp(8rem, 12vw, 9rem)' }}>
         <div className="container mx-auto px-6 max-w-7xl">
           
           {/* Hero Section */}

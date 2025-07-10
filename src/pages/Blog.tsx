@@ -219,7 +219,7 @@ const Blog = () => {
                 </h2>
               </div>
 
-              <p className="text-xl md:text-2xl text-brand-black/80 dark:text-brand-cream/80 mb-8 max-w-4xl mx-auto leading-relaxed">
+              <p className="text-xl md:text-2xl text-white/90 dark:text-brand-cream/90 mb-8 max-w-4xl mx-auto leading-relaxed">
                 No trust funds. No shortcuts. Just real blueprints from folks who built it brick by brick.
               </p>
 
@@ -252,7 +252,7 @@ const Blog = () => {
                   EXPLORE
                 </span>
               </h3>
-              <p className="text-lg text-brand-black/70 dark:text-brand-cream/70 max-w-2xl mx-auto">
+              <p className="text-lg text-white/80 dark:text-brand-cream/80 max-w-2xl mx-auto">
                 From setbacks to stacks—browse by category and get the real game from those who built it brick by brick.
               </p>
             </div>
@@ -317,21 +317,33 @@ const Blog = () => {
                           <div className="p-6">
                             {/* Category Badge */}
                             <div className="flex items-center gap-2 mb-3">
-                              <span className="px-3 py-1 text-xs font-medium rounded-full" style={{
-                                background: 'linear-gradient(45deg, rgba(244, 208, 63, 0.2), rgba(255, 215, 0, 0.2))',
-                                color: '#b45309'
+                              <span className="px-3 py-1.5 text-xs font-bold rounded-sm border-2 border-gray-900 shadow-lg font-kalam transform -rotate-2" style={{
+                                background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                                backgroundSize: '400% 400%',
+                                animation: 'pearlescent 3s ease-in-out infinite',
+                                textShadow: '1px 1px 0px rgba(0,0,0,0.3), -1px -1px 0px rgba(255,255,255,0.2)',
+                                color: '#000',
+                                letterSpacing: '1px'
                               }}>
-                                {post.category}
+                                {post.category.toUpperCase()}
                               </span>
                             </div>
                             
                             {/* Title */}
-                            <h4 className="text-lg font-bold text-brand-black dark:text-brand-cream mb-3 line-clamp-2 group-hover:text-primary transition-colors">
+                            <h4 className="text-lg font-bold mb-3 line-clamp-2 font-ibm-plex-mono leading-tight transition-colors duration-300 drop-shadow-sm" style={{
+                              color: 'transparent',
+                              background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                              backgroundSize: '400% 400%',
+                              WebkitBackgroundClip: 'text',
+                              WebkitTextFillColor: 'transparent',
+                              backgroundClip: 'text',
+                              animation: 'pearlescent 3s ease-in-out infinite'
+                            }}>
                               {post.title}
                             </h4>
                             
                             {/* Excerpt */}
-                            <p className="text-sm text-brand-black/70 dark:text-brand-cream/70 mb-4 line-clamp-3 leading-relaxed">
+                            <p className="text-sm text-white/80 dark:text-brand-cream/80 mb-4 line-clamp-3 leading-relaxed">
                               {post.excerpt}
                             </p>
                             
@@ -356,8 +368,25 @@ const Blog = () => {
                             
                             {/* Footer */}
                             <div className="flex items-center justify-between">
-                              <div className="flex items-center gap-2 text-xs text-brand-black/60 dark:text-brand-cream/60">
-                                <Clock className="w-3 h-3" />
+                              <div className="flex items-center gap-2 text-xs" style={{
+                                color: 'transparent',
+                                background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                                backgroundSize: '400% 400%',
+                                WebkitBackgroundClip: 'text',
+                                WebkitTextFillColor: 'transparent',
+                                backgroundClip: 'text',
+                                animation: 'pearlescent 3s ease-in-out infinite',
+                                opacity: 0.8
+                              }}>
+                                <Clock className="w-3 h-3" style={{
+                                  color: 'transparent',
+                                  background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                                  backgroundSize: '400% 400%',
+                                  WebkitBackgroundClip: 'text',
+                                  WebkitTextFillColor: 'transparent',
+                                  backgroundClip: 'text',
+                                  animation: 'pearlescent 3s ease-in-out infinite'
+                                }} />
                                 <span>{new Date(post.created_at).toLocaleDateString()}</span>
                               </div>
                               
@@ -392,10 +421,18 @@ const Blog = () => {
                       background: 'linear-gradient(45deg, rgba(244, 208, 63, 0.1), rgba(255, 215, 0, 0.1))',
                       borderColor: 'rgba(255, 215, 0, 0.3)'
                     }}>
-                      <p className="text-brand-black dark:text-brand-cream font-bold text-lg mb-2 font-permanent-marker">
+                      <p className="font-bold text-lg mb-2 font-permanent-marker" style={{
+                        color: 'transparent',
+                        background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                        backgroundSize: '400% 400%',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        backgroundClip: 'text',
+                        animation: 'pearlescent 3s ease-in-out infinite'
+                      }}>
                         No Stories Found
                       </p>
-                      <p className="text-brand-black/70 dark:text-brand-cream/70 font-kalam">
+                      <p className="text-white/80 dark:text-brand-cream/80 font-kalam">
                         Try adjusting your filters or check back soon for fresh content.
                       </p>
                     </div>

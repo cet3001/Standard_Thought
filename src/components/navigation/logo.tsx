@@ -23,12 +23,10 @@ const Logo = () => {
               className="font-black"
               style={{ 
                 background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                backgroundSize: '400% 400%',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
-                color: 'transparent',
-                animation: 'pearlescent 3s ease-in-out infinite'
+                color: 'transparent'
               }}
             >
               Thought
@@ -39,8 +37,6 @@ const Logo = () => {
             style={{ 
               fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
               background: 'linear-gradient(45deg, #FFD700, #F4D03F, #FFEB3B, #D4AF37)',
-              backgroundSize: '200% 200%',
-              animation: 'pearlescent 3s ease-in-out infinite',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
@@ -54,19 +50,6 @@ const Logo = () => {
         </div>
       </div>
 
-      <style>{`
-        @keyframes pearlescent {
-          0% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-          100% {
-            background-position: 0% 50%;
-          }
-        }
-      `}</style>
     </Link>
   );
 };

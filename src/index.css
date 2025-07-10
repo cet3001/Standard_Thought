@@ -31,7 +31,6 @@
 @import "./styles/mobile/performance.css";
 @import "./styles/mobile/responsive-adjustments.css";
 @import "./styles/mobile/device-specific.css";
-@import "./styles/pearlescent.css";
 
 /* Critical rendering path - inline critical styles */
 html {

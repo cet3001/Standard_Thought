@@ -30,11 +30,9 @@ const CashManagementActionPlan = () => {
               Cash Management{" "}
               <span className="text-[#FFD700]" style={{
                 background: 'linear-gradient(45deg, #FFD700, #FFF8DC, #FFA500, #FFD700)',
-                backgroundSize: '400% 400%',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                animation: 'shimmer 3s ease-in-out infinite'
+                backgroundClip: 'text'
               }}>
                 Action Plan
               </span>{" "}

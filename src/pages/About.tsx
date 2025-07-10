@@ -65,9 +65,9 @@ const About = () => {
       <Navigation />
 
       {/* Main Content */}
-      <main className="relative z-10">
+      <main className="relative z-10 pt-20 sm:pt-24 lg:pt-28">
         {/* Hero Section: "Unlock Your Mindset Arsenal" */}
-        <section className="header-spacing pb-32 relative overflow-hidden">
+        <section className="pb-32 relative overflow-hidden">
           {/* Floating Elements */}
           <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
             <div className="absolute top-20 right-10 w-32 h-32 rounded-full bg-[#FFD700]/10 animate-float"></div>

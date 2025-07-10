@@ -55,7 +55,7 @@ const Blog = () => {
       <Navigation />
 
       {/* Main Content */}
-      <main className="relative z-10 header-spacing pb-16">
+      <main className="relative z-10 pt-20 sm:pt-24 lg:pt-28 pb-16">
         <div className="container mx-auto px-6 max-w-7xl">
           
           {/* Hero Section */}

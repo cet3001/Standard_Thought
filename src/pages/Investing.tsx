@@ -96,7 +96,7 @@ const Investing = () => {
       <Navigation />
 
       {/* Main Content */}
-      <main className="relative z-10 mt-20">
+      <main className="relative z-10 pt-20 sm:pt-24 lg:pt-28">
         {/* Hero Section */}
         <section className="py-16 sm:py-24 relative">
           {/* Back Button - Left aligned */}

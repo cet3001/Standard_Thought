@@ -171,7 +171,7 @@ const Index = () => {
         <Navigation />
 
         {/* Main Content */}
-        <main className="relative z-10">
+        <main className="relative z-10 pt-20 sm:pt-24 lg:pt-28">
           {/* Hero Section */}
           <HomepageHero scrollToNewsletter={scrollToNewsletter} />
 

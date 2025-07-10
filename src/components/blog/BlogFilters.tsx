@@ -70,7 +70,7 @@ export const BlogFilters = ({
   };
 
   return (
-    <div className="space-y-6 p-6 bg-background/50 border border-border/60 rounded-xl backdrop-blur-sm">
+    <div className="space-y-6 p-6 bg-card border border-border rounded-xl">
       {/* Filter Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
@@ -78,7 +78,7 @@ export const BlogFilters = ({
             <Filter className="h-4 w-4 text-primary" />
           </div>
           <div>
-            <h3 className="font-semibold text-foreground">Filter Articles</h3>
+            <h3 className="font-semibold text-card-foreground">Filter Articles</h3>
             <p className="text-sm text-muted-foreground">
               {articleCount} article{articleCount !== 1 ? 's' : ''} found
             </p>
@@ -100,14 +100,14 @@ export const BlogFilters = ({
 
       {/* Category Filter */}
       <div className="space-y-3">
-        <label className="text-sm font-medium text-foreground">Category</label>
+        <label className="text-sm font-medium text-card-foreground">Category</label>
         <Select value={selectedCategory} onValueChange={onCategoryChange}>
-          <SelectTrigger className="w-full">
+          <SelectTrigger className="w-full bg-background border-border text-foreground">
             <SelectValue />
           </SelectTrigger>
-          <SelectContent>
+          <SelectContent className="bg-background border-border">
             {BLOG_CATEGORIES.map((category) => (
-              <SelectItem key={category} value={category}>
+              <SelectItem key={category} value={category} className="text-foreground">
                 {category}
               </SelectItem>
             ))}
@@ -117,9 +117,9 @@ export const BlogFilters = ({
 
       {/* Sort Options */}
       <div className="space-y-3">
-        <label className="text-sm font-medium text-foreground">Sort By</label>
+        <label className="text-sm font-medium text-card-foreground">Sort By</label>
         <Select value={sortBy} onValueChange={onSortChange}>
-          <SelectTrigger className="w-full">
+          <SelectTrigger className="w-full bg-background border-border text-foreground">
             <div className="flex items-center gap-2">
               {sortBy.includes('desc') || sortBy === 'newest' ? 
                 <SortDesc className="h-4 w-4" /> : 
@@ -128,58 +128,72 @@ export const BlogFilters = ({
               <SelectValue />
             </div>
           </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="newest">Newest First</SelectItem>
-            <SelectItem value="oldest">Oldest First</SelectItem>
-            <SelectItem value="title-asc">Title A-Z</SelectItem>
-            <SelectItem value="title-desc">Title Z-A</SelectItem>
+          <SelectContent className="bg-background border-border">
+            <SelectItem value="newest" className="text-foreground">Newest First</SelectItem>
+            <SelectItem value="oldest" className="text-foreground">Oldest First</SelectItem>
+            <SelectItem value="title-asc" className="text-foreground">Title A-Z</SelectItem>
+            <SelectItem value="title-desc" className="text-foreground">Title Z-A</SelectItem>
           </SelectContent>
         </Select>
       </div>
 
-      {/* Tag Filter */}
-      <div className="space-y-3">
-        <div className="flex items-center justify-between">
-          <label className="text-sm font-medium text-foreground">Tags</label>
-          {selectedTags.length > 0 && (
-            <span className="text-xs text-muted-foreground bg-muted px-2 py-1 rounded">
-              {selectedTags.length} selected
-            </span>
+      {/* Collapsible Tag Filter */}
+      {(selectedTags.length > 0 || showAllTags) && (
+        <div className="space-y-3">
+          <div className="flex items-center justify-between">
+            <label className="text-sm font-medium text-card-foreground">Tags</label>
+            {selectedTags.length > 0 && (
+              <span className="text-xs text-muted-foreground bg-muted px-2 py-1 rounded">
+                {selectedTags.length} selected
+              </span>
+            )}
+          </div>
+          
+          <div className="flex flex-wrap gap-2">
+            {displayTags.map((tag) => {
+              const isSelected = selectedTags.includes(tag);
+              return (
+                <Badge
+                  key={tag}
+                  variant={isSelected ? "default" : "outline"}
+                  className={`cursor-pointer transition-all hover:scale-105 ${
+                    isSelected 
+                      ? "bg-primary text-primary-foreground shadow-lg" 
+                      : "hover:bg-muted"
+                  }`}
+                  onClick={() => onTagToggle(tag)}
+                >
+                  {formatTagName(tag)}
+                  {isSelected && <X className="h-3 w-3 ml-1" />}
+                </Badge>
+              );
+            })}
+          </div>
+          
+          {BLOG_TAGS.length > 8 && (
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setShowAllTags(!showAllTags)}
+              className="text-muted-foreground hover:text-foreground"
+            >
+              {showAllTags ? "Show Less" : `Show All ${BLOG_TAGS.length} Tags`}
+            </Button>
           )}
         </div>
-        
-        <div className="flex flex-wrap gap-2">
-          {displayTags.map((tag) => {
-            const isSelected = selectedTags.includes(tag);
-            return (
-              <Badge
-                key={tag}
-                variant={isSelected ? "default" : "outline"}
-                className={`cursor-pointer transition-all hover:scale-105 ${
-                  isSelected 
-                    ? "bg-primary text-primary-foreground shadow-lg" 
-                    : "hover:bg-muted"
-                }`}
-                onClick={() => onTagToggle(tag)}
-              >
-                {formatTagName(tag)}
-                {isSelected && <X className="h-3 w-3 ml-1" />}
-              </Badge>
-            );
-          })}
-        </div>
-        
-        {BLOG_TAGS.length > 8 && (
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => setShowAllTags(!showAllTags)}
-            className="text-muted-foreground hover:text-foreground"
-          >
-            {showAllTags ? "Show Less" : `Show All ${BLOG_TAGS.length} Tags`}
-          </Button>
-        )}
-      </div>
+      )}
+
+      {/* Show Tags Button when collapsed */}
+      {selectedTags.length === 0 && !showAllTags && (
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => setShowAllTags(true)}
+          className="w-full text-muted-foreground hover:text-foreground"
+        >
+          Show Tag Filters
+        </Button>
+      )}
 
       {/* Active Filters Summary */}
       {hasActiveFilters && (

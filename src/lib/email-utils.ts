@@ -53,6 +53,21 @@ export const subscribeToNewsletter = async (email: string, name?: string) => {
     trackNewsletterSignup(email)
     trackPlaybookDownload(email)
 
+    // Log campaign tracking
+    try {
+      await supabase
+        .from('email_campaigns')
+        .insert([{
+          campaign_type: 'welcome',
+          subject: 'Welcome to Standard Thought + Your Urban Wealth Building Blueprint',
+          sent_count: 1,
+          sent_at: new Date().toISOString()
+        }]);
+    } catch (campaignError) {
+      console.error('Campaign tracking error:', campaignError);
+      // Don't throw - this is just for analytics
+    }
+
     // Send welcome email with playbook after successful subscription
     try {
       if (process.env.NODE_ENV !== 'production') {

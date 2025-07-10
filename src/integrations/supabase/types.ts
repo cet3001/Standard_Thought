@@ -142,6 +142,77 @@ export type Database = {
           },
         ]
       }
+      email_campaigns: {
+        Row: {
+          campaign_type: string
+          created_at: string
+          created_by: string | null
+          failed_count: number
+          id: string
+          sent_at: string | null
+          sent_count: number
+          subject: string
+        }
+        Insert: {
+          campaign_type: string
+          created_at?: string
+          created_by?: string | null
+          failed_count?: number
+          id?: string
+          sent_at?: string | null
+          sent_count?: number
+          subject: string
+        }
+        Update: {
+          campaign_type?: string
+          created_at?: string
+          created_by?: string | null
+          failed_count?: number
+          id?: string
+          sent_at?: string | null
+          sent_count?: number
+          subject?: string
+        }
+        Relationships: []
+      }
+      email_sends: {
+        Row: {
+          campaign_id: string | null
+          clicked_at: string | null
+          id: string
+          opened_at: string | null
+          sent_at: string
+          status: string
+          subscriber_email: string
+        }
+        Insert: {
+          campaign_id?: string | null
+          clicked_at?: string | null
+          id?: string
+          opened_at?: string | null
+          sent_at?: string
+          status?: string
+          subscriber_email: string
+        }
+        Update: {
+          campaign_id?: string | null
+          clicked_at?: string | null
+          id?: string
+          opened_at?: string | null
+          sent_at?: string
+          status?: string
+          subscriber_email?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "email_sends_campaign_id_fkey"
+            columns: ["campaign_id"]
+            isOneToOne: false
+            referencedRelation: "email_campaigns"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       guide_downloads: {
         Row: {
           downloaded_at: string

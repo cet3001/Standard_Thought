@@ -8,17 +8,17 @@ import type { Database } from './types'
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL
 const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY
 
-// Use the actual project values if env vars are missing (for production)
-const supabaseUrl = SUPABASE_URL || 'https://zedewynjmeyhbjysnxld.supabase.co'
-const supabaseKey = SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InplZGV3eW5qbWV5aGJqeXNueGxkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDkwNjQ3OTcsImV4cCI6MjA2NDY0MDc5N30.AHawgYUm8V74I_LoLbU2HUmOwV3A35cvL-QTJ-ZVuyA'
-
+// Validate required environment variables
 if (!SUPABASE_URL) {
-  console.warn('VITE_SUPABASE_URL is missing. Using production URL.')
+  throw new Error('VITE_SUPABASE_URL is required but missing from environment variables')
 }
 
 if (!SUPABASE_ANON_KEY) {
-  console.warn('VITE_SUPABASE_ANON_KEY is missing. Using production key.')
+  throw new Error('VITE_SUPABASE_ANON_KEY is required but missing from environment variables')
 }
+
+const supabaseUrl = SUPABASE_URL
+const supabaseKey = SUPABASE_ANON_KEY
 
 export const supabase = createClient<Database>(supabaseUrl, supabaseKey, {
   auth: {

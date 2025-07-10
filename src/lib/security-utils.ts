@@ -1,12 +1,18 @@
 import DOMPurify from 'dompurify';
 
-// Configure DOMPurify with security settings
+// Configure DOMPurify with enhanced security settings
 const purifyConfig = {
-  ALLOWED_TAGS: ['p', 'br', 'strong', 'em', 'u', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ul', 'ol', 'li', 'blockquote', 'a', 'img'],
-  ALLOWED_ATTR: ['href', 'src', 'alt', 'title', 'class'],
+  ALLOWED_TAGS: ['p', 'br', 'strong', 'em', 'u', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ul', 'ol', 'li', 'blockquote'],
+  ALLOWED_ATTR: ['class'],
   ALLOWED_URI_REGEXP: /^https?:\/\/|^\/|^#/,
-  FORBID_TAGS: ['script', 'object', 'embed', 'style', 'form', 'input', 'textarea', 'button'],
-  FORBID_ATTR: ['onerror', 'onload', 'onclick', 'onmouseover', 'onfocus', 'onblur', 'onchange', 'onsubmit']
+  FORBID_TAGS: ['script', 'object', 'embed', 'style', 'form', 'input', 'textarea', 'button', 'link', 'meta', 'iframe', 'frame', 'frameset', 'svg', 'math'],
+  FORBID_ATTR: ['onerror', 'onload', 'onclick', 'onmouseover', 'onfocus', 'onblur', 'onchange', 'onsubmit', 'href', 'src', 'action', 'formaction', 'data', 'style'],
+  FORCE_BODY: true,
+  SANITIZE_DOM: true,
+  KEEP_CONTENT: false,
+  RETURN_DOM: false,
+  RETURN_DOM_FRAGMENT: false,
+  RETURN_TRUSTED_TYPE: false
 };
 
 /**

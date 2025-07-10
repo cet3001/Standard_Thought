@@ -90,7 +90,7 @@ const BlogPost = () => {
         </div>
 
         <Navigation />
-        <main className="relative z-10 pt-36 pb-16">
+        <main className="relative z-10 header-spacing pb-16">
           <div className="container mx-auto px-6 max-w-4xl">
             <div className="text-center py-20">
               <div className="text-6xl font-permanent-marker transform -rotate-12 drop-shadow-lg mb-4" style={{
@@ -135,7 +135,7 @@ const BlogPost = () => {
         </div>
 
         <Navigation />
-        <main className="relative z-10 pt-36 pb-16">
+        <main className="relative z-10 header-spacing pb-16">
           <div className="container mx-auto px-6 max-w-4xl">
             <div className="text-center py-20">
               <div className="text-6xl font-permanent-marker transform -rotate-12 drop-shadow-lg mb-4" style={{
@@ -212,7 +212,7 @@ const BlogPost = () => {
 
       <Navigation />
 
-      <main className="relative z-10 pt-36 pb-16">
+      <main className="relative z-10 header-spacing pb-16">
         <article className="container mx-auto px-6 max-w-4xl">
           
           {/* Back Button */}

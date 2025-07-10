@@ -12,6 +12,11 @@
   .px-8 { padding-left: 1.5rem; padding-right: 1.5rem; }
 }
 
+/* Global consistent header spacing for all pages */
+.header-spacing {
+  padding-top: clamp(7rem, 10vw + 4rem, 9rem);
+}
+
 /* Ultra-small screens adjustments */
 @media (max-width: 375px) {
   /* Further reduce padding on very small screens */

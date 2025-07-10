@@ -44,7 +44,7 @@ const ImageGeneratorPage = () => {
         <div className="relative z-10">
           <Navigation />
           
-          <div className="pt-36 pb-16">
+          <div className="header-spacing pb-16">
             <ImageGenerator />
           </div>
 

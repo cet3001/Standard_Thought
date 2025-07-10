@@ -7,7 +7,7 @@ const TermsOfService = () => {
     <div className="min-h-screen bg-brand-cream dark:bg-brand-black">
       <Navigation />
       
-      <main className="pt-36 pb-16">
+      <main className="header-spacing pb-16">
         <div className="container mx-auto px-6 max-w-4xl">
           <h1 className="text-4xl font-bold mb-8 text-[#0A0A0A] dark:text-brand-cream">Terms of Service</h1>
           <div className="prose prose-lg max-w-none text-[#0A0A0A] dark:text-brand-cream">

@@ -55,7 +55,7 @@ const CookiePolicy = () => {
       <Navigation />
 
       {/* Main Content */}
-      <main className="relative z-10 pt-28 pb-16">
+      <main className="relative z-10 header-spacing pb-16">
         <div className="container mx-auto px-6 max-w-4xl">
           <div className="bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm rounded-2xl p-8 sm:p-12 border border-gray-300/20 dark:border-gray-700/20 shadow-xl">
             

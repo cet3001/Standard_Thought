@@ -175,7 +175,7 @@ const AdminEmail = () => {
 
       <Navigation />
 
-      <main className="relative z-10 pt-36 pb-16">
+      <main className="relative z-10 header-spacing pb-16">
         <div className="container mx-auto px-6 max-w-6xl">
           
           {/* Header */}

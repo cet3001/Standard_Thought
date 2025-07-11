@@ -4,8 +4,10 @@ import { useGuides } from '@/hooks/use-guides';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Plus, Edit, Trash2, Eye, EyeOff } from 'lucide-react';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Plus, Edit, Trash2, Eye, EyeOff, Settings } from 'lucide-react';
 import { GuideForm } from '@/components/admin/GuideForm';
+import { CTAManagement } from '@/components/admin/CTAManagement';
 import { Guide } from '@/hooks/use-guides';
 import { useToast } from '@/hooks/use-toast';
 
@@ -82,113 +84,134 @@ const AdminGuides = () => {
         <div className="flex justify-between items-center mb-8">
           <div>
             <h1 className="text-3xl font-bold text-brand-gold mb-2">Guide Management</h1>
-            <p className="text-brand-cream/80">Manage your guides, pricing, and content</p>
+            <p className="text-brand-cream/80">Manage your guides, pricing, content, and CTA connections</p>
           </div>
-          <Button
-            onClick={() => setShowForm(true)}
-            className="bg-brand-gold text-black hover:bg-brand-gold/90"
-          >
-            <Plus className="mr-2 h-4 w-4" />
-            Add Guide
-          </Button>
         </div>
 
-        {showForm && (
-          <div className="mb-8">
-            <GuideForm
-              guide={editingGuide}
-              onClose={handleFormClose}
-              onSuccess={handleFormClose}
-            />
-          </div>
-        )}
+        <Tabs defaultValue="guides" className="w-full">
+          <TabsList className="grid w-full grid-cols-2 bg-slate-800 border-slate-700">
+            <TabsTrigger value="guides" className="data-[state=active]:bg-brand-gold data-[state=active]:text-black">
+              Guides
+            </TabsTrigger>
+            <TabsTrigger value="cta-management" className="data-[state=active]:bg-brand-gold data-[state=active]:text-black">
+              <Settings className="mr-2 h-4 w-4" />
+              CTA Management
+            </TabsTrigger>
+          </TabsList>
 
-        <div className="grid gap-6">
-          {guides.length === 0 ? (
-            <Card className="bg-slate-800 border-slate-700">
-              <CardContent className="text-center py-12">
-                <p className="text-brand-cream/60 mb-4">No guides created yet</p>
-                <Button
-                  onClick={() => setShowForm(true)}
-                  className="bg-brand-gold text-black hover:bg-brand-gold/90"
-                >
-                  <Plus className="mr-2 h-4 w-4" />
-                  Create Your First Guide
-                </Button>
-              </CardContent>
-            </Card>
-          ) : (
-            guides.map((guide) => (
-              <Card key={guide.id} className="bg-slate-800 border-slate-700">
-                <CardHeader>
-                  <div className="flex justify-between items-start">
-                    <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-2">
-                        <CardTitle className="text-brand-cream">{guide.title}</CardTitle>
-                        <Badge
-                          variant={guide.is_active ? "default" : "secondary"}
-                          className={guide.is_active ? "bg-green-600" : "bg-gray-600"}
-                        >
-                          {guide.is_active ? "Active" : "Inactive"}
-                        </Badge>
-                        <Badge variant="outline" className="border-brand-gold text-brand-gold">
-                          {guide.price > 0 ? `$${guide.price}` : "Free"}
-                        </Badge>
+          <TabsContent value="guides" className="space-y-6">
+            {showForm && (
+              <div className="mb-6">
+                <GuideForm
+                  guide={editingGuide}
+                  onClose={handleFormClose}
+                  onSuccess={handleFormClose}
+                />
+              </div>
+            )}
+
+            <div className="flex justify-end mb-6">
+              <Button
+                onClick={() => setShowForm(true)}
+                className="bg-brand-gold text-black hover:bg-brand-gold/90"
+              >
+                <Plus className="mr-2 h-4 w-4" />
+                Add New Guide
+              </Button>
+            </div>
+
+            <div className="grid gap-6">
+              {guides.length === 0 ? (
+                <Card className="bg-slate-800 border-slate-700">
+                  <CardContent className="text-center py-12">
+                    <p className="text-brand-cream/60 mb-4">No guides created yet</p>
+                    <Button
+                      onClick={() => setShowForm(true)}
+                      className="bg-brand-gold text-black hover:bg-brand-gold/90"
+                    >
+                      <Plus className="mr-2 h-4 w-4" />
+                      Create Your First Guide
+                    </Button>
+                  </CardContent>
+                </Card>
+              ) : (
+                guides.map((guide) => (
+                  <Card key={guide.id} className="bg-slate-800 border-slate-700">
+                    <CardHeader>
+                      <div className="flex justify-between items-start">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-3 mb-2">
+                            <CardTitle className="text-brand-cream">{guide.title}</CardTitle>
+                            <Badge
+                              variant={guide.is_active ? "default" : "secondary"}
+                              className={guide.is_active ? "bg-green-600" : "bg-gray-600"}
+                            >
+                              {guide.is_active ? "Active" : "Inactive"}
+                            </Badge>
+                            <Badge variant="outline" className="border-brand-gold text-brand-gold">
+                              {guide.price > 0 ? `$${guide.price}` : "Free"}
+                            </Badge>
+                          </div>
+                          <p className="text-brand-cream/80 text-sm">{guide.description}</p>
+                        </div>
+                        <div className="flex gap-2 ml-4">
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            onClick={() => handleToggleActive(guide)}
+                            className="border-slate-600"
+                          >
+                            {guide.is_active ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                          </Button>
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            onClick={() => handleEdit(guide)}
+                            className="border-slate-600"
+                          >
+                            <Edit className="h-4 w-4" />
+                          </Button>
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            onClick={() => handleDelete(guide)}
+                            className="border-red-600 text-red-400 hover:bg-red-900/20"
+                          >
+                            <Trash2 className="h-4 w-4" />
+                          </Button>
+                        </div>
                       </div>
-                      <p className="text-brand-cream/80 text-sm">{guide.description}</p>
-                    </div>
-                    <div className="flex gap-2 ml-4">
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        onClick={() => handleToggleActive(guide)}
-                        className="border-slate-600"
-                      >
-                        {guide.is_active ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-                      </Button>
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        onClick={() => handleEdit(guide)}
-                        className="border-slate-600"
-                      >
-                        <Edit className="h-4 w-4" />
-                      </Button>
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        onClick={() => handleDelete(guide)}
-                        className="border-red-600 text-red-400 hover:bg-red-900/20"
-                      >
-                        <Trash2 className="h-4 w-4" />
-                      </Button>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  {guide.bullets && guide.bullets.length > 0 && (
-                    <div className="mb-4">
-                      <h4 className="text-sm font-semibold text-brand-cream mb-2">Key Points:</h4>
-                      <ul className="list-disc list-inside text-sm text-brand-cream/80 space-y-1">
-                        {guide.bullets.map((bullet, index) => (
-                          <li key={index}>{bullet}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                  <div className="flex justify-between items-center text-sm text-brand-cream/60">
-                    <div>
-                      Sort Order: {guide.sort_order}
-                    </div>
-                    <div>
-                      {guide.file_name ? `File: ${guide.file_name}` : "No file uploaded"}
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))
-          )}
-        </div>
+                    </CardHeader>
+                    <CardContent>
+                      {guide.bullets && guide.bullets.length > 0 && (
+                        <div className="mb-4">
+                          <h4 className="text-sm font-semibold text-brand-cream mb-2">Key Points:</h4>
+                          <ul className="list-disc list-inside text-sm text-brand-cream/80 space-y-1">
+                            {guide.bullets.map((bullet, index) => (
+                              <li key={index}>{bullet}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                      <div className="flex justify-between items-center text-sm text-brand-cream/60">
+                        <div>
+                          Sort Order: {guide.sort_order}
+                        </div>
+                        <div>
+                          {guide.file_name ? `File: ${guide.file_name}` : "No file uploaded"}
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))
+              )}
+            </div>
+          </TabsContent>
+
+          <TabsContent value="cta-management">
+            <CTAManagement />
+          </TabsContent>
+        </Tabs>
       </div>
     </div>
   );

@@ -355,12 +355,17 @@ const BlogPost = () => {
               className="prose prose-lg max-w-none text-brand-black dark:text-brand-cream prose-headings:text-brand-black dark:prose-headings:text-brand-cream prose-a:text-[#247EFF] prose-strong:text-brand-black dark:prose-strong:text-brand-cream prose-code:text-[#247EFF] prose-blockquote:border-[#FFD700] prose-blockquote:text-brand-black/80 dark:prose-blockquote:text-brand-cream/80"
               dangerouslySetInnerHTML={{ 
                 __html: sanitizeHtml(
-                  post.content
-                    .split('\n\n')
-                    .map(paragraph => paragraph.trim())
-                    .filter(paragraph => paragraph.length > 0)
-                    .map(paragraph => `<p>${paragraph.replace(/\n/g, '<br>')}</p>`)
-                    .join('')
+                  (() => {
+                    console.log('Processing blog content:', post.content?.length, 'characters');
+                    const processed = post.content
+                      .split('\n\n')
+                      .map(paragraph => paragraph.trim())
+                      .filter(paragraph => paragraph.length > 0)
+                      .map(paragraph => `<p class="mb-4">${paragraph.replace(/\n/g, '<br>')}</p>`)
+                      .join('');
+                    console.log('Processed HTML length:', processed.length);
+                    return processed;
+                  })()
                 ) 
               }}
             />

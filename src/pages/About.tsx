@@ -419,9 +419,9 @@ const About = () => {
                     <img
                       src="/lovable-uploads/2ffba683-4c2c-4aab-b352-53d4118af635.png"
                       alt="Level Up Over Easy graffiti on brick wall"
-                      className="w-full h-auto object-cover rounded-t-2xl"
-                      style={{ aspectRatio: '16/9', maxHeight: '300px' }}
+                      className="w-full h-auto rounded-t-2xl"
                       loading="lazy"
+                      style={{ imageRendering: 'crisp-edges' }}
                     />
                   </div>
                   
@@ -463,9 +463,9 @@ const About = () => {
                     <img
                       src="/lovable-uploads/3369c9eb-a309-46ee-989c-59a77f9cbe0f.png"
                       alt="We All Eat - hands protecting caviar representing community prosperity"
-                      className="w-full h-auto object-cover rounded-t-2xl"
-                      style={{ aspectRatio: '16/9', maxHeight: '300px' }}
+                      className="w-full h-auto rounded-t-2xl"
                       loading="lazy"
+                      style={{ imageRendering: 'crisp-edges' }}
                     />
                   </div>
                   
@@ -506,9 +506,9 @@ const About = () => {
                     <img
                       src="/lovable-uploads/36ca6c7f-6216-41a1-a1b1-02ed951c3a05.png"
                       alt="Legacy Moves Only - hands holding family photo with money representing generational wealth"
-                      className="w-full h-auto object-cover rounded-t-2xl"
-                      style={{ aspectRatio: '16/9', maxHeight: '300px' }}
+                      className="w-full h-auto rounded-t-2xl"
                       loading="lazy"
+                      style={{ imageRendering: 'crisp-edges' }}
                     />
                   </div>
                   

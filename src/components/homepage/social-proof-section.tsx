@@ -28,7 +28,7 @@ const SocialProofSection = ({ isVisible }: SocialProofSectionProps) => {
 
   return (
     <div className={`relative backdrop-blur-sm border border-gray-300/20 rounded-3xl p-8 mb-16 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} overflow-hidden`} style={{
-      background: 'rgba(128, 128, 128, 0.1)'
+      background: 'rgba(255, 255, 255, 0.05)'
     }}>
       
       {/* Torn Paper Effect Background */}
@@ -51,8 +51,7 @@ const SocialProofSection = ({ isVisible }: SocialProofSectionProps) => {
         </svg>
       </div>
 
-      {/* Gritty texture overlay */}
-      <div className="absolute inset-0 opacity-[0.08] bg-[radial-gradient(circle_at_2px_2px,_rgba(0,0,0,1)_1px,_transparent_0)] bg-[length:20px_20px]"></div>
+      {/* REMOVED GRITTY DARK TEXTURE OVERLAY FOR CONSISTENT BRIGHTNESS */}
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10" role="group" aria-label="Success metrics and social proof">
         

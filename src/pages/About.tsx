@@ -258,16 +258,16 @@ const About = () => {
               </div>
 
               {/* Full-Width Mindset Banner */}
-              <div className="relative w-full h-48 md:h-64 mb-16 -mx-6 overflow-hidden">
+              <div className="relative w-full h-56 md:h-72 mb-16 -mx-6 overflow-hidden">
                 {/* Image with grunge overlay */}
-                <div className="relative w-full h-full">
+                <div className="relative w-full h-full bg-slate-800/20">
                   <img
                     src="/lovable-uploads/82e2e333-8365-4dd8-bcfb-b8bab808dc70.png"
                     alt="Urban graffiti art showing 'Flip Your Mindset Flip Your Money' message on brick wall"
-                    className="w-full h-full object-cover object-center"
+                    className="w-full h-full object-contain"
                     loading="lazy"
                     width={1200}
-                    height={200}
+                    height={288}
                     decoding="async"
                   />
                   

@@ -57,21 +57,12 @@ const SocialProofSection = ({ isVisible }: SocialProofSectionProps) => {
         
         <div className="text-center group hover:scale-105 transition-transform duration-300">
           <div className="flex justify-center mb-4">
-            <div className="w-16 h-16 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform" style={{
-              background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-              backgroundSize: '400% 400%',
-              animation: 'pearlescent 3s ease-in-out infinite',
-              opacity: 0.2
-            }}>
-              <Users className="h-8 w-8" style={{
-                color: 'transparent',
-                background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                backgroundSize: '400% 400%',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                animation: 'pearlescent 3s ease-in-out infinite'
-              }} aria-hidden="true" />
+            <div className="w-24 h-24 rounded-full overflow-hidden group-hover:scale-110 transition-transform shadow-lg">
+              <img 
+                src="/lovable-uploads/c8d4ffa7-6b7e-4e3d-923f-172e8c37dfd7.png"
+                alt="Urban entrepreneurs building community together"
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
           <div 
@@ -104,21 +95,12 @@ const SocialProofSection = ({ isVisible }: SocialProofSectionProps) => {
 
         <div className="text-center group hover:scale-105 transition-transform duration-300">
           <div className="flex justify-center mb-4">
-            <div className="w-16 h-16 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform" style={{
-              background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-              backgroundSize: '400% 400%',
-              animation: 'pearlescent 3s ease-in-out infinite',
-              opacity: 0.2
-            }}>
-              <TrendingUp className="h-8 w-8" style={{
-                color: 'transparent',
-                background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                backgroundSize: '400% 400%',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                animation: 'pearlescent 3s ease-in-out infinite'
-              }} aria-hidden="true" />
+            <div className="w-24 h-24 rounded-full overflow-hidden group-hover:scale-110 transition-transform shadow-lg">
+              <img 
+                src="/lovable-uploads/fb281427-96cc-4adb-82b5-4ac1961d2ef1.png"
+                alt="Couple reviewing investment portfolio and financial gains"
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
           <div 
@@ -151,21 +133,12 @@ const SocialProofSection = ({ isVisible }: SocialProofSectionProps) => {
 
         <div className="text-center group hover:scale-105 transition-transform duration-300">
           <div className="flex justify-center mb-4">
-            <div className="w-16 h-16 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform" style={{
-              background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-              backgroundSize: '400% 400%',
-              animation: 'pearlescent 3s ease-in-out infinite',
-              opacity: 0.2
-            }}>
-              <CheckCircle className="h-8 w-8" style={{
-                color: 'transparent',
-                background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                backgroundSize: '400% 400%',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                animation: 'pearlescent 3s ease-in-out infinite'
-              }} aria-hidden="true" />
+            <div className="w-24 h-24 rounded-full overflow-hidden group-hover:scale-110 transition-transform shadow-lg">
+              <img 
+                src="/lovable-uploads/6bd09687-7aec-41b6-870a-fb6a92525ad5.png"
+                alt="Happy family representing generational wealth and breaking cycles"
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
           <div 

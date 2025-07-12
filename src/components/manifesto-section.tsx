@@ -159,69 +159,82 @@ const ManifestoSection = () => {
               </h2>
             </div>
 
-            <div className="space-y-6 text-lg leading-relaxed text-brand-black dark:text-brand-cream relative">
-              <p className="text-xl font-semibold relative z-10">
-                <span className="relative">
-                  Let's keep it 100:
-                  {/* Enhanced underline with yellow pearlescent */}
-                  <div 
-                    className="absolute -bottom-2 left-0 w-full h-3 transform -rotate-1 blur-sm opacity-25"
-                    style={{
+            <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+              {/* Image on the left */}
+              <div className="lg:w-1/3 flex-shrink-0">
+                <img 
+                  src="/lovable-uploads/2d836535-0024-4e8b-9a39-ffdb0017c30d.png"
+                  alt="Person reflecting on their journey to building wealth"
+                  className="w-full h-auto rounded-2xl shadow-xl object-cover max-w-sm mx-auto lg:mx-0"
+                />
+              </div>
+
+              {/* Main text content on the right */}
+              <div className="lg:w-2/3 space-y-6 text-lg leading-relaxed text-brand-black dark:text-brand-cream relative">
+                <p className="text-xl font-semibold relative z-10">
+                  <span className="relative">
+                    Let's keep it 100:
+                    {/* Enhanced underline with yellow pearlescent */}
+                    <div 
+                      className="absolute -bottom-2 left-0 w-full h-3 transform -rotate-1 blur-sm opacity-25"
+                      style={{
+                        background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                        backgroundSize: '400% 400%',
+                        animation: 'pearlescent 3s ease-in-out infinite'
+                      }}
+                    ></div>
+                  </span> Most wealth advice wasn't built for us. We're breaking cycles, flipping money trauma, and building legacy from the ground up.
+                </p>
+                
+                <p className="relative z-10">
+                  This isn't about overnight success—it's about <span className="relative font-semibold" style={{
+                    background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                    backgroundSize: '400% 400%',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                    color: 'transparent',
+                    animation: 'pearlescent 3s ease-in-out infinite'
+                  }}>
+                    street-smart moves
+                    {/* Enhanced handwritten circle effect with yellow */}
+                    <div className="absolute -inset-2 border-3 opacity-50 transform rotate-2 border-dashed rounded-full" style={{
+                      borderColor: '#FFD700'
+                    }}></div>
+                    <div className="absolute -inset-1 border-2 opacity-30 transform -rotate-1 border-dotted rounded-full" style={{
+                      borderColor: '#FFD700'
+                    }}></div>
+                  </span>, real setbacks, and stacking paper for the long haul.
+                </p>
+
+                <p className="relative z-10">
+                  If you're tired of fake gurus and ready for <span className="relative font-semibold" style={{
+                    background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                    backgroundSize: '400% 400%',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                    color: 'transparent',
+                    animation: 'pearlescent 3s ease-in-out infinite'
+                  }}>
+                    blueprints that work in the real world
+                    {/* Enhanced highlight with texture and yellow pearlescent */}
+                    <div className="absolute -inset-2 transform -rotate-1 -z-10 blur-sm opacity-15" style={{
                       background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
                       backgroundSize: '400% 400%',
                       animation: 'pearlescent 3s ease-in-out infinite'
-                    }}
-                  ></div>
-                </span> Most wealth advice wasn't built for us. We're breaking cycles, flipping money trauma, and building legacy from the ground up.
-              </p>
-              
-              <p className="relative z-10">
-                This isn't about overnight success—it's about <span className="relative font-semibold" style={{
-                  background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                  backgroundSize: '400% 400%',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                  color: 'transparent',
-                  animation: 'pearlescent 3s ease-in-out infinite'
-                }}>
-                  street-smart moves
-                  {/* Enhanced handwritten circle effect with yellow */}
-                  <div className="absolute -inset-2 border-3 opacity-50 transform rotate-2 border-dashed rounded-full" style={{
-                    borderColor: '#FFD700'
-                  }}></div>
-                  <div className="absolute -inset-1 border-2 opacity-30 transform -rotate-1 border-dotted rounded-full" style={{
-                    borderColor: '#FFD700'
-                  }}></div>
-                </span>, real setbacks, and stacking paper for the long haul.
-              </p>
+                    }}></div>
+                    <div className="absolute -inset-1 transform rotate-1 -z-10 opacity-10" style={{
+                      background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                      backgroundSize: '400% 400%',
+                      animation: 'pearlescent 3s ease-in-out infinite'
+                    }}></div>
+                  </span>, you're in the right spot.
+                </p>
+              </div>
+            </div>
 
-              <p className="relative z-10">
-                If you're tired of fake gurus and ready for <span className="relative font-semibold" style={{
-                  background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                  backgroundSize: '400% 400%',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                  color: 'transparent',
-                  animation: 'pearlescent 3s ease-in-out infinite'
-                }}>
-                  blueprints that work in the real world
-                  {/* Enhanced highlight with texture and yellow pearlescent */}
-                  <div className="absolute -inset-2 transform -rotate-1 -z-10 blur-sm opacity-15" style={{
-                    background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                    backgroundSize: '400% 400%',
-                    animation: 'pearlescent 3s ease-in-out infinite'
-                  }}></div>
-                  <div className="absolute -inset-1 transform rotate-1 -z-10 opacity-10" style={{
-                    background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                    backgroundSize: '400% 400%',
-                    animation: 'pearlescent 3s ease-in-out infinite'
-                  }}></div>
-                </span>, you're in the right spot.
-              </p>
-
-              <p className="text-xl font-bold text-center mt-8 relative z-10" style={{
+            <p className="text-xl font-bold text-center mt-8 relative z-10" style={{
                 background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
                 backgroundSize: '400% 400%',
                 WebkitBackgroundClip: 'text',
@@ -243,7 +256,6 @@ const ManifestoSection = () => {
                   ></div>
                 </span>
               </p>
-            </div>
 
             <div className="text-center mt-12 relative z-10">
               <Link to="/resources">

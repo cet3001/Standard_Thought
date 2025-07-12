@@ -100,7 +100,7 @@ const SuccessStoriesSection = ({ isVisible }: SuccessStoriesSectionProps) => {
                 <OptimizedImage
                   src={story.image}
                   alt={`${story.name} from ${story.location}`}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                 />
                 
                 {/* Vintage photo texture overlay */}

@@ -39,8 +39,8 @@ const Blog = () => {
           />
         )}
         
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-800/10 via-slate-700/15 to-slate-900/10"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/80 via-brand-cream/85 to-brand-cream/90 dark:from-brand-black/80 dark:via-brand-black/85 dark:to-brand-black/90"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-800/50 via-slate-700/60 to-slate-900/50"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/85 via-brand-cream/90 to-brand-cream/85 dark:from-brand-black/85 dark:via-brand-black/90 dark:to-brand-black/85"></div>
       </div>
 
       {/* SEO */}

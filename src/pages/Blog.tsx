@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useHeaderHeight } from "@/hooks/use-header-height";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import SEO from "@/components/seo";
@@ -10,6 +11,7 @@ const Blog = () => {
   useMobilePerformance();
   const { textureImageUrl } = useUrbanTexture();
   const [isVisible, setIsVisible] = useState(false);
+  const headerHeight = useHeaderHeight();
 
   useEffect(() => {
     setIsVisible(true);
@@ -55,7 +57,7 @@ const Blog = () => {
       <Navigation />
 
       {/* Main Content */}
-      <main className="relative z-10 pt-20 sm:pt-24 lg:pt-28 pb-16">
+      <main className="relative z-10 pb-16" style={{ marginTop: `${headerHeight}px`, paddingTop: '3rem' }}>
         <div className="container mx-auto px-6 max-w-7xl">
           
           {/* Hero Section */}

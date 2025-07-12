@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useHeaderHeight } from "@/hooks/use-header-height";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import SEO from "@/components/seo";
@@ -11,6 +12,7 @@ import SectionOverlayBox from "@/components/layout/SectionOverlayBox";
 const About = () => {
   useMobilePerformance();
   const [isVisible, setIsVisible] = useState(false);
+  const headerHeight = useHeaderHeight();
   const { textureImageUrl } = useUrbanTexture();
   const { stories, loading, error, refreshStories } = useBuilderStories(3);
 
@@ -65,7 +67,7 @@ const About = () => {
       <Navigation />
 
       {/* Main Content */}
-      <main className="relative z-10 pt-20 sm:pt-24 lg:pt-28">
+      <main className="relative z-10" style={{ marginTop: `${headerHeight}px`, paddingTop: '3rem' }}>
         {/* Hero Section: "Unlock Your Mindset Arsenal" */}
         <section className="pb-32 relative overflow-hidden">
           {/* Floating Elements */}

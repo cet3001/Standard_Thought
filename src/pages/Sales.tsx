@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useHeaderHeight } from "@/hooks/use-header-height";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -16,6 +17,7 @@ import { useGuideDownload } from "@/hooks/use-guide-download";
 const Sales = () => {
   useMobilePerformance();
   const { textureImageUrl } = useUrbanTexture();
+  const headerHeight = useHeaderHeight();
   const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
@@ -130,7 +132,7 @@ const Sales = () => {
       <Navigation />
 
       {/* Main Content */}
-      <main className="relative z-10 pt-20 sm:pt-24 lg:pt-28">
+      <main className="relative z-10" style={{ marginTop: `${headerHeight}px`, paddingTop: '3rem' }}>
         {/* Hero Section */}
         <section className="pb-24 relative overflow-hidden">
           {/* Enhanced Urban Background with Better Texture Visibility */}

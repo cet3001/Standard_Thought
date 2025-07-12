@@ -51,25 +51,9 @@ const SocialProofSection = ({ isVisible }: SocialProofSectionProps) => {
         </svg>
       </div>
 
-      {/* Main Content Layout: Image Left, Stats Right */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center relative z-10">
-        
-        {/* Motivational Image */}
-        <div className="order-2 lg:order-1">
-          <div className="relative overflow-hidden rounded-2xl shadow-xl">
-            <img 
-              src="/lovable-uploads/1538b9b7-c164-437b-a7e0-c8b3e534b2b8.png"
-              alt="Motivational sticky notes and success imagery representing the mindset shift needed for wealth building"
-              className="w-full h-auto object-cover transition-transform duration-500 hover:scale-105"
-            />
-            {/* Subtle overlay for brand consistency */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-[#FFD700]/5 via-transparent to-[#247EFF]/5 pointer-events-none"></div>
-          </div>
-        </div>
-
-        {/* Stats Section */}
-        <div className="order-1 lg:order-2">
-          <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3 gap-6" role="group" aria-label="Success metrics and social proof">
+      {/* REMOVED GRITTY DARK TEXTURE OVERLAY FOR CONSISTENT BRIGHTNESS */}
+      
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10" role="group" aria-label="Success metrics and social proof">
         
         <div className="text-center group hover:scale-105 transition-transform duration-300">
           <div className="flex justify-center mb-4">
@@ -185,8 +169,6 @@ const SocialProofSection = ({ isVisible }: SocialProofSectionProps) => {
           </div>
           <div className="text-sm text-[#0A0A0A]/70 dark:text-brand-cream/70">
             Changed their whole money game
-          </div>
-        </div>
           </div>
         </div>
       </div>

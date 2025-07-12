@@ -176,7 +176,7 @@ const ManifestoSection = () => {
               </p>
               
               <p className="relative z-10">
-                This ain't about overnight success—it's about <span className="relative font-semibold" style={{
+                This isn't about overnight success—it's about <span className="relative font-semibold" style={{
                   background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
                   backgroundSize: '400% 400%',
                   WebkitBackgroundClip: 'text',

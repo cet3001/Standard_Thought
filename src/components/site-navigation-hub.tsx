@@ -29,8 +29,19 @@ const SiteNavigationHub = () => {
           />
         )}
         
+        {/* Hallway Image */}
+        <div 
+          className="absolute right-0 top-0 bottom-0 w-1/2 lg:w-1/3 opacity-60"
+          style={{
+            backgroundImage: `url(/lovable-uploads/65abf394-2ad9-4fa3-89c6-d2d4e16f977c.png)`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'left center',
+            backgroundRepeat: 'no-repeat'
+          }}
+        />
+        
         {/* Background gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 opacity-30"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-800/90 via-slate-700/70 to-slate-900/30"></div>
       </div>
 
       <div className="container mx-auto px-6 relative z-10">

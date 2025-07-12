@@ -409,137 +409,165 @@ const About = () => {
                 </h2>
               </div>
 
-              {/* Three Codes Grid */}
-              <div className="grid md:grid-cols-3 gap-8 mb-16">
+              {/* Cards Grid with Flip Effect */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 mb-16">
                 
-                {/* Code 1: Level Up Over Easy */}
-                <div className="group relative bg-gradient-to-br from-gray-100/40 to-gray-200/30 dark:from-gray-700/30 dark:to-gray-800/20 backdrop-blur-md rounded-2xl p-8 border border-white/20 dark:border-gray-600/20 hover:border-[#ffd700]/40 transition-all duration-300 hover:transform hover:scale-105 shadow-lg hover:shadow-xl">
-                  {/* Hero Image for Level Up Over Easy */}
-                  <div className="mb-6 -mx-8 -mt-8">
-                    <img
-                      src="/lovable-uploads/2ffba683-4c2c-4aab-b352-53d4118af635.png"
-                      alt="Level Up Over Easy graffiti on brick wall"
-                      className="w-full h-auto object-cover rounded-t-2xl"
-                      style={{ aspectRatio: '16/9', maxHeight: '300px' }}
-                      loading="lazy"
-                    />
-                  </div>
-                  
-                  {/* Graffiti-style icon */}
-                  <div className="mb-6 relative">
-                    <div 
-                      className="w-16 h-16 rounded-full flex items-center justify-center transform -rotate-3 group-hover:rotate-0 transition-transform duration-300"
-                      style={{
-                        background: 'linear-gradient(45deg, #f4d03f, #ffd700)',
-                        boxShadow: '4px 4px 0px rgba(0,0,0,0.1), 2px 2px 0px rgba(244,208,63,0.3)'
-                      }}
-                    >
-                      <svg className="w-8 h-8 text-black" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M13 7.5L16.5 11L13 14.5V12H8V11H13V7.5Z"/>
-                        <path d="M12 2L15.09 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.91 8.26L12 2Z"/>
-                      </svg>
+                {/* Card 1: Money Trauma Reset */}
+                <div className="group h-80" style={{ perspective: '1000px' }}>
+                  <div className="relative w-full h-full transition-transform duration-700 group-hover:[transform:rotateY(180deg)]" style={{ transformStyle: 'preserve-3d' }}>
+                    {/* Front of card */}
+                    <div className="absolute inset-0 w-full h-full rounded-2xl bg-gradient-to-br from-[rgba(255,255,255,0.95)] via-[rgba(255,255,255,0.85)] to-[rgba(255,255,255,0.9)] backdrop-blur-sm border border-[rgba(244,208,63,0.2)] shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden" style={{ backfaceVisibility: 'hidden' }}>
+                      {/* Card content */}
+                      <div className="relative p-8 h-full flex flex-col justify-center text-center">
+                        {/* Icon */}
+                        <div className="flex justify-center mb-6">
+                          <div className="w-16 h-16 bg-[#f4d03f] rounded-xl flex items-center justify-center shadow-lg">
+                            <span className="text-2xl font-black text-[#0A0A0A]">💸</span>
+                          </div>
+                        </div>
+                        
+                        {/* Title */}
+                        <h3 className="text-xl md:text-2xl font-black mb-4 text-[#0A0A0A] leading-tight">
+                          Money Trauma Reset
+                        </h3>
+                        
+                        {/* Description */}
+                        <p className="text-sm md:text-base text-[#0A0A0A] font-medium leading-relaxed mb-6">
+                          Break the cycle. Flip your relationship with money from scarcity to abundance mindset.
+                        </p>
+                        
+                        {/* CTA Button */}
+                        <div className="mt-auto">
+                          <button className="w-full py-3 px-6 bg-[#f4d03f] hover:bg-[#f7dc6f] text-[#0A0A0A] font-black rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg">
+                            Try Now
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Back of card */}
+                    <div className="absolute inset-0 w-full h-full rounded-2xl overflow-hidden" style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}>
+                      <div className="relative w-full h-full">
+                        <img
+                          src="/lovable-uploads/9373db84-82cf-4a73-887b-2db9f6dc6c96.png"
+                          alt="Break the cycle, fix your relationship with money, one investment at a time"
+                          className="w-full h-full object-cover"
+                        />
+                        <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
+                          <div className="text-center p-6">
+                            <p className="text-[#f4d03f] font-black text-lg mb-4" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>
+                              "Break the cycle, fix your relationship with money"
+                            </p>
+                            <button className="py-2 px-6 bg-[#f4d03f] hover:bg-[#ffd700] text-[#0A0A0A] font-black rounded-lg transition-all duration-300 shadow-lg">
+                              Tap In →
+                            </button>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  
-                  <h3 
-                    className="text-2xl font-black mb-4 text-[#0A0A0A] transform -rotate-1"
-                    style={{ 
-                      fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
-                      textShadow: '2px 2px 0px rgba(244,208,63,0.2)'
-                    }}
-                  >
-                    Level Up Over Easy
-                  </h3>
-                  
-                  <p className="text-lg font-semibold text-[#0A0A0A] leading-relaxed">
-                    "We don't play it safe. Every challenge is a shot to level up."
-                  </p>
                 </div>
 
-                {/* Code 2: We All Eat */}
-                <div className="group relative bg-gradient-to-br from-gray-100/40 to-gray-200/30 dark:from-gray-700/30 dark:to-gray-800/20 backdrop-blur-md rounded-2xl p-8 border border-white/20 dark:border-gray-600/20 hover:border-[#ffd700]/40 transition-all duration-300 hover:transform hover:scale-105 shadow-lg hover:shadow-xl">
-                  {/* Hero Image for We All Eat */}
-                  <div className="mb-6 -mx-8 -mt-8">
-                    <img
-                      src="/lovable-uploads/3369c9eb-a309-46ee-989c-59a77f9cbe0f.png"
-                      alt="We All Eat - hands protecting caviar representing community prosperity"
-                      className="w-full h-auto object-cover rounded-t-2xl"
-                      style={{ aspectRatio: '16/9', maxHeight: '300px' }}
-                      loading="lazy"
-                    />
-                  </div>
-                  
-                  {/* Graffiti-style icon */}
-                  <div className="mb-6 relative">
-                    <div 
-                      className="w-16 h-16 rounded-full flex items-center justify-center transform rotate-2 group-hover:rotate-0 transition-transform duration-300"
-                      style={{
-                        background: 'linear-gradient(45deg, #f4d03f, #ffd700)',
-                        boxShadow: '4px 4px 0px rgba(0,0,0,0.1), 2px 2px 0px rgba(244,208,63,0.3)'
-                      }}
-                    >
-                      <svg className="w-8 h-8 text-black" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 7.5V9M15 11V9L21 8.5V11M15 13V11L21 11.5V13M15 15V13L21 13.5V15M9 13C11.67 13 14.5 14.34 14.5 16V20H9.5V16C9.5 15.65 8.77 15 7.5 15S5.5 15.65 5.5 16V20H3.5V16C3.5 14.34 6.33 13 9 13Z"/>
-                      </svg>
+                {/* Card 2: Vision Board Blueprint */}
+                <div className="group h-80" style={{ perspective: '1000px' }}>
+                  <div className="relative w-full h-full transition-transform duration-700 group-hover:[transform:rotateY(180deg)]" style={{ transformStyle: 'preserve-3d' }}>
+                    {/* Front of card */}
+                    <div className="absolute inset-0 w-full h-full rounded-2xl bg-gradient-to-br from-[rgba(255,255,255,0.95)] via-[rgba(255,255,255,0.85)] to-[rgba(255,255,255,0.9)] backdrop-blur-sm border border-[rgba(244,208,63,0.2)] shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden" style={{ backfaceVisibility: 'hidden' }}>
+                      <div className="relative p-8 h-full flex flex-col justify-center text-center">
+                        <div className="flex justify-center mb-6">
+                          <div className="w-16 h-16 bg-[#f4d03f] rounded-xl flex items-center justify-center shadow-lg">
+                            <span className="text-2xl font-black text-[#0A0A0A]">🎯</span>
+                          </div>
+                        </div>
+                        
+                        <h3 className="text-xl md:text-2xl font-black mb-4 text-[#0A0A0A] leading-tight">
+                          Vision Board Blueprint
+                        </h3>
+                        
+                        <p className="text-sm md:text-base text-[#0A0A0A] font-medium leading-relaxed mb-6">
+                          Map your future. Turn dreams into concrete goals with our street-smart vision framework.
+                        </p>
+                        
+                        <div className="mt-auto">
+                          <button className="w-full py-3 px-6 bg-[#f4d03f] hover:bg-[#f7dc6f] text-[#0A0A0A] font-black rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg">
+                            Download
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Back of card */}
+                    <div className="absolute inset-0 w-full h-full rounded-2xl overflow-hidden" style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}>
+                      <div className="relative w-full h-full">
+                        <img
+                          src="/lovable-uploads/24b2fe6e-015e-4554-9893-904ee15726e8.png"
+                          alt="Vision board blueprint - map your future"
+                          className="w-full h-full object-cover"
+                        />
+                        <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
+                          <div className="text-center p-6">
+                            <p className="text-[#f4d03f] font-black text-lg mb-4" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>
+                              "Map your future with vision"
+                            </p>
+                            <button className="py-2 px-6 bg-[#f4d03f] hover:bg-[#ffd700] text-[#0A0A0A] font-black rounded-lg transition-all duration-300 shadow-lg">
+                              Tap In →
+                            </button>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  
-                  <h3 
-                    className="text-2xl font-black mb-4 text-[#0A0A0A] transform rotate-1"
-                    style={{ 
-                      fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
-                      textShadow: '2px 2px 0px rgba(244,208,63,0.2)'
-                    }}
-                  >
-                    We All Eat
-                  </h3>
-                  
-                  <p className="text-lg font-semibold text-[#0A0A0A] leading-relaxed">
-                    "We rise together—nobody builds alone."
-                  </p>
                 </div>
 
-                {/* Code 3: Legacy Moves Only */}
-                <div className="group relative bg-gradient-to-br from-gray-100/40 to-gray-200/30 dark:from-gray-700/30 dark:to-gray-800/20 backdrop-blur-md rounded-2xl p-8 border border-white/20 dark:border-gray-600/20 hover:border-[#ffd700]/40 transition-all duration-300 hover:transform hover:scale-105 shadow-lg hover:shadow-xl">
-                  {/* Hero Image for Legacy Moves Only */}
-                  <div className="mb-6 -mx-8 -mt-8">
-                    <img
-                      src="/lovable-uploads/36ca6c7f-6216-41a1-a1b1-02ed951c3a05.png"
-                      alt="Legacy Moves Only - hands holding family photo with money representing generational wealth"
-                      className="w-full h-auto object-cover rounded-t-2xl"
-                      style={{ aspectRatio: '16/9', maxHeight: '300px' }}
-                      loading="lazy"
-                    />
-                  </div>
-                  
-                  {/* Graffiti-style icon */}
-                  <div className="mb-6 relative">
-                    <div 
-                      className="w-16 h-16 rounded-full flex items-center justify-center transform -rotate-2 group-hover:rotate-0 transition-transform duration-300"
-                      style={{
-                        background: 'linear-gradient(45deg, #f4d03f, #ffd700)',
-                        boxShadow: '4px 4px 0px rgba(0,0,0,0.1), 2px 2px 0px rgba(244,208,63,0.3)'
-                      }}
-                    >
-                      <svg className="w-8 h-8 text-black" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M5 16L3 5H1V3H4L6 14H18L20 7H8L8.5 5H21.95L19.7 16H5ZM12 2L15.39 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.61 8.26L12 2Z"/>
-                      </svg>
+                {/* Card 3: Self-Talk Flip */}
+                <div className="group h-80" style={{ perspective: '1000px' }}>
+                  <div className="relative w-full h-full transition-transform duration-700 group-hover:[transform:rotateY(180deg)]" style={{ transformStyle: 'preserve-3d' }}>
+                    {/* Front of card */}
+                    <div className="absolute inset-0 w-full h-full rounded-2xl bg-gradient-to-br from-[rgba(255,255,255,0.95)] via-[rgba(255,255,255,0.85)] to-[rgba(255,255,255,0.9)] backdrop-blur-sm border border-[rgba(244,208,63,0.2)] shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden" style={{ backfaceVisibility: 'hidden' }}>
+                      <div className="relative p-8 h-full flex flex-col justify-center text-center">
+                        <div className="flex justify-center mb-6">
+                          <div className="w-16 h-16 bg-[#f4d03f] rounded-xl flex items-center justify-center shadow-lg">
+                            <span className="text-2xl font-black text-[#0A0A0A]">🔄</span>
+                          </div>
+                        </div>
+                        
+                        <h3 className="text-xl md:text-2xl font-black mb-4 text-[#0A0A0A] leading-tight">
+                          Self-Talk Flip
+                        </h3>
+                        
+                        <p className="text-sm md:text-base text-[#0A0A0A] font-medium leading-relaxed mb-6">
+                          Rewire your mind. Transform negative self-talk into your biggest advantage.
+                        </p>
+                        
+                        <div className="mt-auto">
+                          <button className="w-full py-3 px-6 bg-[#f4d03f] hover:bg-[#f7dc6f] text-[#0A0A0A] font-black rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg">
+                            Try Now
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Back of card */}
+                    <div className="absolute inset-0 w-full h-full rounded-2xl overflow-hidden" style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}>
+                      <div className="relative w-full h-full">
+                        <img
+                          src="/lovable-uploads/65d30e4c-dbd8-4195-96f3-2ee7ff2374c5.png"
+                          alt="Self talk flip - rewire your mindset"
+                          className="w-full h-full object-cover"
+                        />
+                        <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
+                          <div className="text-center p-6">
+                            <p className="text-[#f4d03f] font-black text-lg mb-4" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>
+                              "Flip your self-talk, flip your life"
+                            </p>
+                            <button className="py-2 px-6 bg-[#f4d03f] hover:bg-[#ffd700] text-[#0A0A0A] font-black rounded-lg transition-all duration-300 shadow-lg">
+                              Tap In →
+                            </button>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  
-                  <h3 
-                    className="text-2xl font-black mb-4 text-[#0A0A0A] transform rotate-1"
-                    style={{ 
-                      fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
-                      textShadow: '2px 2px 0px rgba(244,208,63,0.2)'
-                    }}
-                  >
-                    Legacy Moves Only
-                  </h3>
-                  
-                  <p className="text-lg font-semibold text-[#0A0A0A] leading-relaxed">
-                    "Every move is about legacy. Build today, eat tomorrow."
-                  </p>
                 </div>
 
               </div>

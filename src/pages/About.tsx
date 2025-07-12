@@ -69,7 +69,7 @@ const About = () => {
       {/* Main Content */}
       <main className="relative z-10" style={{ marginTop: `${headerHeight}px`, paddingTop: '3rem' }}>
         {/* Hero Section: "Unlock Your Mindset Arsenal" */}
-        <section className="pb-32 relative overflow-hidden">
+        <section className="pb-16 md:pb-32 relative overflow-hidden">
           {/* Floating Elements */}
           <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
             <div className="absolute top-20 right-10 w-32 h-32 rounded-full bg-[#FFD700]/10 animate-float"></div>
@@ -77,73 +77,100 @@ const About = () => {
           </div>
 
           <div className="container mx-auto px-6 relative z-10">
-            <div className="max-w-6xl mx-auto">
+            <div className="max-w-7xl mx-auto">
               
-              {/* Hero Content */}
-              <div className={`text-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+              {/* Hero Content - Two Column Layout */}
+              <div className={`grid lg:grid-cols-2 gap-8 lg:gap-12 items-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
                 
-                {/* Main Headline */}
-                <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight">
-                  <span className="text-[#0A0A0A]">Unlock Your </span>
-                  <span 
-                    className="relative inline-block font-black"
-                    style={{ 
-                      background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                      backgroundSize: '400% 400%',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      backgroundClip: 'text',
-                      color: 'transparent',
-                      animation: 'pearlescent 3s ease-in-out infinite'
-                    }}
-                  >
-                    Mindset
-                    {/* Graffiti-style underline */}
-                    <svg 
-                      className="absolute -bottom-2 left-0 w-full h-6" 
-                      viewBox="0 0 200 20" 
-                      style={{ filter: 'drop-shadow(1px 1px 0px rgba(0,0,0,0.2))' }}
-                    >
-                      <path 
-                        d="M5,15 Q50,8 100,12 Q150,16 195,9" 
-                        stroke="#f4d03f"
-                        strokeWidth="3" 
-                        fill="none" 
-                        strokeLinecap="round"
-                        opacity="0.8"
-                      />
-                      <path 
-                        d="M7,17 Q52,10 102,14 Q152,18 193,11" 
-                        stroke="#ffd700"
-                        strokeWidth="2" 
-                        fill="none" 
-                        strokeLinecap="round"
-                        opacity="0.4"
-                      />
-                    </svg>
-                  </span>
-                  <span className="text-[#0A0A0A]"> Arsenal</span>
-                </h1>
-
-                {/* Subhead */}
-                <div className="max-w-4xl mx-auto mb-12">
-                  <p className="text-xl md:text-2xl lg:text-3xl text-[#0A0A0A] font-bold leading-relaxed">
-                    This isn't just about stacking bread—it's about{" "}
+                {/* Left Column - Text Content */}
+                <div className="order-2 lg:order-1">
+                  {/* Main Headline */}
+                  <h1 className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-black mb-6 leading-tight text-left">
+                    <span className="text-[#0A0A0A]">Unlock Your </span>
                     <span 
-                      className="font-black"
+                      className="relative inline-block font-black"
                       style={{ 
                         background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
                         backgroundSize: '400% 400%',
                         WebkitBackgroundClip: 'text',
                         WebkitTextFillColor: 'transparent',
                         backgroundClip: 'text',
+                        color: 'transparent',
                         animation: 'pearlescent 3s ease-in-out infinite'
                       }}
                     >
-                      flipping your story
+                      Mindset
+                      {/* Graffiti-style underline */}
+                      <svg 
+                        className="absolute -bottom-2 left-0 w-full h-6" 
+                        viewBox="0 0 200 20" 
+                        style={{ filter: 'drop-shadow(1px 1px 0px rgba(0,0,0,0.2))' }}
+                      >
+                        <path 
+                          d="M5,15 Q50,8 100,12 Q150,16 195,9" 
+                          stroke="#f4d03f"
+                          strokeWidth="3" 
+                          fill="none" 
+                          strokeLinecap="round"
+                          opacity="0.8"
+                        />
+                        <path 
+                          d="M7,17 Q52,10 102,14 Q152,18 193,11" 
+                          stroke="#ffd700"
+                          strokeWidth="2" 
+                          fill="none" 
+                          strokeLinecap="round"
+                          opacity="0.4"
+                        />
+                      </svg>
                     </span>
-                    , breaking cycles, and building mental wealth from the ground up.
-                  </p>
+                    <span className="text-[#0A0A0A]"> Arsenal</span>
+                  </h1>
+
+                  {/* Subhead */}
+                  <div className="mb-8">
+                    <p className="text-lg md:text-xl lg:text-2xl text-[#0A0A0A] font-bold leading-relaxed text-left">
+                      This isn't just about stacking bread—it's about{" "}
+                      <span 
+                        className="font-black"
+                        style={{ 
+                          background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                          backgroundSize: '400% 400%',
+                          WebkitBackgroundClip: 'text',
+                          WebkitTextFillColor: 'transparent',
+                          backgroundClip: 'text',
+                          animation: 'pearlescent 3s ease-in-out infinite'
+                        }}
+                      >
+                        flipping your story
+                      </span>
+                      , breaking cycles, and building mental wealth from the ground up.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Right Column - Hero Image */}
+                <div className="order-1 lg:order-2">
+                  <div className="relative">
+                    <picture className="block w-full">
+                      <img
+                        src="/lovable-uploads/f309179b-b731-4959-8cb3-c02b01fe3b95.png"
+                        alt="Urban entrepreneur overlooking city skyline at night, representing the mindset shift from limitation to possibility in wealth building"
+                        className="w-full h-auto rounded-2xl shadow-2xl object-cover"
+                        style={{
+                          aspectRatio: '1/1',
+                          maxHeight: '600px',
+                          objectPosition: 'center'
+                        }}
+                        loading="eager"
+                        width={600}
+                        height={600}
+                        decoding="async"
+                      />
+                      {/* Overlay gradient for better text contrast on mobile */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent rounded-2xl lg:hidden"></div>
+                    </picture>
+                  </div>
                 </div>
 
               </div>

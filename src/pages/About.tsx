@@ -190,6 +190,27 @@ const About = () => {
                 background-position: 0% 50%;
               }
             }
+            
+            /* 3D Flip Card Styles */
+            .perspective-1000 {
+              perspective: 1000px;
+            }
+            
+            .transform-style-preserve-3d {
+              transform-style: preserve-3d;
+            }
+            
+            .backface-hidden {
+              backface-visibility: hidden;
+            }
+            
+            .rotate-y-180 {
+              transform: rotateY(180deg);
+            }
+            
+            .group:hover .group-hover\\:rotate-y-180 {
+              transform: rotateY(180deg);
+            }
           `}</style>
         </section>
 
@@ -660,154 +681,262 @@ const About = () => {
                 </h2>
               </div>
 
-              {/* Tools Grid */}
+              {/* Tools Grid - Flip Cards */}
               <div className="grid md:grid-cols-3 gap-8 mb-16">
                 
-                {/* Tool 1: Money Trauma Reset */}
-                <div className="group relative bg-gradient-to-br from-gray-100/40 to-gray-200/30 dark:from-gray-700/30 dark:to-gray-800/20 backdrop-blur-md rounded-2xl p-8 border border-white/20 dark:border-gray-600/20 hover:border-[#ffd700]/40 transition-all duration-300 hover:transform hover:scale-105 shadow-lg hover:shadow-xl">
-                  {/* Gritty icon */}
-                  <div className="mb-6 relative">
-                    <div 
-                      className="w-16 h-16 rounded-lg flex items-center justify-center transform -rotate-2 group-hover:rotate-0 transition-transform duration-300"
-                      style={{
-                        background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                        backgroundSize: '400% 400%',
-                        animation: 'pearlescent 3s ease-in-out infinite',
-                        boxShadow: '4px 4px 0px rgba(0,0,0,0.1), 2px 2px 0px rgba(244,208,63,0.3)',
-                        border: '2px solid rgba(0,0,0,0.1)'
-                      }}
-                    >
-                      <svg className="w-8 h-8 text-black" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 7.5V9M15 11V9L21 8.5V11M15 13V11L21 11.5V13M15 15V13L21 13.5V15M9 13C11.67 13 14.5 14.34 14.5 16V20H9.5V16C9.5 15.65 8.77 15 7.5 15S5.5 15.65 5.5 16V20H3.5V16C3.5 14.34 6.33 13 9 13ZM12,9A1,1 0 0,1 13,10A1,1 0 0,1 12,11A1,1 0 0,1 11,10A1,1 0 0,1 12,9Z"/>
-                      </svg>
+                {/* Tool 1: Money Trauma Reset - Flip Card */}
+                <div className="group relative h-96 perspective-1000">
+                  <div className="relative w-full h-full duration-700 transform-style-preserve-3d group-hover:rotate-y-180">
+                    
+                    {/* Front of Card */}
+                    <div className="absolute inset-0 w-full h-full backface-hidden bg-gradient-to-br from-gray-100/40 to-gray-200/30 dark:from-gray-700/30 dark:to-gray-800/20 backdrop-blur-md rounded-2xl p-8 border border-white/20 dark:border-gray-600/20 shadow-lg">
+                      {/* Gritty icon */}
+                      <div className="mb-6 relative">
+                        <div 
+                          className="w-16 h-16 rounded-lg flex items-center justify-center transform -rotate-2"
+                          style={{
+                            background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                            backgroundSize: '400% 400%',
+                            animation: 'pearlescent 3s ease-in-out infinite',
+                            boxShadow: '4px 4px 0px rgba(0,0,0,0.1), 2px 2px 0px rgba(244,208,63,0.3)',
+                            border: '2px solid rgba(0,0,0,0.1)'
+                          }}
+                        >
+                          <svg className="w-8 h-8 text-black" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 7.5V9M15 11V9L21 8.5V11M15 13V11L21 11.5V13M15 15V13L21 13.5V15M9 13C11.67 13 14.5 14.34 14.5 16V20H9.5V16C9.5 15.65 8.77 15 7.5 15S5.5 15.65 5.5 16V20H3.5V16C3.5 14.34 6.33 13 9 13ZM12,9A1,1 0 0,1 13,10A1,1 0 0,1 12,11A1,1 0 0,1 11,10A1,1 0 0,1 12,9Z"/>
+                          </svg>
+                        </div>
+                      </div>
+                      
+                      <h3 
+                        className="text-2xl font-black mb-4 text-[#0A0A0A] transform -rotate-1"
+                        style={{ 
+                          fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
+                          textShadow: '2px 2px 0px rgba(244,208,63,0.2)'
+                        }}
+                      >
+                        Money Trauma Reset
+                      </h3>
+                      
+                      <p className="text-base font-semibold text-[#0A0A0A] leading-relaxed mb-6">
+                        Break the cycle. Flip your relationship with money from scarcity to abundance mindset.
+                      </p>
+                      
+                      <button 
+                        className="w-full text-black font-bold py-3 px-6 rounded-xl transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-black/10"
+                        style={{
+                          background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                          backgroundSize: '400% 400%',
+                          animation: 'pearlescent 3s ease-in-out infinite',
+                          fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
+                          textShadow: "1px 1px 0px rgba(0,0,0,0.2)",
+                          letterSpacing: '1px'
+                        }}
+                      >
+                        Try Now
+                      </button>
+                    </div>
+
+                    {/* Back of Card - Gritty Image */}
+                    <div className="absolute inset-0 w-full h-full backface-hidden rotate-y-180 rounded-2xl overflow-hidden shadow-lg">
+                      <div className="relative w-full h-full">
+                        <img
+                          src="/lovable-uploads/ceb444c5-965e-4294-988f-11e2eff2cb0c.png"
+                          alt="Break the cycle, fix your relationship with money"
+                          className="w-full h-full object-cover"
+                          style={{ imageRendering: 'crisp-edges' }}
+                        />
+                        {/* Overlay with content */}
+                        <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-6">
+                          <div className="text-center">
+                            <h4 className="text-white text-xl font-black mb-4 drop-shadow-lg">
+                              Break the Cycle
+                            </h4>
+                            <button 
+                              className="text-black font-bold py-2 px-6 rounded-lg transform hover:scale-105 transition-all duration-300"
+                              style={{
+                                background: 'linear-gradient(45deg, #f4d03f, #ffd700)',
+                                fontFamily: "'Permanent Marker', cursive",
+                                textShadow: "1px 1px 0px rgba(0,0,0,0.2)"
+                              }}
+                            >
+                              Tap In →
+                            </button>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  
-                  <h3 
-                    className="text-2xl font-black mb-4 text-[#0A0A0A] transform -rotate-1"
-                    style={{ 
-                      fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
-                      textShadow: '2px 2px 0px rgba(244,208,63,0.2)'
-                    }}
-                  >
-                    Money Trauma Reset
-                  </h3>
-                  
-                  <p className="text-base font-semibold text-[#0A0A0A] leading-relaxed mb-6">
-                    Break the cycle. Flip your relationship with money from scarcity to abundance mindset.
-                  </p>
-                  
-                  <button 
-                    className="w-full text-black font-bold py-3 px-6 rounded-xl transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-black/10"
-                    style={{
-                      background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                      backgroundSize: '400% 400%',
-                      animation: 'pearlescent 3s ease-in-out infinite',
-                      fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
-                      textShadow: "1px 1px 0px rgba(0,0,0,0.2)",
-                      letterSpacing: '1px'
-                    }}
-                  >
-                    Try Now
-                  </button>
                 </div>
 
-                {/* Tool 2: Vision Board Blueprint */}
-                <div className="group relative bg-gradient-to-br from-gray-100/40 to-gray-200/30 dark:from-gray-700/30 dark:to-gray-800/20 backdrop-blur-md rounded-2xl p-8 border border-white/20 dark:border-gray-600/20 hover:border-[#ffd700]/40 transition-all duration-300 hover:transform hover:scale-105 shadow-lg hover:shadow-xl">
-                  {/* Gritty icon */}
-                  <div className="mb-6 relative">
-                    <div 
-                      className="w-16 h-16 rounded-lg flex items-center justify-center transform rotate-1 group-hover:rotate-0 transition-transform duration-300"
-                      style={{
-                        background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                        backgroundSize: '400% 400%',
-                        animation: 'pearlescent 3s ease-in-out infinite',
-                        boxShadow: '4px 4px 0px rgba(0,0,0,0.1), 2px 2px 0px rgba(244,208,63,0.3)',
-                        border: '2px solid rgba(0,0,0,0.1)'
-                      }}
-                    >
-                      <svg className="w-8 h-8 text-black" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12,2A2,2 0 0,1 14,4A2,2 0 0,1 12,6A2,2 0 0,1 10,4A2,2 0 0,1 12,2M21,9V7L15,13.5L13.5,12L19,6.5L21,9M8.5,11.5L10,13L15,18L13.5,19.5L8.5,14.5L7,16L5.5,14.5L8.5,11.5M3,17H21V19H3V17Z"/>
-                      </svg>
+                {/* Tool 2: Vision Board Blueprint - Flip Card */}
+                <div className="group relative h-96 perspective-1000">
+                  <div className="relative w-full h-full duration-700 transform-style-preserve-3d group-hover:rotate-y-180">
+                    
+                    {/* Front of Card */}
+                    <div className="absolute inset-0 w-full h-full backface-hidden bg-gradient-to-br from-gray-100/40 to-gray-200/30 dark:from-gray-700/30 dark:to-gray-800/20 backdrop-blur-md rounded-2xl p-8 border border-white/20 dark:border-gray-600/20 shadow-lg">
+                      {/* Gritty icon */}
+                      <div className="mb-6 relative">
+                        <div 
+                          className="w-16 h-16 rounded-lg flex items-center justify-center transform rotate-1"
+                          style={{
+                            background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                            backgroundSize: '400% 400%',
+                            animation: 'pearlescent 3s ease-in-out infinite',
+                            boxShadow: '4px 4px 0px rgba(0,0,0,0.1), 2px 2px 0px rgba(244,208,63,0.3)',
+                            border: '2px solid rgba(0,0,0,0.1)'
+                          }}
+                        >
+                          <svg className="w-8 h-8 text-black" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12,2A2,2 0 0,1 14,4A2,2 0 0,1 12,6A2,2 0 0,1 10,4A2,2 0 0,1 12,2M21,9V7L15,13.5L13.5,12L19,6.5L21,9M8.5,11.5L10,13L15,18L13.5,19.5L8.5,14.5L7,16L5.5,14.5L8.5,11.5M3,17H21V19H3V17Z"/>
+                          </svg>
+                        </div>
+                      </div>
+                      
+                      <h3 
+                        className="text-2xl font-black mb-4 text-[#0A0A0A] transform rotate-1"
+                        style={{ 
+                          fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
+                          textShadow: '2px 2px 0px rgba(244,208,63,0.2)'
+                        }}
+                      >
+                        Vision Board Blueprint
+                      </h3>
+                      
+                      <p className="text-base font-semibold text-[#0A0A0A] leading-relaxed mb-6">
+                        Map your future. Turn dreams into concrete goals with our street-smart vision framework.
+                      </p>
+                      
+                      <button 
+                        className="w-full text-black font-bold py-3 px-6 rounded-xl transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-black/10"
+                        style={{
+                          background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                          backgroundSize: '400% 400%',
+                          animation: 'pearlescent 3s ease-in-out infinite',
+                          fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
+                          textShadow: "1px 1px 0px rgba(0,0,0,0.2)",
+                          letterSpacing: '1px'
+                        }}
+                      >
+                        Try Now
+                      </button>
+                    </div>
+
+                    {/* Back of Card - Gritty Image */}
+                    <div className="absolute inset-0 w-full h-full backface-hidden rotate-y-180 rounded-2xl overflow-hidden shadow-lg">
+                      <div className="relative w-full h-full">
+                        <img
+                          src="/lovable-uploads/f36187a5-0a1f-4a9d-b574-232fa23f0d53.png"
+                          alt="Vision board - map your future"
+                          className="w-full h-full object-cover"
+                          style={{ imageRendering: 'crisp-edges' }}
+                        />
+                        {/* Overlay with content */}
+                        <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-6">
+                          <div className="text-center">
+                            <h4 className="text-white text-xl font-black mb-4 drop-shadow-lg">
+                              Map Your Future
+                            </h4>
+                            <button 
+                              className="text-black font-bold py-2 px-6 rounded-lg transform hover:scale-105 transition-all duration-300"
+                              style={{
+                                background: 'linear-gradient(45deg, #f4d03f, #ffd700)',
+                                fontFamily: "'Permanent Marker', cursive",
+                                textShadow: "1px 1px 0px rgba(0,0,0,0.2)"
+                              }}
+                            >
+                              Tap In →
+                            </button>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  
-                  <h3 
-                    className="text-2xl font-black mb-4 text-[#0A0A0A] transform rotate-1"
-                    style={{ 
-                      fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
-                      textShadow: '2px 2px 0px rgba(244,208,63,0.2)'
-                    }}
-                  >
-                    Vision Board Blueprint
-                  </h3>
-                  
-                  <p className="text-base font-semibold text-[#0A0A0A] leading-relaxed mb-6">
-                    Map your future. Turn dreams into concrete goals with our street-smart vision framework.
-                  </p>
-                  
-                  <button 
-                    className="w-full text-black font-bold py-3 px-6 rounded-xl transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-black/10"
-                    style={{
-                      background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                      backgroundSize: '400% 400%',
-                      animation: 'pearlescent 3s ease-in-out infinite',
-                      fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
-                      textShadow: "1px 1px 0px rgba(0,0,0,0.2)",
-                      letterSpacing: '1px'
-                    }}
-                  >
-                    Download
-                  </button>
                 </div>
 
-                {/* Tool 3: Self-Talk Flip */}
-                <div className="group relative bg-gradient-to-br from-gray-100/40 to-gray-200/30 dark:from-gray-700/30 dark:to-gray-800/20 backdrop-blur-md rounded-2xl p-8 border border-white/20 dark:border-gray-600/20 hover:border-[#ffd700]/40 transition-all duration-300 hover:transform hover:scale-105 shadow-lg hover:shadow-xl">
-                  {/* Gritty icon */}
-                  <div className="mb-6 relative">
-                    <div 
-                      className="w-16 h-16 rounded-lg flex items-center justify-center transform -rotate-1 group-hover:rotate-0 transition-transform duration-300"
-                      style={{
-                        background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                        backgroundSize: '400% 400%',
-                        animation: 'pearlescent 3s ease-in-out infinite',
-                        boxShadow: '4px 4px 0px rgba(0,0,0,0.1), 2px 2px 0px rgba(244,208,63,0.3)',
-                        border: '2px solid rgba(0,0,0,0.1)'
-                      }}
-                    >
-                      <svg className="w-8 h-8 text-black" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M7.07,18.28C7.5,17.38 8.12,16.5 8.91,15.77L10.32,17.18C9.75,17.96 9.29,18.81 8.95,19.71C8.31,19.27 7.72,18.8 7.19,18.28H7.07M9.05,4.29C9.29,5.19 9.75,6.04 10.32,6.82L8.91,8.23C8.12,7.5 7.5,6.62 7.07,5.72C7.72,5.2 8.31,4.73 9.05,4.29M5.72,7.07C6.62,7.5 7.5,8.12 8.23,8.91L6.82,10.32C6.04,9.75 5.19,9.29 4.29,9.05C4.73,8.31 5.2,7.72 5.72,7.07M4.29,14.95C5.19,14.71 6.04,14.25 6.82,13.68L8.23,15.09C7.5,15.88 6.62,16.5 5.72,16.93C5.2,16.28 4.73,15.69 4.29,14.95M19.71,9.05C18.81,9.29 17.96,9.75 17.18,10.32L15.77,8.91C16.5,8.12 17.38,7.5 18.28,7.07C18.8,7.72 19.27,8.31 19.71,9.05M13.68,17.18C14.25,17.96 14.71,18.81 14.95,19.71C15.69,19.27 16.28,18.8 16.93,18.28C16.5,17.38 15.88,16.5 15.09,15.77L13.68,17.18M17.18,13.68C17.96,14.25 18.81,14.71 19.71,14.95C19.27,15.69 18.8,16.28 18.28,16.93C17.38,16.5 16.5,15.88 15.77,15.09L17.18,13.68M14.95,4.29C14.71,5.19 14.25,6.04 13.68,6.82L15.09,8.23C15.88,7.5 16.5,6.62 16.93,5.72C16.28,5.2 15.69,4.73 14.95,4.29Z"/>
-                      </svg>
+                {/* Tool 3: Self-Talk Flip - Flip Card */}
+                <div className="group relative h-96 perspective-1000">
+                  <div className="relative w-full h-full duration-700 transform-style-preserve-3d group-hover:rotate-y-180">
+                    
+                    {/* Front of Card */}
+                    <div className="absolute inset-0 w-full h-full backface-hidden bg-gradient-to-br from-gray-100/40 to-gray-200/30 dark:from-gray-700/30 dark:to-gray-800/20 backdrop-blur-md rounded-2xl p-8 border border-white/20 dark:border-gray-600/20 shadow-lg">
+                      {/* Gritty icon */}
+                      <div className="mb-6 relative">
+                        <div 
+                          className="w-16 h-16 rounded-lg flex items-center justify-center transform -rotate-1"
+                          style={{
+                            background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                            backgroundSize: '400% 400%',
+                            animation: 'pearlescent 3s ease-in-out infinite',
+                            boxShadow: '4px 4px 0px rgba(0,0,0,0.1), 2px 2px 0px rgba(244,208,63,0.3)',
+                            border: '2px solid rgba(0,0,0,0.1)'
+                          }}
+                        >
+                          <svg className="w-8 h-8 text-black" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M7.07,18.28C7.5,17.38 8.12,16.5 8.91,15.77L10.32,17.18C9.75,17.96 9.29,18.81 8.95,19.71C8.31,19.27 7.72,18.8 7.19,18.28H7.07M9.05,4.29C9.29,5.19 9.75,6.04 10.32,6.82L8.91,8.23C8.12,7.5 7.5,6.62 7.07,5.72C7.72,5.2 8.31,4.73 9.05,4.29M5.72,7.07C6.62,7.5 7.5,8.12 8.23,8.91L6.82,10.32C6.04,9.75 5.19,9.29 4.29,9.05C4.73,8.31 5.2,7.72 5.72,7.07M4.29,14.95C5.19,14.71 6.04,14.25 6.82,13.68L8.23,15.09C7.5,15.88 6.62,16.5 5.72,16.93C5.2,16.28 4.73,15.69 4.29,14.95M19.71,9.05C18.81,9.29 17.96,9.75 17.18,10.32L15.77,8.91C16.5,8.12 17.38,7.5 18.28,7.07C18.8,7.72 19.27,8.31 19.71,9.05M13.68,17.18C14.25,17.96 14.71,18.81 14.95,19.71C15.69,19.27 16.28,18.8 16.93,18.28C16.5,17.38 15.88,16.5 15.09,15.77L13.68,17.18M17.18,13.68C17.96,14.25 18.81,14.71 19.71,14.95C19.27,15.69 18.8,16.28 18.28,16.93C17.38,16.5 16.5,15.88 15.77,15.09L17.18,13.68M14.95,4.29C14.71,5.19 14.25,6.04 13.68,6.82L15.09,8.23C15.88,7.5 16.5,6.62 16.93,5.72C16.28,5.2 15.69,4.73 14.95,4.29Z"/>
+                          </svg>
+                        </div>
+                      </div>
+                      
+                      <h3 
+                        className="text-2xl font-black mb-4 text-[#0A0A0A] transform rotate-1"
+                        style={{ 
+                          fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
+                          textShadow: '2px 2px 0px rgba(244,208,63,0.2)'
+                        }}
+                      >
+                        Self-Talk Flip
+                      </h3>
+                      
+                      <p className="text-base font-semibold text-[#0A0A0A] leading-relaxed mb-6">
+                        Rewire your mind. Transform negative self-talk into your biggest advantage.
+                      </p>
+                      
+                      <button 
+                        className="w-full text-black font-bold py-3 px-6 rounded-xl transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-black/10"
+                        style={{
+                          background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                          backgroundSize: '400% 400%',
+                          animation: 'pearlescent 3s ease-in-out infinite',
+                          fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
+                          textShadow: "1px 1px 0px rgba(0,0,0,0.2)",
+                          letterSpacing: '1px'
+                        }}
+                      >
+                        Try Now
+                      </button>
+                    </div>
+
+                    {/* Back of Card - Gritty Image */}
+                    <div className="absolute inset-0 w-full h-full backface-hidden rotate-y-180 rounded-2xl overflow-hidden shadow-lg">
+                      <div className="relative w-full h-full">
+                        <img
+                          src="/lovable-uploads/16687fb7-e174-49f6-897d-d5c544acb1dc.png"
+                          alt="Self-talk flip - transform your mindset"
+                          className="w-full h-full object-cover"
+                          style={{ imageRendering: 'crisp-edges' }}
+                        />
+                        {/* Overlay with content */}
+                        <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-6">
+                          <div className="text-center">
+                            <h4 className="text-white text-xl font-black mb-4 drop-shadow-lg">
+                              Flip Your Script
+                            </h4>
+                            <button 
+                              className="text-black font-bold py-2 px-6 rounded-lg transform hover:scale-105 transition-all duration-300"
+                              style={{
+                                background: 'linear-gradient(45deg, #f4d03f, #ffd700)',
+                                fontFamily: "'Permanent Marker', cursive",
+                                textShadow: "1px 1px 0px rgba(0,0,0,0.2)"
+                              }}
+                            >
+                              Tap In →
+                            </button>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  
-                  <h3 
-                    className="text-2xl font-black mb-4 text-[#0A0A0A] transform rotate-1"
-                    style={{ 
-                      fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
-                      textShadow: '2px 2px 0px rgba(244,208,63,0.2)'
-                    }}
-                  >
-                    Self-Talk Flip
-                  </h3>
-                  
-                  <p className="text-base font-semibold text-[#0A0A0A] leading-relaxed mb-6">
-                    Rewire your mind. Transform negative self-talk into your biggest advantage.
-                  </p>
-                  
-                  <button 
-                    className="w-full text-black font-bold py-3 px-6 rounded-xl transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-black/10"
-                    style={{
-                      background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                      backgroundSize: '400% 400%',
-                      animation: 'pearlescent 3s ease-in-out infinite',
-                      fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
-                      textShadow: "1px 1px 0px rgba(0,0,0,0.2)",
-                      letterSpacing: '1px'
-                    }}
-                  >
-                    Try Now
-                  </button>
                 </div>
 
               </div>

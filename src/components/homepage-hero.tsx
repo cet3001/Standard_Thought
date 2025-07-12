@@ -30,27 +30,7 @@ const HomepageHero = ({ scrollToNewsletter }: HomepageHeroProps) => {
         paddingTop: '3rem'
       }}
     >
-      {/* Enhanced Urban Background with Better Texture Visibility */}
-      <div className="absolute inset-0" aria-hidden="true">
-        {/* AI-Generated or Curated Urban Texture */}
-        {textureImageUrl && (
-          <div 
-            className="absolute inset-0 opacity-50 bg-cover bg-center"
-            style={{
-              backgroundImage: `url(${textureImageUrl})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat'
-            }}
-          />
-        )}
-        
-        {/* Background gradient overlay - lighter for better texture visibility */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-800/40 via-slate-700/50 to-slate-900/40"></div>
-        
-        {/* Content overlay for text readability - reduced opacity */}
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/70 via-brand-cream/75 to-brand-cream/80 dark:from-brand-black/70 dark:via-brand-black/75 dark:to-brand-black/80"></div>
-      </div>
+      {/* NO LOCAL BACKGROUND - USES GLOBAL PAGE BACKGROUND */}
 
       {/* Floating Elements */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">

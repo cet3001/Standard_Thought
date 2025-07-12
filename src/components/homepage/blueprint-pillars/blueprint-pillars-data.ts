@@ -1,8 +1,8 @@
 
 export const blueprintPillarsData = [
   {
-    image: "/lovable-uploads/4cd2a91d-611b-428b-94c1-6f57863bcc67.png",
-    imageAlt: "Young woman in hoodie with urban street art background representing mindset transformation",
+    image: "/lovable-uploads/c7656fcd-9e6b-48b4-b19b-a0b168834bbf.png",
+    imageAlt: "Person with headphones focused on success in urban setting",
     title: "Mindset Flips",
     description: "Flip your mindset from survival to stacking—heal money trauma and unlock your power to build.",
     link: "/",
@@ -11,8 +11,8 @@ export const blueprintPillarsData = [
     iconColor: "text-purple-600"
   },
   {
-    image: "/lovable-uploads/ac648e15-bdff-4675-9f13-8b76961699af.png",
-    imageAlt: "Man showing financial success with money and 720 credit score on phone",
+    image: "/lovable-uploads/d9eb8502-d37f-474b-ba58-24fa5e1681a6.png",
+    imageAlt: "Side hustle planning system with notebook, phone, and strategic notes",
     title: "Hustle Systems", 
     description: "Systemize your side hustles—turn random moves into consistent money with AI and automation.",
     link: "/",
@@ -21,8 +21,8 @@ export const blueprintPillarsData = [
     iconColor: "text-[#247EFF]"
   },
   {
-    image: "/lovable-uploads/aac5693a-e072-4a73-93d4-6072ad88c0fd.png",
-    imageAlt: "Young man in urban subway setting with money and phone representing legacy building",
+    image: "/lovable-uploads/e2bbb32b-2cc3-4b76-8dd2-adf86ae1da89.png",
+    imageAlt: "Mentorship and legacy building with older man placing crown on younger man",
     title: "Legacy Moves",
     description: "Turn today's grind into tomorrow's legacy—stack assets, break cycles, build generational wealth.",
     link: "/",

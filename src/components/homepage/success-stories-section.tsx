@@ -54,14 +54,12 @@ const SuccessStoriesSection = ({ isVisible }: SuccessStoriesSectionProps) => {
             <div 
               className="backdrop-blur-sm shadow-xl transform rotate-1 hover:rotate-0 transition-all duration-300 hover:scale-105 p-4 pb-8 relative overflow-hidden"
               style={{
-                background: 'rgba(128, 128, 128, 0.15)',
+                background: 'rgba(255, 255, 255, 0.08)',
                 borderRadius: '8px 12px 8px 15px',
-                boxShadow: '8px 12px 24px rgba(0,0,0,0.2), inset -1px -1px 2px rgba(0,0,0,0.05)'
+                boxShadow: '8px 12px 24px rgba(0,0,0,0.1), inset -1px -1px 2px rgba(0,0,0,0.02)'
               }}
             >
-              {/* Enhanced texture backgrounds */}
-              <div className="absolute inset-0 opacity-[0.06] bg-[radial-gradient(circle_at_2px_2px,_rgba(0,0,0,1)_1px,_transparent_0)] bg-[length:18px_18px]"></div>
-              <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(135deg,_transparent_46%,_rgba(0,0,0,0.6)_47%,_rgba(0,0,0,0.6)_53%,_transparent_54%)] bg-[length:8px_8px]"></div>
+              {/* REMOVED DARK TEXTURE OVERLAYS FOR CONSISTENT BRIGHTNESS */}
               
               {/* Tape effects - Updated with yellow pearlescent effect */}
               <div 
@@ -96,7 +94,7 @@ const SuccessStoriesSection = ({ isVisible }: SuccessStoriesSectionProps) => {
 
               {/* Photo area - Updated styling */}
               <div className="h-32 mb-4 flex items-center justify-center relative overflow-hidden" style={{
-                background: 'rgba(128, 128, 128, 0.1)',
+                background: 'rgba(255, 255, 255, 0.05)',
                 backdropFilter: 'blur(2px)'
               }}>
                 <div className={`w-12 h-12 ${story.bgColor} rounded-full flex items-center justify-center`}>
@@ -132,7 +130,7 @@ const SuccessStoriesSection = ({ isVisible }: SuccessStoriesSectionProps) => {
               
               {/* Corner curl effect - Updated with subtle grey */}
               <div className="absolute bottom-1 right-1 w-4 h-4 transform rotate-45 translate-x-2 translate-y-2 shadow-inner" style={{
-                background: 'rgba(128, 128, 128, 0.2)'
+                background: 'rgba(255, 255, 255, 0.1)'
               }}></div>
             </div>
           </div>

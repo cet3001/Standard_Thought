@@ -59,8 +59,8 @@ const SocialProofSection = ({ isVisible }: SocialProofSectionProps) => {
           <div className="flex justify-center mb-4">
             <div className="w-24 h-24 rounded-full overflow-hidden group-hover:scale-110 transition-transform shadow-lg">
               <img 
-                src="/lovable-uploads/382a90c1-5990-411e-a244-31c620d94cfc.png"
-                alt="Urban entrepreneur woman with street art background"
+                src="/lovable-uploads/c8d4ffa7-6b7e-4e3d-923f-172e8c37dfd7.png"
+                alt="Urban entrepreneurs building community together"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -97,8 +97,8 @@ const SocialProofSection = ({ isVisible }: SocialProofSectionProps) => {
           <div className="flex justify-center mb-4">
             <div className="w-24 h-24 rounded-full overflow-hidden group-hover:scale-110 transition-transform shadow-lg">
               <img 
-                src="/lovable-uploads/192e5cbd-cd5f-4574-a6a1-e27fa343ddaf.png"
-                alt="Entrepreneur with credit score and money success"
+                src="/lovable-uploads/fb281427-96cc-4adb-82b5-4ac1961d2ef1.png"
+                alt="Couple reviewing investment portfolio and financial gains"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -135,8 +135,8 @@ const SocialProofSection = ({ isVisible }: SocialProofSectionProps) => {
           <div className="flex justify-center mb-4">
             <div className="w-24 h-24 rounded-full overflow-hidden group-hover:scale-110 transition-transform shadow-lg">
               <img 
-                src="/lovable-uploads/ce854cf3-c894-4423-97b9-65d4b266ae98.png"
-                alt="Urban entrepreneur at Bronx subway station with financial success"
+                src="/lovable-uploads/6bd09687-7aec-41b6-870a-fb6a92525ad5.png"
+                alt="Happy family representing generational wealth and breaking cycles"
                 className="w-full h-full object-cover"
               />
             </div>

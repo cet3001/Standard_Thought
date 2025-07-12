@@ -1,9 +1,9 @@
 
 import { Link } from "react-router-dom";
-import { LucideIcon } from "lucide-react";
 
 interface BlueprintPillarCardProps {
-  icon: LucideIcon;
+  image: string;
+  imageAlt: string;
   title: string;
   description: string;
   link: string;
@@ -13,7 +13,8 @@ interface BlueprintPillarCardProps {
 }
 
 const BlueprintPillarCard = ({ 
-  icon: Icon, 
+  image, 
+  imageAlt,
   title, 
   description, 
   link, 
@@ -43,8 +44,12 @@ const BlueprintPillarCard = ({
           <div className={`w-20 h-20 ${bgColor} ${hoverBgColor} rounded-full flex items-center justify-center transition-colors transform group-hover:rotate-12 group-hover:scale-110 duration-300 relative overflow-hidden`}>
             {/* Subtle texture in icon container */}
             <div className="absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_1px_1px,_rgba(0,0,0,0.3)_1px,_transparent_0)] bg-[length:5px_5px]"></div>
-            <div className="relative z-10">
-              <Icon className={`h-10 w-10 ${iconColor}`} aria-hidden="true" />
+            <div className="relative z-10 w-full h-full rounded-full overflow-hidden">
+              <img 
+                src={image} 
+                alt={imageAlt}
+                className="w-full h-full object-cover rounded-full"
+              />
             </div>
           </div>
         </div>

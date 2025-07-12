@@ -1,9 +1,8 @@
 
-import { Zap, Target, TrendingUp } from "lucide-react";
-
 export const blueprintPillarsData = [
   {
-    icon: Zap,
+    image: "/lovable-uploads/c7656fcd-9e6b-48b4-b19b-a0b168834bbf.png",
+    imageAlt: "Person with headphones focused on success in urban setting",
     title: "Mindset Flips",
     description: "Flip your mindset from survival to stacking—heal money trauma and unlock your power to build.",
     link: "/",
@@ -12,7 +11,8 @@ export const blueprintPillarsData = [
     iconColor: "text-purple-600"
   },
   {
-    icon: Target,
+    image: "/lovable-uploads/d9eb8502-d37f-474b-ba58-24fa5e1681a6.png",
+    imageAlt: "Side hustle planning system with notebook, phone, and strategic notes",
     title: "Hustle Systems", 
     description: "Systemize your side hustles—turn random moves into consistent money with AI and automation.",
     link: "/",
@@ -21,7 +21,8 @@ export const blueprintPillarsData = [
     iconColor: "text-[#247EFF]"
   },
   {
-    icon: TrendingUp,
+    image: "/lovable-uploads/e2bbb32b-2cc3-4b76-8dd2-adf86ae1da89.png",
+    imageAlt: "Mentorship and legacy building with older man placing crown on younger man",
     title: "Legacy Moves",
     description: "Turn today's grind into tomorrow's legacy—stack assets, break cycles, build generational wealth.",
     link: "/",

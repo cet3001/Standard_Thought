@@ -414,6 +414,16 @@ const About = () => {
                 
                 {/* Code 1: Level Up Over Easy */}
                 <div className="group relative bg-gradient-to-br from-gray-100/40 to-gray-200/30 dark:from-gray-700/30 dark:to-gray-800/20 backdrop-blur-md rounded-2xl p-8 border border-white/20 dark:border-gray-600/20 hover:border-[#ffd700]/40 transition-all duration-300 hover:transform hover:scale-105 shadow-lg hover:shadow-xl">
+                  {/* Hero Image for Level Up Over Easy */}
+                  <div className="mb-6 -mx-8 -mt-8">
+                    <img
+                      src="/lovable-uploads/2ffba683-4c2c-4aab-b352-53d4118af635.png"
+                      alt="Level Up Over Easy graffiti on brick wall"
+                      className="w-full h-48 object-cover rounded-t-2xl"
+                      loading="lazy"
+                    />
+                  </div>
+                  
                   {/* Graffiti-style icon */}
                   <div className="mb-6 relative">
                     <div 
@@ -447,6 +457,16 @@ const About = () => {
 
                 {/* Code 2: We All Eat */}
                 <div className="group relative bg-gradient-to-br from-gray-100/40 to-gray-200/30 dark:from-gray-700/30 dark:to-gray-800/20 backdrop-blur-md rounded-2xl p-8 border border-white/20 dark:border-gray-600/20 hover:border-[#ffd700]/40 transition-all duration-300 hover:transform hover:scale-105 shadow-lg hover:shadow-xl">
+                  {/* Hero Image for We All Eat */}
+                  <div className="mb-6 -mx-8 -mt-8">
+                    <img
+                      src="/lovable-uploads/3369c9eb-a309-46ee-989c-59a77f9cbe0f.png"
+                      alt="We All Eat - hands protecting caviar representing community prosperity"
+                      className="w-full h-48 object-cover rounded-t-2xl"
+                      loading="lazy"
+                    />
+                  </div>
+                  
                   {/* Graffiti-style icon */}
                   <div className="mb-6 relative">
                     <div 
@@ -479,6 +499,16 @@ const About = () => {
 
                 {/* Code 3: Legacy Moves Only */}
                 <div className="group relative bg-gradient-to-br from-gray-100/40 to-gray-200/30 dark:from-gray-700/30 dark:to-gray-800/20 backdrop-blur-md rounded-2xl p-8 border border-white/20 dark:border-gray-600/20 hover:border-[#ffd700]/40 transition-all duration-300 hover:transform hover:scale-105 shadow-lg hover:shadow-xl">
+                  {/* Hero Image for Legacy Moves Only */}
+                  <div className="mb-6 -mx-8 -mt-8">
+                    <img
+                      src="/lovable-uploads/36ca6c7f-6216-41a1-a1b1-02ed951c3a05.png"
+                      alt="Legacy Moves Only - hands holding family photo with money representing generational wealth"
+                      className="w-full h-48 object-cover rounded-t-2xl"
+                      loading="lazy"
+                    />
+                  </div>
+                  
                   {/* Graffiti-style icon */}
                   <div className="mb-6 relative">
                     <div 

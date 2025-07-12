@@ -53,21 +53,7 @@ const SocialProofSection = ({ isVisible }: SocialProofSectionProps) => {
 
       {/* REMOVED GRITTY DARK TEXTURE OVERLAY FOR CONSISTENT BRIGHTNESS */}
       
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 relative z-10" role="group" aria-label="Success metrics and social proof">
-        
-        {/* Motivational Image */}
-        <div className="lg:col-span-1 flex justify-center lg:justify-start">
-          <div className="w-full max-w-xs group">
-            <img 
-              src="/lovable-uploads/6b43e453-8724-4de7-8ee5-ebf10ac69022.png"
-              alt="Motivational sticky notes saying 'It's OK to make money!' with success reminders"
-              className="w-full h-auto rounded-xl shadow-lg group-hover:scale-105 transition-transform duration-300"
-            />
-          </div>
-        </div>
-
-        {/* Stats Section */}
-        <div className="lg:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10" role="group" aria-label="Success metrics and social proof">
         
         <div className="text-center group hover:scale-105 transition-transform duration-300">
           <div className="flex justify-center mb-4">
@@ -185,12 +171,25 @@ const SocialProofSection = ({ isVisible }: SocialProofSectionProps) => {
             Changed their whole money game
           </div>
         </div>
-        </div>
       </div>
 
       {/* Rotating Community Testimonials */}
       <div className="mt-10 pt-10 border-t border-yellow-400/20 relative z-10">
-        <div className="text-center max-w-2xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 items-center">
+          
+          {/* Motivational Image */}
+          <div className="lg:col-span-1 flex justify-center lg:justify-start">
+            <div className="w-full max-w-xs group">
+              <img 
+                src="/lovable-uploads/6b43e453-8724-4de7-8ee5-ebf10ac69022.png"
+                alt="Motivational sticky notes saying 'It's OK to make money!' with success reminders"
+                className="w-full h-auto rounded-xl shadow-lg group-hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+          </div>
+
+          {/* Testimonials Carousel */}
+          <div className="lg:col-span-3 text-center">
           <div className="transition-all duration-500 ease-in-out min-h-[80px] flex items-center justify-center">
             <blockquote className="text-[#0A0A0A]/80 dark:text-brand-cream/80 text-lg leading-8 italic">
               "{testimonials[currentTestimonial].text}"
@@ -220,6 +219,7 @@ const SocialProofSection = ({ isVisible }: SocialProofSectionProps) => {
               />
             ))}
           </div>
+        </div>
         </div>
       </div>
 

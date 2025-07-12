@@ -8,6 +8,7 @@ import { useUrbanTexture } from "@/hooks/use-urban-texture";
 import { useMobilePerformance } from "@/hooks/use-mobile-performance";
 import { useBuilderStories } from "@/hooks/use-builder-stories";
 import SectionOverlayBox from "@/components/layout/SectionOverlayBox";
+import OptimizedImage from "@/components/optimized-image";
 
 const About = () => {
   useMobilePerformance();
@@ -52,9 +53,9 @@ const About = () => {
 
       {/* SEO */}
       <SEO
-        title="About Standardthought - Your Mindset Reset Station | Urban Wealth Building"
-        description="Unlock your mindset arsenal with Standardthought. This ain't just about stacking bread—it's about flipping your story, breaking cycles, and building mental wealth from the ground up."
-        keywords="mindset reset, urban wealth mindset, breaking cycles, mental wealth, standardthought about, urban entrepreneurship mindset"
+        title="About Standard Thought - Urban Mindset Reset Station | Mental Wealth Building"
+        description="Discover the real about mindset at Standard Thought. From 'I can't afford it' to 'How can I afford it?' - flip your story, break cycles, and build mental wealth from the ground up with proven urban entrepreneurship strategies."
+        keywords="urban mindset reset, mental wealth building, breaking financial cycles, mindset transformation, standard thought codes, urban entrepreneurship, wealth mindset shift, financial mindset coaching, urban financial education"
         url="/about"
         type="website"
         breadcrumbs={breadcrumbs}
@@ -153,19 +154,14 @@ const About = () => {
                 <div className="order-1 lg:order-2">
                   <div className="relative">
                     <picture className="block w-full">
-                      <img
+                      <OptimizedImage
                         src="/lovable-uploads/f309179b-b731-4959-8cb3-c02b01fe3b95.png"
-                        alt="Urban entrepreneur overlooking city skyline at night, representing the mindset shift from limitation to possibility in wealth building"
-                        className="w-full h-auto rounded-2xl shadow-2xl object-cover"
-                        style={{
-                          aspectRatio: '1/1',
-                          maxHeight: '600px',
-                          objectPosition: 'center'
-                        }}
-                        loading="eager"
+                        alt="Urban entrepreneur overlooking city skyline at night, representing the mindset shift from financial limitation to unlimited possibility in wealth building journey"
+                        className="w-full h-auto rounded-2xl shadow-2xl"
                         width={600}
                         height={600}
-                        decoding="async"
+                        priority={true}
+                        mobileOptimized={true}
                       />
                       {/* Overlay gradient for better text contrast on mobile */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent rounded-2xl lg:hidden"></div>
@@ -279,20 +275,18 @@ const About = () => {
                </div>
 
                {/* Mindset Banner Image */}
-               <div className="mb-16">
-                 <div className="relative mx-auto max-w-4xl">
-                   <img
-                     src="/lovable-uploads/66177af5-7395-419b-bac2-fe22a216e135.png"
-                     alt="Graffiti wall with mindset message about flipping your mindset and money"
-                     className="w-full h-auto rounded-lg shadow-lg opacity-85 object-cover"
-                     style={{
-                       maxHeight: '400px',
-                       objectPosition: 'center'
-                     }}
-                     loading="lazy"
-                   />
-                 </div>
-               </div>
+                <div className="mb-16">
+                  <div className="relative mx-auto max-w-4xl">
+                    <OptimizedImage
+                      src="/lovable-uploads/66177af5-7395-419b-bac2-fe22a216e135.png"
+                      alt="Powerful graffiti wall artwork featuring mindset transformation message about flipping your mindset and money for urban wealth building"
+                      className="w-full h-auto rounded-lg shadow-lg opacity-85"
+                      width={800}
+                      height={400}
+                      mobileOptimized={true}
+                    />
+                  </div>
+                </div>
 
                {/* Pull Quote */}
               <div className="relative">
@@ -473,11 +467,13 @@ const About = () => {
                     {/* Back of Card - Hero Image */}
                     <div className="absolute inset-0 w-full h-full backface-hidden rotate-y-180 rounded-2xl overflow-hidden shadow-lg">
                       <div className="relative w-full h-full">
-                        <img
+                        <OptimizedImage
                           src="/lovable-uploads/2ffba683-4c2c-4aab-b352-53d4118af635.png"
-                          alt="Level Up Over Easy graffiti on brick wall"
+                          alt="Level Up Over Easy graffiti art on urban brick wall showcasing mindset of choosing growth over comfort in wealth building"
                           className="w-full h-full object-cover"
-                          style={{ imageRendering: 'crisp-edges' }}
+                          width={400}
+                          height={400}
+                          mobileOptimized={true}
                         />
                         {/* Overlay with content */}
                         <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-6">
@@ -541,11 +537,13 @@ const About = () => {
                     {/* Back of Card - Hero Image */}
                     <div className="absolute inset-0 w-full h-full backface-hidden rotate-y-180 rounded-2xl overflow-hidden shadow-lg">
                       <div className="relative w-full h-full">
-                        <img
+                        <OptimizedImage
                           src="/lovable-uploads/3369c9eb-a309-46ee-989c-59a77f9cbe0f.png"
-                          alt="We All Eat - hands protecting caviar representing community prosperity"
+                          alt="We All Eat - hands protecting valuable resource representing community prosperity and shared wealth building in urban entrepreneurship"
                           className="w-full h-full object-cover"
-                          style={{ imageRendering: 'crisp-edges' }}
+                          width={400}
+                          height={400}
+                          mobileOptimized={true}
                         />
                         {/* Overlay with content */}
                         <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-6">
@@ -609,11 +607,13 @@ const About = () => {
                     {/* Back of Card - Hero Image */}
                     <div className="absolute inset-0 w-full h-full backface-hidden rotate-y-180 rounded-2xl overflow-hidden shadow-lg">
                       <div className="relative w-full h-full">
-                        <img
+                        <OptimizedImage
                           src="/lovable-uploads/36ca6c7f-6216-41a1-a1b1-02ed951c3a05.png"
-                          alt="Legacy Moves Only - hands holding family photo with money representing generational wealth"
+                          alt="Legacy Moves Only - hands holding family photo with money representing generational wealth building and long-term financial planning mindset"
                           className="w-full h-full object-cover"
-                          style={{ imageRendering: 'crisp-edges' }}
+                          width={400}
+                          height={400}
+                          mobileOptimized={true}
                         />
                         {/* Overlay with content */}
                         <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-6">
@@ -815,11 +815,13 @@ const About = () => {
                     {/* Back of Card - Gritty Image */}
                     <div className="absolute inset-0 w-full h-full backface-hidden rotate-y-180 rounded-2xl overflow-hidden shadow-lg">
                       <div className="relative w-full h-full">
-                        <img
+                        <OptimizedImage
                           src="/lovable-uploads/ceb444c5-965e-4294-988f-11e2eff2cb0c.png"
-                          alt="Break the cycle, fix your relationship with money"
+                          alt="Break the cycle - powerful imagery showing financial mindset transformation and breaking generational patterns of money scarcity"
                           className="w-full h-full object-cover"
-                          style={{ imageRendering: 'crisp-edges' }}
+                          width={400}
+                          height={400}
+                          mobileOptimized={true}
                         />
                         {/* Overlay with content */}
                         <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-6">
@@ -900,11 +902,13 @@ const About = () => {
                     {/* Back of Card - Gritty Image */}
                     <div className="absolute inset-0 w-full h-full backface-hidden rotate-y-180 rounded-2xl overflow-hidden shadow-lg">
                       <div className="relative w-full h-full">
-                        <img
+                        <OptimizedImage
                           src="/lovable-uploads/f36187a5-0a1f-4a9d-b574-232fa23f0d53.png"
-                          alt="Vision board - map your future"
+                          alt="Vision board blueprint - strategic planning artwork showing goal mapping and future visioning for urban wealth creation and financial success"
                           className="w-full h-full object-cover"
-                          style={{ imageRendering: 'crisp-edges' }}
+                          width={400}
+                          height={400}
+                          mobileOptimized={true}
                         />
                         {/* Overlay with content */}
                         <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-6">
@@ -985,11 +989,13 @@ const About = () => {
                     {/* Back of Card - Gritty Image */}
                     <div className="absolute inset-0 w-full h-full backface-hidden rotate-y-180 rounded-2xl overflow-hidden shadow-lg">
                       <div className="relative w-full h-full">
-                        <img
+                        <OptimizedImage
                           src="/lovable-uploads/16687fb7-e174-49f6-897d-d5c544acb1dc.png"
-                          alt="Self-talk flip - transform your mindset"
+                          alt="Self-talk flip transformation - mindset rewiring artwork demonstrating how to transform negative internal dialogue into powerful wealth-building motivation"
                           className="w-full h-full object-cover"
-                          style={{ imageRendering: 'crisp-edges' }}
+                          width={400}
+                          height={400}
+                          mobileOptimized={true}
                         />
                         {/* Overlay with content */}
                         <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-6">

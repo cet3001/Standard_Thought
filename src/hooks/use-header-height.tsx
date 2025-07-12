@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 export const useHeaderHeight = () => {
-  const [headerHeight, setHeaderHeight] = useState(0);
+  const [headerHeight, setHeaderHeight] = useState(80); // Better initial fallback
 
   useEffect(() => {
     const updateHeaderHeight = () => {

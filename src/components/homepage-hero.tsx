@@ -19,14 +19,16 @@ const HomepageHero = ({ scrollToNewsletter }: HomepageHeroProps) => {
   const { textureImageUrl } = useUrbanTexture();
 
   useEffect(() => {
-    setIsVisible(true);
+    // Delay visibility to prevent layout shift
+    const timer = setTimeout(() => setIsVisible(true), 100);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
     <section 
-      className="pb-24 relative overflow-hidden"
+      className="pb-24 relative overflow-hidden min-h-screen"
       style={{ 
-        marginTop: `${headerHeight}px`,
+        marginTop: `${headerHeight || 80}px`, // Fallback to prevent 0px causing shift
         paddingTop: '3rem'
       }}
     >

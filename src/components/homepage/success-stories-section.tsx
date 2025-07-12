@@ -12,21 +12,21 @@ const SuccessStoriesSection = ({ isVisible }: SuccessStoriesSectionProps) => {
       quote: "Started with $0 and a vision. Now I've got a side hustle bringing in $1,200/month. The blueprint made it simple.",
       name: "Tasha",
       location: "Detroit",
-      image: "/lovable-uploads/4696326a-6203-4b1e-b0bc-e1ccc29263be.png",
+      image: "/lovable-uploads/490c4156-e62f-4ea6-8f3f-515e214361b6.png",
       bgColor: "bg-green-500/10"
     },
     {
       quote: "Standard Thought helped me fix my credit and stack my first $10K. I never thought I'd get here.",
       name: "Malik",
       location: "Houston", 
-      image: "/lovable-uploads/5a73c6c8-6cb4-4b24-bc21-793d647712be.png",
+      image: "/lovable-uploads/adf2f586-f3a5-4584-a598-75845b03dde8.png",
       bgColor: "bg-[#247EFF]/10"
     },
     {
       quote: "I finally understand how to make my money work for me, not just work for money.",
       name: "J. Rivera",
       location: "Bronx",
-      image: "/lovable-uploads/92539a2f-74f6-4c0d-bb3b-3e81570e1e0d.png",
+      image: "/lovable-uploads/d2de1521-f1d8-427a-a84f-ebb173c89644.png",
       bgColor: "bg-purple-500/10"
     }
   ];
@@ -92,18 +92,16 @@ const SuccessStoriesSection = ({ isVisible }: SuccessStoriesSectionProps) => {
                 REAL TALK
               </div>
 
-              {/* Photo area - Updated styling */}
-              <div className="h-32 mb-4 flex items-center justify-center relative overflow-hidden" style={{
+              {/* Photo area - Full square image */}
+              <div className="h-32 mb-4 relative overflow-hidden rounded-lg border-2 border-white/20 shadow-lg" style={{
                 background: 'rgba(255, 255, 255, 0.05)',
                 backdropFilter: 'blur(2px)'
               }}>
-                <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-white/20 shadow-lg">
-                  <OptimizedImage
-                    src={story.image}
-                    alt={`${story.name} from ${story.location}`}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+                <OptimizedImage
+                  src={story.image}
+                  alt={`${story.name} from ${story.location}`}
+                  className="w-full h-full object-cover"
+                />
                 
                 {/* Vintage photo texture overlay */}
                 <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/10 to-yellow-100/20 pointer-events-none"></div>

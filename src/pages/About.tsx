@@ -257,6 +257,27 @@ const About = () => {
                 </p>
               </div>
 
+              {/* Transformation Image */}
+              <div className="mb-16">
+                <div className="flex justify-center">
+                  <div className="w-4/5 max-w-2xl">
+                    <img
+                      src="/lovable-uploads/4395efbc-3bec-408e-ab7e-0bcd63956f50.png"
+                      alt="Desk transformation scene showing the journey from denied applications to breakthrough - coffee cups, laptop with Canva sticker, to-do list with goals"
+                      className="w-full h-auto rounded-lg shadow-lg"
+                      style={{
+                        filter: 'drop-shadow(0 10px 25px rgba(0,0,0,0.15))'
+                      }}
+                      title="The before ain't forever. The blueprint changes the whole setup."
+                      loading="lazy"
+                      width={800}
+                      height={533}
+                      decoding="async"
+                    />
+                  </div>
+                </div>
+              </div>
+
               {/* Pull Quote */}
               <div className="relative">
                 <div 

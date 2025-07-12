@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useHeaderHeight } from "@/hooks/use-header-height";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
@@ -10,6 +11,7 @@ import { Eye, EyeOff } from "lucide-react";
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
+  const headerHeight = useHeaderHeight();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -48,7 +50,10 @@ const Auth = () => {
   };
 
   return (
-    <div className="min-h-screen bg-brand-cream dark:bg-brand-black flex items-center justify-center p-6 header-spacing lg:pt-20">
+    <div 
+      className="min-h-screen bg-brand-cream dark:bg-brand-black flex items-center justify-center p-6"
+      style={{ paddingTop: `${headerHeight + 48}px` }}
+    >
       <Card className="w-full max-w-md bg-white/90 dark:bg-brand-black/80 backdrop-blur-sm border-[#247EFF]/20">
         <CardHeader className="text-center">
           <Link to="/" className="text-2xl font-bold mb-4 inline-block">

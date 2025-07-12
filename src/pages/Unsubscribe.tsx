@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
+import { useHeaderHeight } from "@/hooks/use-header-height";
 import { useParams } from "react-router-dom";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
@@ -127,7 +128,7 @@ const Unsubscribe = () => {
     <div className="min-h-screen bg-brand-cream dark:bg-brand-black">
       <Navigation />
       
-      <main className="header-spacing pb-16">
+      <main style={{ marginTop: `${useHeaderHeight()}px`, paddingTop: '3rem', paddingBottom: '4rem' }}>
         <div className="container mx-auto px-6">
           <div className="max-w-2xl mx-auto">
             <div className="bg-white/90 dark:bg-brand-black/90 backdrop-blur-sm border border-[#247EFF]/20 rounded-3xl overflow-hidden">

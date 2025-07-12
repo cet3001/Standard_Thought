@@ -1,5 +1,6 @@
 
 import Navigation from "@/components/navigation";
+import { useHeaderHeight } from "@/hooks/use-header-height";
 import Footer from "@/components/footer";
 import SEO from "@/components/seo";
 import StorySubmissionForm from "@/components/story-submission-form";
@@ -17,7 +18,7 @@ const SubmitStory = () => {
       
       <Navigation />
       
-      <main className="header-spacing pb-16">
+      <main style={{ marginTop: `${useHeaderHeight()}px`, paddingTop: '3rem', paddingBottom: '4rem' }}>
         <div className="container mx-auto px-6 max-w-4xl">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold text-[#0A0A0A] dark:text-brand-cream mb-6">

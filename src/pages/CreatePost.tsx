@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useHeaderHeight } from "@/hooks/use-header-height";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import { BlogPost } from "@/lib/api";
@@ -84,7 +85,7 @@ const CreatePost = () => {
 
       <Navigation />
       
-      <main className="relative z-10 header-spacing pb-16">
+      <main className="relative z-10 pb-16" style={{ marginTop: `${useHeaderHeight()}px`, paddingTop: '3rem' }}>
         <div className="container mx-auto px-6 max-w-4xl">
           <PageHeader 
             isEditing={isEditing} 

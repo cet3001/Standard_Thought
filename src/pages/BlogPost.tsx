@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useHeaderHeight } from "@/hooks/use-header-height";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import Navigation from "@/components/navigation";
@@ -90,7 +91,7 @@ const BlogPost = () => {
         </div>
 
         <Navigation />
-        <main className="relative z-10 header-spacing pb-16">
+        <main className="relative z-10 pb-16" style={{ marginTop: `${useHeaderHeight()}px`, paddingTop: '3rem' }}>
           <div className="container mx-auto px-6 max-w-4xl">
             <div className="text-center py-20">
               <div className="text-6xl font-permanent-marker transform -rotate-12 drop-shadow-lg mb-4" style={{
@@ -135,7 +136,7 @@ const BlogPost = () => {
         </div>
 
         <Navigation />
-        <main className="relative z-10 header-spacing pb-16">
+        <main className="relative z-10 pb-16" style={{ marginTop: `${useHeaderHeight()}px`, paddingTop: '3rem' }}>
           <div className="container mx-auto px-6 max-w-4xl">
             <div className="text-center py-20">
               <div className="text-6xl font-permanent-marker transform -rotate-12 drop-shadow-lg mb-4" style={{
@@ -212,7 +213,7 @@ const BlogPost = () => {
 
       <Navigation />
 
-      <main className="relative z-10 header-spacing pb-16">
+      <main className="relative z-10 pb-16" style={{ marginTop: `${useHeaderHeight()}px`, paddingTop: '3rem' }}>
         <article className="container mx-auto px-6 max-w-4xl">
           
           {/* Back Button */}

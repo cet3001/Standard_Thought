@@ -1,6 +1,7 @@
 
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { useHeaderHeight } from "@/hooks/use-header-height";
 import SEO from "@/components/seo";
 
 const NotFound = () => {
@@ -14,7 +15,10 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 header-spacing lg:pt-20">
+    <div 
+      className="min-h-screen flex items-center justify-center bg-gray-100"
+      style={{ paddingTop: `${useHeaderHeight() + 48}px` }}
+    >
       {/* SEO: noIndex and canonical to homepage for soft 404 compliance */}
       <SEO
         title="404 Not Found | Standardthought"

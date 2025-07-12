@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from "react";
+import { useHeaderHeight } from "@/hooks/use-header-height";
 import HeroContent from "./homepage/hero-content";
 import SocialProofSection from "./homepage/social-proof-section";
 import ValuePropsSection from "./homepage/value-props-section";
@@ -14,6 +15,7 @@ interface HomepageHeroProps {
 
 const HomepageHero = ({ scrollToNewsletter }: HomepageHeroProps) => {
   const [isVisible, setIsVisible] = useState(false);
+  const headerHeight = useHeaderHeight();
   const { textureImageUrl } = useUrbanTexture();
 
   useEffect(() => {
@@ -21,7 +23,13 @@ const HomepageHero = ({ scrollToNewsletter }: HomepageHeroProps) => {
   }, []);
 
   return (
-    <section className="pt-44 pb-24 relative overflow-hidden">
+    <section 
+      className="pb-24 relative overflow-hidden"
+      style={{ 
+        marginTop: `${headerHeight}px`,
+        paddingTop: '3rem'
+      }}
+    >
       {/* Enhanced Urban Background with Better Texture Visibility */}
       <div className="absolute inset-0" aria-hidden="true">
         {/* AI-Generated or Curated Urban Texture */}

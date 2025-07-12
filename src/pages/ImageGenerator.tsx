@@ -4,9 +4,11 @@ import Footer from "@/components/footer";
 import ImageGenerator from "@/components/image-generator";
 import SEO from "@/components/seo";
 import { useUrbanTexture } from "@/hooks/use-urban-texture";
+import { useHeaderHeight } from "@/hooks/use-header-height";
 
 const ImageGeneratorPage = () => {
   const { textureImageUrl } = useUrbanTexture();
+  const headerHeight = useHeaderHeight();
 
   return (
     <>
@@ -44,7 +46,7 @@ const ImageGeneratorPage = () => {
         <div className="relative z-10">
           <Navigation />
           
-          <div className="header-spacing pb-16">
+          <div style={{ marginTop: `${headerHeight}px`, paddingTop: '3rem', paddingBottom: '4rem' }}>
             <ImageGenerator />
           </div>
 

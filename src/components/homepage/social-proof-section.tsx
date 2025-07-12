@@ -27,7 +27,7 @@ const SocialProofSection = ({ isVisible }: SocialProofSectionProps) => {
   }, [testimonials.length]);
 
   return (
-    <div className={`relative backdrop-blur-sm border border-gray-300/20 rounded-3xl p-8 mb-16 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} overflow-hidden`} style={{
+    <div className={`relative backdrop-blur-sm border border-gray-300/20 rounded-3xl p-6 sm:p-8 mb-12 sm:mb-16 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} overflow-hidden`} style={{
       background: 'rgba(255, 255, 255, 0.05)'
     }}>
       
@@ -53,7 +53,7 @@ const SocialProofSection = ({ isVisible }: SocialProofSectionProps) => {
 
       {/* REMOVED GRITTY DARK TEXTURE OVERLAY FOR CONSISTENT BRIGHTNESS */}
       
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10" role="group" aria-label="Success metrics and social proof">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 relative z-10" role="group" aria-label="Success metrics and social proof">
         
         <div className="text-center group hover:scale-105 transition-transform duration-300">
           <div className="flex justify-center mb-4">
@@ -62,6 +62,9 @@ const SocialProofSection = ({ isVisible }: SocialProofSectionProps) => {
                 src="/lovable-uploads/c8d4ffa7-6b7e-4e3d-923f-172e8c37dfd7.png"
                 alt="Urban entrepreneurs building community together"
                 className="w-full h-full object-cover"
+                loading="lazy"
+                width="96"
+                height="96"
               />
             </div>
           </div>
@@ -100,6 +103,9 @@ const SocialProofSection = ({ isVisible }: SocialProofSectionProps) => {
                 src="/lovable-uploads/fb281427-96cc-4adb-82b5-4ac1961d2ef1.png"
                 alt="Couple reviewing investment portfolio and financial gains"
                 className="w-full h-full object-cover"
+                loading="lazy"
+                width="96"
+                height="96"
               />
             </div>
           </div>
@@ -138,6 +144,9 @@ const SocialProofSection = ({ isVisible }: SocialProofSectionProps) => {
                 src="/lovable-uploads/6bd09687-7aec-41b6-870a-fb6a92525ad5.png"
                 alt="Happy family representing generational wealth and breaking cycles"
                 className="w-full h-full object-cover"
+                loading="lazy"
+                width="96"
+                height="96"
               />
             </div>
           </div>
@@ -174,8 +183,8 @@ const SocialProofSection = ({ isVisible }: SocialProofSectionProps) => {
       </div>
 
       {/* Rotating Community Testimonials */}
-      <div className="mt-10 pt-10 border-t border-yellow-400/20 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 items-center">
+      <div className="mt-8 sm:mt-10 pt-8 sm:pt-10 border-t border-yellow-400/20 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 lg:gap-8 items-center">
           
           {/* Motivational Image */}
           <div className="lg:col-span-1 flex justify-center lg:justify-start">
@@ -184,6 +193,9 @@ const SocialProofSection = ({ isVisible }: SocialProofSectionProps) => {
                 src="/lovable-uploads/6b43e453-8724-4de7-8ee5-ebf10ac69022.png"
                 alt="Motivational sticky notes saying 'It's OK to make money!' with success reminders"
                 className="w-full h-auto rounded-xl shadow-lg group-hover:scale-105 transition-transform duration-300"
+                loading="lazy"
+                width="192"
+                height="auto"
               />
             </div>
           </div>

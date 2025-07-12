@@ -32,8 +32,8 @@ const SuccessStoriesSection = ({ isVisible }: SuccessStoriesSectionProps) => {
   ];
 
   return (
-    <div className={`mb-16 transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-      <div className="text-center mb-12">
+    <div className={`mb-12 sm:mb-16 transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+      <div className="text-center mb-8 sm:mb-12">
         <h2 className="text-3xl md:text-4xl font-bold mb-4 text-brand-black dark:text-brand-cream">
           Real People. Real Progress.
         </h2>
@@ -43,7 +43,7 @@ const SuccessStoriesSection = ({ isVisible }: SuccessStoriesSectionProps) => {
       </div>
 
       {/* Polaroid-style Story Cards - Updated with new styling */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mb-16" role="group" aria-label="Community success stories">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 lg:gap-12 mb-12 sm:mb-16" role="group" aria-label="Community success stories">
         {stories.map((story, index) => (
           <div 
             key={index}
@@ -97,11 +97,17 @@ const SuccessStoriesSection = ({ isVisible }: SuccessStoriesSectionProps) => {
                 background: 'rgba(255, 255, 255, 0.05)',
                 backdropFilter: 'blur(2px)'
               }}>
-                <OptimizedImage
-                  src={story.image}
-                  alt={`${story.name} from ${story.location}`}
-                  className="w-full h-full object-contain"
-                />
+                <picture className="w-full h-full">
+                  <img
+                    src={story.image}
+                    alt={`Success story from ${story.name} in ${story.location} - community member sharing wealth building journey`}
+                    className="w-full h-full object-contain"
+                    loading="lazy"
+                    decoding="async"
+                    width="300"
+                    height="192"
+                  />
+                </picture>
                 
                 {/* Vintage photo texture overlay */}
                 <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/10 to-yellow-100/20 pointer-events-none"></div>

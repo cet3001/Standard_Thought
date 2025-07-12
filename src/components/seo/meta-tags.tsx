@@ -47,12 +47,15 @@ export const MetaTags = ({
       <meta property="og:image" content={fullImageUrl} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
-      <meta property="og:image:alt" content={title} />
+      <meta property="og:image:alt" content={`StandardThought - ${title} - Urban wealth building and financial education platform`} />
       <meta property="og:image:type" content="image/png" />
       <meta property="og:image:secure_url" content={fullImageUrl} />
       <meta property="og:url" content={canonicalUrl} />
-      <meta property="og:site_name" content="Standardthought" />
+      <meta property="og:site_name" content="StandardThought - Urban Wealth Building Hub" />
       <meta property="og:locale" content="en_US" />
+      <meta property="og:determiner" content="the" />
+      <meta property="fb:app_id" content="" />
+      <meta property="og:rich_attachment" content="true" />
       
       {/* Enhanced Twitter Card Tags */}
       <meta name="twitter:card" content="summary_large_image" />
@@ -61,10 +64,12 @@ export const MetaTags = ({
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={fullImageUrl} />
-      <meta name="twitter:image:alt" content={title} />
+      <meta name="twitter:image:alt" content={`StandardThought - ${title} - Urban financial education and wealth building strategies`} />
       <meta name="twitter:domain" content="www.standardthought.com" />
       <meta name="twitter:label1" content="Reading time" />
       <meta name="twitter:data1" content={wordCount ? `${Math.ceil(wordCount / 200)} min read` : "Quick read"} />
+      <meta name="twitter:label2" content="Category" />
+      <meta name="twitter:data2" content="Financial Education" />
       
       {/* Article specific meta tags */}
       {type === "article" && publishedTime && (

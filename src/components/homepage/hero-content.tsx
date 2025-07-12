@@ -52,12 +52,23 @@ const HeroContent = ({ isVisible, scrollToNewsletter }: HeroContentProps) => {
           {/* Hero Image */}
           <div className="order-2 lg:order-1">
             <div className="relative overflow-hidden rounded-2xl shadow-2xl">
-              <img 
-                src="/lovable-uploads/a96147ba-f6ca-4b46-b136-d2a113eb0ba5.png"
-                alt="Urban entrepreneurs building generational wealth together"
-                className="w-full h-auto object-cover transition-transform duration-500 hover:scale-105"
-                loading="eager"
-              />
+              <picture className="w-full h-auto">
+                <source 
+                  srcSet="/lovable-uploads/a96147ba-f6ca-4b46-b136-d2a113eb0ba5.png" 
+                  type="image/png"
+                  media="(min-width: 768px)"
+                />
+                <img 
+                  src="/lovable-uploads/a96147ba-f6ca-4b46-b136-d2a113eb0ba5.png"
+                  alt="Urban entrepreneurs collaborating on financial strategies - diverse group planning wealth building initiatives"
+                  className="w-full h-auto object-cover transition-transform duration-500 hover:scale-105"
+                  loading="eager"
+                  decoding="async"
+                  width="600"
+                  height="400"
+                  style={{ aspectRatio: '3/2' }}
+                />
+              </picture>
               {/* Subtle overlay for brand consistency */}
               <div className="absolute inset-0 bg-gradient-to-tr from-[#FFD700]/10 via-transparent to-[#247EFF]/10 pointer-events-none"></div>
             </div>

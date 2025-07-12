@@ -1,5 +1,5 @@
 
-import { TrendingUp, UserCheck, Brain } from "lucide-react";
+import OptimizedImage from "../optimized-image";
 
 interface SuccessStoriesSectionProps {
   isVisible: boolean;
@@ -12,21 +12,21 @@ const SuccessStoriesSection = ({ isVisible }: SuccessStoriesSectionProps) => {
       quote: "Started with $0 and a vision. Now I've got a side hustle bringing in $1,200/month. The blueprint made it simple.",
       name: "Tasha",
       location: "Detroit",
-      icon: <TrendingUp className="h-6 w-6 text-green-600" aria-hidden="true" />,
+      image: "/lovable-uploads/4696326a-6203-4b1e-b0bc-e1ccc29263be.png",
       bgColor: "bg-green-500/10"
     },
     {
       quote: "Standard Thought helped me fix my credit and stack my first $10K. I never thought I'd get here.",
       name: "Malik",
       location: "Houston", 
-      icon: <UserCheck className="h-6 w-6 text-[#247EFF]" aria-hidden="true" />,
+      image: "/lovable-uploads/5a73c6c8-6cb4-4b24-bc21-793d647712be.png",
       bgColor: "bg-[#247EFF]/10"
     },
     {
       quote: "I finally understand how to make my money work for me, not just work for money.",
       name: "J. Rivera",
       location: "Bronx",
-      icon: <Brain className="h-6 w-6 text-purple-600" aria-hidden="true" />,
+      image: "/lovable-uploads/92539a2f-74f6-4c0d-bb3b-3e81570e1e0d.png",
       bgColor: "bg-purple-500/10"
     }
   ];
@@ -97,8 +97,12 @@ const SuccessStoriesSection = ({ isVisible }: SuccessStoriesSectionProps) => {
                 background: 'rgba(255, 255, 255, 0.05)',
                 backdropFilter: 'blur(2px)'
               }}>
-                <div className={`w-12 h-12 ${story.bgColor} rounded-full flex items-center justify-center`}>
-                  {story.icon}
+                <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-white/20 shadow-lg">
+                  <OptimizedImage
+                    src={story.image}
+                    alt={`${story.name} from ${story.location}`}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 
                 {/* Vintage photo texture overlay */}

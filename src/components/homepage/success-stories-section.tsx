@@ -6,7 +6,7 @@ interface SuccessStoriesSectionProps {
 }
 
 const SuccessStoriesSection = ({ isVisible }: SuccessStoriesSectionProps) => {
-  // Rotating stories - can be updated weekly
+  // Fixed stories - permanent showcase
   const stories = [
     {
       quote: "Started with $0 and a vision. Now I've got a side hustle bringing in $1,200/month. The blueprint made it simple.",
@@ -145,15 +145,6 @@ const SuccessStoriesSection = ({ isVisible }: SuccessStoriesSectionProps) => {
         ))}
       </div>
 
-      {/* Note about rotating stories */}
-      <div className="text-center">
-        <p 
-          className="text-sm text-brand-black/60 dark:text-brand-cream/60 transform -rotate-1"
-          style={{ fontFamily: "'Kalam', 'Comic Neue', cursive" }}
-        >
-          ↑ Fresh stories every week from our community
-        </p>
-      </div>
 
       <style>{`
         @keyframes pearlescent {

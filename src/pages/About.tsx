@@ -253,9 +253,60 @@ const About = () => {
                     'How can I afford it?'
                   </span>{" "}
                   Mindset ain't hype—it's the foundation every real move is built on. 
-                  If you ever had to build your own blueprint, you're in the right spot.
+                   If you ever had to build your own blueprint, you're in the right spot.
                 </p>
               </div>
+
+            </div>
+          </SectionOverlayBox>
+        </div>
+
+        {/* Graffiti Wall Banner Section */}
+        <section className="py-16 relative overflow-hidden">
+          <div className="container mx-auto px-6">
+            <div 
+              className="relative mx-auto transition-all duration-1000 animate-fade-in"
+              style={{
+                maxWidth: '1200px'
+              }}
+            >
+              <img
+                src="/lovable-uploads/7f35e700-7303-4f8f-9090-26eb1f52dd9b.png"
+                alt="Urban graffiti wall displaying mindset transformation message: 'The Real About Mindset - I Can't Afford It? crossed out, How Can I Afford It, Flip Your Mindset, Flip Your Money'"
+                className="w-full h-auto rounded-lg shadow-2xl object-cover"
+                style={{
+                  aspectRatio: '16/9',
+                  maxHeight: '400px',
+                  objectPosition: 'center'
+                }}
+                loading="lazy"
+                width={1200}
+                height={675}
+                decoding="async"
+              />
+              
+              {/* Optional Caption */}
+              <div className="text-center mt-6">
+                <p 
+                  className="text-lg md:text-xl font-semibold text-[#0A0A0A] italic"
+                  style={{ 
+                    fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive"
+                  }}
+                >
+                  "Every blueprint starts in the dirt. We flipped ours."
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Section Spacer */}
+        <div className="py-8"></div>
+
+        {/* Continue with next section */}
+        <div className="container mx-auto px-6">
+          <SectionOverlayBox>
+            <div className="max-w-4xl mx-auto text-center">
 
               {/* Pull Quote */}
               <div className="relative">

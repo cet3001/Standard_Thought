@@ -128,7 +128,7 @@ const About = () => {
                 {/* Subhead */}
                 <div className="max-w-4xl mx-auto mb-12">
                   <p className="text-xl md:text-2xl lg:text-3xl text-[#0A0A0A] font-bold leading-relaxed">
-                    This ain't just about stacking bread—it's about{" "}
+                    This isn't just about stacking bread—it's about{" "}
                     <span 
                       className="font-black"
                       style={{ 

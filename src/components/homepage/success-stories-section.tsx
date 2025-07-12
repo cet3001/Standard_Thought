@@ -93,7 +93,7 @@ const SuccessStoriesSection = ({ isVisible }: SuccessStoriesSectionProps) => {
               </div>
 
               {/* Photo area - Full square image */}
-              <div className="h-32 mb-4 relative overflow-hidden rounded-lg border-2 border-white/20 shadow-lg" style={{
+              <div className="h-48 mb-4 relative overflow-hidden rounded-lg border-2 border-white/20 shadow-lg" style={{
                 background: 'rgba(255, 255, 255, 0.05)',
                 backdropFilter: 'blur(2px)'
               }}>

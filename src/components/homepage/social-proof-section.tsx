@@ -179,7 +179,7 @@ const SocialProofSection = ({ isVisible }: SocialProofSectionProps) => {
           
           {/* Motivational Image */}
           <div className="lg:col-span-1 flex justify-center lg:justify-start">
-            <div className="w-full max-w-xs group">
+            <div className="w-48 max-w-full group">
               <img 
                 src="/lovable-uploads/6b43e453-8724-4de7-8ee5-ebf10ac69022.png"
                 alt="Motivational sticky notes saying 'It's OK to make money!' with success reminders"

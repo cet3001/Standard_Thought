@@ -262,16 +262,15 @@ const About = () => {
                 <div className="flex justify-center">
                   <div className="w-4/5 max-w-2xl">
                     <img
-                      src="/lovable-uploads/4395efbc-3bec-408e-ab7e-0bcd63956f50.png"
+                      src="/lovable-uploads/37bf266e-1c25-47cb-9737-6d897a7d1731.png"
                       alt="Desk transformation scene showing the journey from denied applications to breakthrough - coffee cups, laptop with Canva sticker, to-do list with goals"
-                      className="w-full h-auto rounded-lg shadow-lg"
+                      className="w-full h-auto rounded-lg shadow-lg object-cover"
                       style={{
-                        filter: 'drop-shadow(0 10px 25px rgba(0,0,0,0.15))'
+                        filter: 'drop-shadow(0 10px 25px rgba(0,0,0,0.15))',
+                        maxHeight: '300px'
                       }}
                       title="The before ain't forever. The blueprint changes the whole setup."
                       loading="lazy"
-                      width={800}
-                      height={533}
                       decoding="async"
                     />
                   </div>

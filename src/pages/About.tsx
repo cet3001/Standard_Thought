@@ -430,137 +430,212 @@ const About = () => {
                 </h2>
               </div>
 
-              {/* Three Codes Grid */}
+              {/* Three Codes Grid - Flip Cards */}
               <div className="grid md:grid-cols-3 gap-8 mb-16">
                 
-                {/* Code 1: Level Up Over Easy */}
-                <div className="group relative bg-gradient-to-br from-gray-100/40 to-gray-200/30 dark:from-gray-700/30 dark:to-gray-800/20 backdrop-blur-md rounded-2xl p-8 border border-white/20 dark:border-gray-600/20 hover:border-[#ffd700]/40 transition-all duration-300 hover:transform hover:scale-105 shadow-lg hover:shadow-xl">
-                  {/* Hero Image for Level Up Over Easy */}
-                  <div className="mb-6 -mx-8 -mt-8">
-                    <img
-                      src="/lovable-uploads/2ffba683-4c2c-4aab-b352-53d4118af635.png"
-                      alt="Level Up Over Easy graffiti on brick wall"
-                      className="w-full h-auto object-cover rounded-t-2xl"
-                      style={{ aspectRatio: '16/9', maxHeight: '300px' }}
-                      loading="lazy"
-                    />
-                  </div>
-                  
-                  {/* Graffiti-style icon */}
-                  <div className="mb-6 relative">
-                    <div 
-                      className="w-16 h-16 rounded-full flex items-center justify-center transform -rotate-3 group-hover:rotate-0 transition-transform duration-300"
-                      style={{
-                        background: 'linear-gradient(45deg, #f4d03f, #ffd700)',
-                        boxShadow: '4px 4px 0px rgba(0,0,0,0.1), 2px 2px 0px rgba(244,208,63,0.3)'
-                      }}
-                    >
-                      <svg className="w-8 h-8 text-black" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M13 7.5L16.5 11L13 14.5V12H8V11H13V7.5Z"/>
-                        <path d="M12 2L15.09 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.91 8.26L12 2Z"/>
-                      </svg>
+                {/* Code 1: Level Up Over Easy - Flip Card */}
+                <div className="group relative h-96 perspective-1000">
+                  <div className="relative w-full h-full duration-700 transform-style-preserve-3d group-hover:rotate-y-180">
+                    
+                    {/* Front of Card */}
+                    <div className="absolute inset-0 w-full h-full backface-hidden bg-gradient-to-br from-gray-100/40 to-gray-200/30 dark:from-gray-700/30 dark:to-gray-800/20 backdrop-blur-md rounded-2xl p-8 border border-white/20 dark:border-gray-600/20 shadow-lg">
+                      {/* Graffiti-style icon */}
+                      <div className="mb-6 relative">
+                        <div 
+                          className="w-16 h-16 rounded-full flex items-center justify-center transform -rotate-3"
+                          style={{
+                            background: 'linear-gradient(45deg, #f4d03f, #ffd700)',
+                            boxShadow: '4px 4px 0px rgba(0,0,0,0.1), 2px 2px 0px rgba(244,208,63,0.3)'
+                          }}
+                        >
+                          <svg className="w-8 h-8 text-black" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M13 7.5L16.5 11L13 14.5V12H8V11H13V7.5Z"/>
+                            <path d="M12 2L15.09 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.91 8.26L12 2Z"/>
+                          </svg>
+                        </div>
+                      </div>
+                      
+                      <h3 
+                        className="text-2xl font-black mb-4 text-[#0A0A0A] transform -rotate-1"
+                        style={{ 
+                          fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
+                          textShadow: '2px 2px 0px rgba(244,208,63,0.2)'
+                        }}
+                      >
+                        Level Up Over Easy
+                      </h3>
+                      
+                      <p className="text-lg font-semibold text-[#0A0A0A] leading-relaxed">
+                        "We don't play it safe. Every challenge is a shot to level up."
+                      </p>
+                    </div>
+
+                    {/* Back of Card - Hero Image */}
+                    <div className="absolute inset-0 w-full h-full backface-hidden rotate-y-180 rounded-2xl overflow-hidden shadow-lg">
+                      <div className="relative w-full h-full">
+                        <img
+                          src="/lovable-uploads/2ffba683-4c2c-4aab-b352-53d4118af635.png"
+                          alt="Level Up Over Easy graffiti on brick wall"
+                          className="w-full h-full object-cover"
+                          style={{ imageRendering: 'crisp-edges' }}
+                        />
+                        {/* Overlay with content */}
+                        <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-6">
+                          <div className="text-center">
+                            <h4 className="text-white text-xl font-black mb-4 drop-shadow-lg">
+                              Level Up Over Easy
+                            </h4>
+                            <button 
+                              className="text-black font-bold py-2 px-6 rounded-lg transform hover:scale-105 transition-all duration-300"
+                              style={{
+                                background: 'linear-gradient(45deg, #f4d03f, #ffd700)',
+                                fontFamily: "'Permanent Marker', cursive",
+                                textShadow: "1px 1px 0px rgba(0,0,0,0.2)"
+                              }}
+                            >
+                              Tap In →
+                            </button>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  
-                  <h3 
-                    className="text-2xl font-black mb-4 text-[#0A0A0A] transform -rotate-1"
-                    style={{ 
-                      fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
-                      textShadow: '2px 2px 0px rgba(244,208,63,0.2)'
-                    }}
-                  >
-                    Level Up Over Easy
-                  </h3>
-                  
-                  <p className="text-lg font-semibold text-[#0A0A0A] leading-relaxed">
-                    "We don't play it safe. Every challenge is a shot to level up."
-                  </p>
                 </div>
 
-                {/* Code 2: We All Eat */}
-                <div className="group relative bg-gradient-to-br from-gray-100/40 to-gray-200/30 dark:from-gray-700/30 dark:to-gray-800/20 backdrop-blur-md rounded-2xl p-8 border border-white/20 dark:border-gray-600/20 hover:border-[#ffd700]/40 transition-all duration-300 hover:transform hover:scale-105 shadow-lg hover:shadow-xl">
-                  {/* Hero Image for We All Eat */}
-                  <div className="mb-6 -mx-8 -mt-8">
-                    <img
-                      src="/lovable-uploads/3369c9eb-a309-46ee-989c-59a77f9cbe0f.png"
-                      alt="We All Eat - hands protecting caviar representing community prosperity"
-                      className="w-full h-auto object-cover rounded-t-2xl"
-                      style={{ aspectRatio: '16/9', maxHeight: '300px' }}
-                      loading="lazy"
-                    />
-                  </div>
-                  
-                  {/* Graffiti-style icon */}
-                  <div className="mb-6 relative">
-                    <div 
-                      className="w-16 h-16 rounded-full flex items-center justify-center transform rotate-2 group-hover:rotate-0 transition-transform duration-300"
-                      style={{
-                        background: 'linear-gradient(45deg, #f4d03f, #ffd700)',
-                        boxShadow: '4px 4px 0px rgba(0,0,0,0.1), 2px 2px 0px rgba(244,208,63,0.3)'
-                      }}
-                    >
-                      <svg className="w-8 h-8 text-black" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 7.5V9M15 11V9L21 8.5V11M15 13V11L21 11.5V13M15 15V13L21 13.5V15M9 13C11.67 13 14.5 14.34 14.5 16V20H9.5V16C9.5 15.65 8.77 15 7.5 15S5.5 15.65 5.5 16V20H3.5V16C3.5 14.34 6.33 13 9 13Z"/>
-                      </svg>
+                {/* Code 2: We All Eat - Flip Card */}
+                <div className="group relative h-96 perspective-1000">
+                  <div className="relative w-full h-full duration-700 transform-style-preserve-3d group-hover:rotate-y-180">
+                    
+                    {/* Front of Card */}
+                    <div className="absolute inset-0 w-full h-full backface-hidden bg-gradient-to-br from-gray-100/40 to-gray-200/30 dark:from-gray-700/30 dark:to-gray-800/20 backdrop-blur-md rounded-2xl p-8 border border-white/20 dark:border-gray-600/20 shadow-lg">
+                      {/* Graffiti-style icon */}
+                      <div className="mb-6 relative">
+                        <div 
+                          className="w-16 h-16 rounded-full flex items-center justify-center transform rotate-2"
+                          style={{
+                            background: 'linear-gradient(45deg, #f4d03f, #ffd700)',
+                            boxShadow: '4px 4px 0px rgba(0,0,0,0.1), 2px 2px 0px rgba(244,208,63,0.3)'
+                          }}
+                        >
+                          <svg className="w-8 h-8 text-black" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 7.5V9M15 11V9L21 8.5V11M15 13V11L21 11.5V13M15 15V13L21 13.5V15M9 13C11.67 13 14.5 14.34 14.5 16V20H9.5V16C9.5 15.65 8.77 15 7.5 15S5.5 15.65 5.5 16V20H3.5V16C3.5 14.34 6.33 13 9 13Z"/>
+                          </svg>
+                        </div>
+                      </div>
+                      
+                      <h3 
+                        className="text-2xl font-black mb-4 text-[#0A0A0A] transform rotate-1"
+                        style={{ 
+                          fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
+                          textShadow: '2px 2px 0px rgba(244,208,63,0.2)'
+                        }}
+                      >
+                        We All Eat
+                      </h3>
+                      
+                      <p className="text-lg font-semibold text-[#0A0A0A] leading-relaxed">
+                        "We rise together—nobody builds alone."
+                      </p>
+                    </div>
+
+                    {/* Back of Card - Hero Image */}
+                    <div className="absolute inset-0 w-full h-full backface-hidden rotate-y-180 rounded-2xl overflow-hidden shadow-lg">
+                      <div className="relative w-full h-full">
+                        <img
+                          src="/lovable-uploads/3369c9eb-a309-46ee-989c-59a77f9cbe0f.png"
+                          alt="We All Eat - hands protecting caviar representing community prosperity"
+                          className="w-full h-full object-cover"
+                          style={{ imageRendering: 'crisp-edges' }}
+                        />
+                        {/* Overlay with content */}
+                        <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-6">
+                          <div className="text-center">
+                            <h4 className="text-white text-xl font-black mb-4 drop-shadow-lg">
+                              We All Eat
+                            </h4>
+                            <button 
+                              className="text-black font-bold py-2 px-6 rounded-lg transform hover:scale-105 transition-all duration-300"
+                              style={{
+                                background: 'linear-gradient(45deg, #f4d03f, #ffd700)',
+                                fontFamily: "'Permanent Marker', cursive",
+                                textShadow: "1px 1px 0px rgba(0,0,0,0.2)"
+                              }}
+                            >
+                              Tap In →
+                            </button>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  
-                  <h3 
-                    className="text-2xl font-black mb-4 text-[#0A0A0A] transform rotate-1"
-                    style={{ 
-                      fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
-                      textShadow: '2px 2px 0px rgba(244,208,63,0.2)'
-                    }}
-                  >
-                    We All Eat
-                  </h3>
-                  
-                  <p className="text-lg font-semibold text-[#0A0A0A] leading-relaxed">
-                    "We rise together—nobody builds alone."
-                  </p>
                 </div>
 
-                {/* Code 3: Legacy Moves Only */}
-                <div className="group relative bg-gradient-to-br from-gray-100/40 to-gray-200/30 dark:from-gray-700/30 dark:to-gray-800/20 backdrop-blur-md rounded-2xl p-8 border border-white/20 dark:border-gray-600/20 hover:border-[#ffd700]/40 transition-all duration-300 hover:transform hover:scale-105 shadow-lg hover:shadow-xl">
-                  {/* Hero Image for Legacy Moves Only */}
-                  <div className="mb-6 -mx-8 -mt-8">
-                    <img
-                      src="/lovable-uploads/36ca6c7f-6216-41a1-a1b1-02ed951c3a05.png"
-                      alt="Legacy Moves Only - hands holding family photo with money representing generational wealth"
-                      className="w-full h-auto object-cover rounded-t-2xl"
-                      style={{ aspectRatio: '16/9', maxHeight: '300px' }}
-                      loading="lazy"
-                    />
-                  </div>
-                  
-                  {/* Graffiti-style icon */}
-                  <div className="mb-6 relative">
-                    <div 
-                      className="w-16 h-16 rounded-full flex items-center justify-center transform -rotate-2 group-hover:rotate-0 transition-transform duration-300"
-                      style={{
-                        background: 'linear-gradient(45deg, #f4d03f, #ffd700)',
-                        boxShadow: '4px 4px 0px rgba(0,0,0,0.1), 2px 2px 0px rgba(244,208,63,0.3)'
-                      }}
-                    >
-                      <svg className="w-8 h-8 text-black" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M5 16L3 5H1V3H4L6 14H18L20 7H8L8.5 5H21.95L19.7 16H5ZM12 2L15.39 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.61 8.26L12 2Z"/>
-                      </svg>
+                {/* Code 3: Legacy Moves Only - Flip Card */}
+                <div className="group relative h-96 perspective-1000">
+                  <div className="relative w-full h-full duration-700 transform-style-preserve-3d group-hover:rotate-y-180">
+                    
+                    {/* Front of Card */}
+                    <div className="absolute inset-0 w-full h-full backface-hidden bg-gradient-to-br from-gray-100/40 to-gray-200/30 dark:from-gray-700/30 dark:to-gray-800/20 backdrop-blur-md rounded-2xl p-8 border border-white/20 dark:border-gray-600/20 shadow-lg">
+                      {/* Graffiti-style icon */}
+                      <div className="mb-6 relative">
+                        <div 
+                          className="w-16 h-16 rounded-full flex items-center justify-center transform -rotate-2"
+                          style={{
+                            background: 'linear-gradient(45deg, #f4d03f, #ffd700)',
+                            boxShadow: '4px 4px 0px rgba(0,0,0,0.1), 2px 2px 0px rgba(244,208,63,0.3)'
+                          }}
+                        >
+                          <svg className="w-8 h-8 text-black" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M5 16L3 5H1V3H4L6 14H18L20 7H8L8.5 5H21.95L19.7 16H5ZM12 2L15.39 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.61 8.26L12 2Z"/>
+                          </svg>
+                        </div>
+                      </div>
+                      
+                      <h3 
+                        className="text-2xl font-black mb-4 text-[#0A0A0A] transform rotate-1"
+                        style={{ 
+                          fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
+                          textShadow: '2px 2px 0px rgba(244,208,63,0.2)'
+                        }}
+                      >
+                        Legacy Moves Only
+                      </h3>
+                      
+                      <p className="text-lg font-semibold text-[#0A0A0A] leading-relaxed">
+                        "Every move is about legacy. Build today, eat tomorrow."
+                      </p>
+                    </div>
+
+                    {/* Back of Card - Hero Image */}
+                    <div className="absolute inset-0 w-full h-full backface-hidden rotate-y-180 rounded-2xl overflow-hidden shadow-lg">
+                      <div className="relative w-full h-full">
+                        <img
+                          src="/lovable-uploads/36ca6c7f-6216-41a1-a1b1-02ed951c3a05.png"
+                          alt="Legacy Moves Only - hands holding family photo with money representing generational wealth"
+                          className="w-full h-full object-cover"
+                          style={{ imageRendering: 'crisp-edges' }}
+                        />
+                        {/* Overlay with content */}
+                        <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-6">
+                          <div className="text-center">
+                            <h4 className="text-white text-xl font-black mb-4 drop-shadow-lg">
+                              Legacy Moves Only
+                            </h4>
+                            <button 
+                              className="text-black font-bold py-2 px-6 rounded-lg transform hover:scale-105 transition-all duration-300"
+                              style={{
+                                background: 'linear-gradient(45deg, #f4d03f, #ffd700)',
+                                fontFamily: "'Permanent Marker', cursive",
+                                textShadow: "1px 1px 0px rgba(0,0,0,0.2)"
+                              }}
+                            >
+                              Tap In →
+                            </button>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  
-                  <h3 
-                    className="text-2xl font-black mb-4 text-[#0A0A0A] transform rotate-1"
-                    style={{ 
-                      fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
-                      textShadow: '2px 2px 0px rgba(244,208,63,0.2)'
-                    }}
-                  >
-                    Legacy Moves Only
-                  </h3>
-                  
-                  <p className="text-lg font-semibold text-[#0A0A0A] leading-relaxed">
-                    "Every move is about legacy. Build today, eat tomorrow."
-                  </p>
                 </div>
 
               </div>

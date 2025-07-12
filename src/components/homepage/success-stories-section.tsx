@@ -12,21 +12,21 @@ const SuccessStoriesSection = ({ isVisible }: SuccessStoriesSectionProps) => {
       quote: "Started with $0 and a vision. Now I've got a side hustle bringing in $1,200/month. The blueprint made it simple.",
       name: "Tasha",
       location: "Detroit",
-      image: "/lovable-uploads/490c4156-e62f-4ea6-8f3f-515e214361b6.png",
+      image: "/lovable-uploads/24dd9219-799e-43d4-a061-11b0722d14a8.png",
       bgColor: "bg-green-500/10"
     },
     {
       quote: "Standard Thought helped me fix my credit and stack my first $10K. I never thought I'd get here.",
       name: "Malik",
       location: "Houston", 
-      image: "/lovable-uploads/adf2f586-f3a5-4584-a598-75845b03dde8.png",
+      image: "/lovable-uploads/86d1bee1-2471-4035-a05a-cfddde68d29c.png",
       bgColor: "bg-[#247EFF]/10"
     },
     {
       quote: "I finally understand how to make my money work for me, not just work for money.",
       name: "J. Rivera",
       location: "Bronx",
-      image: "/lovable-uploads/d2de1521-f1d8-427a-a84f-ebb173c89644.png",
+      image: "/lovable-uploads/d25586c6-16eb-4244-b963-9182b06793b0.png",
       bgColor: "bg-purple-500/10"
     }
   ];

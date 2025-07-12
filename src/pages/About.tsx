@@ -254,10 +254,26 @@ const About = () => {
                   </span>{" "}
                   Mindset ain't hype—it's the foundation every real move is built on. 
                   If you ever had to build your own blueprint, you're in the right spot.
-                </p>
-              </div>
+                 </p>
+               </div>
 
-              {/* Pull Quote */}
+               {/* Mindset Banner Image */}
+               <div className="mb-16">
+                 <div className="relative mx-auto max-w-4xl">
+                   <img
+                     src="/lovable-uploads/66177af5-7395-419b-bac2-fe22a216e135.png"
+                     alt="Graffiti wall with mindset message about flipping your mindset and money"
+                     className="w-full h-auto rounded-lg shadow-lg opacity-85 object-cover"
+                     style={{
+                       maxHeight: '400px',
+                       objectPosition: 'center'
+                     }}
+                     loading="lazy"
+                   />
+                 </div>
+               </div>
+
+               {/* Pull Quote */}
               <div className="relative">
                 <div 
                   className="text-4xl md:text-5xl lg:text-6xl font-black text-[#0A0A0A] transform -rotate-1 relative z-10"

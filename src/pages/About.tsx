@@ -257,36 +257,6 @@ const About = () => {
                 </p>
               </div>
 
-              {/* Full-Width Mindset Banner */}
-              <div className="relative w-full h-56 md:h-72 mb-16 -mx-6 overflow-hidden">
-                {/* Image with grunge overlay */}
-                <div className="relative w-full h-full bg-slate-800/20">
-                  <img
-                    src="/lovable-uploads/82e2e333-8365-4dd8-bcfb-b8bab808dc70.png"
-                    alt="Urban graffiti art showing 'Flip Your Mindset Flip Your Money' message on brick wall"
-                    className="w-full h-full object-contain"
-                    loading="lazy"
-                    width={1200}
-                    height={288}
-                    decoding="async"
-                  />
-                  
-                  {/* Grunge overlay with shadow/glow effect */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/20"></div>
-                  <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/30"></div>
-                  
-                  {/* Top and bottom fade effects */}
-                  <div className="absolute top-0 left-0 right-0 h-8 bg-gradient-to-b from-brand-cream/90 to-transparent dark:from-brand-black/90"></div>
-                  <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-brand-cream/90 to-transparent dark:from-brand-black/90"></div>
-                  
-                  {/* Subtle shadow effect */}
-                  <div className="absolute inset-0 shadow-inner"></div>
-                </div>
-                
-                {/* Glow effect around the banner */}
-                <div className="absolute -inset-2 bg-gradient-to-r from-[#f4d03f]/10 via-[#ffd700]/5 to-[#f4d03f]/10 blur-sm -z-10"></div>
-              </div>
-
               {/* Pull Quote */}
               <div className="relative">
                 <div 

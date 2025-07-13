@@ -310,25 +310,25 @@ const Sales = () => {
               </div>
 
               {/* Main Content: Image Left, Guides Right */}
-              <div className="grid lg:grid-cols-4 gap-8 items-start">
+              <div className="relative">
                 
-                {/* Left Column - Vertical Urban Image */}
-                <div className="lg:col-span-1">
-                  <div className="sticky top-24 rounded-2xl overflow-hidden shadow-2xl">
+                {/* Left Column - Vertical Urban Image - Absolute positioned */}
+                <div className="hidden lg:block absolute left-0 top-0 w-1/4 h-full">
+                  <div className="sticky top-24 rounded-2xl overflow-hidden shadow-2xl h-[1200px]">
                     <OptimizedImage
                       src="/lovable-uploads/6bb9f966-b9c1-4976-afbb-2358f184fd92.png"
                       alt="Urban landscape with graffiti wall featuring vibrant street art along railway tracks with city skyline in background, representing the gritty determination needed for financial success"
-                      className="w-full h-[1000px] object-cover object-center"
+                      className="w-full h-full object-cover object-center"
                       width={300}
-                      height={1000}
+                      height={1200}
                     />
                     {/* Gradient overlay for better visual integration */}
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-black/10 pointer-events-none"></div>
                   </div>
                 </div>
 
-                {/* Right Column - Guides Grid */}
-                <div className="lg:col-span-3">
+                {/* Right Column - Guides Grid with left margin to account for image */}
+                <div className="lg:ml-[27%] w-full">
                   <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
                 {guidesLoading ? (
                   // Loading skeleton

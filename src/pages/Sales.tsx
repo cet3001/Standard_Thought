@@ -14,6 +14,7 @@ import { trackButtonClick } from "@/lib/analytics-utils";
 import { useGuides } from "@/hooks/use-guides";
 import { useGuideDownload } from "@/hooks/use-guide-download";
 import OptimizedImage from "@/components/optimized-image";
+import featuredGuidesBanner from "@/assets/featured-guides-banner.png";
 
 const Sales = () => {
   useMobilePerformance();
@@ -312,7 +313,7 @@ const Sales = () => {
               {/* Featured Guides Banner Image */}
               <div className="mb-12 relative overflow-hidden rounded-2xl shadow-2xl">
                 <OptimizedImage
-                  src="/lovable-uploads/94e6d9fb-b2db-4d89-a7b2-db1930ea664f.png"
+                  src={featuredGuidesBanner}
                   alt="HOW TO CREATE YOUR FIRST 10K PORTFOLIO - Professional laptop displaying wealth building guide with urban graffiti background"
                   className="w-full h-[300px] md:h-[400px] object-cover"
                   width={1200}

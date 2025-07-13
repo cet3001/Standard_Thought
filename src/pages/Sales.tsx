@@ -13,6 +13,7 @@ import { useMobilePerformance } from "@/hooks/use-mobile-performance";
 import { trackButtonClick } from "@/lib/analytics-utils";
 import { useGuides } from "@/hooks/use-guides";
 import { useGuideDownload } from "@/hooks/use-guide-download";
+import OptimizedImage from "@/components/optimized-image";
 
 const Sales = () => {
   useMobilePerformance();
@@ -151,8 +152,8 @@ const Sales = () => {
           <div className="container mx-auto px-6 relative z-10">
             <div className="max-w-6xl mx-auto">
               
-              {/* Hero Content */}
-              <div className="text-center mb-16 relative">
+              {/* Hero Content - Two Column Layout */}
+              <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-16 relative">
                 {/* Urban grain texture overlay */}
                 <div className="absolute inset-0 opacity-[0.15] pointer-events-none" aria-hidden="true">
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,_rgba(0,0,0,0.8)_1px,_transparent_0)] bg-[length:8px_8px]"></div>
@@ -184,21 +185,9 @@ const Sales = () => {
                        }}></div>
                 </div>
 
-                <div className="absolute bottom-20 left-10 transform -rotate-6 opacity-[0.06] pointer-events-none" aria-hidden="true">
-                  <div 
-                    className="text-[#FFD700] text-4xl font-black"
-                    style={{ 
-                      fontFamily: "'Permanent Marker', 'Kalam', cursive",
-                      textShadow: '1px 1px 0px rgba(0,0,0,0.2)',
-                      filter: 'blur(0.3px)'
-                    }}
-                  >
-                    WEALTH
-                  </div>
-                </div>
-
+                {/* Left Column - Text Content */}
                 <div className={`transition-all duration-1000 relative z-10 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-                  <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black mb-6 sm:mb-8 leading-tight text-brand-black dark:text-brand-cream relative">
+                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 sm:mb-8 leading-tight text-brand-black dark:text-brand-cream relative">
                     {/* Additional texture behind main heading */}
                     <div className="absolute inset-0 opacity-[0.05] bg-[conic-gradient(from_0deg,_transparent_70%,_rgba(0,0,0,0.3)_90%,_transparent_100%)] bg-[length:15px_15px]"></div>
                     
@@ -249,12 +238,12 @@ const Sales = () => {
                     </span>
                   </h1>
                   
-                  <p className="text-lg sm:text-xl md:text-2xl mb-8 sm:mb-12 max-w-4xl mx-auto text-brand-black dark:text-brand-cream leading-relaxed px-4">
+                  <p className="text-lg sm:text-xl md:text-2xl mb-8 sm:mb-12 text-brand-black dark:text-brand-cream leading-relaxed">
                     The official spot for free and premium guides, playbooks, and tools to help you stack bread, fix your credit, and build generational wealth—no trust fund needed.
                   </p>
 
                   {/* Primary CTA */}
-                  <div className="flex justify-center mb-12 px-4">
+                  <div className="flex justify-start mb-12">
                     <Button 
                       size="lg"
                       onClick={handleGetStarted}
@@ -273,6 +262,22 @@ const Sales = () => {
                         Get Started
                       </span>
                     </Button>
+                  </div>
+                </div>
+
+                {/* Right Column - Hero Image */}
+                <div className={`relative z-10 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'} transition-all duration-1000 delay-300`}>
+                  <div className="relative overflow-hidden rounded-2xl shadow-2xl">
+                    <OptimizedImage
+                      src="/lovable-uploads/83d7ca67-81a0-42da-a27c-e3d308dc57bd.png"
+                      alt="Urban entrepreneur writing financial plans in notebook under street lighting, embodying the dedication and strategic planning needed for wealth building"
+                      className="w-full h-auto object-cover"
+                      width={600}
+                      height={800}
+                      priority={true}
+                    />
+                    {/* Gradient overlay for better text contrast */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none"></div>
                   </div>
                 </div>
               </div>

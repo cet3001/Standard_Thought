@@ -288,7 +288,7 @@ const Sales = () => {
         {/* Featured Guides Section */}
         <section className="py-16 relative">
           <div className="container mx-auto px-6 relative z-10">
-            <div className="max-w-6xl mx-auto">
+            <div className="max-w-7xl mx-auto">
               
               {/* Section Header */}
               <div className="text-center mb-12">
@@ -309,8 +309,27 @@ const Sales = () => {
                 </h2>
               </div>
 
-              {/* Guides Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {/* Main Content: Image Left, Guides Right */}
+              <div className="grid lg:grid-cols-4 gap-8 items-start">
+                
+                {/* Left Column - Vertical Urban Image */}
+                <div className="lg:col-span-1">
+                  <div className="sticky top-24 rounded-2xl overflow-hidden shadow-2xl">
+                    <OptimizedImage
+                      src="/lovable-uploads/6bb9f966-b9c1-4976-afbb-2358f184fd92.png"
+                      alt="Urban landscape with graffiti wall featuring vibrant street art along railway tracks with city skyline in background, representing the gritty determination needed for financial success"
+                      className="w-full h-[600px] object-cover"
+                      width={300}
+                      height={600}
+                    />
+                    {/* Gradient overlay for better visual integration */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-black/10 pointer-events-none"></div>
+                  </div>
+                </div>
+
+                {/* Right Column - Guides Grid */}
+                <div className="lg:col-span-3">
+                  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
                 {guidesLoading ? (
                   // Loading skeleton
                   Array.from({ length: 3 }).map((_, index) => (
@@ -550,6 +569,8 @@ const Sales = () => {
                   </CardContent>
                 </Card>
 
+                  </div>
+                </div>
               </div>
             </div>
           </div>

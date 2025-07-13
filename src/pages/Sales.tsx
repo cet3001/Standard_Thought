@@ -318,9 +318,9 @@ const Sales = () => {
                     <OptimizedImage
                       src="/lovable-uploads/6bb9f966-b9c1-4976-afbb-2358f184fd92.png"
                       alt="Urban landscape with graffiti wall featuring vibrant street art along railway tracks with city skyline in background, representing the gritty determination needed for financial success"
-                      className="w-full h-[600px] object-cover"
+                      className="w-full h-[800px] object-cover object-center"
                       width={300}
-                      height={600}
+                      height={800}
                     />
                     {/* Gradient overlay for better visual integration */}
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-black/10 pointer-events-none"></div>

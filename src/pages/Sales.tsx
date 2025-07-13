@@ -309,6 +309,20 @@ const Sales = () => {
                 </h2>
               </div>
 
+              {/* Featured Guides Banner Image */}
+              <div className="mb-12 relative overflow-hidden rounded-2xl shadow-2xl">
+                <OptimizedImage
+                  src="/lovable-uploads/94e6d9fb-b2db-4d89-a7b2-db1930ea664f.png"
+                  alt="HOW TO CREATE YOUR FIRST 10K PORTFOLIO - Professional laptop displaying wealth building guide with urban graffiti background"
+                  className="w-full h-[300px] md:h-[400px] object-cover"
+                  width={1200}
+                  height={400}
+                  priority={false}
+                />
+                {/* Subtle overlay for text readability */}
+                <div className="absolute inset-0 bg-gradient-to-r from-black/10 via-transparent to-black/10 pointer-events-none"></div>
+              </div>
+
               {/* Guides Grid */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {guidesLoading ? (

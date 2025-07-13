@@ -314,13 +314,13 @@ const Sales = () => {
                 
                 {/* Left Column - Vertical Urban Image */}
                 <div className="lg:col-span-1">
-                  <div className="sticky top-24 rounded-2xl overflow-hidden shadow-2xl h-full min-h-[400px] lg:min-h-[800px]">
+                  <div className="sticky top-24 rounded-2xl overflow-hidden shadow-2xl">
                     <OptimizedImage
                       src="/lovable-uploads/6bb9f966-b9c1-4976-afbb-2358f184fd92.png"
                       alt="Urban landscape with graffiti wall featuring vibrant street art along railway tracks with city skyline in background, representing the gritty determination needed for financial success"
-                      className="w-full h-full object-cover object-center"
+                      className="w-full h-[1000px] object-cover object-center"
                       width={300}
-                      height={800}
+                      height={1000}
                     />
                     {/* Gradient overlay for better visual integration */}
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-black/10 pointer-events-none"></div>

@@ -3,7 +3,7 @@ import { useHeaderHeight } from "@/hooks/use-header-height";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Zap, Download, Lock, CheckCircle, Star, ArrowRight, CreditCard, TrendingUp, Bot, DollarSign, ChevronDown } from "lucide-react";
+import { Zap, Download, Lock, CheckCircle, Star, ArrowRight, CreditCard, TrendingUp, Bot, DollarSign, ChevronDown, Clock, Shield } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
@@ -1110,6 +1110,84 @@ const Sales = () => {
                 <p className="text-brand-black dark:text-brand-cream text-lg font-kalam opacity-70">
                   Got more questions? We keep it 100% real, always.
                 </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Final Call-to-Action Section */}
+        <section className="py-16 relative overflow-hidden bg-gradient-to-b from-transparent via-[#FFD700]/5 to-transparent">
+          <div className="container mx-auto px-6 relative z-10">
+            <div className="max-w-4xl mx-auto text-center">
+              
+              {/* Urgency Message */}
+              <div className="mb-8">
+                <div className="inline-flex items-center gap-3 bg-gradient-to-r from-[#FFD700]/20 to-[#FFA500]/20 backdrop-blur-sm border-2 border-[#FFD700]/30 rounded-2xl px-6 py-3 mb-6">
+                  <Clock className="w-5 h-5 text-[#FFD700]" />
+                  <span className="text-[#FFD700] font-bold text-lg font-permanent-marker">
+                    Don't Sleep On This
+                  </span>
+                </div>
+                
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-4 text-brand-black dark:text-brand-cream leading-tight">
+                  Your Financial Come-Up{" "}
+                  <span 
+                    className="text-[#FFD700]"
+                    style={{
+                      background: 'linear-gradient(45deg, #FFD700, #FFF8DC, #FFA500)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text'
+                    }}
+                  >
+                    Starts Today
+                  </span>
+                </h2>
+                
+                <p className="text-lg md:text-xl text-brand-black dark:text-brand-cream mb-8 leading-relaxed font-kalam">
+                  Stop scrolling. Stop procrastinating. Download these guides and take the first real step toward building generational wealth. Your future self will thank you.
+                </p>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+                <Button 
+                  size="lg"
+                  onClick={handleGetStarted}
+                  className="bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFA500] text-black font-bold py-4 px-8 rounded-2xl hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl border-0 text-lg"
+                >
+                  <Download className="mr-2 h-5 w-5" />
+                  <span 
+                    style={{ 
+                      fontFamily: "'Permanent Marker', cursive",
+                      textShadow: '1px 1px 0px rgba(0,0,0,0.2)',
+                      transform: 'rotate(-1deg)',
+                      display: 'inline-block'
+                    }}
+                  >
+                    Get Free Guides Now
+                  </span>
+                </Button>
+                
+                <div className="flex items-center gap-2 text-brand-black/70 dark:text-brand-cream/70">
+                  <Shield className="w-4 h-4" />
+                  <span className="text-sm font-kalam">No spam, just value</span>
+                </div>
+              </div>
+
+              {/* Social Proof */}
+              <div className="text-center">
+                <p className="text-brand-black/60 dark:text-brand-cream/60 text-sm font-kalam mb-2">
+                  Join thousands building real wealth
+                </p>
+                <div className="flex justify-center items-center gap-1">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 text-[#FFD700] fill-current" />
+                  ))}
+                  <span className="ml-2 text-brand-black/70 dark:text-brand-cream/70 text-sm font-kalam">
+                    4.8/5 from real builders
+                  </span>
+                </div>
               </div>
             </div>
           </div>

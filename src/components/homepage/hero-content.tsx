@@ -54,13 +54,13 @@ const HeroContent = ({ isVisible, scrollToNewsletter }: HeroContentProps) => {
             <div className="relative overflow-hidden rounded-2xl shadow-2xl">
               <picture className="w-full h-auto">
                 <source 
-                  srcSet="/lovable-uploads/a96147ba-f6ca-4b46-b136-d2a113eb0ba5.png" 
+                  srcSet="/lovable-uploads/152ff0a5-5f07-49b5-a839-2ae048e30898.png" 
                   type="image/png"
                   media="(min-width: 768px)"
                 />
                 <img 
-                  src="/lovable-uploads/a96147ba-f6ca-4b46-b136-d2a113eb0ba5.png"
-                  alt="Urban entrepreneurs collaborating on financial strategies - diverse group planning wealth building initiatives"
+                  src="/lovable-uploads/152ff0a5-5f07-49b5-a839-2ae048e30898.png"
+                  alt="Urban entrepreneurs and wealth builders - diverse group representing the next generation of financial legacy builders"
                   className="w-full h-auto object-cover transition-transform duration-500 hover:scale-105"
                   loading="eager"
                   decoding="async"

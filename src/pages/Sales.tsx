@@ -135,20 +135,20 @@ const Sales = () => {
           <div className="container mx-auto px-6 relative z-10">
             <div className="max-w-7xl mx-auto">
               <div className="text-center mb-16">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6 text-brand-black dark:text-brand-cream">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6 pearlescent-text">
                   Starter Blueprints: No-Cost Plays to Flip Credit Trauma
                 </h2>
               </div>
 
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {/* Card 1 */}
-                <Card className="group bg-gradient-to-br from-brand-cream/95 via-brand-cream/90 to-brand-cream/85 dark:from-brand-black/95 dark:via-brand-black/90 dark:to-brand-black/85 border-2 border-brand-black/10 dark:border-brand-cream/20 hover:border-[#FFD700]/50 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 shadow-lg hover:shadow-2xl backdrop-blur-sm relative overflow-hidden">
-                  <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_50%_50%,_rgba(0,0,0,0.3)_1px,_transparent_1px)] bg-[length:20px_20px]"></div>
+                <Card className="group bg-gradient-to-br from-[#f4d03f]/20 via-[#f7dc6f]/15 to-[#fdeaa7]/25 dark:from-[#f4d03f]/10 dark:via-[#f7dc6f]/8 dark:to-[#fdeaa7]/15 border-2 border-[#FFD700]/30 hover:border-[#FFD700]/60 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 shadow-lg hover:shadow-2xl backdrop-blur-sm relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-[#f4d03f]/10 before:via-transparent before:to-[#fdeaa7]/10 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500">
+                  <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_50%_50%,_rgba(244,208,63,0.4)_1px,_transparent_1px)] bg-[length:20px_20px]"></div>
                   <CardHeader className="pb-4 relative z-10">
-                    <div className="w-14 h-14 bg-gradient-to-br from-[#FFD700] via-[#FFF8DC] to-[#FFA500] rounded-2xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                      <TrendingUp className="h-7 w-7 text-black" />
+                    <div className="w-14 h-14 bg-gradient-to-br from-[#FFD700] via-[#FFF8DC] to-[#FFA500] rounded-2xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300 relative before:absolute before:inset-0 before:bg-gradient-to-br before:from-[#FFD700]/80 before:to-[#FFA500]/80 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-300 before:rounded-2xl">
+                      <TrendingUp className="h-7 w-7 text-black relative z-10" />
                     </div>
-                    <CardTitle className="text-xl font-black text-brand-black dark:text-brand-cream group-hover:text-[#FFD700] transition-colors">
+                    <CardTitle className="text-xl font-black text-brand-black dark:text-brand-cream group-hover:pearlescent-text transition-all duration-300">
                       How to Create Your First Portfolio
                     </CardTitle>
                   </CardHeader>
@@ -167,13 +167,13 @@ const Sales = () => {
                 </Card>
 
                 {/* Card 2 */}
-                <Card className="group bg-gradient-to-br from-brand-cream/95 via-brand-cream/90 to-brand-cream/85 dark:from-brand-black/95 dark:via-brand-black/90 dark:to-brand-black/85 border-2 border-brand-black/10 dark:border-brand-cream/20 hover:border-[#FFD700]/50 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 shadow-lg hover:shadow-2xl backdrop-blur-sm relative overflow-hidden">
-                  <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_50%_50%,_rgba(0,0,0,0.3)_1px,_transparent_1px)] bg-[length:20px_20px]"></div>
+                <Card className="group bg-gradient-to-br from-[#f4d03f]/20 via-[#f7dc6f]/15 to-[#fdeaa7]/25 dark:from-[#f4d03f]/10 dark:via-[#f7dc6f]/8 dark:to-[#fdeaa7]/15 border-2 border-[#FFD700]/30 hover:border-[#FFD700]/60 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 shadow-lg hover:shadow-2xl backdrop-blur-sm relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-[#f4d03f]/10 before:via-transparent before:to-[#fdeaa7]/10 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500">
+                  <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_50%_50%,_rgba(244,208,63,0.4)_1px,_transparent_1px)] bg-[length:20px_20px]"></div>
                   <CardHeader className="pb-4 relative z-10">
-                    <div className="w-14 h-14 bg-gradient-to-br from-[#FFD700] via-[#FFF8DC] to-[#FFA500] rounded-2xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                      <Target className="h-7 w-7 text-black" />
+                    <div className="w-14 h-14 bg-gradient-to-br from-[#FFD700] via-[#FFF8DC] to-[#FFA500] rounded-2xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300 relative before:absolute before:inset-0 before:bg-gradient-to-br before:from-[#FFD700]/80 before:to-[#FFA500]/80 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-300 before:rounded-2xl">
+                      <Target className="h-7 w-7 text-black relative z-10" />
                     </div>
-                    <CardTitle className="text-xl font-black text-brand-black dark:text-brand-cream group-hover:text-[#FFD700] transition-colors">
+                    <CardTitle className="text-xl font-black text-brand-black dark:text-brand-cream group-hover:pearlescent-text transition-all duration-300">
                       System Building Action Plan
                     </CardTitle>
                   </CardHeader>
@@ -193,13 +193,13 @@ const Sales = () => {
                 </Card>
 
                 {/* Card 3 */}
-                <Card className="group bg-gradient-to-br from-brand-cream/95 via-brand-cream/90 to-brand-cream/85 dark:from-brand-black/95 dark:via-brand-black/90 dark:to-brand-black/85 border-2 border-brand-black/10 dark:border-brand-cream/20 hover:border-[#FFD700]/50 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 shadow-lg hover:shadow-2xl backdrop-blur-sm relative overflow-hidden">
-                  <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_50%_50%,_rgba(0,0,0,0.3)_1px,_transparent_1px)] bg-[length:20px_20px]"></div>
+                <Card className="group bg-gradient-to-br from-[#f4d03f]/20 via-[#f7dc6f]/15 to-[#fdeaa7]/25 dark:from-[#f4d03f]/10 dark:via-[#f7dc6f]/8 dark:to-[#fdeaa7]/15 border-2 border-[#FFD700]/30 hover:border-[#FFD700]/60 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 shadow-lg hover:shadow-2xl backdrop-blur-sm relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-[#f4d03f]/10 before:via-transparent before:to-[#fdeaa7]/10 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500">
+                  <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_50%_50%,_rgba(244,208,63,0.4)_1px,_transparent_1px)] bg-[length:20px_20px]"></div>
                   <CardHeader className="pb-4 relative z-10">
-                    <div className="w-14 h-14 bg-gradient-to-br from-[#FFD700] via-[#FFF8DC] to-[#FFA500] rounded-2xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                      <CreditCard className="h-7 w-7 text-black" />
+                    <div className="w-14 h-14 bg-gradient-to-br from-[#FFD700] via-[#FFF8DC] to-[#FFA500] rounded-2xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300 relative before:absolute before:inset-0 before:bg-gradient-to-br before:from-[#FFD700]/80 before:to-[#FFA500]/80 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-300 before:rounded-2xl">
+                      <CreditCard className="h-7 w-7 text-black relative z-10" />
                     </div>
-                    <CardTitle className="text-xl font-black text-brand-black dark:text-brand-cream group-hover:text-[#FFD700] transition-colors">
+                    <CardTitle className="text-xl font-black text-brand-black dark:text-brand-cream group-hover:pearlescent-text transition-all duration-300">
                       Credit Repair Master Class
                     </CardTitle>
                   </CardHeader>
@@ -218,13 +218,13 @@ const Sales = () => {
                 </Card>
 
                 {/* Card 4 */}
-                <Card className="group bg-gradient-to-br from-brand-cream/95 via-brand-cream/90 to-brand-cream/85 dark:from-brand-black/95 dark:via-brand-black/90 dark:to-brand-black/85 border-2 border-brand-black/10 dark:border-brand-cream/20 hover:border-[#FFD700]/50 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 shadow-lg hover:shadow-2xl backdrop-blur-sm relative overflow-hidden">
-                  <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_50%_50%,_rgba(0,0,0,0.3)_1px,_transparent_1px)] bg-[length:20px_20px]"></div>
+                <Card className="group bg-gradient-to-br from-[#f4d03f]/20 via-[#f7dc6f]/15 to-[#fdeaa7]/25 dark:from-[#f4d03f]/10 dark:via-[#f7dc6f]/8 dark:to-[#fdeaa7]/15 border-2 border-[#FFD700]/30 hover:border-[#FFD700]/60 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 shadow-lg hover:shadow-2xl backdrop-blur-sm relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-[#f4d03f]/10 before:via-transparent before:to-[#fdeaa7]/10 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500">
+                  <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_50%_50%,_rgba(244,208,63,0.4)_1px,_transparent_1px)] bg-[length:20px_20px]"></div>
                   <CardHeader className="pb-4 relative z-10">
-                    <div className="w-14 h-14 bg-gradient-to-br from-[#FFD700] via-[#FFF8DC] to-[#FFA500] rounded-2xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                      <Shield className="h-7 w-7 text-black" />
+                    <div className="w-14 h-14 bg-gradient-to-br from-[#FFD700] via-[#FFF8DC] to-[#FFA500] rounded-2xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300 relative before:absolute before:inset-0 before:bg-gradient-to-br before:from-[#FFD700]/80 before:to-[#FFA500]/80 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-300 before:rounded-2xl">
+                      <Shield className="h-7 w-7 text-black relative z-10" />
                     </div>
-                    <CardTitle className="text-xl font-black text-brand-black dark:text-brand-cream group-hover:text-[#FFD700] transition-colors">
+                    <CardTitle className="text-xl font-black text-brand-black dark:text-brand-cream group-hover:pearlescent-text transition-all duration-300">
                       Ultimate Legacy Toolkit
                     </CardTitle>
                   </CardHeader>
@@ -252,7 +252,7 @@ const Sales = () => {
           <div className="container mx-auto px-6 relative z-10">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-16">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6 text-brand-black dark:text-brand-cream">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6 pearlescent-text">
                   Trusted by 1,000+ First-Gen Hustlers
                 </h2>
               </div>
@@ -284,7 +284,7 @@ const Sales = () => {
           <div className="container mx-auto px-6 relative z-10">
             <div className="max-w-7xl mx-auto">
               <div className="text-center mb-16">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6 text-brand-black dark:text-brand-cream">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6 pearlescent-text">
                   Deep Dives: Paid Playbooks for Legacy Stacking
                 </h2>
                 <p className="text-lg text-brand-black dark:text-brand-cream/80 max-w-3xl mx-auto">
@@ -294,13 +294,13 @@ const Sales = () => {
 
                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {/* Card 1 */}
-                <Card className="group bg-gradient-to-br from-brand-cream/95 via-brand-cream/90 to-brand-cream/85 dark:from-brand-black/95 dark:via-brand-black/90 dark:to-brand-black/85 border-2 border-brand-black/10 dark:border-brand-cream/20 hover:border-[#FFD700]/50 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 shadow-lg hover:shadow-2xl backdrop-blur-sm relative overflow-hidden">
-                  <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_50%_50%,_rgba(0,0,0,0.3)_1px,_transparent_1px)] bg-[length:20px_20px]"></div>
+                <Card className="group bg-gradient-to-br from-[#f4d03f]/20 via-[#f7dc6f]/15 to-[#fdeaa7]/25 dark:from-[#f4d03f]/10 dark:via-[#f7dc6f]/8 dark:to-[#fdeaa7]/15 border-2 border-[#FFD700]/30 hover:border-[#FFD700]/60 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 shadow-lg hover:shadow-2xl backdrop-blur-sm relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-[#f4d03f]/10 before:via-transparent before:to-[#fdeaa7]/10 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500">
+                  <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_50%_50%,_rgba(244,208,63,0.4)_1px,_transparent_1px)] bg-[length:20px_20px]"></div>
                   <CardHeader className="pb-4 relative z-10">
-                    <div className="w-14 h-14 bg-gradient-to-br from-[#FFD700] via-[#FFF8DC] to-[#FFA500] rounded-2xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                      <CreditCard className="h-7 w-7 text-black" />
+                    <div className="w-14 h-14 bg-gradient-to-br from-[#FFD700] via-[#FFF8DC] to-[#FFA500] rounded-2xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300 relative before:absolute before:inset-0 before:bg-gradient-to-br before:from-[#FFD700]/80 before:to-[#FFA500]/80 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-300 before:rounded-2xl">
+                      <CreditCard className="h-7 w-7 text-black relative z-10" />
                     </div>
-                    <CardTitle className="text-xl font-black text-brand-black dark:text-brand-cream group-hover:text-[#FFD700] transition-colors">
+                    <CardTitle className="text-xl font-black text-brand-black dark:text-brand-cream group-hover:pearlescent-text transition-all duration-300">
                       Credit Hub
                     </CardTitle>
                   </CardHeader>
@@ -319,13 +319,13 @@ const Sales = () => {
                 </Card>
 
                 {/* Card 2 */}
-                <Card className="group bg-gradient-to-br from-brand-cream/95 via-brand-cream/90 to-brand-cream/85 dark:from-brand-black/95 dark:via-brand-black/90 dark:to-brand-black/85 border-2 border-brand-black/10 dark:border-brand-cream/20 hover:border-[#FFD700]/50 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 shadow-lg hover:shadow-2xl backdrop-blur-sm relative overflow-hidden">
-                  <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_50%_50%,_rgba(0,0,0,0.3)_1px,_transparent_1px)] bg-[length:20px_20px]"></div>
+                <Card className="group bg-gradient-to-br from-[#f4d03f]/20 via-[#f7dc6f]/15 to-[#fdeaa7]/25 dark:from-[#f4d03f]/10 dark:via-[#f7dc6f]/8 dark:to-[#fdeaa7]/15 border-2 border-[#FFD700]/30 hover:border-[#FFD700]/60 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 shadow-lg hover:shadow-2xl backdrop-blur-sm relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-[#f4d03f]/10 before:via-transparent before:to-[#fdeaa7]/10 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500">
+                  <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_50%_50%,_rgba(244,208,63,0.4)_1px,_transparent_1px)] bg-[length:20px_20px]"></div>
                   <CardHeader className="pb-4 relative z-10">
-                    <div className="w-14 h-14 bg-gradient-to-br from-[#FFD700] via-[#FFF8DC] to-[#FFA500] rounded-2xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                      <TrendingUp className="h-7 w-7 text-black" />
+                    <div className="w-14 h-14 bg-gradient-to-br from-[#FFD700] via-[#FFF8DC] to-[#FFA500] rounded-2xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300 relative before:absolute before:inset-0 before:bg-gradient-to-br before:from-[#FFD700]/80 before:to-[#FFA500]/80 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-300 before:rounded-2xl">
+                      <TrendingUp className="h-7 w-7 text-black relative z-10" />
                     </div>
-                    <CardTitle className="text-xl font-black text-brand-black dark:text-brand-cream group-hover:text-[#FFD700] transition-colors">
+                    <CardTitle className="text-xl font-black text-brand-black dark:text-brand-cream group-hover:pearlescent-text transition-all duration-300">
                       Investing Hub
                     </CardTitle>
                   </CardHeader>
@@ -343,13 +343,13 @@ const Sales = () => {
                 </Card>
 
                 {/* Card 3 */}
-                <Card className="group bg-gradient-to-br from-brand-cream/95 via-brand-cream/90 to-brand-cream/85 dark:from-brand-black/95 dark:via-brand-black/90 dark:to-brand-black/85 border-2 border-brand-black/10 dark:border-brand-cream/20 hover:border-[#FFD700]/50 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 shadow-lg hover:shadow-2xl backdrop-blur-sm relative overflow-hidden">
-                  <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_50%_50%,_rgba(0,0,0,0.3)_1px,_transparent_1px)] bg-[length:20px_20px]"></div>
+                <Card className="group bg-gradient-to-br from-[#f4d03f]/20 via-[#f7dc6f]/15 to-[#fdeaa7]/25 dark:from-[#f4d03f]/10 dark:via-[#f7dc6f]/8 dark:to-[#fdeaa7]/15 border-2 border-[#FFD700]/30 hover:border-[#FFD700]/60 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 shadow-lg hover:shadow-2xl backdrop-blur-sm relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-[#f4d03f]/10 before:via-transparent before:to-[#fdeaa7]/10 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500">
+                  <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_50%_50%,_rgba(244,208,63,0.4)_1px,_transparent_1px)] bg-[length:20px_20px]"></div>
                   <CardHeader className="pb-4 relative z-10">
-                    <div className="w-14 h-14 bg-gradient-to-br from-[#FFD700] via-[#FFF8DC] to-[#FFA500] rounded-2xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                      <Zap className="h-7 w-7 text-black" />
+                    <div className="w-14 h-14 bg-gradient-to-br from-[#FFD700] via-[#FFF8DC] to-[#FFA500] rounded-2xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300 relative before:absolute before:inset-0 before:bg-gradient-to-br before:from-[#FFD700]/80 before:to-[#FFA500]/80 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-300 before:rounded-2xl">
+                      <Zap className="h-7 w-7 text-black relative z-10" />
                     </div>
-                    <CardTitle className="text-xl font-black text-brand-black dark:text-brand-cream group-hover:text-[#FFD700] transition-colors">
+                    <CardTitle className="text-xl font-black text-brand-black dark:text-brand-cream group-hover:pearlescent-text transition-all duration-300">
                       AI-Wealth Arbitrage
                     </CardTitle>
                   </CardHeader>
@@ -367,13 +367,13 @@ const Sales = () => {
                 </Card>
 
                 {/* Card 4 */}
-                <Card className="group bg-gradient-to-br from-brand-cream/95 via-brand-cream/90 to-brand-cream/85 dark:from-brand-black/95 dark:via-brand-black/90 dark:to-brand-black/85 border-2 border-brand-black/10 dark:border-brand-cream/20 hover:border-[#FFD700]/50 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 shadow-lg hover:shadow-2xl backdrop-blur-sm relative overflow-hidden">
-                  <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_50%_50%,_rgba(0,0,0,0.3)_1px,_transparent_1px)] bg-[length:20px_20px]"></div>
+                <Card className="group bg-gradient-to-br from-[#f4d03f]/20 via-[#f7dc6f]/15 to-[#fdeaa7]/25 dark:from-[#f4d03f]/10 dark:via-[#f7dc6f]/8 dark:to-[#fdeaa7]/15 border-2 border-[#FFD700]/30 hover:border-[#FFD700]/60 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 shadow-lg hover:shadow-2xl backdrop-blur-sm relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-[#f4d03f]/10 before:via-transparent before:to-[#fdeaa7]/10 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500">
+                  <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_50%_50%,_rgba(244,208,63,0.4)_1px,_transparent_1px)] bg-[length:20px_20px]"></div>
                   <CardHeader className="pb-4 relative z-10">
-                    <div className="w-14 h-14 bg-gradient-to-br from-[#FFD700] via-[#FFF8DC] to-[#FFA500] rounded-2xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                      <PiggyBank className="h-7 w-7 text-black" />
+                    <div className="w-14 h-14 bg-gradient-to-br from-[#FFD700] via-[#FFF8DC] to-[#FFA500] rounded-2xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300 relative before:absolute before:inset-0 before:bg-gradient-to-br before:from-[#FFD700]/80 before:to-[#FFA500]/80 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-300 before:rounded-2xl">
+                      <PiggyBank className="h-7 w-7 text-black relative z-10" />
                     </div>
-                    <CardTitle className="text-xl font-black text-brand-black dark:text-brand-cream group-hover:text-[#FFD700] transition-colors">
+                    <CardTitle className="text-xl font-black text-brand-black dark:text-brand-cream group-hover:pearlescent-text transition-all duration-300">
                       Cash Mastery
                     </CardTitle>
                   </CardHeader>
@@ -400,7 +400,7 @@ const Sales = () => {
           <div className="container mx-auto px-6 relative z-10">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-16">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6 text-brand-black dark:text-brand-cream">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6 pearlescent-text">
                   Real Questions, Real Answers
                 </h2>
                 <p className="text-lg text-brand-black dark:text-brand-cream/80 max-w-3xl mx-auto">
@@ -410,31 +410,34 @@ const Sales = () => {
 
               <div className="space-y-8">
                 {/* FAQ 1 */}
-                <div className="bg-gradient-to-br from-brand-cream/80 to-brand-tan/80 dark:from-brand-charcoal/80 dark:to-brand-black/80 border-2 border-brand-brown/20 dark:border-brand-cream/20 rounded-2xl p-8 shadow-lg backdrop-blur-sm">
-                  <h3 className="text-xl font-bold text-brand-black dark:text-brand-cream mb-4">
+                <div className="bg-gradient-to-br from-[#f4d03f]/15 via-[#f7dc6f]/10 to-[#fdeaa7]/20 dark:from-[#f4d03f]/8 dark:via-[#f7dc6f]/5 dark:to-[#fdeaa7]/10 border-2 border-[#FFD700]/30 rounded-2xl p-8 shadow-lg backdrop-blur-sm relative overflow-hidden">
+                  <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_50%_50%,_rgba(244,208,63,0.3)_1px,_transparent_1px)] bg-[length:15px_15px]"></div>
+                  <h3 className="text-xl font-bold text-brand-black dark:text-brand-cream mb-4 relative z-10">
                     What if I'm broke?
                   </h3>
-                  <p className="text-brand-black dark:text-brand-cream/80 leading-relaxed">
+                  <p className="text-brand-black/80 dark:text-brand-cream/80 leading-relaxed relative z-10">
                     Start with free plays—flip trauma into traction, no excuses.
                   </p>
                 </div>
 
                 {/* FAQ 2 */}
-                <div className="bg-gradient-to-br from-brand-cream/80 to-brand-tan/80 dark:from-brand-charcoal/80 dark:to-brand-black/80 border-2 border-brand-brown/20 dark:border-brand-cream/20 rounded-2xl p-8 shadow-lg backdrop-blur-sm">
-                  <h3 className="text-xl font-bold text-brand-black dark:text-brand-cream mb-4">
+                <div className="bg-gradient-to-br from-[#f4d03f]/15 via-[#f7dc6f]/10 to-[#fdeaa7]/20 dark:from-[#f4d03f]/8 dark:via-[#f7dc6f]/5 dark:to-[#fdeaa7]/10 border-2 border-[#FFD700]/30 rounded-2xl p-8 shadow-lg backdrop-blur-sm relative overflow-hidden">
+                  <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_50%_50%,_rgba(244,208,63,0.3)_1px,_transparent_1px)] bg-[length:15px_15px]"></div>
+                  <h3 className="text-xl font-bold text-brand-black dark:text-brand-cream mb-4 relative z-10">
                     Can this fix my credit if it's shot?
                   </h3>
-                  <p className="text-brand-black dark:text-brand-cream/80 leading-relaxed">
+                  <p className="text-brand-black/80 dark:text-brand-cream/80 leading-relaxed relative z-10">
                     Hell yeah—templates to rebuild from scratch, rooted in real exclusion fights.
                   </p>
                 </div>
 
                 {/* FAQ 3 */}
-                <div className="bg-gradient-to-br from-brand-cream/80 to-brand-tan/80 dark:from-brand-charcoal/80 dark:to-brand-black/80 border-2 border-brand-brown/20 dark:border-brand-cream/20 rounded-2xl p-8 shadow-lg backdrop-blur-sm">
-                  <h3 className="text-xl font-bold text-brand-black dark:text-brand-cream mb-4">
+                <div className="bg-gradient-to-br from-[#f4d03f]/15 via-[#f7dc6f]/10 to-[#fdeaa7]/20 dark:from-[#f4d03f]/8 dark:via-[#f7dc6f]/5 dark:to-[#fdeaa7]/10 border-2 border-[#FFD700]/30 rounded-2xl p-8 shadow-lg backdrop-blur-sm relative overflow-hidden">
+                  <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_50%_50%,_rgba(244,208,63,0.3)_1px,_transparent_1px)] bg-[length:15px_15px]"></div>
+                  <h3 className="text-xl font-bold text-brand-black dark:text-brand-cream mb-4 relative z-10">
                     Is this just another get-rich-quick scheme?
                   </h3>
-                  <p className="text-brand-black dark:text-brand-cream/80 leading-relaxed">
+                  <p className="text-brand-black/80 dark:text-brand-cream/80 leading-relaxed relative z-10">
                     Nah, it's legacy from grit—layered strategies for the culture, no shortcuts.
                   </p>
                 </div>

@@ -165,20 +165,6 @@ const AISideHustles = () => {
               
               {/* Right Column - Visual Element */}
               <div className={`transition-all duration-1000 delay-300 relative ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-                {/* Hero Image */}
-                <div className="relative mb-6">
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#FFD700]/20 to-[#FFA500]/20 backdrop-blur-sm rounded-2xl transform rotate-1"></div>
-                  <div className="relative">
-                    <img
-                      src="/lovable-uploads/94cc6adb-cf25-4c3e-b059-ee67f8401562.png"
-                      alt="Urban entrepreneur using AI on phone representing automated income and tech empowerment"
-                      className="w-full h-auto rounded-2xl shadow-2xl"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent rounded-2xl"></div>
-                  </div>
-                </div>
-                
                 {/* Stat Card */}
                 <div className="relative">
                   <div className="absolute inset-0 bg-gradient-to-r from-[#FFD700]/20 to-[#FFA500]/20 backdrop-blur-sm rounded-2xl transform -rotate-2"></div>

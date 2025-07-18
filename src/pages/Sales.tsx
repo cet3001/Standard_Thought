@@ -78,7 +78,7 @@ const Sales = () => {
 
   const handleExploreCredit = () => {
     trackButtonClick('Explore Credit', 'explore_blueprints', 'credit_blueprint');
-    // TODO: Navigate to /credit-blueprint page
+    navigate('/credit');
   };
 
   const handleExploreInvesting = () => {
@@ -187,6 +187,13 @@ const Sales = () => {
 
                 {/* Left Column - Text Content */}
                 <div className={`transition-all duration-1000 relative z-10 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                  {/* Provocative Stat */}
+                  <div className="mb-8 p-6 bg-gradient-to-r from-red-500/20 to-orange-500/20 border border-red-500/30 rounded-2xl backdrop-blur-sm">
+                    <p className="text-lg sm:text-xl font-bold text-brand-black dark:text-brand-cream leading-relaxed">
+                      <span className="text-red-400">90% of Black Wealth Vanishes in One Gen</span>—Ready to Flip That Script?
+                    </p>
+                  </div>
+
                   <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 sm:mb-8 leading-tight text-brand-black dark:text-brand-cream relative">
                     {/* Additional texture behind main heading */}
                     <div className="absolute inset-0 opacity-[0.05] bg-[conic-gradient(from_0deg,_transparent_70%,_rgba(0,0,0,0.3)_90%,_transparent_100%)] bg-[length:15px_15px]"></div>
@@ -238,8 +245,15 @@ const Sales = () => {
                     </span>
                   </h1>
                   
+                  {/* Standard Thought Law #2 */}
+                  <div className="mb-8 p-6 bg-gradient-to-r from-[#FFD700]/20 to-[#FFA500]/20 border border-[#FFD700]/30 rounded-2xl backdrop-blur-sm">
+                    <p className="text-lg sm:text-xl font-bold text-brand-black dark:text-brand-cream leading-relaxed">
+                      <span className="text-[#FFD700]">Standard Thought Law #2:</span> The Exclusion Flip—Turn Barriers into Bread
+                    </p>
+                  </div>
+
                   <p className="text-lg sm:text-xl md:text-2xl mb-8 sm:mb-12 text-brand-black dark:text-brand-cream leading-relaxed">
-                    The official spot for free and premium guides, playbooks, and tools to help you stack bread, fix your credit, and build generational wealth—no trust fund needed.
+                    Value laddering for cycle-breakers: Free starter blueprints to get you moving, premium deep dives for legacy stacking. No trust fund required—just the hunger to flip your family's script.
                   </p>
 
                   {/* Primary CTA */}
@@ -248,7 +262,7 @@ const Sales = () => {
                       size="lg"
                       onClick={handleGetStarted}
                       className="w-full sm:w-auto bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFA500] text-black font-bold px-8 sm:px-12 py-4 sm:py-5 rounded-3xl hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-base sm:text-lg border-0 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/40 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 hover:from-[#FFA500] hover:via-[#FFD700] hover:to-[#FFD700] after:absolute after:inset-0 after:bg-gradient-to-45 after:from-transparent after:via-white/20 after:to-transparent after:animate-[shimmer_3s_ease-in-out_infinite]"
-                      aria-label="Get started with wealth building tools"
+                      aria-label="Get the blueprint now"
                     >
                       <Zap className="mr-3 h-5 w-5 sm:h-6 sm:w-6" aria-label="Lightning bolt icon representing fast action" />
                       <span 
@@ -259,7 +273,7 @@ const Sales = () => {
                           display: 'inline-block'
                         }}
                       >
-                        Get Started
+                        ⚡ Get The Blueprint
                       </span>
                     </Button>
                   </div>
@@ -285,7 +299,7 @@ const Sales = () => {
           </div>
         </section>
 
-        {/* Featured Guides Section */}
+        {/* Starter Blueprints Section */}
         <section className="py-16 relative">
           <div className="container mx-auto px-6 relative z-10">
             <div className="max-w-7xl mx-auto">
@@ -304,9 +318,16 @@ const Sales = () => {
                       animation: 'shimmer 3s ease-in-out infinite'
                     }}
                   >
-                    Featured Guides
+                    Starter Blueprints:
                   </span>
                 </h2>
+                <p className="text-2xl md:text-3xl font-bold text-brand-black dark:text-brand-cream mb-6">
+                  No-Cost Plays to Flip Credit Trauma
+                </p>
+                <p className="text-lg text-brand-black dark:text-brand-cream opacity-80 font-kalam max-w-3xl mx-auto">
+                  <span className="text-[#FFD700] font-bold">Fix Credit From Nothing—</span>
+                  Smuggling Past Systemic Gates Keeping Black Wealth Locked
+                </p>
               </div>
 
               {/* Main Content: Image Left, Guides Right */}
@@ -702,7 +723,7 @@ const Sales = () => {
           </div>
         </section>
 
-        {/* Explore More Blueprints Section */}
+        {/* Deep Dives Section */}
         <section className="py-20 relative overflow-hidden">
           {/* Urban background effects */}
           <div className="absolute inset-0" aria-hidden="true">
@@ -721,7 +742,6 @@ const Sales = () => {
               {/* Section Header */}
               <div className="text-center mb-16">
                 <h2 className="text-4xl md:text-5xl font-black mb-6 text-brand-black dark:text-brand-cream relative">
-                  Explore More{" "}
                   <span 
                     className="text-[#FFD700] relative overflow-hidden"
                     style={{
@@ -733,7 +753,7 @@ const Sales = () => {
                       animation: 'shimmer 3s ease-in-out infinite'
                     }}
                   >
-                    Blueprints
+                    Deep Dives:
                     {/* Pearlescent overlay */}
                     <div 
                       className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-60 animate-[shimmer_2s_ease-in-out_infinite]"
@@ -745,119 +765,160 @@ const Sales = () => {
                     />
                   </span>
                 </h2>
-                <p className="text-lg text-brand-black dark:text-brand-cream opacity-80 font-kalam max-w-2xl mx-auto">
-                  Deep-dive into specific areas where you want to level up your money game
+                <p className="text-2xl md:text-3xl font-bold text-brand-black dark:text-brand-cream mb-6">
+                  Paid Playbooks for Legacy Stacking
+                </p>
+                <p className="text-lg text-brand-black dark:text-brand-cream opacity-80 font-kalam max-w-3xl mx-auto">
+                  <span className="text-[#FFD700] font-bold">OODA Update 2025:</span> AI-Wealth Arbitrage Plays—Turn Tech into Generational Assets
                 </p>
               </div>
 
-              {/* Blueprint Cards Grid */}
+              {/* Premium Blueprint Cards Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 
-                {/* Credit Blueprint */}
+                {/* Credit Hub - Premium */}
                 <Link to="/credit">
                   <Card 
-                    className="backdrop-blur-sm border-2 border-[#FFD700]/30 shadow-2xl hover:scale-105 hover:border-[#FFD700]/50 transition-all duration-300 cursor-pointer group relative overflow-hidden h-64"
+                    className="backdrop-blur-sm border-2 border-blue-500/30 shadow-2xl hover:scale-105 hover:border-blue-500/50 transition-all duration-300 cursor-pointer group relative overflow-hidden h-80"
                     style={{
-                      background: 'linear-gradient(135deg, rgba(255,215,0,0.1), rgba(255,215,0,0.05))',
+                      background: 'linear-gradient(135deg, rgba(59,130,246,0.15), rgba(59,130,246,0.05))',
                     }}
                   >
+                    {/* Premium Badge */}
+                    <div className="absolute top-4 right-4 z-10">
+                      <div className="bg-blue-600 text-white px-2 py-1 rounded-full text-xs font-bold">
+                        PREMIUM
+                      </div>
+                    </div>
+                    
                     {/* Urban texture background */}
-                    <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(circle_at_1px_1px,_rgba(255,215,0,0.8)_1px,_transparent_0)] bg-[length:6px_6px]"></div>
+                    <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(circle_at_1px_1px,_rgba(59,130,246,0.8)_1px,_transparent_0)] bg-[length:6px_6px]"></div>
                     
                     <CardContent className="p-6 text-center relative z-10 h-full flex flex-col justify-between">
                       <div>
                         <div className="mb-4 flex justify-center">
-                          <div className="p-4 rounded-2xl bg-[#FFD700]/20 group-hover:bg-[#FFD700]/30 transition-all duration-300">
-                            <CreditCard className="h-8 w-8 text-[#FFD700]" />
+                          <div className="p-4 rounded-2xl bg-blue-500/20 group-hover:bg-blue-500/30 transition-all duration-300">
+                            <CreditCard className="h-8 w-8 text-blue-400" />
                           </div>
                         </div>
                         <h3 className="text-xl font-black mb-3 text-brand-black dark:text-brand-cream font-ibm-plex-mono">
-                          Credit
+                          Credit Hub
                         </h3>
                         <p className="text-sm text-brand-black dark:text-brand-cream opacity-80 mb-4 font-kalam">
-                          Fix your credit, build your score, unlock better rates
+                          Advanced credit repair strategies, score optimization, and systemic navigation tactics
+                        </p>
+                        <p className="text-xs text-blue-400 font-bold">
+                          "Break Through Financial Gatekeeping"
                         </p>
                       </div>
-                      <div className="flex items-center justify-center text-[#FFD700] group-hover:text-[#FFD700] transition-colors duration-300">
-                        <span className="text-sm font-ibm-plex-mono mr-2">Learn More</span>
+                      <div className="flex items-center justify-center text-blue-400 group-hover:text-blue-300 transition-colors duration-300">
+                        <span className="text-sm font-ibm-plex-mono mr-2">Explore Hub</span>
                         <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform duration-300" />
                       </div>
                     </CardContent>
                   </Card>
                 </Link>
 
-                {/* Investing Blueprint */}
-                <Card 
-                  className="backdrop-blur-sm border-2 border-[#FFD700]/30 shadow-2xl hover:scale-105 hover:border-[#FFD700]/50 transition-all duration-300 cursor-pointer group relative overflow-hidden h-64"
-                  style={{
-                    background: 'linear-gradient(135deg, rgba(255,215,0,0.1), rgba(255,215,0,0.05))',
-                  }}
-                  onClick={handleExploreInvesting}
-                >
-                  {/* Urban texture background */}
-                  <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(circle_at_1px_1px,_rgba(255,215,0,0.8)_1px,_transparent_0)] bg-[length:6px_6px]"></div>
-                  
-                  <CardContent className="p-6 text-center relative z-10 h-full flex flex-col justify-between">
-                    <div>
-                      <div className="mb-4 flex justify-center">
-                        <div className="p-4 rounded-2xl bg-[#FFD700]/20 group-hover:bg-[#FFD700]/30 transition-all duration-300">
-                          <TrendingUp className="h-8 w-8 text-[#FFD700]" />
-                        </div>
+                {/* Investing Hub - Premium */}
+                <Link to="/investing">
+                  <Card 
+                    className="backdrop-blur-sm border-2 border-emerald-500/30 shadow-2xl hover:scale-105 hover:border-emerald-500/50 transition-all duration-300 cursor-pointer group relative overflow-hidden h-80"
+                    style={{
+                      background: 'linear-gradient(135deg, rgba(16,185,129,0.15), rgba(16,185,129,0.05))',
+                    }}
+                  >
+                    {/* Premium Badge */}
+                    <div className="absolute top-4 right-4 z-10">
+                      <div className="bg-emerald-600 text-white px-2 py-1 rounded-full text-xs font-bold">
+                        PREMIUM
                       </div>
-                      <h3 className="text-xl font-black mb-3 text-brand-black dark:text-brand-cream font-ibm-plex-mono">
-                        Investing
-                      </h3>
-                      <p className="text-sm text-brand-black dark:text-brand-cream opacity-80 mb-4 font-kalam">
-                        Smart moves for building wealth over time
-                      </p>
                     </div>
-                    <div className="flex items-center justify-center text-[#FFD700] group-hover:text-[#FFD700] transition-colors duration-300">
-                      <span className="text-sm font-ibm-plex-mono mr-2">Learn More</span>
-                      <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform duration-300" />
-                    </div>
-                  </CardContent>
-                </Card>
+                    
+                    {/* Urban texture background */}
+                    <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(circle_at_1px_1px,_rgba(16,185,129,0.8)_1px,_transparent_0)] bg-[length:6px_6px]"></div>
+                    
+                    <CardContent className="p-6 text-center relative z-10 h-full flex flex-col justify-between">
+                      <div>
+                        <div className="mb-4 flex justify-center">
+                          <div className="p-4 rounded-2xl bg-emerald-500/20 group-hover:bg-emerald-500/30 transition-all duration-300">
+                            <TrendingUp className="h-8 w-8 text-emerald-400" />
+                          </div>
+                        </div>
+                        <h3 className="text-xl font-black mb-3 text-brand-black dark:text-brand-cream font-ibm-plex-mono">
+                          Investing Hub
+                        </h3>
+                        <p className="text-sm text-brand-black dark:text-brand-cream opacity-80 mb-4 font-kalam">
+                          Portfolio building, risk management, and generational wealth strategies for cycle-breakers
+                        </p>
+                        <p className="text-xs text-emerald-400 font-bold">
+                          "Legacy Assets, Not Just Gains"
+                        </p>
+                      </div>
+                      <div className="flex items-center justify-center text-emerald-400 group-hover:text-emerald-300 transition-colors duration-300">
+                        <span className="text-sm font-ibm-plex-mono mr-2">Explore Hub</span>
+                        <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform duration-300" />
+                      </div>
+                    </CardContent>
+                  </Card>
+                </Link>
 
-                {/* AI Side Hustles Blueprint */}
+                {/* AI-Wealth Arbitrage 2025 - Premium */}
                 <Card 
-                  className="backdrop-blur-sm border-2 border-[#FFD700]/30 shadow-2xl hover:scale-105 hover:border-[#FFD700]/50 transition-all duration-300 cursor-pointer group relative overflow-hidden h-64"
+                  className="backdrop-blur-sm border-2 border-purple-500/30 shadow-2xl hover:scale-105 hover:border-purple-500/50 transition-all duration-300 cursor-pointer group relative overflow-hidden h-80"
                   style={{
-                    background: 'linear-gradient(135deg, rgba(255,215,0,0.1), rgba(255,215,0,0.05))',
+                    background: 'linear-gradient(135deg, rgba(147,51,234,0.15), rgba(147,51,234,0.05))',
                   }}
                   onClick={handleExploreAI}
                 >
+                  {/* Premium Badge */}
+                  <div className="absolute top-4 right-4 z-10">
+                    <div className="bg-purple-600 text-white px-2 py-1 rounded-full text-xs font-bold">
+                      2025 OODA
+                    </div>
+                  </div>
+                  
                   {/* Urban texture background */}
-                  <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(circle_at_1px_1px,_rgba(255,215,0,0.8)_1px,_transparent_0)] bg-[length:6px_6px]"></div>
+                  <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(circle_at_1px_1px,_rgba(147,51,234,0.8)_1px,_transparent_0)] bg-[length:6px_6px]"></div>
                   
                   <CardContent className="p-6 text-center relative z-10 h-full flex flex-col justify-between">
                     <div>
                       <div className="mb-4 flex justify-center">
-                        <div className="p-4 rounded-2xl bg-[#FFD700]/20 group-hover:bg-[#FFD700]/30 transition-all duration-300">
-                          <Bot className="h-8 w-8 text-[#FFD700]" />
+                        <div className="p-4 rounded-2xl bg-purple-500/20 group-hover:bg-purple-500/30 transition-all duration-300">
+                          <Bot className="h-8 w-8 text-purple-400" />
                         </div>
                       </div>
                       <h3 className="text-xl font-black mb-3 text-brand-black dark:text-brand-cream font-ibm-plex-mono">
-                        AI Side Hustles
+                        AI-Wealth Arbitrage
                       </h3>
                       <p className="text-sm text-brand-black dark:text-brand-cream opacity-80 mb-4 font-kalam">
-                        Turn AI tools into consistent income streams
+                        2025 plays for turning AI tools into scalable income streams and legacy assets
+                      </p>
+                      <p className="text-xs text-purple-400 font-bold">
+                        "Tech-to-Generational Wealth Pipeline"
                       </p>
                     </div>
-                    <div className="flex items-center justify-center text-[#FFD700] group-hover:text-[#FFD700] transition-colors duration-300">
-                      <span className="text-sm font-ibm-plex-mono mr-2">Learn More</span>
+                    <div className="flex items-center justify-center text-purple-400 group-hover:text-purple-300 transition-colors duration-300">
+                      <span className="text-sm font-ibm-plex-mono mr-2">Early Access</span>
                       <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform duration-300" />
                     </div>
                   </CardContent>
                 </Card>
 
-                {/* Cash Management Blueprint */}
+                {/* Cash Management - Premium */}
                 <Card 
-                  className="backdrop-blur-sm border-2 border-[#FFD700]/30 shadow-2xl hover:scale-105 hover:border-[#FFD700]/50 transition-all duration-300 cursor-pointer group relative overflow-hidden h-64"
+                  className="backdrop-blur-sm border-2 border-[#FFD700]/30 shadow-2xl hover:scale-105 hover:border-[#FFD700]/50 transition-all duration-300 cursor-pointer group relative overflow-hidden h-80"
                   style={{
-                    background: 'linear-gradient(135deg, rgba(255,215,0,0.1), rgba(255,215,0,0.05))',
+                    background: 'linear-gradient(135deg, rgba(255,215,0,0.15), rgba(255,215,0,0.05))',
                   }}
                   onClick={handleExploreCash}
                 >
+                  {/* Premium Badge */}
+                  <div className="absolute top-4 right-4 z-10">
+                    <div className="bg-[#FFD700] text-black px-2 py-1 rounded-full text-xs font-bold">
+                      PREMIUM
+                    </div>
+                  </div>
+                  
                   {/* Urban texture background */}
                   <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(circle_at_1px_1px,_rgba(255,215,0,0.8)_1px,_transparent_0)] bg-[length:6px_6px]"></div>
                   
@@ -869,14 +930,17 @@ const Sales = () => {
                         </div>
                       </div>
                       <h3 className="text-xl font-black mb-3 text-brand-black dark:text-brand-cream font-ibm-plex-mono">
-                        Cash Management
+                        Cash Mastery
                       </h3>
                       <p className="text-sm text-brand-black dark:text-brand-cream opacity-80 mb-4 font-kalam">
-                        Master budgeting, saving, and cash flow
+                        Advanced budgeting, cash flow optimization, and emergency fund building strategies
+                      </p>
+                      <p className="text-xs text-[#FFD700] font-bold">
+                        "From Paycheck to Powerhouse"
                       </p>
                     </div>
                     <div className="flex items-center justify-center text-[#FFD700] group-hover:text-[#FFD700] transition-colors duration-300">
-                      <span className="text-sm font-ibm-plex-mono mr-2">Learn More</span>
+                      <span className="text-sm font-ibm-plex-mono mr-2">Master Cash</span>
                       <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform duration-300" />
                     </div>
                   </CardContent>
@@ -887,7 +951,10 @@ const Sales = () => {
               {/* Call-to-Action Message */}
               <div className="text-center mt-12">
                 <p className="text-brand-black dark:text-brand-cream text-lg font-kalam opacity-70">
-                  Each blueprint includes step-by-step guides, templates, and real-world examples
+                  Network cross-linked playbooks designed for cycle-breakers building generational wealth
+                </p>
+                <p className="text-[#FFD700] font-bold mt-4 text-lg">
+                  Value ladder: Start free, scale premium, stack legacy
                 </p>
               </div>
             </div>

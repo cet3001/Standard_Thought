@@ -33,6 +33,7 @@ import ErrorBoundary from "@/components/error-boundary";
 import PerformanceOptimizer from "@/components/performance/performance-optimizer";
 import LighthouseAuditor from "@/components/performance/lighthouse-auditor";
 import PrerenderOptimizer from "@/components/performance/prerender-optimizer";
+import { useAnalyticsTracking } from "@/hooks/use-analytics";
 
 console.log('App.tsx: Component loaded');
 
@@ -45,6 +46,41 @@ const queryClient = new QueryClient({
   },
 });
 
+function AppContent() {
+  useAnalyticsTracking(); // Initialize and track page views
+  
+  return (
+    <div className="min-h-screen">
+      <PerformanceOptimizer />
+      <PrerenderOptimizer />
+      <LighthouseAuditor />
+      <Toaster />
+      <Suspense fallback={<Loading />}>
+        <Routes>
+          <Route path="/" element={<Index />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="/create-post" element={<CreatePost />} />
+          <Route path="/admin/guides" element={<AdminGuides />} />
+          <Route path="/admin/email" element={<AdminEmail />} />
+          <Route path="/admin/seo" element={<AdminSEO />} />
+          <Route path="/sales" element={<Sales />} />
+          <Route path="/credit" element={<Credit />} />
+          <Route path="/investing" element={<Investing />} />
+          <Route path="/ai-side-hustles" element={<AISideHustles />} />
+          <Route path="/cash-management" element={<CashManagement />} />
+          <Route path="/auth" element={<Auth />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-of-service" element={<TermsOfService />} />
+          <Route path="/cookie-policy" element={<CookiePolicy />} />
+          <Route path="/image-generator" element={<ImageGeneratorPage />} />
+        </Routes>
+      </Suspense>
+    </div>
+  );
+}
+
 function App() {
   console.log('App.tsx: App component rendering...');
   
@@ -54,34 +90,7 @@ function App() {
         <BrowserRouter>
           <QueryClientProvider client={queryClient}>
             <AuthProvider>
-              <div className="min-h-screen">
-                <PerformanceOptimizer />
-                <PrerenderOptimizer />
-                <LighthouseAuditor />
-                <Toaster />
-                <Suspense fallback={<Loading />}>
-                  <Routes>
-                    <Route path="/" element={<Index />} />
-                    <Route path="/about" element={<About />} />
-                    <Route path="/blog" element={<Blog />} />
-                    <Route path="/blog/:slug" element={<BlogPost />} />
-                    <Route path="/create-post" element={<CreatePost />} />
-                    <Route path="/admin/guides" element={<AdminGuides />} />
-                    <Route path="/admin/email" element={<AdminEmail />} />
-                    <Route path="/admin/seo" element={<AdminSEO />} />
-                    <Route path="/sales" element={<Sales />} />
-                    <Route path="/credit" element={<Credit />} />
-                    <Route path="/investing" element={<Investing />} />
-                    <Route path="/ai-side-hustles" element={<AISideHustles />} />
-                    <Route path="/cash-management" element={<CashManagement />} />
-                    <Route path="/auth" element={<Auth />} />
-                    <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-                    <Route path="/terms-of-service" element={<TermsOfService />} />
-                    <Route path="/cookie-policy" element={<CookiePolicy />} />
-                    <Route path="/image-generator" element={<ImageGeneratorPage />} />
-                  </Routes>
-                </Suspense>
-              </div>
+              <AppContent />
             </AuthProvider>
           </QueryClientProvider>
         </BrowserRouter>

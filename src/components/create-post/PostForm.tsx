@@ -60,6 +60,13 @@ export const PostForm = ({
   setImagePreview,
   onCancel
 }: PostFormProps) => {
+  // Debug log to see if formData is being received
+  console.log('PostForm rendering with formData:', {
+    title: formData.title,
+    body: formData.body?.substring(0, 50) + '...',
+    tags: formData.tags,
+    featured: formData.featured
+  });
   return (
     <Card className="backdrop-blur-sm border-2 border-yellow-400/30 shadow-2xl" style={{
       background: 'linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05))',

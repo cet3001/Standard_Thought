@@ -120,6 +120,7 @@ const CreatePost = () => {
           />
 
           <PostForm
+            key={editPost?.id || 'new-post'} // Force re-render when editing different posts
             formData={formData}
             setFormData={setFormData}
             onSubmit={handleFormSubmit}

@@ -1,7 +1,7 @@
 
 // Bootstraps the React app and loads our custom fonts.
 // Keeps the vibe sharp by preloading all weights we need.
-import React from 'react';
+import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
@@ -74,9 +74,9 @@ if (!rootElement) {
     console.log('main.tsx: React root created successfully');
     
     root.render(
-      <React.StrictMode>
+      <StrictMode>
         <App />
-      </React.StrictMode>
+      </StrictMode>
     );
     console.log('main.tsx: App rendered successfully');
   } catch (error) {

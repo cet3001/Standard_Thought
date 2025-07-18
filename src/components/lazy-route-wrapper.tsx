@@ -1,4 +1,4 @@
-import { Suspense, ComponentType, lazy } from 'react';
+import * as React from 'react';
 
 interface LazyRouteWrapperProps {
   children: React.ReactNode;
@@ -11,16 +11,16 @@ const LoadingFallback = () => (
 );
 
 export const LazyRouteWrapper = ({ children }: LazyRouteWrapperProps) => (
-  <Suspense fallback={<LoadingFallback />}>
+  <React.Suspense fallback={<LoadingFallback />}>
     {children}
-  </Suspense>
+  </React.Suspense>
 );
 
 // Helper function to create lazy routes with automatic error boundaries
 export const createLazyRoute = (
-  importFunction: () => Promise<{ default: ComponentType<any> }>
+  importFunction: () => Promise<{ default: React.ComponentType<any> }>
 ) => {
-  const LazyComponent = lazy(importFunction);
+  const LazyComponent = React.lazy(importFunction);
   
   return (props: any) => (
     <LazyRouteWrapper>

@@ -82,10 +82,11 @@ const Sales = () => {
               <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start mb-16 relative">
                 {/* Left Column - Text Content */}
                 <div className={`transition-all duration-1000 relative z-10 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight text-brand-black dark:text-brand-cream relative">
+                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight relative">
                     <div className="absolute inset-0 opacity-[0.05] bg-[conic-gradient(from_0deg,_transparent_70%,_rgba(0,0,0,0.3)_90%,_transparent_100%)] bg-[length:15px_15px]"></div>
                     <span className="relative z-10">
-                      Unlock Your Urban Wealth Blueprint
+                      <span className="text-brand-black dark:text-brand-cream">Unlock Your</span>{" "}
+                      <span className="pearlescent-text">Urban Wealth Blueprint</span>
                     </span>
                   </h1>
 
@@ -135,8 +136,10 @@ const Sales = () => {
           <div className="container mx-auto px-6 relative z-10">
             <div className="max-w-7xl mx-auto">
               <div className="text-center mb-16">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6 pearlescent-text">
-                  Starter Blueprints: No-Cost Plays to Flip Credit Trauma
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6">
+                  <span className="pearlescent-text">Starter Blueprints:</span>{" "}
+                  <span className="text-brand-black dark:text-brand-cream">No-Cost Plays to Flip</span>{" "}
+                  <span className="pearlescent-text">Credit Trauma</span>
                 </h2>
               </div>
 
@@ -252,8 +255,10 @@ const Sales = () => {
           <div className="container mx-auto px-6 relative z-10">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-16">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6 pearlescent-text">
-                  Trusted by 1,000+ First-Gen Hustlers
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6">
+                  <span className="text-brand-black dark:text-brand-cream">Trusted by</span>{" "}
+                  <span className="pearlescent-text">1,000+ First-Gen</span>{" "}
+                  <span className="text-brand-black dark:text-brand-cream">Hustlers</span>
                 </h2>
               </div>
               
@@ -284,8 +289,10 @@ const Sales = () => {
           <div className="container mx-auto px-6 relative z-10">
             <div className="max-w-7xl mx-auto">
               <div className="text-center mb-16">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6 pearlescent-text">
-                  Deep Dives: Paid Playbooks for Legacy Stacking
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6">
+                  <span className="pearlescent-text">Deep Dives:</span>{" "}
+                  <span className="text-brand-black dark:text-brand-cream">Paid Playbooks for</span>{" "}
+                  <span className="pearlescent-text">Legacy Stacking</span>
                 </h2>
                 <p className="text-lg text-brand-black dark:text-brand-cream/80 max-w-3xl mx-auto">
                   Fresh 2025 updates on AI-wealth shifts—tech turning generational assets without Silicon Valley access.
@@ -400,8 +407,10 @@ const Sales = () => {
           <div className="container mx-auto px-6 relative z-10">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-16">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6 pearlescent-text">
-                  Real Questions, Real Answers
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6">
+                  <span className="pearlescent-text">Real Questions,</span>{" "}
+                  <span className="text-brand-black dark:text-brand-cream">Real</span>{" "}
+                  <span className="pearlescent-text">Answers</span>
                 </h2>
                 <p className="text-lg text-brand-black dark:text-brand-cream/80 max-w-3xl mx-auto">
                   No sugar-coating, no BS—just talk about building wealth from nothing.

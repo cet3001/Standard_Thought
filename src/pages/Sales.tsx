@@ -142,21 +142,22 @@ const Sales = () => {
 
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {/* Card 1 */}
-                <Card className="bg-gradient-to-br from-brand-cream/80 to-brand-tan/80 dark:from-brand-charcoal/80 dark:to-brand-black/80 border-2 border-brand-brown/20 dark:border-brand-cream/20 hover:border-[#FFD700]/40 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl backdrop-blur-sm">
-                  <CardHeader className="pb-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-[#FFD700] to-[#FFA500] rounded-xl flex items-center justify-center mb-4">
-                      <TrendingUp className="h-6 w-6 text-black" />
+                <Card className="group bg-gradient-to-br from-brand-cream/95 via-brand-cream/90 to-brand-cream/85 dark:from-brand-black/95 dark:via-brand-black/90 dark:to-brand-black/85 border-2 border-brand-black/10 dark:border-brand-cream/20 hover:border-[#FFD700]/50 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 shadow-lg hover:shadow-2xl backdrop-blur-sm relative overflow-hidden">
+                  <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_50%_50%,_rgba(0,0,0,0.3)_1px,_transparent_1px)] bg-[length:20px_20px]"></div>
+                  <CardHeader className="pb-4 relative z-10">
+                    <div className="w-14 h-14 bg-gradient-to-br from-[#FFD700] via-[#FFF8DC] to-[#FFA500] rounded-2xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <TrendingUp className="h-7 w-7 text-black" />
                     </div>
-                    <CardTitle className="text-xl font-bold text-brand-black dark:text-brand-cream">
+                    <CardTitle className="text-xl font-black text-brand-black dark:text-brand-cream group-hover:text-[#FFD700] transition-colors">
                       How to Create Your First Portfolio
                     </CardTitle>
                   </CardHeader>
-                  <CardContent className="space-y-4">
-                    <CardDescription className="text-brand-black dark:text-brand-cream/80 text-base leading-relaxed">
+                  <CardContent className="space-y-6 relative z-10">
+                    <CardDescription className="text-brand-black/80 dark:text-brand-cream/80 text-base leading-relaxed font-medium">
                       Start with pocket change. Build a basic stock portfolio for first-gen builders—urban strategies to flip $100 into assets without gatekeepers.
                     </CardDescription>
                     <Button 
-                      className="w-full bg-gradient-to-r from-[#FFD700] to-[#FFA500] hover:from-[#FFA500] hover:to-[#FFD700] text-black font-bold"
+                      className="w-full bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFA500] hover:from-[#FFA500] hover:to-[#FFD700] text-black font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/40 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700"
                       onClick={() => handleDownload('First Portfolio Guide')}
                     >
                       <Download className="mr-2 h-4 w-4" />
@@ -166,22 +167,23 @@ const Sales = () => {
                 </Card>
 
                 {/* Card 2 */}
-                <Card className="bg-gradient-to-br from-brand-cream/80 to-brand-tan/80 dark:from-brand-charcoal/80 dark:to-brand-black/80 border-2 border-brand-brown/20 dark:border-brand-cream/20 hover:border-[#FFD700]/40 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl backdrop-blur-sm">
-                  <CardHeader className="pb-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-[#FFD700] to-[#FFA500] rounded-xl flex items-center justify-center mb-4">
-                      <Target className="h-6 w-6 text-black" />
+                <Card className="group bg-gradient-to-br from-brand-cream/95 via-brand-cream/90 to-brand-cream/85 dark:from-brand-black/95 dark:via-brand-black/90 dark:to-brand-black/85 border-2 border-brand-black/10 dark:border-brand-cream/20 hover:border-[#FFD700]/50 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 shadow-lg hover:shadow-2xl backdrop-blur-sm relative overflow-hidden">
+                  <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_50%_50%,_rgba(0,0,0,0.3)_1px,_transparent_1px)] bg-[length:20px_20px]"></div>
+                  <CardHeader className="pb-4 relative z-10">
+                    <div className="w-14 h-14 bg-gradient-to-br from-[#FFD700] via-[#FFF8DC] to-[#FFA500] rounded-2xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <Target className="h-7 w-7 text-black" />
                     </div>
-                    <CardTitle className="text-xl font-bold text-brand-black dark:text-brand-cream">
+                    <CardTitle className="text-xl font-black text-brand-black dark:text-brand-cream group-hover:text-[#FFD700] transition-colors">
                       System Building Action Plan
                     </CardTitle>
                   </CardHeader>
-                  <CardContent className="space-y-4">
-                    <CardDescription className="text-brand-black dark:text-brand-cream/80 text-base leading-relaxed">
+                  <CardContent className="space-y-6 relative z-10">
+                    <CardDescription className="text-brand-black/80 dark:text-brand-cream/80 text-base leading-relaxed font-medium">
                       Flip survival mode into systems. Step-by-step to automate cash flow, rooted in psych hacks for Black hustlers breaking cycles.
                     </CardDescription>
                     <Link to="/cash-management">
                       <Button 
-                        className="w-full bg-gradient-to-r from-[#FFD700] to-[#FFA500] hover:from-[#FFA500] hover:to-[#FFD700] text-black font-bold"
+                        className="w-full bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFA500] hover:from-[#FFA500] hover:to-[#FFD700] text-black font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/40 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700"
                       >
                         <Download className="mr-2 h-4 w-4" />
                         Grab Free Plan
@@ -191,21 +193,22 @@ const Sales = () => {
                 </Card>
 
                 {/* Card 3 */}
-                <Card className="bg-gradient-to-br from-brand-cream/80 to-brand-tan/80 dark:from-brand-charcoal/80 dark:to-brand-black/80 border-2 border-brand-brown/20 dark:border-brand-cream/20 hover:border-[#FFD700]/40 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl backdrop-blur-sm">
-                  <CardHeader className="pb-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-[#FFD700] to-[#FFA500] rounded-xl flex items-center justify-center mb-4">
-                      <CreditCard className="h-6 w-6 text-black" />
+                <Card className="group bg-gradient-to-br from-brand-cream/95 via-brand-cream/90 to-brand-cream/85 dark:from-brand-black/95 dark:via-brand-black/90 dark:to-brand-black/85 border-2 border-brand-black/10 dark:border-brand-cream/20 hover:border-[#FFD700]/50 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 shadow-lg hover:shadow-2xl backdrop-blur-sm relative overflow-hidden">
+                  <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_50%_50%,_rgba(0,0,0,0.3)_1px,_transparent_1px)] bg-[length:20px_20px]"></div>
+                  <CardHeader className="pb-4 relative z-10">
+                    <div className="w-14 h-14 bg-gradient-to-br from-[#FFD700] via-[#FFF8DC] to-[#FFA500] rounded-2xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <CreditCard className="h-7 w-7 text-black" />
                     </div>
-                    <CardTitle className="text-xl font-bold text-brand-black dark:text-brand-cream">
+                    <CardTitle className="text-xl font-black text-brand-black dark:text-brand-cream group-hover:text-[#FFD700] transition-colors">
                       Credit Repair Master Class
                     </CardTitle>
                   </CardHeader>
-                  <CardContent className="space-y-4">
-                    <CardDescription className="text-brand-black dark:text-brand-cream/80 text-base leading-relaxed">
+                  <CardContent className="space-y-6 relative z-10">
+                    <CardDescription className="text-brand-black/80 dark:text-brand-cream/80 text-base leading-relaxed font-medium">
                       No cosigner? No problem. Advanced templates to dispute, rebuild, and stack credit—Trojan truths on how exclusion keeps scores low in our communities.
                     </CardDescription>
                     <Button 
-                      className="w-full bg-gradient-to-r from-[#FFD700] to-[#FFA500] hover:from-[#FFA500] hover:to-[#FFD700] text-black font-bold"
+                      className="w-full bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFA500] hover:from-[#FFA500] hover:to-[#FFD700] text-black font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/40 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700"
                       onClick={() => handleDownload('Credit Repair Master Class')}
                     >
                       <Download className="mr-2 h-4 w-4" />
@@ -215,22 +218,23 @@ const Sales = () => {
                 </Card>
 
                 {/* Card 4 */}
-                <Card className="bg-gradient-to-br from-brand-cream/80 to-brand-tan/80 dark:from-brand-charcoal/80 dark:to-brand-black/80 border-2 border-brand-brown/20 dark:border-brand-cream/20 hover:border-[#FFD700]/40 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl backdrop-blur-sm">
-                  <CardHeader className="pb-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-[#FFD700] to-[#FFA500] rounded-xl flex items-center justify-center mb-4">
-                      <Shield className="h-6 w-6 text-black" />
+                <Card className="group bg-gradient-to-br from-brand-cream/95 via-brand-cream/90 to-brand-cream/85 dark:from-brand-black/95 dark:via-brand-black/90 dark:to-brand-black/85 border-2 border-brand-black/10 dark:border-brand-cream/20 hover:border-[#FFD700]/50 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 shadow-lg hover:shadow-2xl backdrop-blur-sm relative overflow-hidden">
+                  <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_50%_50%,_rgba(0,0,0,0.3)_1px,_transparent_1px)] bg-[length:20px_20px]"></div>
+                  <CardHeader className="pb-4 relative z-10">
+                    <div className="w-14 h-14 bg-gradient-to-br from-[#FFD700] via-[#FFF8DC] to-[#FFA500] rounded-2xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <Shield className="h-7 w-7 text-black" />
                     </div>
-                    <CardTitle className="text-xl font-bold text-brand-black dark:text-brand-cream">
+                    <CardTitle className="text-xl font-black text-brand-black dark:text-brand-cream group-hover:text-[#FFD700] transition-colors">
                       Ultimate Legacy Toolkit
                     </CardTitle>
                   </CardHeader>
-                  <CardContent className="space-y-4">
-                    <CardDescription className="text-brand-black dark:text-brand-cream/80 text-base leading-relaxed">
+                  <CardContent className="space-y-6 relative z-10">
+                    <CardDescription className="text-brand-black/80 dark:text-brand-cream/80 text-base leading-relaxed font-medium">
                       Protect your bag long-term. Free resources blending sociology on generational scars + instinct flips for urban legacy builders.
                     </CardDescription>
                     <Link to="/investing">
                       <Button 
-                        className="w-full bg-gradient-to-r from-[#FFD700] to-[#FFA500] hover:from-[#FFA500] hover:to-[#FFD700] text-black font-bold"
+                        className="w-full bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFA500] hover:from-[#FFA500] hover:to-[#FFD700] text-black font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/40 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700"
                       >
                         <Download className="mr-2 h-4 w-4" />
                         Download Toolkit
@@ -288,24 +292,25 @@ const Sales = () => {
                 </p>
               </div>
 
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {/* Card 1 */}
-                <Card className="bg-gradient-to-br from-brand-cream/80 to-brand-tan/80 dark:from-brand-charcoal/80 dark:to-brand-black/80 border-2 border-brand-brown/20 dark:border-brand-cream/20 hover:border-[#FFD700]/40 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl backdrop-blur-sm">
-                  <CardHeader className="pb-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-[#FFD700] to-[#FFA500] rounded-xl flex items-center justify-center mb-4">
-                      <CreditCard className="h-6 w-6 text-black" />
+                <Card className="group bg-gradient-to-br from-brand-cream/95 via-brand-cream/90 to-brand-cream/85 dark:from-brand-black/95 dark:via-brand-black/90 dark:to-brand-black/85 border-2 border-brand-black/10 dark:border-brand-cream/20 hover:border-[#FFD700]/50 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 shadow-lg hover:shadow-2xl backdrop-blur-sm relative overflow-hidden">
+                  <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_50%_50%,_rgba(0,0,0,0.3)_1px,_transparent_1px)] bg-[length:20px_20px]"></div>
+                  <CardHeader className="pb-4 relative z-10">
+                    <div className="w-14 h-14 bg-gradient-to-br from-[#FFD700] via-[#FFF8DC] to-[#FFA500] rounded-2xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <CreditCard className="h-7 w-7 text-black" />
                     </div>
-                    <CardTitle className="text-xl font-bold text-brand-black dark:text-brand-cream">
+                    <CardTitle className="text-xl font-black text-brand-black dark:text-brand-cream group-hover:text-[#FFD700] transition-colors">
                       Credit Hub
                     </CardTitle>
                   </CardHeader>
-                  <CardContent className="space-y-4">
-                    <CardDescription className="text-brand-black dark:text-brand-cream/80 text-base leading-relaxed">
+                  <CardContent className="space-y-6 relative z-10">
+                    <CardDescription className="text-brand-black/80 dark:text-brand-cream/80 text-base leading-relaxed font-medium">
                       Comprehensive strategies, investment management, generational wealth transfer—smuggle in truths on financial exclusion hitting Black families hardest.
                     </CardDescription>
                     <Link to="/credit">
                       <Button 
-                        className="w-full bg-gradient-to-r from-[#FFD700] to-[#FFA500] hover:from-[#FFA500] hover:to-[#FFD700] text-black font-bold"
+                        className="w-full bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFA500] hover:from-[#FFA500] hover:to-[#FFD700] text-black font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/40 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700"
                       >
                         Buy Now $47
                       </Button>
@@ -314,21 +319,22 @@ const Sales = () => {
                 </Card>
 
                 {/* Card 2 */}
-                <Card className="bg-gradient-to-br from-brand-cream/80 to-brand-tan/80 dark:from-brand-charcoal/80 dark:to-brand-black/80 border-2 border-brand-brown/20 dark:border-brand-cream/20 hover:border-[#FFD700]/40 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl backdrop-blur-sm">
-                  <CardHeader className="pb-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-[#FFD700] to-[#FFA500] rounded-xl flex items-center justify-center mb-4">
-                      <TrendingUp className="h-6 w-6 text-black" />
+                <Card className="group bg-gradient-to-br from-brand-cream/95 via-brand-cream/90 to-brand-cream/85 dark:from-brand-black/95 dark:via-brand-black/90 dark:to-brand-black/85 border-2 border-brand-black/10 dark:border-brand-cream/20 hover:border-[#FFD700]/50 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 shadow-lg hover:shadow-2xl backdrop-blur-sm relative overflow-hidden">
+                  <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_50%_50%,_rgba(0,0,0,0.3)_1px,_transparent_1px)] bg-[length:20px_20px]"></div>
+                  <CardHeader className="pb-4 relative z-10">
+                    <div className="w-14 h-14 bg-gradient-to-br from-[#FFD700] via-[#FFF8DC] to-[#FFA500] rounded-2xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <TrendingUp className="h-7 w-7 text-black" />
                     </div>
-                    <CardTitle className="text-xl font-bold text-brand-black dark:text-brand-cream">
+                    <CardTitle className="text-xl font-black text-brand-black dark:text-brand-cream group-hover:text-[#FFD700] transition-colors">
                       Investing Hub
                     </CardTitle>
                   </CardHeader>
-                  <CardContent className="space-y-4">
-                    <CardDescription className="text-brand-black dark:text-brand-cream/80 text-base leading-relaxed">
+                  <CardContent className="space-y-6 relative z-10">
+                    <CardDescription className="text-brand-black/80 dark:text-brand-cream/80 text-base leading-relaxed font-medium">
                       Advanced mapping for side-income hustles—layered with psych on risk instinct + sociology on hood barriers.
                     </CardDescription>
                     <Button 
-                      className="w-full bg-gradient-to-r from-[#FFD700] to-[#FFA500] hover:from-[#FFA500] hover:to-[#FFD700] text-black font-bold"
+                      className="w-full bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFA500] hover:from-[#FFA500] hover:to-[#FFD700] text-black font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/40 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700"
                       onClick={() => handlePurchase('Investing Hub')}
                     >
                       Unlock $97
@@ -337,21 +343,22 @@ const Sales = () => {
                 </Card>
 
                 {/* Card 3 */}
-                <Card className="bg-gradient-to-br from-brand-cream/80 to-brand-tan/80 dark:from-brand-charcoal/80 dark:to-brand-black/80 border-2 border-brand-brown/20 dark:border-brand-cream/20 hover:border-[#FFD700]/40 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl backdrop-blur-sm">
-                  <CardHeader className="pb-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-[#FFD700] to-[#FFA500] rounded-xl flex items-center justify-center mb-4">
-                      <Zap className="h-6 w-6 text-black" />
+                <Card className="group bg-gradient-to-br from-brand-cream/95 via-brand-cream/90 to-brand-cream/85 dark:from-brand-black/95 dark:via-brand-black/90 dark:to-brand-black/85 border-2 border-brand-black/10 dark:border-brand-cream/20 hover:border-[#FFD700]/50 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 shadow-lg hover:shadow-2xl backdrop-blur-sm relative overflow-hidden">
+                  <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_50%_50%,_rgba(0,0,0,0.3)_1px,_transparent_1px)] bg-[length:20px_20px]"></div>
+                  <CardHeader className="pb-4 relative z-10">
+                    <div className="w-14 h-14 bg-gradient-to-br from-[#FFD700] via-[#FFF8DC] to-[#FFA500] rounded-2xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <Zap className="h-7 w-7 text-black" />
                     </div>
-                    <CardTitle className="text-xl font-bold text-brand-black dark:text-brand-cream">
+                    <CardTitle className="text-xl font-black text-brand-black dark:text-brand-cream group-hover:text-[#FFD700] transition-colors">
                       AI-Wealth Arbitrage
                     </CardTitle>
                   </CardHeader>
-                  <CardContent className="space-y-4">
-                    <CardDescription className="text-brand-black dark:text-brand-cream/80 text-base leading-relaxed">
+                  <CardContent className="space-y-6 relative z-10">
+                    <CardDescription className="text-brand-black/80 dark:text-brand-cream/80 text-base leading-relaxed font-medium">
                       Playable models for tech generational assets—early plays on 2025 shifts, no fluff.
                     </CardDescription>
                     <Button 
-                      className="w-full bg-gradient-to-r from-[#FFD700] to-[#FFA500] hover:from-[#FFA500] hover:to-[#FFD700] text-black font-bold"
+                      className="w-full bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFA500] hover:from-[#FFA500] hover:to-[#FFD700] text-black font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/40 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700"
                       onClick={() => handlePurchase('AI-Wealth Arbitrage')}
                     >
                       Get Access $67
@@ -360,22 +367,23 @@ const Sales = () => {
                 </Card>
 
                 {/* Card 4 */}
-                <Card className="bg-gradient-to-br from-brand-cream/80 to-brand-tan/80 dark:from-brand-charcoal/80 dark:to-brand-black/80 border-2 border-brand-brown/20 dark:border-brand-cream/20 hover:border-[#FFD700]/40 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl backdrop-blur-sm">
-                  <CardHeader className="pb-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-[#FFD700] to-[#FFA500] rounded-xl flex items-center justify-center mb-4">
-                      <PiggyBank className="h-6 w-6 text-black" />
+                <Card className="group bg-gradient-to-br from-brand-cream/95 via-brand-cream/90 to-brand-cream/85 dark:from-brand-black/95 dark:via-brand-black/90 dark:to-brand-black/85 border-2 border-brand-black/10 dark:border-brand-cream/20 hover:border-[#FFD700]/50 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 shadow-lg hover:shadow-2xl backdrop-blur-sm relative overflow-hidden">
+                  <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_50%_50%,_rgba(0,0,0,0.3)_1px,_transparent_1px)] bg-[length:20px_20px]"></div>
+                  <CardHeader className="pb-4 relative z-10">
+                    <div className="w-14 h-14 bg-gradient-to-br from-[#FFD700] via-[#FFF8DC] to-[#FFA500] rounded-2xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <PiggyBank className="h-7 w-7 text-black" />
                     </div>
-                    <CardTitle className="text-xl font-bold text-brand-black dark:text-brand-cream">
+                    <CardTitle className="text-xl font-black text-brand-black dark:text-brand-cream group-hover:text-[#FFD700] transition-colors">
                       Cash Mastery
                     </CardTitle>
                   </CardHeader>
-                  <CardContent className="space-y-4">
-                    <CardDescription className="text-brand-black dark:text-brand-cream/80 text-base leading-relaxed">
+                  <CardContent className="space-y-6 relative z-10">
+                    <CardDescription className="text-brand-black/80 dark:text-brand-cream/80 text-base leading-relaxed font-medium">
                       Emergency funds, passive income—Trojan hits on breaking paycheck trauma in urban legacies.
                     </CardDescription>
                     <Link to="/cash-management">
                       <Button 
-                        className="w-full bg-gradient-to-r from-[#FFD700] to-[#FFA500] hover:from-[#FFA500] hover:to-[#FFD700] text-black font-bold"
+                        className="w-full bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFA500] hover:from-[#FFA500] hover:to-[#FFD700] text-black font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/40 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700"
                       >
                         Secure $57
                       </Button>

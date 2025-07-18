@@ -187,13 +187,6 @@ const Sales = () => {
 
                 {/* Left Column - Text Content */}
                 <div className={`transition-all duration-1000 relative z-10 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-                  {/* Provocative Stat */}
-                  <div className="mb-8 p-6 bg-gradient-to-r from-red-500/20 to-orange-500/20 border border-red-500/30 rounded-2xl backdrop-blur-sm">
-                    <p className="text-lg sm:text-xl font-bold text-brand-black dark:text-brand-cream leading-relaxed">
-                      <span className="text-red-400">Only 13% of Black Families Own Stock</span>—Time to Flip Those Numbers?
-                    </p>
-                  </div>
-
                   <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 sm:mb-8 leading-tight text-brand-black dark:text-brand-cream relative">
                     {/* Additional texture behind main heading */}
                     <div className="absolute inset-0 opacity-[0.05] bg-[conic-gradient(from_0deg,_transparent_70%,_rgba(0,0,0,0.3)_90%,_transparent_100%)] bg-[length:15px_15px]"></div>
@@ -281,7 +274,7 @@ const Sales = () => {
 
                 {/* Right Column - Hero Image */}
                 <div className={`relative z-10 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'} transition-all duration-1000 delay-300`}>
-                  <div className="relative overflow-hidden rounded-2xl shadow-2xl">
+                  <div className="relative overflow-hidden rounded-2xl shadow-2xl mb-6">
                     <OptimizedImage
                       src="/lovable-uploads/83d7ca67-81a0-42da-a27c-e3d308dc57bd.png"
                       alt="Urban entrepreneur writing financial plans in notebook under street lighting, embodying the dedication and strategic planning needed for wealth building"
@@ -292,6 +285,13 @@ const Sales = () => {
                     />
                     {/* Gradient overlay for better text contrast */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none"></div>
+                  </div>
+                  
+                  {/* Provocative Stat */}
+                  <div className="p-6 bg-gradient-to-r from-red-500/20 to-orange-500/20 border border-red-500/30 rounded-2xl backdrop-blur-sm">
+                    <p className="text-lg sm:text-xl font-bold text-brand-black dark:text-brand-cream leading-relaxed">
+                      <span className="text-red-400">Only 13% of Black Families Own Stock</span>—Time to Flip Those Numbers?
+                    </p>
                   </div>
                 </div>
               </div>

@@ -113,7 +113,7 @@ const AdminGuides = () => {
             <div className="flex justify-end mb-6">
               <Button
                 onClick={() => setShowForm(true)}
-                className="bg-brand-gold text-black hover:bg-brand-gold/90"
+                className="bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFA500] text-black font-bold hover:from-[#FFA500] hover:to-[#FFD700] shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-[#FFD700]"
               >
                 <Plus className="mr-2 h-4 w-4" />
                 Add New Guide
@@ -127,7 +127,7 @@ const AdminGuides = () => {
                     <p className="text-brand-cream/60 mb-4">No guides created yet</p>
                     <Button
                       onClick={() => setShowForm(true)}
-                      className="bg-brand-gold text-black hover:bg-brand-gold/90"
+                      className="bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFA500] text-black font-bold hover:from-[#FFA500] hover:to-[#FFD700] shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-[#FFD700]"
                     >
                       <Plus className="mr-2 h-4 w-4" />
                       Create Your First Guide

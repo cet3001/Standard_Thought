@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import ReactGA from 'react-ga4';
 
 // GA4 Configuration with environment variable
-const GA_TRACKING_ID = 'G-XXXXXXXXXX'; // This will be replaced with actual tracking ID
+const GA_TRACKING_ID = 'G-9YBHBWKX7M'; // Urban Wealth Blueprint tracking ID
 
 interface GAConfig {
   trackingId: string;

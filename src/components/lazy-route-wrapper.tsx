@@ -1,7 +1,7 @@
-import { Suspense, ComponentType, lazy, ReactNode } from 'react';
+import { Suspense, ComponentType, lazy } from 'react';
 
 interface LazyRouteWrapperProps {
-  children: ReactNode;
+  children: React.ReactNode;
 }
 
 const LoadingFallback = () => (

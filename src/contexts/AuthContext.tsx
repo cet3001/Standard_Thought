@@ -1,4 +1,8 @@
-import { createContext, useContext, useState, useEffect, useCallback } from 'react';
+
+// Auth Context
+// Purpose: Handles Supabase auth state and provides user info across the app.
+// Why: Centralizes login logic so pages stay clean.
+import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { User, Session } from '@supabase/supabase-js';
 import { supabase } from '@/integrations/supabase/client';
 

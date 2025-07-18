@@ -37,7 +37,7 @@ const Index = () => {
   console.log('Index.tsx: Index component rendering...');
   
   try {
-    // useMobilePerformance(); // Temporarily disabled due to React import issues
+    useMobilePerformance();
     const { isAdmin } = useAuth();
     const { textureImageUrl } = useUrbanTexture();
 

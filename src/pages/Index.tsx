@@ -9,6 +9,7 @@ import FeaturedBlogSection from "@/components/homepage/featured-blog-section";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import SEO from "@/components/seo";
+import { DynamicSEOMeta } from "@/components/seo/dynamic-seo-meta";
 import KeywordOptimization from "@/components/seo/keyword-optimization";
 import VoiceSearchOptimization from "@/components/seo/voice-search-optimization";
 import FeaturedSnippets from "@/components/seo/featured-snippets";
@@ -119,6 +120,7 @@ const Index = () => {
         </div>
 
         {/* Enhanced SEO with targeted keywords */}
+        <DynamicSEOMeta pageType="homepage" />
         <SEO
           title="Build Urban Wealth From Nothing | StandardThought"
           description="Join 1000+ first-gen builders mastering AI side hustles, credit repair, and wealth strategies. Break cycles, build legacies."

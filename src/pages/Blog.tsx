@@ -3,6 +3,7 @@ import { useHeaderHeight } from "@/hooks/use-header-height";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import SEO from "@/components/seo";
+import { DynamicSEOMeta } from "@/components/seo/dynamic-seo-meta";
 import { useMobilePerformance } from "@/hooks/use-mobile-performance";
 import { useUrbanTexture } from "@/hooks/use-urban-texture";
 import { BlogHero, BlogGrid, BlogTestimonials } from "@/components/blog";
@@ -44,6 +45,7 @@ const Blog = () => {
       </div>
 
       {/* SEO */}
+      <DynamicSEOMeta pageType="blog" />
       <SEO
         title="First-Gen Success Stories & Wealth Tips | StandardThought"
         description="Real stories from hustlers who built wealth from zero. No trust funds, just proven strategies for credit, investing, and AI income."

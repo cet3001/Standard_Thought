@@ -312,6 +312,60 @@ export type Database = {
         }
         Relationships: []
       }
+      seo_settings: {
+        Row: {
+          created_at: string
+          description: string
+          id: string
+          is_active: boolean
+          keywords: string | null
+          meta_image: string | null
+          og_description: string | null
+          og_image: string | null
+          og_title: string | null
+          page_type: string
+          title: string
+          twitter_description: string | null
+          twitter_image: string | null
+          twitter_title: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description: string
+          id?: string
+          is_active?: boolean
+          keywords?: string | null
+          meta_image?: string | null
+          og_description?: string | null
+          og_image?: string | null
+          og_title?: string | null
+          page_type: string
+          title: string
+          twitter_description?: string | null
+          twitter_image?: string | null
+          twitter_title?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string
+          id?: string
+          is_active?: boolean
+          keywords?: string | null
+          meta_image?: string | null
+          og_description?: string | null
+          og_image?: string | null
+          og_title?: string | null
+          page_type?: string
+          title?: string
+          twitter_description?: string | null
+          twitter_image?: string | null
+          twitter_title?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       Subscribers: {
         Row: {
           created_at: string

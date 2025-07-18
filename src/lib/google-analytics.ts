@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import ReactGA from 'react-ga4';
 
@@ -252,16 +252,16 @@ export const useGoogleAnalytics = () => {
   const location = useLocation();
   const ga = GoogleAnalytics.getInstance();
 
-  React.useEffect(() => {
+  useEffect(() => {
     ga.initialize();
   }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     ga.trackPageView(location.pathname + location.search);
   }, [location]);
 
   // Track time on page for bounce detection
-  React.useEffect(() => {
+  useEffect(() => {
     const startTime = Date.now();
     let pageVisible = true;
 

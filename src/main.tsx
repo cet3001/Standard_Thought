@@ -1,7 +1,7 @@
 
 // Bootstraps the React app and loads our custom fonts.
 // Keeps the vibe sharp by preloading all weights we need.
-import * as React from 'react';
+import React from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';

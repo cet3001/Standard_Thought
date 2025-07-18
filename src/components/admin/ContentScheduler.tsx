@@ -326,9 +326,17 @@ export const ContentScheduler: React.FC = () => {
 
   const sendReminder = async (schedule: ContentSchedule) => {
     try {
-      // This would call your email service
-      // For now, we'll simulate it
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const { data, error } = await supabase.functions.invoke('send-content-reminder', {
+        body: {
+          title: schedule.title,
+          pillar: schedule.pillar,
+          outline: schedule.outline,
+          grit_factor: schedule.gritFactor,
+          scheduled_date: schedule.scheduledDate.toISOString()
+        }
+      });
+
+      if (error) throw error;
       
       const updatedSchedules = schedules.map(s => 
         s.id === schedule.id ? { ...s, reminderSent: true } : s

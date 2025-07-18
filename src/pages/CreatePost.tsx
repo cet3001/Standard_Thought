@@ -145,19 +145,22 @@ const CreatePost = () => {
             onBackClick={() => navigate("/blog")} 
           />
 
-          <PostForm
-            key={editPost?.id || 'new-post'} // Force re-render when editing different posts
-            formData={formData}
-            setFormData={setFormData}
-            onSubmit={handleFormSubmit}
-            submitting={submitting}
-            isEditing={isEditing}
-            imageFile={imageFile}
-            setImageFile={setImageFile}
-            imagePreview={imagePreview}
-            setImagePreview={setImagePreview}
-            onCancel={() => navigate("/blog")}
-          />
+          {/* Only render the form after data is loaded */}
+          {(!slugParam || editPost) && (
+            <PostForm
+              key={editPost?.id || 'new-post'} // Force re-render when editing different posts
+              formData={formData}
+              setFormData={setFormData}
+              onSubmit={handleFormSubmit}
+              submitting={submitting}
+              isEditing={isEditing}
+              imageFile={imageFile}
+              setImageFile={setImageFile}
+              imagePreview={imagePreview}
+              setImagePreview={setImagePreview}
+              onCancel={() => navigate("/blog")}
+            />
+          )}
         </div>
       </main>
 

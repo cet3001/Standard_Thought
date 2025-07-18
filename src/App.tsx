@@ -48,7 +48,6 @@ function AppContent() {
   return (
     <div className="min-h-screen">
       <AnalyticsTracker />
-      <Toaster />
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="/about" element={<About />} />

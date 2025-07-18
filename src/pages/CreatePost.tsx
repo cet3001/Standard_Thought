@@ -48,27 +48,47 @@ const CreatePost = () => {
 
   // Populate form data when editing
   useEffect(() => {
+    console.log('CreatePost useEffect triggered. editPost:', editPost);
+    console.log('Location state:', location.state);
+    
     if (editPost) {
-      console.log('EditPost data:', editPost);
-      setFormData({
+      console.log('EditPost data received:', {
+        id: editPost.id,
+        title: editPost.title,
+        content: editPost.content,
+        tags: editPost.tags,
+        meta_description: editPost.meta_description,
+        meta_keywords: editPost.meta_keywords,
+        featured: editPost.featured,
+        comments_enabled: editPost.comments_enabled,
+        image_url: editPost.image_url
+      });
+      
+      const populatedData = {
         title: editPost.title || "",
         body: editPost.content || "",
-        metaTitle: editPost.meta_description || "",
+        metaTitle: editPost.title || "", // Use title for meta title
         metaDescription: editPost.meta_description || "",
-        tags: editPost.tags?.join(', ') || "",
+        tags: Array.isArray(editPost.tags) ? editPost.tags.join(', ') : "",
         metaTags: editPost.meta_keywords || "",
         featured: editPost.featured || false,
         uploadNow: true,
         standardThoughtLaw: "", // Will be populated if exists in future
         commentsEnabled: editPost.comments_enabled !== undefined ? editPost.comments_enabled : true,
-        displayTag: editPost.tags?.[0] || "",
-      });
+        displayTag: Array.isArray(editPost.tags) && editPost.tags.length > 0 ? editPost.tags[0] : "",
+      };
+      
+      console.log('Setting form data to:', populatedData);
+      setFormData(populatedData);
       
       if (editPost.image_url) {
+        console.log('Setting image preview to:', editPost.image_url);
         setImagePreview(editPost.image_url);
       }
+    } else {
+      console.log('No editPost found in location state');
     }
-  }, [editPost, setImagePreview]);
+  }, [editPost, setImagePreview, location.state]);
 
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();

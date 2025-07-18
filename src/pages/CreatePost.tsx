@@ -1,3 +1,6 @@
+// Page: CreatePost
+// Purpose: Handles creating and editing blog posts. If a post is passed in
+// via navigation state, we populate the form so the author can update it.
 import { useState, useEffect } from "react";
 import { useHeaderHeight } from "@/hooks/use-header-height";
 import { useNavigate, useLocation } from "react-router-dom";

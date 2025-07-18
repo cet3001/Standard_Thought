@@ -19,6 +19,8 @@ export default defineConfig(({ mode }) => ({
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
+    // Force single React instance to prevent hook errors
+    dedupe: ['react', 'react-dom'],
   },
   // Ensure all public files are copied to dist during build
   publicDir: 'public',

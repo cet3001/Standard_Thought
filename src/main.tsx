@@ -39,6 +39,11 @@ console.log('main.tsx: Starting application...');
 // Apply security headers
 applyCspMeta();
 
+// Add CSP violation listener for debugging
+window.addEventListener('securitypolicyviolation', (e) => {
+  console.error('CSP block:', e.blockedURI, e.violatedDirective);
+});
+
 // Add global error handler
 window.addEventListener('error', (event) => {
   console.error('Global error caught:', event.error);

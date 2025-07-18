@@ -24,28 +24,47 @@ const CreatePost = () => {
   const slugParam = searchParams.get('slug');
   const { textureImageUrl } = useUrbanTexture();
 
-  // Check if we're editing an existing post
-  const [editPost, setEditPost] = useState<BlogPost | undefined>(
-    location.state?.editPost as BlogPost | undefined
-  );
-  const [isLoadingPost, setIsLoadingPost] = useState(false);
+  // Get editPost directly from location state
+  const editPost = location.state?.editPost as BlogPost | undefined;
   
-  const [formData, setFormData] = useState({
-    title: "",
-    body: "",
-    metaTitle: "",
-    metaDescription: "",
-    tags: "",
-    metaTags: "",
-    featured: false,
-    uploadNow: true,
-    standardThoughtLaw: "",
-    commentsEnabled: true,
-    displayTag: "",
+  // Initialize formData with populated data if editing
+  const [formData, setFormData] = useState(() => {
+    if (editPost) {
+      console.log('Initializing formData from editPost state:', editPost);
+      return {
+        title: editPost.title || "",
+        body: editPost.content || "",
+        metaTitle: editPost.title || "",
+        metaDescription: editPost.meta_description || "",
+        tags: Array.isArray(editPost.tags) ? editPost.tags.join(', ') : "",
+        metaTags: editPost.meta_keywords || "",
+        featured: editPost.featured || false,
+        uploadNow: true,
+        standardThoughtLaw: "",
+        commentsEnabled: editPost.comments_enabled !== undefined ? editPost.comments_enabled : true,
+        displayTag: Array.isArray(editPost.tags) && editPost.tags.length > 0 ? editPost.tags[0] : "",
+      };
+    }
+    return {
+      title: "",
+      body: "",
+      metaTitle: "",
+      metaDescription: "",
+      tags: "",
+      metaTags: "",
+      featured: false,
+      uploadNow: true,
+      standardThoughtLaw: "",
+      commentsEnabled: true,
+      displayTag: "",
+    };
   });
 
+  const [isLoadingPost, setIsLoadingPost] = useState(!!slugParam && !editPost);
+  const [imagePreviewState, setImagePreviewState] = useState(editPost?.image_url || null);
+
   // Custom hooks
-  const { imageFile, setImageFile, imagePreview, setImagePreview, uploadImage } = useImageUpload();
+  const { imageFile, setImageFile, uploadImage } = useImageUpload();
   const { submitting, handleSubmit: submitPost, isEditing } = usePostSubmission(editPost, user?.id, uploadImage);
 
   // Redirect if not admin
@@ -54,17 +73,31 @@ const CreatePost = () => {
     return null;
   }
 
-  // If editing via slug (e.g., page refresh), fetch the post data
+  // Fetch post if refresh without state
   useEffect(() => {
     const fetchPost = async () => {
-      if (!editPost && slugParam) {
+      if (slugParam && !editPost) {
         setIsLoadingPost(true);
         try {
           console.log('Fetching post with slug:', slugParam);
           const post = await getBlogPost(slugParam);
           console.log('Post fetched:', post);
           if (post) {
-            setEditPost(post);
+            const populatedData = {
+              title: post.title || "",
+              body: post.content || "",
+              metaTitle: post.title || "",
+              metaDescription: post.meta_description || "",
+              tags: Array.isArray(post.tags) ? post.tags.join(', ') : "",
+              metaTags: post.meta_keywords || "",
+              featured: post.featured || false,
+              uploadNow: true,
+              standardThoughtLaw: "",
+              commentsEnabled: post.comments_enabled !== undefined ? post.comments_enabled : true,
+              displayTag: Array.isArray(post.tags) && post.tags.length > 0 ? post.tags[0] : "",
+            };
+            setFormData(populatedData);
+            setImagePreviewState(post.image_url || null);
           }
         } catch (err) {
           console.error('Failed to fetch post for editing:', err);
@@ -77,60 +110,13 @@ const CreatePost = () => {
     fetchPost();
   }, [slugParam, editPost]);
 
-  // Populate form data when editing
-  useEffect(() => {
-    console.log('=== FORM DATA POPULATION DEBUG ===');
-    console.log('CreatePost useEffect triggered.');
-    console.log('editPost:', editPost);
-    console.log('Location state:', location.state);
-    console.log('Slug param:', slugParam);
-    console.log('Current formData before update:', formData);
-    
-    if (editPost) {
-      console.log('EditPost data received:', {
-        id: editPost.id,
-        title: editPost.title,
-        content: editPost.content,
-        tags: editPost.tags,
-        meta_description: editPost.meta_description,
-        meta_keywords: editPost.meta_keywords,
-        featured: editPost.featured,
-        comments_enabled: editPost.comments_enabled,
-        image_url: editPost.image_url
-      });
-      
-      const populatedData = {
-        title: editPost.title || "",
-        body: editPost.content || "",
-        metaTitle: editPost.title || "", // Use title for meta title
-        metaDescription: editPost.meta_description || "",
-        tags: Array.isArray(editPost.tags) ? editPost.tags.join(', ') : "",
-        metaTags: editPost.meta_keywords || "",
-        featured: editPost.featured || false,
-        uploadNow: true,
-        standardThoughtLaw: "", // Will be populated if exists in future
-        commentsEnabled: editPost.comments_enabled !== undefined ? editPost.comments_enabled : true,
-        displayTag: Array.isArray(editPost.tags) && editPost.tags.length > 0 ? editPost.tags[0] : "",
-      };
-      
-      console.log('Setting form data to:', populatedData);
-      setFormData(populatedData);
-      
-      if (editPost.image_url) {
-        console.log('Setting image preview to:', editPost.image_url);
-        setImagePreview(editPost.image_url);
-      }
-    } else {
-      console.log('No editPost found in location state');
-    }
-  }, [editPost, setImagePreview]);
-
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     submitPost(formData);
   };
 
-  if (loading) {
+  // Show loading for auth or post fetch
+  if (loading || isLoadingPost || (!!slugParam && formData.title === "")) {
     return <LoadingScreen textureImageUrl={textureImageUrl} />;
   }
 
@@ -154,27 +140,19 @@ const CreatePost = () => {
             onBackClick={() => navigate("/blog")} 
           />
 
-          {/* Show loading when fetching post data */}
-          {isLoadingPost ? (
-            <div className="text-center py-8">
-              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-yellow-400 mx-auto"></div>
-              <p className="mt-2 text-brand-black dark:text-brand-cream">Loading post data...</p>
-            </div>
-          ) : (
-            <PostForm
-              key={editPost?.id || 'new-post'} // Force re-render when editing different posts
-              formData={formData}
-              setFormData={setFormData}
-              onSubmit={handleFormSubmit}
-              submitting={submitting}
-              isEditing={isEditing}
-              imageFile={imageFile}
-              setImageFile={setImageFile}
-              imagePreview={imagePreview}
-              setImagePreview={setImagePreview}
-              onCancel={() => navigate("/blog")}
-            />
-          )}
+          <PostForm
+            key={slugParam || 'new-post'}
+            formData={formData}
+            setFormData={setFormData}
+            onSubmit={handleFormSubmit}
+            submitting={submitting}
+            isEditing={isEditing}
+            imageFile={imageFile}
+            setImageFile={setImageFile}
+            imagePreview={imagePreviewState}
+            setImagePreview={setImagePreviewState}
+            onCancel={() => navigate("/blog")}
+          />
         </div>
       </main>
 

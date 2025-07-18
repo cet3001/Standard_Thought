@@ -5,7 +5,6 @@ import { supabase } from "@/integrations/supabase/client";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import SEO from "@/components/seo";
-import { DynamicSEOMeta } from "@/components/seo/dynamic-seo-meta";
 import { useUrbanTexture } from "@/hooks/use-urban-texture";
 import { useMobilePerformance } from "@/hooks/use-mobile-performance";
 import { Clock, Tag, ArrowLeft, Calendar } from "lucide-react";
@@ -197,16 +196,6 @@ const BlogPost = () => {
       </div>
 
       {/* SEO */}
-      <DynamicSEOMeta 
-        pageType="blog-post" 
-        blogPost={{
-          title: post.title,
-          content: post.content,
-          excerpt: post.excerpt,
-          image_url: post.image_url || undefined,
-          slug: post.slug || undefined
-        }}
-      />
       <SEO
         title={`${post.title} | Standardthought`}
         description={post.meta_description || post.excerpt}

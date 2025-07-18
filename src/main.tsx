@@ -21,16 +21,11 @@ import '@fontsource/permanent-marker/400.css';
 import '@fontsource/comic-neue/400.css';
 import '@fontsource/comic-neue/700.css';
 import { applyCspMeta } from './lib/security-headers';
-import PerformanceMonitor from './lib/performance-monitor';
 
 console.log('main.tsx: Starting application...');
 
 // Apply security headers
 applyCspMeta();
-
-// Initialize performance monitoring
-const performanceMonitor = PerformanceMonitor.getInstance();
-performanceMonitor.init();
 
 // Add global error handler
 window.addEventListener('error', (event) => {

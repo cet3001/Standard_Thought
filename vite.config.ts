@@ -12,38 +12,26 @@ export default defineConfig(({ mode }) => ({
   },
   plugins: [
     react(),
-    mode === 'development' && componentTagger(),
+    mode === 'development' &&
+    componentTagger(),
   ].filter(Boolean),
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  // Ensure all public files are copied to dist during build
   publicDir: 'public',
   build: {
     outDir: 'dist',
     emptyOutDir: true,
-    minify: true,
-    cssMinify: true,
     rollupOptions: {
+      // Ensure critical files are included in build
       input: {
         main: path.resolve(__dirname, 'index.html')
-      },
-      output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom'],
-          router: ['react-router-dom'],
-          supabase: ['@supabase/supabase-js'],
-          ui: ['@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu', '@radix-ui/react-navigation-menu'],
-          analytics: ['react-ga4', 'web-vitals'],
-        },
-      },
+      }
     },
-    copyPublicDir: true,
-    target: 'esnext',
-    sourcemap: false,
-  },
-  optimizeDeps: {
-    include: ['react', 'react-dom', 'react-router-dom'],
-  },
+    // Copy all files from public directory
+    copyPublicDir: true
+  }
 }));

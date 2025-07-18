@@ -5,12 +5,11 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Plus, Edit, Trash2, Eye, EyeOff, Settings, BarChart3, Calendar, Mail } from 'lucide-react';
+import { Plus, Edit, Trash2, Eye, EyeOff, Settings } from 'lucide-react';
 import { GuideForm } from '@/components/admin/GuideForm';
 import { CTAManagement } from '@/components/admin/CTAManagement';
 import { Guide } from '@/hooks/use-guides';
 import { useToast } from '@/hooks/use-toast';
-import { Link } from 'react-router-dom';
 
 const AdminGuides = () => {
   const { isAdmin } = useAuth();
@@ -82,28 +81,6 @@ const AdminGuides = () => {
       </div>
       
       <div className="max-w-6xl mx-auto">
-        {/* Admin Navigation */}
-        <div className="flex flex-wrap gap-4 mb-6">
-          <Link to="/admin/analytics">
-            <Button variant="outline" className="border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-black">
-              <BarChart3 className="mr-2 h-4 w-4" />
-              Analytics Dashboard
-            </Button>
-          </Link>
-          <Link to="/admin/content-scheduler">
-            <Button variant="outline" className="border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-black">
-              <Calendar className="mr-2 h-4 w-4" />
-              Content Scheduler
-            </Button>
-          </Link>
-          <Link to="/admin/email">
-            <Button variant="outline" className="border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-black">
-              <Mail className="mr-2 h-4 w-4" />
-              Email Management
-            </Button>
-          </Link>
-        </div>
-
         <div className="flex justify-between items-center mb-8">
           <div>
             <h1 className="text-3xl font-bold text-brand-gold mb-2">Guide Management</h1>

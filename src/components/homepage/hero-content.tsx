@@ -49,26 +49,19 @@ const HeroContent = ({ isVisible, scrollToNewsletter }: HeroContentProps) => {
       <div className={`transition-all duration-1000 relative z-10 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           
-          {/* Hero Image */}
-          <div className="order-2 lg:order-1">
-            <div className="relative overflow-hidden rounded-2xl shadow-2xl">
-              <picture className="w-full h-auto">
-                <source 
-                  srcSet="/lovable-uploads/152ff0a5-5f07-49b5-a839-2ae048e30898.png" 
-                  type="image/png"
-                  media="(min-width: 768px)"
-                />
-                <img 
-                  src="/lovable-uploads/152ff0a5-5f07-49b5-a839-2ae048e30898.png"
-                  alt="Urban entrepreneurs and wealth builders - diverse group representing the next generation of financial legacy builders"
-                  className="w-full h-auto object-cover transition-transform duration-500 hover:scale-105"
-                  loading="eager"
-                  decoding="async"
-                  width="600"
-                  height="400"
-                  style={{ aspectRatio: '3/2' }}
-                />
-              </picture>
+          {/* Hero Image - Left Side */}
+          <div className="order-2 lg:order-1 flex justify-center lg:justify-start">
+            <div className="relative overflow-hidden rounded-2xl shadow-2xl max-w-md lg:max-w-full">
+              <img 
+                src="/lovable-uploads/152ff0a5-5f07-49b5-a839-2ae048e30898.png"
+                alt="Urban entrepreneurs and wealth builders - diverse group representing the next generation of financial legacy builders"
+                className="w-full h-auto object-cover transition-transform duration-500 hover:scale-105"
+                loading="eager"
+                decoding="async"
+                width="600"
+                height="400"
+                style={{ aspectRatio: '3/2' }}
+              />
               {/* Subtle overlay for brand consistency */}
               <div className="absolute inset-0 bg-gradient-to-tr from-[#FFD700]/10 via-transparent to-[#247EFF]/10 pointer-events-none"></div>
             </div>

@@ -118,11 +118,9 @@ const Index = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/85 via-brand-cream/90 to-brand-cream/85 dark:from-brand-black/85 dark:via-brand-black/90 dark:to-brand-black/85"></div>
         </div>
 
-        {/* Enhanced SEO with targeted keywords */}
+        {/* Enhanced Dynamic SEO */}
         <SEO
-          title="Build Urban Wealth From Nothing | StandardThought"
-          description="Join 1000+ first-gen builders mastering AI side hustles, credit repair, and wealth strategies. Break cycles, build legacies."
-          keywords="urban wealth building, AI side hustles, financial education for first-gen entrepreneurs, generational wealth building from nothing, street smart money moves, urban entrepreneurship hub, hood financial literacy, first generation wealth builders, AI business ideas for beginners, urban investing strategies"
+          pageType="homepage"
           url="/"
           type="website"
           breadcrumbs={breadcrumbs}

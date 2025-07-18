@@ -21,6 +21,7 @@ const CashManagement = lazy(() => import("@/pages/CashManagement"));
 const Auth = lazy(() => import("@/pages/Auth"));
 const AdminGuides = lazy(() => import("@/pages/AdminGuides"));
 const AdminEmail = lazy(() => import("@/pages/AdminEmail"));
+const AdminSEO = lazy(() => import("@/pages/AdminSEO"));
 const PrivacyPolicy = lazy(() => import("@/pages/PrivacyPolicy"));
 const TermsOfService = lazy(() => import("@/pages/TermsOfService"));
 const CookiePolicy = lazy(() => import("@/pages/CookiePolicy"));
@@ -67,6 +68,7 @@ function App() {
                     <Route path="/create-post" element={<CreatePost />} />
                     <Route path="/admin/guides" element={<AdminGuides />} />
                     <Route path="/admin/email" element={<AdminEmail />} />
+                    <Route path="/admin/seo" element={<AdminSEO />} />
                     <Route path="/sales" element={<Sales />} />
                     <Route path="/credit" element={<Credit />} />
                     <Route path="/investing" element={<Investing />} />

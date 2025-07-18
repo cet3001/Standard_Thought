@@ -1,4 +1,6 @@
 import { Helmet } from "react-helmet";
+import { useEffect, useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
 import { DEFAULTS } from "./defaults";
 import { normalizeUrl, getFullImageUrl, optimizeDescription } from "./helpers";
 import { 
@@ -27,6 +29,9 @@ interface SEOProps {
   twitterHandle?: string;
   noIndex?: boolean;
   wordCount?: number;
+  pageType?: string; // For database lookup
+  autoGenerate?: boolean; // Auto-generate from blog content
+  content?: string; // Blog content for auto-generation
   breadcrumbs?: Array<{
     name: string;
     url: string;
@@ -34,10 +39,33 @@ interface SEOProps {
   }>;
 }
 
+interface SEOSettings {
+  title: string;
+  description: string;
+  keywords: string;
+  meta_image?: string;
+  og_title?: string;
+  og_description?: string;
+  twitter_title?: string;
+  twitter_description?: string;
+}
+
+// Auto-generate content from blog post
+const autoGenerateFromContent = (content: string, title: string): SEOSettings => {
+  const textContent = content.replace(/<[^>]*>/g, '').substring(0, 500);
+  const words = textContent.split(' ').slice(0, 50);
+  
+  return {
+    title: `${title} | Urban Wealth Building Guide`,
+    description: `${textContent.substring(0, 155)}... Learn proven urban wealth building strategies.`,
+    keywords: `${title.toLowerCase()}, urban wealth building, generational wealth, first-gen entrepreneurs, ${words.filter(w => w.length > 4).slice(0, 8).join(', ')}`
+  };
+};
+
 const SEO = ({
-  title = DEFAULTS.title,
-  description = DEFAULTS.description,
-  keywords = DEFAULTS.keywords,
+  title,
+  description,
+  keywords,
   image = DEFAULTS.image,
   url = DEFAULTS.url,
   type = "website",
@@ -47,22 +75,69 @@ const SEO = ({
   category,
   tags = [],
   twitterHandle = DEFAULTS.twitterHandle,
-  noIndex = false, // Explicitly default to false to ensure indexing
+  noIndex = false,
   wordCount,
+  pageType,
+  autoGenerate = false,
+  content,
   breadcrumbs
 }: SEOProps) => {
-  // Enhanced title optimization - keep under 60 characters but make it compelling
-  const optimizedTitle = title.length > 60 
-    ? title.substring(0, 57) + "..." 
-    : title;
+  const [dynamicSEO, setDynamicSEO] = useState<SEOSettings | null>(null);
+  const [loading, setLoading] = useState(false);
+
+  // Load SEO settings from database
+  useEffect(() => {
+    const loadSEOSettings = async () => {
+      if (!pageType) return;
+      
+      setLoading(true);
+      try {
+        const { data } = await supabase
+          .from('seo_settings')
+          .select('*')
+          .eq('page_type', pageType)
+          .eq('is_active', true)
+          .single();
+        
+        if (data) {
+          setDynamicSEO(data);
+        }
+      } catch (error) {
+        console.log('No custom SEO settings found for:', pageType);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadSEOSettings();
+  }, [pageType]);
+
+  // Auto-generate SEO for blog posts
+  const generatedSEO = autoGenerate && content && title ? 
+    autoGenerateFromContent(content, title) : null;
+
+  // Determine final SEO values with priority: props > database > auto-generated > defaults
+  const finalTitle = title || dynamicSEO?.title || generatedSEO?.title || DEFAULTS.title;
+  const finalDescription = description || dynamicSEO?.description || generatedSEO?.description || DEFAULTS.description;
+  const finalKeywords = keywords || dynamicSEO?.keywords || generatedSEO?.keywords || DEFAULTS.keywords;
+
+  // Enhanced title optimization with AEO focus
+  const optimizedTitle = finalTitle.length > 60 
+    ? finalTitle.substring(0, 57) + "..." 
+    : finalTitle;
   
   const fullTitle = optimizedTitle.includes("Standardthought") 
     ? optimizedTitle 
     : `${optimizedTitle} | Standardthought`;
 
   const canonicalUrl = normalizeUrl(url);
-  const fullImageUrl = getFullImageUrl(image);
-  const optimizedDescription = optimizeDescription(description);
+  const fullImageUrl = getFullImageUrl(dynamicSEO?.meta_image || image);
+  const optimizedDescription = optimizeDescription(finalDescription);
+
+  // Add AEO-optimized keywords for better answer engine visibility
+  const aeoEnhancedKeywords = `${finalKeywords}, ${DEFAULTS.aeoKeywords}`;
+
+  if (loading) return null;
 
   // Generate appropriate schema based on type
   let structuredData = [];
@@ -115,7 +190,7 @@ const SEO = ({
       <MetaTags
         title={fullTitle}
         description={optimizedDescription}
-        keywords={keywords}
+        keywords={aeoEnhancedKeywords}
         author={author}
         canonicalUrl={canonicalUrl}
         fullImageUrl={fullImageUrl}
@@ -127,6 +202,22 @@ const SEO = ({
         tags={tags}
         wordCount={wordCount}
       />
+      
+      {/* AEO Intent-Based Meta Tags */}
+      <meta name="robots" content="index, follow, max-snippet:160, max-image-preview:large" />
+      <meta name="answer-engine-intent" content="urban wealth building strategies" />
+      <meta name="answer-engine-context" content="first-generation entrepreneurs, generational wealth building, mindset shifts" />
+      
+      {/* Enhanced Open Graph for Social Sharing */}
+      <meta property="og:title" content={dynamicSEO?.og_title || fullTitle} />
+      <meta property="og:description" content={dynamicSEO?.og_description || optimizedDescription} />
+      <meta property="og:type" content={type === 'article' ? 'article' : 'website'} />
+      <meta property="og:site_name" content="Standardthought" />
+      
+      {/* Enhanced Twitter Cards */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={dynamicSEO?.twitter_title || fullTitle} />
+      <meta name="twitter:description" content={dynamicSEO?.twitter_description || optimizedDescription} />
       
       <RobotsDirectives noIndex={noIndex} />
       

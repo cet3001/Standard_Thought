@@ -195,17 +195,20 @@ const BlogPost = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/85 via-brand-cream/90 to-brand-cream/85 dark:from-brand-black/85 dark:via-brand-black/90 dark:to-brand-black/85"></div>
       </div>
 
-      {/* SEO */}
+      {/* Enhanced SEO with Auto-Generation */}
       <SEO
-        title={`${post.title} | Standardthought`}
-        description={post.meta_description || post.excerpt}
-        keywords={post.meta_keywords || post.tags?.join(', ') || ''}
+        title={post.meta_description ? `${post.title} | Urban Wealth Building` : undefined}
+        description={post.meta_description || undefined}
+        keywords={post.meta_keywords || undefined}
         url={`/blog/${post.slug}`}
         type="article"
         publishedTime={post.created_at}
         modifiedTime={post.updated_at}
         author="Standardthought"
         category={post.category}
+        pageType="blog"
+        autoGenerate={!post.meta_description} // Auto-generate if no custom meta
+        content={post.content}
         tags={post.tags || []}
         wordCount={post.content.length}
         breadcrumbs={breadcrumbs}

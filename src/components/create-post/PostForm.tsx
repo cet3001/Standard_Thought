@@ -1,6 +1,5 @@
-// Component: PostForm
-// Purpose: Render the form for creating or editing a blog post. Uses props to
-// control every field so parent components can manage state.
+// PostForm: one flexible form used for both new posts and edits.
+// Every input is controlled by props so the parent page runs the show.
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";

@@ -1,6 +1,6 @@
 // Page: CreatePost
-// Purpose: Handles creating and editing blog posts. If a post is passed in
-// via navigation state, we populate the form so the author can update it.
+// Manages both publishing new stories and editing old ones.
+// If a slug is in the URL we fetch that post and load its data.
 import { useState, useEffect } from "react";
 import { useHeaderHeight } from "@/hooks/use-header-height";
 import { useNavigate, useLocation } from "react-router-dom";

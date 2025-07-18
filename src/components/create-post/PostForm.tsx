@@ -198,7 +198,10 @@ export const PostForm = ({
                   setFormData({ ...formData, displayTag: value })
                 }
               >
-                <SelectTrigger className="bg-brand-cream/50 dark:bg-brand-black/50 border-yellow-400/30 focus:border-yellow-400 text-brand-black dark:text-brand-cream font-kalam">
+                <SelectTrigger 
+                  id="displayTag"
+                  className="bg-brand-cream/50 dark:bg-brand-black/50 border-yellow-400/30 focus:border-yellow-400 text-brand-black dark:text-brand-cream font-kalam"
+                >
                   <SelectValue placeholder="Enter tags first, then select display tag" />
                 </SelectTrigger>
                 <SelectContent className="bg-brand-cream dark:bg-brand-black border-yellow-400/30 z-50">

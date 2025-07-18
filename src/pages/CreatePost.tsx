@@ -73,9 +73,12 @@ const CreatePost = () => {
 
   // Populate form data when editing
   useEffect(() => {
-    console.log('CreatePost useEffect triggered. editPost:', editPost);
+    console.log('=== FORM DATA POPULATION DEBUG ===');
+    console.log('CreatePost useEffect triggered.');
+    console.log('editPost:', editPost);
     console.log('Location state:', location.state);
     console.log('Slug param:', slugParam);
+    console.log('Current formData before update:', formData);
     
     if (editPost) {
       console.log('EditPost data received:', {

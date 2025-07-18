@@ -153,7 +153,7 @@ const Sales = () => {
             <div className="max-w-6xl mx-auto">
               
               {/* Hero Content - Two Column Layout */}
-              <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-16 relative">
+              <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start mb-16 relative">
                 {/* Urban grain texture overlay */}
                 <div className="absolute inset-0 opacity-[0.15] pointer-events-none" aria-hidden="true">
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,_rgba(0,0,0,0.8)_1px,_transparent_0)] bg-[length:8px_8px]"></div>
@@ -190,7 +190,7 @@ const Sales = () => {
                   {/* Provocative Stat */}
                   <div className="mb-8 p-6 bg-gradient-to-r from-red-500/20 to-orange-500/20 border border-red-500/30 rounded-2xl backdrop-blur-sm">
                     <p className="text-lg sm:text-xl font-bold text-brand-black dark:text-brand-cream leading-relaxed">
-                      <span className="text-red-400">90% of Black Wealth Vanishes in One Gen</span>—Ready to Flip That Script?
+                      <span className="text-red-400">Only 13% of Black Families Own Stock</span>—Time to Flip Those Numbers?
                     </p>
                   </div>
 

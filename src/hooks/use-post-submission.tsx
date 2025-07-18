@@ -14,6 +14,8 @@ interface FormData {
   featured: boolean;
   uploadNow: boolean;
   standardThoughtLaw: string;
+  commentsEnabled: boolean;
+  displayTag: string;
 }
 
 export const usePostSubmission = (
@@ -62,6 +64,7 @@ export const usePostSubmission = (
           meta_description: formData.metaDescription,
           meta_keywords: metaTagsArray.join(', '),
           featured: formData.featured,
+          comments_enabled: formData.commentsEnabled,
           ...(imageUrl && { image_url: imageUrl }),
         };
 
@@ -79,7 +82,7 @@ export const usePostSubmission = (
           meta_keywords: metaTagsArray.join(', '),
           featured: formData.featured,
           published: true,
-          comments_enabled: true,
+          comments_enabled: formData.commentsEnabled,
           image_url: imageUrl,
           author_id: userId,
         };

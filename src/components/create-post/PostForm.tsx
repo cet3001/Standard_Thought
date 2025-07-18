@@ -18,6 +18,8 @@ interface FormData {
   featured: boolean;
   uploadNow: boolean;
   standardThoughtLaw: string;
+  commentsEnabled: boolean;
+  displayTag: string;
 }
 
 interface PostFormProps {
@@ -152,7 +154,7 @@ export const PostForm = ({
             />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div>
               <Label htmlFor="tags" className="text-brand-black dark:text-brand-cream font-ibm-plex-mono">Tags</Label>
               <Input
@@ -162,6 +164,28 @@ export const PostForm = ({
                 placeholder="hustle, mindset, network (comma separated)"
                 className="bg-brand-cream/50 dark:bg-brand-black/50 border-yellow-400/30 focus:border-yellow-400 text-brand-black dark:text-brand-cream font-kalam"
               />
+            </div>
+            <div>
+              <Label htmlFor="displayTag" className="text-brand-black dark:text-brand-cream font-ibm-plex-mono">Display Tag</Label>
+              <Select
+                value={formData.displayTag}
+                onValueChange={(value) => setFormData({...formData, displayTag: value})}
+              >
+                <SelectTrigger className="bg-brand-cream/50 dark:bg-brand-black/50 border-yellow-400/30 focus:border-yellow-400 text-brand-black dark:text-brand-cream font-kalam">
+                  <SelectValue placeholder="Select tag to display" />
+                </SelectTrigger>
+                <SelectContent className="bg-brand-cream dark:bg-brand-black border-yellow-400/30">
+                  {formData.tags.split(',').map((tag, index) => {
+                    const trimmedTag = tag.trim();
+                    if (!trimmedTag) return null;
+                    return (
+                      <SelectItem key={index} value={trimmedTag} className="text-brand-black dark:text-brand-cream font-kalam">
+                        {trimmedTag}
+                      </SelectItem>
+                    );
+                  })}
+                </SelectContent>
+              </Select>
             </div>
             <div>
               <Label htmlFor="metaTags" className="text-brand-black dark:text-brand-cream font-ibm-plex-mono">Meta Tags</Label>
@@ -183,21 +207,29 @@ export const PostForm = ({
           />
 
           <div className="flex flex-wrap gap-6">
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-2 bg-gradient-to-r from-[#FFD700]/20 via-[#FFF8DC]/20 to-[#FFA500]/20 p-3 rounded-lg border border-[#FFD700]/30">
               <Switch
                 id="featured"
                 checked={formData.featured}
                 onCheckedChange={(checked) => setFormData({...formData, featured: checked})}
               />
-              <Label htmlFor="featured" className="text-brand-black dark:text-brand-cream font-ibm-plex-mono">Featured Story</Label>
+              <Label htmlFor="featured" className="text-brand-black dark:text-brand-cream font-ibm-plex-mono font-bold">Feature Blog Post</Label>
             </div>
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-2 bg-gradient-to-r from-[#FFD700]/20 via-[#FFF8DC]/20 to-[#FFA500]/20 p-3 rounded-lg border border-[#FFD700]/30">
               <Switch
                 id="uploadNow"
                 checked={formData.uploadNow}
                 onCheckedChange={(checked) => setFormData({...formData, uploadNow: checked})}
               />
-              <Label htmlFor="uploadNow" className="text-brand-black dark:text-brand-cream font-ibm-plex-mono">Upload Image Now</Label>
+              <Label htmlFor="uploadNow" className="text-brand-black dark:text-brand-cream font-ibm-plex-mono font-bold">Show Image Now</Label>
+            </div>
+            <div className="flex items-center space-x-2 bg-gradient-to-r from-[#FFD700]/20 via-[#FFF8DC]/20 to-[#FFA500]/20 p-3 rounded-lg border border-[#FFD700]/30">
+              <Switch
+                id="commentsEnabled"
+                checked={formData.commentsEnabled}
+                onCheckedChange={(checked) => setFormData({...formData, commentsEnabled: checked})}
+              />
+              <Label htmlFor="commentsEnabled" className="text-brand-black dark:text-brand-cream font-ibm-plex-mono font-bold">Enable Comments</Label>
             </div>
           </div>
 

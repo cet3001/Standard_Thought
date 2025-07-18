@@ -10,6 +10,7 @@ import Navigation from '@/components/navigation';
 import Footer from '@/components/footer';
 import { useUrbanTexture } from '@/hooks/use-urban-texture';
 import { useHeaderHeight } from '@/hooks/use-header-height';
+import { DynamicGuidesSection } from '@/components/sales/DynamicGuidesSection';
 
 const Sales = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -283,6 +284,9 @@ const Sales = () => {
             </div>
           </div>
         </section>
+
+        {/* Dynamic Guides Section */}
+        <DynamicGuidesSection />
 
         {/* Deep Dives Section */}
         <section className="py-16 relative">

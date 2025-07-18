@@ -26,6 +26,7 @@ const PrivacyPolicy = lazy(() => import("@/pages/PrivacyPolicy"));
 const TermsOfService = lazy(() => import("@/pages/TermsOfService"));
 const CookiePolicy = lazy(() => import("@/pages/CookiePolicy"));
 const ImageGeneratorPage = lazy(() => import("@/pages/ImageGenerator"));
+const PaymentSuccess = lazy(() => import("@/pages/PaymentSuccess"));
 import { AuthProvider } from "./contexts/AuthContext";
 import { Toaster } from "@/components/ui/toaster"
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -75,6 +76,7 @@ function AppContent() {
           <Route path="/terms-of-service" element={<TermsOfService />} />
           <Route path="/cookie-policy" element={<CookiePolicy />} />
           <Route path="/image-generator" element={<ImageGeneratorPage />} />
+          <Route path="/payment-success" element={<PaymentSuccess />} />
         </Routes>
       </Suspense>
     </div>

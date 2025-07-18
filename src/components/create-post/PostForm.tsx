@@ -1,7 +1,9 @@
+
 // Component: PostForm
 // Purpose: Render the form for creating or editing a blog post. Uses props to
 // control every field so parent components can manage state.
 import { useState } from "react";
+main
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -85,7 +87,9 @@ export const PostForm = ({
               <Input
                 id="title"
                 value={formData.title}
-                onChange={(e) => setFormData({...formData, title: e.target.value})}
+                onChange={(e) =>
+                  setFormData(prev => ({ ...prev, title: e.target.value }))
+                }
                 placeholder="Enter your story title"
                 required
                 className="bg-brand-cream/50 dark:bg-brand-black/50 border-yellow-400/30 focus:border-yellow-400 text-brand-black dark:text-brand-cream font-kalam"
@@ -96,7 +100,9 @@ export const PostForm = ({
               <Input
                 id="metaTitle"
                 value={formData.metaTitle}
-                onChange={(e) => setFormData({...formData, metaTitle: e.target.value})}
+                onChange={(e) =>
+                  setFormData(prev => ({ ...prev, metaTitle: e.target.value }))
+                }
                 placeholder="SEO title (optional)"
                 className="bg-brand-cream/50 dark:bg-brand-black/50 border-yellow-400/30 focus:border-yellow-400 text-brand-black dark:text-brand-cream font-kalam"
               />
@@ -109,7 +115,9 @@ export const PostForm = ({
             </Label>
             <Select
               value={formData.standardThoughtLaw}
-              onValueChange={(value) => setFormData({...formData, standardThoughtLaw: value})}
+              onValueChange={(value) =>
+                setFormData(prev => ({ ...prev, standardThoughtLaw: value }))
+              }
               required
             >
               <SelectTrigger className="bg-brand-cream/50 dark:bg-brand-black/50 border-yellow-400/30 focus:border-yellow-400 text-brand-black dark:text-brand-cream font-kalam">
@@ -131,7 +139,12 @@ export const PostForm = ({
                 <Input
                   id="customLaw"
                   value={formData.standardThoughtLaw}
-                  onChange={(e) => setFormData({...formData, standardThoughtLaw: e.target.value})}
+                  onChange={(e) =>
+                    setFormData(prev => ({
+                      ...prev,
+                      standardThoughtLaw: e.target.value
+                    }))
+                  }
                   placeholder="Edit the selected law to fit your story..."
                   className="bg-brand-cream/50 dark:bg-brand-black/50 border-yellow-400/30 focus:border-yellow-400 text-brand-black dark:text-brand-cream font-kalam"
                 />
@@ -144,7 +157,9 @@ export const PostForm = ({
             <Textarea
               id="body"
               value={formData.body}
-              onChange={(e) => setFormData({...formData, body: e.target.value})}
+              onChange={(e) =>
+                setFormData(prev => ({ ...prev, body: e.target.value }))
+              }
               placeholder="Write your story here..."
               rows={12}
               required
@@ -157,7 +172,9 @@ export const PostForm = ({
             <Textarea
               id="metaDescription"
               value={formData.metaDescription}
-              onChange={(e) => setFormData({...formData, metaDescription: e.target.value})}
+              onChange={(e) =>
+                setFormData(prev => ({ ...prev, metaDescription: e.target.value }))
+              }
               placeholder="Brief description for search engines"
               rows={3}
               className="bg-brand-cream/50 dark:bg-brand-black/50 border-yellow-400/30 focus:border-yellow-400 text-brand-black dark:text-brand-cream font-kalam"
@@ -170,7 +187,9 @@ export const PostForm = ({
               <Input
                 id="tags"
                 value={formData.tags}
-                onChange={(e) => setFormData({...formData, tags: e.target.value})}
+                onChange={(e) =>
+                  setFormData(prev => ({ ...prev, tags: e.target.value }))
+                }
                 placeholder="hustle, mindset, network (comma separated)"
                 className="bg-brand-cream/50 dark:bg-brand-black/50 border-yellow-400/30 focus:border-yellow-400 text-brand-black dark:text-brand-cream font-kalam"
               />
@@ -179,7 +198,9 @@ export const PostForm = ({
               <Label htmlFor="displayTag" className="text-brand-black dark:text-brand-cream font-ibm-plex-mono">Display Tag</Label>
               <Select
                 value={formData.displayTag}
-                onValueChange={(value) => setFormData({...formData, displayTag: value})}
+                onValueChange={(value) =>
+                  setFormData(prev => ({ ...prev, displayTag: value }))
+                }
               >
                 <SelectTrigger className="bg-brand-cream/50 dark:bg-brand-black/50 border-yellow-400/30 focus:border-yellow-400 text-brand-black dark:text-brand-cream font-kalam">
                   <SelectValue placeholder="Enter tags first, then select display tag" />
@@ -202,7 +223,9 @@ export const PostForm = ({
               <Input
                 id="metaTags"
                 value={formData.metaTags}
-                onChange={(e) => setFormData({...formData, metaTags: e.target.value})}
+                onChange={(e) =>
+                  setFormData(prev => ({ ...prev, metaTags: e.target.value }))
+                }
                 placeholder="SEO keywords (comma separated)"
                 className="bg-brand-cream/50 dark:bg-brand-black/50 border-yellow-400/30 focus:border-yellow-400 text-brand-black dark:text-brand-cream font-kalam"
               />
@@ -221,7 +244,9 @@ export const PostForm = ({
               <Switch
                 id="featured"
                 checked={formData.featured}
-                onCheckedChange={(checked) => setFormData({...formData, featured: checked})}
+                onCheckedChange={(checked) =>
+                  setFormData(prev => ({ ...prev, featured: checked }))
+                }
                 className="data-[state=checked]:bg-black"
               />
               <Label htmlFor="featured" className="text-black font-ibm-plex-mono font-bold text-sm">Feature Blog Post</Label>
@@ -230,7 +255,9 @@ export const PostForm = ({
               <Switch
                 id="uploadNow"
                 checked={formData.uploadNow}
-                onCheckedChange={(checked) => setFormData({...formData, uploadNow: checked})}
+                onCheckedChange={(checked) =>
+                  setFormData(prev => ({ ...prev, uploadNow: checked }))
+                }
                 className="data-[state=checked]:bg-black"
               />
               <Label htmlFor="uploadNow" className="text-black font-ibm-plex-mono font-bold text-sm">Show Image Now</Label>
@@ -239,7 +266,9 @@ export const PostForm = ({
               <Switch
                 id="commentsEnabled"
                 checked={formData.commentsEnabled}
-                onCheckedChange={(checked) => setFormData({...formData, commentsEnabled: checked})}
+                onCheckedChange={(checked) =>
+                  setFormData(prev => ({ ...prev, commentsEnabled: checked }))
+                }
                 className="data-[state=checked]:bg-black"
               />
               <Label htmlFor="commentsEnabled" className="text-black font-ibm-plex-mono font-bold text-sm">Enable Comments</Label>

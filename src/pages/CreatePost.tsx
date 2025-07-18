@@ -1,11 +1,13 @@
 // Page: CreatePost
-// Purpose: Handles creating and editing blog posts. If a post is passed in
-// via navigation state, we populate the form so the author can update it.
+codex/fix-postform-re-rendering-issue
+// Manages both publishing new stories and editing old ones.
+// If a slug is in the URL we fetch that post and load its data.
+ main
 import { useState, useEffect } from "react";
 import { useHeaderHeight } from "@/hooks/use-header-height";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
-import { BlogPost } from "@/lib/api";
+import { BlogPost, getBlogPost } from "@/lib/api";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import { PostForm, PageHeader, UrbanBackground, LoadingScreen } from "@/components/create-post";
@@ -20,10 +22,14 @@ const CreatePost = () => {
   const { user, isAdmin, loading } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const slugParam = searchParams.get('slug');
   const { textureImageUrl } = useUrbanTexture();
-  
+
   // Check if we're editing an existing post
-  const editPost = location.state?.editPost as BlogPost | undefined;
+  const [editPost, setEditPost] = useState<BlogPost | undefined>(
+    location.state?.editPost as BlogPost | undefined
+  );
   
   const [formData, setFormData] = useState({
     title: "",
@@ -49,10 +55,29 @@ const CreatePost = () => {
     return null;
   }
 
+  // If editing via slug (e.g., page refresh), fetch the post data
+  useEffect(() => {
+    const fetchPost = async () => {
+      if (!editPost && slugParam) {
+        try {
+          const post = await getBlogPost(slugParam);
+          if (post) {
+            setEditPost(post);
+          }
+        } catch (err) {
+          console.error('Failed to fetch post for editing:', err);
+        }
+      }
+    };
+
+    fetchPost();
+  }, [slugParam, editPost]);
+
   // Populate form data when editing
   useEffect(() => {
     console.log('CreatePost useEffect triggered. editPost:', editPost);
     console.log('Location state:', location.state);
+    console.log('Slug param:', slugParam);
     
     if (editPost) {
       console.log('EditPost data received:', {
@@ -91,7 +116,7 @@ const CreatePost = () => {
     } else {
       console.log('No editPost found in location state');
     }
-  }, [editPost, setImagePreview, location.state]);
+  }, [editPost, setImagePreview]);
 
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();

@@ -89,7 +89,8 @@ const BlogGrid = ({ isVisible }: BlogGridProps) => {
 
   const handleEditPost = (post: BlogPost, e: React.MouseEvent) => {
     e.stopPropagation();
-    navigate(`/create-post`, { state: { editPost: post } });
+    // Pass the slug in the URL so refreshing still loads the post
+    navigate(`/create-post?slug=${post.slug}`, { state: { editPost: post } });
   };
 
   useEffect(() => {

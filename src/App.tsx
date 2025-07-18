@@ -4,28 +4,31 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import Index from "@/pages/Index";
-import About from "@/pages/About";
-import Blog from "@/pages/Blog";
-import BlogPost from "@/pages/BlogPost";
-import CreatePost from "@/pages/CreatePost";
-import Sales from "@/pages/Sales";
-import Credit from "@/pages/Credit";
-import Investing from "@/pages/Investing";
-import AISideHustles from "@/pages/AISideHustles";
-import CashManagement from "@/pages/CashManagement";
-import Auth from "@/pages/Auth";
-import AdminGuides from "@/pages/AdminGuides";
-import AdminEmail from "@/pages/AdminEmail";
-import AdminAnalytics from "@/pages/AdminAnalytics";
-import AdminContentScheduler from "@/pages/AdminContentScheduler";
-import PrivacyPolicy from "@/pages/PrivacyPolicy";
-import TermsOfService from "@/pages/TermsOfService";
-import CookiePolicy from "@/pages/CookiePolicy";
+import { createLazyRoute } from "@/components/lazy-route-wrapper";
+
+// Lazy load all routes for better performance
+const Index = createLazyRoute(() => import("@/pages/Index"));
+const About = createLazyRoute(() => import("@/pages/About"));
+const Blog = createLazyRoute(() => import("@/pages/Blog"));
+const BlogPost = createLazyRoute(() => import("@/pages/BlogPost"));
+const CreatePost = createLazyRoute(() => import("@/pages/CreatePost"));
+const Sales = createLazyRoute(() => import("@/pages/Sales"));
+const Credit = createLazyRoute(() => import("@/pages/Credit"));
+const Investing = createLazyRoute(() => import("@/pages/Investing"));
+const AISideHustles = createLazyRoute(() => import("@/pages/AISideHustles"));
+const CashManagement = createLazyRoute(() => import("@/pages/CashManagement"));
+const Auth = createLazyRoute(() => import("@/pages/Auth"));
+const AdminGuides = createLazyRoute(() => import("@/pages/AdminGuides"));
+const AdminEmail = createLazyRoute(() => import("@/pages/AdminEmail"));
+const AdminAnalytics = createLazyRoute(() => import("@/pages/AdminAnalytics"));
+const AdminContentScheduler = createLazyRoute(() => import("@/pages/AdminContentScheduler"));
+const PrivacyPolicy = createLazyRoute(() => import("@/pages/PrivacyPolicy"));
+const TermsOfService = createLazyRoute(() => import("@/pages/TermsOfService"));
+const CookiePolicy = createLazyRoute(() => import("@/pages/CookiePolicy"));
 import { AuthProvider } from "./contexts/AuthContext";
 import { Toaster } from "@/components/ui/toaster";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import ImageGeneratorPage from "@/pages/ImageGenerator";
+const ImageGeneratorPage = createLazyRoute(() => import("@/pages/ImageGenerator"));
 import ErrorBoundary from "@/components/error-boundary";
 import { useGoogleAnalytics } from "@/lib/google-analytics";
 

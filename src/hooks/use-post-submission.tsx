@@ -13,6 +13,7 @@ interface FormData {
   metaTags: string;
   featured: boolean;
   uploadNow: boolean;
+  standardThoughtLaw: string;
 }
 
 export const usePostSubmission = (

@@ -323,15 +323,33 @@ export const SEOManagement = () => {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="keywords">Keywords (AEO-optimized)</Label>
+                <Label htmlFor="keywords">Cultural Keywords (AEO-optimized)</Label>
                 <Textarea
                   id="keywords"
                   value={selectedSetting.keywords}
                   onChange={(e) => updateSelectedSetting('keywords', e.target.value)}
                   disabled={!isEditing}
-                  placeholder="build generational wealth, urban wealth blueprints, first-gen entrepreneurs..."
-                  rows={2}
+                  placeholder="Black generational trauma flip, urban mindset 2025, cycle-breaking wealth strategies, first-gen Black entrepreneurs, trauma-to-legacy transformation, urban wealth blueprints, recession-proof Black business..."
+                  rows={3}
                 />
+                <div className="flex flex-wrap gap-1 mt-2">
+                  {['Black generational trauma flip', 'urban mindset 2025', 'cycle-breaking wealth', 'first-gen Black entrepreneurs', 'trauma-to-legacy transformation', 'recession-proof Black business'].map((keyword) => (
+                    <Badge
+                      key={keyword}
+                      variant="outline"
+                      className="cursor-pointer text-xs"
+                      onClick={() => {
+                        if (isEditing) {
+                          const currentKeywords = selectedSetting.keywords || '';
+                          const newKeywords = currentKeywords ? `${currentKeywords}, ${keyword}` : keyword;
+                          updateSelectedSetting('keywords', newKeywords);
+                        }
+                      }}
+                    >
+                      + {keyword}
+                    </Badge>
+                  ))}
+                </div>
               </div>
 
               <div className="space-y-2">

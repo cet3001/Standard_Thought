@@ -31,6 +31,7 @@ const CreatePost = () => {
     metaTags: "",
     featured: false,
     uploadNow: true,
+    standardThoughtLaw: "",
   });
 
   // Custom hooks
@@ -55,6 +56,7 @@ const CreatePost = () => {
         metaTags: editPost.meta_keywords || "",
         featured: editPost.featured || false,
         uploadNow: true,
+        standardThoughtLaw: "", // Will be populated if exists in future
       });
       
       if (editPost.image_url) {

@@ -5,6 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ImageUpload } from "./ImageUpload";
 
 interface FormData {
@@ -16,6 +17,7 @@ interface FormData {
   metaTags: string;
   featured: boolean;
   uploadNow: boolean;
+  standardThoughtLaw: string;
 }
 
 interface PostFormProps {
@@ -30,6 +32,19 @@ interface PostFormProps {
   setImagePreview: (url: string | null) => void;
   onCancel: () => void;
 }
+
+const STANDARD_THOUGHT_LAWS = [
+  "Law #1: The Trauma Flip—Turn Money Scars into Legacy Assets",
+  "Law #2: The Exclusion Flip—Turn Barriers into Bread", 
+  "Law #3: The Grit Myth—Street Stories Over Safe Narratives",
+  "Law #4: The Risk Flip—Turn Instinct Fears into Asset Empires",
+  "Law #5: The Score Flip—Turn Trauma Traps into Legacy Keys",
+  "Law #6: The Mindset Myth—Flip Stories Over Safe Illusions",
+  "Law #7: The Flow Flip—Turn Paycheck Cycles into Legacy Systems",
+  "Law #8: The Bot Flip—Turn Tech Exclusion into Legacy Income", 
+  "Law #9: The Hustle Myth—Turn Side Plays into Empire Foundations",
+  "Law #10: The Legacy Myth—Turn Inherited Chains into Unbreakable Webs"
+];
 
 export const PostForm = ({
   formData,
@@ -74,6 +89,42 @@ export const PostForm = ({
                 className="bg-brand-cream/50 dark:bg-brand-black/50 border-yellow-400/30 focus:border-yellow-400 text-brand-black dark:text-brand-cream font-kalam"
               />
             </div>
+          </div>
+
+          <div>
+            <Label htmlFor="standardThoughtLaw" className="text-brand-black dark:text-brand-cream font-ibm-plex-mono">
+              Standard Thought Law <span className="text-yellow-400">*</span>
+            </Label>
+            <Select
+              value={formData.standardThoughtLaw}
+              onValueChange={(value) => setFormData({...formData, standardThoughtLaw: value})}
+              required
+            >
+              <SelectTrigger className="bg-brand-cream/50 dark:bg-brand-black/50 border-yellow-400/30 focus:border-yellow-400 text-brand-black dark:text-brand-cream font-kalam">
+                <SelectValue placeholder="Select a Standard Thought Law" />
+              </SelectTrigger>
+              <SelectContent className="bg-brand-cream dark:bg-brand-black border-yellow-400/30">
+                {STANDARD_THOUGHT_LAWS.map((law, index) => (
+                  <SelectItem key={index} value={law} className="text-brand-black dark:text-brand-cream font-kalam">
+                    {law}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            {formData.standardThoughtLaw && (
+              <div className="mt-2">
+                <Label htmlFor="customLaw" className="text-brand-black dark:text-brand-cream font-ibm-plex-mono text-sm">
+                  Customize Law (Optional)
+                </Label>
+                <Input
+                  id="customLaw"
+                  value={formData.standardThoughtLaw}
+                  onChange={(e) => setFormData({...formData, standardThoughtLaw: e.target.value})}
+                  placeholder="Edit the selected law to fit your story..."
+                  className="bg-brand-cream/50 dark:bg-brand-black/50 border-yellow-400/30 focus:border-yellow-400 text-brand-black dark:text-brand-cream font-kalam"
+                />
+              </div>
+            )}
           </div>
 
           <div>

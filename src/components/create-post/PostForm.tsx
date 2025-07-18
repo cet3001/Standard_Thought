@@ -1,3 +1,6 @@
+// Component: PostForm
+// Purpose: Render the form for creating or editing a blog post. Uses props to
+// control every field so parent components can manage state.
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";

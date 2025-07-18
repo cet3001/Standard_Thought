@@ -132,7 +132,7 @@ const Investing = () => {
                 </h3>
                 
                 <p className="text-base sm:text-lg text-brand-black dark:text-brand-cream/80 mb-8 leading-relaxed">
-                  <strong>Black Wealth Evaporates 90% in One Gen</strong>—You Stacking or Just Surviving? Flip It with These Plays. 
+                  <strong>Only 13% of Black families own stocks vs. 31% of white families</strong>—You Stacking or Just Surviving? Flip It with These Plays. 
                   Blending systems thinking (long-term asset frameworks) + behavioral psych (overcoming fear in hood risks), 
                   here's how to stack from $100, build for legacy, and shatter cycles—no cap. 
                   Real talk: Investing ain't just for the rich or connected; it's your playbook for getting out the game tomorrow.
@@ -155,13 +155,13 @@ const Investing = () => {
                   <div className="relative bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm rounded-2xl p-8 border border-gray-300/10 dark:border-gray-700/10">
                     <div className="text-center">
                       <div className="text-4xl sm:text-5xl font-black mb-4 pearlescent-text">
-                        90%
+                        $5.04
                       </div>
                       <p className="text-lg text-brand-black dark:text-brand-cream font-semibold">
-                        of Black wealth disappears in one generation
+                        median net worth of Black families vs. $171k for white families
                       </p>
                       <p className="text-sm text-brand-black dark:text-brand-cream/80 mt-2">
-                        Break the cycle. Build the legacy.
+                        Time to flip the script.
                       </p>
                     </div>
                   </div>

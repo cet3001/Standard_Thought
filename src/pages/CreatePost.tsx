@@ -28,6 +28,7 @@ const CreatePost = () => {
   const [editPost, setEditPost] = useState<BlogPost | undefined>(
     location.state?.editPost as BlogPost | undefined
   );
+  const [isLoadingPost, setIsLoadingPost] = useState(false);
   
   const [formData, setFormData] = useState({
     title: "",
@@ -57,13 +58,18 @@ const CreatePost = () => {
   useEffect(() => {
     const fetchPost = async () => {
       if (!editPost && slugParam) {
+        setIsLoadingPost(true);
         try {
+          console.log('Fetching post with slug:', slugParam);
           const post = await getBlogPost(slugParam);
+          console.log('Post fetched:', post);
           if (post) {
             setEditPost(post);
           }
         } catch (err) {
           console.error('Failed to fetch post for editing:', err);
+        } finally {
+          setIsLoadingPost(false);
         }
       }
     };
@@ -148,8 +154,13 @@ const CreatePost = () => {
             onBackClick={() => navigate("/blog")} 
           />
 
-          {/* Only render the form after data is loaded */}
-          {(!slugParam || editPost) && (
+          {/* Show loading when fetching post data */}
+          {isLoadingPost ? (
+            <div className="text-center py-8">
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-yellow-400 mx-auto"></div>
+              <p className="mt-2 text-brand-black dark:text-brand-cream">Loading post data...</p>
+            </div>
+          ) : (
             <PostForm
               key={editPost?.id || 'new-post'} // Force re-render when editing different posts
               formData={formData}

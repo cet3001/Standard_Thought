@@ -1,8 +1,4 @@
-
-// Auth Context
-// Purpose: Handles Supabase auth state and provides user info across the app.
-// Why: Centralizes login logic so pages stay clean.
-import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import * as React from 'react';
 import { User, Session } from '@supabase/supabase-js';
 import { supabase } from '@/integrations/supabase/client';
 
@@ -36,10 +32,10 @@ const defaultValue: AuthContextType = {
   signUp: async (): Promise<{ error: Error | null }> => ({ error: null }),
 };
 
-const AuthContext = createContext<AuthContextType>(defaultValue);
+const AuthContext = React.createContext<AuthContextType>(defaultValue);
 
 export const useAuth = () => {
-  const context = useContext(AuthContext);
+  const context = React.useContext(AuthContext);
   if (!context) {
     throw new Error('useAuth must be used within an AuthProvider');
   }
@@ -47,12 +43,12 @@ export const useAuth = () => {
 };
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [user, setUser] = useState<User | null>(null);
-  const [session, setSession] = useState<Session | null>(null);
-  const [profile, setProfile] = useState<UserProfile | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [user, setUser] = React.useState<User | null>(null);
+  const [session, setSession] = React.useState<Session | null>(null);
+  const [profile, setProfile] = React.useState<UserProfile | null>(null);
+  const [loading, setLoading] = React.useState(true);
 
-  const fetchProfile = useCallback(async (userId: string) => {
+  const fetchProfile = React.useCallback(async (userId: string) => {
     try {
       console.log('Fetching profile for user:', userId);
       const { data, error } = await supabase
@@ -73,7 +69,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   }, []);
 
-  useEffect(() => {
+  React.useEffect(() => {
     console.log('🔐 Setting up Supabase auth...');
     
     // Set up auth state listener FIRST
@@ -200,5 +196,5 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     signUp,
   };
 
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  return React.createElement(AuthContext.Provider, { value }, children);
 };

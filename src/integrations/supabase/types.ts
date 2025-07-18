@@ -21,6 +21,7 @@ export type Database = {
           comments_enabled: boolean | null
           content: string
           created_at: string
+          display_tag: string | null
           excerpt: string
           featured: boolean | null
           id: string
@@ -39,6 +40,7 @@ export type Database = {
           comments_enabled?: boolean | null
           content: string
           created_at?: string
+          display_tag?: string | null
           excerpt: string
           featured?: boolean | null
           id?: string
@@ -57,6 +59,7 @@ export type Database = {
           comments_enabled?: boolean | null
           content?: string
           created_at?: string
+          display_tag?: string | null
           excerpt?: string
           featured?: boolean | null
           id?: string

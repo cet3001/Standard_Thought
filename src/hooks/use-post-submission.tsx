@@ -65,6 +65,7 @@ export const usePostSubmission = (
           meta_keywords: metaTagsArray.join(', '),
           featured: formData.featured,
           comments_enabled: formData.commentsEnabled,
+          display_tag: formData.displayTag || null,
           ...(imageUrl && { image_url: imageUrl }),
         };
 
@@ -83,6 +84,7 @@ export const usePostSubmission = (
           featured: formData.featured,
           published: true,
           comments_enabled: formData.commentsEnabled,
+          display_tag: formData.displayTag || null,
           image_url: imageUrl,
           author_id: userId,
         };

@@ -18,6 +18,7 @@ export interface BlogPost {
   published: boolean;
   author_id: string;
   updated_at: string;
+  display_tag: string | null;
 }
 
 export interface Post extends BlogPost {

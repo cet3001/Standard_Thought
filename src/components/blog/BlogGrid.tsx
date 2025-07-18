@@ -208,7 +208,7 @@ const BlogGrid = ({ isVisible }: BlogGridProps) => {
                           color: '#000',
                           letterSpacing: '1px'
                         }}>
-                          {post.category.toUpperCase()}
+                          {(post.display_tag || post.category).toUpperCase()}
                         </span>
                       </div>
                       

@@ -175,7 +175,7 @@ export const PostForm = ({
                   <SelectValue placeholder="Enter tags first, then select display tag" />
                 </SelectTrigger>
                 <SelectContent className="bg-brand-cream dark:bg-brand-black border-yellow-400/30 z-50">
-                  {formData.tags ? formData.tags.split(',').map((tag, index) => {
+                  {formData.tags && formData.tags.trim() ? formData.tags.split(',').map((tag, index) => {
                     const trimmedTag = tag.trim();
                     if (!trimmedTag) return null;
                     return (
@@ -183,9 +183,7 @@ export const PostForm = ({
                         {trimmedTag}
                       </SelectItem>
                     );
-                  }) : (
-                    <SelectItem value="" disabled className="text-gray-500">No tags available</SelectItem>
-                  )}
+                  }).filter(Boolean) : null}
                 </SelectContent>
               </Select>
             </div>

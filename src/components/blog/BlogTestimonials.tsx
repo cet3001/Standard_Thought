@@ -46,43 +46,23 @@ const BlogTestimonials = ({ isVisible }: BlogTestimonialsProps) => {
       </div>
       
       <div className="relative h-48 flex items-center justify-center">
-        {testimonials.map((testimonial, index) => (
-          <div
-            key={testimonial.id}
-            className={`absolute inset-0 transition-all duration-1000 ${
-              index === currentTestimonial 
-                ? 'opacity-100 translate-x-0' 
-                : index < currentTestimonial 
-                  ? 'opacity-0 -translate-x-full' 
-                  : 'opacity-0 translate-x-full'
-            }`}
-          >
-            <div className="text-center p-8">
-              <Quote className="w-8 h-8 text-primary mx-auto mb-4 opacity-60" />
-              <blockquote className="text-xl md:text-2xl font-medium text-brand-black dark:text-brand-cream mb-6 italic leading-relaxed">
-                "{testimonial.quote}"
-              </blockquote>
-              <div className="flex items-center justify-center gap-4">
-                {testimonial.avatar_url && (
-                  <img
-                    src={testimonial.avatar_url}
-                    alt={testimonial.name}
-                    className="w-12 h-12 rounded-full object-cover border-2"
-                    style={{ borderColor: '#ffd700' }}
-                  />
-                )}
-                <div className="text-left">
-                  <p className="font-bold text-brand-black dark:text-brand-cream">
-                    {testimonial.name}
-                  </p>
-                  <p className="text-sm text-brand-black/70 dark:text-brand-cream/70">
-                    {testimonial.city_area}
-                  </p>
-                </div>
-              </div>
+        {/* Featured Testimonial */}
+        <div className="text-center p-8">
+          <Quote className="w-8 h-8 text-primary mx-auto mb-4 opacity-60" />
+          <blockquote className="text-xl md:text-2xl font-medium text-brand-black dark:text-brand-cream mb-6 italic leading-relaxed">
+            "These frameworks taught me that every setback is a setup for a comeback. Changed my whole perspective on legacy in the hood."
+          </blockquote>
+          <div className="flex items-center justify-center gap-4">
+            <div className="text-center">
+              <p className="font-bold text-brand-black dark:text-brand-cream">
+                Andrea
+              </p>
+              <p className="text-sm text-brand-black/70 dark:text-brand-cream/70">
+                New Orleans
+              </p>
             </div>
           </div>
-        ))}
+        </div>
       </div>
     </SectionOverlayBox>
   );

@@ -29,6 +29,23 @@
   border-color: var(--brand-black);
 }
 
+/* Pearlescent Yellow for Urban Theme */
+.pearlescent-text {
+  background: linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f);
+  background-size: 400% 400%;
+  animation: pearlescent 3s ease-in-out infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 1px 1px 0px rgba(0,0,0,0.3), -1px -1px 0px rgba(255,255,255,0.2);
+  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.4));
+}
+
+@keyframes pearlescent {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
 /* Additional utility classes for explicit color usage */
 .bg-explicit-cream {
   background-color: #FDF6E3 !important;

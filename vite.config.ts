@@ -58,14 +58,8 @@ export default defineConfig(({ mode }) => ({
     },
     // Copy all files from public directory
     copyPublicDir: true,
-    // Enable minification and compression
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: mode === 'production',
-        drop_debugger: mode === 'production',
-      },
-    },
+    // Enable minification (uses esbuild by default - faster than terser)
+    minify: true,
     // Increase chunk size warning limit for better performance
     chunkSizeWarningLimit: 1000,
     // Enable CSS code splitting

@@ -149,8 +149,23 @@ const About = () => {
               
               {/* Right Column - Visual Element */}
               <div className={`transition-all duration-1000 delay-300 relative ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                {/* Hero Image */}
+                <div className="relative mb-8">
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#FFD700]/20 to-[#FFA500]/20 backdrop-blur-sm rounded-2xl transform rotate-1"></div>
+                  <div className="relative">
+                    <img
+                      src="/lovable-uploads/f309179b-b731-4959-8cb3-c02b01fe3b95.png"
+                      alt="Urban entrepreneur overlooking city skyline representing mindset transformation and mental wealth building"
+                      className="w-full h-auto rounded-2xl shadow-2xl"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent rounded-2xl"></div>
+                  </div>
+                </div>
+                
+                {/* Stat Card */}
                 <div className="relative">
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#FFD700]/20 to-[#FFA500]/20 backdrop-blur-sm rounded-2xl transform rotate-2"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#FFD700]/20 to-[#FFA500]/20 backdrop-blur-sm rounded-2xl transform -rotate-2"></div>
                   <div className="relative bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm rounded-2xl p-8 border border-gray-300/10 dark:border-gray-700/10">
                     <div className="text-center">
                       <div className="text-4xl sm:text-5xl font-black mb-4 pearlescent-text">

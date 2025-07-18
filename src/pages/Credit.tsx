@@ -108,6 +108,18 @@ const Credit = () => {
       <main className="relative z-10 pt-20 sm:pt-24 lg:pt-28">
         {/* Hero Section */}
         <section className="py-16 sm:py-24 relative">
+          {/* Back Button */}
+          <div className="container mx-auto px-6 max-w-7xl relative z-10">
+            <button onClick={() => navigate('/sales')} className="mb-8 group inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#FFD700]/20 to-[#FFA500]/20 backdrop-blur-sm border-2 border-[#FFD700] text-[#FFD700] font-bold rounded-xl transition-all duration-300 hover:bg-[#FFD700]/30 hover:scale-105 transform rotate-1 hover:rotate-0" style={{
+              fontFamily: 'Permanent Marker, cursive',
+              textShadow: '2px 2px 4px rgba(0,0,0,0.1)',
+              filter: 'drop-shadow(0 2px 4px rgba(255,215,0,0.3))'
+            }}>
+              <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform duration-300" />
+              Back
+            </button>
+          </div>
+          
           <div className="container mx-auto px-6 max-w-7xl relative z-10">
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start mb-16 relative">
               {/* Left Column - Text Content */}

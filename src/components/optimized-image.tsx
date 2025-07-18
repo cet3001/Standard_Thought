@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import ImageOptimizer from './performance/image-optimizer';
 
 interface OptimizedImageProps {
   src: string;
@@ -22,42 +22,16 @@ const OptimizedImage = ({
   placeholder = "/placeholder.svg",
   mobileOptimized = true
 }: OptimizedImageProps) => {
-  const [hasError, setHasError] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  const handleError = () => {
-    setHasError(true);
-    setIsLoaded(true);
-  };
-
-  const handleLoad = () => {
-    setIsLoaded(true);
-    setHasError(false);
-  };
-
   return (
-    <div className={`relative overflow-hidden ${className}`}>
-      <img
-        src={hasError ? placeholder : src}
-        alt={alt}
-        width={width}
-        height={height}
-        loading={priority ? "eager" : "lazy"}
-        onLoad={handleLoad}
-        onError={handleError}
-        className={`transition-opacity duration-300 ${
-          isLoaded ? 'opacity-100' : 'opacity-0'
-        } w-full h-full object-cover`}
-        style={{
-          aspectRatio: width && height ? `${width}/${height}` : undefined,
-          maxWidth: '100%',
-          height: 'auto'
-        }}
-      />
-      {!isLoaded && (
-        <div className="absolute inset-0 bg-gradient-to-r from-gray-200/30 via-gray-300/30 to-gray-200/30 animate-pulse" />
-      )}
-    </div>
+    <ImageOptimizer
+      src={src}
+      alt={alt}
+      className={className}
+      width={width}
+      height={height}
+      priority={priority}
+      sizes={mobileOptimized ? "(max-width: 768px) 100vw, 50vw" : "100vw"}
+    />
   );
 };
 

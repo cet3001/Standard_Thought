@@ -5,21 +5,33 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
-import '@fontsource/inter/300.css';
+// Optimize font loading - only load critical weights initially
 import '@fontsource/inter/400.css';
-import '@fontsource/inter/500.css';
 import '@fontsource/inter/600.css';
 import '@fontsource/inter/700.css';
-import '@fontsource/inter/800.css';
-import '@fontsource/inter/900.css';
-import '@fontsource/ibm-plex-sans/400.css';
-import '@fontsource/ibm-plex-sans/500.css';
-import '@fontsource/ibm-plex-sans/600.css';
-import '@fontsource/kalam/400.css';
-import '@fontsource/kalam/700.css';
-import '@fontsource/permanent-marker/400.css';
-import '@fontsource/comic-neue/400.css';
-import '@fontsource/comic-neue/700.css';
+
+// Lazy load additional font weights
+const loadAdditionalFonts = () => {
+  import('@fontsource/inter/300.css');
+  import('@fontsource/inter/500.css');
+  import('@fontsource/inter/800.css');
+  import('@fontsource/inter/900.css');
+  import('@fontsource/ibm-plex-sans/400.css');
+  import('@fontsource/ibm-plex-sans/500.css');
+  import('@fontsource/ibm-plex-sans/600.css');
+  import('@fontsource/kalam/400.css');
+  import('@fontsource/kalam/700.css');
+  import('@fontsource/permanent-marker/400.css');
+  import('@fontsource/comic-neue/400.css');
+  import('@fontsource/comic-neue/700.css');
+};
+
+// Load additional fonts after initial render
+if ('requestIdleCallback' in window) {
+  requestIdleCallback(loadAdditionalFonts);
+} else {
+  setTimeout(loadAdditionalFonts, 1000);
+}
 import { applyCspMeta } from './lib/security-headers';
 
 console.log('main.tsx: Starting application...');

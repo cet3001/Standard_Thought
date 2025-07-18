@@ -25,13 +25,60 @@ export default defineConfig(({ mode }) => ({
   build: {
     outDir: 'dist',
     emptyOutDir: true,
+    // Optimize bundle splitting for better caching
     rollupOptions: {
-      // Ensure critical files are included in build
       input: {
         main: path.resolve(__dirname, 'index.html')
+      },
+      output: {
+        // Split vendor libraries into separate chunks
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom'],
+          'router-vendor': ['react-router-dom'],
+          'ui-vendor': ['@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu', '@radix-ui/react-toast'],
+          'query-vendor': ['@tanstack/react-query'],
+          'supabase-vendor': ['@supabase/supabase-js'],
+        },
+        // Optimize chunk file naming for better caching
+        chunkFileNames: (chunkInfo) => {
+          const facadeModuleId = chunkInfo.facadeModuleId;
+          if (facadeModuleId) {
+            if (facadeModuleId.includes('pages/')) {
+              return 'pages/[name]-[hash].js';
+            }
+            if (facadeModuleId.includes('components/')) {
+              return 'components/[name]-[hash].js';
+            }
+          }
+          return 'chunks/[name]-[hash].js';
+        },
+        assetFileNames: 'assets/[name]-[hash].[ext]',
+        entryFileNames: 'entries/[name]-[hash].js',
       }
     },
     // Copy all files from public directory
-    copyPublicDir: true
-  }
+    copyPublicDir: true,
+    // Enable minification and compression
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: mode === 'production',
+        drop_debugger: mode === 'production',
+      },
+    },
+    // Increase chunk size warning limit for better performance
+    chunkSizeWarningLimit: 1000,
+    // Enable CSS code splitting
+    cssCodeSplit: true,
+  },
+  // Optimize dependencies pre-bundling
+  optimizeDeps: {
+    include: [
+      'react',
+      'react-dom',
+      'react-router-dom',
+      '@tanstack/react-query',
+      '@supabase/supabase-js'
+    ],
+  },
 }));

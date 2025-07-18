@@ -49,9 +49,10 @@ const CreatePost = () => {
   // Populate form data when editing
   useEffect(() => {
     if (editPost) {
+      console.log('EditPost data:', editPost);
       setFormData({
-        title: editPost.title,
-        body: editPost.content,
+        title: editPost.title || "",
+        body: editPost.content || "",
         metaTitle: editPost.meta_description || "",
         metaDescription: editPost.meta_description || "",
         tags: editPost.tags?.join(', ') || "",
@@ -59,7 +60,7 @@ const CreatePost = () => {
         featured: editPost.featured || false,
         uploadNow: true,
         standardThoughtLaw: "", // Will be populated if exists in future
-        commentsEnabled: editPost.comments_enabled || true,
+        commentsEnabled: editPost.comments_enabled !== undefined ? editPost.comments_enabled : true,
         displayTag: editPost.tags?.[0] || "",
       });
       

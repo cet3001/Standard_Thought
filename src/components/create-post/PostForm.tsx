@@ -172,10 +172,10 @@ export const PostForm = ({
                 onValueChange={(value) => setFormData({...formData, displayTag: value})}
               >
                 <SelectTrigger className="bg-brand-cream/50 dark:bg-brand-black/50 border-yellow-400/30 focus:border-yellow-400 text-brand-black dark:text-brand-cream font-kalam">
-                  <SelectValue placeholder="Select tag to display" />
+                  <SelectValue placeholder="Enter tags first, then select display tag" />
                 </SelectTrigger>
-                <SelectContent className="bg-brand-cream dark:bg-brand-black border-yellow-400/30">
-                  {formData.tags.split(',').map((tag, index) => {
+                <SelectContent className="bg-brand-cream dark:bg-brand-black border-yellow-400/30 z-50">
+                  {formData.tags ? formData.tags.split(',').map((tag, index) => {
                     const trimmedTag = tag.trim();
                     if (!trimmedTag) return null;
                     return (
@@ -183,7 +183,9 @@ export const PostForm = ({
                         {trimmedTag}
                       </SelectItem>
                     );
-                  })}
+                  }) : (
+                    <SelectItem value="" disabled className="text-gray-500">No tags available</SelectItem>
+                  )}
                 </SelectContent>
               </Select>
             </div>
@@ -207,29 +209,32 @@ export const PostForm = ({
           />
 
           <div className="flex flex-wrap gap-6">
-            <div className="flex items-center space-x-2 bg-gradient-to-r from-[#FFD700]/20 via-[#FFF8DC]/20 to-[#FFA500]/20 p-3 rounded-lg border border-[#FFD700]/30">
+            <div className="flex items-center space-x-2 bg-[#FFD700] text-black p-4 rounded-lg border-2 border-black shadow-lg">
               <Switch
                 id="featured"
                 checked={formData.featured}
                 onCheckedChange={(checked) => setFormData({...formData, featured: checked})}
+                className="data-[state=checked]:bg-black"
               />
-              <Label htmlFor="featured" className="text-brand-black dark:text-brand-cream font-ibm-plex-mono font-bold">Feature Blog Post</Label>
+              <Label htmlFor="featured" className="text-black font-ibm-plex-mono font-bold text-sm">Feature Blog Post</Label>
             </div>
-            <div className="flex items-center space-x-2 bg-gradient-to-r from-[#FFD700]/20 via-[#FFF8DC]/20 to-[#FFA500]/20 p-3 rounded-lg border border-[#FFD700]/30">
+            <div className="flex items-center space-x-2 bg-[#FFD700] text-black p-4 rounded-lg border-2 border-black shadow-lg">
               <Switch
                 id="uploadNow"
                 checked={formData.uploadNow}
                 onCheckedChange={(checked) => setFormData({...formData, uploadNow: checked})}
+                className="data-[state=checked]:bg-black"
               />
-              <Label htmlFor="uploadNow" className="text-brand-black dark:text-brand-cream font-ibm-plex-mono font-bold">Show Image Now</Label>
+              <Label htmlFor="uploadNow" className="text-black font-ibm-plex-mono font-bold text-sm">Show Image Now</Label>
             </div>
-            <div className="flex items-center space-x-2 bg-gradient-to-r from-[#FFD700]/20 via-[#FFF8DC]/20 to-[#FFA500]/20 p-3 rounded-lg border border-[#FFD700]/30">
+            <div className="flex items-center space-x-2 bg-[#FFD700] text-black p-4 rounded-lg border-2 border-black shadow-lg">
               <Switch
                 id="commentsEnabled"
                 checked={formData.commentsEnabled}
                 onCheckedChange={(checked) => setFormData({...formData, commentsEnabled: checked})}
+                className="data-[state=checked]:bg-black"
               />
-              <Label htmlFor="commentsEnabled" className="text-brand-black dark:text-brand-cream font-ibm-plex-mono font-bold">Enable Comments</Label>
+              <Label htmlFor="commentsEnabled" className="text-black font-ibm-plex-mono font-bold text-sm">Enable Comments</Label>
             </div>
           </div>
 

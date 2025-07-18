@@ -30,7 +30,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 const ImageGeneratorPage = createLazyRoute(() => import("@/pages/ImageGenerator"));
 import ErrorBoundary from "@/components/error-boundary";
-import { useGoogleAnalytics } from "@/lib/google-analytics";
+import { AnalyticsTracker } from "@/components/analytics";
 
 console.log('App.tsx: Component loaded');
 
@@ -44,11 +44,9 @@ const queryClient = new QueryClient({
 });
 
 function AppContent() {
-  // Initialize Google Analytics tracking
-  useGoogleAnalytics();
-  
   return (
     <div className="min-h-screen">
+      <AnalyticsTracker />
       <Toaster />
       <Routes>
         <Route path="/" element={<Index />} />

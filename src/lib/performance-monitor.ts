@@ -1,5 +1,3 @@
-import { onCLS, onINP, onFCP, onLCP, onTTFB } from 'web-vitals';
-
 // Performance monitoring and optimization utilities
 export class PerformanceMonitor {
   private static instance: PerformanceMonitor;
@@ -14,16 +12,26 @@ export class PerformanceMonitor {
 
   // Initialize web vitals monitoring
   initWebVitals() {
-    // Core Web Vitals
-    onCLS(this.onVitalsUpdate('CLS'));
-    onINP(this.onVitalsUpdate('INP'));
-    onLCP(this.onVitalsUpdate('LCP'));
-    
-    // Additional metrics
-    onFCP(this.onVitalsUpdate('FCP'));
-    onTTFB(this.onVitalsUpdate('TTFB'));
-
+    // Use basic performance API instead of web-vitals for now
+    this.measureBasicVitals();
     console.log('Performance Monitor: Web Vitals tracking initialized');
+  }
+
+  private measureBasicVitals() {
+    // Measure basic performance metrics
+    if (typeof window !== 'undefined') {
+      const navigation = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming;
+      const paint = performance.getEntriesByType('paint');
+      
+      const ttfb = navigation.responseStart - navigation.requestStart;
+      const fcp = paint.find(entry => entry.name === 'first-contentful-paint')?.startTime || 0;
+      
+      this.vitalsData.TTFB = ttfb;
+      this.vitalsData.FCP = fcp;
+      
+      console.log('Performance: TTFB', ttfb);
+      console.log('Performance: FCP', fcp);
+    }
   }
 
   private onVitalsUpdate = (name: string) => (metric: any) => {

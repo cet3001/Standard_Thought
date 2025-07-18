@@ -3,7 +3,6 @@
 // Purpose: Render the form for creating or editing a blog post. Uses props to
 // control every field so parent components can manage state.
 import { useState } from "react";
-main
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -88,7 +87,7 @@ export const PostForm = ({
                 id="title"
                 value={formData.title}
                 onChange={(e) =>
-                  setFormData(prev => ({ ...prev, title: e.target.value }))
+                  setFormData({ ...formData, title: e.target.value })
                 }
                 placeholder="Enter your story title"
                 required
@@ -101,7 +100,7 @@ export const PostForm = ({
                 id="metaTitle"
                 value={formData.metaTitle}
                 onChange={(e) =>
-                  setFormData(prev => ({ ...prev, metaTitle: e.target.value }))
+                  setFormData({ ...formData, metaTitle: e.target.value })
                 }
                 placeholder="SEO title (optional)"
                 className="bg-brand-cream/50 dark:bg-brand-black/50 border-yellow-400/30 focus:border-yellow-400 text-brand-black dark:text-brand-cream font-kalam"
@@ -116,7 +115,7 @@ export const PostForm = ({
             <Select
               value={formData.standardThoughtLaw}
               onValueChange={(value) =>
-                setFormData(prev => ({ ...prev, standardThoughtLaw: value }))
+                setFormData({ ...formData, standardThoughtLaw: value })
               }
               required
             >
@@ -140,10 +139,7 @@ export const PostForm = ({
                   id="customLaw"
                   value={formData.standardThoughtLaw}
                   onChange={(e) =>
-                    setFormData(prev => ({
-                      ...prev,
-                      standardThoughtLaw: e.target.value
-                    }))
+                    setFormData({ ...formData, standardThoughtLaw: e.target.value })
                   }
                   placeholder="Edit the selected law to fit your story..."
                   className="bg-brand-cream/50 dark:bg-brand-black/50 border-yellow-400/30 focus:border-yellow-400 text-brand-black dark:text-brand-cream font-kalam"
@@ -158,7 +154,7 @@ export const PostForm = ({
               id="body"
               value={formData.body}
               onChange={(e) =>
-                setFormData(prev => ({ ...prev, body: e.target.value }))
+                setFormData({ ...formData, body: e.target.value })
               }
               placeholder="Write your story here..."
               rows={12}
@@ -173,7 +169,7 @@ export const PostForm = ({
               id="metaDescription"
               value={formData.metaDescription}
               onChange={(e) =>
-                setFormData(prev => ({ ...prev, metaDescription: e.target.value }))
+                setFormData({ ...formData, metaDescription: e.target.value })
               }
               placeholder="Brief description for search engines"
               rows={3}
@@ -188,7 +184,7 @@ export const PostForm = ({
                 id="tags"
                 value={formData.tags}
                 onChange={(e) =>
-                  setFormData(prev => ({ ...prev, tags: e.target.value }))
+                  setFormData({ ...formData, tags: e.target.value })
                 }
                 placeholder="hustle, mindset, network (comma separated)"
                 className="bg-brand-cream/50 dark:bg-brand-black/50 border-yellow-400/30 focus:border-yellow-400 text-brand-black dark:text-brand-cream font-kalam"
@@ -199,7 +195,7 @@ export const PostForm = ({
               <Select
                 value={formData.displayTag}
                 onValueChange={(value) =>
-                  setFormData(prev => ({ ...prev, displayTag: value }))
+                  setFormData({ ...formData, displayTag: value })
                 }
               >
                 <SelectTrigger className="bg-brand-cream/50 dark:bg-brand-black/50 border-yellow-400/30 focus:border-yellow-400 text-brand-black dark:text-brand-cream font-kalam">
@@ -224,7 +220,7 @@ export const PostForm = ({
                 id="metaTags"
                 value={formData.metaTags}
                 onChange={(e) =>
-                  setFormData(prev => ({ ...prev, metaTags: e.target.value }))
+                  setFormData({ ...formData, metaTags: e.target.value })
                 }
                 placeholder="SEO keywords (comma separated)"
                 className="bg-brand-cream/50 dark:bg-brand-black/50 border-yellow-400/30 focus:border-yellow-400 text-brand-black dark:text-brand-cream font-kalam"
@@ -245,7 +241,7 @@ export const PostForm = ({
                 id="featured"
                 checked={formData.featured}
                 onCheckedChange={(checked) =>
-                  setFormData(prev => ({ ...prev, featured: checked }))
+                  setFormData({ ...formData, featured: checked })
                 }
                 className="data-[state=checked]:bg-black"
               />
@@ -256,7 +252,7 @@ export const PostForm = ({
                 id="uploadNow"
                 checked={formData.uploadNow}
                 onCheckedChange={(checked) =>
-                  setFormData(prev => ({ ...prev, uploadNow: checked }))
+                  setFormData({ ...formData, uploadNow: checked })
                 }
                 className="data-[state=checked]:bg-black"
               />
@@ -267,7 +263,7 @@ export const PostForm = ({
                 id="commentsEnabled"
                 checked={formData.commentsEnabled}
                 onCheckedChange={(checked) =>
-                  setFormData(prev => ({ ...prev, commentsEnabled: checked }))
+                  setFormData({ ...formData, commentsEnabled: checked })
                 }
                 className="data-[state=checked]:bg-black"
               />

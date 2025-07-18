@@ -1,8 +1,6 @@
 // Page: CreatePost
-codex/fix-postform-re-rendering-issue
 // Manages both publishing new stories and editing old ones.
 // If a slug is in the URL we fetch that post and load its data.
- main
 import { useState, useEffect } from "react";
 import { useHeaderHeight } from "@/hooks/use-header-height";
 import { useNavigate, useLocation } from "react-router-dom";

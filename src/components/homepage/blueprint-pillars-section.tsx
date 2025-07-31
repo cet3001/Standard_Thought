@@ -65,15 +65,18 @@ const BlueprintPillarsSection = ({ isVisible }: BlueprintPillarsSectionProps) =>
                 animationDelay: `${index * 0.2}s`
               }}
             >
-              <div className="bg-white/10 dark:bg-black/20 backdrop-blur-sm rounded-xl p-6 border border-white/10 dark:border-black/10 hover:bg-white/15 dark:hover:bg-black/30 transition-all duration-300 hover:shadow-xl relative overflow-hidden">
+              <div className="bg-white/10 dark:bg-black/20 backdrop-blur-sm rounded-xl p-6 border border-yellow-200/20 dark:border-yellow-300/15 hover:bg-white/15 dark:hover:bg-black/30 transition-all duration-300 hover:shadow-xl relative overflow-hidden hover:border-yellow-300/40">
                 
-                {/* Pearlescent yellow accent overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-yellow-200/20 via-yellow-100/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                {/* Pearlescent yellow accent overlay - always visible */}
+                <div className="absolute inset-0 bg-gradient-to-br from-yellow-200/15 via-yellow-100/8 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
+                
+                {/* Additional subtle yellow glow */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-yellow-300/5 to-yellow-200/10 rounded-xl"></div>
                 
                 {/* Yellow diamond accent */}
                 <div className="flex justify-end mb-4 relative z-10">
                   <div 
-                    className="w-6 h-6 rotate-45 transition-all duration-300 group-hover:rotate-90 shadow-lg"
+                    className="w-6 h-6 rotate-45 transition-all duration-300 group-hover:rotate-90 shadow-lg shadow-yellow-300/30"
                     style={{ backgroundColor: 'var(--color-accent)' }}
                   ></div>
                 </div>

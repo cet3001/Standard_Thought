@@ -29,7 +29,10 @@ const BuiltForPeopleLikeUsSection = ({ isVisible }: BuiltForPeopleLikeUsSectionP
   return (
     <div className={`mb-16 relative transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
       {/* Background */}
-      <div className="relative bg-white/5 dark:bg-black/20 backdrop-blur-sm rounded-2xl p-8 border border-white/10 dark:border-black/10">
+      <div className="relative bg-white/5 dark:bg-black/20 backdrop-blur-sm rounded-2xl p-8 border border-yellow-200/20 dark:border-yellow-300/15">
+        
+        {/* Pearlescent yellow background overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-yellow-200/10 via-yellow-100/5 to-transparent rounded-2xl"></div>
         
         {/* Section Header */}
         <div className="text-center mb-12 relative z-10">
@@ -42,11 +45,14 @@ const BuiltForPeopleLikeUsSection = ({ isVisible }: BuiltForPeopleLikeUsSectionP
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10" role="group" aria-label="Profile cards showcasing our community">
           {profilesData.map((profile) => (
             <div key={profile.id} className="profile-card group">
-              <div className="bg-white/10 dark:bg-black/20 backdrop-blur-sm rounded-xl p-6 border border-white/10 dark:border-black/10 hover:bg-white/15 dark:hover:bg-black/30 transition-all duration-300 hover:scale-105 hover:shadow-xl">
+              <div className="bg-white/10 dark:bg-black/20 backdrop-blur-sm rounded-xl p-6 border border-yellow-200/15 dark:border-yellow-300/10 hover:bg-white/15 dark:hover:bg-black/30 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:border-yellow-300/30 relative overflow-hidden">
+                
+                {/* Subtle pearlescent yellow overlay */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-yellow-200/8 via-transparent to-yellow-100/5 opacity-70 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
                 
                 {/* Profile Image */}
-                <div className="flex justify-center mb-6">
-                  <div className="relative overflow-hidden w-24 h-24 md:w-32 md:h-32 border-2 border-white/20 dark:border-black/20" style={{ borderRadius: '12px', aspectRatio: '1/1' }}>
+                <div className="flex justify-center mb-6 relative z-10">
+                  <div className="relative overflow-hidden w-24 h-24 md:w-32 md:h-32 border-2 border-white/20 dark:border-black/20 group-hover:border-yellow-300/30 transition-all duration-300" style={{ borderRadius: '12px', aspectRatio: '1/1' }}>
                     <img 
                       src={profile.image}
                       alt={profile.alt}
@@ -54,14 +60,14 @@ const BuiltForPeopleLikeUsSection = ({ isVisible }: BuiltForPeopleLikeUsSectionP
                       loading="lazy"
                       decoding="async"
                     />
-                    {/* Subtle overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-tr from-black/10 via-transparent to-transparent"></div>
+                    {/* Enhanced overlay with yellow tint */}
+                    <div className="absolute inset-0 bg-gradient-to-tr from-black/10 via-transparent to-yellow-200/10 opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
                 </div>
 
                 {/* Description */}
                 <p 
-                  className="text-center text-base md:text-lg leading-relaxed font-inter"
+                  className="text-center text-base md:text-lg leading-relaxed font-inter relative z-10"
                   style={{ color: 'var(--color-lovable-black)' }}
                 >
                   {profile.description}

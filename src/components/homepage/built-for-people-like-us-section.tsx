@@ -29,11 +29,11 @@ const BuiltForPeopleLikeUsSection = ({ isVisible }: BuiltForPeopleLikeUsSectionP
   return (
     <div className={`mb-16 relative transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
       {/* Background */}
-      <div className="relative bg-gray-200/5 dark:bg-gray-800/5 backdrop-blur-sm rounded-2xl p-8 border border-gray-300/5 dark:border-gray-700/5">
+      <div className="relative bg-white/5 dark:bg-black/20 backdrop-blur-sm rounded-2xl p-8 border border-white/10 dark:border-black/10">
         
         {/* Section Header */}
         <div className="text-center mb-12 relative z-10">
-          <h2 className="text-3xl md:text-4xl font-black mb-4 text-black dark:text-brand-cream">
+          <h2 className="text-3xl md:text-4xl font-black mb-4" style={{ color: 'var(--color-lovable-black)' }}>
             Built For People Like Us
           </h2>
         </div>
@@ -42,11 +42,11 @@ const BuiltForPeopleLikeUsSection = ({ isVisible }: BuiltForPeopleLikeUsSectionP
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10" role="group" aria-label="Profile cards showcasing our community">
           {profilesData.map((profile) => (
             <div key={profile.id} className="profile-card group">
-              <div className="bg-white/10 dark:bg-gray-800/20 backdrop-blur-sm rounded-xl p-6 border border-gray-300/10 dark:border-gray-700/10 hover:bg-white/15 dark:hover:bg-gray-800/30 transition-all duration-300 hover:scale-105 hover:shadow-xl">
+              <div className="bg-white/10 dark:bg-black/20 backdrop-blur-sm rounded-xl p-6 border border-white/10 dark:border-black/10 hover:bg-white/15 dark:hover:bg-black/30 transition-all duration-300 hover:scale-105 hover:shadow-xl">
                 
                 {/* Profile Image */}
                 <div className="flex justify-center mb-6">
-                  <div className="relative overflow-hidden rounded-full w-24 h-24 md:w-32 md:h-32 border-2 border-gray-300/20 dark:border-gray-700/20">
+                  <div className="relative overflow-hidden rounded-full w-24 h-24 md:w-32 md:h-32 border-2 border-white/20 dark:border-black/20">
                     <img 
                       src={profile.image}
                       alt={profile.alt}
@@ -60,7 +60,10 @@ const BuiltForPeopleLikeUsSection = ({ isVisible }: BuiltForPeopleLikeUsSectionP
                 </div>
 
                 {/* Description */}
-                <p className="text-center text-base md:text-lg text-black/80 dark:text-brand-cream/80 leading-relaxed font-inter">
+                <p 
+                  className="text-center text-base md:text-lg leading-relaxed font-inter"
+                  style={{ color: 'var(--color-lovable-black)' }}
+                >
                   {profile.description}
                 </p>
               </div>

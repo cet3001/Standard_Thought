@@ -32,6 +32,13 @@
 @import "./styles/mobile/responsive-adjustments.css";
 @import "./styles/mobile/device-specific.css";
 
+/* Lovable.dev Core Color Palette */
+:root {
+  --color-lovable-pearlescent-yellow: hsl(44, 92%, 62%); /* #F7CE46 */
+  --color-lovable-black: hsl(0, 0%, 10%); /* #1A1A1A */
+  --color-lovable-white: hsl(0, 0%, 98%); /* #F9F9F9 */
+}
+
 /* Critical rendering path - inline critical styles */
 html {
   scroll-behavior: smooth;
@@ -47,6 +54,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeSpeed;
+  color: var(--color-lovable-black);
 }
 
 /* Performance optimizations */

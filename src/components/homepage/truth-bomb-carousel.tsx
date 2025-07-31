@@ -66,15 +66,16 @@ const TruthBombCarousel = ({ isVisible }: TruthBombCarouselProps) => {
   return (
     <div className={`mb-16 relative transition-all duration-1000 delay-800 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
       {/* Background */}
-      <div className="relative bg-gray-200/5 dark:bg-gray-800/5 backdrop-blur-sm rounded-2xl p-8 border border-gray-300/5 dark:border-gray-700/5">
+      <div className="relative bg-white/5 dark:bg-black/20 backdrop-blur-sm rounded-2xl p-8 border border-white/10 dark:border-black/10">
         
         {/* Section Header */}
         <div className="text-center mb-12 relative z-10">
           <h2 
-            className="text-3xl md:text-4xl font-black mb-4 text-black dark:text-brand-cream transform -rotate-1 relative"
+            className="text-3xl md:text-4xl font-black mb-4 transform -rotate-1 relative"
             style={{ 
               fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive", 
-              textShadow: '3px 3px 0px rgba(0,0,0,0.15)' 
+              textShadow: '3px 3px 0px rgba(0,0,0,0.15)',
+              color: 'var(--color-lovable-black)'
             }}
           >
             Truth Bomb Carousel
@@ -97,17 +98,27 @@ const TruthBombCarousel = ({ isVisible }: TruthBombCarouselProps) => {
                   key={truthBomb.id}
                   className="carousel-slide w-full flex-shrink-0 px-4"
                 >
-                  <div className="bg-white/10 dark:bg-gray-800/20 backdrop-blur-sm rounded-xl p-8 md:p-12 border border-gray-300/10 dark:border-gray-700/10 text-center min-h-[200px] flex flex-col justify-center">
+                  <div className="bg-white/10 dark:bg-black/20 backdrop-blur-sm rounded-xl p-8 md:p-12 border border-white/10 dark:border-black/10 text-center min-h-[200px] flex flex-col justify-center">
                     
                     {/* Pillar Tag */}
                     <div className="mb-6">
-                      <span className="pillar-tag inline-block px-4 py-2 bg-gradient-to-r from-yellow-500/20 to-yellow-400/20 border border-yellow-500/30 rounded-full text-sm font-bold text-yellow-600 dark:text-yellow-400 uppercase tracking-wider">
+                      <span 
+                        className="pillar-tag inline-block px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wider border-2"
+                        style={{ 
+                          backgroundColor: 'var(--color-lovable-pearlescent-yellow)',
+                          color: 'var(--color-lovable-black)',
+                          borderColor: 'var(--color-lovable-pearlescent-yellow)'
+                        }}
+                      >
                         {truthBomb.pillar}
                       </span>
                     </div>
 
                     {/* Quote */}
-                    <blockquote className="text-xl md:text-2xl lg:text-3xl font-bold text-black dark:text-brand-cream leading-tight font-inter">
+                    <blockquote 
+                      className="text-xl md:text-2xl lg:text-3xl font-bold leading-tight font-inter"
+                      style={{ color: 'var(--color-lovable-black)' }}
+                    >
                       "{truthBomb.quote}"
                     </blockquote>
                   </div>
@@ -120,21 +131,27 @@ const TruthBombCarousel = ({ isVisible }: TruthBombCarouselProps) => {
           <Button
             variant="ghost"
             size="icon"
-            className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/10 dark:bg-gray-800/20 hover:bg-white/20 dark:hover:bg-gray-800/30 border border-gray-300/20 dark:border-gray-700/20 rounded-full"
+            className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/10 dark:bg-black/20 hover:bg-white/20 dark:hover:bg-black/30 border border-white/10 dark:border-black/10 rounded-full"
             onClick={prevSlide}
             aria-label="Previous truth bomb"
           >
-            <ChevronLeft className="h-6 w-6 text-black dark:text-brand-cream" />
+            <ChevronLeft 
+              className="h-6 w-6" 
+              style={{ color: 'var(--color-lovable-black)' }}
+            />
           </Button>
 
           <Button
             variant="ghost"
             size="icon"
-            className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/10 dark:bg-gray-800/20 hover:bg-white/20 dark:hover:bg-gray-800/30 border border-gray-300/20 dark:border-gray-700/20 rounded-full"
+            className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/10 dark:bg-black/20 hover:bg-white/20 dark:hover:bg-black/30 border border-white/10 dark:border-black/10 rounded-full"
             onClick={nextSlide}
             aria-label="Next truth bomb"
           >
-            <ChevronRight className="h-6 w-6 text-black dark:text-brand-cream" />
+            <ChevronRight 
+              className="h-6 w-6" 
+              style={{ color: 'var(--color-lovable-black)' }}
+            />
           </Button>
 
           {/* Pagination Dots */}
@@ -142,11 +159,13 @@ const TruthBombCarousel = ({ isVisible }: TruthBombCarouselProps) => {
             {truthBombsData.map((_, index) => (
               <button
                 key={index}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === currentSlide 
-                    ? 'bg-yellow-500 scale-125' 
-                    : 'bg-gray-400/50 hover:bg-gray-400/70'
-                }`}
+                className="w-3 h-3 rounded-full transition-all duration-300"
+                style={{
+                  backgroundColor: index === currentSlide 
+                    ? 'var(--color-lovable-pearlescent-yellow)' 
+                    : 'rgba(26, 26, 26, 0.3)',
+                  transform: index === currentSlide ? 'scale(1.25)' : 'scale(1)'
+                }}
                 onClick={() => goToSlide(index)}
                 aria-label={`Go to slide ${index + 1}`}
               />

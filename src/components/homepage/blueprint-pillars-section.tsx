@@ -65,19 +65,22 @@ const BlueprintPillarsSection = ({ isVisible }: BlueprintPillarsSectionProps) =>
                 animationDelay: `${index * 0.2}s`
               }}
             >
-              <div className="bg-white/10 dark:bg-black/20 backdrop-blur-sm rounded-xl p-6 border border-white/10 dark:border-black/10 hover:bg-white/15 dark:hover:bg-black/30 transition-all duration-300 hover:shadow-xl">
+              <div className="bg-white/10 dark:bg-black/20 backdrop-blur-sm rounded-xl p-6 border border-white/10 dark:border-black/10 hover:bg-white/15 dark:hover:bg-black/30 transition-all duration-300 hover:shadow-xl relative overflow-hidden">
+                
+                {/* Pearlescent yellow accent overlay */}
+                <div className="absolute inset-0 bg-gradient-to-br from-yellow-200/20 via-yellow-100/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 
                 {/* Yellow diamond accent */}
-                <div className="flex justify-end mb-4">
+                <div className="flex justify-end mb-4 relative z-10">
                   <div 
-                    className="w-6 h-6 rotate-45 transition-all duration-300 group-hover:rotate-90"
+                    className="w-6 h-6 rotate-45 transition-all duration-300 group-hover:rotate-90 shadow-lg"
                     style={{ backgroundColor: 'var(--color-accent)' }}
                   ></div>
                 </div>
 
                 {/* Card Image */}
-                <div className="flex justify-center mb-6">
-                  <div className="relative overflow-hidden w-20 h-20 md:w-24 md:h-24 border-2 border-white/20 dark:border-black/20 rounded-full">
+                <div className="flex justify-center mb-6 relative z-10">
+                  <div className="relative overflow-hidden w-20 h-20 md:w-24 md:h-24 border-2 border-white/20 dark:border-black/20 rounded-full group-hover:border-yellow-300/40 transition-all duration-300">
                     <img 
                       src={card.image}
                       alt={card.alt}
@@ -85,14 +88,14 @@ const BlueprintPillarsSection = ({ isVisible }: BlueprintPillarsSectionProps) =>
                       loading="lazy"
                       decoding="async"
                     />
-                    {/* Subtle overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-tr from-black/10 via-transparent to-transparent"></div>
+                    {/* Subtle overlay with yellow tint on hover */}
+                    <div className="absolute inset-0 bg-gradient-to-tr from-black/10 via-transparent to-yellow-200/10 opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
                 </div>
 
                 {/* Headline */}
                 <h3 
-                  className="text-center text-lg md:text-xl font-black mb-4 leading-tight"
+                  className="text-center text-lg md:text-xl font-black mb-4 leading-tight relative z-10"
                   style={{ color: 'var(--color-lovable-black)' }}
                 >
                   {card.headline}
@@ -100,16 +103,16 @@ const BlueprintPillarsSection = ({ isVisible }: BlueprintPillarsSectionProps) =>
 
                 {/* Subtext */}
                 <p 
-                  className="text-center text-sm md:text-base leading-relaxed font-inter mb-4"
+                  className="text-center text-sm md:text-base leading-relaxed font-inter mb-4 relative z-10"
                   style={{ color: 'var(--color-lovable-black)' }}
                 >
                   {card.subtext}
                 </p>
 
                 {/* Yellow underline element */}
-                <div className="flex justify-center">
+                <div className="flex justify-center relative z-10">
                   <div 
-                    className="w-12 h-1 rounded-full transition-all duration-300 group-hover:w-16"
+                    className="w-12 h-1 rounded-full transition-all duration-300 group-hover:w-16 group-hover:shadow-md"
                     style={{ backgroundColor: 'var(--color-accent)' }}
                   ></div>
                 </div>

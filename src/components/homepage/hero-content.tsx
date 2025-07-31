@@ -17,14 +17,14 @@ const HeroContent = ({ isVisible, scrollToNewsletter }: HeroContentProps) => {
           
           {/* Hero Image - Left Side */}
           <div className="order-2 lg:order-1 flex justify-center lg:justify-start">
-            <div className="relative overflow-hidden rounded-lg shadow-2xl border-2 border-gray-900 w-full max-w-lg">
+            <div className="relative overflow-hidden rounded-xl shadow-2xl border-2 border-gray-900 w-full max-w-lg" style={{ borderRadius: '12px' }}>
               <img 
-                src="/lovable-uploads/152ff0a5-5f07-49b5-a839-2ae048e30898.png"
-                alt="Group of urban entrepreneurs building legacy together at sunset"
+                src="/lovable-uploads/d8ba41eb-6e6c-44f0-8503-5dfdabe0ad13.png"
+                alt="Three people standing on a rooftop at sunrise, representing vision, unity, and power"
                 className="w-full h-auto object-cover"
                 loading="eager"
                 decoding="async"
-                style={{ aspectRatio: '4/3' }}
+                style={{ aspectRatio: '4/3', objectFit: 'cover' }}
               />
               {/* Moody overlay for depth */}
               <div className="absolute inset-0 bg-gradient-to-tr from-black/15 via-transparent to-transparent"></div>

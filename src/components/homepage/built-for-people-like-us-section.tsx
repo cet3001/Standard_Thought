@@ -7,21 +7,21 @@ interface BuiltForPeopleLikeUsSectionProps {
 const profilesData = [
   {
     id: 1,
-    image: "/lovable-uploads/c7656fcd-9e6b-48b4-b19b-a0b168834bbf.png",
-    alt: "Profile image of a person representing resilience and determination",
-    description: "For the individual ready to dismantle inherited limitations and architect a life of purpose."
+    image: "/lovable-uploads/f45f03b3-1cca-4d5e-aeb5-1a9984d53543.png",
+    alt: "Focused young person reflecting in dim lighting, unplugging from noise.",
+    description: "For the ones done shrinking to survive—ready to rewrite their whole identity."
   },
   {
     id: 2,
-    image: "/lovable-uploads/d9eb8502-d37f-474b-ba58-24fa5e1681a6.png",
-    alt: "Profile image representing self-mastery and wealth building",
-    description: "Designed for those who understand that true wealth is built on a foundation of self-mastery."
+    image: "/lovable-uploads/36888da3-3303-44d7-8cf4-ead565b2a4b7.png",
+    alt: "Hands tearing away an old poster to reveal a glowing city blueprint beneath.",
+    description: "For those who stopped worshipping hustle and started designing strategy."
   },
   {
     id: 3,
-    image: "/lovable-uploads/e2bbb32b-2cc3-4b76-8dd2-adf86ae1da89.png",
-    alt: "Profile image representing trailblazers shaping their future",
-    description: "A sanctuary for trailblazers who refuse to be defined by their past, choosing instead to shape their future."
+    image: "/lovable-uploads/82a1ab41-d7d1-4bdf-9f6f-6c1c6f63c517.png",
+    alt: "A person walks past a golden crown on the ground, focused on their own path.",
+    description: "For trailblazers who don't chase thrones—they build new worlds from scratch."
   }
 ];
 
@@ -46,7 +46,7 @@ const BuiltForPeopleLikeUsSection = ({ isVisible }: BuiltForPeopleLikeUsSectionP
                 
                 {/* Profile Image */}
                 <div className="flex justify-center mb-6">
-                  <div className="relative overflow-hidden rounded-full w-24 h-24 md:w-32 md:h-32 border-2 border-white/20 dark:border-black/20">
+                  <div className="relative overflow-hidden w-24 h-24 md:w-32 md:h-32 border-2 border-white/20 dark:border-black/20" style={{ borderRadius: '12px', aspectRatio: '1/1' }}>
                     <img 
                       src={profile.image}
                       alt={profile.alt}

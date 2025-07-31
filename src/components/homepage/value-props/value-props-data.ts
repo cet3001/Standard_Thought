@@ -1,19 +1,33 @@
 
-import { TrendingUp, CreditCard } from "lucide-react";
+import { Target, RefreshCw, TrendingUp, Rocket } from "lucide-react";
 
 export const valuePropsData = [
   {
-    icon: TrendingUp,
-    title: "Start Small, Stack Fast",
-    description: "Turn $1 into $100, then $1000. Master micro-investing and AI side hustles that actually pay.",
-    highlight: "Build wealth from zero",
-    link: "/start-investing-guide"
+    icon: Target,
+    title: "UNLEARN",
+    description: "Call out survival patterns that ain't serving you.",
+    highlight: "Step 1",
+    link: "/"
   },
   {
-    icon: CreditCard,
-    title: "Build Credit, Build Power", 
-    description: "Fix your credit score, stack business credit, and unlock funding for your next move.",
-    highlight: "Unlock financial freedom",
-    link: "/financial-education-guide"
+    icon: RefreshCw,
+    title: "REBUILD", 
+    description: "Design beliefs, systems, and identity from truth.",
+    highlight: "Step 2",
+    link: "/"
+  },
+  {
+    icon: TrendingUp,
+    title: "STACK",
+    description: "Make money, gain power, build without burnout.",
+    highlight: "Step 3",
+    link: "/"
+  },
+  {
+    icon: Rocket,
+    title: "TRANSCEND",
+    description: "Break generational loops for good. Live free. Die full.",
+    highlight: "Step 4", 
+    link: "/"
   }
 ];

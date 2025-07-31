@@ -20,7 +20,7 @@ const ValuePropsSection = ({ isVisible }: ValuePropsSectionProps) => {
         
         <div className="text-center mb-12 relative z-10">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-6 text-black dark:text-brand-cream leading-tight">
-            Ready to Flip the Script?{" "}
+            <span style={{ color: 'var(--color-lovable-black)' }}>The</span>{' '}
             <span 
               className="text-[#FFD700]"
               style={{
@@ -32,20 +32,19 @@ const ValuePropsSection = ({ isVisible }: ValuePropsSectionProps) => {
                 animation: 'shimmer 3s ease-in-out infinite'
               }}
             >
-              Start Here
+              Standard Thought Way
             </span>
           </h2>
           
           <p className="text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto text-black dark:text-brand-cream leading-relaxed px-4">
-            Pick your lane. Stack your wins. Build your legacy.
+            A clear, sequential 4-step system to transform your life.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 mb-12 relative z-10">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12 relative z-10">
           {valuePropsData.map((prop, index) => (
             <div key={index} className="relative">
               <ValuePropCard {...prop} />
-              {index === 0 && <ValuePropsArrow />}
             </div>
           ))}
         </div>

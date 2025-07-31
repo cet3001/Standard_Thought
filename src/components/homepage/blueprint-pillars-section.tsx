@@ -17,7 +17,7 @@ const BlueprintPillarsSection = ({ isVisible }: BlueprintPillarsSectionProps) =>
 
         <BlueprintPillarsHeader />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10" role="group" aria-label="Standard Thought methodology pillars">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10" role="group" aria-label="Standard Thought methodology pillars">
           {blueprintPillarsData.map((pillar, index) => (
             <BlueprintPillarCard key={index} {...pillar} />
           ))}

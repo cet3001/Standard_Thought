@@ -13,6 +13,21 @@ const FeaturedBlogSection = ({ isVisible }: FeaturedBlogSectionProps) => {
   const [featuredPosts, setFeaturedPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
 
+  // Helper function to get pillar category and color
+  const getPillarInfo = (category: string) => {
+    const cat = category.toLowerCase();
+    if (cat.includes('unlearn') || cat.includes('mindset') || cat.includes('belief')) {
+      return { pillar: 'Unlearn', color: '#007cba' }; // Blue
+    } else if (cat.includes('rebuild') || cat.includes('plan') || cat.includes('system')) {
+      return { pillar: 'Rebuild', color: '#F7CE46' }; // Yellow
+    } else if (cat.includes('stack') || cat.includes('money') || cat.includes('wealth') || cat.includes('invest')) {
+      return { pillar: 'Stack', color: '#10B981' }; // Green
+    } else if (cat.includes('transcend') || cat.includes('legacy') || cat.includes('freedom')) {
+      return { pillar: 'Transcend', color: '#8B5CF6' }; // Purple
+    }
+    return { pillar: 'Build', color: '#F7CE46' }; // Default to yellow
+  };
+
   useEffect(() => {
     const fetchFeaturedPosts = async () => {
       try {
@@ -87,45 +102,34 @@ const FeaturedBlogSection = ({ isVisible }: FeaturedBlogSectionProps) => {
           {/* Section Header */}
           <div className="text-center mb-16">
             <div className="relative inline-block mb-6">
-              <h2 className="text-4xl md:text-5xl font-black text-brand-black dark:text-brand-cream font-ibm-plex-mono">
-                FEATURED{" "}
-                <span className="font-permanent-marker transform rotate-1" style={{
-                  color: 'transparent',
-                  background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                  backgroundSize: '400% 400%',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                  animation: 'pearlescent 3s ease-in-out infinite'
-                }}>
-                  STORIES
-                </span>
-                
-                {/* Graffiti-style underline */}
-                <svg
-                  className="absolute -bottom-2 left-0 w-full h-2"
-                  viewBox="0 0 300 12"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M2 8C22 6 42 10 62 8C82 6 102 12 122 8C142 4 162 10 182 8C202 6 222 10 242 8C262 6 282 10 298 8"
-                    stroke="url(#featuredGradient)"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    fill="none"
-                  />
-                  <defs>
-                    <linearGradient id="featuredGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" style={{ stopColor: '#f4d03f' }} />
-                      <stop offset="25%" style={{ stopColor: '#ffd700' }} />
-                      <stop offset="50%" style={{ stopColor: '#ffeb3b' }} />
-                      <stop offset="75%" style={{ stopColor: '#fff176' }} />
-                      <stop offset="100%" style={{ stopColor: '#f4d03f' }} />
-                    </linearGradient>
-                  </defs>
-                </svg>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-brand-black dark:text-brand-cream font-ibm-plex-mono leading-tight">
+                The truth is louder than the flex—here's what really set folks free.
               </h2>
+                
+              {/* Graffiti-style underline */}
+              <svg
+                className="absolute -bottom-2 left-0 w-full h-2"
+                viewBox="0 0 300 12"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M2 8C22 6 42 10 62 8C82 6 102 12 122 8C142 4 162 10 182 8C202 6 222 10 242 8C262 6 282 10 298 8"
+                  stroke="url(#featuredGradient)"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  fill="none"
+                />
+                <defs>
+                  <linearGradient id="featuredGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style={{ stopColor: '#f4d03f' }} />
+                    <stop offset="25%" style={{ stopColor: '#ffd700' }} />
+                    <stop offset="50%" style={{ stopColor: '#ffeb3b' }} />
+                    <stop offset="75%" style={{ stopColor: '#fff176' }} />
+                    <stop offset="100%" style={{ stopColor: '#f4d03f' }} />
+                  </linearGradient>
+                </defs>
+              </svg>
             </div>
             <p className="text-lg text-brand-black/70 dark:text-brand-cream/70 max-w-2xl mx-auto leading-relaxed">
               The latest blueprints from builders who turned vision into reality
@@ -174,18 +178,24 @@ const FeaturedBlogSection = ({ isVisible }: FeaturedBlogSectionProps) => {
                     {/* Glass overlay on image */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
                     
-                    {/* Category badge */}
+                    {/* Pillar Category badge */}
                     <div className="absolute top-3 left-3">
-                      <div className="px-3 py-1.5 transform -rotate-2 shadow-lg backdrop-blur-sm border-2 border-gray-900 rounded-sm font-kalam font-bold" style={{
-                        background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                        backgroundSize: '400% 400%',
-                        animation: 'pearlescent 3s ease-in-out infinite',
-                        textShadow: '1px 1px 0px rgba(0,0,0,0.3), -1px -1px 0px rgba(255,255,255,0.2)'
-                      }}>
-                        <span className="text-xs font-bold text-gray-900 uppercase tracking-wide transform rotate-1 inline-block" style={{ letterSpacing: '1px' }}>
-                          {post.category}
-                        </span>
-                      </div>
+                      {(() => {
+                        const pillarInfo = getPillarInfo(post.category);
+                        return (
+                          <div 
+                            className="px-3 py-1.5 transform -rotate-2 shadow-lg backdrop-blur-sm border-2 border-white rounded-sm font-kalam font-bold"
+                            style={{
+                              backgroundColor: pillarInfo.color,
+                              textShadow: '1px 1px 0px rgba(0,0,0,0.3), -1px -1px 0px rgba(255,255,255,0.2)'
+                            }}
+                          >
+                            <span className="text-xs font-bold text-white uppercase tracking-wide transform rotate-1 inline-block" style={{ letterSpacing: '1px' }}>
+                              {pillarInfo.pillar}
+                            </span>
+                          </div>
+                        );
+                      })()}
                     </div>
 
                     {/* Read time badge */}

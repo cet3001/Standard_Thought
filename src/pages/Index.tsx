@@ -62,6 +62,14 @@ const Index = () => {
       {
         question: "Why does grind culture feel like another form of slavery?",
         answer: "Because most grind culture IS just modern slavery with better marketing. Working 80 hours a week to make someone else rich while burning yourself out isn't wealth building—it's exploitation.\n\nReal wealth building is about working smarter, not harder. It's about building systems that make money while you sleep, creating value that scales, and investing in assets that appreciate over time. The goal is to own your time, not sell every hour of it.\n\nThe 'hustle harder' mentality keeps you trapped in the same cycle that's kept our communities broke for generations. Instead, focus on strategic moves: building skills that command higher pay, creating passive income streams, and investing in assets. Work with purpose, not just for the sake of staying busy."
+      },
+      {
+        question: "How do I stop passing survival mindsets to my kids?",
+        answer: "First, recognize that survival mindsets served a purpose—they kept your family alive during hard times. But now you're building different times for your kids, so they need different tools.\n\nStart by changing how you talk about money around them. Instead of 'we can't afford it,' try 'that's not in our budget right now' or 'we're choosing to spend our money differently.' Teach them that money is a tool, not something to fear or worship.\n\nShow them abundance thinking in action: save for goals, invest small amounts, celebrate financial wins. Let them see you learning about money, reading financial books, making strategic decisions. Kids absorb everything—make sure they're absorbing wealth-building energy, not scarcity energy.\n\nMost importantly, heal your own money trauma. If you're still operating from fear and lack, they'll pick that up no matter what you say. Your healing becomes their foundation."
+      },
+      {
+        question: "Is healing a strategy too—or just self-care talk?",
+        answer: "Healing IS strategy. The deepest wealth blocks aren't about not knowing what to do—they're about the trauma that keeps you from doing what you know.\n\nMoney trauma shows up as self-sabotage: making good money then blowing it, getting close to success then backing away, feeling guilty about having more than your family. You can have all the financial knowledge in the world, but if your nervous system is still programmed for survival, you'll stay broke.\n\nReal healing for wealth builders looks like: therapy or coaching specifically around money trauma, shadow work on your relationship with success, healing your relationship with your ancestors' financial struggles, and learning to hold abundance without guilt.\n\nThis isn't just feel-good stuff—unhealed money trauma is why lottery winners go broke and why some people can't seem to break certain income levels no matter what they try. Heal the root, change the fruit."
       }
     ];
 

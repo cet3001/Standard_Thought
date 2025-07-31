@@ -29,7 +29,6 @@ import ComprehensiveSiteAuditor from "@/components/audit/comprehensive-site-audi
 import CookieBanner from "@/components/legal/cookie-banner";
 import PWAInstaller from "@/components/pwa/pwa-installer";
 import FinalAuditChecklist from "@/components/audit/final-audit-checklist";
-import FlipTheScriptSection from "@/components/homepage/flip-the-script-section";
 
 console.log('Index.tsx: Component loaded');
 
@@ -184,13 +183,6 @@ const Index = () => {
 
           {/* Newsletter */}
           <NewsletterSection />
-
-          {/* Flip the Script Section */}
-          <section className="py-16">
-            <div className="container mx-auto px-6 max-w-6xl">
-              <FlipTheScriptSection isVisible={true} />
-            </div>
-          </section>
 
           {/* Featured Blog Section */}
           <FeaturedBlogSection isVisible={true} />

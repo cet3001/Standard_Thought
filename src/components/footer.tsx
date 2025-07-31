@@ -109,7 +109,7 @@ const Footer = () => {
           <div className="lg:col-span-2">
           <nav className="flex flex-wrap gap-x-8 gap-y-2 text-sm">
             <Link to="/" className="text-brand-cream/80 hover:text-[#247EFF] transition-colors">
-              Homebase
+              The Root
             </Link>
             <Link to="/about" className="text-brand-cream/80 hover:text-[#247EFF] transition-colors">
               About + Mindset Tools

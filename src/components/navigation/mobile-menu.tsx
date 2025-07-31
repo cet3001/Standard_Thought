@@ -12,7 +12,7 @@ const MobileMenu = () => {
   const { user, isAdmin } = useAuth();
 
   const navItems = [
-    { href: "/", label: "Homebase", tagline: "The Movement Begins Here" },
+    { href: "/", label: "The Root", tagline: "The Movement Begins Here" },
     { href: "/about", label: "About + Mindset Tools", tagline: "Our Story & Your Growth Tools" },
     { href: "/blog", label: "Builder Stories", tagline: "Real People. Real Hustle. Real Results." },
     { href: "/sales", label: "Blueprints & Offers", tagline: "Game Plans, Guides & Opportunities" },

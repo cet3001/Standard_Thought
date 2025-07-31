@@ -14,7 +14,7 @@ const BlogBreadcrumbs = ({ category, title }: BlogBreadcrumbsProps) => {
         className="flex items-center gap-1 hover:text-brand-black dark:hover:text-brand-cream transition-colors duration-200"
       >
         <Home size={14} />
-        <span>Homebase</span>
+        <span>The Root</span>
       </Link>
       
       <ChevronRight size={14} className="text-brand-black/40 dark:text-brand-cream/40" />

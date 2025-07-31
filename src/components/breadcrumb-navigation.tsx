@@ -15,7 +15,7 @@ const BreadcrumbNavigation = () => {
   const pathnames = location.pathname.split('/').filter(x => x);
 
   const breadcrumbItems = [
-    { name: 'Homebase', path: '/', keywords: 'entrepreneurship hub, wealth building foundation' },
+    { name: 'The Root', path: '/', keywords: 'entrepreneurship hub, wealth building foundation' },
     { name: 'Builder Stories', path: '/blog', keywords: 'success stories, entrepreneurial journeys' },
     { name: 'About + Mindset Tools', path: '/about', keywords: 'mindset development, success psychology' },
     { name: 'Blueprints & Offers', path: '/sales', keywords: 'business strategies, revenue optimization' },
@@ -38,7 +38,7 @@ const BreadcrumbNavigation = () => {
               className="text-[#247EFF] hover:text-[#0057FF]"
               title="Return to entrepreneurship hub and wealth building foundation"
             >
-              Homebase
+              The Root
             </BreadcrumbLink>
           </BreadcrumbItem>
           

@@ -2,7 +2,8 @@
 import { useState, useEffect } from "react";
 import { useHeaderHeight } from "@/hooks/use-header-height";
 import HeroContent from "./homepage/hero-content";
-import SocialProofSection from "./homepage/social-proof-section";
+import BuiltForPeopleLikeUsSection from "./homepage/built-for-people-like-us-section";
+import TruthBombCarousel from "./homepage/truth-bomb-carousel";
 import ValuePropsSection from "./homepage/value-props-section";
 import BlueprintPillarsSection from "./homepage/blueprint-pillars-section";
 import SuccessStoriesSection from "./homepage/success-stories-section";
@@ -46,8 +47,11 @@ const HomepageHero = ({ scrollToNewsletter }: HomepageHeroProps) => {
           {/* Main Hero Content */}
           <HeroContent isVisible={isVisible} scrollToNewsletter={scrollToNewsletter} />
 
-          {/* Social Proof */}
-          <SocialProofSection isVisible={isVisible} />
+          {/* Built For People Like Us */}
+          <BuiltForPeopleLikeUsSection isVisible={isVisible} />
+
+          {/* Truth Bomb Carousel */}
+          <TruthBombCarousel isVisible={isVisible} />
 
           {/* Value Props */}
           <ValuePropsSection isVisible={isVisible} />

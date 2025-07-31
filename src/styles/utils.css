@@ -65,3 +65,176 @@
   background: rgba(255, 255, 255, 0.25);
   mix-blend-mode: luminosity;
 }
+
+/* Section Styling */
+.lo-section {
+  padding: 40px 20px;
+  font-family: 'Inter', sans-serif;
+  color: var(--color-lovable-black);
+  background-color: transparent;
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 10;
+}
+
+.lo-heading-2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 30px;
+  color: var(--color-lovable-black);
+}
+
+/* Section 1: Transformative Pillars - "Start Here" */
+.pillar-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .pillar-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .pillar-cards-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.pillar-card {
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 30px 20px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+  box-sizing: border-box;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pillar-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.pillar-icon-container {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  background-color: var(--color-lovable-pearlescent-yellow);
+  border-radius: 50%;
+  color: var(--color-lovable-black);
+  font-size: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.pillar-card:hover .pillar-icon-container {
+  transform: scale(1.1);
+}
+
+.pillar-headline {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--color-lovable-black);
+}
+
+.pillar-copy {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-lovable-black);
+  opacity: 0.8;
+}
+
+/* Section 2: Sequential System - "The Standard Thought Way" */
+.thought-steps-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.thought-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.thought-step:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.step-number {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-lovable-pearlescent-yellow);
+  margin-bottom: 5px;
+  display: block;
+}
+
+.step-pillar-name {
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  color: var(--color-lovable-black);
+  letter-spacing: 1px;
+}
+
+.step-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-lovable-black);
+  opacity: 0.8;
+}
+
+/* Responsive adjustments for thought-steps-container */
+@media (min-width: 768px) {
+  .thought-steps-container {
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+
+  .thought-step {
+    flex: 1;
+    min-width: 200px;
+    margin: 15px;
+    text-align: left;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .thought-step .step-number,
+  .thought-step .step-pillar-name,
+  .thought-step .step-description {
+    text-align: left;
+  }
+}
+
+/* Font Awesome fallback styling */
+.fa {
+  font-family: 'FontAwesome', sans-serif;
+}

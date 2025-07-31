@@ -173,6 +173,68 @@ const Index = () => {
           {/* Hero Section */}
           <HomepageHero scrollToNewsletter={scrollToNewsletter} />
 
+          {/* Start Here Section */}
+          <section id="start-here-section" className="lo-section">
+            <h2 className="lo-heading-2">Ready to Flip the Script?</h2>
+            <div className="pillar-cards-grid">
+              <article className="pillar-card">
+                <div className="pillar-icon-container">
+                  <i className="fa fa-undo pillar-icon"></i>
+                </div>
+                <h3 className="pillar-headline">Unlearn Survival Scripts</h3>
+                <p className="pillar-copy">The lies we inherited are the loops we repeat.</p>
+              </article>
+              <article className="pillar-card">
+                <div className="pillar-icon-container">
+                  <i className="fa fa-cogs pillar-icon"></i>
+                </div>
+                <h3 className="pillar-headline">Rebuild from Truth</h3>
+                <p className="pillar-copy">No more templates built in trauma.</p>
+              </article>
+              <article className="pillar-card">
+                <div className="pillar-icon-container">
+                  <i className="fa fa-stack-overflow pillar-icon"></i>
+                </div>
+                <h3 className="pillar-headline">Stack Without Selling Your Soul</h3>
+                <p className="pillar-copy">Wealth is power, but peace is profit.</p>
+              </article>
+              <article className="pillar-card">
+                <div className="pillar-icon-container">
+                  <i className="fa fa-rocket pillar-icon"></i>
+                </div>
+                <h3 className="pillar-headline">Transcend the Cycle</h3>
+                <p className="pillar-copy">Build what couldn't be built before, by becoming who you've never seen.</p>
+              </article>
+            </div>
+          </section>
+
+          {/* The Standard Thought Way Section */}
+          <section id="standard-thought-way-section" className="lo-section">
+            <h2 className="lo-heading-2">The Standard Thought Way</h2>
+            <div className="thought-steps-container">
+              <div className="thought-step">
+                <span className="step-number">Step 1</span>
+                <h3 className="step-pillar-name">UNLEARN</h3>
+                <p className="step-description">Call out survival patterns that ain't serving you.</p>
+              </div>
+              <div className="thought-step">
+                <span className="step-number">Step 2</span>
+                <h3 className="step-pillar-name">REBUILD</h3>
+                <p className="step-description">Design beliefs, systems, and identity from truth.</p>
+              </div>
+              <div className="thought-step">
+                <span className="step-number">Step 3</span>
+                <h3 className="step-pillar-name">STACK</h3>
+                <p className="step-description">Make money, gain power, build without burnout.</p>
+              </div>
+              <div className="thought-step">
+                <span className="step-number">Step 4</span>
+                <h3 className="step-pillar-name">TRANSCEND</h3>
+                <p className="step-description">Break generational loops for good. Live free. Die full.</p>
+              </div>
+            </div>
+          </section>
+
           {/* Newsletter */}
           <NewsletterSection />
 

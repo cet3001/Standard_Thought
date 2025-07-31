@@ -10,7 +10,7 @@ const NavItems = ({ className = "hidden lg:flex space-x-8", showButton = false }
   const location = useLocation();
 
   const navItems = [
-    { href: "/", label: "Homebase" },
+    { href: "/", label: "The Root" },
     { href: "/about", label: "About + Mindset Tools" },
     { href: "/blog", label: "Builder Stories" },
     { href: "/sales", label: "Blueprints & Offers" },

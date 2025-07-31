@@ -220,24 +220,42 @@ const ManifestoSection = () => {
               </p>
 
             <div className="text-center mt-8 relative z-10">
-              <Link to="/stack">
-                <Button 
-                  size="lg"
-                  className="font-bold px-8 py-4 rounded-3xl hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/30 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 text-black border-0"
-                  style={{ 
-                    fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
-                    textShadow: '1px 1px 0px rgba(0,0,0,0.2)',
-                    background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                    backgroundSize: '400% 400%',
-                    animation: 'pearlescent 3s ease-in-out infinite'
-                  }}
-                >
-                  <span className="relative z-10">
-                    See What Stack Looks Like
-                    <ArrowRight className="ml-2 h-5 w-5 inline" aria-label="Arrow pointing to stack content" />
-                  </span>
-                </Button>
-              </Link>
+              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center">
+                <Link to="/stack">
+                  <Button 
+                    size="lg"
+                    className="font-bold px-8 py-4 rounded-3xl hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/30 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 text-black border-0"
+                    style={{ 
+                      fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
+                      textShadow: '1px 1px 0px rgba(0,0,0,0.2)',
+                      background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                      backgroundSize: '400% 400%',
+                      animation: 'pearlescent 3s ease-in-out infinite'
+                    }}
+                  >
+                    <span className="relative z-10">
+                      See What Stack Looks Like
+                      <ArrowRight className="ml-2 h-5 w-5 inline" aria-label="Arrow pointing to stack content" />
+                    </span>
+                  </Button>
+                </Link>
+                
+                <Link to="/blog?category=stack">
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="border-2 border-[#FFD700] text-[#FFD700] hover:bg-[#FFD700] hover:text-black font-bold px-8 py-4 rounded-3xl hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl bg-transparent"
+                    style={{ 
+                      fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
+                      textShadow: '1px 1px 0px rgba(0,0,0,0.2)'
+                    }}
+                  >
+                    <span className="relative z-10" style={{ transform: 'rotate(1deg)', display: 'inline-block' }}>
+                      See All Stack Posts
+                    </span>
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>

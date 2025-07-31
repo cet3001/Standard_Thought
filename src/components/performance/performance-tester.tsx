@@ -11,6 +11,7 @@ interface PerformanceMetrics {
 const PerformanceTester = () => {
   const [metrics, setMetrics] = useState<PerformanceMetrics | null>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
 
   useEffect(() => {
     // Only show in development
@@ -52,7 +53,7 @@ const PerformanceTester = () => {
     };
   }, []);
 
-  if (process.env.NODE_ENV !== 'development' || !metrics) return null;
+  if (process.env.NODE_ENV !== 'development' || !metrics || isHidden) return null;
 
   return (
     <div 
@@ -63,12 +64,21 @@ const PerformanceTester = () => {
       <div className="bg-black/90 text-white p-3 rounded-lg shadow-lg text-xs max-w-sm">
         <div className="flex justify-between items-center mb-2">
           <span className="font-bold text-[#FFD700]">⚡ Performance</span>
-          <button 
-            onClick={() => window.open('https://pagespeed.web.dev/', '_blank')}
-            className="text-[#FFD700] hover:underline text-xs"
-          >
-            Test Mobile →
-          </button>
+          <div className="flex items-center gap-2">
+            <button 
+              onClick={() => window.open('https://pagespeed.web.dev/', '_blank')}
+              className="text-[#FFD700] hover:underline text-xs"
+            >
+              Test Mobile →
+            </button>
+            <button 
+              onClick={() => setIsHidden(true)}
+              className="text-gray-400 hover:text-white text-xs"
+              title="Hide performance panel"
+            >
+              ✕
+            </button>
+          </div>
         </div>
         
         <div className="space-y-1">

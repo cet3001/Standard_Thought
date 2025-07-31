@@ -172,12 +172,11 @@ const ManifestoSection = () => {
               {/* Main text content on the right */}
               <div className="lg:w-2/3 space-y-6 text-lg leading-relaxed text-brand-black dark:text-brand-cream relative">
                 <p className="text-xl font-semibold relative z-10 mb-6">
-                  Most wealth advice ain't built for us. We're done pretending. This is about breaking cycles, not breaking ourselves.
+                  Most wealth advice ain't built for us. This ain't about chasing quick wins—it's about breaking cycles, not breaking ourselves.
                 </p>
                 
                 <p className="relative z-10 mb-6">
-                  Forget the influencer flexes. We're talking AI plays, money trauma rewiring, and side hustles that actually scale.
-                  This ain't about getting rich quick—it's about building slow, smart, and sovereign.
+                  Forget the influencer flexes. We're not here to perform—we're here to build. That means unlearning money trauma, designing smart side hustles, and stacking slow with vision. Not rich quick. Rich *right.*
                 </p>
 
                 <div className="bg-gray-800/20 dark:bg-gray-200/20 p-6 rounded-xl border-l-4 border-[#FFD700] mb-6">
@@ -193,6 +192,10 @@ const ManifestoSection = () => {
                     "Stacking bread with no clarity is just another trap."
                   </p>
                 </div>
+                
+                <p className="text-center text-sm italic opacity-80 relative z-10">
+                  *Real freedom is strategy, not sacrifice.*
+                </p>
               </div>
             </div>
 

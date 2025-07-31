@@ -47,7 +47,10 @@ const BlueprintPillarsSection = ({ isVisible }: BlueprintPillarsSectionProps) =>
           <h2 className="text-3xl md:text-4xl font-black mb-4">
             <span style={{ color: 'var(--color-lovable-black)' }}>Ready to</span> <span className="pearlescent-text">Flip the Script</span>?
           </h2>
-          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 font-inter">
+          <p 
+            className="text-lg md:text-xl font-inter"
+            style={{ color: 'var(--color-lovable-black)' }}
+          >
             Start here. Transform your reality in four foundational steps.
           </p>
         </div>

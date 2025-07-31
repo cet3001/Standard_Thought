@@ -1,12 +1,12 @@
 
 import { useState, useEffect } from "react";
 import { useHeaderHeight } from "@/hooks/use-header-height";
-import HeroContent from "./homepage/hero-content";
-import BuiltForPeopleLikeUsSection from "./homepage/built-for-people-like-us-section";
+import HeroContent from "./home/Hero";
+import BuiltForPeopleLikeUsSection from "./home/FlipTheScript";
 import TruthBombCarousel from "./homepage/truth-bomb-carousel";
 import ValuePropsSection from "./homepage/value-props-section";
-import BlueprintPillarsSection from "./homepage/blueprint-pillars-section";
-import SuccessStoriesSection from "./homepage/success-stories-section";
+import BlueprintPillarsSection from "./home/Blueprint";
+import SuccessStoriesSection from "./home/Testimonials";
 import FinalCTASection from "./homepage/final-cta-section";
 import { useUrbanTexture } from "@/hooks/use-urban-texture";
 

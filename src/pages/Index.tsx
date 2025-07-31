@@ -4,7 +4,7 @@ import HomepageHero from "@/components/homepage-hero";
 
 import ManifestoSection from "@/components/manifesto-section";
 import { NewsletterSection } from "@/components/newsletter-section";
-import FeaturedBlogSection from "@/components/homepage/featured-blog-section";
+import FeaturedBlogSection from "@/components/home/FeatureStories";
 
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";

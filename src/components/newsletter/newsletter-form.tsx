@@ -163,6 +163,24 @@ export const NewsletterForm = () => {
         </form>
       </div>
       
+      {/* Benefits list */}
+      <div className="text-center mt-4 mb-3">
+        <div className="flex flex-col sm:flex-row gap-2 sm:gap-6 justify-center items-center text-sm font-medium">
+          <div className="flex items-center text-brand-black dark:text-brand-cream">
+            <Check className="h-4 w-4 text-[#ffd700] mr-2" aria-label="Check mark" />
+            Free AI Hustle Toolkit
+          </div>
+          <div className="flex items-center text-brand-black dark:text-brand-cream">
+            <Check className="h-4 w-4 text-[#ffd700] mr-2" aria-label="Check mark" />
+            Weekly money reframe tips
+          </div>
+          <div className="flex items-center text-brand-black dark:text-brand-cream">
+            <Check className="h-4 w-4 text-[#ffd700] mr-2" aria-label="Check mark" />
+            No fluff. Just real plays.
+          </div>
+        </div>
+      </div>
+      
       {/* Quick line under the input section */}
       <div className="text-center mt-3">
         <p 

@@ -28,6 +28,10 @@ const config: Config = {
     'animate-fade-in',
     'animate-float',
     'animate-pulse-glow',
+    'animate-stagger-in',
+    'animate-scale-in-smooth',
+    'animate-slide-up-fade',
+    'animate-parallax-float',
     // Grid and responsive classes commonly used
     'grid-cols-1',
     'grid-cols-2', 

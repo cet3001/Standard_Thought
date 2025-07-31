@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 interface HeroContentProps {
   isVisible: boolean;
@@ -9,6 +10,7 @@ interface HeroContentProps {
 }
 
 const HeroContent = ({ isVisible, scrollToNewsletter }: HeroContentProps) => {
+  const { isVisible: imageVisible, elementRef: imageRef } = useScrollAnimation();
   return (
     <div className="mb-16 relative">
       {/* Hero Layout: Image Left, Content Right */}

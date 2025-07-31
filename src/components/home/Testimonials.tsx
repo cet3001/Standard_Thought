@@ -1,5 +1,6 @@
 
 import { Card, CardContent } from "@/components/ui/card";
+import { useStaggeredAnimation } from "@/hooks/use-scroll-animation";
 
 interface Testimonial {
   name: string;
@@ -38,6 +39,8 @@ const SuccessStoriesSection = ({ isVisible }: SuccessStoriesSectionProps) => {
     }
   ];
 
+  const { visibleItems, elementRef } = useStaggeredAnimation(testimonials.length, 200);
+
   return (
     <div className={`mb-12 sm:mb-16 transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
       <div className="text-center mb-8 sm:mb-12">
@@ -50,12 +53,19 @@ const SuccessStoriesSection = ({ isVisible }: SuccessStoriesSectionProps) => {
       </div>
 
       {/* Testimonials Grid */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+      <div ref={elementRef} className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
         {testimonials.map((testimonial, index) => (
           <Card
             key={index}
-            className="group transform transition-all duration-300 hover:scale-105 hover:-translate-y-1 bg-white/20 dark:bg-gray-900/25 backdrop-blur-md border border-white/30 dark:border-gray-700/40 hover:bg-white/30 dark:hover:bg-gray-900/35 hover:shadow-2xl"
-            style={{ animationDelay: `${index * 150}ms` }}
+            className={`group transform transition-all duration-700 hover:scale-105 hover:-translate-y-1 bg-white/20 dark:bg-gray-900/25 backdrop-blur-md border border-white/30 dark:border-gray-700/40 hover:bg-white/30 dark:hover:bg-gray-900/35 hover:shadow-2xl will-change-transform ${
+              visibleItems[index] 
+                ? 'animate-stagger-in opacity-100' 
+                : 'opacity-0 translate-y-8 scale-95'
+            }`}
+            style={{ 
+              animationDelay: `${index * 200}ms`,
+              transform: visibleItems[index] ? 'none' : 'translateY(32px) scale(0.95)'
+            }}
           >
             <CardContent className="p-6">
               {/* Avatar */}

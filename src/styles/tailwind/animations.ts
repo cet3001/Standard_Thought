@@ -71,6 +71,55 @@ const keyframes = {
       transform: 'translateY(0)',
       opacity: '1'
     }
+  },
+  'stagger-in': {
+    '0%': {
+      opacity: '0',
+      transform: 'translateY(20px) scale(0.95)'
+    },
+    '100%': {
+      opacity: '1',
+      transform: 'translateY(0) scale(1)'
+    }
+  },
+  'scale-in-smooth': {
+    '0%': {
+      opacity: '0',
+      transform: 'scale(0.9)'
+    },
+    '100%': {
+      opacity: '1',
+      transform: 'scale(1)'
+    }
+  },
+  'slide-up-fade': {
+    '0%': {
+      opacity: '0',
+      transform: 'translateY(40px)'
+    },
+    '100%': {
+      opacity: '1',
+      transform: 'translateY(0)'
+    }
+  },
+  'draw-border': {
+    '0%': {
+      strokeDashoffset: '100%'
+    },
+    '100%': {
+      strokeDashoffset: '0%'
+    }
+  },
+  'parallax-float': {
+    '0%, 100%': {
+      transform: 'translateY(0px) translateX(0px)'
+    },
+    '33%': {
+      transform: 'translateY(-10px) translateX(5px)'
+    },
+    '66%': {
+      transform: 'translateY(5px) translateX(-3px)'
+    }
   }
 };
 
@@ -82,7 +131,12 @@ const animation = {
   'fade-in-right': 'fade-in-right 0.6s ease-out',
   'float': 'float 6s ease-in-out infinite',
   'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
-  'kinetic-text': 'kinetic-text 0.8s ease-out'
+  'kinetic-text': 'kinetic-text 0.8s ease-out',
+  'stagger-in': 'stagger-in 0.6s ease-out',
+  'scale-in-smooth': 'scale-in-smooth 0.5s ease-out',
+  'slide-up-fade': 'slide-up-fade 0.7s ease-out',
+  'draw-border': 'draw-border 1.2s ease-in-out',
+  'parallax-float': 'parallax-float 8s ease-in-out infinite'
 };
 
 export default { keyframes, animation };

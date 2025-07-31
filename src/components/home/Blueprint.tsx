@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from "react";
+import { useStaggeredAnimation } from "@/hooks/use-scroll-animation";
 
 interface BlueprintPillarsSectionProps {
   isVisible: boolean;
@@ -37,6 +38,7 @@ const flipScriptData = [
 ];
 
 const BlueprintPillarsSection = ({ isVisible }: BlueprintPillarsSectionProps) => {
+  const { visibleItems, elementRef } = useStaggeredAnimation(flipScriptData.length, 150);
   return (
     <div className={`mb-16 relative transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
       {/* Background */}

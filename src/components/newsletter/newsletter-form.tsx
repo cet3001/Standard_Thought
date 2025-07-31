@@ -153,7 +153,7 @@ export const NewsletterForm = () => {
                         display: 'inline-block'
                       }}
                     >
-                      Get the Blueprint
+                      Send Me The Playbook
                     </span>
                   </>
                 )}
@@ -182,19 +182,11 @@ export const NewsletterForm = () => {
         </p>
       </div>
       
-      <div className="flex items-center justify-center text-xs sm:text-sm text-brand-black dark:text-brand-cream space-x-4 pt-4">
-        <div className="flex items-center">
-          <Check className="h-3 w-3 sm:h-4 sm:w-4 text-[#ffd700] mr-1" aria-label="Check mark" />
-          <span>Free blueprint</span>
-        </div>
-        <div className="flex items-center">
-          <Check className="h-3 w-3 sm:h-4 sm:w-4 text-[#ffd700] mr-1" aria-label="Check mark" />
-          <span>No spam, just value</span>
-        </div>
-        <div className="flex items-center">
-          <Check className="h-3 w-3 sm:h-4 sm:w-4 text-[#ffd700] mr-1" aria-label="Check mark" />
-          <span>Unsubscribe anytime</span>
-        </div>
+      <div className="text-center pt-4">
+        <p className="text-xs sm:text-sm text-brand-black dark:text-brand-cream font-medium">
+          <Check className="h-3 w-3 sm:h-4 sm:w-4 text-[#ffd700] mr-1 inline" aria-label="Check mark" />
+          Trusted by 1,000+ cycle-breakers / Unsubscribe anytime.
+        </p>
       </div>
     </div>
   );

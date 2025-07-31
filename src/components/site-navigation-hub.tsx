@@ -103,7 +103,7 @@ const SiteNavigationHub = () => {
                   backgroundClip: 'text'
                 }}
               >
-                <span className="mr-2">Dive In</span>
+                <span className="mr-2">Show Me What's Possible</span>
                 <ArrowRight 
                   className="h-5 w-5 group-hover:translate-x-1 transition-transform" 
                   style={{

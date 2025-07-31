@@ -126,7 +126,7 @@ const ManifestoSection = () => {
           <div className="bg-gray-200/20 dark:bg-gray-800/20 backdrop-blur-sm rounded-3xl p-8 md:p-12 border border-gray-300/10 dark:border-gray-600/10">
             <div className="text-center mb-12 relative">
               <h2 className="text-4xl md:text-5xl font-black mb-8 text-brand-black dark:text-brand-cream relative z-10">
-                The Real About <span className="relative" style={{
+                <span className="relative" style={{
                   background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
                   backgroundSize: '400% 400%',
                   WebkitBackgroundClip: 'text',
@@ -135,7 +135,7 @@ const ManifestoSection = () => {
                   color: 'transparent',
                   animation: 'pearlescent 3s ease-in-out infinite'
                 }}>
-                  Building Wealth
+                  Stack Without Selling Your Soul
                   
                   {/* Enhanced handwritten underline effect with yellow pearlescent */}
                   <div 
@@ -171,44 +171,17 @@ const ManifestoSection = () => {
 
               {/* Main text content on the right */}
               <div className="lg:w-2/3 space-y-6 text-lg leading-relaxed text-brand-black dark:text-brand-cream relative">
-                <p className="text-xl font-semibold relative z-10">
-                  <span className="relative">
-                    Let's keep it 100:
-                    {/* Enhanced underline with yellow pearlescent */}
-                    <div 
-                      className="absolute -bottom-2 left-0 w-full h-3 transform -rotate-1 blur-sm opacity-25"
-                      style={{
-                        background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                        backgroundSize: '400% 400%',
-                        animation: 'pearlescent 3s ease-in-out infinite'
-                      }}
-                    ></div>
-                  </span> Most wealth advice wasn't built for us. We're breaking cycles, flipping money trauma, and building legacy from the ground up.
+                <p className="text-xl font-semibold relative z-10 mb-6">
+                  Most wealth advice ain't built for us. We're done pretending. This is about breaking cycles, not breaking ourselves.
                 </p>
                 
-                <p className="relative z-10">
-                  This isn't about overnight success—it's about <span className="relative font-semibold" style={{
-                    background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                    backgroundSize: '400% 400%',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
-                    color: 'transparent',
-                    animation: 'pearlescent 3s ease-in-out infinite'
-                  }}>
-                    street-smart moves
-                    {/* Enhanced handwritten circle effect with yellow */}
-                    <div className="absolute -inset-2 border-3 opacity-50 transform rotate-2 border-dashed rounded-full" style={{
-                      borderColor: '#FFD700'
-                    }}></div>
-                    <div className="absolute -inset-1 border-2 opacity-30 transform -rotate-1 border-dotted rounded-full" style={{
-                      borderColor: '#FFD700'
-                    }}></div>
-                  </span>, real setbacks, and stacking paper for the long haul.
+                <p className="relative z-10 mb-6">
+                  Forget the influencer flexes. We're talking AI plays, money trauma rewiring, and side hustles that actually scale.
+                  This ain't about getting rich quick—it's about building slow, smart, and sovereign.
                 </p>
 
-                <p className="relative z-10">
-                  If you're tired of fake gurus and ready for <span className="relative font-semibold" style={{
+                <div className="bg-gray-800/20 dark:bg-gray-200/20 p-6 rounded-xl border-l-4 border-[#FFD700] mb-6">
+                  <p className="text-xl font-bold italic text-center" style={{
                     background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
                     backgroundSize: '400% 400%',
                     WebkitBackgroundClip: 'text',
@@ -217,20 +190,9 @@ const ManifestoSection = () => {
                     color: 'transparent',
                     animation: 'pearlescent 3s ease-in-out infinite'
                   }}>
-                    blueprints that work in the real world
-                    {/* Enhanced highlight with texture and yellow pearlescent */}
-                    <div className="absolute -inset-2 transform -rotate-1 -z-10 blur-sm opacity-15" style={{
-                      background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                      backgroundSize: '400% 400%',
-                      animation: 'pearlescent 3s ease-in-out infinite'
-                    }}></div>
-                    <div className="absolute -inset-1 transform rotate-1 -z-10 opacity-10" style={{
-                      background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                      backgroundSize: '400% 400%',
-                      animation: 'pearlescent 3s ease-in-out infinite'
-                    }}></div>
-                  </span>, you're in the right spot.
-                </p>
+                    "Stacking bread with no clarity is just another trap."
+                  </p>
+                </div>
               </div>
             </div>
 
@@ -257,8 +219,8 @@ const ManifestoSection = () => {
                 </span>
               </p>
 
-            <div className="text-center mt-12 relative z-10">
-              <Link to="/resources">
+            <div className="text-center mt-8 relative z-10">
+              <Link to="/stack">
                 <Button 
                   size="lg"
                   className="font-bold px-8 py-4 rounded-3xl hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/30 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 text-black border-0"
@@ -271,8 +233,8 @@ const ManifestoSection = () => {
                   }}
                 >
                   <span className="relative z-10">
-                    Explore All Resources
-                    <ArrowRight className="ml-2 h-5 w-5 inline" aria-label="Arrow pointing to resources" />
+                    See What Stack Looks Like
+                    <ArrowRight className="ml-2 h-5 w-5 inline" aria-label="Arrow pointing to stack content" />
                   </span>
                 </Button>
               </Link>

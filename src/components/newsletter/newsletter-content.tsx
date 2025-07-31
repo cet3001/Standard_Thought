@@ -17,9 +17,8 @@ export const NewsletterContent = () => {
       </h2>
       
       <p className="text-base sm:text-lg text-brand-black dark:text-brand-cream max-w-2xl mx-auto leading-relaxed mb-8">
-        Join 1,000+ first-gen hustlers flipping the script on money. Get weekly street-smart strategies, 
-        exclusive AI side hustle plays, and real talk on breaking money trauma—straight to your inbox. 
-        No spam, no fluff—just blueprints that actually work.
+        Real strategies. No fluff. Just blueprints that flip money trauma into power moves.
+        Join 1,000+ first-gen hustlers stacking clarity, AI side hustles, and soul-rooted wealth—straight to your inbox.
       </p>
     </div>
   );

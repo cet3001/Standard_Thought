@@ -49,13 +49,28 @@ const HeroContent = ({ isVisible, scrollToNewsletter }: HeroContentProps) => {
               <a href="/download/legacy-starter-kit">
                 <Button 
                   size="lg"
-                  className="group bg-gradient-to-r from-yellow-500 via-yellow-400 to-yellow-500 hover:from-yellow-400 hover:via-yellow-300 hover:to-yellow-400 text-black font-bold text-lg px-10 py-5 rounded-xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 border-2 border-yellow-600 hover:border-yellow-500"
+                  className="group relative overflow-hidden rounded-xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 border-2 px-10 py-5"
+                  style={{ 
+                    backgroundColor: 'var(--color-lovable-pearlescent-yellow)',
+                    borderColor: 'var(--color-lovable-pearlescent-yellow)',
+                    color: 'var(--color-lovable-black)'
+                  }}
                   aria-label="Download the Legacy Starter Kit"
                 >
-                  <span className="flex items-center gap-3 font-inter font-bold">
+                  <span 
+                    className="flex items-center gap-3 font-bold text-lg transform -rotate-1"
+                    style={{ 
+                      fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
+                      textShadow: '2px 2px 0px rgba(0,0,0,0.2)',
+                      letterSpacing: '1px'
+                    }}
+                  >
                     📥 Download the Legacy Starter Kit
                     <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
                   </span>
+                  
+                  {/* Urban texture overlay */}
+                  <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_1px_1px,_rgba(0,0,0,0.8)_1px,_transparent_0)] bg-[length:8px_8px] pointer-events-none"></div>
                 </Button>
               </a>
             </div>

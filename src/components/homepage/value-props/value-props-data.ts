@@ -5,7 +5,7 @@ export const valuePropsData = [
   {
     icon: Target,
     title: "UNLEARN",
-    description: "Call out survival patterns that ain't serving you.",
+    description: "Call out survival patterns that aren't serving you.",
     highlight: "Step 1",
     link: "/"
   },

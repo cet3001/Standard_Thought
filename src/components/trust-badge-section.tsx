@@ -9,7 +9,7 @@ const TrustBadgeSection = () => {
 
   const testimonials = [
     { text: "Finally, money advice that speaks my language.", author: "Jamal", city: "Atlanta" },
-    { text: "This ain't your typical finance BS—it's real talk.", author: "Maria", city: "Chicago" },
+    { text: "This isn't your typical finance BS—it's real talk.", author: "Maria", city: "Chicago" },
     { text: "Started with $50, now I'm building something real.", author: "Tony", city: "Brooklyn" },
     { text: "These folks get the struggle and show you the way out.", author: "Keisha", city: "Detroit" },
     { text: "No cap, this changed my whole money mindset.", author: "Carlos", city: "LA" },

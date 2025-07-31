@@ -172,7 +172,7 @@ const ManifestoSection = () => {
               {/* Main text content on the right */}
               <div className="lg:w-2/3 space-y-6 text-lg leading-relaxed text-brand-black dark:text-brand-cream relative">
                 <p className="text-xl font-semibold relative z-10 mb-6">
-                  Most wealth advice ain't built for us. This ain't about chasing quick wins—it's about breaking cycles, not breaking ourselves.
+                  Most wealth advice isn't built for us. This isn't about chasing quick wins—it's about breaking cycles, not breaking ourselves.
                 </p>
                 
                 <p className="relative z-10 mb-6">

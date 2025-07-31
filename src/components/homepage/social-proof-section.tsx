@@ -11,7 +11,7 @@ const SocialProofSection = ({ isVisible }: SocialProofSectionProps) => {
 
   const testimonials = [
     { text: "Finally, money advice that speaks my language.", author: "Tasha", location: "South Side" },
-    { text: "This ain't your typical finance BS—it's real talk.", author: "Marcus", location: "East Oakland" },
+    { text: "This isn't your typical finance BS—it's real talk.", author: "Marcus", location: "East Oakland" },
     { text: "Started with $25, now I'm building something real.", author: "Keisha", location: "North Philly" },
     { text: "These folks get the struggle and show you the way out.", author: "Carlos", location: "East LA" },
     { text: "No cap, this changed my whole money mindset.", author: "Aisha", location: "West Side" },

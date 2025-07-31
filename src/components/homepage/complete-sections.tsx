@@ -55,7 +55,7 @@ const CompleteSections = ({ isVisible }: CompleteSectionsProps) => {
             <div className="process-step">
               <div className="step-number">01</div>
               <h3 className="step-title">UNLEARN</h3>
-              <p className="step-description">Call out survival patterns that ain't serving you.</p>
+              <p className="step-description">Call out survival patterns that aren't serving you.</p>
             </div>
             
             <div className="process-step">

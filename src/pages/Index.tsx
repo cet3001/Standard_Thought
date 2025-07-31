@@ -5,7 +5,6 @@ import HomepageHero from "@/components/homepage-hero";
 import ManifestoSection from "@/components/manifesto-section";
 import { NewsletterSection } from "@/components/newsletter-section";
 import FeaturedBlogSection from "@/components/homepage/featured-blog-section";
-import RealProgressSection from "@/components/homepage/real-progress-section";
 
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
@@ -179,9 +178,6 @@ const Index = () => {
 
           {/* Featured Blog Section */}
           <FeaturedBlogSection isVisible={true} />
-
-          {/* Real Progress Section */}
-          <RealProgressSection isVisible={true} />
 
           {/* Manifesto */}
           <section className="py-16">

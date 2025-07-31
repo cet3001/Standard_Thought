@@ -42,16 +42,16 @@ export const MetaTags = ({
       
       {/* Enhanced Open Graph Tags */}
       <meta property="og:type" content={type} />
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
-      <meta property="og:image" content={fullImageUrl} />
+      <meta property="og:title" content="Standard Thought | Flip the Script" />
+      <meta property="og:description" content="Build legacy from nothing. Soul-rooted content for people who weren't handed blueprints." />
+      <meta property="og:image" content="https://standardthought.com/social-preview.jpg" />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
-      <meta property="og:image:alt" content={`StandardThought - ${title} - Urban wealth building and financial education platform`} />
+      <meta property="og:image:alt" content={`Standard Thought - ${title} - Urban wealth building and financial education platform`} />
       <meta property="og:image:type" content="image/png" />
-      <meta property="og:image:secure_url" content={fullImageUrl} />
-      <meta property="og:url" content={canonicalUrl} />
-      <meta property="og:site_name" content="StandardThought - Urban Wealth Building Hub" />
+      <meta property="og:image:secure_url" content="https://standardthought.com/social-preview.jpg" />
+      <meta property="og:url" content="https://standardthought.com" />
+      <meta property="og:site_name" content="Standard Thought - Urban Wealth Building Hub" />
       <meta property="og:locale" content="en_US" />
       <meta property="og:determiner" content="the" />
       <meta property="fb:app_id" content="" />

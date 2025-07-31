@@ -68,16 +68,14 @@ export const generateOrganizationSchema = ({
 }: OrganizationSchemaProps) => ({
   "@context": "https://schema.org",
   "@type": "Organization",
-  name,
-  alternateName: "Standard Thought",
-  description,
-  url,
-  logo: {
-    "@type": "ImageObject",
-    url: logo,
-    width: "400",
-    height: "400"
-  },
+  name: "Standard Thought",
+  url: "https://standardthought.com",
+  sameAs: [
+    "https://instagram.com/standardthought",
+    "https://tiktok.com/@standardthought"
+  ],
+  logo: "https://standardthought.com/logo.svg",
+  description: "A digital sanctuary for those breaking survival cycles, building wealth with vision, and rewriting inherited blueprints.",
   image: logo,
   ...(contactEmail && {
     contactPoint: {
@@ -87,7 +85,6 @@ export const generateOrganizationSchema = ({
       availableLanguage: "English"
     }
   }),
-  ...(socialMedia.length > 0 && { sameAs: socialMedia }),
   ...(address && {
     address: {
       "@type": "PostalAddress",
@@ -100,16 +97,18 @@ export const generateOrganizationSchema = ({
   }),
   founder: {
     "@type": "Person",
-    name: "Standardthought Team"
+    name: "Standard Thought Team"
   },
   foundingDate: "2024",
   knowsAbout: [
     "Urban Entrepreneurship",
     "Wealth Building",
-    "Business Development",
+    "Business Development", 
     "Startup Strategies",
     "Personal Development",
-    "Financial Education"
+    "Financial Education",
+    "Generational Wealth Building",
+    "Identity-Rooted Business Strategy"
   ],
   areaServed: "Worldwide",
   serviceType: "Educational Content & Business Consulting"

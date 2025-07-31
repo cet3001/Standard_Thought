@@ -145,19 +145,19 @@ const SEO = ({
   if (type === 'website') {
     // For homepage and main pages, use Organization + WebSite schema
     const organizationSchema = generateOrganizationSchema({
-      name: "Standardthought",
-      url: canonicalUrl,
+      name: "Standard Thought",
+      url: "https://standardthought.com",
       title: fullTitle,
       description: optimizedDescription,
-      logo: fullImageUrl,
+      logo: "https://standardthought.com/logo.svg",
       contactEmail: "hello@standardthought.com",
       socialMedia: [
-        "https://twitter.com/standardthought",
-        "https://www.linkedin.com/company/standardthought"
+        "https://instagram.com/standardthought",
+        "https://tiktok.com/@standardthought"
       ]
     });
 
-    const webSiteSchema = generateWebSiteSchema(canonicalUrl);
+    const webSiteSchema = generateWebSiteSchema("https://standardthought.com");
     
     structuredData = [organizationSchema, webSiteSchema];
   } else {

@@ -33,8 +33,8 @@ const BuiltForPeopleLikeUsSection = ({ isVisible }: BuiltForPeopleLikeUsSectionP
         
         {/* Section Header */}
         <div className="text-center mb-12 relative z-10">
-          <h2 className="text-3xl md:text-4xl font-black mb-4" style={{ color: 'var(--color-lovable-black)' }}>
-            Built For People Like Us
+          <h2 className="text-3xl md:text-4xl font-black mb-4">
+            <span style={{ color: 'var(--color-lovable-black)' }}>Built For</span> <span className="pearlescent-text">People Like Us</span>
           </h2>
         </div>
 

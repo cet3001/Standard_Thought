@@ -36,7 +36,7 @@ const HeroContent = ({ isVisible, scrollToNewsletter }: HeroContentProps) => {
             
             {/* Main Headline */}
             <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold font-inter leading-[1.1] text-brand-cream">
-              Break Cycles. Build <span className="pearlescent-text">Legacy</span>. Define Your Truth.
+              <span style={{ color: 'var(--color-lovable-black)' }}>Break</span> <span className="pearlescent-text">Cycles</span>. <span style={{ color: 'var(--color-lovable-black)' }}>Build</span> <span className="pearlescent-text">Legacy</span>. <span style={{ color: 'var(--color-lovable-black)' }}>Define Your</span> <span className="pearlescent-text">Truth</span>.
             </h1>
 
             {/* Subheadline */}

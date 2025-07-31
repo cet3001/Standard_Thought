@@ -74,11 +74,10 @@ const TruthBombCarousel = ({ isVisible }: TruthBombCarouselProps) => {
             className="text-3xl md:text-4xl font-black mb-4 transform -rotate-1 relative"
             style={{ 
               fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive", 
-              textShadow: '3px 3px 0px rgba(0,0,0,0.15)',
-              color: 'var(--color-lovable-black)'
+              textShadow: '3px 3px 0px rgba(0,0,0,0.15)'
             }}
           >
-            Truth Bomb Carousel
+            <span style={{ color: 'var(--color-lovable-black)' }}>Truth Bomb</span> <span className="pearlescent-text">Carousel</span>
             {/* Enhanced texture behind title */}
             <div className="absolute inset-0 opacity-[0.08] bg-[conic-gradient(from_30deg,_transparent_65%,_rgba(0,0,0,0.5)_85%,_transparent_100%)] bg-[length:25px_25px] -z-10"></div>
           </h2>

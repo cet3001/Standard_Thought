@@ -276,70 +276,96 @@ const About = () => {
           </div>
         </section>
 
-        {/* Myths vs Realities Section */}
+        {/* Mindset Myths vs. Realities Section */}
         <section className="py-16 sm:py-24 relative">
           <div className="container mx-auto px-6 relative z-10">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-16">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6">
-                  <span className="pearlescent-text">Mindset Myths</span>{" "}
-                  <span className="text-brand-black dark:text-brand-cream">vs.</span>{" "}
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6 text-brand-black dark:text-brand-cream">
+                  Mindset Myths vs.{" "}
                   <span className="pearlescent-text">Realities</span>
                 </h2>
+                <p className="text-lg text-brand-black dark:text-brand-cream/80 font-medium">
+                  Real Talk for Cycle-Breakers: Dismantle Myths, Build Systems.
+                </p>
               </div>
               
-              <div className="grid md:grid-cols-2 gap-8">
-                <div className="space-y-8">
-                  <Card className="bg-gradient-to-r from-red-500/10 to-pink-500/10 backdrop-blur-sm border-red-300/20 dark:border-red-700/20">
-                    <CardHeader>
-                      <CardTitle className="text-xl font-bold text-red-600 dark:text-red-400">
-                        Myth: Mindset is just positive thinking.
-                      </CardTitle>
-                    </CardHeader>
-                  </Card>
-                  
-                  <Card className="bg-gradient-to-r from-red-500/10 to-pink-500/10 backdrop-blur-sm border-red-300/20 dark:border-red-700/20">
-                    <CardHeader>
-                      <CardTitle className="text-xl font-bold text-red-600 dark:text-red-400">
-                        Myth: You need privilege to shift.
-                      </CardTitle>
-                    </CardHeader>
-                  </Card>
-                  
-                  <Card className="bg-gradient-to-r from-red-500/10 to-pink-500/10 backdrop-blur-sm border-red-300/20 dark:border-red-700/20">
-                    <CardHeader>
-                      <CardTitle className="text-xl font-bold text-red-600 dark:text-red-400">
-                        Myth: Excellence alone breaks cycles.
-                      </CardTitle>
-                    </CardHeader>
-                  </Card>
+              <div className="space-y-12 max-w-3xl mx-auto">
+                {/* Block 1 */}
+                <div className="bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm rounded-xl p-6 sm:p-8 border border-gray-300/10 dark:border-gray-700/10">
+                  <div className="flex flex-col md:flex-row md:items-start gap-6">
+                    <div className="flex-1">
+                      <div className="bg-red-500/10 backdrop-blur-sm rounded-lg p-4 border border-red-500/20 mb-4">
+                        <h3 className="text-xl font-bold text-red-600 dark:text-red-400 mb-2" aria-label="Myth">
+                          Myth: "Mindset is just positive thinking."
+                        </h3>
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <div className="bg-[#FFD700]/10 backdrop-blur-sm rounded-lg p-4 border border-[#FFD700]/20">
+                        <h3 className="text-xl font-bold text-[#FFD700] mb-2" aria-label="Reality">
+                          Reality: "Mindset is the weapon that shatters inherited cycles and writes blueprints for liberation."
+                        </h3>
+                        <p className="text-sm text-brand-black dark:text-brand-cream/70 italic">
+                          This is how we UNLEARN at Standard Thought.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                
-                <div className="space-y-8">
-                  <Card className="bg-gradient-to-r from-[#FFD700]/10 to-[#FFA500]/10 backdrop-blur-sm border-[#FFD700]/20">
-                    <CardHeader>
-                      <CardTitle className="text-xl font-bold text-[#FFD700]">
-                        Reality: It's layered flips blending psych and sociology for hood wins.
-                      </CardTitle>
-                    </CardHeader>
-                  </Card>
-                  
-                  <Card className="bg-gradient-to-r from-[#FFD700]/10 to-[#FFA500]/10 backdrop-blur-sm border-[#FFD700]/20">
-                    <CardHeader>
-                      <CardTitle className="text-xl font-bold text-[#FFD700]">
-                        Reality: Instinct from nothing beats inherited ease every time.
-                      </CardTitle>
-                    </CardHeader>
-                  </Card>
-                  
-                  <Card className="bg-gradient-to-r from-[#FFD700]/10 to-[#FFA500]/10 backdrop-blur-sm border-[#FFD700]/20">
-                    <CardHeader>
-                      <CardTitle className="text-xl font-bold text-[#FFD700]">
-                        Reality: Trojan truth—it's a myth masking systemic chains; real mindset calls it out.
-                      </CardTitle>
-                    </CardHeader>
-                  </Card>
+
+                {/* Block 2 */}
+                <div className="bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm rounded-xl p-6 sm:p-8 border border-gray-300/10 dark:border-gray-700/10">
+                  <div className="flex flex-col md:flex-row md:items-start gap-6">
+                    <div className="flex-1">
+                      <div className="bg-red-500/10 backdrop-blur-sm rounded-lg p-4 border border-red-500/20 mb-4">
+                        <h3 className="text-xl font-bold text-red-600 dark:text-red-400 mb-2" aria-label="Myth">
+                          Myth: "You need privilege to shift."
+                        </h3>
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <div className="bg-[#FFD700]/10 backdrop-blur-sm rounded-lg p-4 border border-[#FFD700]/20">
+                        <h3 className="text-xl font-bold text-[#FFD700] mb-2" aria-label="Reality">
+                          Reality: "Instinct and soul-borne truth beat inherited ease—if you choose to REBUILD."
+                        </h3>
+                        <p className="text-sm text-brand-black dark:text-brand-cream/70 italic">
+                          Every flip is a REBUILD—for you and your community.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+
+                {/* Block 3 */}
+                <div className="bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm rounded-xl p-6 sm:p-8 border border-gray-300/10 dark:border-gray-700/10">
+                  <div className="flex flex-col md:flex-row md:items-start gap-6">
+                    <div className="flex-1">
+                      <div className="bg-red-500/10 backdrop-blur-sm rounded-lg p-4 border border-red-500/20 mb-4">
+                        <h3 className="text-xl font-bold text-red-600 dark:text-red-400 mb-2" aria-label="Myth">
+                          Myth: "Excellence alone breaks cycles."
+                        </h3>
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <div className="bg-[#FFD700]/10 backdrop-blur-sm rounded-lg p-4 border border-[#FFD700]/20">
+                        <h3 className="text-xl font-bold text-[#FFD700] mb-2" aria-label="Reality">
+                          Reality: "Excellence is the Trojan horse—real freedom calls out every chain and transcends grind."
+                        </h3>
+                        <p className="text-sm text-brand-black dark:text-brand-cream/70 italic">
+                          This is how you STACK and TRANSCEND—no cap.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Subtle CTA */}
+              <div className="text-center mt-12">
+                <p className="text-lg sm:text-xl text-[#FFD700] font-medium">
+                  Heard the myths. Ready to live the reality? Your blueprint starts below.
+                </p>
               </div>
             </div>
           </div>

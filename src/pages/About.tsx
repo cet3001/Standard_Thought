@@ -83,9 +83,9 @@ const About = () => {
 
       {/* SEO */}
       <SEO 
-        title="The Real About Mindset - Flipping Stories, Breaking Cycles | StandardThought" 
-        description="Mental wealth from the ground up. Transform mindset trauma into legacy keys with proven urban strategies for breaking cycles." 
-        keywords="mindset transformation, breaking cycles, mental wealth building, urban mindset, Black mindset coaching, generational trauma healing" 
+        title="About | Standard Thought – Cycle-Breaking Begins in the Mind" 
+        description="Learn how Standard Thought helps you unlearn survival scripts, rebuild your identity, and design soul-rooted systems that build legacy—starting with mindset." 
+        keywords="mindset transformation, breaking cycles, mental wealth building, urban mindset, cycle-breaking, survival programming, identity rebuilding, system-building" 
         url="/about" 
         type="article" 
         breadcrumbs={breadcrumbs} 
@@ -108,78 +108,41 @@ const About = () => {
       <main className="relative z-10 pt-20 sm:pt-24 lg:pt-28">
         {/* Hero Section */}
         <section className="py-16 sm:py-24 relative">
-          <div className="container mx-auto px-6 max-w-7xl relative z-10">
-            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start mb-16 relative">
-              {/* Left Column - Text Content */}
-              <div className={`transition-all duration-1000 relative z-10 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight relative">
-                  <div className="absolute inset-0 opacity-[0.05] bg-[conic-gradient(from_0deg,_transparent_70%,_rgba(0,0,0,0.3)_90%,_transparent_100%)] bg-[length:15px_15px]"></div>
-                  <span className="relative z-10">
-                    <span className="text-brand-black dark:text-brand-cream">The Real About</span>{" "}
-                    <span className="pearlescent-text">Mindset</span>
-                  </span>
-                </h1>
-                
-                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4 text-brand-black dark:text-brand-cream">
-                  <span className="pearlescent-text">Flipping Stories, Breaking Cycles</span>{" "}
-                  <span className="text-brand-black dark:text-brand-cream">—Mental Wealth From the Ground Up, Not Just Bread</span>
+          <div className="container mx-auto px-6 max-w-4xl relative z-10">
+            <div className="text-center min-h-[60vh] flex flex-col justify-center">
+              {/* Headline */}
+              <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                <span className="text-brand-cream dark:text-brand-cream">This Is Mindset</span>{" "}
+                <span className="pearlescent-text">With Weight On It.</span>
+              </h1>
+              
+              {/* Subheadline */}
+              <div className={`transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-8 text-brand-cream dark:text-brand-cream">
+                  If you grew up surviving, this isn't just about money.
+                  <br className="hidden sm:block" />
+                  It's about rewriting the script.
                 </h2>
                 
-                <h3 className="text-lg sm:text-xl font-semibold mb-6 text-brand-black dark:text-brand-cream">
-                  <span className="pearlescent-text">Standard Thought Law #6:</span>{" "}
-                  <span className="text-brand-black dark:text-brand-cream">The Mindset Myth—Flip</span>{" "}
-                  <span className="pearlescent-text">Stories Over Safe Illusions</span>
-                </h3>
-                
-                <p className="text-base sm:text-lg text-brand-black dark:text-brand-cream/80 mb-8 leading-relaxed">
-                  <strong>You Flipping Your Story, or Inheriting Cycles? 80% of Black Mindsets Stay Trapped</strong>—Break It Here. 
-                  Blending motivation (drive from within) + behavioral psych (rewiring trauma) + urban sociology (cycle traps in Black communities), 
-                  this is the hub for mindset transformation—no fluff, real grit for urban builders turning instinct into legacy.
+                <p className="text-lg sm:text-xl text-brand-cream/90 dark:text-brand-cream/90 mb-8 leading-relaxed max-w-4xl mx-auto">
+                  At Standard Thought, we teach you how to unlearn survival programming, rebuild identity with truth, stack legacy with soul, and transcend every system that told you to play small.
                 </p>
                 
-                <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                  <Button 
-                    onClick={() => navigate('/sales')}
-                    className="bg-gradient-to-r from-[#FFD700] to-[#FFA500] hover:from-[#FFA500] hover:to-[#FFD700] text-black font-bold px-6 py-3 text-lg transition-all duration-300 transform hover:scale-105"
-                  >
-                    ⚡ Get The Mindset Blueprint
-                  </Button>
-                </div>
+                <p className="text-lg sm:text-xl text-brand-cream/90 dark:text-brand-cream/90 mb-8 leading-relaxed max-w-4xl mx-auto">
+                  This isn't personal finance.
+                  <br className="hidden sm:block" />
+                  This is system-building for people who started with nothing—and still chose to design everything.
+                </p>
               </div>
               
-              {/* Right Column - Visual Element */}
-              <div className={`transition-all duration-1000 delay-300 relative ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-                {/* Hero Image */}
-                <div className="relative mb-8">
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#FFD700]/20 to-[#FFA500]/20 backdrop-blur-sm rounded-2xl transform rotate-1"></div>
-                  <div className="relative">
-                    <img
-                      src="/lovable-uploads/f309179b-b731-4959-8cb3-c02b01fe3b95.png"
-                      alt="Urban entrepreneur overlooking city skyline representing mindset transformation and mental wealth building"
-                      className="w-full h-auto rounded-2xl shadow-2xl"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent rounded-2xl"></div>
-                  </div>
-                </div>
-                
-                {/* Stat Card */}
-                <div className="relative">
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#FFD700]/20 to-[#FFA500]/20 backdrop-blur-sm rounded-2xl transform -rotate-2"></div>
-                  <div className="relative bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm rounded-2xl p-8 border border-gray-300/10 dark:border-gray-700/10">
-                    <div className="text-center">
-                      <div className="text-4xl sm:text-5xl font-black mb-4 pearlescent-text">
-                        80%
-                      </div>
-                      <p className="text-lg text-brand-black dark:text-brand-cream font-semibold">
-                        of Black mindsets stay trapped in inherited cycles
-                      </p>
-                      <p className="text-sm text-brand-black dark:text-brand-cream/80 mt-2">
-                        Time to flip the script.
-                      </p>
-                    </div>
-                  </div>
-                </div>
+              {/* Primary CTA */}
+              <div className={`transition-all duration-1000 delay-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                <Button 
+                  onClick={() => navigate('/sales')}
+                  className="bg-gradient-to-r from-[#FFD700] to-[#FFA500] hover:from-[#FFA500] hover:to-[#FFD700] text-black font-bold px-8 py-4 text-xl transition-all duration-300 transform hover:scale-105 animate-pulse hover:animate-none"
+                >
+                  Start Your Cycle-Breaking Journey
+                </Button>
               </div>
             </div>
           </div>

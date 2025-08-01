@@ -58,3 +58,50 @@
 .text-explicit-black {
   color: #0A0A0A !important;
 }
+
+/* Urban Hand-Drawn CTA Styles */
+.urban-cta {
+  font-family: 'Permanent Marker', cursive;
+  background: linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f);
+  background-size: 400% 400%;
+  animation: pearlescent 3s ease-in-out infinite;
+  border: 3px solid #FFD700;
+  border-radius: 8px;
+  box-shadow: 
+    0 0 20px rgba(255, 215, 0, 0.6),
+    0 4px 15px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5);
+  transform: rotate(-1deg);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.urban-cta:hover {
+  transform: rotate(1deg) scale(1.05);
+  box-shadow: 
+    0 0 30px rgba(255, 215, 0, 0.8),
+    0 6px 20px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  animation-duration: 1.5s;
+}
+
+.urban-cta:active {
+  transform: rotate(-0.5deg) scale(0.98);
+}
+
+.urban-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: left 0.5s;
+}
+
+.urban-cta:hover::before {
+  left: 100%;
+}

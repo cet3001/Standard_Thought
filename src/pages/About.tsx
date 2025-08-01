@@ -153,7 +153,7 @@ const About = () => {
                 <div className={`transition-all duration-1000 delay-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
                   <Button 
                     onClick={() => navigate('/sales')}
-                    className="bg-gradient-to-r from-[#FFD700] to-[#FFA500] hover:from-[#FFA500] hover:to-[#FFD700] text-black font-bold px-6 py-3 text-lg lg:text-xl transition-all duration-300 transform hover:scale-105 animate-pulse hover:animate-none"
+                    className="urban-cta text-black font-bold px-6 py-3 text-lg lg:text-xl"
                   >
                     Break the Cycle. Build Your Legacy—Start Now
                   </Button>
@@ -267,7 +267,7 @@ const About = () => {
               <div className="text-center mt-8">
                 <Button 
                   onClick={() => navigate('/sales')}
-                  className="bg-gradient-to-r from-[#FFD700] to-[#FFA500] hover:from-[#FFA500] hover:to-[#FFD700] text-black font-bold px-6 py-3 text-lg transition-all duration-300 transform hover:scale-105"
+                  className="urban-cta text-black font-bold px-6 py-3 text-lg"
                 >
                   Tap to Start Unlearning
                 </Button>

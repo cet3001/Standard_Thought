@@ -647,11 +647,6 @@ const About = () => {
         </section>
 
 
-        {/* Newsletter Section */}
-        <NewsletterSection />
-
-        {/* Internal Linking for SEO */}
-        <InternalLinkingHub currentPage="/about" showPillarsOnly={true} limit={3} />
       </main>
 
       {/* Footer */}

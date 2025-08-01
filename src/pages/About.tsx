@@ -14,6 +14,52 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { NewsletterSection } from "@/components/newsletter-section";
 import { useState, useEffect } from "react";
 
+// Dynamic Community Ticker Component
+const DynamicCommunityTicker = ({ isVisible }: { isVisible: boolean }) => {
+  const communityNames = [
+    "Alex", "Jamal", "Tiana", "Marcus", "Keisha", "Carlos", "Aaliyah", "Jordan", 
+    "Destiny", "Isaiah", "Zara", "Damon", "Simone", "Andre", "Nia", "Terrell", 
+    "Yasmin", "Malik", "Camila", "Devon", "Raven", "Xavier", "Amara", "Khalil",
+    "Zoe", "Darius", "Imani", "Elijah", "Kendra", "Omar", "Layla", "Jaden",
+    "Ebony", "Rashad", "Tierra", "Antonio", "Maya", "Devin", "Aniya", "Tyrone"
+  ];
+
+  const [currentNameIndex, setCurrentNameIndex] = useState(0);
+  const [displayedNames, setDisplayedNames] = useState<string[]>([]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentNameIndex((prev) => (prev + 1) % communityNames.length);
+    }, 800); // Change name every 0.8 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    // Show 5 names at a time, rotating
+    const names = [];
+    for (let i = 0; i < 5; i++) {
+      names.push(communityNames[(currentNameIndex + i) % communityNames.length]);
+    }
+    setDisplayedNames(names);
+  }, [currentNameIndex]);
+
+  return (
+    <div className={`mt-6 transition-all duration-1000 delay-1200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+      <div className="relative overflow-hidden bg-gradient-to-r from-[#FFD700]/20 to-[#FFA500]/20 backdrop-blur-sm border border-[#FFD700]/30 rounded-lg py-3 px-4">
+        <div className="flex items-center gap-2 text-sm text-brand-cream/80 dark:text-brand-cream/80">
+          <span className="font-semibold">This site is built with:</span>
+          <div className="flex items-center gap-1">
+            <span className="transition-all duration-300 ease-in-out">
+              {displayedNames.join(" • ")}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const About = () => {
   useMobilePerformance();
   const { textureImageUrl } = useUrbanTexture();
@@ -158,18 +204,6 @@ const About = () => {
                     Break the Cycle. Build Your Legacy—Start Now
                   </Button>
                 </div>
-                
-                {/* Community Social Proof Ticker */}
-                <div className={`mt-8 transition-all duration-1000 delay-1200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-                  <div className="relative overflow-hidden bg-gradient-to-r from-[#FFD700]/20 to-[#FFA500]/20 backdrop-blur-sm border border-[#FFD700]/30 rounded-lg py-3 px-4">
-                    <div className="flex items-center gap-2 text-sm text-brand-cream/80 dark:text-brand-cream/80">
-                      <span className="font-semibold">This site is built with:</span>
-                      <div className="flex items-center gap-1 animate-pulse">
-                        <span>Alex • Jamal • Tiana • Marcus • Keisha • Carlos • Aaliyah • Jordan • Destiny • Isaiah</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </div>
 
               {/* Hero Image - Right Side on Desktop, Full Height */}
@@ -195,9 +229,12 @@ const About = () => {
                            style={{ animationDelay: '2s', animationDuration: '3.5s' }}></div>
                       <div className="absolute top-1/2 right-1/3 w-1 h-1 bg-[#FFA500] rounded-full animate-pulse" 
                            style={{ animationDelay: '0.5s', animationDuration: '2.5s' }}></div>
-                    </div>
                   </div>
                 </div>
+                
+                {/* Dynamic Community Social Proof Ticker */}
+                <DynamicCommunityTicker isVisible={isVisible} />
+              </div>
               </div>
             </div>
           </div>

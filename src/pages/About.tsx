@@ -490,10 +490,7 @@ const About = () => {
                     The Day Everything Changed
                   </h3>
                   <p className="text-lg text-brand-black dark:text-brand-cream/90 mb-4 leading-relaxed">
-                    Keisha was 28, working nights at the hospital, sending money home every month. Her mama called money talks "white people business." Then her cousin got approved for a business loan—first one in the family. 
-                  </p>
-                  <p className="text-lg text-brand-black dark:text-brand-cream/90 mb-4 leading-relaxed">
-                    That weekend, Keisha sat down with a notebook and wrote out every money rule she'd inherited. Then she crossed them out, one by one. Six months later, she opened her first investment account. A year after that, she was teaching financial literacy at the church where her grandmother prayed for "enough to get by."
+                    Keisha crossed out every money rule her family taught her, wrote new ones, and opened her first investment account six months later. 
                   </p>
                   <p className="text-sm text-brand-black dark:text-brand-cream/70 italic border-l-2 border-[#FFD700]/50 pl-4">
                     Sometimes the revolution starts with a single question: "What if the way we've always done it isn't the only way?"

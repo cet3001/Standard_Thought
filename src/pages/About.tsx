@@ -206,16 +206,16 @@ const About = () => {
                 </p>
               </div>
               
-              <div className="grid md:grid-cols-3 gap-8">
+              <div className="grid md:grid-cols-2 gap-6">
                 <Card className="bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm border-gray-300/10 dark:border-gray-700/10 hover:bg-white/20 dark:hover:bg-gray-800/20 transition-all duration-300">
                   <CardHeader>
-                    <CardTitle className="text-xl font-bold text-brand-black dark:text-brand-cream">
+                    <CardTitle className="text-lg font-bold text-brand-black dark:text-brand-cream">
                       <span className="pearlescent-text">UNLEARN:</span>{" "}
                       <span className="text-brand-black dark:text-brand-cream">The Cycle Trap</span>
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-brand-black dark:text-brand-cream/80">
+                    <p className="text-sm text-brand-black dark:text-brand-cream/80">
                       Hood cycles keep us locked in survival mode. Standard Thought is where you UNLEARN the scripts passed down by trauma, family, or your block—so the cycle ends with you.
                     </p>
                   </CardContent>
@@ -223,13 +223,13 @@ const About = () => {
                 
                 <Card className="bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm border-gray-300/10 dark:border-gray-700/10 hover:bg-white/20 dark:hover:bg-gray-800/20 transition-all duration-300">
                   <CardHeader>
-                    <CardTitle className="text-xl font-bold text-brand-black dark:text-brand-cream">
+                    <CardTitle className="text-lg font-bold text-brand-black dark:text-brand-cream">
                       <span className="pearlescent-text">REBUILD:</span>{" "}
                       <span className="text-brand-black dark:text-brand-cream">Fear of Flipping</span>
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-brand-black dark:text-brand-cream/80">
+                    <p className="text-sm text-brand-black dark:text-brand-cream/80">
                       Generational scars make every flip risky. Here, REBUILDING is about taking fear head-on so you design with courage, not react from pain. We show you how to build identity and system from truth, not old wounds.
                     </p>
                   </CardContent>
@@ -237,29 +237,37 @@ const About = () => {
                 
                 <Card className="bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm border-gray-300/10 dark:border-gray-700/10 hover:bg-white/20 dark:hover:bg-gray-800/20 transition-all duration-300">
                   <CardHeader>
-                    <CardTitle className="text-xl font-bold text-brand-black dark:text-brand-cream">
+                    <CardTitle className="text-lg font-bold text-brand-black dark:text-brand-cream">
                       <span className="pearlescent-text">STACK:</span>{" "}
                       <span className="text-brand-black dark:text-brand-cream">Why Most Advice Fails</span>
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-brand-black dark:text-brand-cream/80">
+                    <p className="text-sm text-brand-black dark:text-brand-cream/80">
                       Fake positivity and empty 'mindset hacks' ignore culture, pain, and legacy. We STACK real wisdom—showing receipts, naming the myths, and translating street survival into generational power.
                     </p>
                   </CardContent>
                 </Card>
-              </div>
-              
-              <div className="text-center mt-12">
-                <p className="text-lg font-semibold text-brand-black dark:text-brand-cream mb-8">
-                  TRANSCEND: Stop living someone else's script. Ready to build your own system and set your legacy in motion?
-                </p>
-                <Button 
-                  onClick={() => navigate('/sales')}
-                  className="bg-gradient-to-r from-[#FFD700] to-[#FFA500] hover:from-[#FFA500] hover:to-[#FFD700] text-black font-bold px-6 py-3 text-lg transition-all duration-300 transform hover:scale-105"
-                >
-                  Tap to Start Unlearning
-                </Button>
+
+                <Card className="bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm border-gray-300/10 dark:border-gray-700/10 hover:bg-white/20 dark:hover:bg-gray-800/20 transition-all duration-300">
+                  <CardHeader>
+                    <CardTitle className="text-lg font-bold text-brand-black dark:text-brand-cream">
+                      <span className="pearlescent-text">TRANSCEND:</span>{" "}
+                      <span className="text-brand-black dark:text-brand-cream">Your Legacy Starts Now</span>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-brand-black dark:text-brand-cream/80 mb-4">
+                      Stop living someone else's script. Ready to build your own system and set your legacy in motion?
+                    </p>
+                    <Button 
+                      onClick={() => navigate('/sales')}
+                      className="bg-gradient-to-r from-[#FFD700] to-[#FFA500] hover:from-[#FFA500] hover:to-[#FFD700] text-black font-bold px-4 py-2 text-sm w-full transition-all duration-300 transform hover:scale-105"
+                    >
+                      Tap to Start Unlearning
+                    </Button>
+                  </CardContent>
+                </Card>
               </div>
             </div>
           </div>

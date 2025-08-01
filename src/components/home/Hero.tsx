@@ -38,32 +38,26 @@ const HeroContent = ({ isVisible, scrollToNewsletter }: HeroContentProps) => {
             
             {/* Main Headline */}
             <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold font-inter leading-[1.1] text-brand-cream">
-              <span style={{ color: 'var(--color-lovable-black)' }}>Mindset Is</span> <span className="pearlescent-text">Survival</span>. <span className="pearlescent-text">Liberation</span>. <span className="pearlescent-text">Legacy</span>.
+              <span style={{ color: 'var(--color-lovable-black)' }}>Break</span> <span className="pearlescent-text">Cycles</span>. <span style={{ color: 'var(--color-lovable-black)' }}>Build</span> <span className="pearlescent-text">Legacy</span>. <span style={{ color: 'var(--color-lovable-black)' }}>Define Your</span> <span className="pearlescent-text">Truth</span>.
             </h1>
 
             {/* Subheadline */}
-            <div className="space-y-4 transition-all duration-1000 delay-1000 opacity-0 translate-y-4 animate-[fade-in_1s_ease-out_1s_forwards]">
-              <p className="text-lg md:text-xl lg:text-2xl font-inter font-semibold text-brand-cream leading-[1.4]">
-                You weren't handed a blueprint. You had to build one while surviving.
-              </p>
-              <p className="text-base md:text-lg lg:text-xl font-inter text-brand-cream/90 leading-[1.5]">
-                Standard Thought is a digital sanctuary for cycle-breakers, soul-builders, and blueprint writers. We show you how to unlearn the lies, rebuild with truth, stack what matters, and transcend survival for good. This isn't just about wealth. This is about wisdom. Power. And reclaiming your story.
-              </p>
-            </div>
+            <p className="text-lg md:text-xl lg:text-2xl font-inter font-semibold text-brand-cream leading-[1.4]">
+              You weren't handed blueprints. You inherited burdens. Now it's time to flip the script—rebuild identity, stack wealth, and transcend survival thinking.
+            </p>
 
-            {/* CTA Buttons */}
-            <div className="pt-6 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              {/* Primary CTA */}
+            {/* CTA Button */}
+            <div className="pt-6 flex justify-center lg:justify-start">
               <a href="/download/legacy-starter-kit">
                 <Button 
                   size="lg"
-                  className="group relative overflow-hidden rounded-xl shadow-xl hover:shadow-2xl hover:shadow-yellow-400/30 transform hover:scale-105 transition-all duration-300 border-2 px-10 py-5 animate-pulse hover:animate-none"
+                  className="group relative overflow-hidden rounded-xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 border-2 px-10 py-5"
                   style={{ 
                     backgroundColor: 'var(--color-lovable-pearlescent-yellow)',
                     borderColor: 'var(--color-lovable-pearlescent-yellow)',
                     color: 'var(--color-lovable-black)'
                   }}
-                  aria-label="Start your cycle-breaking journey"
+                  aria-label="Download the Legacy Starter Kit"
                 >
                   <span 
                     className="flex items-center gap-3 font-bold text-lg transform -rotate-1"
@@ -73,7 +67,7 @@ const HeroContent = ({ isVisible, scrollToNewsletter }: HeroContentProps) => {
                       letterSpacing: '1px'
                     }}
                   >
-                    🔥 Start Your Cycle-Breaking Journey
+                    📥 Download the Legacy Starter Kit
                     <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
                   </span>
                   
@@ -81,27 +75,13 @@ const HeroContent = ({ isVisible, scrollToNewsletter }: HeroContentProps) => {
                   <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_1px_1px,_rgba(0,0,0,0.8)_1px,_transparent_0)] bg-[length:8px_8px] pointer-events-none"></div>
                 </Button>
               </a>
+            </div>
 
-              {/* Secondary CTA (Mobile Alternative) */}
-              <div className="block sm:hidden">
-                <a href="/download/legacy-starter-kit">
-                  <Button 
-                    variant="outline"
-                    size="lg"
-                    className="group relative rounded-xl border-2 px-8 py-3 transition-all duration-300 hover:scale-105"
-                    style={{ 
-                      borderColor: 'var(--color-lovable-pearlescent-yellow)',
-                      color: 'var(--color-lovable-pearlescent-yellow)',
-                      backgroundColor: 'transparent'
-                    }}
-                    aria-label="Enter the sanctuary"
-                  >
-                    <span className="flex items-center gap-2 font-semibold text-base">
-                      → Enter the Sanctuary
-                    </span>
-                  </Button>
-                </a>
-              </div>
+            {/* Site Tagline */}
+            <div className="pt-4">
+              <p className="text-sm md:text-base text-brand-cream/80 font-inter">
+                Standard Thought is a digital sanctuary for those reclaiming power and purpose.
+              </p>
             </div>
           </div>
         </div>

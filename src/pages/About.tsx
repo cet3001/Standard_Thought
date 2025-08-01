@@ -257,17 +257,20 @@ const About = () => {
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-sm text-brand-black dark:text-brand-cream/80 mb-4">
+                    <p className="text-sm text-brand-black dark:text-brand-cream/80">
                       Stop living someone else's script. Ready to build your own system and set your legacy in motion?
                     </p>
-                    <Button 
-                      onClick={() => navigate('/sales')}
-                      className="bg-gradient-to-r from-[#FFD700] to-[#FFA500] hover:from-[#FFA500] hover:to-[#FFD700] text-black font-bold px-4 py-2 text-sm w-full transition-all duration-300 transform hover:scale-105"
-                    >
-                      Tap to Start Unlearning
-                    </Button>
                   </CardContent>
                 </Card>
+              </div>
+              
+              <div className="text-center mt-8">
+                <Button 
+                  onClick={() => navigate('/sales')}
+                  className="bg-gradient-to-r from-[#FFD700] to-[#FFA500] hover:from-[#FFA500] hover:to-[#FFD700] text-black font-bold px-6 py-3 text-lg transition-all duration-300 transform hover:scale-105"
+                >
+                  Tap to Start Unlearning
+                </Button>
               </div>
             </div>
           </div>

@@ -109,9 +109,9 @@ const About = () => {
         {/* Hero Section */}
         <section className="py-16 sm:py-24 relative">
           <div className="container mx-auto px-6 max-w-6xl relative z-10">
-            <div className="min-h-[60vh] flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
+            <div className="min-h-[70vh] flex flex-col lg:flex-row items-start justify-between gap-8 lg:gap-12">
               {/* Text Content - Left Side on Desktop */}
-              <div className="flex-1 text-center lg:text-left order-2 lg:order-1">
+              <div className="flex-1 text-center lg:text-left order-2 lg:order-1 flex flex-col justify-center min-h-[70vh]">
                 {/* Headline */}
                 <h1 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
                     style={{
@@ -160,17 +160,16 @@ const About = () => {
                 </div>
               </div>
 
-              {/* Hero Image - Right Side on Desktop */}
-              <div className="flex-none order-1 lg:order-2 lg:w-[45%]">
-                <div className={`relative transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-                  <div className="relative overflow-hidden rounded-xl border-2 border-[#FFD700]/30 shadow-2xl">
+              {/* Hero Image - Right Side on Desktop, Full Height */}
+              <div className="flex-none order-1 lg:order-2 lg:w-[45%] h-full">
+                <div className={`relative h-[70vh] transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                  <div className="relative overflow-hidden rounded-xl border-2 border-[#FFD700]/30 shadow-2xl h-full">
                     <img 
                       src="/lovable-uploads/295f37bf-a6b1-43af-ac91-cac7c2345731.png"
                       alt="Black man stands on a rooftop at night, overlooking a city being rebuilt—scaffolding and cranes signal transformation on the skyline"
-                      className="w-full h-auto object-cover"
+                      className="w-full h-full object-cover object-center"
                       style={{
-                        filter: 'brightness(1.1) contrast(1.1)',
-                        maxHeight: '600px'
+                        filter: 'brightness(1.1) contrast(1.1)'
                       }}
                     />
                     

@@ -112,26 +112,22 @@ const About = () => {
             <div className="text-center min-h-[60vh] flex flex-col justify-center">
               {/* Headline */}
               <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-                <span className="text-brand-cream dark:text-brand-cream">This Is Mindset</span>{" "}
-                <span className="pearlescent-text">With Weight On It.</span>
+                <span className="text-brand-cream dark:text-brand-cream">Welcome to the Home of Cycle-Breakers.</span>{" "}
+                <span className="pearlescent-text">Mindset Isn't Just Step One—It's the Blueprint for Liberation, Legacy, and System-Building.</span>
               </h1>
               
               {/* Subheadline */}
               <div className={`transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
                 <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-8 text-brand-cream dark:text-brand-cream">
-                  If you grew up surviving, this isn't just about money.
-                  <br className="hidden sm:block" />
-                  It's about rewriting the script.
+                  We grew up surviving. Now we build what lasts. Here, you unlearn survival scripts, rebuild your identity with truth, stack real skills and soul, and design the legacy no one handed you.
                 </h2>
                 
                 <p className="text-lg sm:text-xl text-brand-cream/90 dark:text-brand-cream/90 mb-8 leading-relaxed max-w-4xl mx-auto">
-                  At Standard Thought, we teach you how to unlearn survival programming, rebuild identity with truth, stack legacy with soul, and transcend every system that told you to play small.
+                  At Standard Thought, you break cycles for good. This is where we drop hustle trauma, heal by building, and create blueprints your family—and your block—will remember. No more shrinking, no more waiting. We design new systems here, together.
                 </p>
                 
                 <p className="text-lg sm:text-xl text-brand-cream/90 dark:text-brand-cream/90 mb-8 leading-relaxed max-w-4xl mx-auto">
-                  This isn't personal finance.
-                  <br className="hidden sm:block" />
-                  This is system-building for people who started with nothing—and still chose to design everything.
+                  This isn't another finance site. This is the digital sanctuary for those who had no blueprint, but choose to build one that lasts. You in?
                 </p>
               </div>
               
@@ -141,7 +137,7 @@ const About = () => {
                   onClick={() => navigate('/sales')}
                   className="bg-gradient-to-r from-[#FFD700] to-[#FFA500] hover:from-[#FFA500] hover:to-[#FFD700] text-black font-bold px-8 py-4 text-xl transition-all duration-300 transform hover:scale-105 animate-pulse hover:animate-none"
                 >
-                  Start Your Cycle-Breaking Journey
+                  Break the Cycle. Build Your Legacy—Start Now
                 </Button>
               </div>
             </div>

@@ -247,12 +247,20 @@ const About = () => {
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-16">
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6">
-                  <span className="pearlescent-text">Why Mindset Matters (Real Talk):</span>{" "}
+                  <span className="pearlescent-text">Why Your Mental Game Matters (Real Talk):</span>{" "}
                   <span className="text-brand-black dark:text-brand-cream">Because Breaking Cycles is a Revolution—Not a Self-Help Trend.</span>
                 </h2>
-                <p className="text-lg text-brand-black dark:text-brand-cream/80 max-w-3xl mx-auto">
-                  Mindset alone won't save you—but it's where every revolution begins. We flip the script on trauma, grind myths, and trapped stories, showing how real cycle-breakers unlearn, rebuild, stack truth, and transcend for legacy.
+                <p className="text-lg text-brand-black dark:text-brand-cream/80 max-w-3xl mx-auto mb-6">
+                  Your mental game alone won't save you—but it's where every revolution begins. We flip the script on trauma, grind myths, and trapped stories, showing how real cycle-breakers unlearn, rebuild, stack truth, and transcend for generational power.
                 </p>
+                
+                {/* Reader Quote */}
+                <div className="max-w-2xl mx-auto">
+                  <blockquote className="text-xl font-bold text-[#FFD700] italic border-l-4 border-[#FFD700] pl-6 py-4 bg-gradient-to-r from-[#FFD700]/10 to-transparent rounded-r-lg">
+                    "First time I named the cycle, everything changed. Wasn't about positive thinking—it was about calling out what kept me small."
+                    <footer className="text-sm text-brand-cream/80 mt-2 not-italic">— Tiana, Community Builder</footer>
+                  </blockquote>
+                </div>
               </div>
               
               <div className="grid md:grid-cols-2 gap-6">
@@ -265,7 +273,7 @@ const About = () => {
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-brand-black dark:text-brand-cream/80">
-                      Hood cycles keep us locked in survival mode. Standard Thought is where you UNLEARN the scripts passed down by trauma, family, or your block—so the cycle ends with you.
+                      Hood cycles keep us locked in survival mode. Standard Thought is where you UNLEARN the scripts passed down by trauma, family, or your block—so the pattern ends with you.
                     </p>
                   </CardContent>
                 </Card>
@@ -279,7 +287,7 @@ const About = () => {
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-brand-black dark:text-brand-cream/80">
-                      Generational scars make every flip risky. Here, REBUILDING is about taking fear head-on so you design with courage, not react from pain. We show you how to build identity and system from truth, not old wounds.
+                      Generational scars make every flip risky. Here, REBUILDING is about taking fear head-on so you design with courage, not react from pain. We show you how to build identity and systems from truth, not old wounds.
                     </p>
                   </CardContent>
                 </Card>
@@ -293,7 +301,7 @@ const About = () => {
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-brand-black dark:text-brand-cream/80">
-                      Fake positivity and empty 'mindset hacks' ignore culture, pain, and legacy. We STACK real wisdom—showing receipts, naming the myths, and translating street survival into generational power.
+                      Fake positivity and empty 'mental hacks' ignore culture, pain, and inheritance. We STACK real wisdom—showing receipts, naming the myths, and translating street survival into generational wealth.
                     </p>
                   </CardContent>
                 </Card>
@@ -307,7 +315,7 @@ const About = () => {
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-brand-black dark:text-brand-cream/80">
-                      Stop living someone else's script. Ready to build your own system and set your legacy in motion?
+                      Stop living someone else's survival code. Ready to build your own game plan and set your inheritance in motion?
                     </p>
                   </CardContent>
                 </Card>

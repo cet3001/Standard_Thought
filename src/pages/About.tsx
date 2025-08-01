@@ -428,6 +428,161 @@ const About = () => {
           </div>
         </section>
 
+        {/* Step-by-Step Blueprint Section */}
+        <section className="py-16 sm:py-24 relative">
+          <div className="absolute inset-0 bg-gradient-to-r from-[#FFD700]/5 to-[#FFA500]/5"></div>
+          <div className="container mx-auto px-6 relative z-10">
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-16">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6 text-brand-black dark:text-brand-cream">
+                  How Cycle-Breakers Build Their{" "}
+                  <span className="pearlescent-text">Mental Kingdom</span>{" "}
+                  – In Real Life (Not Theory)
+                </h2>
+                <p className="text-lg text-brand-black dark:text-brand-cream/80 font-bold max-w-3xl mx-auto">
+                  No blueprint handed down. Here's how we move—when it's survival to strategy, and system over struggle.
+                </p>
+              </div>
+              
+              <div className="space-y-12 max-w-3xl mx-auto">
+                {/* Step 1 */}
+                <div className="bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm rounded-xl p-6 sm:p-8 border border-gray-300/10 dark:border-gray-700/10 animate-fade-in" style={{borderLeft: '4px solid #FFD700'}}>
+                  <h3 className="text-2xl font-black text-brand-black dark:text-brand-cream mb-4" aria-label="Step 1: Catch Old Scripts">
+                    Call Out the Voices—Name What Keeps You Small
+                  </h3>
+                  <p className="text-lg text-brand-black dark:text-brand-cream/90 mb-4 leading-relaxed">
+                    "The rules you grew up with ('Money's tight. Keep it small. Don't expect too much.') don't dissolve just because you want more. Call 'em out—write them, say them, put what broke you on the table."
+                  </p>
+                  <p className="text-sm text-brand-black dark:text-brand-cream/70 italic border-l-2 border-[#FFD700]/50 pl-4">
+                    "One reader started by taping his family's money rules to the fridge. 'When you see them in your face, you stop letting them run your life.'"
+                  </p>
+                </div>
+
+                {/* Step 2 */}
+                <div className="bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm rounded-xl p-6 sm:p-8 border border-gray-300/10 dark:border-gray-700/10 animate-fade-in" style={{borderLeft: '4px solid #FFD700'}}>
+                  <h3 className="text-2xl font-black text-brand-black dark:text-brand-cream mb-4" aria-label="Step 2: Find Your People">
+                    Find Your People—Build a Different Circle
+                  </h3>
+                  <p className="text-lg text-brand-black dark:text-brand-cream/90 mb-4 leading-relaxed">
+                    "Nothing changes solo. Find one person who gets it—a friend, neighbor, IG mutual—and build new systems together: knowledge swaps, accountability check-ins, or 'no hustle talk' dinners."
+                  </p>
+                  <p className="text-sm text-brand-black dark:text-brand-cream/70 italic border-l-2 border-[#FFD700]/50 pl-4">
+                    "After her brother avoided every credit talk, Tiana started a cousins' group chat: credit questions only, no judgment. That became the first family asset class."
+                  </p>
+                </div>
+
+                {/* Step 3 */}
+                <div className="bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm rounded-xl p-6 sm:p-8 border border-gray-300/10 dark:border-gray-700/10 animate-fade-in" style={{borderLeft: '4px solid #FFD700'}}>
+                  <h3 className="text-2xl font-black text-brand-black dark:text-brand-cream mb-4" aria-label="Step 3: Stack Your Wins">
+                    Stack Your Wins—Turn Struggle Into Receipts
+                  </h3>
+                  <p className="text-lg text-brand-black dark:text-brand-cream/90 mb-4 leading-relaxed">
+                    "From fixing credit to negotiating rent, stack these wins out loud. Create a 'receipts' folder, a wall of firsts, a written story your people can build on. If you can teach it, you own it."
+                  </p>
+                  <p className="text-sm text-brand-black dark:text-brand-cream/70 italic border-l-2 border-[#FFD700]/50 pl-4">
+                    "The first time Marcus tracked all his side-hustle receipts, he printed them and handed copies to his siblings. 'This is so you never start from scratch like I did.'"
+                  </p>
+                </div>
+
+                {/* Step 4 - Anecdotal Flow */}
+                <div className="bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm rounded-xl p-6 sm:p-8 border border-gray-300/10 dark:border-gray-700/10 animate-fade-in" style={{borderLeft: '4px solid #FFD700'}}>
+                  <h3 className="text-2xl font-black text-brand-black dark:text-brand-cream mb-4" aria-label="Step 4: The Day Everything Changed">
+                    The Day Everything Changed
+                  </h3>
+                  <p className="text-lg text-brand-black dark:text-brand-cream/90 mb-4 leading-relaxed">
+                    Keisha crossed out every money rule her family taught her, wrote new ones, and opened her first investment account six months later. 
+                  </p>
+                  <p className="text-sm text-brand-black dark:text-brand-cream/70 italic border-l-2 border-[#FFD700]/50 pl-4">
+                    Sometimes the revolution starts with a single question: "What if the way we've always done it isn't the only way?"
+                  </p>
+                </div>
+              </div>
+
+              {/* Soft Close Statement */}
+               <div className="text-center mt-12">
+                 <p className="text-xl text-[#FFD700] font-medium">
+                   Every breakthrough makes the way wider. See what's next.
+                 </p>
+               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Action Plan Section */}
+        <section className="py-16 sm:py-24 relative">
+          <div className="container mx-auto px-6 relative z-10">
+            <div className="max-w-4xl mx-auto text-center">
+              <div className="bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm rounded-2xl p-12 border border-gray-300/10 dark:border-gray-700/10">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6">
+                  <span className="pearlescent-text">Mindset</span>{" "}
+                  <span className="text-brand-black dark:text-brand-cream">Action Plan</span>
+                </h2>
+                <p className="text-lg text-brand-black dark:text-brand-cream/80 mb-8">
+                  Download the Mindset Action Plan. Your step-by-step to flipping from trapped to legacy.
+                </p>
+                <Button 
+                  onClick={() => navigate('/sales')}
+                  className="bg-gradient-to-r from-[#FFD700] to-[#FFA500] hover:from-[#FFA500] hover:to-[#FFD700] text-black font-bold px-8 py-4 text-lg transition-all duration-300 transform hover:scale-105"
+                >
+                  ⚡ Get The Plan
+                </Button>
+                <p className="text-sm text-brand-black dark:text-brand-cream/60 mt-4">
+                  Free + no spam. Just the blueprint.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Real Builder Wins Section */}
+        <section className="py-16 sm:py-24 relative">
+          <div className="absolute inset-0 bg-gradient-to-r from-[#FFD700]/5 to-[#FFA500]/5"></div>
+          <div className="container mx-auto px-6 relative z-10">
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-16">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6">
+                  <span className="pearlescent-text">Real Builder</span>{" "}
+                  <span className="text-brand-black dark:text-brand-cream">Wins</span>
+                </h2>
+              </div>
+              
+              <div className="grid md:grid-cols-3 gap-8">
+                <Card className="bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm border-gray-300/10 dark:border-gray-700/10 hover:bg-white/20 dark:hover:bg-gray-800/20 transition-all duration-300">
+                  <CardContent className="p-6">
+                    <blockquote className="text-lg font-semibold text-brand-black dark:text-brand-cream mb-4">
+                      "Standard Thought called out my mindset myths—flipped my whole game."
+                    </blockquote>
+                    <p className="text-sm text-brand-black dark:text-brand-cream/60">
+                      — R, Philly
+                    </p>
+                  </CardContent>
+                </Card>
+                
+                <Card className="bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm border-gray-300/10 dark:border-gray-700/10 hover:bg-white/20 dark:hover:bg-gray-800/20 transition-all duration-300">
+                  <CardContent className="p-6">
+                    <blockquote className="text-lg font-semibold text-brand-black dark:text-brand-cream mb-4">
+                      "Broke the cycle mentally, no BS."
+                    </blockquote>
+                    <p className="text-sm text-brand-black dark:text-brand-cream/60">
+                      — D, Miami
+                    </p>
+                  </CardContent>
+                </Card>
+                
+                <Card className="bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm border-gray-300/10 dark:border-gray-700/10 hover:bg-white/20 dark:hover:bg-gray-800/20 transition-all duration-300">
+                  <CardContent className="p-6">
+                    <blockquote className="text-lg font-semibold text-brand-black dark:text-brand-cream mb-4">
+                      "This hit the culture different."
+                    </blockquote>
+                    <p className="text-sm text-brand-black dark:text-brand-cream/60">
+                      — L, Oakland
+                    </p>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* FAQ Section */}
         <section className="py-16 sm:py-24 relative">

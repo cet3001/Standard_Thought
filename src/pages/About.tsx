@@ -165,7 +165,7 @@ const About = () => {
                 <div className={`relative h-[70vh] transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
                   <div className="relative overflow-hidden rounded-xl border-2 border-[#FFD700]/30 shadow-2xl h-full">
                     <img 
-                      src="/lovable-uploads/295f37bf-a6b1-43af-ac91-cac7c2345731.png"
+                      src="/lovable-uploads/c237d173-88db-48f5-9718-09a1deb6ff96.png"
                       alt="Black man stands on a rooftop at night, overlooking a city being rebuilt—scaffolding and cranes signal transformation on the skyline"
                       className="w-full h-full object-cover object-center"
                       style={{

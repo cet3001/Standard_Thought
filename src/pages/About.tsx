@@ -83,8 +83,8 @@ const About = () => {
 
       {/* SEO */}
       <SEO 
-        title="Home of Cycle-Breakers | Standard Thought – Legacy, Mindset & System-Building" 
-        description="Standard Thought is the digital sanctuary for cycle-breakers and vision-builders. Unlearn survival scripts, rebuild identity, and stack legacy with soul. This isn't just personal finance—it's system-building for those who started with nothing. Join the movement to design the future." 
+        title="Why Mindset Matters | Standard Thought: Cycle-Breaking & Legacy" 
+        description="Standard Thought exposes the real traps holding us back—cycle thinking, generational fear, and hollow advice. Break the pattern: unlearn, rebuild, stack, and transcend. Build systems that outlast struggle and set new legends." 
         keywords="mindset transformation, breaking cycles, mental wealth building, urban mindset, cycle-breaking, survival programming, identity rebuilding, system-building" 
         url="/about" 
         type="article" 
@@ -198,12 +198,11 @@ const About = () => {
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-16">
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6">
-                  <span className="pearlescent-text">Why Mindset</span>{" "}
-                  <span className="text-brand-black dark:text-brand-cream">Matters</span>{" "}
-                  <span className="pearlescent-text">(Real Talk)</span>
+                  <span className="pearlescent-text">Why Mindset Matters (Real Talk):</span>{" "}
+                  <span className="text-brand-black dark:text-brand-cream">Because Breaking Cycles is a Revolution—Not a Self-Help Trend.</span>
                 </h2>
                 <p className="text-lg text-brand-black dark:text-brand-cream/80 max-w-3xl mx-auto">
-                  Mindset ain't just quotes—it's the flip that shatters inherited poverty cycles and builds mental empires in the culture.
+                  Mindset alone won't save you—but it's where every revolution begins. We flip the script on trauma, grind myths, and trapped stories, showing how real cycle-breakers unlearn, rebuild, stack truth, and transcend for legacy.
                 </p>
               </div>
               
@@ -211,13 +210,13 @@ const About = () => {
                 <Card className="bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm border-gray-300/10 dark:border-gray-700/10 hover:bg-white/20 dark:hover:bg-gray-800/20 transition-all duration-300">
                   <CardHeader>
                     <CardTitle className="text-xl font-bold text-brand-black dark:text-brand-cream">
-                      <span className="pearlescent-text">The Cycle</span>{" "}
-                      <span className="text-brand-black dark:text-brand-cream">Trap</span>
+                      <span className="pearlescent-text">UNLEARN:</span>{" "}
+                      <span className="text-brand-black dark:text-brand-cream">The Cycle Trap</span>
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-brand-black dark:text-brand-cream/80">
-                      Sociology shows how hood traps lock Black stories in survival mode—time to psych-rewire and break free.
+                      Hood cycles keep us locked in survival mode. Standard Thought is where you UNLEARN the scripts passed down by trauma, family, or your block—so the cycle ends with you.
                     </p>
                   </CardContent>
                 </Card>
@@ -225,13 +224,13 @@ const About = () => {
                 <Card className="bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm border-gray-300/10 dark:border-gray-700/10 hover:bg-white/20 dark:hover:bg-gray-800/20 transition-all duration-300">
                   <CardHeader>
                     <CardTitle className="text-xl font-bold text-brand-black dark:text-brand-cream">
-                      <span className="text-brand-black dark:text-brand-cream">Fear of</span>{" "}
-                      <span className="pearlescent-text">Flipping</span>
+                      <span className="pearlescent-text">REBUILD:</span>{" "}
+                      <span className="text-brand-black dark:text-brand-cream">Fear of Flipping</span>
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-brand-black dark:text-brand-cream/80">
-                      Psych trauma from generational scars makes every mindset shift feel risky, but real change is about stacking motivation over fear.
+                      Generational scars make every flip risky. Here, REBUILDING is about taking fear head-on so you design with courage, not react from pain. We show you how to build identity and system from truth, not old wounds.
                     </p>
                   </CardContent>
                 </Card>
@@ -239,22 +238,28 @@ const About = () => {
                 <Card className="bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm border-gray-300/10 dark:border-gray-700/10 hover:bg-white/20 dark:hover:bg-gray-800/20 transition-all duration-300">
                   <CardHeader>
                     <CardTitle className="text-xl font-bold text-brand-black dark:text-brand-cream">
-                      <span className="pearlescent-text">Why Most Advice</span>{" "}
-                      <span className="text-brand-black dark:text-brand-cream">Fails</span>
+                      <span className="pearlescent-text">STACK:</span>{" "}
+                      <span className="text-brand-black dark:text-brand-cream">Why Most Advice Fails</span>
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-brand-black dark:text-brand-cream/80">
-                      Generic positivity ignores the cultural myths like Black excellence alone saving us—we'll call 'em out and flip the script.
+                      Fake positivity and empty 'mindset hacks' ignore culture, pain, and legacy. We STACK real wisdom—showing receipts, naming the myths, and translating street survival into generational power.
                     </p>
                   </CardContent>
                 </Card>
               </div>
               
               <div className="text-center mt-12">
-                <p className="text-lg font-semibold text-brand-black dark:text-brand-cream">
-                  It's time to stop recycling trapped stories and build legends.
+                <p className="text-lg font-semibold text-brand-black dark:text-brand-cream mb-8">
+                  TRANSCEND: Stop living someone else's script. Ready to build your own system and set your legacy in motion?
                 </p>
+                <Button 
+                  onClick={() => navigate('/sales')}
+                  className="bg-gradient-to-r from-[#FFD700] to-[#FFA500] hover:from-[#FFA500] hover:to-[#FFD700] text-black font-bold px-6 py-3 text-lg transition-all duration-300 transform hover:scale-105"
+                >
+                  Tap to Start Unlearning
+                </Button>
               </div>
             </div>
           </div>

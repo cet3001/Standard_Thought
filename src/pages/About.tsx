@@ -359,14 +359,14 @@ const About = () => {
                       </div>
                     </div>
                     <div className="flex-1">
-                      <div className="bg-[#FFD700]/10 backdrop-blur-sm rounded-lg p-4 border border-[#FFD700]/20">
-                        <h3 className="text-xl font-bold text-[#FFD700] mb-2" aria-label="Reality">
-                          Reality: "Mindset is the weapon that shatters inherited cycles and writes blueprints for liberation."
-                        </h3>
-                        <p className="text-sm text-brand-black dark:text-brand-cream/70 italic">
-                          This is how we UNLEARN at Standard Thought.
-                        </p>
-                      </div>
+                       <div className="bg-[#FFD700]/10 backdrop-blur-sm rounded-lg p-4 border border-[#FFD700]/20">
+                         <h3 className="text-xl font-bold text-[#FFD700] mb-2" aria-label="Reality">
+                           Reality: "Your mental game is the weapon that shatters inherited cycles and writes blueprints for liberation."
+                         </h3>
+                         <p className="text-sm text-brand-black dark:text-brand-cream/70 italic">
+                           Before I learned this, I kept repeating my mom's money fear. Now, I teach my little cousin how wealth really works.
+                         </p>
+                       </div>
                     </div>
                   </div>
                 </div>
@@ -382,14 +382,14 @@ const About = () => {
                       </div>
                     </div>
                     <div className="flex-1">
-                      <div className="bg-[#FFD700]/10 backdrop-blur-sm rounded-lg p-4 border border-[#FFD700]/20">
-                        <h3 className="text-xl font-bold text-[#FFD700] mb-2" aria-label="Reality">
-                          Reality: "Instinct and soul-borne truth beat inherited ease—if you choose to REBUILD."
-                        </h3>
-                        <p className="text-sm text-brand-black dark:text-brand-cream/70 italic">
-                          Every flip is a REBUILD—for you and your community.
-                        </p>
-                      </div>
+                       <div className="bg-[#FFD700]/10 backdrop-blur-sm rounded-lg p-4 border border-[#FFD700]/20">
+                         <h3 className="text-xl font-bold text-[#FFD700] mb-2" aria-label="Reality">
+                           Reality: "Instinct and soul-borne truth beat inherited ease—if you choose to rebuild."
+                         </h3>
+                         <p className="text-sm text-brand-black dark:text-brand-cream/70 italic">
+                           Started with food stamps and no connections. Six months later, I was teaching financial workshops at the community center.
+                         </p>
+                       </div>
                     </div>
                   </div>
                 </div>
@@ -405,25 +405,25 @@ const About = () => {
                       </div>
                     </div>
                     <div className="flex-1">
-                      <div className="bg-[#FFD700]/10 backdrop-blur-sm rounded-lg p-4 border border-[#FFD700]/20">
-                        <h3 className="text-xl font-bold text-[#FFD700] mb-2" aria-label="Reality">
-                          Reality: "Excellence is the Trojan horse—real freedom calls out every chain and transcends grind."
-                        </h3>
-                        <p className="text-sm text-brand-black dark:text-brand-cream/70 italic">
-                          This is how you STACK and TRANSCEND—no cap.
-                        </p>
-                      </div>
+                       <div className="bg-[#FFD700]/10 backdrop-blur-sm rounded-lg p-4 border border-[#FFD700]/20">
+                         <h3 className="text-xl font-bold text-[#FFD700] mb-2" aria-label="Reality">
+                           Reality: "Excellence is the Trojan horse—real freedom calls out every chain and transcends grind."
+                         </h3>
+                         <p className="text-sm text-brand-black dark:text-brand-cream/70 italic">
+                           Worked three jobs perfectly for years, still broke. Then I learned the game was rigged and started building my own rules.
+                         </p>
+                       </div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Subtle CTA */}
-              <div className="text-center mt-12">
-                <p className="text-lg sm:text-xl text-[#FFD700] font-medium">
-                  Heard the myths. Ready to live the reality? Your blueprint starts below.
-                </p>
-              </div>
+               {/* Declarative Close */}
+               <div className="text-center mt-12">
+                 <p className="text-lg sm:text-xl text-[#FFD700] font-medium">
+                   You've seen the myth. You're living the flip.
+                 </p>
+               </div>
             </div>
           </div>
         </section>

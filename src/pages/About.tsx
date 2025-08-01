@@ -113,7 +113,7 @@ const About = () => {
               {/* Text Content - Left Side on Desktop */}
               <div className="flex-1 text-center lg:text-left order-2 lg:order-1 flex flex-col justify-center min-h-[70vh]">
                 {/* Headline */}
-                <h1 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                <h1 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight transition-all duration-600 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
                     style={{
                       textShadow: '2px 2px 4px rgba(0,0,0,0.3), 0 0 8px rgba(255,215,0,0.2)',
                       filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.5))'
@@ -157,6 +157,18 @@ const About = () => {
                   >
                     Break the Cycle. Build Your Legacy—Start Now
                   </Button>
+                </div>
+                
+                {/* Community Social Proof Ticker */}
+                <div className={`mt-8 transition-all duration-1000 delay-1200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                  <div className="relative overflow-hidden bg-gradient-to-r from-[#FFD700]/20 to-[#FFA500]/20 backdrop-blur-sm border border-[#FFD700]/30 rounded-lg py-3 px-4">
+                    <div className="flex items-center gap-2 text-sm text-brand-cream/80 dark:text-brand-cream/80">
+                      <span className="font-semibold">This site is built with:</span>
+                      <div className="flex items-center gap-1 animate-pulse">
+                        <span>Alex • Jamal • Tiana • Marcus • Keisha • Carlos • Aaliyah • Jordan • Destiny • Isaiah</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
 

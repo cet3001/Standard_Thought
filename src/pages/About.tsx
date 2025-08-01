@@ -377,61 +377,75 @@ const About = () => {
           <div className="container mx-auto px-6 relative z-10">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-16">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6">
-                  <span className="text-brand-black dark:text-brand-cream">Step-by-Step: Flip Your</span>{" "}
-                  <span className="pearlescent-text">Mindset Empire</span>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6 text-brand-black dark:text-brand-cream">
+                  How Cycle-Breakers Flip Their{" "}
+                  <span className="pearlescent-text">Mindset Empire</span>{" "}
+                  – In Real Life (Not Theory)
                 </h2>
+                <p className="text-lg text-brand-black dark:text-brand-cream/80 font-bold max-w-3xl mx-auto">
+                  No blueprint handed down. Here's how we move—when it's survival to strategy, and system over struggle.
+                </p>
               </div>
               
-              <div className="space-y-8">
-                {[
-                  {
-                    number: 1,
-                    title: "Set Your Story Goal",
-                    content: "What cycle you breaking? Legacy mindset? Get clear—your why beats the psych-social dips in Black communities."
-                  },
-                  {
-                    number: 2,
-                    title: "Pick Your Tools",
-                    content: "Free journals or apps—no cost barriers, avoid fluff promising quick mindset riches."
-                  },
-                  {
-                    number: 3,
-                    title: "Start Small, Reflect Consistent",
-                    content: "Daily flips on trauma—turn survival into growth, no big leaps needed."
-                  },
-                  {
-                    number: 4,
-                    title: "Diversify the Layers",
-                    content: "Stack motivation plays with sociology insights—own your full story instead of partial fixes."
-                  },
-                  {
-                    number: 5,
-                    title: "Avoid the Myths",
-                    content: "Skip excellence hype schemes—those rig the mental game against urban builders."
-                  },
-                  {
-                    number: 6,
-                    title: "Level Up",
-                    content: "After consistent months, explore 2025 AI mindset tools for auto-flips—build the proven empire."
-                  }
-                ].map((step) => (
-                  <Card key={step.number} className="bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm border-gray-300/10 dark:border-gray-700/10 hover:bg-white/20 dark:hover:bg-gray-800/20 transition-all duration-300">
-                    <CardHeader>
-                      <CardTitle className="text-xl font-bold flex items-center gap-4">
-                        <span className="w-8 h-8 bg-gradient-to-r from-[#FFD700] to-[#FFA500] text-black rounded-full flex items-center justify-center font-black">
-                          {step.number}
-                        </span>
-                        <span className="text-brand-black dark:text-brand-cream">{step.title}</span>
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-brand-black dark:text-brand-cream/80 pl-12">
-                        {step.content}
-                      </p>
-                    </CardContent>
-                  </Card>
-                ))}
+              <div className="space-y-12 max-w-3xl mx-auto">
+                {/* Step 1 */}
+                <div className="bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm rounded-xl p-6 sm:p-8 border border-gray-300/10 dark:border-gray-700/10 animate-fade-in" style={{borderLeft: '4px solid #FFD700'}}>
+                  <h3 className="text-2xl font-black text-brand-black dark:text-brand-cream mb-4" aria-label="Step 1: Catch Old Scripts">
+                    Catch the Old Scripts—Name Them Out Loud
+                  </h3>
+                  <p className="text-lg text-brand-black dark:text-brand-cream/90 mb-4 leading-relaxed">
+                    "The rules you grew up with ('Money's tight. Keep it small. Don't expect too much.') don't dissolve just because you want more. Call 'em out—write them, say them, put what broke you on the table."
+                  </p>
+                  <p className="text-sm text-brand-black dark:text-brand-cream/70 italic border-l-2 border-[#FFD700]/50 pl-4">
+                    "One reader started by taping his family's money rules to the fridge. 'When you see them in your face, you stop letting them run your life.'"
+                  </p>
+                </div>
+
+                {/* Step 2 */}
+                <div className="bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm rounded-xl p-6 sm:p-8 border border-gray-300/10 dark:border-gray-700/10 animate-fade-in" style={{borderLeft: '4px solid #FFD700'}}>
+                  <h3 className="text-2xl font-black text-brand-black dark:text-brand-cream mb-4" aria-label="Step 2: Map Out New Moves">
+                    Map Out New Moves—Redesign Your Support Circle
+                  </h3>
+                  <p className="text-lg text-brand-black dark:text-brand-cream/90 mb-4 leading-relaxed">
+                    "Nothing changes solo. Find one person who gets it—a friend, neighbor, IG mutual—and build new systems together: knowledge swaps, accountability check-ins, or 'no hustle talk' dinners."
+                  </p>
+                  <p className="text-sm text-brand-black dark:text-brand-cream/70 italic border-l-2 border-[#FFD700]/50 pl-4">
+                    "After her brother avoided every credit talk, Tiana started a cousins' group chat: credit questions only, no judgment. That became the first family asset class."
+                  </p>
+                </div>
+
+                {/* Step 3 */}
+                <div className="bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm rounded-xl p-6 sm:p-8 border border-gray-300/10 dark:border-gray-700/10 animate-fade-in" style={{borderLeft: '4px solid #FFD700'}}>
+                  <h3 className="text-2xl font-black text-brand-black dark:text-brand-cream mb-4" aria-label="Step 3: Turn Scarcity Into Playbooks">
+                    Turn Scarcity Into Playbooks—Document Every Win
+                  </h3>
+                  <p className="text-lg text-brand-black dark:text-brand-cream/90 mb-4 leading-relaxed">
+                    "From fixing credit to negotiating rent, stack these wins out loud. Create a 'receipts' folder, a wall of firsts, a written story your people can build on. If you can teach it, you own it."
+                  </p>
+                  <p className="text-sm text-brand-black dark:text-brand-cream/70 italic border-l-2 border-[#FFD700]/50 pl-4">
+                    "The first time Marcus tracked all his side-hustle receipts, he printed them and handed copies to his siblings. 'This is so you never start from scratch like I did.'"
+                  </p>
+                </div>
+
+                {/* Step 4 */}
+                <div className="bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm rounded-xl p-6 sm:p-8 border border-gray-300/10 dark:border-gray-700/10 animate-fade-in" style={{borderLeft: '4px solid #FFD700'}}>
+                  <h3 className="text-2xl font-black text-brand-black dark:text-brand-cream mb-4" aria-label="Step 4: Archive Legacy">
+                    Archive Legacy—Share What Was Never Shared
+                  </h3>
+                  <p className="text-lg text-brand-black dark:text-brand-cream/90 mb-4 leading-relaxed">
+                    "Break the cultural silence. Record a voice note, write a letter, or drop a guide for your crew about what you've unlearned and rebuilt. Pass down the playbook—even if it's rough."
+                  </p>
+                  <p className="text-sm text-brand-black dark:text-brand-cream/70 italic border-l-2 border-[#FFD700]/50 pl-4">
+                    "Auntie Dee kept notebooks. Now, her grandkids each add lessons in the margins. That's living legacy."
+                  </p>
+                </div>
+              </div>
+
+              {/* Soft Close Statement */}
+              <div className="text-center mt-12">
+                <p className="text-xl text-[#FFD700] font-medium">
+                  Blueprints get better every time a cycle-breaker shares their flip. Scroll on—your legacy is built in what you do next.
+                </p>
               </div>
             </div>
           </div>

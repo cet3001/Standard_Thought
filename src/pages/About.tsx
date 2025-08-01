@@ -83,8 +83,8 @@ const About = () => {
 
       {/* SEO */}
       <SEO 
-        title="About | Standard Thought – Cycle-Breaking Begins in the Mind" 
-        description="Learn how Standard Thought helps you unlearn survival scripts, rebuild your identity, and design soul-rooted systems that build legacy—starting with mindset." 
+        title="Home of Cycle-Breakers | Standard Thought – Legacy, Mindset & System-Building" 
+        description="Standard Thought is the digital sanctuary for cycle-breakers and vision-builders. Unlearn survival scripts, rebuild identity, and stack legacy with soul. This isn't just personal finance—it's system-building for those who started with nothing. Join the movement to design the future." 
         keywords="mindset transformation, breaking cycles, mental wealth building, urban mindset, cycle-breaking, survival programming, identity rebuilding, system-building" 
         url="/about" 
         type="article" 
@@ -108,37 +108,85 @@ const About = () => {
       <main className="relative z-10 pt-20 sm:pt-24 lg:pt-28">
         {/* Hero Section */}
         <section className="py-16 sm:py-24 relative">
-          <div className="container mx-auto px-6 max-w-4xl relative z-10">
-            <div className="text-center min-h-[60vh] flex flex-col justify-center">
-              {/* Headline */}
-              <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-                <span className="text-brand-cream dark:text-brand-cream">Welcome to the Home of Cycle-Breakers.</span>{" "}
-                <span className="pearlescent-text">Mindset Isn't Just Step One—It's the Blueprint for Liberation, Legacy, and System-Building.</span>
-              </h1>
-              
-              {/* Subheadline */}
-              <div className={`transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-8 text-brand-cream dark:text-brand-cream">
-                  We grew up surviving. Now we build what lasts. Here, you unlearn survival scripts, rebuild your identity with truth, stack real skills and soul, and design the legacy no one handed you.
-                </h2>
+          <div className="container mx-auto px-6 max-w-6xl relative z-10">
+            <div className="min-h-[60vh] flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
+              {/* Text Content - Left Side on Desktop */}
+              <div className="flex-1 text-center lg:text-left order-2 lg:order-1">
+                {/* Headline */}
+                <h1 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                    style={{
+                      textShadow: '2px 2px 4px rgba(0,0,0,0.3), 0 0 8px rgba(255,215,0,0.2)',
+                      filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.5))'
+                    }}>
+                  <span className="text-brand-cream dark:text-brand-cream">Welcome to the Home of Cycle-Breakers.</span>{" "}
+                  <span className="pearlescent-text">Mindset Isn't Just Step One—It's the Blueprint for Liberation, Legacy, and System-Building.</span>
+                </h1>
                 
-                <p className="text-lg sm:text-xl text-brand-cream/90 dark:text-brand-cream/90 mb-8 leading-relaxed max-w-4xl mx-auto">
-                  At Standard Thought, you break cycles for good. This is where we drop hustle trauma, heal by building, and create blueprints your family—and your block—will remember. No more shrinking, no more waiting. We design new systems here, together.
-                </p>
+                {/* Subheadline */}
+                <div className={`transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                  <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-6 text-brand-cream dark:text-brand-cream"
+                      style={{
+                        textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
+                        filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.5))'
+                      }}>
+                    We grew up surviving. Now we build what lasts. Here, you unlearn survival scripts, rebuild your identity with truth, stack real skills and soul, and design the legacy no one handed you.
+                  </h2>
+                  
+                  <p className="text-base sm:text-lg text-brand-cream/90 dark:text-brand-cream/90 mb-6 leading-relaxed"
+                     style={{
+                       textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
+                       filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.5))'
+                     }}>
+                    At Standard Thought, you break cycles for good. This is where we drop hustle trauma, heal by building, and create blueprints your family—and your block—will remember. No more shrinking, no more waiting. We design new systems here, together.
+                  </p>
+                  
+                  <p className="text-base sm:text-lg text-brand-cream/90 dark:text-brand-cream/90 mb-8 leading-relaxed"
+                     style={{
+                       textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
+                       filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.5))'
+                     }}>
+                    This isn't another finance site. This is the digital sanctuary for those who had no blueprint, but choose to build one that lasts. You in?
+                  </p>
+                </div>
                 
-                <p className="text-lg sm:text-xl text-brand-cream/90 dark:text-brand-cream/90 mb-8 leading-relaxed max-w-4xl mx-auto">
-                  This isn't another finance site. This is the digital sanctuary for those who had no blueprint, but choose to build one that lasts. You in?
-                </p>
+                {/* Primary CTA */}
+                <div className={`transition-all duration-1000 delay-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                  <Button 
+                    onClick={() => navigate('/sales')}
+                    className="bg-gradient-to-r from-[#FFD700] to-[#FFA500] hover:from-[#FFA500] hover:to-[#FFD700] text-black font-bold px-6 py-3 text-lg lg:text-xl transition-all duration-300 transform hover:scale-105 animate-pulse hover:animate-none"
+                  >
+                    Break the Cycle. Build Your Legacy—Start Now
+                  </Button>
+                </div>
               </div>
-              
-              {/* Primary CTA */}
-              <div className={`transition-all duration-1000 delay-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-                <Button 
-                  onClick={() => navigate('/sales')}
-                  className="bg-gradient-to-r from-[#FFD700] to-[#FFA500] hover:from-[#FFA500] hover:to-[#FFD700] text-black font-bold px-8 py-4 text-xl transition-all duration-300 transform hover:scale-105 animate-pulse hover:animate-none"
-                >
-                  Break the Cycle. Build Your Legacy—Start Now
-                </Button>
+
+              {/* Hero Image - Right Side on Desktop */}
+              <div className="flex-none order-1 lg:order-2 lg:w-[45%]">
+                <div className={`relative transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                  <div className="relative overflow-hidden rounded-xl border-2 border-[#FFD700]/30 shadow-2xl">
+                    <img 
+                      src="/lovable-uploads/295f37bf-a6b1-43af-ac91-cac7c2345731.png"
+                      alt="Black man stands on a rooftop at night, overlooking a city being rebuilt—scaffolding and cranes signal transformation on the skyline"
+                      className="w-full h-auto object-cover"
+                      style={{
+                        filter: 'brightness(1.1) contrast(1.1)',
+                        maxHeight: '600px'
+                      }}
+                    />
+                    
+                    {/* City Glimmer Animation Overlay */}
+                    <div className="absolute inset-0 pointer-events-none">
+                      <div className="absolute top-1/4 left-1/3 w-1 h-1 bg-[#FFD700] rounded-full animate-pulse" 
+                           style={{ animationDelay: '0s', animationDuration: '3s' }}></div>
+                      <div className="absolute top-1/3 right-1/4 w-1 h-1 bg-[#FFA500] rounded-full animate-pulse" 
+                           style={{ animationDelay: '1s', animationDuration: '4s' }}></div>
+                      <div className="absolute bottom-1/3 left-1/4 w-1 h-1 bg-[#FFD700] rounded-full animate-pulse" 
+                           style={{ animationDelay: '2s', animationDuration: '3.5s' }}></div>
+                      <div className="absolute top-1/2 right-1/3 w-1 h-1 bg-[#FFA500] rounded-full animate-pulse" 
+                           style={{ animationDelay: '0.5s', animationDuration: '2.5s' }}></div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

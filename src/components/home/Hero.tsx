@@ -38,12 +38,12 @@ const HeroContent = ({ isVisible, scrollToNewsletter }: HeroContentProps) => {
             
             {/* Main Headline */}
             <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold font-inter leading-[1.1] text-brand-cream">
-              <span style={{ color: 'var(--color-lovable-black)' }}>Break</span> <span className="pearlescent-text">Cycles</span>. <span style={{ color: 'var(--color-lovable-black)' }}>Build</span> <span className="pearlescent-text">Legacy</span>. <span style={{ color: 'var(--color-lovable-black)' }}>Define Your</span> <span className="pearlescent-text">Truth</span>.
+              <span style={{ color: 'var(--color-lovable-black)' }}>Unlearn</span> <span className="pearlescent-text">Survival</span>. <span style={{ color: 'var(--color-lovable-black)' }}>Rebuild</span> <span className="pearlescent-text">Identity</span>. <span style={{ color: 'var(--color-lovable-black)' }}>Stack</span> <span className="pearlescent-text">Legacy</span>.
             </h1>
 
             {/* Subheadline */}
             <p className="text-lg md:text-xl lg:text-2xl font-inter font-semibold text-brand-cream leading-[1.4]">
-              You weren't handed blueprints. You inherited burdens. Now it's time to flip the script—rebuild identity, stack wealth, and transcend survival thinking.
+              You weren't given the blueprint—you were given survival scripts. Time to rewrite the code. This isn't hustle culture. This is soul work for the ones who had to figure it out with nothing but grit.
             </p>
 
             {/* CTA Button */}
@@ -59,17 +59,17 @@ const HeroContent = ({ isVisible, scrollToNewsletter }: HeroContentProps) => {
                   }}
                   aria-label="Download the Legacy Starter Kit"
                 >
-                  <span 
-                    className="flex items-center gap-3 font-bold text-lg transform -rotate-1"
-                    style={{ 
-                      fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
-                      textShadow: '2px 2px 0px rgba(0,0,0,0.2)',
-                      letterSpacing: '1px'
-                    }}
-                  >
-                    📥 Download the Legacy Starter Kit
-                    <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
-                  </span>
+                   <span 
+                     className="flex items-center gap-3 font-bold text-lg transform -rotate-1"
+                     style={{ 
+                       fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive",
+                       textShadow: '2px 2px 0px rgba(0,0,0,0.2)',
+                       letterSpacing: '1px'
+                     }}
+                   >
+                     🔥 Join the Movement
+                     <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+                   </span>
                   
                   {/* Urban texture overlay */}
                   <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_1px_1px,_rgba(0,0,0,0.8)_1px,_transparent_0)] bg-[length:8px_8px] pointer-events-none"></div>

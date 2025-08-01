@@ -435,8 +435,8 @@ const About = () => {
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-16">
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6 text-brand-black dark:text-brand-cream">
-                  How Cycle-Breakers Flip Their{" "}
-                  <span className="pearlescent-text">Mindset Empire</span>{" "}
+                  How Cycle-Breakers Build Their{" "}
+                  <span className="pearlescent-text">Mental Kingdom</span>{" "}
                   – In Real Life (Not Theory)
                 </h2>
                 <p className="text-lg text-brand-black dark:text-brand-cream/80 font-bold max-w-3xl mx-auto">
@@ -448,7 +448,7 @@ const About = () => {
                 {/* Step 1 */}
                 <div className="bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm rounded-xl p-6 sm:p-8 border border-gray-300/10 dark:border-gray-700/10 animate-fade-in" style={{borderLeft: '4px solid #FFD700'}}>
                   <h3 className="text-2xl font-black text-brand-black dark:text-brand-cream mb-4" aria-label="Step 1: Catch Old Scripts">
-                    Catch the Old Scripts—Name Them Out Loud
+                    Call Out the Voices—Name What Keeps You Small
                   </h3>
                   <p className="text-lg text-brand-black dark:text-brand-cream/90 mb-4 leading-relaxed">
                     "The rules you grew up with ('Money's tight. Keep it small. Don't expect too much.') don't dissolve just because you want more. Call 'em out—write them, say them, put what broke you on the table."
@@ -460,8 +460,8 @@ const About = () => {
 
                 {/* Step 2 */}
                 <div className="bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm rounded-xl p-6 sm:p-8 border border-gray-300/10 dark:border-gray-700/10 animate-fade-in" style={{borderLeft: '4px solid #FFD700'}}>
-                  <h3 className="text-2xl font-black text-brand-black dark:text-brand-cream mb-4" aria-label="Step 2: Map Out New Moves">
-                    Map Out New Moves—Redesign Your Support Circle
+                  <h3 className="text-2xl font-black text-brand-black dark:text-brand-cream mb-4" aria-label="Step 2: Find Your People">
+                    Find Your People—Build a Different Circle
                   </h3>
                   <p className="text-lg text-brand-black dark:text-brand-cream/90 mb-4 leading-relaxed">
                     "Nothing changes solo. Find one person who gets it—a friend, neighbor, IG mutual—and build new systems together: knowledge swaps, accountability check-ins, or 'no hustle talk' dinners."
@@ -473,8 +473,8 @@ const About = () => {
 
                 {/* Step 3 */}
                 <div className="bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm rounded-xl p-6 sm:p-8 border border-gray-300/10 dark:border-gray-700/10 animate-fade-in" style={{borderLeft: '4px solid #FFD700'}}>
-                  <h3 className="text-2xl font-black text-brand-black dark:text-brand-cream mb-4" aria-label="Step 3: Turn Scarcity Into Playbooks">
-                    Turn Scarcity Into Playbooks—Document Every Win
+                  <h3 className="text-2xl font-black text-brand-black dark:text-brand-cream mb-4" aria-label="Step 3: Stack Your Wins">
+                    Stack Your Wins—Turn Struggle Into Receipts
                   </h3>
                   <p className="text-lg text-brand-black dark:text-brand-cream/90 mb-4 leading-relaxed">
                     "From fixing credit to negotiating rent, stack these wins out loud. Create a 'receipts' folder, a wall of firsts, a written story your people can build on. If you can teach it, you own it."
@@ -484,26 +484,29 @@ const About = () => {
                   </p>
                 </div>
 
-                {/* Step 4 */}
+                {/* Step 4 - Anecdotal Flow */}
                 <div className="bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm rounded-xl p-6 sm:p-8 border border-gray-300/10 dark:border-gray-700/10 animate-fade-in" style={{borderLeft: '4px solid #FFD700'}}>
-                  <h3 className="text-2xl font-black text-brand-black dark:text-brand-cream mb-4" aria-label="Step 4: Archive Legacy">
-                    Archive Legacy—Share What Was Never Shared
+                  <h3 className="text-2xl font-black text-brand-black dark:text-brand-cream mb-4" aria-label="Step 4: The Day Everything Changed">
+                    The Day Everything Changed
                   </h3>
                   <p className="text-lg text-brand-black dark:text-brand-cream/90 mb-4 leading-relaxed">
-                    "Break the cultural silence. Record a voice note, write a letter, or drop a guide for your crew about what you've unlearned and rebuilt. Pass down the playbook—even if it's rough."
+                    Keisha was 28, working nights at the hospital, sending money home every month. Her mama called money talks "white people business." Then her cousin got approved for a business loan—first one in the family. 
+                  </p>
+                  <p className="text-lg text-brand-black dark:text-brand-cream/90 mb-4 leading-relaxed">
+                    That weekend, Keisha sat down with a notebook and wrote out every money rule she'd inherited. Then she crossed them out, one by one. Six months later, she opened her first investment account. A year after that, she was teaching financial literacy at the church where her grandmother prayed for "enough to get by."
                   </p>
                   <p className="text-sm text-brand-black dark:text-brand-cream/70 italic border-l-2 border-[#FFD700]/50 pl-4">
-                    "Auntie Dee kept notebooks. Now, her grandkids each add lessons in the margins. That's living legacy."
+                    Sometimes the revolution starts with a single question: "What if the way we've always done it isn't the only way?"
                   </p>
                 </div>
               </div>
 
               {/* Soft Close Statement */}
-              <div className="text-center mt-12">
-                <p className="text-xl text-[#FFD700] font-medium">
-                  Blueprints get better every time a cycle-breaker shares their flip. Scroll on—your legacy is built in what you do next.
-                </p>
-              </div>
+               <div className="text-center mt-12">
+                 <p className="text-xl text-[#FFD700] font-medium">
+                   Every breakthrough makes the way wider. See what's next.
+                 </p>
+               </div>
             </div>
           </div>
         </section>

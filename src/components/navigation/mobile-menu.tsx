@@ -14,7 +14,7 @@ const MobileMenu = () => {
   const navItems = [
     { href: "/", label: "The Root", tagline: "The Movement Begins Here" },
     { href: "/about", label: "The Shift", tagline: "Our Story & Your Growth Tools" },
-    { href: "/blog", label: "Builder Stories", tagline: "Real People. Real Hustle. Real Results." },
+    { href: "/blog", label: "Receipts & Real Talk", tagline: "Real People. Real Hustle. Real Results." },
     { href: "/sales", label: "Blueprints & Offers", tagline: "Game Plans, Guides & Opportunities" },
   ];
 

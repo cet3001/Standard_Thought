@@ -12,7 +12,7 @@ const NavItems = ({ className = "hidden lg:flex space-x-8", showButton = false }
   const navItems = [
     { href: "/", label: "The Root" },
     { href: "/about", label: "The Shift" },
-    { href: "/blog", label: "Builder Stories" },
+    { href: "/blog", label: "Receipts & Real Talk" },
     { href: "/sales", label: "Blueprints & Offers" },
   ];
 

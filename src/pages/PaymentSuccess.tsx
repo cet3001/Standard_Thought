@@ -207,7 +207,7 @@ const PaymentSuccess = () => {
                     </p>
                     <Link to="/blog">
                       <Button variant="outline" className="w-full border-[#FFD700]/50 hover:bg-[#FFD700]/10">
-                        Read Builder Stories
+                        Read Receipts & Real Talk
                       </Button>
                     </Link>
                   </CardContent>

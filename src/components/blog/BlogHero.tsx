@@ -39,7 +39,7 @@ const BlogHero = ({ isVisible }: BlogHeroProps) => {
                     Mud:
                   </span>
                 </span>{" "}
-                Unfiltered Builder Stories
+                Unfiltered Receipts & Real Talk
               </h1>
               
               <h2 className="text-xl md:text-2xl font-bold text-brand-black dark:text-brand-cream mt-4">

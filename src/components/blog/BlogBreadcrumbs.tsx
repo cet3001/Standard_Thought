@@ -23,7 +23,7 @@ const BlogBreadcrumbs = ({ category, title }: BlogBreadcrumbsProps) => {
         to="/blog" 
         className="hover:text-brand-black dark:hover:text-brand-cream transition-colors duration-200"
       >
-        Builder Stories
+        Receipts & Real Talk
       </Link>
       
       <ChevronRight size={14} className="text-brand-black/40 dark:text-brand-cream/40" />

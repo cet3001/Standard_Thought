@@ -39,7 +39,7 @@ const PrivacyPolicy = () => {
             <p className="mb-4">When you subscribe to our newsletter, you'll receive:</p>
             <ul className="mb-4 list-disc pl-6">
               <li>A welcome email with exclusive insights</li>
-              <li>Weekly "Hustle Notes" with builder stories and strategies</li>
+              <li>Weekly "Hustle Notes" with receipts & real talk and strategies</li>
               <li>Occasional updates about new content and opportunities</li>
             </ul>
             <p className="mb-6">You can unsubscribe at any time by clicking the unsubscribe link in any email or contacting us directly.</p>

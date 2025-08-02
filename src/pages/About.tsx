@@ -13,6 +13,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { NewsletterSection } from "@/components/newsletter-section";
 import { useState, useEffect } from "react";
+import cycleBreakingImage from "@/assets/cycle-breaking-transformation.jpg";
+import rebuildingImage from "@/assets/rebuilding-from-pieces.jpg";
 
 // Dynamic Community Ticker Component
 const DynamicCommunityTicker = ({ isVisible }: { isVisible: boolean }) => {
@@ -333,6 +335,24 @@ const About = () => {
           </div>
         </section>
 
+        {/* Visual Break: Cycle Breaking Image */}
+        <div className="py-8 relative">
+          <div className="container mx-auto px-6 max-w-4xl">
+            <div className="relative rounded-xl overflow-hidden border border-[#FFD700]/20 shadow-lg">
+              <img 
+                src={cycleBreakingImage}
+                alt="Person breaking free from chains, symbolizing liberation from generational cycles"
+                className="w-full h-48 sm:h-64 object-cover"
+                loading="lazy"
+                style={{
+                  filter: 'brightness(0.9) contrast(1.1) sepia(0.1)'
+                }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent"></div>
+            </div>
+          </div>
+        </div>
+
         {/* Mindset Myths vs. Realities Section */}
         <section className="py-16 sm:py-24 relative">
           <div className="container mx-auto px-6 relative z-10">
@@ -528,6 +548,22 @@ const About = () => {
                   <span className="pearlescent-text">Real Transformation</span>{" "}
                   <span className="text-brand-black dark:text-brand-cream">Stories</span>
                 </h2>
+              </div>
+              
+              {/* Visual Break: Rebuilding Image */}
+              <div className="mb-16 max-w-2xl mx-auto">
+                <div className="relative rounded-xl overflow-hidden border border-[#FFD700]/20 shadow-lg">
+                  <img 
+                    src={rebuildingImage}
+                    alt="Hands constructing something new from broken pieces, representing rebuilding from struggle"
+                    className="w-full h-40 sm:h-48 object-cover"
+                    loading="lazy"
+                    style={{
+                      filter: 'brightness(0.9) contrast(1.1) sepia(0.1)'
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                </div>
               </div>
               
               <div className="grid md:grid-cols-2 gap-8 mb-16">

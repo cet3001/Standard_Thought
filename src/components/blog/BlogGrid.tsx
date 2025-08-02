@@ -32,38 +32,19 @@ const BlogGrid = ({ isVisible }: BlogGridProps) => {
     "This hit different for real. – Aaliyah"
   ];
 
-  // Get category ribbon styling for a tag
+  // Get category ribbon styling for a tag  
   const getCategoryRibbon = (tags: string[]) => {
-    console.log('Blog post tags:', tags); // Debug log
-    
     if (!tags || tags.length === 0) {
-      console.log('No tags found, returning GENERAL');
       return { label: "GENERAL", color: "#6B7280", textColor: "#F9FAFB" };
     }
     
-    // Check if any tags match the new filter categories
-    for (const tag of tags) {
-      console.log('Checking tag:', tag);
-      for (const [categoryName, categoryData] of Object.entries(FILTER_CATEGORIES)) {
-        console.log('Checking category:', categoryName, 'tags:', categoryData.tags);
-        if ((categoryData.tags as readonly string[]).includes(tag)) {
-          console.log('Match found! Category:', categoryName);
-          return {
-            label: categoryName.toUpperCase(),
-            color: categoryData.color,
-            textColor: categoryData.textColor
-          };
-        }
-      }
-    }
-    
     // Fallback mapping for existing blog post tags
-    const tagCategoryMapping = {
+    const tagCategoryMapping: Record<string, { label: string, color: string, textColor: string }> = {
       'money-trauma': { label: "MIND GAMES", color: "#D9442C", textColor: "#FFF8E7" },
-      'generational-patterns': { label: "FIRST IN THE FAMILY", color: "#4F5D75", textColor: "#F2F2F2" },
-      'generational-wealth': { label: "FIRST IN THE FAMILY", color: "#4F5D75", textColor: "#F2F2F2" },
+      'generational-patterns': { label: "FIRST IN FAMILY", color: "#4F5D75", textColor: "#F2F2F2" },
+      'generational-wealth': { label: "FIRST IN FAMILY", color: "#4F5D75", textColor: "#F2F2F2" },
       'financial-psychology': { label: "MIND GAMES", color: "#D9442C", textColor: "#FFF8E7" },
-      'family-programming': { label: "FIRST IN THE FAMILY", color: "#4F5D75", textColor: "#F2F2F2" },
+      'family-programming': { label: "FIRST IN FAMILY", color: "#4F5D75", textColor: "#F2F2F2" },
       'ai-side-hustles': { label: "SIDE STREAMS", color: "#4BAF73", textColor: "#F9F9F9" },
       'digital-products': { label: "SIDE STREAMS", color: "#4BAF73", textColor: "#F9F9F9" },
       'passive-income': { label: "RECEIPTS & MOVES", color: "#2D2D2D", textColor: "#FFEF7C" },
@@ -78,15 +59,26 @@ const BlogGrid = ({ isVisible }: BlogGridProps) => {
       'hustle-culture': { label: "SIDE STREAMS", color: "#4BAF73", textColor: "#F9F9F9" }
     };
 
-    // Check for fallback matches
+    // Check for matches with existing tags first
     for (const tag of tags) {
       if (tagCategoryMapping[tag]) {
-        console.log('Fallback match found for tag:', tag);
         return tagCategoryMapping[tag];
       }
     }
+
+    // Check if any tags match the new filter categories
+    for (const tag of tags) {
+      for (const [categoryName, categoryData] of Object.entries(FILTER_CATEGORIES)) {
+        if ((categoryData.tags as readonly string[]).includes(tag)) {
+          return {
+            label: categoryName.toUpperCase(),
+            color: categoryData.color,
+            textColor: categoryData.textColor
+          };
+        }
+      }
+    }
     
-    console.log('No match found, returning GENERAL');
     return { label: "GENERAL", color: "#6B7280", textColor: "#F9FAFB" };
   };
 
@@ -290,12 +282,14 @@ const BlogGrid = ({ isVisible }: BlogGridProps) => {
                        const ribbon = getCategoryRibbon(post.tags || []);
                        return (
                          <div 
-                           className="absolute top-4 right-4 z-10 px-3 py-1.5 text-xs font-semibold tracking-wide transform rotate-12 shadow-lg"
+                           className="absolute top-4 right-4 z-10 px-3 py-1.5 text-xs font-bold tracking-wide transform rotate-12 shadow-lg border-2 border-black/30"
                            style={{
                              backgroundColor: ribbon.color,
                              color: ribbon.textColor,
                              fontFamily: 'Inter, sans-serif',
-                             fontWeight: '600',
+                             fontWeight: '700',
+                             minWidth: '100px',
+                             textAlign: 'center',
                              clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 100%, 8px 100%)'
                            }}
                          >

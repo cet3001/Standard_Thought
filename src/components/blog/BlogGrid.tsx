@@ -39,15 +39,11 @@ const BlogGrid = ({ isVisible }: BlogGridProps) => {
     for (const tag of tags) {
       for (const [categoryName, categoryData] of Object.entries(FILTER_CATEGORIES)) {
         if ((categoryData.tags as readonly string[]).includes(tag)) {
-          const ribbonStyles = {
-            "Mind Games": { label: "MIND GAMES", color: "#D9442C", textColor: "#FFF8E7" },
-            "First In The Family": { label: "FIRST IN THE FAMILY", color: "#4F5D75", textColor: "#F2F2F2" },
-            "Culture & Cash": { label: "CULTURE & CASH", color: "#D4AF37", textColor: "#0A0A0A" },
-            "Side Streams": { label: "SIDE STREAMS", color: "#4BAF73", textColor: "#F9F9F9" },
-            "Receipts & Moves": { label: "RECEIPTS & MOVES", color: "#2D2D2D", textColor: "#FFEF7C" },
-            "Spirit & Rewired": { label: "SPIRIT & REWIRED", color: "#776C9E", textColor: "#FEFEF7" }
+          return {
+            label: categoryName.toUpperCase(),
+            color: categoryData.color,
+            textColor: categoryData.textColor
           };
-          return ribbonStyles[categoryName] || { label: categoryName.toUpperCase(), color: "#6B7280", textColor: "#F9FAFB" };
         }
       }
     }

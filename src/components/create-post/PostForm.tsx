@@ -10,6 +10,7 @@ import { Switch } from "@/components/ui/switch";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ImageUpload } from "./ImageUpload";
+import { FILTER_CATEGORIES } from "@/components/blog/BlogFilters";
 
 interface FormData {
   title: string;
@@ -172,21 +173,9 @@ export const PostForm = ({
             />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <Label htmlFor="tags" className="text-brand-black dark:text-brand-cream font-ibm-plex-mono">Tags</Label>
-              <Input
-                id="tags"
-                value={formData.tags}
-                onChange={(e) =>
-                  setFormData({ ...formData, tags: e.target.value })
-                }
-                placeholder="hustle, mindset, network (comma separated)"
-                className="bg-brand-cream/50 dark:bg-brand-black/50 border-yellow-400/30 focus:border-yellow-400 text-brand-black dark:text-brand-cream font-kalam"
-              />
-            </div>
-            <div>
-              <Label htmlFor="displayTag" className="text-brand-black dark:text-brand-cream font-ibm-plex-mono">Display Tag</Label>
+              <Label htmlFor="category" className="text-brand-black dark:text-brand-cream font-ibm-plex-mono">Category</Label>
               <Select
                 value={formData.displayTag}
                 onValueChange={(value) =>
@@ -194,24 +183,58 @@ export const PostForm = ({
                 }
               >
                 <SelectTrigger 
-                  id="displayTag"
+                  id="category"
                   className="bg-brand-cream/50 dark:bg-brand-black/50 border-yellow-400/30 focus:border-yellow-400 text-brand-black dark:text-brand-cream font-kalam"
                 >
-                  <SelectValue placeholder="Enter tags first, then select display tag" />
+                  <SelectValue placeholder="Select a category" />
                 </SelectTrigger>
                 <SelectContent className="bg-brand-cream dark:bg-brand-black border-yellow-400/30 z-50">
-                  {formData.tags && formData.tags.trim() ? formData.tags.split(',').map((tag, index) => {
-                    const trimmedTag = tag.trim();
-                    if (!trimmedTag) return null;
-                    return (
-                      <SelectItem key={index} value={trimmedTag} className="text-brand-black dark:text-brand-cream font-kalam">
-                        {trimmedTag}
-                      </SelectItem>
-                    );
-                  }).filter(Boolean) : null}
+                  {Object.entries(FILTER_CATEGORIES).map(([categoryName, categoryData]) => (
+                    <SelectItem key={categoryName} value={categoryName} className="text-brand-black dark:text-brand-cream font-kalam">
+                      <div className="flex items-center gap-2">
+                        <div 
+                          className="w-3 h-3 rounded-sm" 
+                          style={{ backgroundColor: categoryData.color }}
+                        ></div>
+                        {categoryName}
+                      </div>
+                    </SelectItem>
+                  ))}
                 </SelectContent>
               </Select>
             </div>
+            <div>
+              <Label htmlFor="tags" className="text-brand-black dark:text-brand-cream font-ibm-plex-mono">Tags</Label>
+              <Select
+                value={formData.tags}
+                onValueChange={(value) =>
+                  setFormData({ ...formData, tags: value })
+                }
+              >
+                <SelectTrigger 
+                  id="tags"
+                  className="bg-brand-cream/50 dark:bg-brand-black/50 border-yellow-400/30 focus:border-yellow-400 text-brand-black dark:text-brand-cream font-kalam"
+                >
+                  <SelectValue placeholder="Select tags" />
+                </SelectTrigger>
+                <SelectContent className="bg-brand-cream dark:bg-brand-black border-yellow-400/30 z-50">
+                  {formData.displayTag && FILTER_CATEGORIES[formData.displayTag] ? 
+                    (FILTER_CATEGORIES[formData.displayTag].tags as readonly string[]).map((tag) => (
+                      <SelectItem key={tag} value={tag} className="text-brand-black dark:text-brand-cream font-kalam">
+                        {tag.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
+                      </SelectItem>
+                    )) : 
+                    <SelectItem value="" disabled className="text-gray-500">
+                      Select a category first
+                    </SelectItem>
+                  }
+                </SelectContent>
+              </Select>
+              <p className="text-xs text-gray-500 mt-1">Select a category first to see available tags</p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <Label htmlFor="metaTags" className="text-brand-black dark:text-brand-cream font-ibm-plex-mono">Meta Tags</Label>
               <Input

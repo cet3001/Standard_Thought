@@ -4,31 +4,37 @@ import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Filter, X, SortAsc, SortDesc } from "lucide-react";
 
-// New Emotional Filter Categories for Standard Thought
+// Filter categories with emotionally grounded groupings (no emojis)
 export const FILTER_CATEGORIES = {
-  "MIND GAMES": {
-    icon: "🧠",
-    tags: ["money-beliefs", "fear-of-failing", "survival-programming"]
+  "Mind Games": {
+    color: "#D9442C",
+    textColor: "#FFF8E7",
+    tags: ["money-beliefs", "fear-of-failing", "survival-programming"] as const
   },
-  "FIRST IN THE FAMILY": {
-    icon: "🏁", 
-    tags: ["breaking-inheritance-loops", "rebuilding-self-worth", "learning-without-mentors"]
+  "First In The Family": {
+    color: "#4F5D75", 
+    textColor: "#F2F2F2",
+    tags: ["breaking-inheritance-loops", "learning-without-mentors", "rebuilding-self-worth"] as const
   },
-  "CULTURE & CASH": {
-    icon: "📉",
-    tags: ["black-wealth-gaps", "system-myths", "family-guilt"]
+  "Culture & Cash": {
+    color: "#D4AF37",
+    textColor: "#0A0A0A", 
+    tags: ["black-wealth-gaps", "system-myths", "family-guilt"] as const
   },
-  "SIDE STREAMS": {
-    icon: "💼",
-    tags: ["freelance-hustles", "digital-plays", "entrepreneur-lessons"]
+  "Side Streams": {
+    color: "#4BAF73",
+    textColor: "#F9F9F9",
+    tags: ["freelance-hustles", "digital-plays", "entrepreneur-lessons"] as const
   },
-  "RECEIPTS & MOVES": {
-    icon: "🛠",
-    tags: ["credit-fixes", "budgeting-that-works", "passive-income-tests", "ai-tools"]
+  "Receipts & Moves": {
+    color: "#2D2D2D",
+    textColor: "#FFEF7C",
+    tags: ["credit-fixes", "budgeting-that-works", "passive-income-tests", "ai-tools"] as const
   },
-  "SPIRIT & REWIRED BELIEFS": {
-    icon: "🌀",
-    tags: ["mental-wealth", "inner-work", "conscious-pivoting"]
+  "Spirit & Rewired": {
+    color: "#776C9E", 
+    textColor: "#FEFEF7",
+    tags: ["mental-wealth", "inner-work", "conscious-pivoting"] as const
   }
 } as const;
 
@@ -91,11 +97,11 @@ export const BlogFilters = ({
     ).join(' ');
   };
 
-  // Get category for a tag
+  // Get category for a tag (no longer using icons)
   const getCategoryForTag = (tag: BlogTag) => {
     for (const [categoryName, categoryData] of Object.entries(FILTER_CATEGORIES)) {
       if ((categoryData.tags as readonly string[]).includes(tag)) {
-        return { name: categoryName, icon: categoryData.icon };
+        return { name: categoryName, color: categoryData.color };
       }
     }
     return null;
@@ -119,7 +125,10 @@ export const BlogFilters = ({
               className="w-full p-4 text-left flex items-center justify-between hover:bg-white/5 dark:hover:bg-gray-900/10 transition-colors"
             >
               <div className="flex items-center gap-3">
-                <span className="text-xl">{categoryData.icon}</span>
+                <div 
+                  className="w-4 h-4 rounded-sm" 
+                  style={{ backgroundColor: categoryData.color }}
+                ></div>
                 <h4 className="font-bold text-white dark:text-brand-cream font-ibm-plex-mono text-sm tracking-wide">
                   {categoryName}
                 </h4>
@@ -211,7 +220,11 @@ export const BlogFilters = ({
               const category = getCategoryForTag(tag);
               return (
                 <Badge key={tag} className="bg-yellow-400/20 text-yellow-400 border-yellow-400/30 text-xs">
-                  {category?.icon} {formatTagName(tag)}
+                  <div 
+                    className="w-2 h-2 rounded-sm mr-1" 
+                    style={{ backgroundColor: category?.color || "#6B7280" }}
+                  ></div>
+                  {formatTagName(tag)}
                 </Badge>
               );
             })}

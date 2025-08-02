@@ -45,7 +45,7 @@ const BlogGrid = ({ isVisible }: BlogGridProps) => {
             "Culture & Cash": { label: "CULTURE & CASH", color: "#D4AF37", textColor: "#0A0A0A" },
             "Side Streams": { label: "SIDE STREAMS", color: "#4BAF73", textColor: "#F9F9F9" },
             "Receipts & Moves": { label: "RECEIPTS & MOVES", color: "#2D2D2D", textColor: "#FFEF7C" },
-            "Spirit & Rewired Beliefs": { label: "SPIRIT & REWIRED", color: "#776C9E", textColor: "#FEFEF7" }
+            "Spirit & Rewired": { label: "SPIRIT & REWIRED", color: "#776C9E", textColor: "#FEFEF7" }
           };
           return ribbonStyles[categoryName] || { label: categoryName.toUpperCase(), color: "#6B7280", textColor: "#F9FAFB" };
         }

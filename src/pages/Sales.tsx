@@ -63,12 +63,18 @@ const Sales = () => {
       </div>
 
       <Helmet>
-        <title>Unlock Your Urban Wealth Blueprint | Build Generational Wealth</title>
-        <meta name="description" content="Turn systemic barriers into bread. Free and premium guides for building generational wealth, fixing credit, and breaking cycles." />
-        <meta name="keywords" content="urban wealth, generational wealth, credit repair, investing, financial freedom, Black wealth building" />
-        <meta property="og:title" content="Unlock Your Urban Wealth Blueprint" />
-        <meta property="og:description" content="The Exclusion Flip—Turn Systemic Barriers into Bread. Build wealth from nothing." />
+        <title>Out The Loop? Break It Here – Real Financial Tactics | Standard Thought</title>
+        <meta name="description" content="Cycle-breakers don't need buzzwords—they need real moves. This page flips exclusion into action with free tools, digital plays, and wealth repair strategies that weren't handed down. Built for the ones left out." />
+        <meta name="keywords" content="urban wealth, generational wealth, credit repair, investing, financial freedom, Black wealth building, cycle breaking, financial exclusion" />
+        <meta property="og:title" content="Stack What Was Denied." />
+        <meta property="og:description" content="Cycle-breakers don't need buzzwords—they need real moves. This page flips exclusion into action with free tools, digital plays, and wealth repair strategies that weren't handed down." />
         <meta property="og:type" content="website" />
+        <meta property="og:image" content="/lovable-uploads/bbfe2eff-caae-4c37-8946-23e81350a078.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Stack What Was Denied." />
+        <meta name="twitter:description" content="Real moves for cycle-breakers. No buzzwords, just proven tactics that weren't handed down." />
+        <meta name="twitter:image" content="/lovable-uploads/bbfe2eff-caae-4c37-8946-23e81350a078.png" />
+        <link rel="canonical" href="https://www.standardthought.com/sales" />
       </Helmet>
 
       {/* Navigation Header */}
@@ -86,19 +92,17 @@ const Sales = () => {
                   <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight relative">
                     <div className="absolute inset-0 opacity-[0.05] bg-[conic-gradient(from_0deg,_transparent_70%,_rgba(0,0,0,0.3)_90%,_transparent_100%)] bg-[length:15px_15px]"></div>
                     <span className="relative z-10">
-                      <span className="text-brand-black dark:text-brand-cream">Unlock Your</span>{" "}
-                      <span className="pearlescent-text">Urban Wealth Blueprint</span>
+                      <span className="text-brand-black dark:text-brand-cream">Break the Lock.</span>{" "}
+                      <span className="text-[#FFD369]">Stack What Was Denied.</span>
                     </span>
                   </h1>
 
-                  <div className="mb-8 p-6 bg-gradient-to-r from-[#FFD700]/20 to-[#FFA500]/20 border border-[#FFD700]/30 rounded-2xl backdrop-blur-sm">
-                    <p className="text-xl sm:text-2xl font-bold text-brand-black dark:text-brand-cream leading-relaxed">
-                      <span className="text-[#FFD700]">Standard Thought Law #2:</span> The Exclusion Flip—Turn Systemic Barriers into Bread
-                    </p>
-                  </div>
+                  <p className="text-lg sm:text-xl leading-relaxed text-brand-black dark:text-brand-cream/90 mb-6 font-medium">
+                    90% of Black wealth evaporates in one generation—because nobody passed us the real plays. This page flips the script: from no-cost starters to digital hustles, here's where you find the code to move different—one free or low-cost asset at a time. Not theory. Proven moves from the grind, the hood, and those still locked out.
+                  </p>
 
-                  <p className="text-lg sm:text-xl leading-relaxed text-brand-black dark:text-brand-cream/90 mb-10 font-medium">
-                    In Black communities, 90% of wealth evaporates in one generation—ready to flip that script? This is your spot for free and premium guides, playbooks, and tools to stack bread, fix credit, and build generational wealth—no trust fund vibes. Build your journey from no-cost plays to premium flips, blending urban sociology (breaking hood traps) + behavioral psych (rewiring instinct for wins). No shortcuts, no cap: Smuggle past gates keeping us out, shatter money trauma, and rise with real, layered insight.
+                  <p className="text-base sm:text-lg leading-relaxed text-brand-black dark:text-brand-cream/80 mb-10 font-normal italic">
+                    No theory, just receipts. If you've ever felt outside the loop, you're home now.
                   </p>
 
                   <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
@@ -106,9 +110,10 @@ const Sales = () => {
                       size="lg" 
                       className="bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFA500] text-black font-bold px-8 py-3 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-0 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/40 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700"
                       onClick={() => document.getElementById('starter-section')?.scrollIntoView({ behavior: 'smooth' })}
+                      aria-label="Start With the First Play - Navigate to free resources section"
                     >
                       <Zap className="mr-2 h-5 w-5" />
-                      ⚡ Get The Blueprint
+                      Start With the First Play
                     </Button>
                   </div>
                 </div>
@@ -117,11 +122,11 @@ const Sales = () => {
                 <div className={`relative z-10 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'} transition-all duration-1000 delay-300`}>
                   <div className="relative overflow-hidden rounded-2xl shadow-2xl">
                     <OptimizedImage
-                      src="/lovable-uploads/83d7ca67-81a0-42da-a27c-e3d308dc57bd.png"
-                      alt="Urban entrepreneur writing financial plans in notebook under street lighting, embodying the dedication and strategic planning needed for wealth building"
+                      src="/lovable-uploads/bbfe2eff-caae-4c37-8946-23e81350a078.png"
+                      alt="Three generations leaning in over a laptop—learning what was never taught. Cycle-breaking in real time."
                       className="w-full h-[400px] sm:h-[500px] lg:h-[600px] object-cover"
                       width={600}
-                      height={800}
+                      height={400}
                       priority={true}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none"></div>

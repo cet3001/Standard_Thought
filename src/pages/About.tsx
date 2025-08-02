@@ -554,16 +554,15 @@ const About = () => {
               <div className="mb-16 w-full">
                 <div className="relative rounded-lg overflow-hidden border border-[#FFD700]/20 shadow-xl">
                   <img 
-                    src="/lovable-uploads/ac2a76d4-f93e-48d1-852d-46d792a9acb8.png"
-                    alt="Group of young adults in streetwear seated on a city rooftop at sunset, engaging in collaborative discussion with construction and community atmosphere"
-                    className="w-full h-48 sm:h-56 md:h-64 lg:h-72 object-cover"
+                    src="/lovable-uploads/89c062ac-2c1d-44ab-bc40-56fd346860ad.png"
+                    alt="Wide urban banner showing young entrepreneurs and creators gathering at an outdoor night marketplace, talking and connecting under string lights, with city vibrancy and real community energy."
+                    className="w-full h-32 sm:h-40 md:h-48 lg:h-56 xl:h-64 object-cover object-center"
                     loading="lazy"
                     style={{
-                      objectPosition: 'center 30%',
-                      filter: 'brightness(0.95) contrast(1.05) saturate(1.1)'
+                      aspectRatio: '16/5',
+                      filter: 'brightness(0.98) contrast(1.03) saturate(1.05)'
                     }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-black/10"></div>
                 </div>
               </div>
               

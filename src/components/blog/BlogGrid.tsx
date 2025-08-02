@@ -4,7 +4,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { getBlogPosts, BlogPost, deleteBlogPost } from "@/lib/api";
 import { Clock, Edit, Trash2 } from "lucide-react";
 import { toast } from "sonner";
-import { BlogFilters, BlogCategory, BlogTag, SortOption } from "@/components/blog/BlogFilters";
+import { BlogFilters, BlogCategory, BlogTag, SortOption, FILTER_CATEGORIES } from "@/components/blog/BlogFilters";
 import { SectionOverlayBox } from "@/components/layout";
 
 interface BlogGridProps {
@@ -19,6 +19,38 @@ const BlogGrid = ({ isVisible }: BlogGridProps) => {
   const [selectedTags, setSelectedTags] = useState<BlogTag[]>([]);
   const [sortBy, setSortBy] = useState<SortOption>("newest");
   const navigate = useNavigate();
+
+  // Sample micro-testimonials for hover states
+  const testimonials = [
+    "This finally helped me drop survival mode. – Tyrese",
+    "Real talk, this changed my whole perspective. – Maya", 
+    "Wish I had this 5 years ago. – DeShawn",
+    "Finally someone said what I was thinking. – Jasmine",
+    "This is the blueprint I needed. – Marcus",
+    "Broke it down perfectly for me. – Keisha",
+    "No cap, this is pure game. – Jordan",
+    "This hit different for real. – Aaliyah"
+  ];
+
+  // Get category icon for a tag
+  const getCategoryIcon = (tags: string[]) => {
+    if (!tags || tags.length === 0) return "📝";
+    
+    for (const tag of tags) {
+      for (const [categoryName, categoryData] of Object.entries(FILTER_CATEGORIES)) {
+        if ((categoryData.tags as readonly string[]).includes(tag)) {
+          return categoryData.icon;
+        }
+      }
+    }
+    return "📝"; // Default icon
+  };
+
+  // Get random testimonial for post
+  const getTestimonial = (postId: string) => {
+    const index = parseInt(postId.slice(-1), 16) % testimonials.length;
+    return testimonials[index];
+  };
 
   // Filter and sort posts
   const getFilteredPosts = () => {
@@ -122,7 +154,7 @@ const BlogGrid = ({ isVisible }: BlogGridProps) => {
       {/* Section Header */}
       <div className="text-center mb-12">
         <h3 className="text-4xl md:text-5xl font-black text-brand-black dark:text-brand-cream font-ibm-plex-mono mb-6">
-          FILTER &{" "}
+          Choose Your{" "}
           <span className="font-permanent-marker transform rotate-1" style={{
             color: 'transparent',
             background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
@@ -130,17 +162,21 @@ const BlogGrid = ({ isVisible }: BlogGridProps) => {
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text',
-            animation: 'pearlescent 3s ease-in-out infinite'
+            animation: 'pearlescent 3s ease-in-out infinite',
+            textShadow: '2px 2px 4px rgba(0,0,0,0.4), -1px -1px 2px rgba(255,255,255,0.1)',
+            fontWeight: 'bold',
+            letterSpacing: '2px'
           }}>
-            EXPLORE
+            Struggle
           </span>
+          —We Wrote About It
         </h3>
-        <p className="text-lg text-white/80 dark:text-brand-cream/80 max-w-2xl mx-auto">
-          From setbacks to stacks—browse by category and get the real game from those who built it brick by brick.
+        <p className="text-lg text-white/80 dark:text-brand-cream/80 max-w-2xl mx-auto font-kalam">
+          Start here if you never got the memo. Filter the stories by what's holding you back—or what you're building up next.
         </p>
       </div>
 
-      {/* Filter and Content Grid */}
+      {/* Two-column layout: 25% filters, 75% blog grid */}
       <div className="grid lg:grid-cols-4 gap-8">
         {/* Filters Sidebar */}
         <div className="lg:col-span-1">
@@ -183,34 +219,44 @@ const BlogGrid = ({ isVisible }: BlogGridProps) => {
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
                   <div className="relative h-full bg-white/20 dark:bg-gray-900/25 backdrop-blur-md rounded-xl overflow-hidden shadow-2xl border border-white/30 dark:border-gray-700/40 transform transition-all duration-500 group-hover:bg-white/30 dark:group-hover:bg-gray-900/35 group-hover:shadow-3xl group-hover:border-white/40 dark:group-hover:border-gray-600/50">
-                    
-                    {/* Image */}
-                    {post.image_url && (
-                      <div className="relative h-48 overflow-hidden">
-                        <img
-                          src={post.image_url}
-                          alt={post.title}
-                          className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-                      </div>
-                    )}
-                    
-                    {/* Content */}
-                    <div className="p-6">
-                      {/* Category Badge */}
-                      <div className="flex items-center gap-2 mb-3">
-                        <span className="px-3 py-1.5 text-xs font-bold rounded-sm border-2 border-gray-900 shadow-lg font-kalam transform -rotate-2" style={{
-                          background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                          backgroundSize: '400% 400%',
-                          animation: 'pearlescent 3s ease-in-out infinite',
-                          textShadow: '1px 1px 0px rgba(0,0,0,0.3), -1px -1px 0px rgba(255,255,255,0.2)',
-                          color: '#000',
-                          letterSpacing: '1px'
-                        }}>
-                          {(post.display_tag || post.category).toUpperCase()}
-                        </span>
-                      </div>
+                     
+                     {/* Hover Testimonial Overlay */}
+                     <div className="absolute inset-0 bg-black/80 backdrop-blur-sm z-20 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center p-6">
+                       <div className="text-center">
+                         <p className="text-white font-kalam text-sm italic leading-relaxed">
+                           "{getTestimonial(post.id)}"
+                         </p>
+                       </div>
+                     </div>
+
+                     {/* Image */}
+                     {post.image_url && (
+                       <div className="relative h-48 overflow-hidden">
+                         <img
+                           src={post.image_url}
+                           alt={post.title}
+                           className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                         />
+                         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                       </div>
+                     )}
+                     
+                     {/* Content */}
+                     <div className="p-6">
+                       {/* Category Badge with Icon */}
+                       <div className="flex items-center gap-2 mb-3">
+                         <span className="flex items-center gap-1 px-3 py-1.5 text-xs font-bold rounded-sm border-2 border-gray-900 shadow-lg font-kalam transform -rotate-2" style={{
+                           background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                           backgroundSize: '400% 400%',
+                           animation: 'pearlescent 3s ease-in-out infinite',
+                           textShadow: '1px 1px 0px rgba(0,0,0,0.3), -1px -1px 0px rgba(255,255,255,0.2)',
+                           color: '#000',
+                           letterSpacing: '1px'
+                         }}>
+                           <span className="text-sm">{getCategoryIcon(post.tags || [])}</span>
+                           {(post.display_tag || post.category).toUpperCase()}
+                         </span>
+                       </div>
                       
                       {/* Title */}
                       <h4 className="text-lg font-bold mb-3 line-clamp-2 font-ibm-plex-mono leading-tight transition-colors duration-300 drop-shadow-sm" style={{
@@ -304,20 +350,20 @@ const BlogGrid = ({ isVisible }: BlogGridProps) => {
                 background: 'linear-gradient(45deg, rgba(244, 208, 63, 0.1), rgba(255, 215, 0, 0.1))',
                 borderColor: 'rgba(255, 215, 0, 0.3)'
               }}>
-                <p className="font-bold text-lg mb-2 font-permanent-marker" style={{
-                  color: 'transparent',
-                  background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                  backgroundSize: '400% 400%',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                  animation: 'pearlescent 3s ease-in-out infinite'
-                }}>
-                  No Stories Found
-                </p>
-                <p className="text-white/80 dark:text-brand-cream/80 font-kalam">
-                  Try adjusting your filters or check back soon for fresh content.
-                </p>
+                 <p className="font-bold text-lg mb-2 font-permanent-marker" style={{
+                   color: 'transparent',
+                   background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+                   backgroundSize: '400% 400%',
+                   WebkitBackgroundClip: 'text',
+                   WebkitTextFillColor: 'transparent',
+                   backgroundClip: 'text',
+                   animation: 'pearlescent 3s ease-in-out infinite'
+                 }}>
+                   Hold up—our real ones are working on this.
+                 </p>
+                 <p className="text-white/80 dark:text-brand-cream/80 font-kalam">
+                   Hit us back soon.
+                 </p>
               </div>
             </div>
           )}

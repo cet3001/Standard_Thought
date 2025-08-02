@@ -269,8 +269,9 @@ const BlogGrid = ({ isVisible }: BlogGridProps) => {
                 >
                   <div className="relative h-full bg-white/20 dark:bg-gray-900/25 backdrop-blur-md rounded-xl overflow-hidden shadow-2xl border border-white/30 dark:border-gray-700/40 transform transition-all duration-500 group-hover:bg-white/30 dark:group-hover:bg-gray-900/35 group-hover:shadow-3xl group-hover:border-white/40 dark:group-hover:border-gray-600/50">
                      
-                     {/* Hover Testimonial Overlay */}
-                     <div className="absolute inset-0 bg-black/80 backdrop-blur-sm z-20 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center p-6">
+                     {/* Hover Testimonial Overlay - Modified to not cover admin buttons */}
+                     <div className="absolute inset-0 bg-black/80 backdrop-blur-sm z-20 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center p-6" 
+                          style={{ paddingBottom: isAdmin ? '80px' : '24px' }}>
                        <div className="text-center">
                          <p className="text-white font-kalam text-sm italic leading-relaxed">
                            "{getTestimonial(post.id)}"

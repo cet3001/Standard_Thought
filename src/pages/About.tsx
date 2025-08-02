@@ -367,6 +367,21 @@ const About = () => {
                 </p>
               </div>
               
+              {/* Marketplace Community Banner */}
+              <div className="mb-12 w-full">
+                <div className="relative rounded-lg overflow-hidden border border-[#FFD700]/20 shadow-xl">
+                  <img 
+                    src="/lovable-uploads/2f15375a-447d-4d2a-9da3-862e9268450c.png"
+                    alt="Wide urban banner showing young entrepreneurs and creators gathering at an outdoor night marketplace, talking and connecting under string lights, with city vibrancy and real community energy."
+                    className="w-full h-32 sm:h-40 md:h-48 lg:h-56 xl:h-64 object-cover object-center"
+                    loading="lazy"
+                    style={{
+                      aspectRatio: '16/5',
+                      filter: 'brightness(0.98) contrast(1.03) saturate(1.05)'
+                    }}
+                  />
+                </div>
+              </div>
               <div className="space-y-12 max-w-3xl mx-auto">
                 {/* Block 1 */}
                 <div className="bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm rounded-xl p-6 sm:p-8 border border-gray-300/10 dark:border-gray-700/10">
@@ -554,15 +569,16 @@ const About = () => {
               <div className="mb-16 w-full">
                 <div className="relative rounded-lg overflow-hidden border border-[#FFD700]/20 shadow-xl">
                   <img 
-                    src="/lovable-uploads/89c062ac-2c1d-44ab-bc40-56fd346860ad.png?v=2"
-                    alt="Wide urban banner showing young entrepreneurs and creators gathering at an outdoor night marketplace, talking and connecting under string lights, with city vibrancy and real community energy."
-                    className="w-full h-32 sm:h-40 md:h-48 lg:h-56 xl:h-64 object-cover object-center"
+                    src="/lovable-uploads/ac2a76d4-f93e-48d1-852d-46d792a9acb8.png"
+                    alt="Group of young adults in streetwear seated on a city rooftop at sunset, engaging in collaborative discussion with construction and community atmosphere"
+                    className="w-full h-48 sm:h-56 md:h-64 lg:h-72 object-cover"
                     loading="lazy"
                     style={{
-                      aspectRatio: '16/5',
-                      filter: 'brightness(0.98) contrast(1.03) saturate(1.05)'
+                      objectPosition: 'center 30%',
+                      filter: 'brightness(0.95) contrast(1.05) saturate(1.1)'
                     }}
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-black/10"></div>
                 </div>
               </div>
               

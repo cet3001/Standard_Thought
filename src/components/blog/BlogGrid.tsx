@@ -34,11 +34,20 @@ const BlogGrid = ({ isVisible }: BlogGridProps) => {
 
   // Get category ribbon styling for a tag
   const getCategoryRibbon = (tags: string[]) => {
-    if (!tags || tags.length === 0) return { label: "GENERAL", color: "#6B7280", textColor: "#F9FAFB" };
+    console.log('Blog post tags:', tags); // Debug log
     
+    if (!tags || tags.length === 0) {
+      console.log('No tags found, returning GENERAL');
+      return { label: "GENERAL", color: "#6B7280", textColor: "#F9FAFB" };
+    }
+    
+    // Check if any tags match the new filter categories
     for (const tag of tags) {
+      console.log('Checking tag:', tag);
       for (const [categoryName, categoryData] of Object.entries(FILTER_CATEGORIES)) {
+        console.log('Checking category:', categoryName, 'tags:', categoryData.tags);
         if ((categoryData.tags as readonly string[]).includes(tag)) {
+          console.log('Match found! Category:', categoryName);
           return {
             label: categoryName.toUpperCase(),
             color: categoryData.color,
@@ -47,6 +56,37 @@ const BlogGrid = ({ isVisible }: BlogGridProps) => {
         }
       }
     }
+    
+    // Fallback mapping for existing blog post tags
+    const tagCategoryMapping = {
+      'money-trauma': { label: "MIND GAMES", color: "#D9442C", textColor: "#FFF8E7" },
+      'generational-patterns': { label: "FIRST IN THE FAMILY", color: "#4F5D75", textColor: "#F2F2F2" },
+      'generational-wealth': { label: "FIRST IN THE FAMILY", color: "#4F5D75", textColor: "#F2F2F2" },
+      'financial-psychology': { label: "MIND GAMES", color: "#D9442C", textColor: "#FFF8E7" },
+      'family-programming': { label: "FIRST IN THE FAMILY", color: "#4F5D75", textColor: "#F2F2F2" },
+      'ai-side-hustles': { label: "SIDE STREAMS", color: "#4BAF73", textColor: "#F9F9F9" },
+      'digital-products': { label: "SIDE STREAMS", color: "#4BAF73", textColor: "#F9F9F9" },
+      'passive-income': { label: "RECEIPTS & MOVES", color: "#2D2D2D", textColor: "#FFEF7C" },
+      'wealth-mindset': { label: "SPIRIT & REWIRED", color: "#776C9E", textColor: "#FEFEF7" },
+      'wealth-building': { label: "CULTURE & CASH", color: "#D4AF37", textColor: "#0A0A0A" },
+      'side-hustle': { label: "SIDE STREAMS", color: "#4BAF73", textColor: "#F9F9F9" },
+      'business-strategy': { label: "SIDE STREAMS", color: "#4BAF73", textColor: "#F9F9F9" },
+      'scarcity-mindset': { label: "MIND GAMES", color: "#D9442C", textColor: "#FFF8E7" },
+      'mindset-shift': { label: "SPIRIT & REWIRED", color: "#776C9E", textColor: "#FEFEF7" },
+      'money-education': { label: "CULTURE & CASH", color: "#D4AF37", textColor: "#0A0A0A" },
+      'entrepreneurship-mistakes': { label: "SIDE STREAMS", color: "#4BAF73", textColor: "#F9F9F9" },
+      'hustle-culture': { label: "SIDE STREAMS", color: "#4BAF73", textColor: "#F9F9F9" }
+    };
+
+    // Check for fallback matches
+    for (const tag of tags) {
+      if (tagCategoryMapping[tag]) {
+        console.log('Fallback match found for tag:', tag);
+        return tagCategoryMapping[tag];
+      }
+    }
+    
+    console.log('No match found, returning GENERAL');
     return { label: "GENERAL", color: "#6B7280", textColor: "#F9FAFB" };
   };
 

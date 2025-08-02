@@ -50,15 +50,13 @@ const BlogHero = ({ isVisible }: BlogHeroProps) => {
         <div className="mt-8">
           <a
             href="#blog-posts"
-            className="group inline-flex items-center px-8 py-4 text-lg font-bold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl font-permanent-marker"
+            className="group inline-flex items-center gap-2 px-8 py-4 text-lg font-bold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl font-permanent-marker bg-gradient-to-r from-[#FFD700]/20 to-[#FFA500]/20 backdrop-blur-sm border-2 border-[#FFD700] hover:bg-[#FFD700]/30 rotate-1 hover:rotate-0"
             style={{
-              background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-              backgroundSize: '400% 400%',
-              color: '#000',
-              textShadow: '2px 2px 4px rgba(0,0,0,0.1)',
-              filter: 'drop-shadow(0 4px 8px rgba(255,215,0,0.3))',
-              animation: 'pearlescent 3s ease-in-out infinite',
-              transform: 'rotate(-1deg)'
+              color: '#FFD700',
+              textShadow: '2px 2px 4px rgba(0,0,0,0.3)',
+              filter: 'drop-shadow(0 4px 8px rgba(255,215,0,0.4))',
+              background: 'linear-gradient(45deg, rgba(255,215,0,0.2), rgba(255,165,0,0.2))',
+              backdropFilter: 'blur(4px)'
             }}
           >
             Start Digging—The Real Stories Are Here

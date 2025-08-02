@@ -36,28 +36,52 @@ const BlogGrid = ({ isVisible }: BlogGridProps) => {
   const getRibbon = (post: BlogPost) => {
     const tags = post.tags || [];
     
-    // Direct tag mapping to categories
+    // Direct tag mapping to categories based on actual database tags
     const categoryMap = {
+      // Mind Games - Psychology & Money Beliefs
       'money-trauma': { name: 'MIND GAMES', color: '#D9442C', text: '#FFF8E7' },
       'financial-psychology': { name: 'MIND GAMES', color: '#D9442C', text: '#FFF8E7' },
       'scarcity-mindset': { name: 'MIND GAMES', color: '#D9442C', text: '#FFF8E7' },
+      'mindset-shift': { name: 'MIND GAMES', color: '#D9442C', text: '#FFF8E7' },
       
+      // First In Family - Generational & Breaking Barriers
       'generational-patterns': { name: 'FIRST IN FAMILY', color: '#4F5D75', text: '#F2F2F2' },
       'generational-wealth': { name: 'FIRST IN FAMILY', color: '#4F5D75', text: '#F2F2F2' },
       'family-programming': { name: 'FIRST IN FAMILY', color: '#4F5D75', text: '#F2F2F2' },
+      'first-revenue': { name: 'FIRST IN FAMILY', color: '#4F5D75', text: '#F2F2F2' },
+      'breaking-barriers': { name: 'FIRST IN FAMILY', color: '#4F5D75', text: '#F2F2F2' },
       
+      // Culture & Cash - Wealth Building & Financial Education
       'wealth-building': { name: 'CULTURE & CASH', color: '#D4AF37', text: '#0A0A0A' },
       'money-education': { name: 'CULTURE & CASH', color: '#D4AF37', text: '#0A0A0A' },
+      'wealth-mindset': { name: 'CULTURE & CASH', color: '#D4AF37', text: '#0A0A0A' },
+      'long-term-wealth': { name: 'CULTURE & CASH', color: '#D4AF37', text: '#0A0A0A' },
+      'financial-freedom': { name: 'CULTURE & CASH', color: '#D4AF37', text: '#0A0A0A' },
       
+      // Side Streams - Business & Hustles
       'ai-side-hustles': { name: 'SIDE STREAMS', color: '#4BAF73', text: '#F9F9F9' },
       'side-hustle': { name: 'SIDE STREAMS', color: '#4BAF73', text: '#F9F9F9' },
       'business-strategy': { name: 'SIDE STREAMS', color: '#4BAF73', text: '#F9F9F9' },
       'digital-products': { name: 'SIDE STREAMS', color: '#4BAF73', text: '#F9F9F9' },
+      'online-business': { name: 'SIDE STREAMS', color: '#4BAF73', text: '#F9F9F9' },
+      'entrepreneurship-mistakes': { name: 'SIDE STREAMS', color: '#4BAF73', text: '#F9F9F9' },
+      'bootstrap-business': { name: 'SIDE STREAMS', color: '#4BAF73', text: '#F9F9F9' },
+      'service-business': { name: 'SIDE STREAMS', color: '#4BAF73', text: '#F9F9F9' },
+      'practical-entrepreneurship': { name: 'SIDE STREAMS', color: '#4BAF73', text: '#F9F9F9' },
       
+      // Receipts & Moves - Credit & Financial Strategy
       'passive-income': { name: 'RECEIPTS & MOVES', color: '#2D2D2D', text: '#FFEF7C' },
+      'credit-building': { name: 'RECEIPTS & MOVES', color: '#2D2D2D', text: '#FFEF7C' },
+      'financial-strategy': { name: 'RECEIPTS & MOVES', color: '#2D2D2D', text: '#FFEF7C' },
+      'credit-score': { name: 'RECEIPTS & MOVES', color: '#2D2D2D', text: '#FFEF7C' },
+      'no-cosigner': { name: 'RECEIPTS & MOVES', color: '#2D2D2D', text: '#FFEF7C' },
       
-      'wealth-mindset': { name: 'SPIRIT & REWIRED', color: '#776C9E', text: '#FEFEF7' },
-      'mindset-shift': { name: 'SPIRIT & REWIRED', color: '#776C9E', text: '#FEFEF7' }
+      // Spirit & Rewired - Personal Growth & Mental Health
+      'work-life-balance': { name: 'SPIRIT & REWIRED', color: '#776C9E', text: '#FEFEF7' },
+      'burnout-prevention': { name: 'SPIRIT & REWIRED', color: '#776C9E', text: '#FEFEF7' },
+      'mental-health': { name: 'SPIRIT & REWIRED', color: '#776C9E', text: '#FEFEF7' },
+      'authenticity': { name: 'SPIRIT & REWIRED', color: '#776C9E', text: '#FEFEF7' },
+      'cultural-identity': { name: 'SPIRIT & REWIRED', color: '#776C9E', text: '#FEFEF7' }
     };
 
     // Find first matching tag

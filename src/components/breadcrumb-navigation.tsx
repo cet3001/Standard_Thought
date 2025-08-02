@@ -17,7 +17,7 @@ const BreadcrumbNavigation = () => {
   const breadcrumbItems = [
     { name: 'The Root', path: '/', keywords: 'entrepreneurship hub, wealth building foundation' },
     { name: 'Builder Stories', path: '/blog', keywords: 'success stories, entrepreneurial journeys' },
-    { name: 'About + Mindset Tools', path: '/about', keywords: 'mindset development, success psychology' },
+    { name: 'The Shift', path: '/about', keywords: 'mindset development, success psychology' },
     { name: 'Blueprints & Offers', path: '/sales', keywords: 'business strategies, revenue optimization' },
   ];
 

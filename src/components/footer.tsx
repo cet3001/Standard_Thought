@@ -112,7 +112,7 @@ const Footer = () => {
               The Root
             </Link>
             <Link to="/about" className="text-brand-cream/80 hover:text-[#247EFF] transition-colors">
-              About + Mindset Tools
+              The Shift
             </Link>
             <Link to="/blog" className="text-brand-cream/80 hover:text-[#247EFF] transition-colors">
               Builder Stories

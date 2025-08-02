@@ -32,18 +32,26 @@ const BlogGrid = ({ isVisible }: BlogGridProps) => {
     "This hit different for real. – Aaliyah"
   ];
 
-  // Get category icon for a tag
-  const getCategoryIcon = (tags: string[]) => {
-    if (!tags || tags.length === 0) return "📝";
+  // Get category ribbon styling for a tag
+  const getCategoryRibbon = (tags: string[]) => {
+    if (!tags || tags.length === 0) return { label: "GENERAL", color: "#6B7280", textColor: "#F9FAFB" };
     
     for (const tag of tags) {
       for (const [categoryName, categoryData] of Object.entries(FILTER_CATEGORIES)) {
         if ((categoryData.tags as readonly string[]).includes(tag)) {
-          return categoryData.icon;
+          const ribbonStyles = {
+            "Mind Games": { label: "MIND GAMES", color: "#D9442C", textColor: "#FFF8E7" },
+            "First In The Family": { label: "FIRST IN THE FAMILY", color: "#4F5D75", textColor: "#F2F2F2" },
+            "Culture & Cash": { label: "CULTURE & CASH", color: "#D4AF37", textColor: "#0A0A0A" },
+            "Side Streams": { label: "SIDE STREAMS", color: "#4BAF73", textColor: "#F9F9F9" },
+            "Receipts & Moves": { label: "RECEIPTS & MOVES", color: "#2D2D2D", textColor: "#FFEF7C" },
+            "Spirit & Rewired Beliefs": { label: "SPIRIT & REWIRED", color: "#776C9E", textColor: "#FEFEF7" }
+          };
+          return ribbonStyles[categoryName] || { label: categoryName.toUpperCase(), color: "#6B7280", textColor: "#F9FAFB" };
         }
       }
     }
-    return "📝"; // Default icon
+    return { label: "GENERAL", color: "#6B7280", textColor: "#F9FAFB" };
   };
 
   // Get random testimonial for post
@@ -241,22 +249,27 @@ const BlogGrid = ({ isVisible }: BlogGridProps) => {
                        </div>
                      )}
                      
+                     {/* Category Ribbon - Top Right Corner */}
+                     {(() => {
+                       const ribbon = getCategoryRibbon(post.tags || []);
+                       return (
+                         <div 
+                           className="absolute top-4 right-4 z-10 px-3 py-1.5 text-xs font-semibold tracking-wide transform rotate-12 shadow-lg"
+                           style={{
+                             backgroundColor: ribbon.color,
+                             color: ribbon.textColor,
+                             fontFamily: 'Inter, sans-serif',
+                             fontWeight: '600',
+                             clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 100%, 8px 100%)'
+                           }}
+                         >
+                           {ribbon.label}
+                         </div>
+                       );
+                     })()}
+
                      {/* Content */}
-                     <div className="p-6">
-                       {/* Category Badge with Icon */}
-                       <div className="flex items-center gap-2 mb-3">
-                         <span className="flex items-center gap-1 px-3 py-1.5 text-xs font-bold rounded-sm border-2 border-gray-900 shadow-lg font-kalam transform -rotate-2" style={{
-                           background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
-                           backgroundSize: '400% 400%',
-                           animation: 'pearlescent 3s ease-in-out infinite',
-                           textShadow: '1px 1px 0px rgba(0,0,0,0.3), -1px -1px 0px rgba(255,255,255,0.2)',
-                           color: '#000',
-                           letterSpacing: '1px'
-                         }}>
-                           <span className="text-sm">{getCategoryIcon(post.tags || [])}</span>
-                           {(post.display_tag || post.category).toUpperCase()}
-                         </span>
-                       </div>
+                     <div className="p-6 pt-8">
                       
                       {/* Title */}
                       <h4 className="text-lg font-bold mb-3 line-clamp-2 font-ibm-plex-mono leading-tight transition-colors duration-300 drop-shadow-sm" style={{

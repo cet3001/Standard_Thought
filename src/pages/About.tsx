@@ -556,7 +556,7 @@ const About = () => {
                   <img 
                     src="/lovable-uploads/ac2a76d4-f93e-48d1-852d-46d792a9acb8.png"
                     alt="Group of young adults in streetwear seated on a city rooftop at sunset, engaging in collaborative discussion with construction and community atmosphere"
-                    className="w-full h-32 sm:h-40 md:h-48 lg:h-56 object-cover object-center"
+                    className="w-full h-40 sm:h-48 md:h-56 lg:h-64 object-contain object-center"
                     loading="lazy"
                     style={{
                       aspectRatio: '16/5',

@@ -6,7 +6,7 @@ import { ArrowLeft, ExternalLink } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useMobilePerformance } from "@/hooks/use-mobile-performance";
 import { useUrbanTexture } from "@/hooks/use-urban-texture";
-import { generateFAQSchema } from "@/components/seo/schemas";
+import { generateFAQSchema, generateArticleSchema, generateBreadcrumbSchema } from "@/components/seo/schemas";
 import InternalLinkingHub from "@/components/seo/internal-linking-hub";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -14,7 +14,6 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { NewsletterSection } from "@/components/newsletter-section";
 import { useState, useEffect } from "react";
 import cycleBreakingImage from "@/assets/cycle-breaking-transformation.jpg";
-// Using uploaded community banner image
 
 // Dynamic Community Ticker Component
 const DynamicCommunityTicker = ({ isVisible }: { isVisible: boolean }) => {
@@ -32,13 +31,12 @@ const DynamicCommunityTicker = ({ isVisible }: { isVisible: boolean }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentNameIndex((prev) => (prev + 1) % communityNames.length);
-    }, 800); // Change name every 0.8 seconds
+    }, 800);
 
     return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
-    // Show 5 names at a time, rotating
     const names = [];
     for (let i = 0; i < 5; i++) {
       names.push(communityNames[(currentNameIndex + i) % communityNames.length]);
@@ -78,7 +76,7 @@ const About = () => {
     url: "https://www.standardthought.com",
     position: 1
   }, {
-    name: "About",
+    name: "The Shift",
     url: "https://www.standardthought.com/about",
     position: 2
   }];
@@ -86,24 +84,38 @@ const About = () => {
   // FAQ data for schema markup
   const faqData = [
     {
-      question: "What if my story's too messed up?",
-      answer: "Start free—flip trauma into strength, step by step."
+      question: "What if my story's too messed up to fix?",
+      answer: "The messier your story, the stronger your foundation becomes when you flip it. Every cycle-breaker started with trauma—that's your raw material, not your limitation. Start free, build step by step."
     },
     {
-      question: "How risky is calling out myths?",
-      answer: "Low if real—systems beat the fear, rooted in exclusion fights."
+      question: "How risky is it to call out family patterns and myths?",
+      answer: "Low risk if you're building something real. When you show receipts and results, even skeptical family starts asking questions. Systems beat fear every time—especially when rooted in love, not rebellion."
     },
     {
-      question: "How fast to see flips?",
-      answer: "Months of grit, not quick—mindset legacy ain't overnight."
+      question: "How fast can I see real transformation results?",
+      answer: "Mindset shifts happen in moments; legacy building takes months of consistent grit. Don't expect overnight—but every authentic step compounds. Real cycle-breaking is a marathon, not a quick fix."
     },
     {
-      question: "Do I need to reflect daily?",
-      answer: "Nah, automate habits—focus on building the rest."
+      question: "Do I need to reflect and journal daily?",
+      answer: "Nah, automate the habits that matter—focus your energy on building the systems and relationships that create lasting change. Action over endless reflection."
     }
   ];
 
+  // Schema markup generation
   const faqSchema = generateFAQSchema({ faqs: faqData });
+  const breadcrumbSchema = generateBreadcrumbSchema({ 
+    items: breadcrumbs.map(b => ({ name: b.name, url: b.url, position: b.position }))
+  });
+  const articleSchema = generateArticleSchema({
+    title: "The Shift | Redefining Mindset for Cycle-Breakers",
+    description: "Discover the truth about mindset beyond motivation. The Shift is where survivors unlearn, rebuild, and redefine their legacy—from the inside out.",
+    url: "https://www.standardthought.com/about",
+    author: "Standard Thought",
+    publishedTime: "2024-01-01",
+    modifiedTime: new Date().toISOString().split('T')[0],
+    category: "mindset",
+    image: "https://www.standardthought.com/lovable-uploads/c8dcd8ab-7476-4852-b65f-de819b5a1606.png"
+  });
 
   return (
     <div className="min-h-screen relative overflow-hidden">
@@ -129,21 +141,26 @@ const About = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/85 via-brand-cream/90 to-brand-cream/85 dark:from-brand-black/85 dark:via-brand-black/90 dark:to-brand-black/85"></div>
       </div>
 
-      {/* SEO */}
+      {/* Enhanced SEO with proper meta data */}
       <SEO 
-        title="Why Mindset Matters | Standard Thought: Cycle-Breaking & Legacy" 
-        description="Standard Thought exposes the real traps holding us back—cycle thinking, generational fear, and hollow advice. Break the pattern: unlearn, rebuild, stack, and transcend. Build systems that outlast struggle and set new legends." 
-        keywords="mindset transformation, breaking cycles, mental wealth building, urban mindset, cycle-breaking, survival programming, identity rebuilding, system-building" 
+        title="The Shift | Redefining Mindset for Cycle-Breakers"
+        description="Discover the truth about mindset beyond motivation. The Shift is where survivors unlearn, rebuild, and redefine their legacy—from the inside out."
+        keywords="cycle-breaking, generational blueprint, healing mindset, mental wealth, system-building, survival programming, mindset transformation, legacy rewriting"
         url="/about" 
         type="article" 
-        breadcrumbs={breadcrumbs} 
+        breadcrumbs={breadcrumbs}
+        noIndex={false}
       />
 
-      {/* FAQ Schema */}
+      {/* Structured Data */}
       {faqSchema && (
-        <script type="application/ld+json">
-          {JSON.stringify(faqSchema)}
-        </script>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      )}
+      {breadcrumbSchema && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      )}
+      {articleSchema && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       )}
 
       {/* Analytics */}
@@ -152,33 +169,34 @@ const About = () => {
       {/* Navigation Header */}
       <Navigation />
 
-      {/* Main Content */}
+      {/* Main Content with proper semantic structure */}
       <main className="relative z-10 pt-20 sm:pt-24 lg:pt-28">
         {/* Hero Section */}
-        <section className="py-16 sm:py-24 relative">
+        <section className="py-16 sm:py-24 relative" aria-labelledby="hero-heading">
           <div className="container mx-auto px-6 max-w-6xl relative z-10">
             <div className="min-h-[70vh] flex flex-col lg:flex-row items-start justify-between gap-8 lg:gap-12">
               {/* Text Content - Left Side on Desktop */}
               <div className="flex-1 text-center lg:text-left order-2 lg:order-1 flex flex-col justify-center min-h-[70vh]">
-                {/* Headline */}
-                <h1 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight transition-all duration-600 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                {/* Main Headline - H1 */}
+                <h1 id="hero-heading" 
+                    className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight transition-all duration-600 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
                     style={{
                       textShadow: '2px 2px 4px rgba(0,0,0,0.3), 0 0 8px rgba(255,215,0,0.2)',
                       filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.5))'
                     }}>
-                  <span className="text-brand-cream dark:text-brand-cream">Welcome to the Home of Cycle-Breakers.</span>{" "}
-                  <span className="pearlescent-text">Mindset Isn't Just Step One—It's the Blueprint for Liberation, Legacy, and System-Building.</span>
+                  <span className="text-brand-cream dark:text-brand-cream">The Shift:</span>{" "}
+                  <span className="pearlescent-text">Where Cycle-Breakers Heal, Build, and Redefine Legacy</span>
                 </h1>
                 
                 {/* Subheadline */}
                 <div className={`transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-                  <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-6 text-brand-cream dark:text-brand-cream"
+                  <p className="text-lg sm:text-xl md:text-2xl font-bold mb-6 text-brand-cream dark:text-brand-cream"
                       style={{
                         textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
                         filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.5))'
                       }}>
                     We grew up surviving. Now we build what lasts. Here, you unlearn survival scripts, rebuild your identity with truth, stack real skills and soul, and design the legacy no one handed you.
-                  </h2>
+                  </p>
                   
                   <p className="text-base sm:text-lg text-brand-cream/90 dark:text-brand-cream/90 mb-6 leading-relaxed"
                      style={{
@@ -197,11 +215,12 @@ const About = () => {
                   </p>
                 </div>
                 
-                {/* Primary CTA */}
+                {/* Primary CTA with enhanced accessibility */}
                 <div className={`transition-all duration-1000 delay-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
                   <Button 
                     onClick={() => navigate('/sales')}
                     className="urban-cta text-black font-bold px-6 py-3 text-lg lg:text-xl"
+                    aria-label="Start your cycle-breaking journey with our blueprints and guides"
                   >
                     Break the Cycle. Build Your Legacy—Start Now
                   </Button>
@@ -214,15 +233,17 @@ const About = () => {
                   <div className="relative overflow-hidden rounded-xl border-2 border-[#FFD700]/30 shadow-2xl h-full">
                     <img 
                       src="/lovable-uploads/c8dcd8ab-7476-4852-b65f-de819b5a1606.png"
-                      alt="Black man stands on a rooftop at night, overlooking a city being rebuilt—scaffolding and cranes signal transformation on the skyline"
+                      alt="Black man stands on a rooftop at night, overlooking a city being rebuilt—scaffolding and cranes signal transformation and the early stages of mindset shift"
                       className="w-full h-full object-cover object-center"
                       style={{
                         filter: 'brightness(1.1) contrast(1.1)'
                       }}
+                      loading="eager"
+                      fetchPriority="high"
                     />
                     
                     {/* City Glimmer Animation Overlay */}
-                    <div className="absolute inset-0 pointer-events-none">
+                    <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
                       <div className="absolute top-1/4 left-1/3 w-1 h-1 bg-[#FFD700] rounded-full animate-pulse" 
                            style={{ animationDelay: '0s', animationDuration: '3s' }}></div>
                       <div className="absolute top-1/3 right-1/4 w-1 h-1 bg-[#FFA500] rounded-full animate-pulse" 
@@ -243,12 +264,12 @@ const About = () => {
         </section>
 
         {/* Why Mindset Matters Section */}
-        <section className="py-16 sm:py-24 relative">
+        <section className="py-16 sm:py-24 relative" aria-labelledby="mindset-matters-heading">
           <div className="absolute inset-0 bg-gradient-to-r from-[#FFD700]/5 to-[#FFA500]/5"></div>
           <div className="container mx-auto px-6 relative z-10">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-16">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6">
+                <h2 id="mindset-matters-heading" className="text-3xl sm:text-4xl md:text-5xl font-black mb-6">
                   <span className="pearlescent-text">Why Your Mental Game Matters (Real Talk):</span>{" "}
                   <span className="text-brand-black dark:text-brand-cream">Because Breaking Cycles is a Revolution—Not a Self-Help Trend.</span>
                 </h2>
@@ -327,6 +348,7 @@ const About = () => {
                 <Button 
                   onClick={() => navigate('/sales')}
                   className="urban-cta text-black font-bold px-6 py-3 text-lg"
+                  aria-label="Start your unlearning journey with our cycle-breaking resources"
                 >
                   Tap to Start Unlearning
                 </Button>
@@ -341,7 +363,7 @@ const About = () => {
             <div className="relative rounded-xl overflow-hidden border border-[#FFD700]/20 shadow-lg">
               <img 
                 src={cycleBreakingImage}
-                alt="Person breaking free from chains, symbolizing liberation from generational cycles"
+                alt="Person breaking free from chains, symbolizing liberation from generational cycles and mental transformation"
                 className="w-full h-48 sm:h-64 object-cover"
                 loading="lazy"
                 style={{
@@ -354,11 +376,11 @@ const About = () => {
         </div>
 
         {/* Mindset Myths vs. Realities Section */}
-        <section className="py-16 sm:py-24 relative">
+        <section className="py-16 sm:py-24 relative" aria-labelledby="myths-realities-heading">
           <div className="container mx-auto px-6 relative z-10">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-16">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6 text-brand-black dark:text-brand-cream">
+                <h2 id="myths-realities-heading" className="text-3xl sm:text-4xl md:text-5xl font-black mb-6 text-brand-black dark:text-brand-cream">
                   Mindset Myths vs.{" "}
                   <span className="pearlescent-text">Realities</span>
                 </h2>
@@ -388,14 +410,14 @@ const About = () => {
                   <div className="flex flex-col md:flex-row md:items-start gap-6">
                     <div className="flex-1">
                       <div className="bg-red-500/10 backdrop-blur-sm rounded-lg p-4 border border-red-500/20 mb-4">
-                        <h3 className="text-xl font-bold text-red-600 dark:text-red-400 mb-2" aria-label="Myth">
+                        <h3 className="text-xl font-bold text-red-600 dark:text-red-400 mb-2" aria-label="Common mindset myth">
                           Myth: "Mindset is just positive thinking."
                         </h3>
                       </div>
                     </div>
                     <div className="flex-1">
                        <div className="bg-[#FFD700]/10 backdrop-blur-sm rounded-lg p-4 border border-[#FFD700]/20">
-                         <h3 className="text-xl font-bold text-[#FFD700] mb-2" aria-label="Reality">
+                         <h3 className="text-xl font-bold text-[#FFD700] mb-2" aria-label="Mindset reality for cycle-breakers">
                            Reality: "Your mental game is the weapon that shatters inherited cycles and writes blueprints for liberation."
                          </h3>
                          <p className="text-sm text-brand-black dark:text-brand-cream/70 italic">
@@ -411,14 +433,14 @@ const About = () => {
                   <div className="flex flex-col md:flex-row md:items-start gap-6">
                     <div className="flex-1">
                       <div className="bg-red-500/10 backdrop-blur-sm rounded-lg p-4 border border-red-500/20 mb-4">
-                        <h3 className="text-xl font-bold text-red-600 dark:text-red-400 mb-2" aria-label="Myth">
+                        <h3 className="text-xl font-bold text-red-600 dark:text-red-400 mb-2" aria-label="Common privilege myth">
                           Myth: "You need privilege to shift."
                         </h3>
                       </div>
                     </div>
                     <div className="flex-1">
                        <div className="bg-[#FFD700]/10 backdrop-blur-sm rounded-lg p-4 border border-[#FFD700]/20">
-                         <h3 className="text-xl font-bold text-[#FFD700] mb-2" aria-label="Reality">
+                         <h3 className="text-xl font-bold text-[#FFD700] mb-2" aria-label="Reality about transformation and privilege">
                            Reality: "Instinct and soul-borne truth beat inherited ease—if you choose to rebuild."
                          </h3>
                          <p className="text-sm text-brand-black dark:text-brand-cream/70 italic">
@@ -434,14 +456,14 @@ const About = () => {
                   <div className="flex flex-col md:flex-row md:items-start gap-6">
                     <div className="flex-1">
                       <div className="bg-red-500/10 backdrop-blur-sm rounded-lg p-4 border border-red-500/20 mb-4">
-                        <h3 className="text-xl font-bold text-red-600 dark:text-red-400 mb-2" aria-label="Myth">
+                        <h3 className="text-xl font-bold text-red-600 dark:text-red-400 mb-2" aria-label="Excellence myth">
                           Myth: "Excellence alone breaks cycles."
                         </h3>
                       </div>
                     </div>
                     <div className="flex-1">
                        <div className="bg-[#FFD700]/10 backdrop-blur-sm rounded-lg p-4 border border-[#FFD700]/20">
-                         <h3 className="text-xl font-bold text-[#FFD700] mb-2" aria-label="Reality">
+                         <h3 className="text-xl font-bold text-[#FFD700] mb-2" aria-label="Reality about excellence and freedom">
                            Reality: "Excellence is the Trojan horse—real freedom calls out every chain and transcends grind."
                          </h3>
                          <p className="text-sm text-brand-black dark:text-brand-cream/70 italic">
@@ -464,12 +486,12 @@ const About = () => {
         </section>
 
         {/* Core Transformation Process Section */}
-        <section className="py-16 sm:py-24 relative">
+        <section className="py-16 sm:py-24 relative" aria-labelledby="transformation-process-heading">
           <div className="absolute inset-0 bg-gradient-to-r from-[#FFD700]/5 to-[#FFA500]/5"></div>
           <div className="container mx-auto px-6 relative z-10">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-16">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6 text-brand-black dark:text-brand-cream">
+                <h2 id="transformation-process-heading" className="text-3xl sm:text-4xl md:text-5xl font-black mb-6 text-brand-black dark:text-brand-cream">
                   The{" "}
                   <span className="pearlescent-text">Core Transformation Process</span>{" "}
                   – How Real Cycle-Breakers Build Mental Kingdoms
@@ -540,6 +562,7 @@ const About = () => {
                   <Button 
                     onClick={() => navigate('/sales')}
                     className="bg-gradient-to-r from-[#FFD700] to-[#FFA500] hover:from-[#FFA500] hover:to-[#FFD700] text-black font-bold px-8 py-4 text-lg transition-all duration-300 transform hover:scale-105"
+                    aria-label="Access your transformation blueprint and cycle-breaking strategies"
                   >
                     Get Your Blueprint Now
                   </Button>
@@ -553,13 +576,13 @@ const About = () => {
         </section>
 
         {/* Real Transformation Stories + Essential FAQs Section */}
-        <section className="py-16 sm:py-24 relative">
+        <section className="py-16 sm:py-24 relative" aria-labelledby="transformation-stories-heading">
           <div className="absolute inset-0 bg-gradient-to-r from-[#FFD700]/5 to-[#FFA500]/5"></div>
           <div className="container mx-auto px-6 relative z-10">
             <div className="max-w-4xl mx-auto">
               {/* Real Transformation Stories */}
               <div className="text-center mb-16">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6">
+                <h2 id="transformation-stories-heading" className="text-3xl sm:text-4xl md:text-5xl font-black mb-6">
                   <span className="pearlescent-text">Real Transformation</span>{" "}
                   <span className="text-brand-black dark:text-brand-cream">Stories</span>
                 </h2>
@@ -570,7 +593,7 @@ const About = () => {
                 <div className="relative rounded-lg overflow-hidden border border-[#FFD700]/20 shadow-xl">
                   <img 
                     src="/lovable-uploads/ac2a76d4-f93e-48d1-852d-46d792a9acb8.png"
-                    alt="Group of young adults in streetwear seated on a city rooftop at sunset, engaging in collaborative discussion with construction and community atmosphere"
+                    alt="Group of young adults in streetwear seated on a city rooftop at sunset, engaging in collaborative discussion with construction and community atmosphere representing real transformation"
                     className="w-full h-48 sm:h-56 md:h-64 lg:h-72 object-cover"
                     loading="lazy"
                     style={{
@@ -606,40 +629,61 @@ const About = () => {
                 </Card>
               </div>
 
-              {/* Essential FAQs */}
+              {/* Essential FAQs with AEO optimization */}
               <div className="text-center mb-12">
-                <h3 className="text-2xl sm:text-3xl font-black mb-6">
+                <h3 id="faq-heading" className="text-2xl sm:text-3xl font-black mb-6">
                   <span className="text-brand-black dark:text-brand-cream">Essential Questions</span>{" "}
                   <span className="pearlescent-text">Cycle-Breakers Ask</span>
                 </h3>
               </div>
               
               <div className="bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm rounded-2xl p-8 border border-gray-300/10 dark:border-gray-700/10">
-                <Accordion type="single" collapsible className="w-full">
+                <Accordion type="single" collapsible className="w-full" aria-labelledby="faq-heading">
                   <AccordionItem value="item-0">
-                    <AccordionTrigger className="text-left text-brand-black dark:text-brand-cream hover:text-[#FFD700] transition-colors">
+                    <AccordionTrigger className="text-left text-brand-black dark:text-brand-cream hover:text-[#FFD700] transition-colors" aria-expanded="false">
                       What if my story's too messed up to fix?
                     </AccordionTrigger>
                     <AccordionContent className="text-brand-black dark:text-brand-cream/80">
-                      The messier your story, the stronger your foundation becomes when you flip it. Every cycle-breaker started with trauma—that's your raw material, not your limitation. Start free, build step by step.
+                      <details>
+                        <summary className="sr-only">Answer about overcoming difficult backgrounds</summary>
+                        <p>The messier your story, the stronger your foundation becomes when you flip it. Every cycle-breaker started with trauma—that's your raw material, not your limitation. Start free, build step by step.</p>
+                      </details>
                     </AccordionContent>
                   </AccordionItem>
                   
                   <AccordionItem value="item-1">
-                    <AccordionTrigger className="text-left text-brand-black dark:text-brand-cream hover:text-[#FFD700] transition-colors">
+                    <AccordionTrigger className="text-left text-brand-black dark:text-brand-cream hover:text-[#FFD700] transition-colors" aria-expanded="false">
                       How risky is it to call out family patterns and myths?
                     </AccordionTrigger>
                     <AccordionContent className="text-brand-black dark:text-brand-cream/80">
-                      Low risk if you're building something real. When you show receipts and results, even skeptical family starts asking questions. Systems beat fear every time—especially when rooted in love, not rebellion.
+                      <details>
+                        <summary className="sr-only">Answer about challenging family patterns</summary>
+                        <p>Low risk if you're building something real. When you show receipts and results, even skeptical family starts asking questions. Systems beat fear every time—especially when rooted in love, not rebellion.</p>
+                      </details>
                     </AccordionContent>
                   </AccordionItem>
                   
                   <AccordionItem value="item-2">
-                    <AccordionTrigger className="text-left text-brand-black dark:text-brand-cream hover:text-[#FFD700] transition-colors">
+                    <AccordionTrigger className="text-left text-brand-black dark:text-brand-cream hover:text-[#FFD700] transition-colors" aria-expanded="false">
                       How fast can I see real transformation results?
                     </AccordionTrigger>
                     <AccordionContent className="text-brand-black dark:text-brand-cream/80">
-                      Mindset shifts happen in moments; legacy building takes months of consistent grit. Don't expect overnight—but every authentic step compounds. Real cycle-breaking is a marathon, not a quick fix.
+                      <details>
+                        <summary className="sr-only">Answer about transformation timeline expectations</summary>
+                        <p>Mindset shifts happen in moments; legacy building takes months of consistent grit. Don't expect overnight—but every authentic step compounds. Real cycle-breaking is a marathon, not a quick fix.</p>
+                      </details>
+                    </AccordionContent>
+                  </AccordionItem>
+                  
+                  <AccordionItem value="item-3">
+                    <AccordionTrigger className="text-left text-brand-black dark:text-brand-cream hover:text-[#FFD700] transition-colors" aria-expanded="false">
+                      Do I need to reflect and journal daily?
+                    </AccordionTrigger>
+                    <AccordionContent className="text-brand-black dark:text-brand-cream/80">
+                      <details>
+                        <summary className="sr-only">Answer about daily reflection requirements</summary>
+                        <p>Nah, automate the habits that matter—focus your energy on building the systems and relationships that create lasting change. Action over endless reflection.</p>
+                      </details>
                     </AccordionContent>
                   </AccordionItem>
                 </Accordion>
@@ -648,7 +692,11 @@ const About = () => {
           </div>
         </section>
 
+        {/* Internal Linking Hub */}
+        <InternalLinkingHub currentPage="/about" />
 
+        {/* Newsletter Section */}
+        <NewsletterSection />
       </main>
 
       {/* Footer */}

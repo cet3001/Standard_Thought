@@ -93,7 +93,18 @@ const BlogTestimonials = ({ isVisible }: BlogTestimonialsProps) => {
       {/* Section Header */}
       <div className="text-center mb-16 relative z-20">
         <h3 className="text-4xl md:text-5xl font-black text-brand-black dark:text-brand-cream font-ibm-plex-mono mb-4 uppercase">
-          Proof That It's Possible
+          Proof That{" "}
+          <span className="font-permanent-marker transform rotate-1" style={{
+            color: 'transparent',
+            background: 'linear-gradient(45deg, #f4d03f, #f7dc6f, #fdeaa7, #f8e71c, #ffd700, #ffeb3b, #fff176, #f4d03f)',
+            backgroundSize: '400% 400%',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            animation: 'pearlescent 3s ease-in-out infinite'
+          }}>
+            It's Possible
+          </span>
         </h3>
         <p className="text-lg md:text-xl text-brand-gold dark:text-brand-cream font-medium">
           Real People. Real Struggles. Real Progress.
@@ -101,7 +112,7 @@ const BlogTestimonials = ({ isVisible }: BlogTestimonialsProps) => {
       </div>
       
       {/* Testimonial Carousel */}
-      <div className="relative z-20 mb-12">
+      <div className="relative z-20 mb-12 pt-4">
         <Carousel
           plugins={[autoplay]}
           className="w-full max-w-6xl mx-auto"
@@ -113,9 +124,9 @@ const BlogTestimonials = ({ isVisible }: BlogTestimonialsProps) => {
           <CarouselContent className="-ml-2 md:-ml-4">
             {testimonials.map((testimonial) => (
               <CarouselItem key={testimonial.id} className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3">
-                <div className="relative bg-white/10 dark:bg-gray-900/20 backdrop-blur-md rounded-xl p-6 border border-white/20 dark:border-gray-700/30 h-64 flex flex-col">
+                <div className="relative bg-white/10 dark:bg-gray-900/20 backdrop-blur-md rounded-xl p-6 border border-white/20 dark:border-gray-700/30 h-64 flex flex-col mt-4">
                   {/* Badge Ribbon */}
-                  <div className="absolute -top-3 -right-3 z-10">
+                  <div className="absolute -top-2 -right-2 z-10">
                     <div className={`${getBadgeColors(testimonial.category)} px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow-lg`}>
                       {testimonial.badge}
                     </div>

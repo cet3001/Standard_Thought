@@ -14,7 +14,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { NewsletterSection } from "@/components/newsletter-section";
 import { useState, useEffect } from "react";
 import cycleBreakingImage from "@/assets/cycle-breaking-transformation.jpg";
-import communityBanner from "@/assets/community-transformation-banner.jpg";
+// Using uploaded community banner image
 
 // Dynamic Community Ticker Component
 const DynamicCommunityTicker = ({ isVisible }: { isVisible: boolean }) => {
@@ -554,7 +554,7 @@ const About = () => {
               <div className="mb-16 w-full">
                 <div className="relative rounded-lg overflow-hidden border border-[#FFD700]/20 shadow-xl">
                   <img 
-                    src={communityBanner}
+                    src="/lovable-uploads/ac2a76d4-f93e-48d1-852d-46d792a9acb8.png"
                     alt="Group of young adults in streetwear seated on a city rooftop at sunset, engaging in collaborative discussion with construction and community atmosphere"
                     className="w-full h-32 sm:h-40 md:h-48 lg:h-56 object-cover object-center"
                     loading="lazy"

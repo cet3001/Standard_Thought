@@ -32,54 +32,43 @@ const BlogGrid = ({ isVisible }: BlogGridProps) => {
     "This hit different for real. – Aaliyah"
   ];
 
-  // Get category ribbon styling for a tag  
-  const getCategoryRibbon = (tags: string[]) => {
-    if (!tags || tags.length === 0) {
-      return { label: "GENERAL", color: "#6B7280", textColor: "#F9FAFB" };
-    }
+  // Simple category ribbon function
+  const getRibbon = (post: BlogPost) => {
+    const tags = post.tags || [];
     
-    // Fallback mapping for existing blog post tags
-    const tagCategoryMapping: Record<string, { label: string, color: string, textColor: string }> = {
-      'money-trauma': { label: "MIND GAMES", color: "#D9442C", textColor: "#FFF8E7" },
-      'generational-patterns': { label: "FIRST IN FAMILY", color: "#4F5D75", textColor: "#F2F2F2" },
-      'generational-wealth': { label: "FIRST IN FAMILY", color: "#4F5D75", textColor: "#F2F2F2" },
-      'financial-psychology': { label: "MIND GAMES", color: "#D9442C", textColor: "#FFF8E7" },
-      'family-programming': { label: "FIRST IN FAMILY", color: "#4F5D75", textColor: "#F2F2F2" },
-      'ai-side-hustles': { label: "SIDE STREAMS", color: "#4BAF73", textColor: "#F9F9F9" },
-      'digital-products': { label: "SIDE STREAMS", color: "#4BAF73", textColor: "#F9F9F9" },
-      'passive-income': { label: "RECEIPTS & MOVES", color: "#2D2D2D", textColor: "#FFEF7C" },
-      'wealth-mindset': { label: "SPIRIT & REWIRED", color: "#776C9E", textColor: "#FEFEF7" },
-      'wealth-building': { label: "CULTURE & CASH", color: "#D4AF37", textColor: "#0A0A0A" },
-      'side-hustle': { label: "SIDE STREAMS", color: "#4BAF73", textColor: "#F9F9F9" },
-      'business-strategy': { label: "SIDE STREAMS", color: "#4BAF73", textColor: "#F9F9F9" },
-      'scarcity-mindset': { label: "MIND GAMES", color: "#D9442C", textColor: "#FFF8E7" },
-      'mindset-shift': { label: "SPIRIT & REWIRED", color: "#776C9E", textColor: "#FEFEF7" },
-      'money-education': { label: "CULTURE & CASH", color: "#D4AF37", textColor: "#0A0A0A" },
-      'entrepreneurship-mistakes': { label: "SIDE STREAMS", color: "#4BAF73", textColor: "#F9F9F9" },
-      'hustle-culture': { label: "SIDE STREAMS", color: "#4BAF73", textColor: "#F9F9F9" }
+    // Direct tag mapping to categories
+    const categoryMap = {
+      'money-trauma': { name: 'MIND GAMES', color: '#D9442C', text: '#FFF8E7' },
+      'financial-psychology': { name: 'MIND GAMES', color: '#D9442C', text: '#FFF8E7' },
+      'scarcity-mindset': { name: 'MIND GAMES', color: '#D9442C', text: '#FFF8E7' },
+      
+      'generational-patterns': { name: 'FIRST IN FAMILY', color: '#4F5D75', text: '#F2F2F2' },
+      'generational-wealth': { name: 'FIRST IN FAMILY', color: '#4F5D75', text: '#F2F2F2' },
+      'family-programming': { name: 'FIRST IN FAMILY', color: '#4F5D75', text: '#F2F2F2' },
+      
+      'wealth-building': { name: 'CULTURE & CASH', color: '#D4AF37', text: '#0A0A0A' },
+      'money-education': { name: 'CULTURE & CASH', color: '#D4AF37', text: '#0A0A0A' },
+      
+      'ai-side-hustles': { name: 'SIDE STREAMS', color: '#4BAF73', text: '#F9F9F9' },
+      'side-hustle': { name: 'SIDE STREAMS', color: '#4BAF73', text: '#F9F9F9' },
+      'business-strategy': { name: 'SIDE STREAMS', color: '#4BAF73', text: '#F9F9F9' },
+      'digital-products': { name: 'SIDE STREAMS', color: '#4BAF73', text: '#F9F9F9' },
+      
+      'passive-income': { name: 'RECEIPTS & MOVES', color: '#2D2D2D', text: '#FFEF7C' },
+      
+      'wealth-mindset': { name: 'SPIRIT & REWIRED', color: '#776C9E', text: '#FEFEF7' },
+      'mindset-shift': { name: 'SPIRIT & REWIRED', color: '#776C9E', text: '#FEFEF7' }
     };
 
-    // Check for matches with existing tags first
+    // Find first matching tag
     for (const tag of tags) {
-      if (tagCategoryMapping[tag]) {
-        return tagCategoryMapping[tag];
+      if (categoryMap[tag]) {
+        return categoryMap[tag];
       }
     }
 
-    // Check if any tags match the new filter categories
-    for (const tag of tags) {
-      for (const [categoryName, categoryData] of Object.entries(FILTER_CATEGORIES)) {
-        if ((categoryData.tags as readonly string[]).includes(tag)) {
-          return {
-            label: categoryName.toUpperCase(),
-            color: categoryData.color,
-            textColor: categoryData.textColor
-          };
-        }
-      }
-    }
-    
-    return { label: "GENERAL", color: "#6B7280", textColor: "#F9FAFB" };
+    // Default
+    return { name: 'GENERAL', color: '#6B7280', text: '#F9FAFB' };
   };
 
   // Get random testimonial for post
@@ -277,29 +266,26 @@ const BlogGrid = ({ isVisible }: BlogGridProps) => {
                        </div>
                      )}
                      
-                     {/* Category Ribbon - Top Right Corner */}
+                     {/* NEW Category Ribbon */}
                      {(() => {
-                       const ribbon = getCategoryRibbon(post.tags || []);
+                       const ribbon = getRibbon(post);
                        return (
                          <div 
-                           className="absolute top-4 right-4 z-10 px-3 py-1.5 text-xs font-bold tracking-wide transform rotate-12 shadow-lg border-2 border-black/30"
+                           className="absolute top-3 right-3 z-10 px-3 py-1 text-xs font-bold uppercase tracking-wider"
                            style={{
                              backgroundColor: ribbon.color,
-                             color: ribbon.textColor,
-                             fontFamily: 'Inter, sans-serif',
-                             fontWeight: '700',
-                             minWidth: '100px',
-                             textAlign: 'center',
-                             clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 100%, 8px 100%)'
+                             color: ribbon.text,
+                             transform: 'rotate(12deg)',
+                             boxShadow: '0 2px 8px rgba(0,0,0,0.3)'
                            }}
                          >
-                           {ribbon.label}
+                           {ribbon.name}
                          </div>
                        );
                      })()}
 
                      {/* Content */}
-                     <div className="p-6 pt-8">
+                     <div className="p-6">
                       
                       {/* Title */}
                       <h4 className="text-lg font-bold mb-3 line-clamp-2 font-ibm-plex-mono leading-tight transition-colors duration-300 drop-shadow-sm" style={{

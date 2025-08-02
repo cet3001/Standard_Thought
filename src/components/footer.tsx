@@ -115,7 +115,7 @@ const Footer = () => {
               The Shift
             </Link>
             <Link to="/blog" className="text-brand-cream/80 hover:text-[#247EFF] transition-colors">
-              Receipts & Real Talk
+              The Code They Never Gave Us
             </Link>
             <Link to="/sales" className="text-brand-cream/80 hover:text-[#247EFF] transition-colors">
               Blueprints & Offers

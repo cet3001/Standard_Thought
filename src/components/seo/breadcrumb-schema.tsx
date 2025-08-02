@@ -12,7 +12,7 @@ const BreadcrumbSchema = () => {
 
   const breadcrumbItems = [
     { name: 'Home', path: '/' },
-    { name: 'Receipts & Real Talk', path: '/blog' },
+    { name: 'The Code They Never Gave Us', path: '/blog' },
     { name: 'Mindset Tools', path: '/about' },
     { name: 'Success Strategies', path: '/sales' },
     { name: 'Contact', path: '/contact' },

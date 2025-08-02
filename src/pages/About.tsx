@@ -14,7 +14,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { NewsletterSection } from "@/components/newsletter-section";
 import { useState, useEffect } from "react";
 import cycleBreakingImage from "@/assets/cycle-breaking-transformation.jpg";
-import rebuildingImage from "@/assets/rebuilding-from-pieces.jpg";
+import communityBanner from "@/assets/community-transformation-banner.jpg";
 
 // Dynamic Community Ticker Component
 const DynamicCommunityTicker = ({ isVisible }: { isVisible: boolean }) => {
@@ -550,19 +550,20 @@ const About = () => {
                 </h2>
               </div>
               
-              {/* Visual Break: Rebuilding Image */}
-              <div className="mb-16 max-w-2xl mx-auto">
-                <div className="relative rounded-xl overflow-hidden border border-[#FFD700]/20 shadow-lg">
+              {/* Community Transformation Banner */}
+              <div className="mb-16 w-full">
+                <div className="relative rounded-lg overflow-hidden border border-[#FFD700]/20 shadow-xl">
                   <img 
-                    src={rebuildingImage}
-                    alt="Hands constructing something new from broken pieces, representing rebuilding from struggle"
-                    className="w-full h-40 sm:h-48 object-cover"
+                    src={communityBanner}
+                    alt="Group of young adults in streetwear seated on a city rooftop at sunset, engaging in collaborative discussion with construction and community atmosphere"
+                    className="w-full h-32 sm:h-40 md:h-48 lg:h-56 object-cover object-center"
                     loading="lazy"
                     style={{
-                      filter: 'brightness(0.9) contrast(1.1) sepia(0.1)'
+                      aspectRatio: '16/5',
+                      filter: 'brightness(0.95) contrast(1.05) saturate(1.1)'
                     }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-black/10"></div>
                 </div>
               </div>
               

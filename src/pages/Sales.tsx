@@ -108,12 +108,12 @@ const Sales = () => {
                   <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
                     <Button 
                       size="lg" 
-                      className="bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFA500] text-black font-bold px-8 py-3 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-0 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/40 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700"
+                      className="urban-cta text-black font-bold px-8 py-4 text-xl rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-0 relative overflow-hidden glow-effect"
                       onClick={() => document.getElementById('starter-section')?.scrollIntoView({ behavior: 'smooth' })}
                       aria-label="Start With the First Play - Navigate to free resources section"
                     >
                       <Zap className="mr-2 h-5 w-5" />
-                      Start With the First Play
+                      Start With the First Play ⚡
                     </Button>
                   </div>
                 </div>

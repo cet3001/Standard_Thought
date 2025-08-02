@@ -554,7 +554,7 @@ const About = () => {
               <div className="mb-16 w-full">
                 <div className="relative rounded-lg overflow-hidden border border-[#FFD700]/20 shadow-xl">
                   <img 
-                    src="/lovable-uploads/89c062ac-2c1d-44ab-bc40-56fd346860ad.png"
+                    src="/lovable-uploads/89c062ac-2c1d-44ab-bc40-56fd346860ad.png?v=2"
                     alt="Wide urban banner showing young entrepreneurs and creators gathering at an outdoor night marketplace, talking and connecting under string lights, with city vibrancy and real community energy."
                     className="w-full h-32 sm:h-40 md:h-48 lg:h-56 xl:h-64 object-cover object-center"
                     loading="lazy"

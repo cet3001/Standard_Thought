@@ -428,30 +428,30 @@ const About = () => {
           </div>
         </section>
 
-        {/* Step-by-Step Blueprint Section */}
+        {/* Core Transformation Process Section */}
         <section className="py-16 sm:py-24 relative">
           <div className="absolute inset-0 bg-gradient-to-r from-[#FFD700]/5 to-[#FFA500]/5"></div>
           <div className="container mx-auto px-6 relative z-10">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-16">
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6 text-brand-black dark:text-brand-cream">
-                  How Cycle-Breakers Build Their{" "}
-                  <span className="pearlescent-text">Mental Kingdom</span>{" "}
-                  – In Real Life (Not Theory)
+                  The{" "}
+                  <span className="pearlescent-text">Core Transformation Process</span>{" "}
+                  – How Real Cycle-Breakers Build Mental Kingdoms
                 </h2>
                 <p className="text-lg text-brand-black dark:text-brand-cream/80 font-bold max-w-3xl mx-auto">
-                  No blueprint handed down. Here's how we move—when it's survival to strategy, and system over struggle.
+                  No blueprint handed down. This is how we move—from survival to strategy, system over struggle.
                 </p>
               </div>
               
               <div className="space-y-12 max-w-3xl mx-auto">
                 {/* Step 1 */}
                 <div className="bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm rounded-xl p-6 sm:p-8 border border-gray-300/10 dark:border-gray-700/10 animate-fade-in" style={{borderLeft: '4px solid #FFD700'}}>
-                  <h3 className="text-2xl font-black text-brand-black dark:text-brand-cream mb-4" aria-label="Step 1: Catch Old Scripts">
+                  <h3 className="text-2xl font-black text-brand-black dark:text-brand-cream mb-4">
                     Call Out the Voices—Name What Keeps You Small
                   </h3>
                   <p className="text-lg text-brand-black dark:text-brand-cream/90 mb-4 leading-relaxed">
-                    "The rules you grew up with ('Money's tight. Keep it small. Don't expect too much.') don't dissolve just because you want more. Call 'em out—write them, say them, put what broke you on the table."
+                    The rules you grew up with ("Money's tight. Keep it small. Don't expect too much.") don't dissolve just because you want more. Call 'em out—write them, say them, put what broke you on the table.
                   </p>
                   <p className="text-sm text-brand-black dark:text-brand-cream/70 italic border-l-2 border-[#FFD700]/50 pl-4">
                     "One reader started by taping his family's money rules to the fridge. 'When you see them in your face, you stop letting them run your life.'"
@@ -460,11 +460,11 @@ const About = () => {
 
                 {/* Step 2 */}
                 <div className="bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm rounded-xl p-6 sm:p-8 border border-gray-300/10 dark:border-gray-700/10 animate-fade-in" style={{borderLeft: '4px solid #FFD700'}}>
-                  <h3 className="text-2xl font-black text-brand-black dark:text-brand-cream mb-4" aria-label="Step 2: Find Your People">
+                  <h3 className="text-2xl font-black text-brand-black dark:text-brand-cream mb-4">
                     Find Your People—Build a Different Circle
                   </h3>
                   <p className="text-lg text-brand-black dark:text-brand-cream/90 mb-4 leading-relaxed">
-                    "Nothing changes solo. Find one person who gets it—a friend, neighbor, IG mutual—and build new systems together: knowledge swaps, accountability check-ins, or 'no hustle talk' dinners."
+                    Nothing changes solo. Find one person who gets it—a friend, neighbor, IG mutual—and build new systems together: knowledge swaps, accountability check-ins, or "no hustle talk" dinners.
                   </p>
                   <p className="text-sm text-brand-black dark:text-brand-cream/70 italic border-l-2 border-[#FFD700]/50 pl-4">
                     "After her brother avoided every credit talk, Tiana started a cousins' group chat: credit questions only, no judgment. That became the first family asset class."
@@ -473,174 +473,124 @@ const About = () => {
 
                 {/* Step 3 */}
                 <div className="bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm rounded-xl p-6 sm:p-8 border border-gray-300/10 dark:border-gray-700/10 animate-fade-in" style={{borderLeft: '4px solid #FFD700'}}>
-                  <h3 className="text-2xl font-black text-brand-black dark:text-brand-cream mb-4" aria-label="Step 3: Stack Your Wins">
+                  <h3 className="text-2xl font-black text-brand-black dark:text-brand-cream mb-4">
                     Stack Your Wins—Turn Struggle Into Receipts
                   </h3>
                   <p className="text-lg text-brand-black dark:text-brand-cream/90 mb-4 leading-relaxed">
-                    "From fixing credit to negotiating rent, stack these wins out loud. Create a 'receipts' folder, a wall of firsts, a written story your people can build on. If you can teach it, you own it."
+                    From fixing credit to negotiating rent, stack these wins out loud. Create a "receipts" folder, a wall of firsts, a written story your people can build on. If you can teach it, you own it.
                   </p>
                   <p className="text-sm text-brand-black dark:text-brand-cream/70 italic border-l-2 border-[#FFD700]/50 pl-4">
                     "The first time Marcus tracked all his side-hustle receipts, he printed them and handed copies to his siblings. 'This is so you never start from scratch like I did.'"
                   </p>
                 </div>
 
-                {/* Step 4 - Anecdotal Flow */}
+                {/* Step 4 - Transformation Story */}
                 <div className="bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm rounded-xl p-6 sm:p-8 border border-gray-300/10 dark:border-gray-700/10 animate-fade-in" style={{borderLeft: '4px solid #FFD700'}}>
-                  <h3 className="text-2xl font-black text-brand-black dark:text-brand-cream mb-4" aria-label="Step 4: The Day Everything Changed">
+                  <h3 className="text-2xl font-black text-brand-black dark:text-brand-cream mb-4">
                     The Day Everything Changed
                   </h3>
                   <p className="text-lg text-brand-black dark:text-brand-cream/90 mb-4 leading-relaxed">
-                    Keisha crossed out every money rule her family taught her, wrote new ones, and opened her first investment account six months later. 
+                    Keisha crossed out every money rule her family taught her, wrote new ones, and opened her first investment account six months later. Sometimes the revolution starts with a single question: "What if the way we've always done it isn't the only way?"
                   </p>
-                  <p className="text-sm text-brand-black dark:text-brand-cream/70 italic border-l-2 border-[#FFD700]/50 pl-4">
-                    Sometimes the revolution starts with a single question: "What if the way we've always done it isn't the only way?"
+                </div>
+
+                {/* Integrated Soft CTA */}
+                <div className="bg-gradient-to-r from-[#FFD700]/10 to-[#FFA500]/10 backdrop-blur-sm rounded-xl p-8 border border-[#FFD700]/20 text-center">
+                  <h3 className="text-2xl font-black text-brand-black dark:text-brand-cream mb-4">
+                    Ready to Start Your Own Transformation?
+                  </h3>
+                  <p className="text-lg text-brand-black dark:text-brand-cream/90 mb-6 leading-relaxed">
+                    Every breakthrough makes the way wider. Get the complete cycle-breaking blueprint and join thousands building their mental kingdoms.
+                  </p>
+                  <Button 
+                    onClick={() => navigate('/sales')}
+                    className="bg-gradient-to-r from-[#FFD700] to-[#FFA500] hover:from-[#FFA500] hover:to-[#FFD700] text-black font-bold px-8 py-4 text-lg transition-all duration-300 transform hover:scale-105"
+                  >
+                    Get Your Blueprint Now
+                  </Button>
+                  <p className="text-sm text-brand-black dark:text-brand-cream/60 mt-4">
+                    Free guides + mindset strategies that actually work
                   </p>
                 </div>
               </div>
-
-              {/* Soft Close Statement */}
-               <div className="text-center mt-12">
-                 <p className="text-xl text-[#FFD700] font-medium">
-                   Every breakthrough makes the way wider. See what's next.
-                 </p>
-               </div>
             </div>
           </div>
         </section>
 
-        {/* Action Plan Section */}
-        <section className="py-16 sm:py-24 relative">
-          <div className="container mx-auto px-6 relative z-10">
-            <div className="max-w-4xl mx-auto text-center">
-              <div className="bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm rounded-2xl p-12 border border-gray-300/10 dark:border-gray-700/10">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6">
-                  <span className="pearlescent-text">Mindset</span>{" "}
-                  <span className="text-brand-black dark:text-brand-cream">Action Plan</span>
-                </h2>
-                <p className="text-lg text-brand-black dark:text-brand-cream/80 mb-8">
-                  Download the Mindset Action Plan. Your step-by-step to flipping from trapped to legacy.
-                </p>
-                <Button 
-                  onClick={() => navigate('/sales')}
-                  className="bg-gradient-to-r from-[#FFD700] to-[#FFA500] hover:from-[#FFA500] hover:to-[#FFD700] text-black font-bold px-8 py-4 text-lg transition-all duration-300 transform hover:scale-105"
-                >
-                  ⚡ Get The Plan
-                </Button>
-                <p className="text-sm text-brand-black dark:text-brand-cream/60 mt-4">
-                  Free + no spam. Just the blueprint.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Real Builder Wins Section */}
+        {/* Real Transformation Stories + Essential FAQs Section */}
         <section className="py-16 sm:py-24 relative">
           <div className="absolute inset-0 bg-gradient-to-r from-[#FFD700]/5 to-[#FFA500]/5"></div>
           <div className="container mx-auto px-6 relative z-10">
             <div className="max-w-4xl mx-auto">
+              {/* Real Transformation Stories */}
               <div className="text-center mb-16">
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6">
-                  <span className="pearlescent-text">Real Builder</span>{" "}
-                  <span className="text-brand-black dark:text-brand-cream">Wins</span>
+                  <span className="pearlescent-text">Real Transformation</span>{" "}
+                  <span className="text-brand-black dark:text-brand-cream">Stories</span>
                 </h2>
               </div>
               
-              <div className="grid md:grid-cols-3 gap-8">
+              <div className="grid md:grid-cols-2 gap-8 mb-16">
                 <Card className="bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm border-gray-300/10 dark:border-gray-700/10 hover:bg-white/20 dark:hover:bg-gray-800/20 transition-all duration-300">
-                  <CardContent className="p-6">
+                  <CardContent className="p-8">
                     <blockquote className="text-lg font-semibold text-brand-black dark:text-brand-cream mb-4">
-                      "Standard Thought called out my mindset myths—flipped my whole game."
+                      "I was stuck repeating my mom's money fear for years. Standard Thought helped me name the cycle, break it, and now I'm teaching my little cousin how wealth actually works. First time I felt like I was building instead of just surviving."
                     </blockquote>
                     <p className="text-sm text-brand-black dark:text-brand-cream/60">
-                      — R, Philly
+                      — Aaliyah, Community Organizer, Detroit
                     </p>
                   </CardContent>
                 </Card>
                 
                 <Card className="bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm border-gray-300/10 dark:border-gray-700/10 hover:bg-white/20 dark:hover:bg-gray-800/20 transition-all duration-300">
-                  <CardContent className="p-6">
+                  <CardContent className="p-8">
                     <blockquote className="text-lg font-semibold text-brand-black dark:text-brand-cream mb-4">
-                      "Broke the cycle mentally, no BS."
+                      "Started with food stamps and no connections. Six months after finding this site, I was running financial workshops at the community center. Turned my struggle into a blueprint my whole block could use."
                     </blockquote>
                     <p className="text-sm text-brand-black dark:text-brand-cream/60">
-                      — D, Miami
-                    </p>
-                  </CardContent>
-                </Card>
-                
-                <Card className="bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm border-gray-300/10 dark:border-gray-700/10 hover:bg-white/20 dark:hover:bg-gray-800/20 transition-all duration-300">
-                  <CardContent className="p-6">
-                    <blockquote className="text-lg font-semibold text-brand-black dark:text-brand-cream mb-4">
-                      "This hit the culture different."
-                    </blockquote>
-                    <p className="text-sm text-brand-black dark:text-brand-cream/60">
-                      — L, Oakland
+                      — Marcus, Workshop Leader, Oakland
                     </p>
                   </CardContent>
                 </Card>
               </div>
-            </div>
-          </div>
-        </section>
 
-        {/* FAQ Section */}
-        <section className="py-16 sm:py-24 relative">
-          <div className="container mx-auto px-6 relative z-10">
-            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-16">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6">
-                  <span className="text-brand-black dark:text-brand-cream">FAQ:</span>{" "}
-                  <span className="pearlescent-text">Real Talk About</span>{" "}
-                  <span className="text-brand-black dark:text-brand-cream">Mindset</span>
-                </h2>
+              {/* Essential FAQs */}
+              <div className="text-center mb-12">
+                <h3 className="text-2xl sm:text-3xl font-black mb-6">
+                  <span className="text-brand-black dark:text-brand-cream">Essential Questions</span>{" "}
+                  <span className="pearlescent-text">Cycle-Breakers Ask</span>
+                </h3>
               </div>
               
               <div className="bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm rounded-2xl p-8 border border-gray-300/10 dark:border-gray-700/10">
                 <Accordion type="single" collapsible className="w-full">
-                  {faqData.map((faq, index) => (
-                    <AccordionItem key={index} value={`item-${index}`}>
-                      <AccordionTrigger className="text-left text-brand-black dark:text-brand-cream hover:text-[#FFD700] transition-colors">
-                        {faq.question}
-                      </AccordionTrigger>
-                      <AccordionContent className="text-brand-black dark:text-brand-cream/80">
-                        {faq.answer}
-                      </AccordionContent>
-                    </AccordionItem>
-                  ))}
+                  <AccordionItem value="item-0">
+                    <AccordionTrigger className="text-left text-brand-black dark:text-brand-cream hover:text-[#FFD700] transition-colors">
+                      What if my story's too messed up to fix?
+                    </AccordionTrigger>
+                    <AccordionContent className="text-brand-black dark:text-brand-cream/80">
+                      The messier your story, the stronger your foundation becomes when you flip it. Every cycle-breaker started with trauma—that's your raw material, not your limitation. Start free, build step by step.
+                    </AccordionContent>
+                  </AccordionItem>
+                  
+                  <AccordionItem value="item-1">
+                    <AccordionTrigger className="text-left text-brand-black dark:text-brand-cream hover:text-[#FFD700] transition-colors">
+                      How risky is it to call out family patterns and myths?
+                    </AccordionTrigger>
+                    <AccordionContent className="text-brand-black dark:text-brand-cream/80">
+                      Low risk if you're building something real. When you show receipts and results, even skeptical family starts asking questions. Systems beat fear every time—especially when rooted in love, not rebellion.
+                    </AccordionContent>
+                  </AccordionItem>
+                  
+                  <AccordionItem value="item-2">
+                    <AccordionTrigger className="text-left text-brand-black dark:text-brand-cream hover:text-[#FFD700] transition-colors">
+                      How fast can I see real transformation results?
+                    </AccordionTrigger>
+                    <AccordionContent className="text-brand-black dark:text-brand-cream/80">
+                      Mindset shifts happen in moments; legacy building takes months of consistent grit. Don't expect overnight—but every authentic step compounds. Real cycle-breaking is a marathon, not a quick fix.
+                    </AccordionContent>
+                  </AccordionItem>
                 </Accordion>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Join Movement Section */}
-        <section className="py-16 sm:py-24 relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-[#FFD700]/5 to-[#FFA500]/5"></div>
-          <div className="container mx-auto px-6 relative z-10">
-            <div className="max-w-4xl mx-auto text-center">
-              <div className="bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm rounded-2xl p-12 border border-gray-300/10 dark:border-gray-700/10">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6">
-                  <span className="pearlescent-text">Join the</span>{" "}
-                  <span className="text-brand-black dark:text-brand-cream">Movement</span>
-                </h2>
-                <p className="text-lg text-brand-black dark:text-brand-cream/80 mb-8">
-                  Get exclusive mindset strategies, wins, and flips straight to your inbox.
-                </p>
-                <Button 
-                  onClick={() => {
-                    const newsletterSection = document.querySelector('[data-section="newsletter"]');
-                    if (newsletterSection) {
-                      newsletterSection.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
-                  className="bg-gradient-to-r from-[#FFD700] to-[#FFA500] hover:from-[#FFA500] hover:to-[#FFD700] text-black font-bold px-8 py-4 text-lg transition-all duration-300 transform hover:scale-105"
-                >
-                  ⚡ Get More Mindset Flips—Join
-                </Button>
-                <p className="text-sm text-brand-black dark:text-brand-cream/60 mt-4">
-                  No spam, just blueprints and updates.
-                </p>
               </div>
             </div>
           </div>

@@ -124,7 +124,7 @@ const Sales = () => {
                     <OptimizedImage
                       src="/lovable-uploads/bbfe2eff-caae-4c37-8946-23e81350a078.png"
                       alt="Three generations leaning in over a laptop—learning what was never taught. Cycle-breaking in real time."
-                      className="w-full h-[400px] sm:h-[500px] lg:h-[600px] object-cover"
+                      className="w-full h-auto object-cover aspect-[3/2]"
                       width={600}
                       height={400}
                       priority={true}

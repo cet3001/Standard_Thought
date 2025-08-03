@@ -150,7 +150,7 @@ const SEO = ({
       title: fullTitle,
       description: optimizedDescription,
       logo: "https://standardthought.com/logo.svg",
-      contactEmail: "hello@standardthought.com",
+      contactEmail: "movement@standardthought.com",
       socialMedia: [
         "https://instagram.com/standardthought",
         "https://tiktok.com/@standardthought"

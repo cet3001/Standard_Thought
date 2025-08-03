@@ -130,11 +130,11 @@ const Footer = () => {
           <div className="lg:col-span-1">
             <div className="flex flex-col space-y-3">
               <a 
-                href="mailto:hello@standardthought.com" 
+                href="mailto:movement@standardthought.com" 
                 className="flex items-center space-x-2 text-brand-cream/80 hover:text-[#247EFF] transition-colors text-sm"
               >
                 <Mail className="h-4 w-4" />
-                <span>hello@standardthought.com</span>
+                <span>movement@standardthought.com</span>
               </a>
               
               <div className="flex space-x-4">

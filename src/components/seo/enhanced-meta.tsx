@@ -39,7 +39,7 @@ export const EnhancedMeta = ({ fullImageUrl }: EnhancedMetaProps) => {
       <meta name="copyright" content="Standardthought" />
       <meta name="category" content="Business, Finance, Education" />
       <meta name="coverage" content="Worldwide" />
-      <meta name="reply-to" content="hello@standardthought.com" />
+      <meta name="reply-to" content="movement@standardthought.com" />
       <meta name="target" content="all" />
       <meta name="HandheldFriendly" content="True" />
       <meta name="MobileOptimized" content="320" />

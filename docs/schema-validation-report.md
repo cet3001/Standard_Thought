@@ -14,7 +14,7 @@ This document provides a comprehensive guide for validating and monitoring struc
 - Name: "Standardthought"
 - URL: https://www.standardthought.com
 - Logo: High-resolution brand logo
-- Contact: hello@standardthought.com
+- Contact: movement@standardthought.com
 - Social Media: Twitter, LinkedIn profiles
 - Knowledge Areas: Urban Entrepreneurship, Wealth Building, Business Development
 

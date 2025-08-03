@@ -33,7 +33,7 @@ const handler = async (req: Request): Promise<Response> => {
     // Send notification email to you (the admin)
     const emailResponse = await resend.emails.send({
       from: "Standardthought <onboarding@resend.dev>",
-      to: ["cet3001@gmail.com"], // Your admin email
+      to: ["movement@standardthought.com"], // Admin notification email
       subject: "🎉 New Newsletter Subscriber!",
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">

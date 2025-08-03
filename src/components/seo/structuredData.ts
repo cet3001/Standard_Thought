@@ -43,7 +43,7 @@ export function generateStructuredData({
       contactPoint: {
         "@type": "ContactPoint",
         contactType: "customer service",
-        email: "hello@standardthought.com"
+        email: "movement@standardthought.com"
       }
     };
   }

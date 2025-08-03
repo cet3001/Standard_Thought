@@ -131,8 +131,8 @@ const CookiePolicy = () => {
                 <h2 className="text-2xl font-bold mb-4 text-black dark:text-brand-cream">Contact Us</h2>
                 <p className="leading-relaxed">
                   If you have any questions about our use of cookies, please contact us at{" "}
-                  <a href="mailto:hello@standardthought.com" className="text-[#FFD700] font-semibold hover:underline">
-                    hello@standardthought.com
+                  <a href="mailto:movement@standardthought.com" className="text-[#FFD700] font-semibold hover:underline">
+                    movement@standardthought.com
                   </a>
                 </p>
               </section>

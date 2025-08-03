@@ -82,7 +82,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Prepare email data
     const emailData: any = {
-      from: 'Standardthought Team <team@standardthought.com>',
+      from: 'Standardthought Team <movement@standardthought.com>',
       to: subscribers.map(sub => sub.email),
       subject,
       html: generateEmailHTML(body, subject),

@@ -51,7 +51,10 @@ const config: Config = {
     },
     extend: {
       colors,
-      fontFamily: fonts,
+      fontFamily: {
+        ...fonts,
+        'handwritten': ['Kalam', 'cursive'],
+      },
       fontSize,
       letterSpacing,
       borderRadius,

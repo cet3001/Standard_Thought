@@ -33,11 +33,11 @@ export const RealTalkQA = () => {
           {/* Header */}
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              <span className="text-primary">Real Questions,</span>{" "}
-              <span className="text-foreground">Real</span>{" "}
-              <span className="text-primary">Answers</span>
+              <span className="pearlescent-text">Real Questions,</span>{" "}
+              <span className="text-brand-black dark:text-brand-cream">Real</span>{" "}
+              <span className="pearlescent-text">Answers</span>
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-xl text-brand-black dark:text-brand-cream/80 max-w-2xl mx-auto">
               No sugar-coating, no BS—just talk about building wealth from nothing.
             </p>
           </div>

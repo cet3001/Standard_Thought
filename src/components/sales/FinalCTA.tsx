@@ -46,13 +46,13 @@ export const FinalCTA = () => {
             className="space-y-8"
           >
             <h2 className="text-4xl md:text-6xl font-bold leading-tight">
-              Ready to move for real?{" "}
-              <span className="text-primary">You're not the only one.</span>
+              <span className="text-brand-black dark:text-brand-cream">Ready to move for real?</span>{" "}
+              <span className="pearlescent-text">You're not the only one.</span>
             </h2>
             
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl md:text-2xl text-brand-black/80 dark:text-brand-cream/80 max-w-3xl mx-auto leading-relaxed">
               Built for the over-it, the underestimated, the ones tired of dead ends.{" "}
-              <span className="text-foreground font-semibold">Your story's just starting.</span>
+              <span className="text-brand-black dark:text-brand-cream font-semibold">Your story's just starting.</span>
             </p>
 
             {/* CTA Button */}
@@ -65,10 +65,10 @@ export const FinalCTA = () => {
                 size="xl"
                 onClick={handleCTAClick}
                 icon={Zap}
-                className="mx-auto text-lg px-12 py-6 shadow-2xl shadow-primary/20 hover:shadow-primary/40 transition-all duration-300"
+                className="mx-auto text-xl px-12 py-6 font-handwritten font-bold pearlescent-text shadow-pearlescent hover:shadow-2xl transition-all duration-300 bg-gradient-to-r from-[#FFD700]/20 to-[#FFA500]/20 border-2 border-[#FFD700]/40 hover:border-[#FFD700] hover:bg-gradient-to-r hover:from-[#FFD700]/30 hover:to-[#FFA500]/30"
                 aria-label="Start your cycle-breaker journey with the first featured guide"
               >
-                Unlock the First Move
+                ⚡ Unlock the First Move
               </CTAButton>
             </motion.div>
 

@@ -10,7 +10,7 @@ import Navigation from '@/components/navigation';
 import Footer from '@/components/footer';
 import { useUrbanTexture } from '@/hooks/use-urban-texture';
 import { useHeaderHeight } from '@/hooks/use-header-height';
-import { DynamicGuidesSection } from '@/components/sales/DynamicGuidesSection';
+import { DynamicGuidesSection, RealTalkQA, FinalCTA } from '@/components/sales';
 import TestimonialCarousel from '@/components/sales/TestimonialCarousel';
 import PaidGuidesVault from '@/components/sales/PaidGuidesVault';
 
@@ -337,77 +337,11 @@ const Sales = () => {
         {/* The Vault: Paid Playbook Drop */}
         <PaidGuidesVault />
 
-        {/* FAQ Section */}
-        <section className="py-16 bg-gradient-to-r from-brand-brown/10 to-brand-chocolate/10 dark:from-brand-charcoal/30 dark:to-brand-black/30 relative">
-          <div className="container mx-auto px-6 relative z-10">
-            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-16">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6">
-                  <span className="pearlescent-text">Real Questions,</span>{" "}
-                  <span className="text-brand-black dark:text-brand-cream">Real</span>{" "}
-                  <span className="pearlescent-text">Answers</span>
-                </h2>
-                <p className="text-lg text-brand-black dark:text-brand-cream/80 max-w-3xl mx-auto">
-                  No sugar-coating, no BS—just talk about building wealth from nothing.
-                </p>
-              </div>
+        {/* Real Talk Q&A */}
+        <RealTalkQA />
 
-              <div className="space-y-8">
-                {/* FAQ 1 */}
-                <div className="bg-gradient-to-br from-[#f4d03f]/15 via-[#f7dc6f]/10 to-[#fdeaa7]/20 dark:from-[#f4d03f]/8 dark:via-[#f7dc6f]/5 dark:to-[#fdeaa7]/10 border-2 border-[#FFD700]/30 rounded-2xl p-8 shadow-lg backdrop-blur-sm relative overflow-hidden">
-                  <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_50%_50%,_rgba(244,208,63,0.3)_1px,_transparent_1px)] bg-[length:15px_15px]"></div>
-                  <h3 className="text-xl font-bold text-brand-black dark:text-brand-cream mb-4 relative z-10">
-                    What if I'm broke?
-                  </h3>
-                  <p className="text-brand-black/80 dark:text-brand-cream/80 leading-relaxed relative z-10">
-                    Start with free plays—flip trauma into traction, no excuses.
-                  </p>
-                </div>
-
-                {/* FAQ 2 */}
-                <div className="bg-gradient-to-br from-[#f4d03f]/15 via-[#f7dc6f]/10 to-[#fdeaa7]/20 dark:from-[#f4d03f]/8 dark:via-[#f7dc6f]/5 dark:to-[#fdeaa7]/10 border-2 border-[#FFD700]/30 rounded-2xl p-8 shadow-lg backdrop-blur-sm relative overflow-hidden">
-                  <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_50%_50%,_rgba(244,208,63,0.3)_1px,_transparent_1px)] bg-[length:15px_15px]"></div>
-                  <h3 className="text-xl font-bold text-brand-black dark:text-brand-cream mb-4 relative z-10">
-                    Can this fix my credit if it's shot?
-                  </h3>
-                  <p className="text-brand-black/80 dark:text-brand-cream/80 leading-relaxed relative z-10">
-                    Hell yeah—templates to rebuild from scratch, rooted in real exclusion fights.
-                  </p>
-                </div>
-
-                {/* FAQ 3 */}
-                <div className="bg-gradient-to-br from-[#f4d03f]/15 via-[#f7dc6f]/10 to-[#fdeaa7]/20 dark:from-[#f4d03f]/8 dark:via-[#f7dc6f]/5 dark:to-[#fdeaa7]/10 border-2 border-[#FFD700]/30 rounded-2xl p-8 shadow-lg backdrop-blur-sm relative overflow-hidden">
-                  <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_50%_50%,_rgba(244,208,63,0.3)_1px,_transparent_1px)] bg-[length:15px_15px]"></div>
-                  <h3 className="text-xl font-bold text-brand-black dark:text-brand-cream mb-4 relative z-10">
-                    Is this just another get-rich-quick scheme?
-                  </h3>
-                  <p className="text-brand-black/80 dark:text-brand-cream/80 leading-relaxed relative z-10">
-                    Nah, it's legacy from grit—layered strategies for the culture, no shortcuts.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Footer CTA */}
-        <section className="py-16 text-center relative">
-          <div className="container mx-auto px-6 relative z-10">
-            <div className="bg-gradient-to-r from-[#FFD700]/20 to-[#FFA500]/20 border border-[#FFD700]/30 rounded-2xl p-8 backdrop-blur-sm">
-              <h2 className="text-2xl sm:text-3xl font-bold text-brand-black dark:text-brand-cream mb-4">
-                Got questions? We keep it 100%, always.
-              </h2>
-              <Button 
-                size="lg" 
-                className="bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFA500] text-black font-bold px-8 py-3 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-                onClick={() => document.getElementById('starter-section')?.scrollIntoView({ behavior: 'smooth' })}
-              >
-                <Zap className="mr-2 h-5 w-5" />
-                ⚡ Get The Blueprint
-              </Button>
-            </div>
-          </div>
-        </section>
+        {/* Final CTA */}
+        <FinalCTA />
       </main>
 
       {/* Footer */}

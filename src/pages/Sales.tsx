@@ -154,15 +154,14 @@ const Sales = () => {
                 {/* Card 1 */}
                 <Link 
                   to="/guides/first-100-portfolio" 
-                  className="group block transform transition-all duration-300 hover:scale-102"
+                  className="group block transform transition-all duration-300 hover:scale-105"
                   aria-label="Open guide: Your First $100 Move"
                 >
-                  <Card className="h-full bg-gradient-to-br from-[#0A0A0A] via-[#111111] to-[#0A0A0A] border-2 border-[#FFD369]/20 group-hover:border-[#FFD369]/80 transition-all duration-500 shadow-lg group-hover:shadow-[0_0_40px_rgba(255,211,105,0.4)] backdrop-blur-sm relative overflow-hidden cursor-pointer">
-                    {/* Urban texture overlay */}
-                    <div className="absolute inset-0 opacity-[0.03] bg-[repeating-linear-gradient(45deg,transparent,transparent_1px,rgba(255,211,105,0.4)_1px,rgba(255,211,105,0.4)_2px)] group-hover:opacity-[0.08] transition-opacity duration-500"></div>
+                  <Card className="h-full bg-gradient-to-br from-[#f4d03f]/20 via-[#f7dc6f]/15 to-[#fdeaa7]/25 dark:from-[#f4d03f]/10 dark:via-[#f7dc6f]/8 dark:to-[#fdeaa7]/15 border-2 border-[#FFD700]/30 group-hover:border-[#FFD700]/60 transition-all duration-500 shadow-lg group-hover:shadow-2xl backdrop-blur-sm relative overflow-hidden cursor-pointer group-hover:shadow-[0_0_40px_rgba(255,211,105,0.5)]">
+                    <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_50%_50%,_rgba(244,208,63,0.4)_1px,_transparent_1px)] bg-[length:20px_20px]"></div>
                     
                     {/* Corner accent */}
-                    <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-[#FFD369]/30 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-[#FFD700]/30 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
                     
                     {/* "START HERE" indicator */}
                     <div className="absolute top-3 left-3 text-[#FFD369] text-xs font-bold tracking-wider opacity-60 group-hover:opacity-100 transition-opacity duration-300">
@@ -170,15 +169,17 @@ const Sales = () => {
                     </div>
                     
                     <CardHeader className="pb-4 relative z-10 pt-8">
-                      <CardTitle className="text-2xl font-black text-[#F8F8F8] group-hover:text-[#FFD369] transition-all duration-300 leading-tight">
+                      <CardTitle className="text-2xl font-black text-brand-black dark:text-brand-cream group-hover:text-brand-black dark:group-hover:text-white transition-all duration-300 leading-tight drop-shadow-lg group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]">
                         Your First $100 Move
                       </CardTitle>
-                      <div className="text-[#FFD369] font-bold text-sm tracking-wide mt-2 opacity-80 group-hover:opacity-100 transition-opacity duration-300">
-                        ↗ No gatekeepers needed
+                      <div className="text-[#333] dark:text-[#FFD369] font-bold text-sm tracking-wide mt-2 opacity-80 group-hover:opacity-100 transition-opacity duration-300 transform rotate-[-1deg] relative">
+                        <span className="font-black" style={{ fontFamily: 'Comic Neue, cursive', textShadow: '2px 2px 0px rgba(0,0,0,0.3)', transform: 'skew(-5deg)' }}>
+                          ↗ No gatekeepers needed
+                        </span>
                       </div>
                     </CardHeader>
                     <CardContent className="relative z-10">
-                      <CardDescription className="text-[#F8F8F8]/90 text-base leading-relaxed font-medium">
+                      <CardDescription className="text-brand-black dark:text-brand-cream text-base leading-relaxed font-medium group-hover:drop-shadow-[0_0_4px_rgba(255,255,255,0.6)]">
                         Start with what's in your wallet—loose bills, small flips, no gatekeepers.
                       </CardDescription>
                       
@@ -193,15 +194,14 @@ const Sales = () => {
                 {/* Card 2 */}
                 <Link 
                   to="/guides/system-building-playbook" 
-                  className="group block transform transition-all duration-300 hover:scale-102"
+                  className="group block transform transition-all duration-300 hover:scale-105"
                   aria-label="Open guide: No More Winging It"
                 >
-                  <Card className="h-full bg-gradient-to-br from-[#0A0A0A] via-[#111111] to-[#0A0A0A] border-2 border-[#FFD369]/20 group-hover:border-[#FFD369]/80 transition-all duration-500 shadow-lg group-hover:shadow-[0_0_40px_rgba(255,211,105,0.4)] backdrop-blur-sm relative overflow-hidden cursor-pointer">
-                    {/* Urban texture overlay */}
-                    <div className="absolute inset-0 opacity-[0.03] bg-[repeating-linear-gradient(-45deg,transparent,transparent_1px,rgba(255,211,105,0.4)_1px,rgba(255,211,105,0.4)_2px)] group-hover:opacity-[0.08] transition-opacity duration-500"></div>
+                  <Card className="h-full bg-gradient-to-br from-[#f4d03f]/20 via-[#f7dc6f]/15 to-[#fdeaa7]/25 dark:from-[#f4d03f]/10 dark:via-[#f7dc6f]/8 dark:to-[#fdeaa7]/15 border-2 border-[#FFD700]/30 group-hover:border-[#FFD700]/60 transition-all duration-500 shadow-lg group-hover:shadow-2xl backdrop-blur-sm relative overflow-hidden cursor-pointer group-hover:shadow-[0_0_40px_rgba(255,211,105,0.5)]">
+                    <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_50%_50%,_rgba(244,208,63,0.4)_1px,_transparent_1px)] bg-[length:20px_20px]"></div>
                     
                     {/* Corner accent */}
-                    <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-[#FFD369]/30 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-[#FFD700]/30 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
                     
                     {/* "BUILD IT" indicator */}
                     <div className="absolute top-3 left-3 text-[#FFD369] text-xs font-bold tracking-wider opacity-60 group-hover:opacity-100 transition-opacity duration-300">
@@ -209,15 +209,17 @@ const Sales = () => {
                     </div>
                     
                     <CardHeader className="pb-4 relative z-10 pt-8">
-                      <CardTitle className="text-2xl font-black text-[#F8F8F8] group-hover:text-[#FFD369] transition-all duration-300 leading-tight">
+                      <CardTitle className="text-2xl font-black text-brand-black dark:text-brand-cream group-hover:text-brand-black dark:group-hover:text-white transition-all duration-300 leading-tight drop-shadow-lg group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]">
                         No More Winging It
                       </CardTitle>
-                      <div className="text-[#FFD369] font-bold text-sm tracking-wide mt-2 opacity-80 group-hover:opacity-100 transition-opacity duration-300">
-                        ↗ System over struggle
+                      <div className="text-[#333] dark:text-[#FFD369] font-bold text-sm tracking-wide mt-2 opacity-80 group-hover:opacity-100 transition-opacity duration-300 transform rotate-[1deg] relative">
+                        <span className="font-black" style={{ fontFamily: 'Comic Neue, cursive', textShadow: '2px 2px 0px rgba(0,0,0,0.3)', transform: 'skew(3deg)' }}>
+                          ↗ System over struggle
+                        </span>
                       </div>
                     </CardHeader>
                     <CardContent className="relative z-10">
-                      <CardDescription className="text-[#F8F8F8]/90 text-base leading-relaxed font-medium">
+                      <CardDescription className="text-brand-black dark:text-brand-cream text-base leading-relaxed font-medium group-hover:drop-shadow-[0_0_4px_rgba(255,255,255,0.6)]">
                         Turn survival into a system—here's the flow I wish I had at the start.
                       </CardDescription>
                       
@@ -232,15 +234,14 @@ const Sales = () => {
                 {/* Card 3 */}
                 <Link 
                   to="/guides/credit-fix-starter-kit" 
-                  className="group block transform transition-all duration-300 hover:scale-102"
+                  className="group block transform transition-all duration-300 hover:scale-105"
                   aria-label="Open guide: Fix What They Filed Wrong"
                 >
-                  <Card className="h-full bg-gradient-to-br from-[#0A0A0A] via-[#111111] to-[#0A0A0A] border-2 border-[#FFD369]/20 group-hover:border-[#FFD369]/80 transition-all duration-500 shadow-lg group-hover:shadow-[0_0_40px_rgba(255,211,105,0.4)] backdrop-blur-sm relative overflow-hidden cursor-pointer">
-                    {/* Urban texture overlay */}
-                    <div className="absolute inset-0 opacity-[0.03] bg-[repeating-linear-gradient(90deg,transparent,transparent_1px,rgba(255,211,105,0.4)_1px,rgba(255,211,105,0.4)_2px)] group-hover:opacity-[0.08] transition-opacity duration-500"></div>
+                  <Card className="h-full bg-gradient-to-br from-[#f4d03f]/20 via-[#f7dc6f]/15 to-[#fdeaa7]/25 dark:from-[#f4d03f]/10 dark:via-[#f7dc6f]/8 dark:to-[#fdeaa7]/15 border-2 border-[#FFD700]/30 group-hover:border-[#FFD700]/60 transition-all duration-500 shadow-lg group-hover:shadow-2xl backdrop-blur-sm relative overflow-hidden cursor-pointer group-hover:shadow-[0_0_40px_rgba(255,211,105,0.5)]">
+                    <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_50%_50%,_rgba(244,208,63,0.4)_1px,_transparent_1px)] bg-[length:20px_20px]"></div>
                     
                     {/* Corner accent */}
-                    <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-[#FFD369]/30 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-[#FFD700]/30 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
                     
                     {/* "FIX IT" indicator */}
                     <div className="absolute top-3 left-3 text-[#FFD369] text-xs font-bold tracking-wider opacity-60 group-hover:opacity-100 transition-opacity duration-300">
@@ -248,15 +249,17 @@ const Sales = () => {
                     </div>
                     
                     <CardHeader className="pb-4 relative z-10 pt-8">
-                      <CardTitle className="text-2xl font-black text-[#F8F8F8] group-hover:text-[#FFD369] transition-all duration-300 leading-tight">
+                      <CardTitle className="text-2xl font-black text-brand-black dark:text-brand-cream group-hover:text-brand-black dark:group-hover:text-white transition-all duration-300 leading-tight drop-shadow-lg group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]">
                         Fix What They Filed Wrong
                       </CardTitle>
-                      <div className="text-[#FFD369] font-bold text-sm tracking-wide mt-2 opacity-80 group-hover:opacity-100 transition-opacity duration-300">
-                        ↗ Challenge the lies
+                      <div className="text-[#333] dark:text-[#FFD369] font-bold text-sm tracking-wide mt-2 opacity-80 group-hover:opacity-100 transition-opacity duration-300 transform rotate-[-0.5deg] relative">
+                        <span className="font-black" style={{ fontFamily: 'Comic Neue, cursive', textShadow: '2px 2px 0px rgba(0,0,0,0.3)', transform: 'skew(-2deg)' }}>
+                          ↗ Challenge the lies
+                        </span>
                       </div>
                     </CardHeader>
                     <CardContent className="relative z-10">
-                      <CardDescription className="text-[#F8F8F8]/90 text-base leading-relaxed font-medium">
+                      <CardDescription className="text-brand-black dark:text-brand-cream text-base leading-relaxed font-medium group-hover:drop-shadow-[0_0_4px_rgba(255,255,255,0.6)]">
                         Starter templates + real talk for repairing what credit bureaus got twisted.
                       </CardDescription>
                       
@@ -271,15 +274,14 @@ const Sales = () => {
                 {/* Card 4 */}
                 <Link 
                   to="/guides/legacy-toolkit-free" 
-                  className="group block transform transition-all duration-300 hover:scale-102"
+                  className="group block transform transition-all duration-300 hover:scale-105"
                   aria-label="Open guide: Don't Wait for Later"
                 >
-                  <Card className="h-full bg-gradient-to-br from-[#0A0A0A] via-[#111111] to-[#0A0A0A] border-2 border-[#FFD369]/20 group-hover:border-[#FFD369]/80 transition-all duration-500 shadow-lg group-hover:shadow-[0_0_40px_rgba(255,211,105,0.4)] backdrop-blur-sm relative overflow-hidden cursor-pointer">
-                    {/* Urban texture overlay */}
-                    <div className="absolute inset-0 opacity-[0.03] bg-[repeating-linear-gradient(135deg,transparent,transparent_1px,rgba(255,211,105,0.4)_1px,rgba(255,211,105,0.4)_2px)] group-hover:opacity-[0.08] transition-opacity duration-500"></div>
+                  <Card className="h-full bg-gradient-to-br from-[#f4d03f]/20 via-[#f7dc6f]/15 to-[#fdeaa7]/25 dark:from-[#f4d03f]/10 dark:via-[#f7dc6f]/8 dark:to-[#fdeaa7]/15 border-2 border-[#FFD700]/30 group-hover:border-[#FFD700]/60 transition-all duration-500 shadow-lg group-hover:shadow-2xl backdrop-blur-sm relative overflow-hidden cursor-pointer group-hover:shadow-[0_0_40px_rgba(255,211,105,0.5)]">
+                    <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_50%_50%,_rgba(244,208,63,0.4)_1px,_transparent_1px)] bg-[length:20px_20px]"></div>
                     
                     {/* Corner accent */}
-                    <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-[#FFD369]/30 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-[#FFD700]/30 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
                     
                     {/* "SECURE IT" indicator */}
                     <div className="absolute top-3 left-3 text-[#FFD369] text-xs font-bold tracking-wider opacity-60 group-hover:opacity-100 transition-opacity duration-300">
@@ -287,15 +289,17 @@ const Sales = () => {
                     </div>
                     
                     <CardHeader className="pb-4 relative z-10 pt-8">
-                      <CardTitle className="text-2xl font-black text-[#F8F8F8] group-hover:text-[#FFD369] transition-all duration-300 leading-tight">
+                      <CardTitle className="text-2xl font-black text-brand-black dark:text-brand-cream group-hover:text-brand-black dark:group-hover:text-white transition-all duration-300 leading-tight drop-shadow-lg group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]">
                         Don't Wait for 'Later'
                       </CardTitle>
-                      <div className="text-[#FFD369] font-bold text-sm tracking-wide mt-2 opacity-80 group-hover:opacity-100 transition-opacity duration-300">
-                        ↗ Legacy starts now
+                      <div className="text-[#333] dark:text-[#FFD369] font-bold text-sm tracking-wide mt-2 opacity-80 group-hover:opacity-100 transition-opacity duration-300 transform rotate-[1.5deg] relative">
+                        <span className="font-black" style={{ fontFamily: 'Comic Neue, cursive', textShadow: '2px 2px 0px rgba(0,0,0,0.3)', transform: 'skew(4deg)' }}>
+                          ↗ Legacy starts now
+                        </span>
                       </div>
                     </CardHeader>
                     <CardContent className="relative z-10">
-                      <CardDescription className="text-[#F8F8F8]/90 text-base leading-relaxed font-medium">
+                      <CardDescription className="text-brand-black dark:text-brand-cream text-base leading-relaxed font-medium group-hover:drop-shadow-[0_0_4px_rgba(255,255,255,0.6)]">
                         Legacy starts with the first habit, not a million dollars. Grab what you can build on.
                       </CardDescription>
                       

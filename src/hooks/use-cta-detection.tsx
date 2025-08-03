@@ -19,60 +19,6 @@ export const useCTADetection = () => {
   // Define known CTAs across the site
   const knownCTAs: DetectedCTA[] = [
     {
-      id: 'credit-action-plan-download',
-      text: 'Download Free Credit Building Action Plan',
-      location: 'Credit Building Page',
-      pageSlug: '/credit',
-      componentName: 'CreditActionPlan',
-      type: 'download',
-      linkedGuideId: undefined // Will be checked against guides
-    },
-    {
-      id: 'credit-join-community',
-      text: 'Join the Credit Building Community',
-      location: 'Credit Building Page',
-      pageSlug: '/credit',
-      componentName: 'CreditCTA',
-      type: 'join',
-      linkedGuideId: undefined
-    },
-    {
-      id: 'investing-action-plan-download',
-      text: 'Download Free Investing Action Plan',
-      location: 'Investing Page',
-      pageSlug: '/investing',
-      componentName: 'InvestingActionPlan',
-      type: 'download',
-      linkedGuideId: undefined
-    },
-    {
-      id: 'investing-join-community',
-      text: 'Join the Investing Community',
-      location: 'Investing Page',
-      pageSlug: '/investing',
-      componentName: 'InvestingCTA',
-      type: 'join',
-      linkedGuideId: undefined
-    },
-    {
-      id: 'cash-management-download',
-      text: 'Download Free Cash Management Guide',
-      location: 'Cash Management Page',
-      pageSlug: '/cash-management',
-      componentName: 'CashManagementActionPlan',
-      type: 'download',
-      linkedGuideId: undefined
-    },
-    {
-      id: 'ai-side-hustles-download',
-      text: 'Download Free AI Side Hustles Blueprint',
-      location: 'AI Side Hustles Page',
-      pageSlug: '/ai-side-hustles',
-      componentName: 'ActionPlanCTA',
-      type: 'download',
-      linkedGuideId: undefined
-    },
-    {
       id: 'hero-get-blueprint',
       text: 'Get The Blueprint',
       location: 'Homepage Hero',
@@ -127,37 +73,6 @@ export const useCTADetection = () => {
 
       // Check for guide linking patterns based on CTA content/location
       switch (cta.id) {
-        case 'credit-action-plan-download':
-        case 'credit-join-community':
-          linkedGuide = guides.find(guide => 
-            guide.title.toLowerCase().includes('credit building') ||
-            guide.title.toLowerCase().includes('credit action plan')
-          );
-          break;
-        
-        case 'investing-action-plan-download':
-        case 'investing-join-community':
-          linkedGuide = guides.find(guide => 
-            guide.title.toLowerCase().includes('investing') ||
-            guide.title.toLowerCase().includes('portfolio') ||
-            guide.title.toLowerCase().includes('investment')
-          );
-          break;
-        
-        case 'cash-management-download':
-          linkedGuide = guides.find(guide => 
-            guide.title.toLowerCase().includes('cash management') ||
-            guide.title.toLowerCase().includes('cash flow')
-          );
-          break;
-        
-        case 'ai-side-hustles-download':
-          linkedGuide = guides.find(guide => 
-            guide.title.toLowerCase().includes('ai side hustles') ||
-            guide.title.toLowerCase().includes('ai blueprint')
-          );
-          break;
-        
         case 'hero-get-blueprint':
         case 'floating-cta-get-started':
         case 'mobile-floating-cta':

@@ -15,10 +15,6 @@ const SitemapGenerator = () => {
         { url: '/sales', changefreq: 'monthly', priority: '0.7' },
         
         // Pillar Content Pages - High Priority
-        { url: '/cash-management', changefreq: 'monthly', priority: '0.8' },
-        { url: '/credit', changefreq: 'monthly', priority: '0.8' },
-        { url: '/investing', changefreq: 'monthly', priority: '0.8' },
-        { url: '/ai-side-hustles', changefreq: 'monthly', priority: '0.8' },
         
         // Utility Pages
         { url: '/auth', changefreq: 'yearly', priority: '0.3' },

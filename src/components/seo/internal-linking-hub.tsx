@@ -21,36 +21,6 @@ const InternalLinkingHub = ({
 }: InternalLinkingHubProps) => {
   
   const allLinks: InternalLink[] = [
-    // Pillar Pages - Core Content
-    {
-      title: "Master Your Cash Flow - Cash Management",
-      url: "/cash-management",
-      description: "Learn to stack, save, and move smart with proven cash management strategies",
-      keywords: ["cash management", "budgeting", "financial systems", "money management"],
-      pillar: true
-    },
-    {
-      title: "Build Credit From Nothing",
-      url: "/credit", 
-      description: "Real strategies for building credit from zero without a cosigner",
-      keywords: ["credit building", "credit score", "credit repair", "first generation"],
-      pillar: true
-    },
-    {
-      title: "Investing From the Ground Up",
-      url: "/investing",
-      description: "Start investing with no trust fund - real strategies for building wealth",
-      keywords: ["investing", "wealth building", "asset building", "generational wealth"],
-      pillar: true
-    },
-    {
-      title: "AI Side Hustles That Actually Pay",
-      url: "/ai-side-hustles",
-      description: "Turn AI tools into real income streams with proven strategies",
-      keywords: ["AI side hustles", "artificial intelligence", "online income", "tech entrepreneurship"],
-      pillar: true
-    },
-    
     // Supporting Pages
     {
       title: "About Our Urban Wealth Building Mission",

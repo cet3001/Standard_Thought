@@ -25,11 +25,7 @@ export const generateRichResultsTestUrls = (baseUrl: string) => {
     homepage: `https://search.google.com/test/rich-results?url=${encodeURIComponent(baseUrl)}`,
     blog: `https://search.google.com/test/rich-results?url=${encodeURIComponent(`${baseUrl}/blog`)}`,
     sampleBlogPost: `https://search.google.com/test/rich-results?url=${encodeURIComponent(`${baseUrl}/blog/ai-side-hustles-that-actually-work-in-2025-no-hype-just-real-bread`)}`,
-    about: `https://search.google.com/test/rich-results?url=${encodeURIComponent(`${baseUrl}/about`)}`,
-    cashManagement: `https://search.google.com/test/rich-results?url=${encodeURIComponent(`${baseUrl}/cash-management`)}`,
-    credit: `https://search.google.com/test/rich-results?url=${encodeURIComponent(`${baseUrl}/credit`)}`,
-    investing: `https://search.google.com/test/rich-results?url=${encodeURIComponent(`${baseUrl}/investing`)}`,
-    aiSideHustles: `https://search.google.com/test/rich-results?url=${encodeURIComponent(`${baseUrl}/ai-side-hustles`)}`
+    about: `https://search.google.com/test/rich-results?url=${encodeURIComponent(`${baseUrl}/about`)}`
   };
 
   return testUrls;

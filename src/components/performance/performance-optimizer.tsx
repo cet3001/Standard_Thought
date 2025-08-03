@@ -32,7 +32,7 @@ const PerformanceOptimizer = () => {
     });
 
     // Preload critical routes
-    const criticalRoutes = ['/blog', '/credit', '/investing'];
+    const criticalRoutes = ['/blog'];
     criticalRoutes.forEach(route => {
       const link = document.createElement('link');
       link.rel = 'prefetch';

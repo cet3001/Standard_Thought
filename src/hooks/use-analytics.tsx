@@ -117,17 +117,9 @@ export const useWealthContentTracking = (pillar: string) => {
 const getPageType = (path: string): string => {
   if (path.startsWith('/blog/')) return 'blog_post';
   if (path === '/blog') return 'blog_index';
-  if (path === '/credit') return 'credit_pillar';
-  if (path === '/investing') return 'investing_pillar';
-  if (path === '/cash-management') return 'cash_pillar';
-  if (path === '/ai-side-hustles') return 'ai_pillar';
   if (path === '/') return 'homepage';
   return 'other';
 };
 
 const markPageVisit = (path: string) => {
-  if (path === '/credit') localStorage.setItem('visited_credit', 'true');
-  if (path === '/investing') localStorage.setItem('visited_investing', 'true');
-  if (path === '/cash-management') localStorage.setItem('visited_cash', 'true');
-  if (path === '/ai-side-hustles') localStorage.setItem('visited_ai', 'true');
 };

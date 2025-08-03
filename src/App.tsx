@@ -14,10 +14,6 @@ const Blog = lazy(() => import("@/pages/Blog"));
 const BlogPost = lazy(() => import("@/pages/BlogPost"));
 const CreatePost = lazy(() => import("@/pages/CreatePost"));
 const Sales = lazy(() => import("@/pages/Sales"));
-const Credit = lazy(() => import("@/pages/Credit"));
-const Investing = lazy(() => import("@/pages/Investing"));
-const AISideHustles = lazy(() => import("@/pages/AISideHustles"));
-const CashManagement = lazy(() => import("@/pages/CashManagement"));
 const Auth = lazy(() => import("@/pages/Auth"));
 const AdminGuides = lazy(() => import("@/pages/AdminGuides"));
 const AdminEmail = lazy(() => import("@/pages/AdminEmail"));
@@ -67,10 +63,6 @@ function AppContent() {
           <Route path="/admin/email" element={<AdminEmail />} />
           <Route path="/admin/seo" element={<AdminSEO />} />
           <Route path="/sales" element={<Sales />} />
-          <Route path="/credit" element={<Credit />} />
-          <Route path="/investing" element={<Investing />} />
-          <Route path="/ai-side-hustles" element={<AISideHustles />} />
-          <Route path="/cash-management" element={<CashManagement />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />

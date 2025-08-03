@@ -15,7 +15,7 @@ const MobileMenu = () => {
     { href: "/", label: "The Root", tagline: "The Movement Begins Here" },
     { href: "/about", label: "The Shift", tagline: "Our Story & Your Growth Tools" },
     { href: "/blog", label: "The Code They Never Gave Us", tagline: "Real People. Real Struggles. Real Progress." },
-    { href: "/sales", label: "Blueprints & Offers", tagline: "Game Plans, Guides & Opportunities" },
+    { href: "/sales", label: "Run the Play", tagline: "Game Plans, Guides & Opportunities" },
   ];
 
   const handleClose = () => {

@@ -18,7 +18,7 @@ const BreadcrumbNavigation = () => {
     { name: 'The Root', path: '/', keywords: 'entrepreneurship hub, wealth building foundation' },
     { name: 'The Code They Never Gave Us', path: '/blog', keywords: 'builder stories, self-taught entrepreneurs, financial independence journeys' },
     { name: 'The Shift', path: '/about', keywords: 'mindset development, success psychology' },
-    { name: 'Blueprints & Offers', path: '/sales', keywords: 'business strategies, revenue optimization' },
+    { name: 'Run the Play', path: '/sales', keywords: 'business strategies, revenue optimization' },
   ];
 
   const getCurrentBreadcrumb = (path: string) => {

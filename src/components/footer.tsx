@@ -118,7 +118,7 @@ const Footer = () => {
               The Code They Never Gave Us
             </Link>
             <Link to="/sales" className="text-brand-cream/80 hover:text-[#247EFF] transition-colors">
-              Blueprints & Offers
+              Run the Play
             </Link>
             <Link to="/auth" className="text-brand-cream/80 hover:text-[#247EFF] transition-colors">
               Contact

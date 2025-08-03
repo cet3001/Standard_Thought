@@ -13,6 +13,7 @@ import { useHeaderHeight } from '@/hooks/use-header-height';
 import { DynamicGuidesSection, RealTalkQA, FinalCTA } from '@/components/sales';
 import TestimonialCarousel from '@/components/sales/TestimonialCarousel';
 import PaidGuidesVault from '@/components/sales/PaidGuidesVault';
+import { analytics } from '@/lib/analytics-service';
 
 const Sales = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -65,18 +66,45 @@ const Sales = () => {
       </div>
 
       <Helmet>
-        <title>Out The Loop? Break It Here – Real Financial Tactics | Standard Thought</title>
-        <meta name="description" content="Cycle-breakers don't need buzzwords—they need real moves. This page flips exclusion into action with free tools, digital plays, and wealth repair strategies that weren't handed down. Built for the ones left out." />
-        <meta name="keywords" content="urban wealth, generational wealth, credit repair, investing, financial freedom, Black wealth building, cycle breaking, financial exclusion" />
-        <meta property="og:title" content="Stack What Was Denied." />
-        <meta property="og:description" content="Cycle-breakers don't need buzzwords—they need real moves. This page flips exclusion into action with free tools, digital plays, and wealth repair strategies that weren't handed down." />
+        <title>Run the Play – Premium Guides & Wealth Tools | Standard Thought</title>
+        <meta name="description" content="Real moves, no fluff. Run the Play is where cycle-breakers unlock premium strategies, paid toolkits, and tested systems built from the ground up." />
+        <meta name="keywords" content="premium wealth guides, paid financial strategies, urban wealth building, cycle breaking tactics, generational wealth, financial playbooks, wealth tools" />
+        <meta property="og:title" content="Run the Play – Premium Wealth Tools" />
+        <meta property="og:description" content="Unlock real strategies built by and for the underestimated. These aren't just offers—they're tested moves." />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="/lovable-uploads/bbfe2eff-caae-4c37-8946-23e81350a078.png" />
+        <meta property="og:url" content="https://www.standardthought.com/sales" />
+        <meta property="og:image" content="https://www.standardthought.com/lovable-uploads/bbfe2eff-caae-4c37-8946-23e81350a078.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Stack What Was Denied." />
-        <meta name="twitter:description" content="Real moves for cycle-breakers. No buzzwords, just proven tactics that weren't handed down." />
-        <meta name="twitter:image" content="/lovable-uploads/bbfe2eff-caae-4c37-8946-23e81350a078.png" />
+        <meta name="twitter:title" content="Run the Play – Premium Wealth Tools" />
+        <meta name="twitter:description" content="Unlock real strategies built by and for the underestimated. These aren't just offers—they're tested moves." />
+        <meta name="twitter:image" content="https://www.standardthought.com/lovable-uploads/bbfe2eff-caae-4c37-8946-23e81350a078.png" />
         <link rel="canonical" href="https://www.standardthought.com/sales" />
+        
+        {/* FAQ Schema for AEO optimization */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What makes these wealth guides different?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "These aren't generic financial advice. They're tested strategies built by cycle-breakers for cycle-breakers, focusing on real moves that work when you start from nothing."
+                }
+              },
+              {
+                "@type": "Question", 
+                "name": "Are the free guides really free?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, completely free. No hidden costs, no upsells. Just real starter strategies to help you get your first wins."
+                }
+              }
+            ]
+          })}
+        </script>
       </Helmet>
 
       {/* Navigation Header */}
@@ -158,6 +186,17 @@ const Sales = () => {
                   to="/guides/first-100-portfolio" 
                   className="group block transform transition-all duration-300 hover:scale-105"
                   aria-label="Open guide: Your First $100 Move"
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => {
+                    analytics.trackWealthContent('Card Click', 'Your First $100 Move', 'Run the Play');
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      analytics.trackWealthContent('Card Click', 'Your First $100 Move', 'Run the Play');
+                    }
+                  }}
                 >
                   <Card className="h-full bg-gradient-to-br from-[#f4d03f]/20 via-[#f7dc6f]/15 to-[#fdeaa7]/25 dark:from-[#f4d03f]/10 dark:via-[#f7dc6f]/8 dark:to-[#fdeaa7]/15 border-2 border-[#FFD700]/30 group-hover:border-[#FFD700]/60 transition-all duration-500 shadow-lg group-hover:shadow-2xl backdrop-blur-sm relative overflow-hidden cursor-pointer group-hover:shadow-[0_0_40px_rgba(255,211,105,0.5)]">
                     <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_50%_50%,_rgba(244,208,63,0.4)_1px,_transparent_1px)] bg-[length:20px_20px]"></div>
@@ -198,6 +237,17 @@ const Sales = () => {
                   to="/guides/system-building-playbook" 
                   className="group block transform transition-all duration-300 hover:scale-105"
                   aria-label="Open guide: No More Winging It"
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => {
+                    analytics.trackWealthContent('Card Click', 'No More Winging It', 'Run the Play');
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      analytics.trackWealthContent('Card Click', 'No More Winging It', 'Run the Play');
+                    }
+                  }}
                 >
                   <Card className="h-full bg-gradient-to-br from-[#f4d03f]/20 via-[#f7dc6f]/15 to-[#fdeaa7]/25 dark:from-[#f4d03f]/10 dark:via-[#f7dc6f]/8 dark:to-[#fdeaa7]/15 border-2 border-[#FFD700]/30 group-hover:border-[#FFD700]/60 transition-all duration-500 shadow-lg group-hover:shadow-2xl backdrop-blur-sm relative overflow-hidden cursor-pointer group-hover:shadow-[0_0_40px_rgba(255,211,105,0.5)]">
                     <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_50%_50%,_rgba(244,208,63,0.4)_1px,_transparent_1px)] bg-[length:20px_20px]"></div>
@@ -238,6 +288,17 @@ const Sales = () => {
                   to="/guides/credit-fix-starter-kit" 
                   className="group block transform transition-all duration-300 hover:scale-105"
                   aria-label="Open guide: Fix What They Filed Wrong"
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => {
+                    analytics.trackWealthContent('Card Click', 'Fix What They Filed Wrong', 'Run the Play');
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      analytics.trackWealthContent('Card Click', 'Fix What They Filed Wrong', 'Run the Play');
+                    }
+                  }}
                 >
                   <Card className="h-full bg-gradient-to-br from-[#f4d03f]/20 via-[#f7dc6f]/15 to-[#fdeaa7]/25 dark:from-[#f4d03f]/10 dark:via-[#f7dc6f]/8 dark:to-[#fdeaa7]/15 border-2 border-[#FFD700]/30 group-hover:border-[#FFD700]/60 transition-all duration-500 shadow-lg group-hover:shadow-2xl backdrop-blur-sm relative overflow-hidden cursor-pointer group-hover:shadow-[0_0_40px_rgba(255,211,105,0.5)]">
                     <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_50%_50%,_rgba(244,208,63,0.4)_1px,_transparent_1px)] bg-[length:20px_20px]"></div>
@@ -278,6 +339,17 @@ const Sales = () => {
                   to="/guides/legacy-toolkit-free" 
                   className="group block transform transition-all duration-300 hover:scale-105"
                   aria-label="Open guide: Don't Wait for Later"
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => {
+                    analytics.trackWealthContent('Card Click', 'Dont Wait for Later', 'Run the Play');
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      analytics.trackWealthContent('Card Click', 'Dont Wait for Later', 'Run the Play');
+                    }
+                  }}
                 >
                   <Card className="h-full bg-gradient-to-br from-[#f4d03f]/20 via-[#f7dc6f]/15 to-[#fdeaa7]/25 dark:from-[#f4d03f]/10 dark:via-[#f7dc6f]/8 dark:to-[#fdeaa7]/15 border-2 border-[#FFD700]/30 group-hover:border-[#FFD700]/60 transition-all duration-500 shadow-lg group-hover:shadow-2xl backdrop-blur-sm relative overflow-hidden cursor-pointer group-hover:shadow-[0_0_40px_rgba(255,211,105,0.5)]">
                     <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_50%_50%,_rgba(244,208,63,0.4)_1px,_transparent_1px)] bg-[length:20px_20px]"></div>

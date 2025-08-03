@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Lock, Star } from 'lucide-react';
 import { PaidGuide } from '@/hooks/use-paid-guides';
+import { analytics } from '@/lib/analytics-service';
 
 interface PaidGuideCardProps {
   guide: PaidGuide;
@@ -14,6 +15,8 @@ const PaidGuideCard: React.FC<PaidGuideCardProps> = ({ guide, onPurchase }) => {
   };
 
   const handleCardClick = () => {
+    // Track paid guide click analytics
+    analytics.trackWealthContent('Card Click', guide.title, 'Run the Play - Paid Guide');
     onPurchase(guide);
   };
 

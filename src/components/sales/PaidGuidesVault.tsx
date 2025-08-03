@@ -1,9 +1,10 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import PaidGuideCard from './PaidGuideCard';
-import { usePaidGuides } from '@/hooks/use-paid-guides';
+import { usePaidGuides, PaidGuide } from '@/hooks/use-paid-guides';
 import { Card, CardContent } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
+import { analytics } from '@/lib/analytics-service';
 
 const PaidGuidesVault: React.FC = () => {
   const { guides, loading, initiatePurchase } = usePaidGuides();
@@ -66,13 +67,22 @@ const PaidGuidesVault: React.FC = () => {
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "ItemList",
-            "name": "Premium Wealth Playbooks",
-            "description": "Premium wealth-building strategies for first-generation builders",
+            "name": "Run the Play - Premium Wealth Playbooks",
+            "description": "Premium wealth-building strategies for cycle-breakers and first-generation builders",
+            "url": "https://www.standardthought.com/sales",
+            "numberOfItems": guides.length,
             "itemListElement": guides.map((guide, index) => ({
               "@type": "Product",
               "position": index + 1,
               "name": guide.title,
               "description": guide.description || guide.subtitle,
+              "sku": guide.slug,
+              "category": "Financial Education",
+              "creator": {
+                "@type": "Organization",
+                "name": "Standard Thought",
+                "url": "https://www.standardthought.com"
+              },
               "brand": {
                 "@type": "Brand",
                 "name": "Standard Thought"
@@ -80,9 +90,19 @@ const PaidGuidesVault: React.FC = () => {
               "offers": {
                 "@type": "Offer",
                 "price": (guide.price / 100).toFixed(2),
-                "priceCurrency": guide.currency,
+                "priceCurrency": guide.currency || "USD",
                 "availability": "https://schema.org/InStock",
-                "url": `https://www.standardthought.com/sales#${guide.slug}`
+                "url": `https://www.standardthought.com/sales#${guide.slug}`,
+                "validFrom": new Date().toISOString(),
+                "priceValidUntil": new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString(),
+                "seller": {
+                  "@type": "Organization",
+                  "name": "Standard Thought"
+                }
+              },
+              "audience": {
+                "@type": "Audience",
+                "audienceType": "Cycle-breakers and wealth builders"
               }
             }))
           })}

@@ -137,95 +137,120 @@ const Sales = () => {
           </div>
         </section>
 
-        {/* Start Broke, Not Blind Section */}
+        {/* Starter Section */}
         <section id="starter-section" className="py-16 relative">
           <div className="container mx-auto px-6 relative z-10">
             <div className="max-w-7xl mx-auto">
               <div className="text-center mb-16">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6 text-brand-black dark:text-brand-cream">
-                  Start Broke, Not Blind
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6">
+                  <span className="pearlescent-text">Starter Blueprints:</span>{" "}
+                  <span className="text-brand-black dark:text-brand-cream">No-Cost Plays to Flip</span>{" "}
+                  <span className="pearlescent-text">Credit Trauma</span>
                 </h2>
-                <p className="text-xl text-brand-black/80 dark:text-brand-cream/80 max-w-3xl mx-auto">
-                  No-cost plays to break the credit trap and get back in the game.
-                </p>
               </div>
 
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-                {/* Card 1 - Clickable Link */}
-                <Link 
-                  to="/guides/portfolio-pocket-change"
-                  className="group block bg-[#0A0A0A] dark:bg-[#111] border border-gray-700/50 hover:border-[#FFD369] rounded-lg overflow-hidden transition-all duration-500 transform hover:scale-[1.02] hover:brightness-110 cursor-pointer shadow-lg hover:shadow-[0_0_20px_rgba(255,211,105,0.2)] relative"
-                  aria-label="Build a Portfolio with Pocket Change - Start with what you have—even if it's loose bills. Small moves, big start."
-                >
-                  {/* Urban texture overlay */}
-                  <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_50%_50%,_rgba(255,255,255,0.1)_1px,_transparent_1px)] bg-[length:15px_15px]"></div>
-                  
-                  <div className="p-6 relative z-10">
-                    <h3 className="text-xl font-bold text-white mb-3 leading-tight">
-                      Build a Portfolio with Pocket Change
-                    </h3>
-                    <p className="text-[#FFD369] leading-relaxed">
-                      Start with what you have—even if it's loose bills. Small moves, big start.
-                    </p>
-                  </div>
-                </Link>
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {/* Card 1 */}
+                <Card className="group bg-gradient-to-br from-[#f4d03f]/20 via-[#f7dc6f]/15 to-[#fdeaa7]/25 dark:from-[#f4d03f]/10 dark:via-[#f7dc6f]/8 dark:to-[#fdeaa7]/15 border-2 border-[#FFD700]/30 hover:border-[#FFD700]/60 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 shadow-lg hover:shadow-2xl backdrop-blur-sm relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-[#f4d03f]/10 before:via-transparent before:to-[#fdeaa7]/10 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500">
+                  <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_50%_50%,_rgba(244,208,63,0.4)_1px,_transparent_1px)] bg-[length:20px_20px]"></div>
+                  <CardHeader className="pb-4 relative z-10">
+                    <div className="w-14 h-14 bg-gradient-to-br from-[#FFD700] via-[#FFF8DC] to-[#FFA500] rounded-2xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300 relative before:absolute before:inset-0 before:bg-gradient-to-br before:from-[#FFD700]/80 before:to-[#FFA500]/80 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-300 before:rounded-2xl">
+                      <TrendingUp className="h-7 w-7 text-black relative z-10" />
+                    </div>
+                    <CardTitle className="text-xl font-black text-brand-black dark:text-brand-cream group-hover:pearlescent-text transition-all duration-300">
+                      How to Create Your First Portfolio
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-6 relative z-10">
+                    <CardDescription className="text-brand-black/80 dark:text-brand-cream/80 text-base leading-relaxed font-medium">
+                      Start with pocket change. Build a basic stock portfolio for first-gen builders—urban strategies to flip $100 into assets without gatekeepers.
+                    </CardDescription>
+                    <Button 
+                      className="w-full bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFA500] hover:from-[#FFA500] hover:to-[#FFD700] text-black font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/40 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700"
+                      onClick={() => handleDownload('First Portfolio Guide')}
+                    >
+                      <Download className="mr-2 h-4 w-4" />
+                      Download Free
+                    </Button>
+                  </CardContent>
+                </Card>
 
-                {/* Card 2 - Clickable Link */}
-                <Link 
-                  to="/guides/turn-struggle-into-system"
-                  className="group block bg-[#0A0A0A] dark:bg-[#111] border border-gray-700/50 hover:border-[#FFD369] rounded-lg overflow-hidden transition-all duration-500 transform hover:scale-[1.02] hover:brightness-110 cursor-pointer shadow-lg hover:shadow-[0_0_20px_rgba(255,211,105,0.2)] relative"
-                  aria-label="Turn Struggle Into a System - Build a flow that flips chaos into order. No more winging it."
-                >
-                  {/* Urban texture overlay */}
-                  <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_50%_50%,_rgba(255,255,255,0.1)_1px,_transparent_1px)] bg-[length:15px_15px]"></div>
-                  
-                  <div className="p-6 relative z-10">
-                    <h3 className="text-xl font-bold text-white mb-3 leading-tight">
-                      Turn Struggle Into a System
-                    </h3>
-                    <p className="text-[#FFD369] leading-relaxed">
-                      Build a flow that flips chaos into order. No more winging it.
-                    </p>
-                  </div>
-                </Link>
+                {/* Card 2 */}
+                <Card className="group bg-gradient-to-br from-[#f4d03f]/20 via-[#f7dc6f]/15 to-[#fdeaa7]/25 dark:from-[#f4d03f]/10 dark:via-[#f7dc6f]/8 dark:to-[#fdeaa7]/15 border-2 border-[#FFD700]/30 hover:border-[#FFD700]/60 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 shadow-lg hover:shadow-2xl backdrop-blur-sm relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-[#f4d03f]/10 before:via-transparent before:to-[#fdeaa7]/10 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500">
+                  <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_50%_50%,_rgba(244,208,63,0.4)_1px,_transparent_1px)] bg-[length:20px_20px]"></div>
+                  <CardHeader className="pb-4 relative z-10">
+                    <div className="w-14 h-14 bg-gradient-to-br from-[#FFD700] via-[#FFF8DC] to-[#FFA500] rounded-2xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300 relative before:absolute before:inset-0 before:bg-gradient-to-br before:from-[#FFD700]/80 before:to-[#FFA500]/80 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-300 before:rounded-2xl">
+                      <Target className="h-7 w-7 text-black relative z-10" />
+                    </div>
+                    <CardTitle className="text-xl font-black text-brand-black dark:text-brand-cream group-hover:pearlescent-text transition-all duration-300">
+                      System Building Action Plan
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-6 relative z-10">
+                    <CardDescription className="text-brand-black/80 dark:text-brand-cream/80 text-base leading-relaxed font-medium">
+                      Flip survival mode into systems. Step-by-step to automate cash flow, rooted in psych hacks for Black hustlers breaking cycles.
+                    </CardDescription>
+                    <Link to="/cash-management">
+                      <Button 
+                        className="w-full bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFA500] hover:from-[#FFA500] hover:to-[#FFD700] text-black font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/40 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700"
+                      >
+                        <Download className="mr-2 h-4 w-4" />
+                        Grab Free Plan
+                      </Button>
+                    </Link>
+                  </CardContent>
+                </Card>
 
-                {/* Card 3 - Clickable Link */}
-                <Link 
-                  to="/guides/credit-repair-letters"
-                  className="group block bg-[#0A0A0A] dark:bg-[#111] border border-gray-700/50 hover:border-[#FFD369] rounded-lg overflow-hidden transition-all duration-500 transform hover:scale-[1.02] hover:brightness-110 cursor-pointer shadow-lg hover:shadow-[0_0_20px_rgba(255,211,105,0.2)] relative"
-                  aria-label="Fix What They Wrote Off - Templates, letters, and guidance to challenge what's on your credit report—starter kit for real."
-                >
-                  {/* Urban texture overlay */}
-                  <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_50%_50%,_rgba(255,255,255,0.1)_1px,_transparent_1px)] bg-[length:15px_15px]"></div>
-                  
-                  <div className="p-6 relative z-10">
-                    <h3 className="text-xl font-bold text-white mb-3 leading-tight">
-                      Fix What They Wrote Off
-                    </h3>
-                    <p className="text-[#FFD369] leading-relaxed">
-                      Templates, letters, and guidance to challenge what's on your credit report—starter kit for real.
-                    </p>
-                  </div>
-                </Link>
+                {/* Card 3 */}
+                <Card className="group bg-gradient-to-br from-[#f4d03f]/20 via-[#f7dc6f]/15 to-[#fdeaa7]/25 dark:from-[#f4d03f]/10 dark:via-[#f7dc6f]/8 dark:to-[#fdeaa7]/15 border-2 border-[#FFD700]/30 hover:border-[#FFD700]/60 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 shadow-lg hover:shadow-2xl backdrop-blur-sm relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-[#f4d03f]/10 before:via-transparent before:to-[#fdeaa7]/10 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500">
+                  <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_50%_50%,_rgba(244,208,63,0.4)_1px,_transparent_1px)] bg-[length:20px_20px]"></div>
+                  <CardHeader className="pb-4 relative z-10">
+                    <div className="w-14 h-14 bg-gradient-to-br from-[#FFD700] via-[#FFF8DC] to-[#FFA500] rounded-2xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300 relative before:absolute before:inset-0 before:bg-gradient-to-br before:from-[#FFD700]/80 before:to-[#FFA500]/80 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-300 before:rounded-2xl">
+                      <CreditCard className="h-7 w-7 text-black relative z-10" />
+                    </div>
+                    <CardTitle className="text-xl font-black text-brand-black dark:text-brand-cream group-hover:pearlescent-text transition-all duration-300">
+                      Credit Repair Master Class
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-6 relative z-10">
+                    <CardDescription className="text-brand-black/80 dark:text-brand-cream/80 text-base leading-relaxed font-medium">
+                      No cosigner? No problem. Advanced templates to dispute, rebuild, and stack credit—Trojan truths on how exclusion keeps scores low in our communities.
+                    </CardDescription>
+                    <Button 
+                      className="w-full bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFA500] hover:from-[#FFA500] hover:to-[#FFD700] text-black font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/40 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700"
+                      onClick={() => handleDownload('Credit Repair Master Class')}
+                    >
+                      <Download className="mr-2 h-4 w-4" />
+                      Start Repair Free
+                    </Button>
+                  </CardContent>
+                </Card>
 
-                {/* Card 4 - Clickable Link */}
-                <Link 
-                  to="/guides/legacy-start-now"
-                  className="group block bg-[#0A0A0A] dark:bg-[#111] border border-gray-700/50 hover:border-[#FFD369] rounded-lg overflow-hidden transition-all duration-500 transform hover:scale-[1.02] hover:brightness-110 cursor-pointer shadow-lg hover:shadow-[0_0_20px_rgba(255,211,105,0.2)] relative"
-                  aria-label="Legacy Isn't for Later—Start Now - A toolkit to protect your future, even if you're just getting started."
-                >
-                  {/* Urban texture overlay */}
-                  <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_50%_50%,_rgba(255,255,255,0.1)_1px,_transparent_1px)] bg-[length:15px_15px]"></div>
-                  
-                  <div className="p-6 relative z-10">
-                    <h3 className="text-xl font-bold text-white mb-3 leading-tight">
-                      Legacy Isn't for Later—Start Now
-                    </h3>
-                    <p className="text-[#FFD369] leading-relaxed">
-                      A toolkit to protect your future, even if you're just getting started.
-                    </p>
-                  </div>
-                </Link>
+                {/* Card 4 */}
+                <Card className="group bg-gradient-to-br from-[#f4d03f]/20 via-[#f7dc6f]/15 to-[#fdeaa7]/25 dark:from-[#f4d03f]/10 dark:via-[#f7dc6f]/8 dark:to-[#fdeaa7]/15 border-2 border-[#FFD700]/30 hover:border-[#FFD700]/60 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 shadow-lg hover:shadow-2xl backdrop-blur-sm relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-[#f4d03f]/10 before:via-transparent before:to-[#fdeaa7]/10 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500">
+                  <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_50%_50%,_rgba(244,208,63,0.4)_1px,_transparent_1px)] bg-[length:20px_20px]"></div>
+                  <CardHeader className="pb-4 relative z-10">
+                    <div className="w-14 h-14 bg-gradient-to-br from-[#FFD700] via-[#FFF8DC] to-[#FFA500] rounded-2xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300 relative before:absolute before:inset-0 before:bg-gradient-to-br before:from-[#FFD700]/80 before:to-[#FFA500]/80 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-300 before:rounded-2xl">
+                      <Shield className="h-7 w-7 text-black relative z-10" />
+                    </div>
+                    <CardTitle className="text-xl font-black text-brand-black dark:text-brand-cream group-hover:pearlescent-text transition-all duration-300">
+                      Ultimate Legacy Toolkit
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-6 relative z-10">
+                    <CardDescription className="text-brand-black/80 dark:text-brand-cream/80 text-base leading-relaxed font-medium">
+                      Protect your bag long-term. Free resources blending sociology on generational scars + instinct flips for urban legacy builders.
+                    </CardDescription>
+                    <Link to="/investing">
+                      <Button 
+                        className="w-full bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFA500] hover:from-[#FFA500] hover:to-[#FFD700] text-black font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/40 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700"
+                      >
+                        <Download className="mr-2 h-4 w-4" />
+                        Download Toolkit
+                      </Button>
+                    </Link>
+                  </CardContent>
+                </Card>
               </div>
             </div>
           </div>

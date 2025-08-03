@@ -137,12 +137,12 @@ const Sales = () => {
           </div>
         </section>
 
-        {/* Starter Section */}
+        {/* Start Broke, Not Blind Section */}
         <section id="starter-section" className="py-16 relative">
           <div className="container mx-auto px-6 relative z-10">
             <div className="max-w-7xl mx-auto">
               <div className="text-center mb-16">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6 font-permanent-marker text-brand-black dark:text-brand-cream">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6 text-brand-black dark:text-brand-cream">
                   Start Broke, Not Blind
                 </h2>
                 <p className="text-xl text-brand-black/80 dark:text-brand-cream/80 max-w-3xl mx-auto">
@@ -150,94 +150,82 @@ const Sales = () => {
                 </p>
               </div>
 
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                {/* Card 1 */}
-                <div className="group bg-gradient-to-br from-gray-800/80 to-gray-900/80 border-2 border-gray-700 hover:border-yellow-400/60 rounded-lg overflow-hidden transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 shadow-lg hover:shadow-2xl backdrop-blur-sm relative">
-                  <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_50%_50%,_rgba(255,211,105,0.4)_1px,_transparent_1px)] bg-[length:20px_20px]"></div>
-                  <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/5 via-transparent to-yellow-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+                {/* Card 1 - Clickable Link */}
+                <Link 
+                  to="/guides/portfolio-pocket-change"
+                  className="group block bg-[#0A0A0A] dark:bg-[#111] border border-gray-700/50 hover:border-[#FFD369] rounded-lg overflow-hidden transition-all duration-500 transform hover:scale-[1.02] hover:brightness-110 cursor-pointer shadow-lg hover:shadow-[0_0_20px_rgba(255,211,105,0.2)] relative"
+                  aria-label="Build a Portfolio with Pocket Change - Start with what you have—even if it's loose bills. Small moves, big start."
+                >
+                  {/* Urban texture overlay */}
+                  <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_50%_50%,_rgba(255,255,255,0.1)_1px,_transparent_1px)] bg-[length:15px_15px]"></div>
                   
                   <div className="p-6 relative z-10">
-                    <h3 className="text-xl font-bold text-white mb-3 font-permanent-marker group-hover:text-yellow-400 transition-colors duration-300">
+                    <h3 className="text-xl font-bold text-white mb-3 leading-tight">
                       Build a Portfolio with Pocket Change
                     </h3>
-                    <p className="text-gray-300 mb-4 leading-relaxed">
+                    <p className="text-[#FFD369] leading-relaxed">
                       Start with what you have—even if it's loose bills. Small moves, big start.
                     </p>
-                    <button 
-                      className="w-full py-3 px-4 bg-transparent border-2 border-yellow-400 text-yellow-400 rounded-lg font-medium hover:bg-yellow-400 hover:text-black transition-all duration-300 hover:shadow-lg hover:shadow-yellow-400/20 font-permanent-marker"
-                      onClick={() => handleDownload('Portfolio Building Guide')}
-                      aria-label="Download free portfolio building guide"
-                    >
-                      Download Free
-                    </button>
                   </div>
-                </div>
+                </Link>
 
-                {/* Card 2 */}
-                <div className="group bg-gradient-to-br from-gray-800/80 to-gray-900/80 border-2 border-gray-700 hover:border-yellow-400/60 rounded-lg overflow-hidden transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 shadow-lg hover:shadow-2xl backdrop-blur-sm relative">
-                  <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_50%_50%,_rgba(255,211,105,0.4)_1px,_transparent_1px)] bg-[length:20px_20px]"></div>
-                  <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/5 via-transparent to-yellow-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                {/* Card 2 - Clickable Link */}
+                <Link 
+                  to="/guides/turn-struggle-into-system"
+                  className="group block bg-[#0A0A0A] dark:bg-[#111] border border-gray-700/50 hover:border-[#FFD369] rounded-lg overflow-hidden transition-all duration-500 transform hover:scale-[1.02] hover:brightness-110 cursor-pointer shadow-lg hover:shadow-[0_0_20px_rgba(255,211,105,0.2)] relative"
+                  aria-label="Turn Struggle Into a System - Build a flow that flips chaos into order. No more winging it."
+                >
+                  {/* Urban texture overlay */}
+                  <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_50%_50%,_rgba(255,255,255,0.1)_1px,_transparent_1px)] bg-[length:15px_15px]"></div>
                   
                   <div className="p-6 relative z-10">
-                    <h3 className="text-xl font-bold text-white mb-3 font-permanent-marker group-hover:text-yellow-400 transition-colors duration-300">
+                    <h3 className="text-xl font-bold text-white mb-3 leading-tight">
                       Turn Struggle Into a System
                     </h3>
-                    <p className="text-gray-300 mb-4 leading-relaxed">
+                    <p className="text-[#FFD369] leading-relaxed">
                       Build a flow that flips chaos into order. No more winging it.
                     </p>
-                    <button 
-                      className="w-full py-3 px-4 bg-transparent border-2 border-yellow-400 text-yellow-400 rounded-lg font-medium hover:bg-yellow-400 hover:text-black transition-all duration-300 hover:shadow-lg hover:shadow-yellow-400/20 font-permanent-marker"
-                      onClick={() => handleDownload('System Building Plan')}
-                      aria-label="Grab the free plan to build financial systems"
-                    >
-                      Grab the Free Plan
-                    </button>
                   </div>
-                </div>
+                </Link>
 
-                {/* Card 3 */}
-                <div className="group bg-gradient-to-br from-gray-800/80 to-gray-900/80 border-2 border-gray-700 hover:border-yellow-400/60 rounded-lg overflow-hidden transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 shadow-lg hover:shadow-2xl backdrop-blur-sm relative">
-                  <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_50%_50%,_rgba(255,211,105,0.4)_1px,_transparent_1px)] bg-[length:20px_20px]"></div>
-                  <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/5 via-transparent to-yellow-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                {/* Card 3 - Clickable Link */}
+                <Link 
+                  to="/guides/credit-repair-letters"
+                  className="group block bg-[#0A0A0A] dark:bg-[#111] border border-gray-700/50 hover:border-[#FFD369] rounded-lg overflow-hidden transition-all duration-500 transform hover:scale-[1.02] hover:brightness-110 cursor-pointer shadow-lg hover:shadow-[0_0_20px_rgba(255,211,105,0.2)] relative"
+                  aria-label="Fix What They Wrote Off - Templates, letters, and guidance to challenge what's on your credit report—starter kit for real."
+                >
+                  {/* Urban texture overlay */}
+                  <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_50%_50%,_rgba(255,255,255,0.1)_1px,_transparent_1px)] bg-[length:15px_15px]"></div>
                   
                   <div className="p-6 relative z-10">
-                    <h3 className="text-xl font-bold text-white mb-3 font-permanent-marker group-hover:text-yellow-400 transition-colors duration-300">
+                    <h3 className="text-xl font-bold text-white mb-3 leading-tight">
                       Fix What They Wrote Off
                     </h3>
-                    <p className="text-gray-300 mb-4 leading-relaxed">
+                    <p className="text-[#FFD369] leading-relaxed">
                       Templates, letters, and guidance to challenge what's on your credit report—starter kit for real.
                     </p>
-                    <button 
-                      className="w-full py-3 px-4 bg-transparent border-2 border-yellow-400 text-yellow-400 rounded-lg font-medium hover:bg-yellow-400 hover:text-black transition-all duration-300 hover:shadow-lg hover:shadow-yellow-400/20 font-permanent-marker"
-                      onClick={() => handleDownload('Credit Repair Templates')}
-                      aria-label="Start credit repair now with free templates"
-                    >
-                      Start Repair Now
-                    </button>
                   </div>
-                </div>
+                </Link>
 
-                {/* Card 4 */}
-                <div className="group bg-gradient-to-br from-gray-800/80 to-gray-900/80 border-2 border-gray-700 hover:border-yellow-400/60 rounded-lg overflow-hidden transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 shadow-lg hover:shadow-2xl backdrop-blur-sm relative">
-                  <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_50%_50%,_rgba(255,211,105,0.4)_1px,_transparent_1px)] bg-[length:20px_20px]"></div>
-                  <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/5 via-transparent to-yellow-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                {/* Card 4 - Clickable Link */}
+                <Link 
+                  to="/guides/legacy-start-now"
+                  className="group block bg-[#0A0A0A] dark:bg-[#111] border border-gray-700/50 hover:border-[#FFD369] rounded-lg overflow-hidden transition-all duration-500 transform hover:scale-[1.02] hover:brightness-110 cursor-pointer shadow-lg hover:shadow-[0_0_20px_rgba(255,211,105,0.2)] relative"
+                  aria-label="Legacy Isn't for Later—Start Now - A toolkit to protect your future, even if you're just getting started."
+                >
+                  {/* Urban texture overlay */}
+                  <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_50%_50%,_rgba(255,255,255,0.1)_1px,_transparent_1px)] bg-[length:15px_15px]"></div>
                   
                   <div className="p-6 relative z-10">
-                    <h3 className="text-xl font-bold text-white mb-3 font-permanent-marker group-hover:text-yellow-400 transition-colors duration-300">
+                    <h3 className="text-xl font-bold text-white mb-3 leading-tight">
                       Legacy Isn't for Later—Start Now
                     </h3>
-                    <p className="text-gray-300 mb-4 leading-relaxed">
+                    <p className="text-[#FFD369] leading-relaxed">
                       A toolkit to protect your future, even if you're just getting started.
                     </p>
-                    <button 
-                      className="w-full py-3 px-4 bg-transparent border-2 border-yellow-400 text-yellow-400 rounded-lg font-medium hover:bg-yellow-400 hover:text-black transition-all duration-300 hover:shadow-lg hover:shadow-yellow-400/20 font-permanent-marker"
-                      onClick={() => handleDownload('Legacy Planning Toolkit')}
-                      aria-label="Download legacy planning toolkit"
-                    >
-                      Download Toolkit
-                    </button>
                   </div>
-                </div>
+                </Link>
               </div>
             </div>
           </div>

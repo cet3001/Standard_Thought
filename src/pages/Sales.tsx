@@ -12,6 +12,7 @@ import { useUrbanTexture } from '@/hooks/use-urban-texture';
 import { useHeaderHeight } from '@/hooks/use-header-height';
 import { DynamicGuidesSection } from '@/components/sales/DynamicGuidesSection';
 import TestimonialCarousel from '@/components/sales/TestimonialCarousel';
+import PaidGuidesVault from '@/components/sales/PaidGuidesVault';
 
 const Sales = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -335,123 +336,8 @@ const Sales = () => {
         {/* Dynamic Guides Section */}
         <DynamicGuidesSection />
 
-        {/* Deep Dives Section */}
-        <section className="py-16 relative">
-          <div className="container mx-auto px-6 relative z-10">
-            <div className="max-w-7xl mx-auto">
-              <div className="text-center mb-16">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6">
-                  <span className="pearlescent-text">Deep Dives:</span>{" "}
-                  <span className="text-brand-black dark:text-brand-cream">Paid Playbooks for</span>{" "}
-                  <span className="pearlescent-text">Legacy Stacking</span>
-                </h2>
-                <p className="text-lg text-brand-black dark:text-brand-cream/80 max-w-3xl mx-auto">
-                  Fresh 2025 updates on AI-wealth shifts—tech turning generational assets without Silicon Valley access.
-                </p>
-              </div>
-
-               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                {/* Card 1 */}
-                <Card className="group bg-gradient-to-br from-[#f4d03f]/20 via-[#f7dc6f]/15 to-[#fdeaa7]/25 dark:from-[#f4d03f]/10 dark:via-[#f7dc6f]/8 dark:to-[#fdeaa7]/15 border-2 border-[#FFD700]/30 hover:border-[#FFD700]/60 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 shadow-lg hover:shadow-2xl backdrop-blur-sm relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-[#f4d03f]/10 before:via-transparent before:to-[#fdeaa7]/10 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500">
-                  <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_50%_50%,_rgba(244,208,63,0.4)_1px,_transparent_1px)] bg-[length:20px_20px]"></div>
-                  <CardHeader className="pb-4 relative z-10">
-                    <div className="w-14 h-14 bg-gradient-to-br from-[#FFD700] via-[#FFF8DC] to-[#FFA500] rounded-2xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300 relative before:absolute before:inset-0 before:bg-gradient-to-br before:from-[#FFD700]/80 before:to-[#FFA500]/80 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-300 before:rounded-2xl">
-                      <CreditCard className="h-7 w-7 text-black relative z-10" />
-                    </div>
-                    <CardTitle className="text-xl font-black text-brand-black dark:text-brand-cream group-hover:pearlescent-text transition-all duration-300">
-                      Credit Hub
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-6 relative z-10">
-                    <CardDescription className="text-brand-black/80 dark:text-brand-cream/80 text-base leading-relaxed font-medium">
-                      Comprehensive strategies, investment management, generational wealth transfer—smuggle in truths on financial exclusion hitting Black families hardest.
-                    </CardDescription>
-                    <Link to="/credit">
-                      <Button 
-                        className="w-full bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFA500] hover:from-[#FFA500] hover:to-[#FFD700] text-black font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/40 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700"
-                      >
-                        Buy Now $47
-                      </Button>
-                    </Link>
-                  </CardContent>
-                </Card>
-
-                {/* Card 2 */}
-                <Card className="group bg-gradient-to-br from-[#f4d03f]/20 via-[#f7dc6f]/15 to-[#fdeaa7]/25 dark:from-[#f4d03f]/10 dark:via-[#f7dc6f]/8 dark:to-[#fdeaa7]/15 border-2 border-[#FFD700]/30 hover:border-[#FFD700]/60 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 shadow-lg hover:shadow-2xl backdrop-blur-sm relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-[#f4d03f]/10 before:via-transparent before:to-[#fdeaa7]/10 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500">
-                  <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_50%_50%,_rgba(244,208,63,0.4)_1px,_transparent_1px)] bg-[length:20px_20px]"></div>
-                  <CardHeader className="pb-4 relative z-10">
-                    <div className="w-14 h-14 bg-gradient-to-br from-[#FFD700] via-[#FFF8DC] to-[#FFA500] rounded-2xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300 relative before:absolute before:inset-0 before:bg-gradient-to-br before:from-[#FFD700]/80 before:to-[#FFA500]/80 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-300 before:rounded-2xl">
-                      <TrendingUp className="h-7 w-7 text-black relative z-10" />
-                    </div>
-                    <CardTitle className="text-xl font-black text-brand-black dark:text-brand-cream group-hover:pearlescent-text transition-all duration-300">
-                      Investing Hub
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-6 relative z-10">
-                    <CardDescription className="text-brand-black/80 dark:text-brand-cream/80 text-base leading-relaxed font-medium">
-                      Advanced mapping for side-income hustles—layered with psych on risk instinct + sociology on hood barriers.
-                    </CardDescription>
-                    <Button 
-                      className="w-full bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFA500] hover:from-[#FFA500] hover:to-[#FFD700] text-black font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/40 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700"
-                      onClick={() => handlePurchase('Investing Hub')}
-                    >
-                      Unlock $97
-                    </Button>
-                  </CardContent>
-                </Card>
-
-                {/* Card 3 */}
-                <Card className="group bg-gradient-to-br from-[#f4d03f]/20 via-[#f7dc6f]/15 to-[#fdeaa7]/25 dark:from-[#f4d03f]/10 dark:via-[#f7dc6f]/8 dark:to-[#fdeaa7]/15 border-2 border-[#FFD700]/30 hover:border-[#FFD700]/60 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 shadow-lg hover:shadow-2xl backdrop-blur-sm relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-[#f4d03f]/10 before:via-transparent before:to-[#fdeaa7]/10 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500">
-                  <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_50%_50%,_rgba(244,208,63,0.4)_1px,_transparent_1px)] bg-[length:20px_20px]"></div>
-                  <CardHeader className="pb-4 relative z-10">
-                    <div className="w-14 h-14 bg-gradient-to-br from-[#FFD700] via-[#FFF8DC] to-[#FFA500] rounded-2xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300 relative before:absolute before:inset-0 before:bg-gradient-to-br before:from-[#FFD700]/80 before:to-[#FFA500]/80 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-300 before:rounded-2xl">
-                      <Zap className="h-7 w-7 text-black relative z-10" />
-                    </div>
-                    <CardTitle className="text-xl font-black text-brand-black dark:text-brand-cream group-hover:pearlescent-text transition-all duration-300">
-                      AI-Wealth Arbitrage
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-6 relative z-10">
-                    <CardDescription className="text-brand-black/80 dark:text-brand-cream/80 text-base leading-relaxed font-medium">
-                      Playable models for tech generational assets—early plays on 2025 shifts, no fluff.
-                    </CardDescription>
-                    <Button 
-                      className="w-full bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFA500] hover:from-[#FFA500] hover:to-[#FFD700] text-black font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/40 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700"
-                      onClick={() => handlePurchase('AI-Wealth Arbitrage')}
-                    >
-                      Get Access $67
-                    </Button>
-                  </CardContent>
-                </Card>
-
-                {/* Card 4 */}
-                <Card className="group bg-gradient-to-br from-[#f4d03f]/20 via-[#f7dc6f]/15 to-[#fdeaa7]/25 dark:from-[#f4d03f]/10 dark:via-[#f7dc6f]/8 dark:to-[#fdeaa7]/15 border-2 border-[#FFD700]/30 hover:border-[#FFD700]/60 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 shadow-lg hover:shadow-2xl backdrop-blur-sm relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-[#f4d03f]/10 before:via-transparent before:to-[#fdeaa7]/10 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500">
-                  <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_50%_50%,_rgba(244,208,63,0.4)_1px,_transparent_1px)] bg-[length:20px_20px]"></div>
-                  <CardHeader className="pb-4 relative z-10">
-                    <div className="w-14 h-14 bg-gradient-to-br from-[#FFD700] via-[#FFF8DC] to-[#FFA500] rounded-2xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300 relative before:absolute before:inset-0 before:bg-gradient-to-br before:from-[#FFD700]/80 before:to-[#FFA500]/80 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-300 before:rounded-2xl">
-                      <PiggyBank className="h-7 w-7 text-black relative z-10" />
-                    </div>
-                    <CardTitle className="text-xl font-black text-brand-black dark:text-brand-cream group-hover:pearlescent-text transition-all duration-300">
-                      Cash Mastery
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-6 relative z-10">
-                    <CardDescription className="text-brand-black/80 dark:text-brand-cream/80 text-base leading-relaxed font-medium">
-                      Emergency funds, passive income—Trojan hits on breaking paycheck trauma in urban legacies.
-                    </CardDescription>
-                    <Link to="/cash-management">
-                      <Button 
-                        className="w-full bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFA500] hover:from-[#FFA500] hover:to-[#FFD700] text-black font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/40 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700"
-                      >
-                        Secure $57
-                      </Button>
-                    </Link>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* The Vault: Paid Playbook Drop */}
+        <PaidGuidesVault />
 
         {/* FAQ Section */}
         <section className="py-16 bg-gradient-to-r from-brand-brown/10 to-brand-chocolate/10 dark:from-brand-charcoal/30 dark:to-brand-black/30 relative">

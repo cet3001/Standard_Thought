@@ -291,6 +291,57 @@ export type Database = {
         }
         Relationships: []
       }
+      paid_guides: {
+        Row: {
+          active: boolean | null
+          created_at: string
+          currency: string | null
+          description: string | null
+          featured: boolean | null
+          id: string
+          price: number
+          slug: string
+          stripe_price_id: string | null
+          stripe_product_id: string | null
+          subtitle: string | null
+          title: string
+          updated_at: string
+          watermark_url: string | null
+        }
+        Insert: {
+          active?: boolean | null
+          created_at?: string
+          currency?: string | null
+          description?: string | null
+          featured?: boolean | null
+          id?: string
+          price: number
+          slug: string
+          stripe_price_id?: string | null
+          stripe_product_id?: string | null
+          subtitle?: string | null
+          title: string
+          updated_at?: string
+          watermark_url?: string | null
+        }
+        Update: {
+          active?: boolean | null
+          created_at?: string
+          currency?: string | null
+          description?: string | null
+          featured?: boolean | null
+          id?: string
+          price?: number
+          slug?: string
+          stripe_price_id?: string | null
+          stripe_product_id?: string | null
+          subtitle?: string | null
+          title?: string
+          updated_at?: string
+          watermark_url?: string | null
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           created_at: string

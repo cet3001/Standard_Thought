@@ -11,6 +11,7 @@ import Footer from '@/components/footer';
 import { useUrbanTexture } from '@/hooks/use-urban-texture';
 import { useHeaderHeight } from '@/hooks/use-header-height';
 import { DynamicGuidesSection } from '@/components/sales/DynamicGuidesSection';
+import TestimonialCarousel from '@/components/sales/TestimonialCarousel';
 
 const Sales = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -315,36 +316,18 @@ const Sales = () => {
           </div>
         </section>
 
-        {/* Testimonial Section */}
+        {/* Real Proof Section */}
         <section className="py-16 bg-gradient-to-r from-brand-brown/10 to-brand-chocolate/10 dark:from-brand-charcoal/30 dark:to-brand-black/30 relative">
           <div className="container mx-auto px-6 relative z-10">
-            <div className="max-w-4xl mx-auto">
+            <div className="max-w-6xl mx-auto">
               <div className="text-center mb-16">
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6">
-                  <span className="text-brand-black dark:text-brand-cream">Trusted by</span>{" "}
-                  <span className="pearlescent-text">1,000+ First-Gen</span>{" "}
-                  <span className="text-brand-black dark:text-brand-cream">Hustlers</span>
+                  <span className="text-brand-black dark:text-brand-cream">Proof It's Possible—</span>{" "}
+                  <span className="pearlescent-text">Because Real Ones Already Did It</span>
                 </h2>
               </div>
               
-              <div className="text-center">
-                <div className="bg-gradient-to-br from-brand-cream/80 to-brand-tan/80 dark:from-brand-charcoal/80 dark:to-brand-black/80 border-2 border-[#FFD700]/30 rounded-2xl p-8 shadow-xl backdrop-blur-sm">
-                  <div className="flex justify-center mb-6">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="h-8 w-8 fill-[#FFD700] text-[#FFD700]" />
-                    ))}
-                  </div>
-                  <blockquote className="text-2xl sm:text-3xl font-bold text-brand-black dark:text-brand-cream mb-6 leading-relaxed">
-                    "No cap, this actually changed my whole mindset."
-                  </blockquote>
-                  <p className="text-lg text-brand-black dark:text-brand-cream/80 mb-4">
-                    — Marco, South Bronx
-                  </p>
-                  <p className="text-brand-black dark:text-brand-cream/70">
-                    Real people, real results—no fake testimonials, no BS promises.
-                  </p>
-                </div>
-              </div>
+              <TestimonialCarousel />
             </div>
           </div>
         </section>

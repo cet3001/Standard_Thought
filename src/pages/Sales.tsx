@@ -333,8 +333,6 @@ const Sales = () => {
           </div>
         </section>
 
-        {/* Dynamic Guides Section */}
-        <DynamicGuidesSection />
 
         {/* The Vault: Paid Playbook Drop */}
         <PaidGuidesVault />

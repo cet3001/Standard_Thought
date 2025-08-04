@@ -205,9 +205,11 @@ const Manifesto = () => {
                             transition={{ duration: 0.6, delay: index * 0.1 }}
                             viewport={{ once: true }}
                           >
-                            <Card className="border border-[#FFD700]/30 bg-gradient-to-r from-[#FFD700]/10 to-[#FFA500]/15 backdrop-blur-sm hover:from-[#FFD700]/20 hover:to-[#FFA500]/25 hover:border-[#FFD700]/50 hover:shadow-lg hover:shadow-[#FFD700]/25 transition-all duration-300 hover:scale-[1.02]">
-                              <CardContent className="p-6">
-                                <p className="text-lg md:text-xl leading-relaxed" style={{ color: 'var(--color-lovable-black)' }}>
+                            <Card className="border border-[#FFD700]/40 bg-gradient-to-br from-[#FFD700]/20 via-[#FFA500]/15 to-[#FFD700]/10 backdrop-blur-md shadow-lg shadow-[#FFD700]/30 hover:from-[#FFD700]/30 hover:via-[#FFA500]/25 hover:to-[#FFD700]/20 hover:border-[#FFD700]/60 hover:shadow-xl hover:shadow-[#FFD700]/40 transition-all duration-300 hover:scale-[1.03] relative overflow-hidden">
+                              {/* Glass reflection effect */}
+                              <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent pointer-events-none"></div>
+                              <CardContent className="p-6 relative z-10">
+                                <p className="text-lg md:text-xl leading-relaxed font-medium" style={{ color: 'var(--color-lovable-black)' }}>
                                   {item}
                                 </p>
                               </CardContent>
@@ -246,11 +248,13 @@ const Manifesto = () => {
                           transition={{ duration: 0.6, delay: index * 0.1 }}
                           viewport={{ once: true }}
                         >
-                          <Card className="border border-[#FFD700]/30 bg-gradient-to-r from-[#FFD700]/10 to-[#FFA500]/15 backdrop-blur-sm hover:from-[#FFD700]/20 hover:to-[#FFA500]/25 hover:border-[#FFD700]/50 hover:shadow-lg hover:shadow-[#FFD700]/25 transition-all duration-300 hover:scale-[1.02]">
-                            <CardContent className="p-6">
+                          <Card className="border border-[#FFD700]/40 bg-gradient-to-br from-[#FFD700]/20 via-[#FFA500]/15 to-[#FFD700]/10 backdrop-blur-md shadow-lg shadow-[#FFD700]/30 hover:from-[#FFD700]/30 hover:via-[#FFA500]/25 hover:to-[#FFD700]/20 hover:border-[#FFD700]/60 hover:shadow-xl hover:shadow-[#FFD700]/40 transition-all duration-300 hover:scale-[1.03] relative overflow-hidden">
+                            {/* Glass reflection effect */}
+                            <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent pointer-events-none"></div>
+                            <CardContent className="p-6 relative z-10">
                               <div className="flex items-start gap-4">
-                                <div className="w-2 h-2 rounded-full bg-[#FFD700] mt-3 flex-shrink-0"></div>
-                                <p className="text-lg md:text-xl leading-relaxed" style={{ color: 'var(--color-lovable-black)' }}>
+                                <div className="w-2 h-2 rounded-full bg-[#FFD700] mt-3 flex-shrink-0 shadow-sm shadow-[#FFD700]/50"></div>
+                                <p className="text-lg md:text-xl leading-relaxed font-medium" style={{ color: 'var(--color-lovable-black)' }}>
                                   {commitment}
                                 </p>
                               </div>

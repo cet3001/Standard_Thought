@@ -4,12 +4,15 @@ import Footer from "@/components/footer";
 import SEO from "@/components/seo";
 import { useMobilePerformance } from "@/hooks/use-mobile-performance";
 import { useUrbanTexture } from "@/hooks/use-urban-texture";
+import { useHeaderHeight } from "@/hooks/use-header-height";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import { generateBreadcrumbSchema, generateArticleSchema } from "@/components/seo/schemas";
+import { useState, useEffect } from "react";
 
 const ManifestoSection = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => {
   const [ref, inView] = useInView({
@@ -31,24 +34,20 @@ const ManifestoSection = ({ children, delay = 0 }: { children: React.ReactNode; 
 };
 
 const Manifesto = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const headerHeight = useHeaderHeight();
   useMobilePerformance();
   const { textureImageUrl } = useUrbanTexture();
+
+  useEffect(() => {
+    // Delay visibility to prevent layout shift
+    const timer = setTimeout(() => setIsVisible(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
 
   const breadcrumbs = [
     { name: "Home", url: "https://www.standardthought.com", position: 1 },
     { name: "Manifesto", url: "https://www.standardthought.com/manifesto", position: 2 }
-  ];
-
-  const structuredData = [
-    generateBreadcrumbSchema({ items: breadcrumbs }),
-    generateArticleSchema({
-      title: "The Standard Thought Manifesto - Built for Cycle-Breakers",
-      description: "Our manifesto for the underestimated - those who refuse to stay boxed in by inherited limitations.",
-      url: "https://www.standardthought.com/manifesto",
-      author: "Standard Thought",
-      publishedTime: new Date().toISOString(),
-      category: "Philosophy"
-    })
   ];
 
   const manifestoSections = [
@@ -95,18 +94,10 @@ const Manifesto = () => {
   ];
 
   return (
-    <div className="relative min-h-screen bg-brand-black text-brand-cream">
-      <Analytics />
-      <SEO 
-        title="Manifesto - Standard Thought"
-        description="Our manifesto for the underestimated - those who refuse to stay boxed in by inherited limitations. We unlearn, rebuild, stack, and transcend."
-        keywords="manifesto, cycle-breakers, wealth building, urban entrepreneurship, mindset transformation"
-        url="https://www.standardthought.com/manifesto"
-        breadcrumbs={breadcrumbs}
-      />
-
-      {/* Dynamic Background */}
+    <div className="min-h-screen relative overflow-hidden">
+      {/* Site-wide Urban Background - Same as Homepage */}
       <div className="fixed inset-0 -z-50" aria-hidden="true">
+        {/* AI-Generated or Curated Urban Texture */}
         {textureImageUrl && (
           <div 
             className="absolute inset-0 opacity-40 bg-cover bg-center bg-fixed"
@@ -119,159 +110,187 @@ const Manifesto = () => {
             }}
           />
         )}
+        
+        {/* Background gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-slate-800/50 via-slate-700/60 to-slate-900/50"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-black/85 via-brand-black/90 to-brand-black/85"></div>
+        
+        {/* Content overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/85 via-brand-cream/90 to-brand-cream/85 dark:from-brand-black/85 dark:via-brand-black/90 dark:to-brand-black/85"></div>
       </div>
+
+      <Analytics />
+      <SEO 
+        title="Manifesto - Standard Thought"
+        description="Our manifesto for the underestimated - those who refuse to stay boxed in by inherited limitations. We unlearn, rebuild, stack, and transcend."
+        keywords="manifesto, cycle-breakers, wealth building, urban entrepreneurship, mindset transformation"
+        url="https://www.standardthought.com/manifesto"
+        breadcrumbs={breadcrumbs}
+      />
 
       <Navigation />
 
-      <div className="relative z-10">
-        {/* Hero Section */}
-        <section className="pt-20 pb-16 px-4">
-          <div className="max-w-6xl mx-auto">
-            <ManifestoSection>
-              <div className="text-center mb-16">
-                <motion.h1 
-                  className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight mb-8"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 1 }}
-                >
-                  We weren't raised to{" "}
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFD700] to-[#FFA500]">
-                    thrive
-                  </span>
-                  .
-                </motion.h1>
-                <motion.p 
-                  className="text-xl md:text-2xl text-brand-cream/80 max-w-4xl mx-auto leading-relaxed"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.3 }}
-                >
-                  We were taught to survive. Standard Thought wasn't built for the average—it's for the ones who were never supposed to make it.
-                </motion.p>
-              </div>
-            </ManifestoSection>
+      <main className="relative z-10">
+        <section 
+          className="pb-24 relative overflow-hidden"
+          style={{ 
+            marginTop: `${headerHeight || 80}px`,
+            paddingTop: '3rem'
+          }}
+        >
+          {/* Floating Elements - Same as Homepage */}
+          <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+            <div className="absolute top-20 right-10 w-32 h-32 rounded-full bg-[#FFD700]/10 animate-float"></div>
+            <div className="absolute bottom-40 left-10 w-24 h-24 rounded-2xl bg-[#247EFF]/20 animate-float" style={{ animationDelay: '2s' }}></div>
+          </div>
 
-            {/* Quick Navigation */}
-            <ManifestoSection delay={0.4}>
-              <nav className="flex flex-wrap justify-center gap-4 mb-20" aria-label="Manifesto sections">
-                {manifestoSections.map((section) => (
+          <div className="container mx-auto px-6 relative z-10">
+            <div className="max-w-6xl mx-auto">
+              
+              {/* Hero Section */}
+              <ManifestoSection>
+                <div className={`transition-all duration-1000 relative z-10 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                  <div className="text-center mb-16">
+                    <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold font-inter leading-[1.1] mb-8">
+                      <span style={{ color: 'var(--color-lovable-black)' }}>We weren't raised to</span>{" "}
+                      <span className="pearlescent-text">thrive</span>
+                      <span style={{ color: 'var(--color-lovable-black)' }}>.</span>
+                    </h1>
+                    <p className="text-lg md:text-xl lg:text-2xl font-inter font-semibold leading-[1.4] max-w-4xl mx-auto">
+                      We were taught to survive. Standard Thought wasn't built for the average—it's for the ones who were never supposed to make it.
+                    </p>
+                  </div>
+                </div>
+              </ManifestoSection>
+
+              {/* Quick Navigation */}
+              <ManifestoSection delay={0.4}>
+                <nav className="flex flex-wrap justify-center gap-4 mb-20" aria-label="Manifesto sections">
+                  {manifestoSections.map((section) => (
+                    <a
+                      key={section.id}
+                      href={`#${section.id}`}
+                      className="px-4 py-2 text-sm font-medium border border-[#FFD700]/30 rounded-lg hover:bg-[#FFD700]/10 hover:border-[#FFD700]/50 transition-all duration-300"
+                      style={{ color: 'var(--color-lovable-black)' }}
+                    >
+                      {section.title}
+                    </a>
+                  ))}
                   <a
-                    key={section.id}
-                    href={`#${section.id}`}
+                    href="#commitments"
                     className="px-4 py-2 text-sm font-medium border border-[#FFD700]/30 rounded-lg hover:bg-[#FFD700]/10 hover:border-[#FFD700]/50 transition-all duration-300"
+                    style={{ color: 'var(--color-lovable-black)' }}
                   >
-                    {section.title}
+                    Our Commitments
                   </a>
-                ))}
-                <a
-                  href="#commitments"
-                  className="px-4 py-2 text-sm font-medium border border-[#FFD700]/30 rounded-lg hover:bg-[#FFD700]/10 hover:border-[#FFD700]/50 transition-all duration-300"
-                >
-                  Our Commitments
-                </a>
-              </nav>
-            </ManifestoSection>
+                </nav>
+              </ManifestoSection>
 
-            {/* Manifesto Sections */}
-            {manifestoSections.map((section, sectionIndex) => (
-              <ManifestoSection key={section.id} delay={sectionIndex * 0.2}>
-                <section id={section.id} className="mb-20">
+              {/* Manifesto Sections */}
+              {manifestoSections.map((section, sectionIndex) => (
+                <ManifestoSection key={section.id} delay={sectionIndex * 0.2}>
+                  <section id={section.id} className="mb-20">
+                    <div className="max-w-4xl mx-auto">
+                      <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
+                        <span className="pearlescent-text">
+                          {section.title}
+                        </span>
+                      </h2>
+                      
+                      <div className="grid gap-6">
+                        {section.items.map((item, index) => (
+                          <motion.div
+                            key={index}
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.6, delay: index * 0.1 }}
+                            viewport={{ once: true }}
+                          >
+                            <Card className="border border-gray-300/20 bg-white/95 dark:bg-brand-black/95 backdrop-blur-sm">
+                              <CardContent className="p-6">
+                                <p className="text-lg md:text-xl leading-relaxed" style={{ color: 'var(--color-lovable-black)' }}>
+                                  {item}
+                                </p>
+                              </CardContent>
+                            </Card>
+                          </motion.div>
+                        ))}
+                      </div>
+                    </div>
+                  </section>
+                </ManifestoSection>
+              ))}
+
+              {/* Our Commitments Section */}
+              <ManifestoSection delay={0.6}>
+                <section id="commitments" className="mb-20">
                   <div className="max-w-4xl mx-auto">
                     <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFD700] to-[#FFA500]">
-                        {section.title}
+                      <span className="pearlescent-text">
+                        Our Commitments
                       </span>
                     </h2>
                     
-                    <div className="grid gap-6">
-                      {section.items.map((item, index) => (
+                    <div className="space-y-6">
+                      {[
+                        "Never sell you empty promises.",
+                        "Never talk down to you.",
+                        "Always keep it real, even when real is tough.",
+                        "Always build for US, not just for clicks.",
+                        "Always remember where we came from.",
+                        "Always honor the struggle that brought us here."
+                      ].map((commitment, index) => (
                         <motion.div
                           key={index}
-                          className="relative border border-[#FFD700]/20 rounded-xl p-6 bg-gradient-to-r from-brand-cream/5 to-brand-cream/10 backdrop-blur-sm"
-                          initial={{ opacity: 0, x: -20 }}
-                          whileInView={{ opacity: 1, x: 0 }}
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
                           transition={{ duration: 0.6, delay: index * 0.1 }}
                           viewport={{ once: true }}
                         >
-                          <p className="text-lg md:text-xl text-brand-cream/90 leading-relaxed">
-                            {item}
-                          </p>
+                          <Card className="border border-gray-300/20 bg-white/95 dark:bg-brand-black/95 backdrop-blur-sm">
+                            <CardContent className="p-6">
+                              <div className="flex items-start gap-4">
+                                <div className="w-2 h-2 rounded-full bg-[#FFD700] mt-3 flex-shrink-0"></div>
+                                <p className="text-lg md:text-xl leading-relaxed" style={{ color: 'var(--color-lovable-black)' }}>
+                                  {commitment}
+                                </p>
+                              </div>
+                            </CardContent>
+                          </Card>
                         </motion.div>
                       ))}
                     </div>
                   </div>
                 </section>
               </ManifestoSection>
-            ))}
 
-            {/* Our Commitments Section */}
-            <ManifestoSection delay={0.6}>
-              <section id="commitments" className="mb-20">
-                <div className="max-w-4xl mx-auto">
-                  <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFD700] to-[#FFA500]">
-                      Our Commitments
-                    </span>
-                  </h2>
-                  
-                  <div className="space-y-6">
-                    {[
-                      "Never sell you empty promises.",
-                      "Never talk down to you.",
-                      "Always keep it real, even when real is tough.",
-                      "Always build for US, not just for clicks.",
-                      "Always remember where we came from.",
-                      "Always honor the struggle that brought us here."
-                    ].map((commitment, index) => (
-                      <motion.div
-                        key={index}
-                        className="flex items-start gap-4 p-6 border border-[#FFD700]/20 rounded-xl bg-gradient-to-r from-brand-cream/5 to-brand-cream/10 backdrop-blur-sm"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: index * 0.1 }}
-                        viewport={{ once: true }}
+              {/* Final CTA */}
+              <ManifestoSection delay={0.8}>
+                <section className="text-center">
+                  <div className="max-w-3xl mx-auto">
+                    <h3 className="text-2xl md:text-3xl font-bold mb-8" style={{ color: 'var(--color-lovable-black)' }}>
+                      If you're ready to rebuild for real, not just read about it—
+                    </h3>
+                    
+                    <Link to="/sales">
+                      <Button 
+                        size="lg"
+                        className="bg-gradient-to-r from-[#FFD700] to-[#FFA500] text-brand-black font-bold text-lg px-8 py-4 rounded-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
                       >
-                        <div className="w-2 h-2 rounded-full bg-[#FFD700] mt-3 flex-shrink-0"></div>
-                        <p className="text-lg md:text-xl text-brand-cream/90 leading-relaxed">
-                          {commitment}
-                        </p>
-                      </motion.div>
-                    ))}
+                        Run the Play
+                        <ArrowRight className="ml-2 h-5 w-5" />
+                      </Button>
+                    </Link>
+                    
+                    <p className="mt-6 text-sm" style={{ color: 'var(--color-lovable-black)', opacity: 0.6 }}>
+                      Real plays, no fluff—just field-tested moves.
+                    </p>
                   </div>
-                </div>
-              </section>
-            </ManifestoSection>
-
-            {/* Final CTA */}
-            <ManifestoSection delay={0.8}>
-              <section className="text-center">
-                <div className="max-w-3xl mx-auto">
-                  <h3 className="text-2xl md:text-3xl font-bold mb-8 text-brand-cream">
-                    If you're ready to rebuild for real, not just read about it—
-                  </h3>
-                  
-                  <Link to="/sales">
-                    <Button 
-                      size="lg"
-                      className="bg-gradient-to-r from-[#FFD700] to-[#FFA500] text-brand-black font-bold text-lg px-8 py-4 rounded-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
-                    >
-                      Run the Play
-                      <ArrowRight className="ml-2 h-5 w-5" />
-                    </Button>
-                  </Link>
-                  
-                  <p className="mt-6 text-brand-cream/60 text-sm">
-                    Real plays, no fluff—just field-tested moves.
-                  </p>
-                </div>
-              </section>
-            </ManifestoSection>
+                </section>
+              </ManifestoSection>
+            </div>
           </div>
         </section>
-      </div>
+      </main>
 
       <Footer />
     </div>

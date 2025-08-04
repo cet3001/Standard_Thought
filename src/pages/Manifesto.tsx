@@ -283,7 +283,7 @@ const Manifesto = () => {
                       >
                         {/* Additional glow effect */}
                         <div className="absolute inset-0 bg-gradient-to-r from-[#FFD700]/30 to-[#FFA500]/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl blur-xl"></div>
-                        <span className="relative z-10 pearlescent-text" style={{ textShadow: '0 0 10px rgba(255, 215, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.6)' }}>
+                        <span className="relative z-10 text-brand-black" style={{ textShadow: '0 0 5px rgba(0, 0, 0, 0.3)' }}>
                           Run the Play
                         </span>
                         <ArrowRight className="ml-3 h-6 w-6 relative z-10" />

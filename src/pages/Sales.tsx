@@ -13,6 +13,8 @@ import { useHeaderHeight } from '@/hooks/use-header-height';
 import { DynamicGuidesSection, RealTalkQA, FinalCTA } from '@/components/sales';
 import TestimonialCarousel from '@/components/sales/TestimonialCarousel';
 import PaidGuidesVault from '@/components/sales/PaidGuidesVault';
+import PaidGuideSchema from '@/components/seo/paid-guide-schema';
+import { usePaidGuides } from '@/hooks/use-paid-guides';
 import { analytics } from '@/lib/analytics-service';
 
 const Sales = () => {
@@ -20,6 +22,7 @@ const Sales = () => {
   const { toast } = useToast();
   const { textureImageUrl } = useUrbanTexture();
   const headerHeight = useHeaderHeight();
+  const { guides: paidGuides } = usePaidGuides();
 
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 100);
@@ -105,6 +108,15 @@ const Sales = () => {
             ]
           })}
         </script>
+        
+        {/* Schema for paid guides */}
+        {paidGuides?.map(guide => (
+          <PaidGuideSchema 
+            key={guide.id}
+            guide={guide}
+            pageUrl={`https://www.standardthought.com/sales#${guide.slug}`}
+          />
+        ))}
       </Helmet>
 
       {/* Navigation Header */}

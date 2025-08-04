@@ -114,6 +114,9 @@ const Footer = () => {
             <Link to="/about" className="text-brand-cream/80 hover:text-[#247EFF] transition-colors">
               The Shift
             </Link>
+            <Link to="/manifesto" className="text-brand-cream/80 hover:text-[#247EFF] transition-colors">
+              Run From This or Build With It
+            </Link>
             <Link to="/blog" className="text-brand-cream/80 hover:text-[#247EFF] transition-colors">
               The Code They Never Gave Us
             </Link>

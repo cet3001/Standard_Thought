@@ -14,9 +14,13 @@ const Manifesto = lazy(() => import("@/pages/Manifesto"));
 const Blog = lazy(() => import("@/pages/Blog"));
 const BlogPost = lazy(() => import("@/pages/BlogPost"));
 const CreatePost = lazy(() => import("@/pages/CreatePost"));
+const EditPost = lazy(() => import("@/pages/EditPost"));
 const Sales = lazy(() => import("@/pages/Sales"));
 const Auth = lazy(() => import("@/pages/Auth"));
+const AdminDashboard = lazy(() => import("@/pages/AdminDashboard"));
 const AdminGuides = lazy(() => import("@/pages/AdminGuides"));
+const AdminPaidGuides = lazy(() => import("@/pages/AdminPaidGuides"));
+const AdminCTA = lazy(() => import("@/pages/AdminCTA"));
 const AdminEmail = lazy(() => import("@/pages/AdminEmail"));
 const AdminSEO = lazy(() => import("@/pages/AdminSEO"));
 const PrivacyPolicy = lazy(() => import("@/pages/PrivacyPolicy"));
@@ -24,6 +28,9 @@ const TermsOfService = lazy(() => import("@/pages/TermsOfService"));
 const CookiePolicy = lazy(() => import("@/pages/CookiePolicy"));
 const ImageGeneratorPage = lazy(() => import("@/pages/ImageGenerator"));
 const PaymentSuccess = lazy(() => import("@/pages/PaymentSuccess"));
+const NotFound = lazy(() => import("@/pages/NotFound"));
+const Unsubscribe = lazy(() => import("@/pages/Unsubscribe"));
+const SubmitStory = lazy(() => import("@/pages/SubmitStory"));
 import { AuthProvider } from "./contexts/AuthContext";
 import { Toaster } from "@/components/ui/toaster"
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -61,7 +68,12 @@ function AppContent() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/create-post" element={<CreatePost />} />
+          <Route path="/edit-post/:id" element={<EditPost />} />
+          <Route path="/submit-story" element={<SubmitStory />} />
+          <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/admin/guides" element={<AdminGuides />} />
+          <Route path="/admin/paid-guides" element={<AdminPaidGuides />} />
+          <Route path="/admin/cta" element={<AdminCTA />} />
           <Route path="/admin/email" element={<AdminEmail />} />
           <Route path="/admin/seo" element={<AdminSEO />} />
           <Route path="/sales" element={<Sales />} />
@@ -71,6 +83,8 @@ function AppContent() {
           <Route path="/cookie-policy" element={<CookiePolicy />} />
           <Route path="/image-generator" element={<ImageGeneratorPage />} />
           <Route path="/payment-success" element={<PaymentSuccess />} />
+          <Route path="/unsubscribe/:token" element={<Unsubscribe />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
     </div>

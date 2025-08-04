@@ -123,6 +123,9 @@ const Footer = () => {
             <Link to="/sales" className="text-brand-cream/80 hover:text-[#247EFF] transition-colors">
               Run the Play
             </Link>
+            <Link to="/submit-story" className="text-brand-cream/80 hover:text-[#247EFF] transition-colors">
+              Submit Your Story
+            </Link>
             <Link to="/auth" className="text-brand-cream/80 hover:text-[#247EFF] transition-colors">
               Contact
             </Link>

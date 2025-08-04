@@ -11,23 +11,46 @@ const BreadcrumbSchema = () => {
   if (pathnames.length === 0) return null;
 
   const breadcrumbItems = [
-    { name: 'Home', path: '/' },
+    { name: 'The Root', path: '/' },
     { name: 'The Code They Never Gave Us', path: '/blog' },
-    { name: 'Mindset Tools', path: '/about' },
-    { name: 'Success Strategies', path: '/sales' },
-    { name: 'Contact', path: '/contact' },
+    { name: 'The Shift', path: '/about' },
+    { name: 'Run From This or Build With It', path: '/manifesto' },
+    { name: 'Run the Play', path: '/sales' },
+    { name: 'Submit Your Story', path: '/submit-story' },
+    { name: 'Admin Dashboard', path: '/admin' },
+    { name: 'Free Guides', path: '/admin/guides' },
+    { name: 'Paid Guides', path: '/admin/paid-guides' },
+    { name: 'CTA Management', path: '/admin/cta' },
+    { name: 'Email Campaigns', path: '/admin/email' },
+    { name: 'SEO Management', path: '/admin/seo' },
   ];
 
   const getCurrentBreadcrumb = (path: string) => {
     const found = breadcrumbItems.find(item => item.path === path);
     if (found) return found;
     
-    // Handle dynamic routes like blog posts
+    // Handle dynamic routes
     if (path.startsWith('/blog/')) {
       return { name: 'Article', path };
     }
+    if (path.startsWith('/edit-post/')) {
+      return { name: 'Edit Post', path };
+    }
+    if (path.startsWith('/unsubscribe/')) {
+      return { name: 'Unsubscribe', path };
+    }
+    if (path.startsWith('/admin/')) {
+      return { name: 'Admin', path };
+    }
     
-    return { name: path.replace('/', '').replace('-', ' '), path };
+    // Convert path to readable name
+    const name = path
+      .replace('/', '')
+      .split('-')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+    
+    return { name: name || 'Page', path };
   };
 
   const items = [

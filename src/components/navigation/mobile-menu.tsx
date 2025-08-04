@@ -112,75 +112,15 @@ const MobileMenu = () => {
             </div>
           ))}
 
-          {/* Admin Dashboard Link - Only visible to admins */}
+          {/* Admin Links - Only visible to admins */}
           {isAdmin && (
-            <>
+            <div className="pt-6 border-t border-[#FF6B6B]/30">
+              <div className="text-sm mb-3 font-medium text-[#FF6B6B]" style={{ fontFamily: "'Kalam', cursive" }}>
+                Admin Controls
+              </div>
               <Link
-                to="/admin/email"
-                className="group relative text-xl font-bold transition-all duration-300 border-b border-[#FF6B6B]/30 pb-3 pl-4"
-                aria-label="Navigate to Email Campaign Manager"
-                onClick={handleClose}
-                style={{ 
-                  fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive"
-                }}
-              >
-                <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#FF6B6B] to-[#FF3333] transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top rounded-r"></div>
-                <div className="absolute inset-0 bg-gradient-to-r from-[#FF6B6B]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg -mx-2 -my-1"></div>
-                <span 
-                  className="relative z-10 transform rotate-1 inline-block"
-                  style={{
-                    color: '#FF6B6B',
-                    textShadow: '2px 2px 4px rgba(0,0,0,0.3), 1px 1px 0px rgba(255,255,255,0.1)'
-                  }}
-                >
-                  Email Campaign
-                </span>
-              </Link>
-              <Link
-                to="/admin/guides"
-                className="group relative text-xl font-bold transition-all duration-300 border-b border-[#FF6B6B]/30 pb-3 pl-4"
-                aria-label="Navigate to Guide Management"
-                onClick={handleClose}
-                style={{ 
-                  fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive"
-                }}
-              >
-                <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#FF6B6B] to-[#FF3333] transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top rounded-r"></div>
-                <div className="absolute inset-0 bg-gradient-to-r from-[#FF6B6B]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg -mx-2 -my-1"></div>
-                <span 
-                  className="relative z-10 transform group-hover:translate-x-2 transition-transform duration-300 block"
-                  style={{
-                    color: '#FF6B6B',
-                    textShadow: '2px 2px 4px rgba(0,0,0,0.3), 1px 1px 0px rgba(255,255,255,0.1)'
-                  }}
-                >
-                  Guide Manager
-                </span>
-              </Link>
-              <Link
-                to="/admin/seo"
-                className="group relative text-xl font-bold transition-all duration-300 border-b border-[#FF6B6B]/30 pb-3 pl-4"
-                aria-label="Navigate to SEO Management"
-                onClick={handleClose}
-                style={{ 
-                  fontFamily: "'Permanent Marker', 'Kalam', 'Comic Neue', cursive"
-                }}
-              >
-                <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#FF6B6B] to-[#FF3333] transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top rounded-r"></div>
-                <div className="absolute inset-0 bg-gradient-to-r from-[#FF6B6B]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg -mx-2 -my-1"></div>
-                <span 
-                  className="relative z-10 transform -rotate-1 inline-block"
-                  style={{
-                    color: '#FF6B6B',
-                    textShadow: '2px 2px 4px rgba(0,0,0,0.3), 1px 1px 0px rgba(255,255,255,0.1)'
-                  }}
-                >
-                  SEO Manager
-                </span>
-              </Link>
-              <Link
-                to="/admin-dashboard"
-                className="group relative text-xl font-bold transition-all duration-300 border-b border-[#FF6B6B]/30 pb-3 pl-4"
+                to="/admin"
+                className="group relative text-lg font-bold transition-all duration-300 border-b border-[#FF6B6B]/30 pb-3 pl-4 block mb-4"
                 aria-label="Navigate to Admin Dashboard"
                 onClick={handleClose}
                 style={{ 
@@ -199,7 +139,42 @@ const MobileMenu = () => {
                   Admin Dashboard
                 </span>
               </Link>
-            </>
+              <Link
+                to="/admin/guides"
+                className="group relative text-base font-medium transition-all duration-300 pb-2 pl-4 block text-[#FF6B6B]/80 hover:text-[#FF6B6B]"
+                onClick={handleClose}
+              >
+                Free Guides
+              </Link>
+              <Link
+                to="/admin/paid-guides"
+                className="group relative text-base font-medium transition-all duration-300 pb-2 pl-4 block text-[#FF6B6B]/80 hover:text-[#FF6B6B]"
+                onClick={handleClose}
+              >
+                Paid Guides
+              </Link>
+              <Link
+                to="/admin/cta"
+                className="group relative text-base font-medium transition-all duration-300 pb-2 pl-4 block text-[#FF6B6B]/80 hover:text-[#FF6B6B]"
+                onClick={handleClose}
+              >
+                CTA Management
+              </Link>
+              <Link
+                to="/admin/email"
+                className="group relative text-base font-medium transition-all duration-300 pb-2 pl-4 block text-[#FF6B6B]/80 hover:text-[#FF6B6B]"
+                onClick={handleClose}
+              >
+                Email Campaigns
+              </Link>
+              <Link
+                to="/admin/seo"
+                className="group relative text-base font-medium transition-all duration-300 pb-2 pl-4 block text-[#FF6B6B]/80 hover:text-[#FF6B6B]"
+                onClick={handleClose}
+              >
+                SEO Management
+              </Link>
+            </div>
           )}
 
           {/* Auth Section */}

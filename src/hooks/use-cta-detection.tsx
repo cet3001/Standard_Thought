@@ -71,23 +71,42 @@ export const useCTADetection = () => {
     return knownCTAs.map(cta => {
       let linkedGuide = null;
 
-      // Check for guide linking patterns based on CTA content/location
+      // Enhanced auto-linking with fallback to first active guide
       switch (cta.id) {
         case 'hero-get-blueprint':
         case 'floating-cta-get-started':
         case 'mobile-floating-cta':
+          // First try specific matches
           linkedGuide = guides.find(guide => 
             guide.title.toLowerCase().includes('wealth blueprint') ||
             guide.title.toLowerCase().includes('getting started') ||
-            guide.title.toLowerCase().includes('signup playbook')
+            guide.title.toLowerCase().includes('signup playbook') ||
+            guide.title.toLowerCase().includes('welcome') ||
+            guide.title.toLowerCase().includes('start here')
           );
+          // Fallback to any free guide
+          if (!linkedGuide) {
+            linkedGuide = guides.find(guide => guide.price === 0 && guide.is_active);
+          }
           break;
         
         case 'about-mindset-tool':
+          // First try specific matches
           linkedGuide = guides.find(guide => 
             guide.title.toLowerCase().includes('mindset') ||
-            guide.title.toLowerCase().includes('mental game')
+            guide.title.toLowerCase().includes('mental game') ||
+            guide.title.toLowerCase().includes('psychology') ||
+            guide.title.toLowerCase().includes('confidence')
           );
+          // Fallback to any free guide
+          if (!linkedGuide) {
+            linkedGuide = guides.find(guide => guide.price === 0 && guide.is_active);
+          }
+          break;
+        
+        case 'sales-page-guides':
+          // Link to first active guide (could be paid or free)
+          linkedGuide = guides.find(guide => guide.is_active);
           break;
       }
 

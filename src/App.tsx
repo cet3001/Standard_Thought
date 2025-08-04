@@ -10,6 +10,7 @@ import Loading from "@/components/ui/loading";
 
 // Lazy load non-critical pages for code splitting
 const About = lazy(() => import("@/pages/About"));
+const Manifesto = lazy(() => import("@/pages/Manifesto"));
 const Blog = lazy(() => import("@/pages/Blog"));
 const BlogPost = lazy(() => import("@/pages/BlogPost"));
 const CreatePost = lazy(() => import("@/pages/CreatePost"));
@@ -56,6 +57,7 @@ function AppContent() {
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
+          <Route path="/manifesto" element={<Manifesto />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/create-post" element={<CreatePost />} />

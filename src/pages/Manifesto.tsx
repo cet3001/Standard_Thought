@@ -169,7 +169,7 @@ const Manifesto = () => {
                           muted
                           playsInline
                         >
-                          <source src="/manifesto-video.mp4" type="video/mp4" />
+                          <source src="/manifesto-video.mp4.mp4" type="video/mp4" />
                           Your browser does not support the video tag.
                         </video>
                       </div>

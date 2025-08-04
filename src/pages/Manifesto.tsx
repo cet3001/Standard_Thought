@@ -158,6 +158,22 @@ const Manifesto = () => {
                     <p className="text-lg md:text-xl lg:text-2xl font-inter font-semibold leading-[1.4] max-w-4xl mx-auto">
                       We were taught to survive. Standard Thought wasn't built for the average—it's for the ones who were never supposed to make it.
                     </p>
+                    
+                    {/* Video Section */}
+                    <div className="mt-12 flex justify-center">
+                      <div className="relative max-w-4xl w-full">
+                        <video
+                          className="w-full h-auto rounded-2xl shadow-2xl shadow-[#FFD700]/30 border border-[#FFD700]/30"
+                          autoPlay
+                          loop
+                          muted
+                          playsInline
+                        >
+                          <source src="/manifesto-video.mp4" type="video/mp4" />
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </ManifestoSection>

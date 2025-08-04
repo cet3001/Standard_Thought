@@ -7,7 +7,7 @@ import { useUrbanTexture } from "@/hooks/use-urban-texture";
 import { useHeaderHeight } from "@/hooks/use-header-height";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, VolumeX, Volume2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -35,6 +35,7 @@ const ManifestoSection = ({ children, delay = 0 }: { children: React.ReactNode; 
 
 const Manifesto = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
   const headerHeight = useHeaderHeight();
   useMobilePerformance();
   const { textureImageUrl } = useUrbanTexture();
@@ -161,17 +162,35 @@ const Manifesto = () => {
                     
                     {/* Video Section */}
                     <div className="mt-12 flex justify-center">
-                      <div className="relative max-w-4xl w-full">
+                      <div className="relative max-w-2xl w-full">
                         <video
+                          ref={(el) => {
+                            if (el) {
+                              el.muted = isMuted;
+                            }
+                          }}
                           className="w-full h-auto rounded-2xl shadow-2xl shadow-[#FFD700]/30 border border-[#FFD700]/30"
                           autoPlay
                           loop
-                          muted
+                          muted={isMuted}
                           playsInline
                         >
                           <source src="/manifesto-video.mp4.mp4" type="video/mp4" />
                           Your browser does not support the video tag.
                         </video>
+                        
+                        {/* Mute/Unmute Button */}
+                        <button
+                          onClick={() => setIsMuted(!isMuted)}
+                          className="absolute bottom-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all duration-200 backdrop-blur-sm"
+                          aria-label={isMuted ? "Unmute video" : "Mute video"}
+                        >
+                          {isMuted ? (
+                            <VolumeX size={20} />
+                          ) : (
+                            <Volume2 size={20} />
+                          )}
+                        </button>
                       </div>
                     </div>
                   </div>

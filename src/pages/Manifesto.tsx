@@ -205,7 +205,7 @@ const Manifesto = () => {
                             transition={{ duration: 0.6, delay: index * 0.1 }}
                             viewport={{ once: true }}
                           >
-                            <Card className="border border-gray-300/20 bg-white/95 dark:bg-brand-black/95 backdrop-blur-sm">
+                            <Card className="border border-[#FFD700]/30 bg-gradient-to-r from-[#FFD700]/10 to-[#FFA500]/15 backdrop-blur-sm hover:from-[#FFD700]/20 hover:to-[#FFA500]/25 hover:border-[#FFD700]/50 hover:shadow-lg hover:shadow-[#FFD700]/25 transition-all duration-300 hover:scale-[1.02]">
                               <CardContent className="p-6">
                                 <p className="text-lg md:text-xl leading-relaxed" style={{ color: 'var(--color-lovable-black)' }}>
                                   {item}
@@ -246,7 +246,7 @@ const Manifesto = () => {
                           transition={{ duration: 0.6, delay: index * 0.1 }}
                           viewport={{ once: true }}
                         >
-                          <Card className="border border-gray-300/20 bg-white/95 dark:bg-brand-black/95 backdrop-blur-sm">
+                          <Card className="border border-[#FFD700]/30 bg-gradient-to-r from-[#FFD700]/10 to-[#FFA500]/15 backdrop-blur-sm hover:from-[#FFD700]/20 hover:to-[#FFA500]/25 hover:border-[#FFD700]/50 hover:shadow-lg hover:shadow-[#FFD700]/25 transition-all duration-300 hover:scale-[1.02]">
                             <CardContent className="p-6">
                               <div className="flex items-start gap-4">
                                 <div className="w-2 h-2 rounded-full bg-[#FFD700] mt-3 flex-shrink-0"></div>

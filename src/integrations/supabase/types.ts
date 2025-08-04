@@ -468,6 +468,10 @@ export type Database = {
         Args: Record<PropertyKey, never>
         Returns: boolean
       }
+      security_check_leaked_passwords: {
+        Args: Record<PropertyKey, never>
+        Returns: string
+      }
       unsubscribe_user: {
         Args: { token: string }
         Returns: boolean

@@ -278,10 +278,15 @@ const Manifesto = () => {
                     <Link to="/sales">
                       <Button 
                         size="lg"
-                        className="bg-gradient-to-r from-[#FFD700] to-[#FFA500] text-brand-black font-bold text-lg px-8 py-4 rounded-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
+                        className="bg-gradient-to-r from-[#FFD700] to-[#FFA500] text-brand-black font-black text-xl px-12 py-6 rounded-2xl hover:shadow-2xl hover:shadow-[#FFD700]/60 hover:scale-110 transition-all duration-500 shadow-lg shadow-[#FFD700]/40 border-2 border-[#FFD700]/50 relative overflow-hidden group"
+                        style={{ fontFamily: 'Permanent Marker, Kalam, cursive' }}
                       >
-                        Run the Play
-                        <ArrowRight className="ml-2 h-5 w-5" />
+                        {/* Additional glow effect */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-[#FFD700]/30 to-[#FFA500]/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl blur-xl"></div>
+                        <span className="relative z-10 pearlescent-text" style={{ textShadow: '0 0 10px rgba(255, 215, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.6)' }}>
+                          Run the Play
+                        </span>
+                        <ArrowRight className="ml-3 h-6 w-6 relative z-10" />
                       </Button>
                     </Link>
                     

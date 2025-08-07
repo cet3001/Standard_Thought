@@ -79,30 +79,32 @@ export const AdminDashboard = () => {
   ];
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {/* Header */}
       <div className="text-center">
-        <h1 className="text-4xl font-bold text-[#0A0A0A] dark:text-brand-cream mb-4">
+        <h1 className="text-4xl font-bold text-foreground mb-4">
           Admin Dashboard
         </h1>
-        <p className="text-xl text-[#0A0A0A]/80 dark:text-brand-cream/80">
+        <p className="text-xl text-muted-foreground">
           Manage your site content, guides, and marketing campaigns
         </p>
       </div>
 
       {/* Quick Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {quickStats.map((stat, index) => (
-          <Card key={index} className={`bg-slate-800 border-slate-700 ${stat.warning ? 'border-red-500/50' : ''}`}>
+          <Card key={index} className={`bg-card border ${stat.warning ? 'border-destructive/50' : 'border-border'}`}>
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-brand-cream/60 text-sm">{stat.label}</p>
-                  <p className={`text-2xl font-bold ${stat.warning ? 'text-red-400' : 'text-brand-gold'}`}>
+                  <p className="text-muted-foreground text-sm font-medium">{stat.label}</p>
+                  <p className={`text-3xl font-bold ${stat.warning ? 'text-destructive' : 'text-primary'}`}>
                     {stat.value}
                   </p>
                 </div>
-                <stat.icon className={`h-8 w-8 ${stat.warning ? 'text-red-400' : 'text-brand-gold'}`} />
+                <div className={`p-3 rounded-lg ${stat.warning ? 'bg-destructive/10' : 'bg-primary/10'}`}>
+                  <stat.icon className={`h-6 w-6 ${stat.warning ? 'text-destructive' : 'text-primary'}`} />
+                </div>
               </div>
             </CardContent>
           </Card>
@@ -112,21 +114,21 @@ export const AdminDashboard = () => {
       {/* Admin Pages Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {adminPages.map((page, index) => (
-          <Card key={index} className="bg-slate-800 border-slate-700 hover:border-brand-gold/50 transition-colors group">
-            <CardHeader>
-              <div className="flex items-center gap-3">
-                <div className={`p-3 rounded-lg ${page.color} group-hover:scale-110 transition-transform`}>
+          <Card key={index} className="bg-card border-border hover:border-primary/50 transition-all duration-300 group hover:shadow-lg">
+            <CardHeader className="pb-4">
+              <div className="flex items-start gap-4">
+                <div className={`p-3 rounded-lg ${page.color} group-hover:scale-110 transition-transform duration-300`}>
                   <page.icon className="h-6 w-6 text-white" />
                 </div>
-                <div>
-                  <CardTitle className="text-brand-cream text-lg">{page.title}</CardTitle>
-                  <p className="text-brand-gold text-sm">{page.stats}</p>
+                <div className="flex-1">
+                  <CardTitle className="text-foreground text-lg mb-1">{page.title}</CardTitle>
+                  <p className="text-primary text-sm font-medium">{page.stats}</p>
                 </div>
               </div>
             </CardHeader>
-            <CardContent>
-              <p className="text-brand-cream/80 mb-4">{page.description}</p>
-              <Button asChild className="w-full bg-brand-gold text-black hover:bg-brand-gold/90">
+            <CardContent className="pt-0">
+              <p className="text-muted-foreground mb-6 leading-relaxed">{page.description}</p>
+              <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
                 <Link to={page.href}>
                   Access {page.title}
                 </Link>
@@ -138,19 +140,19 @@ export const AdminDashboard = () => {
 
       {/* Warning for Unlinked CTAs */}
       {unlinkedCTAs.length > 0 && (
-        <Card className="bg-red-900/20 border-red-600/50">
+        <Card className="bg-destructive/5 border-destructive/20">
           <CardHeader>
-            <CardTitle className="text-red-400 flex items-center gap-2">
+            <CardTitle className="text-destructive flex items-center gap-2">
               <Link2 className="h-5 w-5" />
               Action Required: Unlinked CTAs Detected
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-red-300 mb-4">
+            <p className="text-destructive/80 mb-4 leading-relaxed">
               You have {unlinkedCTAs.length} call-to-action button{unlinkedCTAs.length !== 1 ? 's' : ''} that 
               {unlinkedCTAs.length !== 1 ? ' are' : ' is'} not connected to any guides. This may cause broken user experiences.
             </p>
-            <Button asChild variant="outline" className="border-red-600 text-red-400 hover:bg-red-900/30">
+            <Button asChild variant="outline" className="border-destructive text-destructive hover:bg-destructive/10">
               <Link to="/admin/cta">
                 Fix CTA Connections
               </Link>

@@ -22,6 +22,7 @@ const AdminGuides = () => {
   const [showForm, setShowForm] = useState(false);
   const [editingGuide, setEditingGuide] = useState<Guide | null>(null);
   const { toast } = useToast();
+  const headerHeight = useHeaderHeight(); // Move hook call to top
 
   if (!isAdmin) {
     return (
@@ -83,7 +84,7 @@ const AdminGuides = () => {
       
       <Navigation />
       
-      <main style={{ marginTop: `${useHeaderHeight()}px`, paddingTop: '3rem', paddingBottom: '4rem' }}>
+      <main style={{ marginTop: `${headerHeight}px`, paddingTop: '3rem', paddingBottom: '4rem' }}>
         <div className="container mx-auto px-6 max-w-6xl">
           {/* Back Button */}
           <div className="mb-6">

@@ -137,12 +137,12 @@ const AdminGuides = () => {
 
             <div className="grid gap-6">
               {guides.length === 0 ? (
-                <Card className="bg-slate-800 border-slate-700">
+                <Card className="bg-card border-border">
                   <CardContent className="text-center py-12">
-                    <p className="text-brand-cream/60 mb-4">No guides created yet</p>
+                    <p className="text-muted-foreground mb-4">No guides created yet</p>
                     <Button
                       onClick={() => setShowForm(true)}
-                      className="bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFA500] text-black font-bold hover:from-[#FFA500] hover:to-[#FFD700] shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-[#FFD700]"
+                      className="bg-primary text-primary-foreground hover:bg-primary/90"
                     >
                       <Plus className="mr-2 h-4 w-4" />
                       Create Your First Guide
@@ -151,30 +151,31 @@ const AdminGuides = () => {
                 </Card>
               ) : (
                 guides.map((guide) => (
-                  <Card key={guide.id} className="bg-slate-800 border-slate-700">
-                    <CardHeader>
+                  <Card key={guide.id} className="bg-card border-border hover:shadow-lg transition-shadow">
+                    <CardHeader className="pb-4">
                       <div className="flex justify-between items-start">
                         <div className="flex-1">
-                          <div className="flex items-center gap-3 mb-2">
-                            <CardTitle className="text-brand-cream">{guide.title}</CardTitle>
+                          <div className="flex items-center gap-3 mb-3">
+                            <CardTitle className="text-foreground text-xl">{guide.title}</CardTitle>
                             <Badge
                               variant={guide.is_active ? "default" : "secondary"}
-                              className={guide.is_active ? "bg-green-600" : "bg-gray-600"}
+                              className={guide.is_active ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200" : ""}
                             >
                               {guide.is_active ? "Active" : "Inactive"}
                             </Badge>
-                            <Badge variant="outline" className="border-brand-gold text-brand-gold">
+                            <Badge variant="outline" className="border-primary text-primary font-medium">
                               {guide.price > 0 ? `$${guide.price}` : "Free"}
                             </Badge>
                           </div>
-                          <p className="text-brand-cream/80 text-sm">{guide.description}</p>
+                          <p className="text-muted-foreground text-sm leading-relaxed">{guide.description}</p>
                         </div>
                         <div className="flex gap-2 ml-4">
                           <Button
                             size="sm"
                             variant="outline"
                             onClick={() => handleToggleActive(guide)}
-                            className="border-slate-600"
+                            className="hover:bg-accent"
+                            title={guide.is_active ? "Deactivate guide" : "Activate guide"}
                           >
                             {guide.is_active ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                           </Button>
@@ -182,7 +183,8 @@ const AdminGuides = () => {
                             size="sm"
                             variant="outline"
                             onClick={() => handleEdit(guide)}
-                            className="border-slate-600"
+                            className="hover:bg-accent"
+                            title="Edit guide"
                           >
                             <Edit className="h-4 w-4" />
                           </Button>
@@ -190,30 +192,35 @@ const AdminGuides = () => {
                             size="sm"
                             variant="outline"
                             onClick={() => handleDelete(guide)}
-                            className="border-red-600 text-red-400 hover:bg-red-900/20"
+                            className="border-destructive text-destructive hover:bg-destructive hover:text-destructive-foreground"
+                            title="Delete guide"
                           >
                             <Trash2 className="h-4 w-4" />
                           </Button>
                         </div>
                       </div>
                     </CardHeader>
-                    <CardContent>
+                    <CardContent className="pt-0">
                       {guide.bullets && guide.bullets.length > 0 && (
-                        <div className="mb-4">
-                          <h4 className="text-sm font-semibold text-brand-cream mb-2">Key Points:</h4>
-                          <ul className="list-disc list-inside text-sm text-brand-cream/80 space-y-1">
+                        <div className="mb-6">
+                          <h4 className="text-sm font-semibold text-foreground mb-3">Key Points:</h4>
+                          <ul className="list-disc list-inside text-sm text-muted-foreground space-y-2 pl-2">
                             {guide.bullets.map((bullet, index) => (
-                              <li key={index}>{bullet}</li>
+                              <li key={index} className="leading-relaxed">{bullet}</li>
                             ))}
                           </ul>
                         </div>
                       )}
-                      <div className="flex justify-between items-center text-sm text-brand-cream/60">
-                        <div>
-                          Sort Order: {guide.sort_order}
+                      <div className="flex justify-between items-center text-sm text-muted-foreground bg-muted/50 p-3 rounded-md">
+                        <div className="font-medium">
+                          Sort Order: <span className="text-foreground">{guide.sort_order}</span>
                         </div>
-                        <div>
-                          {guide.file_name ? `File: ${guide.file_name}` : "No file uploaded"}
+                        <div className="font-medium">
+                          {guide.file_name ? (
+                            <span className="text-primary">File: {guide.file_name}</span>
+                          ) : (
+                            <span className="text-muted-foreground">No file uploaded</span>
+                          )}
                         </div>
                       </div>
                     </CardContent>

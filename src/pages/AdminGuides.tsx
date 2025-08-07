@@ -84,12 +84,12 @@ const AdminGuides = () => {
       
       <Navigation />
       
-      <main style={{ marginTop: `${headerHeight}px`, paddingTop: '3rem', paddingBottom: '4rem' }}>
+      <main style={{ marginTop: `${headerHeight + 20}px`, paddingTop: '2rem', paddingBottom: '4rem' }}>
         <div className="container mx-auto px-6 max-w-6xl">
           {/* Back Button */}
-          <div className="mb-6">
+          <div className="mb-8">
             <Link to="/admin">
-              <Button variant="outline" className="border-muted-foreground/20 hover:bg-accent">
+              <Button variant="outline" className="border-border hover:bg-accent transition-colors">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Back to Dashboard
               </Button>

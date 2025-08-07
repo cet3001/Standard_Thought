@@ -14,6 +14,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { useUrbanTexture } from "@/hooks/use-urban-texture";
 import { Link } from "react-router-dom";
+import WelcomeEmailManager from "@/components/admin/WelcomeEmailManager";
 
 const AdminEmail = () => {
   const { isAdmin, user } = useAuth();
@@ -232,6 +233,32 @@ const AdminEmail = () => {
               </div>
             </CardContent>
           </Card>
+
+          {/* Welcome Email Template Section */}
+          <div className="mb-12">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl md:text-4xl font-black mb-4 text-brand-black dark:text-brand-cream">
+                <span className="text-[#FFD700]">Welcome Email</span> Template
+              </h2>
+              <p className="text-lg text-brand-black/70 dark:text-brand-cream/70 max-w-2xl mx-auto">
+                Customize the automatic email sent to new subscribers when they join your community
+              </p>
+            </div>
+            
+            <WelcomeEmailManager />
+          </div>
+
+          {/* Mass Email Campaign Section */}
+          <div className="mb-8">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl md:text-4xl font-black mb-4 text-brand-black dark:text-brand-cream">
+                <span className="text-[#FFD700]">Mass Email</span> Campaign
+              </h2>
+              <p className="text-lg text-brand-black/70 dark:text-brand-cream/70 max-w-2xl mx-auto">
+                Send targeted campaigns to your entire subscriber base
+              </p>
+            </div>
+          </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             

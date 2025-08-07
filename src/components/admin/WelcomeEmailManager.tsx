@@ -4,16 +4,13 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Mail, Save, Eye, RefreshCw } from "lucide-react";
+import { Mail, Save, Eye, RefreshCw, AlertCircle } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 
 interface WelcomeEmailTemplate {
-  id?: string;
   subject: string;
   body: string;
-  created_at?: string;
-  updated_at?: string;
 }
 
 const WelcomeEmailManager = () => {
@@ -51,19 +48,11 @@ P.S. We keep it 100 here. No fluff, no get-rich-quick schemes—just the real bl
     try {
       setIsLoading(true);
       
-      // Try to fetch existing template from database
-      const { data, error } = await supabase
-        .from('welcome_email_templates')
-        .select('*')
-        .eq('is_active', true)
-        .single();
-
-      if (error && error.code !== 'PGRST116') { // PGRST116 is "not found"
-        throw error;
-      }
-
-      if (data) {
-        setTemplate(data);
+      // Load template from localStorage for now
+      const savedTemplate = localStorage.getItem('welcome_email_template');
+      if (savedTemplate) {
+        const parsed = JSON.parse(savedTemplate);
+        setTemplate(parsed);
       }
     } catch (error) {
       console.error('Error fetching template:', error);
@@ -77,18 +66,8 @@ P.S. We keep it 100 here. No fluff, no get-rich-quick schemes—just the real bl
     try {
       setIsSaving(true);
 
-      const { error } = await supabase
-        .from('welcome_email_templates')
-        .upsert({
-          subject: template.subject,
-          body: template.body,
-          is_active: true,
-          updated_at: new Date().toISOString()
-        }, {
-          onConflict: 'is_active'
-        });
-
-      if (error) throw error;
+      // Save to localStorage for now
+      localStorage.setItem('welcome_email_template', JSON.stringify(template));
 
       toast({
         title: "Success!",
@@ -133,6 +112,18 @@ P.S. We keep it 100 here. No fluff, no get-rich-quick schemes—just the real bl
         </CardHeader>
         <CardContent className="space-y-6">
           
+          {/* Info Alert */}
+          <div className="flex items-start gap-2 p-3 bg-muted/50 rounded-lg border border-border">
+            <AlertCircle className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+            <div className="text-sm text-foreground">
+              <p className="font-medium mb-1">Template Management</p>
+              <p className="text-muted-foreground">
+                Changes to this template will affect the welcome email sent to all new subscribers. 
+                The template is stored temporarily until we implement a dedicated template system.
+              </p>
+            </div>
+          </div>
+
           {/* Subject */}
           <div className="space-y-2">
             <Label htmlFor="welcome-subject" className="text-foreground font-medium">

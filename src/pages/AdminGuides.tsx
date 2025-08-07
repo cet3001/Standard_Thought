@@ -5,11 +5,16 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Plus, Edit, Trash2, Eye, EyeOff, Settings } from 'lucide-react';
+import { Plus, Edit, Trash2, Eye, EyeOff, Settings, ArrowLeft } from 'lucide-react';
 import { GuideForm } from '@/components/admin/GuideForm';
 import { CTAManagement } from '@/components/admin/CTAManagement';
 import { Guide } from '@/hooks/use-guides';
 import { useToast } from '@/hooks/use-toast';
+import { Link } from 'react-router-dom';
+import Navigation from "@/components/navigation";
+import Footer from "@/components/footer";
+import SEO from "@/components/seo";
+import { useHeaderHeight } from "@/hooks/use-header-height";
 
 const AdminGuides = () => {
   const { isAdmin } = useAuth();
@@ -68,32 +73,41 @@ const AdminGuides = () => {
   }
 
   return (
-    <div className="min-h-screen bg-brand-black text-brand-cream p-4 md:p-8 relative">
-      {/* Subtle ST Logo Watermark */}
-      <div className="fixed top-4 right-4 z-50 opacity-5 hover:opacity-15 transition-opacity duration-300">
-        <a href="/" aria-label="Return to Standardthought home">
-          <img 
-            src="/lovable-uploads/ab84a6d6-c2ac-4910-be5f-7bb666463fb8.png" 
-            alt="ST Logo" 
-            className="w-16 h-16 object-contain"
-          />
-        </a>
-      </div>
+    <div className="min-h-screen bg-background">
+      <SEO 
+        title="Guides Management | Admin | Standardthought"
+        description="Manage your guides, pricing, content, and CTA connections."
+        url="/admin/guides"
+        noIndex={true}
+      />
       
-      <div className="max-w-6xl mx-auto">
-        <div className="flex justify-between items-center mb-8">
-          <div>
-            <h1 className="text-3xl font-bold text-brand-gold mb-2">Guide Management</h1>
-            <p className="text-brand-cream/80">Manage your guides, pricing, content, and CTA connections</p>
+      <Navigation />
+      
+      <main style={{ marginTop: `${useHeaderHeight()}px`, paddingTop: '3rem', paddingBottom: '4rem' }}>
+        <div className="container mx-auto px-6 max-w-6xl">
+          {/* Back Button */}
+          <div className="mb-6">
+            <Link to="/admin">
+              <Button variant="outline" className="border-muted-foreground/20 hover:bg-accent">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Back to Dashboard
+              </Button>
+            </Link>
           </div>
-        </div>
+          
+          <div className="flex justify-between items-center mb-8">
+            <div>
+              <h1 className="text-3xl font-bold text-foreground mb-2">Guide Management</h1>
+              <p className="text-muted-foreground">Manage your guides, pricing, content, and CTA connections</p>
+            </div>
+          </div>
 
         <Tabs defaultValue="guides" className="w-full">
-          <TabsList className="grid w-full grid-cols-2 bg-slate-800 border-slate-700">
-            <TabsTrigger value="guides" className="data-[state=active]:bg-brand-gold data-[state=active]:text-black">
+          <TabsList className="grid w-full grid-cols-2 bg-muted border border-border">{/* ... keep existing code */}
+            <TabsTrigger value="guides" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
               Guides
             </TabsTrigger>
-            <TabsTrigger value="cta-management" className="data-[state=active]:bg-brand-gold data-[state=active]:text-black">
+            <TabsTrigger value="cta-management" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
               <Settings className="mr-2 h-4 w-4" />
               CTA Management
             </TabsTrigger>
@@ -212,7 +226,10 @@ const AdminGuides = () => {
             <CTAManagement />
           </TabsContent>
         </Tabs>
-      </div>
+        </div>
+      </main>
+      
+      <Footer />
     </div>
   );
 };

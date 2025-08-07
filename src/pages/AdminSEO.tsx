@@ -7,6 +7,10 @@ import { SEOManagement } from "@/components/admin/SEOManagement";
 import SEO from "@/components/seo";
 import { useMobilePerformance } from "@/hooks/use-mobile-performance";
 import { useUrbanTexture } from "@/hooks/use-urban-texture";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft } from "lucide-react";
+import { Link } from "react-router-dom";
+import { useHeaderHeight } from "@/hooks/use-header-height";
 
 const AdminSEO = () => {
   useMobilePerformance();
@@ -67,8 +71,18 @@ const AdminSEO = () => {
       <div className="relative z-10">
         <Navigation />
         
-        <main className="pt-24 pb-12">
+        <main style={{ marginTop: `${useHeaderHeight()}px`, paddingTop: '3rem', paddingBottom: '4rem' }}>
           <div className="container mx-auto px-4 max-w-7xl">
+            {/* Back Button */}
+            <div className="mb-6">
+              <Link to="/admin">
+                <Button variant="outline" className="border-muted-foreground/20 hover:bg-accent">
+                  <ArrowLeft className="mr-2 h-4 w-4" />
+                  Back to Dashboard
+                </Button>
+              </Link>
+            </div>
+            
             <SEOManagement />
           </div>
         </main>

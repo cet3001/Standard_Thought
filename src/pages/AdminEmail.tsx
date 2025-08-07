@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Mail, Users, Send, Upload, Eye, FileText } from "lucide-react";
+import { Mail, Users, Send, Upload, Eye, FileText, ArrowLeft } from "lucide-react";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import SEO from "@/components/seo";
@@ -13,6 +13,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { useUrbanTexture } from "@/hooks/use-urban-texture";
+import { Link } from "react-router-dom";
 
 const AdminEmail = () => {
   const { isAdmin, user } = useAuth();
@@ -178,6 +179,16 @@ const AdminEmail = () => {
 
       <main className="relative z-10 pb-16" style={{ marginTop: `${useHeaderHeight()}px`, paddingTop: '3rem' }}>
         <div className="container mx-auto px-6 max-w-6xl">
+          
+          {/* Back Button */}
+          <div className="mb-6">
+            <Link to="/admin">
+              <Button variant="outline" className="border-[#FFD700]/30 hover:bg-[#FFD700]/10">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Back to Dashboard
+              </Button>
+            </Link>
+          </div>
           
           {/* Header */}
           <div className="text-center mb-12">

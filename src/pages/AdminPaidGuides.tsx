@@ -5,6 +5,9 @@ import Footer from '@/components/footer';
 import PaidGuidesManagement from '@/components/admin/PaidGuidesManagement';
 import { useHeaderHeight } from '@/hooks/use-header-height';
 import { useUrbanTexture } from '@/hooks/use-urban-texture';
+import { Button } from "@/components/ui/button";
+import { ArrowLeft } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const AdminPaidGuides = () => {
   const headerHeight = useHeaderHeight();
@@ -46,7 +49,17 @@ const AdminPaidGuides = () => {
       <main className="relative z-10" style={{ marginTop: `${headerHeight}px`, paddingTop: '2rem' }}>
         <div className="container mx-auto px-6 py-8">
           <div className="max-w-6xl mx-auto">
-            <div className="bg-background/95 backdrop-blur-sm border border-border rounded-lg shadow-lg p-8">
+            {/* Back Button */}
+            <div className="mb-6">
+              <Link to="/admin">
+                <Button variant="outline" className="border-muted-foreground/20 hover:bg-accent">
+                  <ArrowLeft className="mr-2 h-4 w-4" />
+                  Back to Dashboard
+                </Button>
+              </Link>
+            </div>
+            
+            <div className="bg-background/95 backdrop-blur-sm border border-border rounded-lg shadow-lg p-8">{/* ... keep existing code */}
               <PaidGuidesManagement />
             </div>
           </div>

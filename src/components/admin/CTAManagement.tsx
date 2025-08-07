@@ -3,7 +3,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { AlertTriangle, Link2, Unlink, ExternalLink, RefreshCw } from 'lucide-react';
+import { AlertTriangle, Link2, Unlink, ExternalLink, RefreshCw, BarChart3 } from 'lucide-react';
+import { AdminSectionCard } from './AdminSectionCard';
 import { useCTADetection } from '@/hooks/use-cta-detection';
 import { useGuides } from '@/hooks/use-guides';
 import { useToast } from '@/hooks/use-toast';
@@ -61,12 +62,12 @@ export const CTAManagement = () => {
 
   if (loading) {
     return (
-      <Card className="bg-card border-border">
-        <CardContent className="text-center py-8">
+      <AdminSectionCard>
+        <div className="text-center py-8">
           <RefreshCw className="h-8 w-8 animate-spin mx-auto mb-4 text-primary" />
           <p className="text-foreground">Scanning CTAs across the site...</p>
-        </CardContent>
-      </Card>
+        </div>
+      </AdminSectionCard>
     );
   }
 
@@ -74,19 +75,12 @@ export const CTAManagement = () => {
     <div className="space-y-6">
       {/* Unlinked CTAs Warning */}
       {unlinkedCTAs.length > 0 && (
-        <Card className="bg-destructive/10 border-destructive/50 hover:shadow-lg transition-shadow">
-          <CardHeader className="pb-4">
-            <div className="flex items-center gap-2">
-              <AlertTriangle className="h-5 w-5 text-destructive" />
-              <CardTitle className="text-destructive text-lg">
-                {unlinkedCTAs.length} Unlinked CTA{unlinkedCTAs.length !== 1 ? 's' : ''} Found
-              </CardTitle>
-            </div>
-          </CardHeader>
-          <CardContent>
-            <p className="text-destructive/80 mb-4 leading-relaxed">
-              The following CTAs on your site are not connected to any guides. Link them to ensure proper functionality.
-            </p>
+        <AdminSectionCard 
+          className="before:from-destructive/60 before:via-destructive/70 before:to-destructive/60"
+          title={`${unlinkedCTAs.length} Unlinked CTA${unlinkedCTAs.length !== 1 ? 's' : ''} Found`}
+          description="The following CTAs on your site are not connected to any guides. Link them to ensure proper functionality."
+          icon={<AlertTriangle className="h-5 w-5" />}
+        >
             <div className="grid gap-3">
               {unlinkedCTAs.map((cta) => (
                 <div key={cta.id} className="flex items-center justify-between p-4 bg-destructive/5 rounded-lg border border-destructive/20 hover:bg-destructive/10 transition-colors">
@@ -120,16 +114,14 @@ export const CTAManagement = () => {
                 </div>
               ))}
             </div>
-          </CardContent>
-        </Card>
+        </AdminSectionCard>
       )}
 
       {/* Link CTAs to Guides */}
-      <Card className="bg-card border-border hover:shadow-lg transition-shadow">
-        <CardHeader className="pb-4">
-          <CardTitle className="text-foreground text-xl">Link CTAs to Guides</CardTitle>
-        </CardHeader>
-        <CardContent>
+      <AdminSectionCard 
+        title="Link CTAs to Guides"
+        icon={<Link2 className="h-5 w-5" />}
+      >
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
               <label className="text-sm font-medium text-foreground mb-2 block">Select Unlinked CTA</label>
@@ -184,17 +176,13 @@ export const CTAManagement = () => {
               </Button>
             </div>
           </div>
-        </CardContent>
-      </Card>
+        </AdminSectionCard>
 
       {/* Linked CTAs Overview */}
-      <Card className="bg-card border-border hover:shadow-lg transition-shadow">
-        <CardHeader className="pb-4">
-          <CardTitle className="text-foreground text-xl">
-            Linked CTAs ({linkedCTAs.length})
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
+      <AdminSectionCard 
+        title={`Linked CTAs (${linkedCTAs.length})`}
+        icon={<Link2 className="h-5 w-5" />}
+      >
           {linkedCTAs.length === 0 ? (
             <div className="text-center py-8">
               <p className="text-muted-foreground">
@@ -247,15 +235,13 @@ export const CTAManagement = () => {
               ))}
             </div>
           )}
-        </CardContent>
-      </Card>
+        </AdminSectionCard>
 
       {/* CTA Detection Stats */}
-      <Card className="bg-card border-border hover:shadow-lg transition-shadow">
-        <CardHeader className="pb-4">
-          <CardTitle className="text-foreground text-xl">CTA Detection Summary</CardTitle>
-        </CardHeader>
-        <CardContent>
+      <AdminSectionCard 
+        title="CTA Detection Summary"
+        icon={<BarChart3 className="h-5 w-5" />}
+      >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="text-center p-4 bg-muted/50 rounded-lg border border-border">
               <div className="text-2xl font-bold text-primary">{detectedCTAs.length}</div>
@@ -274,8 +260,7 @@ export const CTAManagement = () => {
               <div className="text-sm text-muted-foreground font-medium">Total Guides</div>
             </div>
           </div>
-        </CardContent>
-      </Card>
+        </AdminSectionCard>
     </div>
   );
 };

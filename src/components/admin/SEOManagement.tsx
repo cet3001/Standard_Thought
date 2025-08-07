@@ -10,6 +10,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { Badge } from "@/components/ui/badge";
 import { Plus, Save, Trash, BarChart3 } from "lucide-react";
+import { AdminSectionCard } from './AdminSectionCard';
 
 interface SEOSetting {
   id: string;
@@ -194,14 +195,12 @@ export const SEOManagement = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* SEO Settings List */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Existing Settings</CardTitle>
-            <CardDescription>
-              Click on a setting to edit or create new ones for different pages
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-2">
+        <AdminSectionCard 
+          title="Existing Settings"
+          description="Click on a setting to edit or create new ones for different pages"
+          icon={<BarChart3 className="h-5 w-5" />}
+        >
+          <div className="space-y-2">
             {seoSettings.map((setting) => (
               <div
                 key={setting.id}
@@ -233,52 +232,45 @@ export const SEOManagement = () => {
                 No SEO settings found. Create your first one!
               </p>
             )}
-          </CardContent>
-        </Card>
+          </div>
+        </AdminSectionCard>
 
         {/* SEO Editor */}
         {selectedSetting && (
-          <Card>
-            <CardHeader>
-              <div className="flex items-center justify-between">
-                <div>
-                  <CardTitle>
-                    {isEditing ? 'Edit' : 'View'} SEO Setting
-                  </CardTitle>
-                  <CardDescription>
-                    Configure meta tags, Open Graph, and Twitter cards
-                  </CardDescription>
-                </div>
-                <div className="flex gap-2">
-                  {!isEditing && (
-                    <Button variant="outline" onClick={() => setIsEditing(true)}>
-                      Edit
-                    </Button>
-                  )}
-                  {isEditing && (
-                    <>
-                      <Button variant="outline" onClick={() => setIsEditing(false)}>
-                        Cancel
-                      </Button>
-                      <Button onClick={saveSetting} disabled={loading}>
-                        <Save className="h-4 w-4 mr-2" />
-                        Save
-                      </Button>
-                    </>
-                  )}
-                  {selectedSetting.id && (
-                    <Button
-                      variant="destructive"
-                      size="sm"
-                      onClick={() => deleteSetting(selectedSetting.id)}
-                    >
-                      <Trash className="h-4 w-4" />
-                    </Button>
-                  )}
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent className="space-y-4">
+          <AdminSectionCard 
+            title={`${isEditing ? 'Edit' : 'View'} SEO Setting`}
+            description="Configure meta tags, Open Graph, and Twitter cards"
+            icon={<Save className="h-5 w-5" />}
+          >
+            <div className="flex gap-2 mb-6">
+              {!isEditing && (
+                <Button variant="outline" onClick={() => setIsEditing(true)}>
+                  Edit
+                </Button>
+              )}
+              {isEditing && (
+                <>
+                  <Button variant="outline" onClick={() => setIsEditing(false)}>
+                    Cancel
+                  </Button>
+                  <Button onClick={saveSetting} disabled={loading}>
+                    <Save className="h-4 w-4 mr-2" />
+                    Save
+                  </Button>
+                </>
+              )}
+              {selectedSetting.id && (
+                <Button
+                  variant="destructive"
+                  size="sm"
+                  onClick={() => deleteSetting(selectedSetting.id)}
+                >
+                  <Trash className="h-4 w-4" />
+                </Button>
+              )}
+            </div>
+            
+            <div className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="page_type">Page Type</Label>
                 <Select
@@ -383,8 +375,8 @@ export const SEOManagement = () => {
                 />
                 <Label htmlFor="is_active">Active</Label>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </AdminSectionCard>
         )}
       </div>
     </div>

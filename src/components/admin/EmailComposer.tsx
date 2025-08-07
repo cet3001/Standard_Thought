@@ -12,6 +12,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Loader2, Send, Paperclip, Users, Filter } from "lucide-react";
+import { AdminSectionCard } from './AdminSectionCard';
 
 interface EmailComposerProps {
   subscriberCount: number;
@@ -124,15 +125,12 @@ export const EmailComposer = ({ subscriberCount }: EmailComposerProps) => {
   };
 
   return (
-    <Card className="lg:col-span-2">
-      <CardHeader>
-        <CardTitle className="flex items-center gap-2">
-          <Send className="h-5 w-5" />
-          Compose Cultural Email
-        </CardTitle>
-        <CardDescription>Urban narratives with cultural identity. Banner auto-included. Basic HTML allowed.</CardDescription>
-      </CardHeader>
-      <CardContent>
+    <AdminSectionCard 
+      className="lg:col-span-2"
+      title="Compose Cultural Email"
+      description="Urban narratives with cultural identity. Banner auto-included. Basic HTML allowed."
+      icon={<Send className="h-5 w-5" />}
+    >
         <Tabs defaultValue="compose" className="space-y-4">
           <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="compose">Compose</TabsTrigger>
@@ -245,7 +243,7 @@ export const EmailComposer = ({ subscriberCount }: EmailComposerProps) => {
         </Tabs>
         
         <Button 
-          className="w-full bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFA500] text-black font-bold hover:scale-105 transition-all" 
+          className="w-full urban-cta" 
           disabled={sending || segmentedCount === 0} 
           onClick={sendEmail}
         >
@@ -259,7 +257,6 @@ export const EmailComposer = ({ subscriberCount }: EmailComposerProps) => {
             </>
           )}
         </Button>
-      </CardContent>
-    </Card>
+      </AdminSectionCard>
   );
 };

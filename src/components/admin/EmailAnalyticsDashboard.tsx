@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Calendar, Mail, Users, TrendingUp, Send, Clock } from 'lucide-react';
+import { AdminSectionCard } from './AdminSectionCard';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 
@@ -123,7 +124,7 @@ export const EmailAnalyticsDashboard = () => {
   };
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="space-y-6">
       <div className="flex justify-between items-center">
         <div>
           <h1 className="text-3xl font-bold text-brand-black dark:text-brand-cream">
@@ -136,7 +137,7 @@ export const EmailAnalyticsDashboard = () => {
         <Button 
           onClick={sendWeeklyNewsletter}
           disabled={sendingWeekly}
-          className="bg-gradient-to-r from-[#FFD700] to-[#FFA500] text-black font-bold hover:scale-105 transition-all"
+          className="urban-cta"
         >
           {sendingWeekly ? (
             <>
@@ -154,55 +155,46 @@ export const EmailAnalyticsDashboard = () => {
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Subscribers</CardTitle>
+        <AdminSectionCard>
+          <div className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <div className="text-sm font-medium">Total Subscribers</div>
             <Users className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{stats?.total_subscribers}</div>
-            <p className="text-xs text-muted-foreground">
-              Active newsletter subscribers
-            </p>
-          </CardContent>
-        </Card>
+          </div>
+          <div className="text-2xl font-bold">{stats?.total_subscribers}</div>
+          <p className="text-xs text-muted-foreground">
+            Active newsletter subscribers
+          </p>
+        </AdminSectionCard>
 
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Weekly Growth</CardTitle>
+        <AdminSectionCard>
+          <div className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <div className="text-sm font-medium">Weekly Growth</div>
             <TrendingUp className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">+{stats?.weekly_growth}</div>
-            <p className="text-xs text-muted-foreground">
-              New subscribers this week
-            </p>
-          </CardContent>
-        </Card>
+          </div>
+          <div className="text-2xl font-bold">+{stats?.weekly_growth}</div>
+          <p className="text-xs text-muted-foreground">
+            New subscribers this week
+          </p>
+        </AdminSectionCard>
 
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Campaigns Sent</CardTitle>
+        <AdminSectionCard>
+          <div className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <div className="text-sm font-medium">Campaigns Sent</div>
             <Mail className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{stats?.recent_campaigns.length}</div>
-            <p className="text-xs text-muted-foreground">
-              Total campaigns this month
-            </p>
-          </CardContent>
-        </Card>
+          </div>
+          <div className="text-2xl font-bold">{stats?.recent_campaigns.length}</div>
+          <p className="text-xs text-muted-foreground">
+            Total campaigns this month
+          </p>
+        </AdminSectionCard>
       </div>
 
       {/* Recent Campaigns */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Recent Email Campaigns</CardTitle>
-          <CardDescription>
-            Your latest email sends and their performance
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
+      <AdminSectionCard 
+        title="Recent Email Campaigns"
+        description="Your latest email sends and their performance"
+        icon={<Mail className="h-5 w-5" />}
+      >
           {stats?.recent_campaigns.length === 0 ? (
             <div className="text-center py-8 text-muted-foreground">
               <Mail className="h-12 w-12 mx-auto mb-4 opacity-50" />
@@ -244,8 +236,7 @@ export const EmailAnalyticsDashboard = () => {
               ))}
             </div>
           )}
-        </CardContent>
-      </Card>
+        </AdminSectionCard>
     </div>
   );
 };

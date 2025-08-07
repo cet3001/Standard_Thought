@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+import { AdminSectionCard } from './AdminSectionCard';
 import { 
   FileText, 
   Mail, 
@@ -93,72 +94,59 @@ export const AdminDashboard = () => {
       {/* Quick Stats */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {quickStats.map((stat, index) => (
-          <Card key={index} className={`bg-card border ${stat.warning ? 'border-destructive/50' : 'border-border'}`}>
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-muted-foreground text-sm font-medium">{stat.label}</p>
-                  <p className={`text-3xl font-bold ${stat.warning ? 'text-destructive' : 'text-primary'}`}>
-                    {stat.value}
-                  </p>
-                </div>
-                <div className={`p-3 rounded-lg ${stat.warning ? 'bg-destructive/10' : 'bg-primary/10'}`}>
-                  <stat.icon className={`h-6 w-6 ${stat.warning ? 'text-destructive' : 'text-primary'}`} />
-                </div>
+          <AdminSectionCard key={index} className={stat.warning ? 'before:from-destructive/60 before:via-destructive/70 before:to-destructive/60' : undefined}>
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-muted-foreground text-sm font-medium">{stat.label}</p>
+                <p className={`text-3xl font-bold ${stat.warning ? 'text-destructive' : 'text-primary'}`}>
+                  {stat.value}
+                </p>
               </div>
-            </CardContent>
-          </Card>
+              <div className={`p-3 rounded-lg ${stat.warning ? 'bg-destructive/10' : 'bg-primary/10'}`}>
+                <stat.icon className={`h-6 w-6 ${stat.warning ? 'text-destructive' : 'text-primary'}`} />
+              </div>
+            </div>
+          </AdminSectionCard>
         ))}
       </div>
 
       {/* Admin Pages Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {adminPages.map((page, index) => (
-          <Card key={index} className="bg-card border-border hover:border-primary/50 transition-all duration-300 group hover:shadow-lg">
-            <CardHeader className="pb-4">
-              <div className="flex items-start gap-4">
-                <div className={`p-3 rounded-lg ${page.color} group-hover:scale-110 transition-transform duration-300`}>
-                  <page.icon className="h-6 w-6 text-white" />
-                </div>
-                <div className="flex-1">
-                  <CardTitle className="text-foreground text-lg mb-1">{page.title}</CardTitle>
-                  <p className="text-primary text-sm font-medium">{page.stats}</p>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent className="pt-0">
-              <p className="text-muted-foreground mb-6 leading-relaxed">{page.description}</p>
-              <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
-                <Link to={page.href}>
-                  Access {page.title}
-                </Link>
-              </Button>
-            </CardContent>
-          </Card>
+          <AdminSectionCard 
+            key={index}
+            title={page.title}
+            description={page.description}
+            icon={<page.icon className="h-5 w-5" />}
+          >
+            <div className="flex items-center justify-between mb-6">
+              <p className="text-primary text-sm font-bold bg-primary/10 px-3 py-1 rounded-full">
+                {page.stats}
+              </p>
+            </div>
+            <Button asChild className="w-full urban-cta">
+              <Link to={page.href}>
+                Access {page.title}
+              </Link>
+            </Button>
+          </AdminSectionCard>
         ))}
       </div>
 
       {/* Warning for Unlinked CTAs */}
       {unlinkedCTAs.length > 0 && (
-        <Card className="bg-destructive/5 border-destructive/20">
-          <CardHeader>
-            <CardTitle className="text-destructive flex items-center gap-2">
-              <Link2 className="h-5 w-5" />
-              Action Required: Unlinked CTAs Detected
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-destructive/80 mb-4 leading-relaxed">
-              You have {unlinkedCTAs.length} call-to-action button{unlinkedCTAs.length !== 1 ? 's' : ''} that 
-              {unlinkedCTAs.length !== 1 ? ' are' : ' is'} not connected to any guides. This may cause broken user experiences.
-            </p>
-            <Button asChild variant="outline" className="border-destructive text-destructive hover:bg-destructive/10">
-              <Link to="/admin/cta">
-                Fix CTA Connections
-              </Link>
-            </Button>
-          </CardContent>
-        </Card>
+        <AdminSectionCard 
+          className="before:from-destructive/60 before:via-destructive/70 before:to-destructive/60"
+          title="Action Required: Unlinked CTAs Detected"
+          description={`You have ${unlinkedCTAs.length} call-to-action button${unlinkedCTAs.length !== 1 ? 's' : ''} that ${unlinkedCTAs.length !== 1 ? ' are' : ' is'} not connected to any guides. This may cause broken user experiences.`}
+          icon={<Link2 className="h-5 w-5" />}
+        >
+          <Button asChild variant="outline" className="border-destructive text-destructive hover:bg-destructive/10">
+            <Link to="/admin/cta">
+              Fix CTA Connections
+            </Link>
+          </Button>
+        </AdminSectionCard>
       )}
     </div>
   );

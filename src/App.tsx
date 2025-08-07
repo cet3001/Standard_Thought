@@ -21,6 +21,7 @@ const AdminDashboard = lazy(() => import("@/pages/AdminDashboard"));
 const AdminGuides = lazy(() => import("@/pages/AdminGuides"));
 const AdminPaidGuides = lazy(() => import("@/pages/AdminPaidGuides"));
 const AdminCTA = lazy(() => import("@/pages/AdminCTA"));
+const AdminGuideForge = lazy(() => import("@/pages/AdminGuideForge"));
 const AdminEmail = lazy(() => import("@/pages/AdminEmail"));
 const AdminSEO = lazy(() => import("@/pages/AdminSEO"));
 const PrivacyPolicy = lazy(() => import("@/pages/PrivacyPolicy"));
@@ -74,6 +75,7 @@ function AppContent() {
           <Route path="/admin/guides" element={<AdminGuides />} />
           <Route path="/admin/paid-guides" element={<AdminPaidGuides />} />
           <Route path="/admin/cta" element={<AdminCTA />} />
+          <Route path="/admin/guide-forge" element={<AdminGuideForge />} />
           <Route path="/admin/email" element={<AdminEmail />} />
           <Route path="/admin/seo" element={<AdminSEO />} />
           <Route path="/sales" element={<Sales />} />

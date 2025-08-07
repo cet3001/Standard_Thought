@@ -23,6 +23,14 @@ export const AdminDashboard = () => {
 
   const adminPages = [
     {
+      title: 'Guide Forge',
+      description: 'Create and edit guides with integrated tool',
+      icon: FileText,
+      href: '/admin/guide-forge',
+      color: 'bg-indigo-600',
+      stats: 'Integrated creator'
+    },
+    {
       title: 'Free Guides Management',
       description: 'Manage free guides, upload files, and track downloads',
       icon: BookOpen,

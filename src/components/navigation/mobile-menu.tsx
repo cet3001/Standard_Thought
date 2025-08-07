@@ -154,6 +154,13 @@ const MobileMenu = () => {
                 Paid Guides
               </Link>
               <Link
+                to="/admin/guide-forge"
+                className="group relative text-base font-medium transition-all duration-300 pb-2 pl-4 block text-[#FF6B6B]/80 hover:text-[#FF6B6B]"
+                onClick={handleClose}
+              >
+                Guide Forge
+              </Link>
+              <Link
                 to="/admin/cta"
                 className="group relative text-base font-medium transition-all duration-300 pb-2 pl-4 block text-[#FF6B6B]/80 hover:text-[#FF6B6B]"
                 onClick={handleClose}

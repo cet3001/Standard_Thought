@@ -122,13 +122,13 @@ export const GuideForm = ({ guide, onClose, onSuccess }: GuideFormProps) => {
   };
 
   return (
-    <Card className="bg-slate-800 border-slate-700">
-      <CardHeader>
+    <Card className="bg-card border-border hover:shadow-lg transition-shadow">
+      <CardHeader className="pb-4">
         <div className="flex justify-between items-center">
-          <CardTitle className="text-brand-cream">
+          <CardTitle className="text-foreground text-xl">
             {guide ? 'Edit Guide' : 'Create New Guide'}
           </CardTitle>
-          <Button variant="ghost" size="sm" onClick={onClose}>
+          <Button variant="ghost" size="sm" onClick={onClose} className="hover:bg-accent">
             <X className="h-4 w-4" />
           </Button>
         </div>
@@ -138,74 +138,74 @@ export const GuideForm = ({ guide, onClose, onSuccess }: GuideFormProps) => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-4">
               <div>
-                <Label htmlFor="title" className="text-brand-cream">Title</Label>
+                <Label htmlFor="title" className="text-foreground font-medium">Title</Label>
                 <Input
                   id="title"
                   {...register('title')}
-                  className="bg-slate-700 border-slate-600 text-brand-cream"
+                  className="bg-background border-border text-foreground mt-2"
                   placeholder="Enter guide title"
                 />
                 {errors.title && (
-                  <p className="text-red-400 text-sm mt-1">{errors.title.message}</p>
+                  <p className="text-destructive text-sm mt-1">{errors.title.message}</p>
                 )}
               </div>
 
               <div>
-                <Label htmlFor="description" className="text-brand-cream">Description</Label>
+                <Label htmlFor="description" className="text-foreground font-medium">Description</Label>
                 <Textarea
                   id="description"
                   {...register('description')}
-                  className="bg-slate-700 border-slate-600 text-brand-cream"
+                  className="bg-background border-border text-foreground mt-2"
                   placeholder="Enter guide description"
                   rows={4}
                 />
                 {errors.description && (
-                  <p className="text-red-400 text-sm mt-1">{errors.description.message}</p>
+                  <p className="text-destructive text-sm mt-1">{errors.description.message}</p>
                 )}
               </div>
 
               <div>
-                <Label htmlFor="price" className="text-brand-cream">Price ($)</Label>
+                <Label htmlFor="price" className="text-foreground font-medium">Price ($)</Label>
                 <Input
                   id="price"
                   type="number"
                   step="0.01"
                   min="0"
                   {...register('price', { valueAsNumber: true })}
-                  className="bg-slate-700 border-slate-600 text-brand-cream"
+                  className="bg-background border-border text-foreground mt-2"
                   placeholder="0.00 for free"
                 />
                 {errors.price && (
-                  <p className="text-red-400 text-sm mt-1">{errors.price.message}</p>
+                  <p className="text-destructive text-sm mt-1">{errors.price.message}</p>
                 )}
               </div>
 
               <div>
-                <Label htmlFor="sort_order" className="text-brand-cream">Sort Order</Label>
+                <Label htmlFor="sort_order" className="text-foreground font-medium">Sort Order</Label>
                 <Input
                   id="sort_order"
                   type="number"
                   min="0"
                   {...register('sort_order', { valueAsNumber: true })}
-                  className="bg-slate-700 border-slate-600 text-brand-cream"
+                  className="bg-background border-border text-foreground mt-2"
                   placeholder="0"
                 />
                 {errors.sort_order && (
-                  <p className="text-red-400 text-sm mt-1">{errors.sort_order.message}</p>
+                  <p className="text-destructive text-sm mt-1">{errors.sort_order.message}</p>
                 )}
               </div>
             </div>
 
             <div className="space-y-4">
               <div>
-                <Label className="text-brand-cream">Key Points/Bullets</Label>
-                <div className="space-y-2">
+                <Label className="text-foreground font-medium">Key Points/Bullets</Label>
+                <div className="space-y-3 mt-2">
                   {bullets.map((bullet, index) => (
                     <div key={index} className="flex gap-2">
                       <Input
                         value={bullet}
                         onChange={(e) => updateBullet(index, e.target.value)}
-                        className="bg-slate-700 border-slate-600 text-brand-cream"
+                        className="bg-background border-border text-foreground"
                         placeholder={`Key point ${index + 1}`}
                       />
                       <Button
@@ -213,7 +213,8 @@ export const GuideForm = ({ guide, onClose, onSuccess }: GuideFormProps) => {
                         variant="outline"
                         size="sm"
                         onClick={() => removeBullet(index)}
-                        className="border-slate-600"
+                        className="hover:bg-destructive/10 hover:text-destructive hover:border-destructive"
+                        title="Remove bullet point"
                       >
                         <Minus className="h-4 w-4" />
                       </Button>
@@ -224,7 +225,7 @@ export const GuideForm = ({ guide, onClose, onSuccess }: GuideFormProps) => {
                     variant="outline"
                     size="sm"
                     onClick={addBullet}
-                    className="border-slate-600"
+                    className="hover:bg-accent"
                   >
                     <Plus className="h-4 w-4 mr-2" />
                     Add Bullet Point
@@ -233,39 +234,39 @@ export const GuideForm = ({ guide, onClose, onSuccess }: GuideFormProps) => {
               </div>
 
               <div>
-                <Label htmlFor="file" className="text-brand-cream">Guide File</Label>
+                <Label htmlFor="file" className="text-foreground font-medium">Guide File</Label>
                 <div className="mt-2">
                   <Input
                     id="file"
                     type="file"
                     onChange={handleFileChange}
-                    className="bg-slate-700 border-slate-600 text-brand-cream"
+                    className="bg-background border-border text-foreground"
                     accept=".pdf,.doc,.docx,.txt"
                   />
                   {guide?.file_name && (
-                    <p className="text-sm text-brand-cream/60 mt-1">
-                      Current file: {guide.file_name}
+                    <p className="text-sm text-muted-foreground mt-2 p-2 bg-muted rounded">
+                      Current file: <span className="font-medium">{guide.file_name}</span>
                     </p>
                   )}
                   {selectedFile && (
-                    <p className="text-sm text-brand-gold mt-1">
-                      New file selected: {selectedFile.name}
+                    <p className="text-sm text-primary mt-2 p-2 bg-primary/10 rounded border border-primary/20">
+                      New file selected: <span className="font-medium">{selectedFile.name}</span>
                     </p>
                   )}
                 </div>
               </div>
 
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center space-x-3 p-3 bg-muted/50 rounded-lg border border-border">
                 <Switch
                   id="is_active"
                   checked={isActive}
                   onCheckedChange={(checked) => setValue('is_active', checked)}
                 />
-                <Label htmlFor="is_active" className="text-brand-cream">
-                  Active
+                <Label htmlFor="is_active" className="text-foreground font-medium cursor-pointer">
+                  Active Status
                   <Badge
                     variant={isActive ? "default" : "secondary"}
-                    className={`ml-2 ${isActive ? "bg-green-600" : "bg-gray-600"}`}
+                    className={`ml-2 ${isActive ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200" : ""}`}
                   >
                     {isActive ? "Visible" : "Hidden"}
                   </Badge>
@@ -274,19 +275,19 @@ export const GuideForm = ({ guide, onClose, onSuccess }: GuideFormProps) => {
             </div>
           </div>
 
-          <div className="flex justify-end gap-4 pt-4 border-t border-slate-700">
+          <div className="flex justify-end gap-4 pt-6 border-t border-border">
             <Button
               type="button"
               variant="outline"
               onClick={onClose}
-              className="border-slate-600"
+              className="hover:bg-accent"
             >
               Cancel
             </Button>
             <Button
               type="submit"
               disabled={isSubmitting || uploading}
-              className="bg-brand-gold text-black hover:bg-brand-gold/90"
+              className="bg-primary text-primary-foreground hover:bg-primary/90"
             >
               {uploading ? (
                 <>

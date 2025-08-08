@@ -139,48 +139,6 @@ const MobileMenu = () => {
                   Admin Dashboard
                 </span>
               </Link>
-              <Link
-                to="/admin/guides"
-                className="group relative text-base font-medium transition-all duration-300 pb-2 pl-4 block text-[#FF6B6B]/80 hover:text-[#FF6B6B]"
-                onClick={handleClose}
-              >
-                Free Guides
-              </Link>
-              <Link
-                to="/admin/paid-guides"
-                className="group relative text-base font-medium transition-all duration-300 pb-2 pl-4 block text-[#FF6B6B]/80 hover:text-[#FF6B6B]"
-                onClick={handleClose}
-              >
-                Paid Guides
-              </Link>
-              <Link
-                to="/admin/guide-forge"
-                className="group relative text-base font-medium transition-all duration-300 pb-2 pl-4 block text-[#FF6B6B]/80 hover:text-[#FF6B6B]"
-                onClick={handleClose}
-              >
-                Guide Forge
-              </Link>
-              <Link
-                to="/admin/cta"
-                className="group relative text-base font-medium transition-all duration-300 pb-2 pl-4 block text-[#FF6B6B]/80 hover:text-[#FF6B6B]"
-                onClick={handleClose}
-              >
-                CTA Management
-              </Link>
-              <Link
-                to="/admin/email"
-                className="group relative text-base font-medium transition-all duration-300 pb-2 pl-4 block text-[#FF6B6B]/80 hover:text-[#FF6B6B]"
-                onClick={handleClose}
-              >
-                Email Campaigns
-              </Link>
-              <Link
-                to="/admin/seo"
-                className="group relative text-base font-medium transition-all duration-300 pb-2 pl-4 block text-[#FF6B6B]/80 hover:text-[#FF6B6B]"
-                onClick={handleClose}
-              >
-                SEO Management
-              </Link>
             </div>
           )}
 

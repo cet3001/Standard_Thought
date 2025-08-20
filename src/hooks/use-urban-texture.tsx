@@ -46,9 +46,12 @@ export const useUrbanTexture = () => {
   };
 
   const selectCuratedUrbanTexture = () => {
+    console.log("Selecting curated urban texture...");
     // Get previously used images to avoid immediate repeats
     const usedImages = JSON.parse(localStorage.getItem('used-urban-textures') || '[]');
+    console.log("Used images:", usedImages);
     let availableImages = URBAN_IMAGES.filter(img => !usedImages.includes(img));
+    console.log("Available images:", availableImages);
     
     // If all images have been used, reset the cycle
     if (availableImages.length === 0) {
@@ -74,6 +77,7 @@ export const useUrbanTexture = () => {
     globalTextureUrl = selectedImage;
     setTextureImageUrl(selectedImage);
     setImageGenerationStatus("success");
+    console.log("Final texture URL set:", selectedImage);
   };
 
   return {

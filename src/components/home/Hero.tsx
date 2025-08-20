@@ -4,12 +4,35 @@ import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
+interface HeroContent {
+  headline: string;
+  subheadline: string;
+  tagline: string;
+  cta_text: string;
+  cta_url: string;
+  image_url: string;
+  image_alt: string;
+}
+
 interface HeroContentProps {
   isVisible: boolean;
   scrollToNewsletter: () => void;
+  content?: HeroContent;
 }
 
-const HeroContent = ({ isVisible, scrollToNewsletter }: HeroContentProps) => {
+const HeroContent = ({ isVisible, scrollToNewsletter, content }: HeroContentProps) => {
+  // Default content fallback to preserve existing behavior
+  const defaultContent: HeroContent = {
+    headline: "Break Cycles. Build Legacy. Define Your Truth.",
+    subheadline: "You weren't handed blueprints. You inherited burdens. Now it's time to flip the script—rebuild identity, stack wealth, and transcend survival thinking.",
+    tagline: "Standard Thought is a digital sanctuary for those reclaiming power and purpose.",
+    cta_text: "📥 Download the Legacy Starter Kit",
+    cta_url: "/download/legacy-starter-kit",
+    image_url: "/lovable-uploads/d8ba41eb-6e6c-44f0-8503-5dfdabe0ad13.png",
+    image_alt: "Three people standing on a rooftop at sunrise, representing vision, unity, and power"
+  };
+
+  const heroContent = content || defaultContent;
   const { isVisible: imageVisible, elementRef: imageRef } = useScrollAnimation();
   return (
     <div className="mb-16 relative">
@@ -21,8 +44,8 @@ const HeroContent = ({ isVisible, scrollToNewsletter }: HeroContentProps) => {
           <div className="order-2 lg:order-1 flex justify-center lg:justify-start">
             <div className="relative overflow-hidden rounded-xl shadow-2xl border-2 border-gray-900 w-full max-w-lg" style={{ borderRadius: '12px' }}>
               <img 
-                src="/lovable-uploads/d8ba41eb-6e6c-44f0-8503-5dfdabe0ad13.png"
-                alt="Three people standing on a rooftop at sunrise, representing vision, unity, and power"
+                src={heroContent.image_url}
+                alt={heroContent.image_alt}
                 className="w-full h-auto object-cover"
                 loading="eager"
                 decoding="async"
@@ -38,17 +61,17 @@ const HeroContent = ({ isVisible, scrollToNewsletter }: HeroContentProps) => {
             
             {/* Main Headline */}
             <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold font-inter leading-[1.1] text-brand-cream">
-              <span style={{ color: 'var(--color-lovable-black)' }}>Break</span> <span className="pearlescent-text">Cycles</span>. <span style={{ color: 'var(--color-lovable-black)' }}>Build</span> <span className="pearlescent-text">Legacy</span>. <span style={{ color: 'var(--color-lovable-black)' }}>Define Your</span> <span className="pearlescent-text">Truth</span>.
+              <span dangerouslySetInnerHTML={{ __html: heroContent.headline }} />
             </h1>
 
             {/* Subheadline */}
             <p className="text-lg md:text-xl lg:text-2xl font-inter font-semibold text-brand-cream leading-[1.4]">
-              You weren't handed blueprints. You inherited burdens. Now it's time to flip the script—rebuild identity, stack wealth, and transcend survival thinking.
+              {heroContent.subheadline}
             </p>
 
             {/* CTA Button */}
             <div className="pt-6 flex justify-center lg:justify-start">
-              <a href="/download/legacy-starter-kit">
+              <a href={heroContent.cta_url}>
                 <Button 
                   size="lg"
                   className="group relative overflow-hidden rounded-xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 border-2 px-10 py-5"
@@ -67,7 +90,7 @@ const HeroContent = ({ isVisible, scrollToNewsletter }: HeroContentProps) => {
                       letterSpacing: '1px'
                     }}
                   >
-                    📥 Download the Legacy Starter Kit
+                    {heroContent.cta_text}
                     <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
                   </span>
                   
@@ -80,7 +103,7 @@ const HeroContent = ({ isVisible, scrollToNewsletter }: HeroContentProps) => {
             {/* Site Tagline */}
             <div className="pt-4">
               <p className="text-sm md:text-base text-brand-cream/80 font-inter">
-                Standard Thought is a digital sanctuary for those reclaiming power and purpose.
+                {heroContent.tagline}
               </p>
             </div>
           </div>

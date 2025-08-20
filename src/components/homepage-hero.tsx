@@ -9,6 +9,7 @@ import BlueprintPillarsSection from "./home/Blueprint";
 import SuccessStoriesSection from "./home/Testimonials";
 import FinalCTASection from "./homepage/final-cta-section";
 import { useUrbanTexture } from "@/hooks/use-urban-texture";
+import { useLandingContent } from "@/hooks/use-landing-content";
 
 interface HomepageHeroProps {
   scrollToNewsletter: () => void;
@@ -18,6 +19,10 @@ const HomepageHero = ({ scrollToNewsletter }: HomepageHeroProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const headerHeight = useHeaderHeight();
   const { textureImageUrl } = useUrbanTexture();
+  
+  // Fetch dynamic content
+  const { content: heroContent } = useLandingContent('hero');
+  const { content: valuePropsContent } = useLandingContent('value_props');
 
   useEffect(() => {
     // Delay visibility to prevent layout shift
@@ -45,7 +50,7 @@ const HomepageHero = ({ scrollToNewsletter }: HomepageHeroProps) => {
         <div className="max-w-6xl mx-auto">
           
           {/* Main Hero Content */}
-          <HeroContent isVisible={isVisible} scrollToNewsletter={scrollToNewsletter} />
+          <HeroContent isVisible={isVisible} scrollToNewsletter={scrollToNewsletter} content={heroContent} />
 
           {/* Built For People Like Us */}
           <BuiltForPeopleLikeUsSection isVisible={isVisible} />
@@ -54,7 +59,7 @@ const HomepageHero = ({ scrollToNewsletter }: HomepageHeroProps) => {
           <TruthBombCarousel isVisible={isVisible} />
 
           {/* Value Props */}
-          <ValuePropsSection isVisible={isVisible} />
+          <ValuePropsSection isVisible={isVisible} content={valuePropsContent} />
 
           {/* Content Pillars */}
           <BlueprintPillarsSection isVisible={isVisible} />

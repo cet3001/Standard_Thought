@@ -5,11 +5,24 @@ import ValuePropsArrow from "./value-props/value-props-arrow";
 import ValuePropsBackground from "./value-props/value-props-background";
 import { valuePropsData } from "./value-props/value-props-data";
 
-interface ValuePropsSectionProps {
-  isVisible: boolean;
+interface ValuePropsContent {
+  headline: string;
+  subheadline: string;
 }
 
-const ValuePropsSection = ({ isVisible }: ValuePropsSectionProps) => {
+interface ValuePropsSectionProps {
+  isVisible: boolean;
+  content?: ValuePropsContent;
+}
+
+const ValuePropsSection = ({ isVisible, content }: ValuePropsSectionProps) => {
+  // Default content fallback to preserve existing behavior
+  const defaultContent: ValuePropsContent = {
+    headline: "The Standard Thought Way",
+    subheadline: "A clear, sequential 4-step system to transform your life."
+  };
+
+  const valuePropsContent = content || defaultContent;
   const { textureImageUrl } = useUrbanTexture();
 
   return (
@@ -20,24 +33,11 @@ const ValuePropsSection = ({ isVisible }: ValuePropsSectionProps) => {
         
         <div className="text-center mb-12 relative z-10">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-6 text-black dark:text-brand-cream leading-tight">
-            <span style={{ color: 'var(--color-lovable-black)' }}>The</span>{' '}
-            <span 
-              className="text-[#FFD700]"
-              style={{
-                background: 'linear-gradient(45deg, #FFD700, #FFF8DC, #FFA500, #FFD700)',
-                backgroundSize: '400% 400%',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                animation: 'shimmer 3s ease-in-out infinite'
-              }}
-            >
-              Standard Thought Way
-            </span>
+            <span dangerouslySetInnerHTML={{ __html: valuePropsContent.headline }} />
           </h2>
           
           <p className="text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto text-black dark:text-brand-cream leading-relaxed px-4">
-            A clear, sequential 4-step system to transform your life.
+            {valuePropsContent.subheadline}
           </p>
         </div>
 

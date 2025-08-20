@@ -20,9 +20,9 @@ const HomepageHero = ({ scrollToNewsletter }: HomepageHeroProps) => {
   const headerHeight = useHeaderHeight();
   const { textureImageUrl } = useUrbanTexture();
   
-  // Fetch dynamic content
-  const { content: heroContent } = useLandingContent('hero');
-  const { content: valuePropsContent } = useLandingContent('value_props');
+  // Remove dynamic content for now - keeping infrastructure but using defaults
+  // const { content: heroContent } = useLandingContent('hero');
+  // const { content: valuePropsContent } = useLandingContent('value_props');
 
   useEffect(() => {
     // Delay visibility to prevent layout shift
@@ -59,7 +59,7 @@ const HomepageHero = ({ scrollToNewsletter }: HomepageHeroProps) => {
           <TruthBombCarousel isVisible={isVisible} />
 
           {/* Value Props */}
-          <ValuePropsSection isVisible={isVisible} content={valuePropsContent} />
+          <ValuePropsSection isVisible={isVisible} />
 
           {/* Content Pillars */}
           <BlueprintPillarsSection isVisible={isVisible} />

@@ -74,7 +74,7 @@ const AdminGuides = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen">
       <SEO 
         title="Guides Management | Admin | Standardthought"
         description="Manage your guides, pricing, content, and CTA connections."

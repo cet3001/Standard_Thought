@@ -119,11 +119,6 @@ const Index = () => {
             />
           )}
           
-          {/* Background gradient overlay - reduced opacity */}
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-800/30 via-slate-700/40 to-slate-900/30"></div>
-          
-          {/* Content overlay for text readability - reduced opacity */}
-          <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/50 via-brand-cream/60 to-brand-cream/50 dark:from-brand-black/50 dark:via-brand-black/60 dark:to-brand-black/50"></div>
         </div>
 
         {/* Enhanced Dynamic SEO */}

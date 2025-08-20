@@ -56,12 +56,10 @@ function AppContent() {
   useAnalyticsTracking(); // Initialize and track page views
   
   return (
-    <>
-      {/* Temporarily disable these to find the source of the overlay */}
-      {/* <PerformanceOptimizer /> */}
-      {/* <PrerenderOptimizer /> */}
-      {/* <LighthouseAuditor /> */}
-      
+    <div className="min-h-screen">
+      <PerformanceOptimizer />
+      <PrerenderOptimizer />
+      <LighthouseAuditor />
       <Toaster />
       <Suspense fallback={<Loading />}>
         <Routes>
@@ -91,7 +89,7 @@ function AppContent() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
-    </>
+    </div>
   );
 }
 

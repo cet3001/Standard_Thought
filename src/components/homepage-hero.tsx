@@ -9,7 +9,6 @@ import BlueprintPillarsSection from "./home/Blueprint";
 import SuccessStoriesSection from "./home/Testimonials";
 import FinalCTASection from "./homepage/final-cta-section";
 import { useUrbanTexture } from "@/hooks/use-urban-texture";
-import { useLandingContent } from "@/hooks/use-landing-content";
 
 interface HomepageHeroProps {
   scrollToNewsletter: () => void;
@@ -19,10 +18,6 @@ const HomepageHero = ({ scrollToNewsletter }: HomepageHeroProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const headerHeight = useHeaderHeight();
   const { textureImageUrl } = useUrbanTexture();
-  
-  // Remove dynamic content for now - keeping infrastructure but using defaults
-  // const { content: heroContent } = useLandingContent('hero');
-  // const { content: valuePropsContent } = useLandingContent('value_props');
 
   useEffect(() => {
     // Delay visibility to prevent layout shift

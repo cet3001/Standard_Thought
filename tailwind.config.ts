@@ -1,8 +1,8 @@
 
 import type { Config } from "tailwindcss";
-import colors from "./src/styles/tailwind/colors";
-import fontFamily from "./src/styles/tailwind/fonts";
-import fontSize from "./src/styles/tailwind/fontSize";
+import { colors } from "./src/styles/tailwind/colors";
+import { fonts } from "./src/styles/tailwind/fonts";
+import { fontSize } from "./src/styles/tailwind/fontSize";
 import { letterSpacing } from "./src/styles/tailwind/letterSpacing";
 import { borderRadius } from "./src/styles/tailwind/borderRadius";
 import animations from "./src/styles/tailwind/animations";
@@ -50,27 +50,10 @@ const config: Config = {
       },
     },
     extend: {
-      colors: {
-        ...colors,
-        // Standard Thought brand colors
-        st_black: '#0A0A0A',
-        st_white: '#F5F5F5', 
-        st_accent: '#FF003D',
-        // Override primary/destructive with brand colors
-        primary: {
-          DEFAULT: '#0A0A0A',
-          foreground: '#F5F5F5',
-        },
-        destructive: {
-          DEFAULT: '#FF003D',
-          foreground: '#F5F5F5',
-        },
-      },
+      colors,
       fontFamily: {
-        ...fontFamily,
+        ...fonts,
         'handwritten': ['Kalam', 'cursive'],
-        sans: ['Inter', 'sans-serif'],
-        display: ['IBM Plex Sans', 'sans-serif'],
       },
       fontSize,
       letterSpacing,

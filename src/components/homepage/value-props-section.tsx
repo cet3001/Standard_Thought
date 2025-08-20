@@ -5,24 +5,11 @@ import ValuePropsArrow from "./value-props/value-props-arrow";
 import ValuePropsBackground from "./value-props/value-props-background";
 import { valuePropsData } from "./value-props/value-props-data";
 
-interface ValuePropsContent {
-  headline: string;
-  subheadline: string;
-}
-
 interface ValuePropsSectionProps {
   isVisible: boolean;
-  content?: ValuePropsContent;
 }
 
-const ValuePropsSection = ({ isVisible, content }: ValuePropsSectionProps) => {
-  // Default content fallback to preserve existing behavior
-  const defaultContent: ValuePropsContent = {
-    headline: "The Standard Thought Way",
-    subheadline: "A clear, sequential 4-step system to transform your life."
-  };
-
-  const valuePropsContent = content || defaultContent;
+const ValuePropsSection = ({ isVisible }: ValuePropsSectionProps) => {
   const { textureImageUrl } = useUrbanTexture();
 
   return (

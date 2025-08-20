@@ -4,12 +4,27 @@ import ValuePropCard from "./value-props/value-prop-card";
 import ValuePropsArrow from "./value-props/value-props-arrow";
 import ValuePropsBackground from "./value-props/value-props-background";
 import { valuePropsData } from "./value-props/value-props-data";
+import { Target, RefreshCw, TrendingUp, Rocket } from "lucide-react";
+
+interface ValuePropData {
+  title: string;
+  description: string;
+  highlight: string;
+}
 
 interface ValuePropsSectionProps {
   isVisible: boolean;
+  title?: string;
+  subtitle?: string;
+  props?: ValuePropData[];
 }
 
-const ValuePropsSection = ({ isVisible }: ValuePropsSectionProps) => {
+const ValuePropsSection = ({ 
+  isVisible,
+  title = "THE BLUEPRINT",
+  subtitle = "Four pillars that rebuild everything",
+  props = valuePropsData
+}: ValuePropsSectionProps) => {
   const { textureImageUrl } = useUrbanTexture();
 
   return (
@@ -20,33 +35,26 @@ const ValuePropsSection = ({ isVisible }: ValuePropsSectionProps) => {
         
         <div className="text-center mb-12 relative z-10">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-6 text-black dark:text-brand-cream leading-tight">
-            <span style={{ color: 'var(--color-lovable-black)' }}>The</span>{' '}
-            <span 
-              className="text-[#FFD700]"
-              style={{
-                background: 'linear-gradient(45deg, #FFD700, #FFF8DC, #FFA500, #FFD700)',
-                backgroundSize: '400% 400%',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                animation: 'shimmer 3s ease-in-out infinite'
-              }}
-            >
-              Standard Thought Way
-            </span>
+            {title}
           </h2>
           
           <p className="text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto text-black dark:text-brand-cream leading-relaxed px-4">
-            A clear, sequential 4-step system to transform your life.
+            {subtitle}
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12 relative z-10">
-          {valuePropsData.map((prop, index) => (
-            <div key={index} className="relative">
-              <ValuePropCard {...prop} />
-            </div>
-          ))}
+          {props.map((prop, index) => {
+            // Map icons to the value props
+            const icons = [Target, RefreshCw, TrendingUp, Rocket];
+            const IconComponent = icons[index % icons.length];
+            
+            return (
+              <div key={index} className="relative">
+                <ValuePropCard {...prop} icon={IconComponent} />
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

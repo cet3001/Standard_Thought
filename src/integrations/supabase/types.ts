@@ -291,6 +291,33 @@ export type Database = {
         }
         Relationships: []
       }
+      landing_page_content: {
+        Row: {
+          content: Json
+          created_at: string
+          id: string
+          is_active: boolean
+          section_name: string
+          updated_at: string
+        }
+        Insert: {
+          content: Json
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          section_name: string
+          updated_at?: string
+        }
+        Update: {
+          content?: Json
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          section_name?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       paid_guides: {
         Row: {
           active: boolean | null

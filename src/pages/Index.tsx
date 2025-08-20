@@ -20,6 +20,7 @@ import SemanticContentEnhancer from "@/components/seo/semantic-content-enhancer"
 import { useMobilePerformance } from "@/hooks/use-mobile-performance";
 import { useAuth } from "@/contexts/AuthContext";
 import { useUrbanTexture } from "@/hooks/use-urban-texture";
+import { useAllLandingContent } from "@/hooks/use-landing-content";
 import PerformanceOptimizer from "@/components/performance/performance-optimizer";
 import PerformanceTester from "@/components/performance/performance-tester";
 import MobilePerformanceGuide from "@/components/performance/mobile-performance-guide";
@@ -39,6 +40,7 @@ const Index = () => {
     useMobilePerformance();
     const { isAdmin } = useAuth();
     const { textureImageUrl } = useUrbanTexture();
+    const { contentMap, loading: contentLoading } = useAllLandingContent();
 
     console.log('Index.tsx: Hooks initialized successfully');
 
@@ -179,7 +181,12 @@ const Index = () => {
         {/* Main Content */}
         <main className="relative z-10">
           {/* Hero Section */}
-          <HomepageHero scrollToNewsletter={scrollToNewsletter} />
+          <HomepageHero 
+            scrollToNewsletter={scrollToNewsletter}
+            heroContent={contentMap.hero}
+            valuePropsContent={contentMap.value_props}
+            socialProofContent={contentMap.social_proof}
+          />
 
           {/* Newsletter */}
           <NewsletterSection />

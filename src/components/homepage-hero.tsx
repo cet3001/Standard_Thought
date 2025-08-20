@@ -12,9 +12,12 @@ import { useUrbanTexture } from "@/hooks/use-urban-texture";
 
 interface HomepageHeroProps {
   scrollToNewsletter: () => void;
+  heroContent?: any;
+  valuePropsContent?: any;
+  socialProofContent?: any;
 }
 
-const HomepageHero = ({ scrollToNewsletter }: HomepageHeroProps) => {
+const HomepageHero = ({ scrollToNewsletter, heroContent, valuePropsContent, socialProofContent }: HomepageHeroProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const headerHeight = useHeaderHeight();
   const { textureImageUrl } = useUrbanTexture();
@@ -45,7 +48,14 @@ const HomepageHero = ({ scrollToNewsletter }: HomepageHeroProps) => {
         <div className="max-w-6xl mx-auto">
           
           {/* Main Hero Content */}
-          <HeroContent isVisible={isVisible} scrollToNewsletter={scrollToNewsletter} />
+          <HeroContent 
+            isVisible={isVisible} 
+            scrollToNewsletter={scrollToNewsletter}
+            headline={heroContent?.headline}
+            subheadline={heroContent?.subheadline}
+            ctaText={heroContent?.ctaText}
+            ctaUrl={heroContent?.ctaUrl}
+          />
 
           {/* Built For People Like Us */}
           <BuiltForPeopleLikeUsSection isVisible={isVisible} />
@@ -54,7 +64,12 @@ const HomepageHero = ({ scrollToNewsletter }: HomepageHeroProps) => {
           <TruthBombCarousel isVisible={isVisible} />
 
           {/* Value Props */}
-          <ValuePropsSection isVisible={isVisible} />
+          <ValuePropsSection 
+            isVisible={isVisible}
+            title={valuePropsContent?.title}
+            subtitle={valuePropsContent?.subtitle}
+            props={valuePropsContent?.props}
+          />
 
           {/* Content Pillars */}
           <BlueprintPillarsSection isVisible={isVisible} />

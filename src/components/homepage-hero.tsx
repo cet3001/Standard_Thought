@@ -50,7 +50,7 @@ const HomepageHero = ({ scrollToNewsletter }: HomepageHeroProps) => {
         <div className="max-w-6xl mx-auto">
           
           {/* Main Hero Content */}
-          <HeroContent isVisible={isVisible} scrollToNewsletter={scrollToNewsletter} content={heroContent} />
+          <HeroContent isVisible={isVisible} scrollToNewsletter={scrollToNewsletter} />
 
           {/* Built For People Like Us */}
           <BuiltForPeopleLikeUsSection isVisible={isVisible} />

@@ -57,9 +57,11 @@ function AppContent() {
   
   return (
     <>
-      <PerformanceOptimizer />
-      <PrerenderOptimizer />
-      <LighthouseAuditor />
+      {/* Temporarily disable these to find the source of the overlay */}
+      {/* <PerformanceOptimizer /> */}
+      {/* <PrerenderOptimizer /> */}
+      {/* <LighthouseAuditor /> */}
+      
       <Toaster />
       <Suspense fallback={<Loading />}>
         <Routes>

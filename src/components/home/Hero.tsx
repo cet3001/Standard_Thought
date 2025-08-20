@@ -7,20 +7,9 @@ import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 interface HeroContentProps {
   isVisible: boolean;
   scrollToNewsletter: () => void;
-  headline?: string;
-  subheadline?: string;
-  ctaText?: string;
-  ctaUrl?: string;
 }
 
-const HeroContent = ({ 
-  isVisible, 
-  scrollToNewsletter,
-  headline = null,
-  subheadline = null,
-  ctaText = "📥 Download the Legacy Starter Kit",
-  ctaUrl = "/download/legacy-starter-kit"
-}: HeroContentProps) => {
+const HeroContent = ({ isVisible, scrollToNewsletter }: HeroContentProps) => {
   const { isVisible: imageVisible, elementRef: imageRef } = useScrollAnimation();
   return (
     <div className="mb-16 relative">
@@ -49,21 +38,17 @@ const HeroContent = ({
             
             {/* Main Headline */}
             <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold font-inter leading-[1.1] text-brand-cream">
-              {headline || (
-                <>
-                  <span style={{ color: 'var(--color-lovable-black)' }}>Break</span> <span className="pearlescent-text">Cycles</span>. <span style={{ color: 'var(--color-lovable-black)' }}>Build</span> <span className="pearlescent-text">Legacy</span>. <span style={{ color: 'var(--color-lovable-black)' }}>Define Your</span> <span className="pearlescent-text">Truth</span>.
-                </>
-              )}
+              <span style={{ color: 'var(--color-lovable-black)' }}>Break</span> <span className="pearlescent-text">Cycles</span>. <span style={{ color: 'var(--color-lovable-black)' }}>Build</span> <span className="pearlescent-text">Legacy</span>. <span style={{ color: 'var(--color-lovable-black)' }}>Define Your</span> <span className="pearlescent-text">Truth</span>.
             </h1>
 
             {/* Subheadline */}
             <p className="text-lg md:text-xl lg:text-2xl font-inter font-semibold text-brand-cream leading-[1.4]">
-              {subheadline || "You weren't handed blueprints. You inherited burdens. Now it's time to flip the script—rebuild identity, stack wealth, and transcend survival thinking."}
+              You weren't handed blueprints. You inherited burdens. Now it's time to flip the script—rebuild identity, stack wealth, and transcend survival thinking.
             </p>
 
             {/* CTA Button */}
             <div className="pt-6 flex justify-center lg:justify-start">
-              <a href={ctaUrl}>
+              <a href="/download/legacy-starter-kit">
                 <Button 
                   size="lg"
                   className="group relative overflow-hidden rounded-xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 border-2 px-10 py-5"
@@ -82,7 +67,7 @@ const HeroContent = ({
                       letterSpacing: '1px'
                     }}
                   >
-                    {ctaText}
+                    📥 Download the Legacy Starter Kit
                     <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
                   </span>
                   

@@ -56,7 +56,7 @@ function AppContent() {
   useAnalyticsTracking(); // Initialize and track page views
   
   return (
-    <div className="min-h-screen">
+    <>
       <PerformanceOptimizer />
       <PrerenderOptimizer />
       <LighthouseAuditor />
@@ -89,7 +89,7 @@ function AppContent() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
-    </div>
+    </>
   );
 }
 

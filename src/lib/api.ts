@@ -293,7 +293,7 @@ export const getComments = async (blogPostId: string) => {
     console.log('Fetching comments for post:', blogPostId);
     const { data, error } = await supabase
       .from('comments')
-      .select('*')
+      .select('id, blog_post_id, author_name, content, created_at, approved')
       .eq('blog_post_id', blogPostId)
       .eq('approved', true)
       .order('created_at', { ascending: false });

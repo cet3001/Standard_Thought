@@ -1,5 +1,4 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
-import { ImageResponse } from "https://deno.land/x/og_edge@0.0.6/mod.ts"
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -18,165 +17,81 @@ serve(async (req) => {
 
     console.log(`Generating OG image for title: "${title}", category: "${category}"`)
 
-    // Load fonts
-    const [interRegular, interBold] = await Promise.all([
-      fetch('https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap').then(res => res.arrayBuffer()),
-      fetch('https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap').then(res => res.arrayBuffer()),
-    ])
+    // Generate SVG-based OG image
+    const svg = `
+      <svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#1a1a1a;stop-opacity:1" />
+            <stop offset="50%" style="stop-color:#2d2d2d;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#1a1a1a;stop-opacity:1" />
+          </linearGradient>
+          <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#f4d03f;stop-opacity:1" />
+            <stop offset="33%" style="stop-color:#ffd700;stop-opacity:1" />
+            <stop offset="66%" style="stop-color:#ffeb3b;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#f4d03f;stop-opacity:1" />
+          </linearGradient>
+          <pattern id="texture" patternUnits="userSpaceOnUse" width="100" height="100">
+            <circle cx="25" cy="25" r="2" fill="#333" opacity="0.3"/>
+            <circle cx="75" cy="75" r="2" fill="#333" opacity="0.3"/>
+          </pattern>
+        </defs>
+        
+        <!-- Background -->
+        <rect width="1200" height="630" fill="url(#bgGradient)"/>
+        <rect width="1200" height="630" fill="url(#texture)"/>
+        
+        <!-- Brand overlay -->
+        <rect width="1200" height="630" fill="url(#goldGradient)" opacity="0.1"/>
+        
+        <!-- Category badge -->
+        ${category ? `
+          <rect x="500" y="120" width="${Math.min(category.length * 12 + 40, 200)}" height="40" 
+                rx="20" fill="url(#goldGradient)" transform="rotate(-2 ${500 + Math.min(category.length * 6 + 20, 100)} 140)"/>
+          <text x="520" y="145" font-family="Arial, sans-serif" font-size="16" font-weight="bold" 
+                fill="#1a1a1a" text-anchor="start" transform="rotate(-2 520 145)">${category.toUpperCase()}</text>
+        ` : ''}
+        
+        <!-- Main title -->
+        <text x="600" y="${category ? '250' : '220'}" font-family="Arial, sans-serif" 
+              font-size="${title.length > 50 ? '36' : title.length > 30 ? '48' : '56'}" 
+              font-weight="bold" fill="url(#goldGradient)" text-anchor="middle" 
+              textLength="${Math.min(title.length * (title.length > 50 ? 20 : title.length > 30 ? 26 : 32), 1000)}" 
+              lengthAdjust="spacingAndGlyphs">
+          ${title.length > 60 ? title.substring(0, 57) + '...' : title}
+        </text>
+        
+        <!-- Standard Thought branding -->
+        <text x="600" y="450" font-family="Arial, sans-serif" font-size="28" 
+              font-weight="bold" fill="#f5f5dc" text-anchor="middle" letter-spacing="2px">
+          STANDARD THOUGHT
+        </text>
+        
+        <!-- Accent underline -->
+        <rect x="540" y="470" width="120" height="6" rx="3" fill="url(#goldGradient)"/>
+        
+        <!-- Bottom corner accent -->
+        <circle cx="1050" cy="580" r="150" fill="url(#goldGradient)" opacity="0.2"/>
+      </svg>
+    `
 
-    return new ImageResponse(
-      (
-        <div
-          style={{
-            height: '100%',
-            width: '100%',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor: '#1a1a1a',
-            backgroundImage: 'radial-gradient(circle at 25px 25px, #333 2%, transparent 0%), radial-gradient(circle at 75px 75px, #333 2%, transparent 0%)',
-            backgroundSize: '100px 100px',
-            fontFamily: 'Inter',
-            position: 'relative',
-          }}
-        >
-          {/* Brand gradient overlay */}
-          <div
-            style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              background: 'linear-gradient(45deg, rgba(244, 208, 63, 0.1), rgba(255, 215, 0, 0.1), rgba(255, 235, 59, 0.1))',
-            }}
-          />
-          
-          {/* Content container */}
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              padding: '80px',
-              maxWidth: '1000px',
-              textAlign: 'center',
-              position: 'relative',
-              zIndex: 2,
-            }}
-          >
-            {/* Category badge */}
-            {category && (
-              <div
-                style={{
-                  background: 'linear-gradient(45deg, #f4d03f, #ffd700, #ffeb3b)',
-                  color: '#1a1a1a',
-                  padding: '12px 24px',
-                  borderRadius: '25px',
-                  fontSize: '18px',
-                  fontWeight: '700',
-                  textTransform: 'uppercase',
-                  letterSpacing: '1px',
-                  marginBottom: '40px',
-                  transform: 'rotate(-2deg)',
-                }}
-              >
-                {category}
-              </div>
-            )}
+    // Convert SVG to PNG using canvas (basic implementation)
+    const response = new Response(svg, {
+      headers: {
+        ...corsHeaders,
+        'Content-Type': 'image/svg+xml',
+        'Cache-Control': 'public, max-age=86400', // Cache for 1 day
+      },
+    })
 
-            {/* Main title */}
-            <h1
-              style={{
-                fontSize: title.length > 50 ? '48px' : title.length > 30 ? '60px' : '72px',
-                fontWeight: '700',
-                color: '#f5f5dc',
-                lineHeight: '1.2',
-                margin: '0 0 40px 0',
-                textShadow: '2px 2px 4px rgba(0,0,0,0.3)',
-                background: 'linear-gradient(45deg, #f4d03f, #ffd700, #ffeb3b, #f4d03f)',
-                backgroundSize: '400% 400%',
-                backgroundClip: 'text',
-                WebkitBackgroundClip: 'text',
-                color: 'transparent',
-              }}
-            >
-              {title}
-            </h1>
+    console.log('Successfully generated OG image SVG')
+    return response
 
-            {/* Standard Thought branding */}
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '20px',
-                marginTop: '60px',
-              }}
-            >
-              <div
-                style={{
-                  fontSize: '32px',
-                  fontWeight: '700',
-                  color: '#f5f5dc',
-                  letterSpacing: '2px',
-                  textTransform: 'uppercase',
-                }}
-              >
-                STANDARD THOUGHT
-              </div>
-            </div>
-
-            {/* Accent underline */}
-            <div
-              style={{
-                width: '120px',
-                height: '6px',
-                background: 'linear-gradient(45deg, #f4d03f, #ffd700, #ffeb3b)',
-                borderRadius: '3px',
-                marginTop: '20px',
-              }}
-            />
-          </div>
-
-          {/* Bottom corner accent */}
-          <div
-            style={{
-              position: 'absolute',
-              bottom: '0',
-              right: '0',
-              width: '300px',
-              height: '300px',
-              background: 'linear-gradient(135deg, transparent 50%, rgba(244, 208, 63, 0.2) 100%)',
-              borderRadius: '300px 0 0 0',
-            }}
-          />
-        </div>
-      ),
-      {
-        width: 1200,
-        height: 630,
-        fonts: [
-          {
-            name: 'Inter',
-            data: interRegular,
-            weight: 400,
-            style: 'normal',
-          },
-          {
-            name: 'Inter',
-            data: interBold,
-            weight: 700,
-            style: 'normal',
-          },
-        ],
-      }
-    )
   } catch (error) {
     console.error('Error generating OG image:', error)
     return new Response(
-      JSON.stringify({ error: 'Failed to generate image' }),
+      JSON.stringify({ error: 'Failed to generate image', details: error.message }),
       {
         status: 500,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },

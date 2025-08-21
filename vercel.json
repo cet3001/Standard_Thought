@@ -48,5 +48,31 @@
         }
       ]
     }
-  ]
+  ],
+  "functions": {
+    "app/api/**/*.ts": {
+      "maxDuration": 30
+    }
+  },
+  "botProtection": {
+    "enabled": true,
+    "allowedBots": [
+      "Googlebot",
+      "Bingbot", 
+      "Slurp",
+      "DuckDuckBot",
+      "Baiduspider",
+      "YandexBot",
+      "facebookexternalhit",
+      "Twitterbot",
+      "LinkedInBot",
+      "WhatsApp",
+      "Applebot",
+      "ia_archiver",
+      "SemrushBot",
+      "AhrefsBot",
+      "MJ12bot",
+      "DotBot"
+    ]
+  }
 }

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { SectionOverlayBox } from "@/components/layout";
 import {
@@ -8,7 +8,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
 
 interface BlogTestimonialsProps {
   isVisible: boolean;
@@ -72,11 +71,6 @@ const getBadgeColors = (category: string) => {
 const BlogTestimonials = ({ isVisible }: BlogTestimonialsProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const autoplay = Autoplay({
-    delay: 6000,
-    stopOnInteraction: true,
-  });
-
   return (
     <SectionOverlayBox className={`mb-24 transition-all duration-700 delay-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
       {/* Background Visual Element */}
@@ -114,7 +108,6 @@ const BlogTestimonials = ({ isVisible }: BlogTestimonialsProps) => {
       {/* Testimonial Carousel */}
       <div className="relative z-20 mb-12 pt-4">
         <Carousel
-          plugins={[autoplay]}
           className="w-full max-w-6xl mx-auto"
           opts={{
             align: "start",

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
-import Autoplay from 'embla-carousel-autoplay';
 
 interface Testimonial {
   id: number;
@@ -45,10 +44,6 @@ const testimonials: Testimonial[] = [
 const TestimonialCarousel = () => {
   const [api, setApi] = useState<any>();
 
-  const autoplayPlugin = React.useRef(
-    Autoplay({ delay: 7000, stopOnInteraction: true })
-  );
-
   return (
     <div className="relative">
       <Carousel
@@ -57,7 +52,6 @@ const TestimonialCarousel = () => {
           align: "start",
           loop: true,
         }}
-        plugins={[autoplayPlugin.current]}
         className="w-full"
       >
         <CarouselContent className="-ml-2 md:-ml-4">

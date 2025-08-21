@@ -55,11 +55,11 @@ const config: Config = {
         st_black: '#0D0D0D',
         st_white: '#F2F2F2',
         st_accent: '#FEEA00',
-        background: 'var(--st_black)',
-        foreground: 'var(--st_white)',
+        background: '#0D0D0D',
+        foreground: '#F2F2F2',
         primary: {
-          DEFAULT: 'var(--st_accent)',
-          foreground: 'var(--st_black)',
+          DEFAULT: '#FEEA00',
+          foreground: '#0D0D0D',
         },
       },
       fontFamily: {

@@ -6,6 +6,7 @@ import { Clock, Edit, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 import { BlogFilters, BlogCategory, BlogTag, SortOption, FILTER_CATEGORIES } from "@/components/blog/BlogFilters";
 import { SectionOverlayBox } from "@/components/layout";
+import { OptimizedImage } from "@/components/shared/OptimizedImage";
 
 interface BlogGridProps {
   isVisible: boolean;
@@ -278,16 +279,19 @@ const BlogGrid = ({ isVisible }: BlogGridProps) => {
                        </div>
                      </div>
 
-                     {/* Image */}
-                     {post.image_url && (
-                       <div className="relative h-48 overflow-hidden">
-                         <img
-                           src={post.image_url}
-                           alt={post.title}
-                           className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
-                         />
-                         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-                       </div>
+                      {/* Image */}
+                      {post.image_url && (
+                        <div className="relative h-48 overflow-hidden">
+                          <OptimizedImage
+                            src={post.image_url}
+                            alt={post.title}
+                            className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                            width={400}
+                            height={192}
+                            loading="lazy"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                        </div>
                      )}
                      
                      {/* NEW Category Ribbon */}

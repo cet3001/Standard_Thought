@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { getBlogPosts, BlogPost } from "@/lib/api";
 import { Clock, Tag, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { OptimizedImage } from "@/components/shared/OptimizedImage";
 
 interface FeaturedBlogSectionProps {
   isVisible: boolean;
@@ -153,10 +154,13 @@ const FeaturedBlogSection = ({ isVisible }: FeaturedBlogSectionProps) => {
                   {/* Featured image or placeholder */}
                   <div className="relative h-48 bg-gradient-to-br from-gray-400/20 to-gray-600/20 dark:from-gray-600/20 dark:to-gray-800/20 overflow-hidden">
                     {post.image_url ? (
-                      <img
+                      <OptimizedImage
                         src={post.image_url}
                         alt={post.title}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-90"
+                        width={400}
+                        height={192}
+                        loading="lazy"
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center">

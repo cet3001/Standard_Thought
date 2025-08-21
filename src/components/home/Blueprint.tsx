@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { useStaggeredAnimation } from "@/hooks/use-scroll-animation";
+import { OptimizedImage } from "@/components/shared/OptimizedImage";
 
 interface BlueprintPillarsSectionProps {
   isVisible: boolean;
@@ -86,12 +87,13 @@ const BlueprintPillarsSection = ({ isVisible }: BlueprintPillarsSectionProps) =>
                 {/* Card Image */}
                 <div className="flex justify-center mb-6 relative z-10">
                   <div className="relative overflow-hidden w-20 h-20 md:w-24 md:h-24 border-2 border-white/20 dark:border-black/20 rounded-full group-hover:border-yellow-300/40 transition-all duration-300">
-                    <img 
+                    <OptimizedImage 
                       src={card.image}
                       alt={card.alt}
                       className="w-full h-full object-cover"
+                      width={96}
+                      height={96}
                       loading="lazy"
-                      decoding="async"
                     />
                     {/* Subtle overlay with yellow tint on hover */}
                     <div className="absolute inset-0 bg-gradient-to-tr from-black/10 via-transparent to-yellow-200/10 opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>

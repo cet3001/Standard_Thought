@@ -1,8 +1,8 @@
 
-import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import { OptimizedImage } from "@/components/shared/OptimizedImage";
 
 interface HeroProps {
   headline: string;
@@ -25,14 +25,14 @@ const HeroContent = ({ isVisible, scrollToNewsletter, heroContent }: HeroContent
           
           {/* Hero Image - Left Side */}
           <div className="order-2 lg:order-1 flex justify-center lg:justify-start">
-            <div className="relative overflow-hidden rounded-xl shadow-2xl border-2 border-gray-900 w-full max-w-lg" style={{ borderRadius: '12px' }}>
-              <img 
+            <div className="relative overflow-hidden rounded-xl shadow-2xl border-2 border-gray-900 w-full max-w-lg" style={{ borderRadius: '12px', aspectRatio: '4/3' }}>
+              <OptimizedImage 
                 src="/lovable-uploads/d8ba41eb-6e6c-44f0-8503-5dfdabe0ad13.png"
                 alt="Three people standing on a rooftop at sunrise, representing vision, unity, and power"
-                className="w-full h-auto object-cover"
-                loading="eager"
-                decoding="async"
-                style={{ aspectRatio: '4/3', objectFit: 'cover' }}
+                className="w-full h-full object-cover"
+                width={500}
+                height={375}
+                priority={true}
               />
               {/* Moody overlay for depth */}
               <div className="absolute inset-0 bg-gradient-to-tr from-black/15 via-transparent to-transparent"></div>

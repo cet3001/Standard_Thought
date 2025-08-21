@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Loader2, Download, Copy, Wand2 } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
+import { OptimizedImage } from "@/components/shared/OptimizedImage";
 
 const ImageGenerator = () => {
   const [prompt, setPrompt] = useState('');
@@ -116,10 +117,13 @@ const ImageGenerator = () => {
           {result && (
             <div className="space-y-4">
               <div className="relative group">
-                <img
+                <OptimizedImage
                   src={result.imageUrl}
                   alt="Generated image"
                   className="w-full rounded-lg shadow-lg"
+                  width={512}
+                  height={512}
+                  loading="lazy"
                 />
                 <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                   <Button

@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 
+import { OptimizedImage } from "@/components/shared/OptimizedImage";
+
 interface BuiltForPeopleLikeUsSectionProps {
   isVisible: boolean;
 }
@@ -52,13 +54,14 @@ const BuiltForPeopleLikeUsSection = ({ isVisible }: BuiltForPeopleLikeUsSectionP
                 
                 {/* Profile Image */}
                 <div className="flex justify-center mb-6 relative z-10">
-                  <div className="relative overflow-hidden w-24 h-24 md:w-32 md:h-32 border-2 border-white/20 dark:border-black/20 group-hover:border-yellow-300/30 transition-all duration-300" style={{ borderRadius: '12px', aspectRatio: '1/1' }}>
-                    <img 
+                  <div className="relative overflow-hidden w-24 h-24 md:w-32 md:h-32 border-2 border-white/20 dark:border-black/20 group-hover:border-yellow-300/30 transition-all duration-300" style={{ borderRadius: '12px' }}>
+                    <OptimizedImage 
                       src={profile.image}
                       alt={profile.alt}
                       className="w-full h-full object-cover"
+                      width={128}
+                      height={128}
                       loading="lazy"
-                      decoding="async"
                     />
                     {/* Enhanced overlay with yellow tint */}
                     <div className="absolute inset-0 bg-gradient-to-tr from-black/10 via-transparent to-yellow-200/10 opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>

@@ -1,3 +1,5 @@
+import { OptimizedImage } from "@/components/shared/OptimizedImage";
+
 interface BlogHeroProps {
   isVisible: boolean;
 }
@@ -12,11 +14,12 @@ const BlogHero = ({ isVisible }: BlogHeroProps) => {
           {/* Image Column */}
           <div className="order-1 lg:order-2">
             <div className="relative w-full">
-              <img
+              <OptimizedImage
                 src="/lovable-uploads/3eb56c35-ead3-4041-bf85-1b724fad9ea7.png"
                 alt="Young Black man in a hoodie writing in a notebook against a graffiti-covered wall at night, with city lights blurred in the distance"
                 className="w-full h-auto object-cover object-top rounded-lg"
-                style={{ aspectRatio: '4/5' }}
+                width={400}
+                height={500}
               />
             </div>
           </div>

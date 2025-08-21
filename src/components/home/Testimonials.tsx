@@ -1,6 +1,7 @@
 
 import { Card, CardContent } from "@/components/ui/card";
 import { useStaggeredAnimation } from "@/hooks/use-scroll-animation";
+import { OptimizedImage } from "@/components/shared/OptimizedImage";
 
 interface Testimonial {
   name: string;
@@ -70,11 +71,13 @@ const SuccessStoriesSection = ({ isVisible }: SuccessStoriesSectionProps) => {
             <CardContent className="p-6">
               {/* Avatar */}
               <div className="flex items-center mb-4">
-                <div className="w-16 h-16 rounded-full overflow-hidden mr-4 shadow-lg border-2 border-white/30">
-                  <img
+                <div className="relative w-16 h-16 rounded-full overflow-hidden mr-4 shadow-lg border-2 border-white/30">
+                  <OptimizedImage
                     src={testimonial.avatarImageUrl}
                     alt={`${testimonial.name} avatar`}
                     className="w-full h-full object-cover"
+                    width={64}
+                    height={64}
                     loading="lazy"
                   />
                 </div>

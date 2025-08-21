@@ -2,6 +2,8 @@
 import { Users, TrendingUp, CheckCircle } from "lucide-react";
 import { useState, useEffect } from "react";
 
+import { OptimizedImage } from "@/components/shared/OptimizedImage";
+
 interface SocialProofSectionProps {
   isVisible: boolean;
 }
@@ -58,13 +60,13 @@ const SocialProofSection = ({ isVisible }: SocialProofSectionProps) => {
         <div className="text-center group hover:scale-105 transition-transform duration-300">
           <div className="flex justify-center mb-4">
             <div className="w-24 h-24 rounded-full overflow-hidden group-hover:scale-110 transition-transform shadow-lg">
-              <img 
+              <OptimizedImage 
                 src="/lovable-uploads/c8d4ffa7-6b7e-4e3d-923f-172e8c37dfd7.png"
                 alt="Urban entrepreneurs building community together"
                 className="w-full h-full object-cover"
+                width={96}
+                height={96}
                 loading="lazy"
-                width="96"
-                height="96"
               />
             </div>
           </div>
@@ -99,13 +101,13 @@ const SocialProofSection = ({ isVisible }: SocialProofSectionProps) => {
         <div className="text-center group hover:scale-105 transition-transform duration-300">
           <div className="flex justify-center mb-4">
             <div className="w-24 h-24 rounded-full overflow-hidden group-hover:scale-110 transition-transform shadow-lg">
-              <img 
+              <OptimizedImage 
                 src="/lovable-uploads/fb281427-96cc-4adb-82b5-4ac1961d2ef1.png"
                 alt="Couple reviewing investment portfolio and financial gains"
                 className="w-full h-full object-cover"
+                width={96}
+                height={96}
                 loading="lazy"
-                width="96"
-                height="96"
               />
             </div>
           </div>
@@ -140,13 +142,13 @@ const SocialProofSection = ({ isVisible }: SocialProofSectionProps) => {
         <div className="text-center group hover:scale-105 transition-transform duration-300">
           <div className="flex justify-center mb-4">
             <div className="w-24 h-24 rounded-full overflow-hidden group-hover:scale-110 transition-transform shadow-lg">
-              <img 
+              <OptimizedImage 
                 src="/lovable-uploads/6bd09687-7aec-41b6-870a-fb6a92525ad5.png"
                 alt="Happy family representing generational wealth and breaking cycles"
                 className="w-full h-full object-cover"
+                width={96}
+                height={96}
                 loading="lazy"
-                width="96"
-                height="96"
               />
             </div>
           </div>
@@ -189,13 +191,13 @@ const SocialProofSection = ({ isVisible }: SocialProofSectionProps) => {
           {/* Motivational Image */}
           <div className="lg:col-span-1 flex justify-center lg:justify-start">
             <div className="w-48 max-w-full group">
-              <img 
+              <OptimizedImage 
                 src="/lovable-uploads/6b43e453-8724-4de7-8ee5-ebf10ac69022.png"
                 alt="Motivational sticky notes saying 'It's OK to make money!' with success reminders"
                 className="w-full h-auto rounded-xl shadow-lg group-hover:scale-105 transition-transform duration-300"
+                width={192}
+                height={108}
                 loading="lazy"
-                width="192"
-                height="auto"
               />
             </div>
           </div>

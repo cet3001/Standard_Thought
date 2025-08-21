@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Upload, X } from "lucide-react";
+import { OptimizedImage } from "@/components/shared/OptimizedImage";
 
 interface ImageUploadProps {
   imageFile: File | null;
@@ -31,10 +32,12 @@ export const ImageUpload = ({
       <div className="mt-2">
         {imagePreview ? (
           <div className="relative">
-            <img
+            <OptimizedImage
               src={imagePreview}
               alt="Preview"
               className="w-full h-48 object-cover rounded-lg shadow-lg"
+              width={400}
+              height={192}
             />
             <Button
               type="button"

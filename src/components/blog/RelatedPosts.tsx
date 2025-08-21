@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { BlogPost as BlogPostType } from "@/lib/api";
 import { Clock, Calendar } from "lucide-react";
+import { OptimizedImage } from "@/components/shared/OptimizedImage";
 
 interface RelatedPostsProps {
   currentPostId: string;
@@ -121,11 +122,14 @@ const RelatedPosts = ({ currentPostId, category, tags }: RelatedPostsProps) => {
           >
             <article className="bg-brand-cream/10 dark:bg-brand-black/20 backdrop-blur-sm rounded-2xl overflow-hidden border border-brand-black/10 dark:border-brand-cream/10 hover:border-[#FFD700]/50 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg">
               {post.image_url && (
-                <div className="aspect-video overflow-hidden">
-                  <img
+                <div className="relative aspect-video overflow-hidden">
+                  <OptimizedImage
                     src={post.image_url}
                     alt={post.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    width={400}
+                    height={225}
+                    loading="lazy"
                   />
                 </div>
               )}

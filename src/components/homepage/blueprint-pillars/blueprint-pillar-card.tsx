@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { OptimizedImage } from "@/components/shared/OptimizedImage";
 
 interface BlueprintPillarCardProps {
   image: string;
@@ -44,10 +45,13 @@ const BlueprintPillarCard = ({
             {/* Subtle texture in icon container */}
             <div className="absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_1px_1px,_rgba(0,0,0,0.3)_1px,_transparent_0)] bg-[length:5px_5px]"></div>
             <div className="relative z-10 w-full h-full rounded-full overflow-hidden">
-              <img 
+              <OptimizedImage 
                 src={image} 
                 alt={imageAlt}
                 className="w-full h-full object-cover rounded-full"
+                width={80}
+                height={80}
+                loading="lazy"
               />
             </div>
           </div>

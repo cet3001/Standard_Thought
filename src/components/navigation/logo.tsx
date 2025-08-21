@@ -1,5 +1,6 @@
 
 import { Link } from "react-router-dom";
+import { OptimizedImage } from "@/components/shared/OptimizedImage";
 
 const Logo = () => {
   return (
@@ -8,11 +9,14 @@ const Logo = () => {
       className="flex items-center space-x-4 hover:text-[#007cba] transition-all duration-300 group" 
       aria-label="Standardthought - Return to homepage"
     >
-      <div className="w-16 h-16 md:w-20 md:h-20 flex-shrink-0">
-        <img 
+      <div className="relative w-16 h-16 md:w-20 md:h-20 flex-shrink-0">
+        <OptimizedImage 
           src="/lovable-uploads/ab84a6d6-c2ac-4910-be5f-7bb666463fb8.png" 
           alt="Standardthought logo - Urban entrepreneurship and wealth building" 
-          className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300" 
+          className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
+          width={80}
+          height={80}
+          priority={true}
         />
       </div>
       <div className="font-inter text-logo-lg md:text-[3.5rem]">

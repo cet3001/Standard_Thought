@@ -32,20 +32,12 @@ export const AdminDashboard = () => {
       stats: 'Integrated creator'
     },
     {
-      title: 'Free Guides Management',
-      description: 'Manage free guides, upload files, and track downloads',
+      title: 'Guide Management',
+      description: 'Create, edit, and manage all free and paid guides',
       icon: BookOpen,
       href: '/admin/guides',
       color: 'bg-blue-600',
-      stats: `${guides?.length || 0} guides`
-    },
-    {
-      title: 'Paid Guides Management',
-      description: 'Manage premium guides, pricing, and Stripe integration',
-      icon: DollarSign,
-      href: '/admin/paid-guides',
-      color: 'bg-green-600',
-      stats: `${paidGuides?.length || 0} paid guides`
+      stats: `${(guides?.length || 0) + (paidGuides?.length || 0)} total guides`
     },
     {
       title: 'Email Campaigns',

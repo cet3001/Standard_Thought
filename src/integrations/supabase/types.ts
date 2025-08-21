@@ -256,7 +256,9 @@ export type Database = {
           file_path: string | null
           id: string
           is_active: boolean
+          pillar: string | null
           price: number
+          social_hooks: Json | null
           sort_order: number
           title: string
           updated_at: string
@@ -270,7 +272,9 @@ export type Database = {
           file_path?: string | null
           id?: string
           is_active?: boolean
+          pillar?: string | null
           price?: number
+          social_hooks?: Json | null
           sort_order?: number
           title: string
           updated_at?: string
@@ -284,9 +288,38 @@ export type Database = {
           file_path?: string | null
           id?: string
           is_active?: boolean
+          pillar?: string | null
           price?: number
+          social_hooks?: Json | null
           sort_order?: number
           title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      landing_page_content: {
+        Row: {
+          content: Json
+          created_at: string
+          id: string
+          is_active: boolean
+          section_name: string
+          updated_at: string
+        }
+        Insert: {
+          content: Json
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          section_name: string
+          updated_at?: string
+        }
+        Update: {
+          content?: Json
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          section_name?: string
           updated_at?: string
         }
         Relationships: []

@@ -1,5 +1,6 @@
 import React from "react";
 import { AdminSidebar } from "./AdminSidebar";
+import { CommandPalette } from "./CommandPalette";
 import { SidebarProvider, SidebarTrigger, SidebarInset } from "@/components/ui/sidebar";
 import { BackButton } from "./BackButton";
 import { useLocation } from "react-router-dom";
@@ -27,6 +28,8 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
         url="/admin"
         noIndex={true}
       />
+      
+      <CommandPalette />
       
       <SidebarProvider>
         <div className="flex min-h-screen w-full">

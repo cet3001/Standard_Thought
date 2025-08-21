@@ -14,6 +14,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { X, Upload, Plus, Minus, FileText, Target } from 'lucide-react';
 import { useGuides, Guide } from '@/hooks/use-guides';
 import { useAuth } from '@/contexts/AuthContext';
+import { useToast } from '@/hooks/use-toast';
 
 const guideSchema = z.object({
   title: z.string().min(1, 'Title is required'),
@@ -36,6 +37,7 @@ interface GuideFormProps {
 export const GuideForm = ({ guide, onClose, onSuccess }: GuideFormProps) => {
   const { user } = useAuth();
   const { createGuide, updateGuide, uploadGuideFile } = useGuides();
+  const { toast } = useToast();
   const [bullets, setBullets] = useState<string[]>(guide?.bullets || ['']);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [uploading, setUploading] = useState(false);
@@ -134,9 +136,19 @@ export const GuideForm = ({ guide, onClose, onSuccess }: GuideFormProps) => {
         await uploadGuideFile(selectedFile, savedGuide.id);
       }
 
+      toast({
+        title: "Success",
+        description: guide ? "Guide updated successfully" : "Guide created successfully",
+      });
+
       onSuccess(guide ? undefined : savedGuide);
     } catch (error) {
       console.error('Error saving guide:', error);
+      toast({
+        title: "Error",
+        description: "Failed to save guide. Please try again.",
+        variant: "destructive",
+      });
     } finally {
       setUploading(false);
     }

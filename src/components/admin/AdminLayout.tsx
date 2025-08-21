@@ -5,6 +5,7 @@ import { SidebarProvider, SidebarTrigger, SidebarInset } from "@/components/ui/s
 import { BackButton } from "./BackButton";
 import { useLocation } from "react-router-dom";
 import SEO from "@/components/seo";
+import { Toaster } from "@/components/ui/toaster";
 
 interface AdminLayoutProps {
   children: React.ReactNode;
@@ -30,6 +31,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
       />
       
       <CommandPalette />
+      <Toaster />
       
       <SidebarProvider>
         <div className="flex min-h-screen w-full">

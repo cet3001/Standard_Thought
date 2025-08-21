@@ -62,18 +62,18 @@ export function AdminSidebar() {
   const getNavClasses = (path: string) => {
     const baseClasses = "flex items-center gap-3 px-3 py-2 rounded-lg transition-colors w-full";
     return isActive(path) 
-      ? `${baseClasses} bg-primary text-primary-foreground font-medium` 
-      : `${baseClasses} text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground`;
+      ? `${baseClasses} bg-yellow-400/20 text-[#0D0D0D] font-semibold border border-yellow-400/30` 
+      : `${baseClasses} text-gray-600 hover:bg-yellow-400/10 hover:text-[#0D0D0D]`;
   };
 
   return (
     <Sidebar
-      className="bg-card border-r border-border"
+      className="bg-white border-r border-gray-300"
       collapsible="icon"
     >
-      <SidebarContent className="bg-card">
+      <SidebarContent className="bg-white">
         <SidebarGroup className="border-none">
-          <SidebarGroupLabel className="text-foreground font-semibold text-sm uppercase tracking-wider mb-4">
+          <SidebarGroupLabel className="text-[#0D0D0D] font-semibold text-sm uppercase tracking-wider mb-4">
             {!isCollapsed && "Admin Panel"}
           </SidebarGroupLabel>
 

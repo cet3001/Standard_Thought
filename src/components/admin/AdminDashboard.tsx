@@ -95,10 +95,10 @@ export const AdminDashboard = () => {
     <div className="space-y-8">
       {/* Header */}
       <div className="text-center mb-10">
-        <h1 className="text-5xl font-bold text-foreground mb-6">
+        <h1 className="text-5xl font-bold text-[#0D0D0D] mb-6">
           Admin Dashboard
         </h1>
-        <p className="text-xl text-muted-foreground font-semibold">
+        <p className="text-xl text-gray-600 font-semibold">
           Manage your site content, guides, and marketing campaigns
         </p>
       </div>
@@ -109,20 +109,20 @@ export const AdminDashboard = () => {
           <AdminSectionCard key={index} className={stat.warning ? 'before:from-destructive/60 before:via-destructive/70 before:to-destructive/60' : undefined}>
             <div className="flex items-center justify-between">
               <div className="flex-1">
-                <p className="text-muted-foreground text-base font-semibold mb-3">{stat.label}</p>
+                <p className="text-gray-600 text-base font-semibold mb-3">{stat.label}</p>
                 <div className="space-y-2">
-                  <p className="text-muted-foreground text-sm font-medium">{stat.kpiLabel}</p>
-                  <p className={`text-5xl font-bold ${stat.warning ? 'text-destructive' : 'text-primary'}`}>
+                  <p className="text-gray-600 text-sm font-medium">{stat.kpiLabel}</p>
+                  <p className={`text-5xl font-bold ${stat.warning ? 'text-red-600' : 'text-[#0D0D0D]'}`}>
                     {stat.kpi}
                   </p>
-                  <p className="text-muted-foreground text-base mt-4">
+                  <p className="text-gray-600 text-base mt-4">
                     <span className="font-semibold">{stat.secondaryLabel || stat.label}:</span> 
-                    <span className="ml-2 text-foreground font-bold">{stat.value}</span>
+                    <span className="ml-2 text-[#0D0D0D] font-bold">{stat.value}</span>
                   </p>
                 </div>
               </div>
-              <div className={`p-4 rounded-lg ${stat.warning ? 'bg-destructive/10' : 'bg-primary/10'}`}>
-                <stat.icon className={`h-8 w-8 ${stat.warning ? 'text-destructive' : 'text-primary'}`} />
+              <div className={`p-4 rounded-lg ${stat.warning ? 'bg-red-100' : 'bg-yellow-100'}`}>
+                <stat.icon className={`h-8 w-8 ${stat.warning ? 'text-red-600' : 'text-[#0D0D0D]'}`} />
               </div>
             </div>
           </AdminSectionCard>
@@ -139,7 +139,7 @@ export const AdminDashboard = () => {
             icon={<page.icon className="h-6 w-6" />}
           >
             <div className="flex items-center justify-between mb-8">
-              <p className="text-primary text-base font-bold bg-primary/10 px-4 py-2 rounded-full">
+              <p className="text-[#0D0D0D] text-base font-bold bg-yellow-100 px-4 py-2 rounded-full">
                 {page.stats}
               </p>
             </div>

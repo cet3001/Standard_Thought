@@ -20,7 +20,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
   const isOnDashboard = location.pathname === '/admin' || location.pathname === '/admin/';
   
   return (
-    <div className="min-h-screen bg-gray-800 text-foreground">
+    <div className="min-h-screen bg-[#F2F2F2] text-[#0D0D0D]">
       <SEO 
         title={`${title} | Standardthought`}
         description={description}
@@ -32,16 +32,16 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
         <div className="flex min-h-screen w-full">
           <AdminSidebar />
           
-          <SidebarInset className="bg-gray-800">
-            <header className="flex h-16 shrink-0 items-center gap-4 border-b border-border bg-gray-700 px-4">
-              <SidebarTrigger className="-ml-1" />
+          <SidebarInset className="bg-[#F2F2F2]">
+            <header className="flex h-16 shrink-0 items-center gap-4 border-b border-gray-300 bg-white/80 backdrop-blur-sm px-4">
+              <SidebarTrigger className="-ml-1 text-[#0D0D0D]" />
               {!isOnDashboard && <BackButton />}
               <div className="flex-1">
-                <h1 className="font-semibold text-lg text-foreground">{title}</h1>
+                <h1 className="font-semibold text-lg text-[#0D0D0D]">{title}</h1>
               </div>
             </header>
             
-            <main className="flex-1 overflow-auto p-6 bg-gray-800">
+            <main className="flex-1 overflow-auto p-6 bg-[#F2F2F2]">
               <div className="max-w-7xl mx-auto">
                 {children}
               </div>

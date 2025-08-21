@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -9,18 +8,13 @@ interface HeroProps {
   subheadline: string;
 }
 
-interface HeroContentProps {
-  isVisible: boolean;
-  scrollToNewsletter: () => void;
-  heroContent?: HeroProps;
-}
-
-const HeroContent = ({ isVisible, scrollToNewsletter, heroContent }: HeroContentProps) => {
+const Hero = ({ headline, subheadline }: HeroProps) => {
   const { isVisible: imageVisible, elementRef: imageRef } = useScrollAnimation();
+  
   return (
     <div className="mb-16 relative">
       {/* Hero Layout: Image Left, Content Right */}
-      <div className={`transition-all duration-1000 relative z-10 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+      <div className={`transition-all duration-1000 relative z-10 opacity-100 translate-y-0`}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
           
           {/* Hero Image - Left Side */}
@@ -44,16 +38,12 @@ const HeroContent = ({ isVisible, scrollToNewsletter, heroContent }: HeroContent
             
             {/* Main Headline */}
             <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold font-inter leading-[1.1] text-brand-cream">
-              {heroContent?.headline || (
-                <>
-                  <span style={{ color: 'var(--color-lovable-black)' }}>Break</span> <span className="pearlescent-text">Cycles</span>. <span style={{ color: 'var(--color-lovable-black)' }}>Build</span> <span className="pearlescent-text">Legacy</span>. <span style={{ color: 'var(--color-lovable-black)' }}>Define Your</span> <span className="pearlescent-text">Truth</span>.
-                </>
-              )}
+              {headline}
             </h1>
 
             {/* Subheadline */}
             <p className="text-lg md:text-xl lg:text-2xl font-inter font-semibold text-brand-cream leading-[1.4]">
-              {heroContent?.subheadline || "You weren't handed blueprints. You inherited burdens. Now it's time to flip the script—rebuild identity, stack wealth, and transcend survival thinking."}
+              {subheadline}
             </p>
 
             {/* CTA Button */}
@@ -100,4 +90,4 @@ const HeroContent = ({ isVisible, scrollToNewsletter, heroContent }: HeroContent
   );
 };
 
-export default HeroContent;
+export default Hero;

@@ -25,24 +25,30 @@ const LighthouseAuditor = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Only show in development mode
+    // Only enable in development mode and defer initialization
     if (process.env.NODE_ENV !== 'development') return;
 
-    // Simple toggle for visibility
+    let timeoutId: NodeJS.Timeout;
+
     const handleKeydown = (e: KeyboardEvent) => {
       if (e.ctrlKey && e.shiftKey && e.key === 'L') {
+        e.preventDefault();
         setIsVisible(!isVisible);
+        if (!isVisible) {
+          // Defer audit to prevent blocking
+          timeoutId = setTimeout(runPerformanceAudits, 200);
+        }
       }
     };
 
-    window.addEventListener('keydown', handleKeydown);
-    
-    // Run basic performance audits
-    if (isVisible) {
-      runPerformanceAudits();
-    }
+    // Defer event listener registration to prevent blocking
+    const registrationTimeout = setTimeout(() => {
+      window.addEventListener('keydown', handleKeydown);
+    }, 1000);
 
     return () => {
+      clearTimeout(registrationTimeout);
+      clearTimeout(timeoutId);
       window.removeEventListener('keydown', handleKeydown);
     };
   }, [isVisible]);

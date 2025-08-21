@@ -1,16 +1,24 @@
 /**
  * Content Security Policy configuration for enhanced security
  */
+const isDevelopment = typeof window !== 'undefined' && 
+  (window.location.hostname === 'localhost' || window.location.hostname.includes('lovable'));
+
 export const CSP_CONFIG = {
   'default-src': ["'self'"],
-  'script-src': ["'self'", "'unsafe-inline'", 'https://cdnjs.cloudflare.com'],
+  'script-src': [
+    "'self'", 
+    "'unsafe-inline'", 
+    'https://cdnjs.cloudflare.com',
+    ...(isDevelopment ? ["'unsafe-eval'", 'blob:', 'data:'] : [])
+  ],
   'style-src': ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com'],
   'img-src': ["'self'", 'data:', 'https:', 'blob:'],
   'font-src': ["'self'", 'https://fonts.gstatic.com'],
-  'connect-src': ["'self'", 'https:', 'wss:'],
+  'connect-src': ["'self'", 'https:', 'wss:', ...(isDevelopment ? ['ws:', 'http:'] : [])],
   'media-src': ["'self'"],
   'object-src': ["'none'"],
-  'frame-ancestors': ["'none'"],
+  'frame-ancestors': isDevelopment ? ["'self'"] : ["'none'"],
   'base-uri': ["'self'"],
   'form-action': ["'self'"],
 };

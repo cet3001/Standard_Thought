@@ -58,9 +58,10 @@ function AppContent() {
   
   return (
     <div className="min-h-screen">
-      <PerformanceOptimizer />
-      <PrerenderOptimizer />
-      <LighthouseAuditor />
+      {/* Only load performance components in production */}
+      {import.meta.env.PROD && <PerformanceOptimizer />}
+      {import.meta.env.PROD && <PrerenderOptimizer />}
+      {import.meta.env.PROD && <LighthouseAuditor />}
       <Toaster />
       <Suspense fallback={<Loading />}>
         <Routes>

@@ -76,10 +76,17 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     console.log('🔐 Setting up Supabase auth...');
     
+    // Non-blocking initialization with timeout for development
+    const initTimeout = setTimeout(() => {
+      console.warn('Auth initialization timed out, continuing without session');
+      setLoading(false);
+    }, import.meta.env.DEV ? 3000 : 10000);
+
     // Set up auth state listener FIRST
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       async (event, session) => {
         console.log('Auth state change:', event, session?.user?.email);
+        clearTimeout(initTimeout);
         setSession(session);
         setUser(session?.user ?? null);
         
@@ -87,7 +94,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
           // Defer profile fetch to avoid blocking auth state update
           setTimeout(() => {
             fetchProfile(session.user.id);
-          }, 0);
+          }, import.meta.env.DEV ? 100 : 0);
         } else {
           setProfile(null);
         }
@@ -96,21 +103,36 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       }
     );
 
-    // THEN check for existing session
-    supabase.auth.getSession().then(({ data: { session }, error }) => {
-      if (error) {
-        console.error('Error getting session:', error);
+    // THEN check for existing session with timeout handling
+    const checkSession = async () => {
+      try {
+        const { data: { session }, error } = await supabase.auth.getSession();
+        if (error) {
+          console.error('Error getting session:', error);
+        }
+        
+        console.log('Initial session:', session?.user?.email);
+        clearTimeout(initTimeout);
+        setSession(session);
+        setUser(session?.user ?? null);
+        
+        if (session?.user) {
+          fetchProfile(session.user.id);
+        }
+        setLoading(false);
+      } catch (error) {
+        console.error('Error checking session:', error);
+        clearTimeout(initTimeout);
+        setLoading(false);
       }
-      
-      console.log('Initial session:', session?.user?.email);
-      setSession(session);
-      setUser(session?.user ?? null);
-      
-      if (session?.user) {
-        fetchProfile(session.user.id);
-      }
-      setLoading(false);
-    });
+    };
+
+    // Delay session check in development to prevent blocking
+    if (import.meta.env.DEV) {
+      setTimeout(checkSession, 50);
+    } else {
+      checkSession();
+    }
 
     return () => {
       console.log('🔐 Cleaning up auth subscription');

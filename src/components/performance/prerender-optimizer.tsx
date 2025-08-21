@@ -2,6 +2,12 @@ import { useEffect } from 'react';
 
 const PrerenderOptimizer = () => {
   useEffect(() => {
+    // Skip in development mode to prevent blocking live preview
+    if (import.meta.env.DEV) {
+      console.log('[Prerender] Skipping prerender optimizations in development');
+      return;
+    }
+
     // Prerender critical routes for faster navigation
     const criticalRoutes = [
       '/blog',

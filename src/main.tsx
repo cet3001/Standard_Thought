@@ -11,11 +11,15 @@ import { applyCspMeta } from './lib/security-headers';
 
 console.log('main.tsx: Starting application...');
 
-// Apply security headers - simplified for development
-try {
-  applyCspMeta();
-} catch (error) {
-  console.warn('CSP application failed, continuing without:', error);
+// Apply security headers - only in production to avoid blocking development
+if (import.meta.env.PROD) {
+  try {
+    applyCspMeta();
+  } catch (error) {
+    console.warn('CSP application failed, continuing without:', error);
+  }
+} else {
+  console.log('Development mode: Skipping CSP headers');
 }
 
 // Add CSP violation listener for debugging

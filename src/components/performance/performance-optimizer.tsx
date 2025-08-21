@@ -2,6 +2,11 @@ import { useEffect } from 'react';
 
 const PerformanceOptimizer = () => {
   useEffect(() => {
+    // Skip optimization in development mode to prevent blocking
+    if (import.meta.env.DEV) {
+      console.log('[Performance] Skipping optimizations in development mode');
+      return;
+    }
     // Register service worker for caching
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {

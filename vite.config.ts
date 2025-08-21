@@ -9,11 +9,20 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 8080,
+    hmr: {
+      overlay: false, // Disable error overlay that might block preview
+      clientPort: 8080
+    },
+    // Improve development performance
+    middlewareMode: false,
+    fs: {
+      strict: false
+    }
   },
   plugins: [
     react(),
-    mode === 'development' &&
-    componentTagger(),
+    // Only enable component tagger when explicitly needed
+    ...(mode === 'development' && !process.env.DISABLE_COMPONENT_TAGGER ? [componentTagger()] : [])
   ].filter(Boolean),
   resolve: {
     alias: {

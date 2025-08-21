@@ -25,6 +25,11 @@ const adminRoutes = [
     icon: LayoutDashboard 
   },
   { 
+    title: "Blog Management", 
+    url: "/admin/blog", 
+    icon: BookOpen 
+  },
+  { 
     title: "Guide Management", 
     url: "/admin/guides", 
     icon: BookOpen 

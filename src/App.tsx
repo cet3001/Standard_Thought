@@ -18,6 +18,9 @@ const EditPost = lazy(() => import("@/pages/EditPost"));
 const Sales = lazy(() => import("@/pages/Sales"));
 const Auth = lazy(() => import("@/pages/Auth"));
 const AdminDashboard = lazy(() => import("@/pages/AdminDashboard"));
+const AdminBlog = lazy(() => import("@/pages/AdminBlog"));
+const AdminBlogNew = lazy(() => import("@/pages/AdminBlogNew"));
+const AdminBlogEdit = lazy(() => import("@/pages/AdminBlogEdit"));
 const AdminGuides = lazy(() => import("@/pages/AdminGuides"));
 const AdminPaidGuides = lazy(() => import("@/pages/AdminPaidGuides"));
 const AdminCTA = lazy(() => import("@/pages/AdminCTA"));
@@ -74,6 +77,9 @@ function AppContent() {
           <Route path="/edit-post/:id" element={<EditPost />} />
           <Route path="/submit-story" element={<SubmitStory />} />
           <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/admin/blog" element={<AdminBlog />} />
+          <Route path="/admin/blog/new" element={<AdminBlogNew />} />
+          <Route path="/admin/blog/edit/:id" element={<AdminBlogEdit />} />
           <Route path="/admin/guides" element={<AdminGuides />} />
           <Route path="/admin/guides/success/:id" element={<AdminGuideSuccess />} />
           <Route path="/admin/paid-guides" element={<AdminPaidGuides />} />

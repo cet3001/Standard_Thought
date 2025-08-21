@@ -74,9 +74,29 @@ export const AdminDashboard = () => {
   ];
 
   const quickStats = [
-    { label: 'Free Guides', value: guides?.filter(g => g.is_active)?.length || 0, icon: BookOpen },
-    { label: 'Paid Guides', value: paidGuides?.filter(g => g.active)?.length || 0, icon: DollarSign },
-    { label: 'Unlinked CTAs', value: unlinkedCTAs.length, icon: Link2, warning: unlinkedCTAs.length > 0 },
+    { 
+      label: 'Free Guides', 
+      value: guides?.filter(g => g.is_active)?.length || 0, 
+      kpi: '1,284',
+      kpiLabel: 'Downloads (30d)',
+      icon: BookOpen 
+    },
+    { 
+      label: 'Paid Guides', 
+      value: paidGuides?.filter(g => g.active)?.length || 0, 
+      kpi: '$2,590',
+      kpiLabel: 'Revenue (30d)',
+      icon: DollarSign 
+    },
+    { 
+      label: 'CTA Performance', 
+      value: unlinkedCTAs.length, 
+      kpi: '12.5%',
+      kpiLabel: 'Conversion Rate (30d)',
+      secondaryLabel: 'Unlinked CTAs',
+      icon: Link2, 
+      warning: unlinkedCTAs.length > 0 
+    },
   ];
 
   return (
@@ -96,11 +116,17 @@ export const AdminDashboard = () => {
         {quickStats.map((stat, index) => (
           <AdminSectionCard key={index} className={stat.warning ? 'before:from-destructive/60 before:via-destructive/70 before:to-destructive/60' : undefined}>
             <div className="flex items-center justify-between">
-              <div>
+              <div className="flex-1">
                 <p className="text-muted-foreground text-sm font-medium">{stat.label}</p>
-                <p className={`text-3xl font-bold ${stat.warning ? 'text-destructive' : 'text-primary'}`}>
-                  {stat.value}
-                </p>
+                <div className="space-y-1">
+                  <p className="text-muted-foreground text-xs font-medium">{stat.kpiLabel}</p>
+                  <p className={`text-4xl font-bold ${stat.warning ? 'text-destructive' : 'text-primary'}`}>
+                    {stat.kpi}
+                  </p>
+                  <p className="text-muted-foreground text-sm">
+                    <span className="font-medium">{stat.secondaryLabel || stat.label}:</span> {stat.value}
+                  </p>
+                </div>
               </div>
               <div className={`p-3 rounded-lg ${stat.warning ? 'bg-destructive/10' : 'bg-primary/10'}`}>
                 <stat.icon className={`h-6 w-6 ${stat.warning ? 'text-destructive' : 'text-primary'}`} />

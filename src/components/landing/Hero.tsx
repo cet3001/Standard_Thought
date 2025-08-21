@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import { OptimizedImage } from "@/components/shared/OptimizedImage";
 
 interface HeroProps {
   headline: string;

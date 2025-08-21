@@ -6,11 +6,7 @@ import SEO from "@/components/seo";
 import StorySubmissionForm from "@/components/story-submission-form";
 
 const SubmitStory = () => {
-  console.log("SubmitStory component rendering...");
-  
   const headerHeight = useHeaderHeight();
-  
-  console.log("SubmitStory headerHeight:", headerHeight);
   
   return (
     <div className="min-h-screen bg-brand-cream dark:bg-brand-black">

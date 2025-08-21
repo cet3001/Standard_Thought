@@ -7,11 +7,9 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { Send, User, Mail, FileText, Target } from "lucide-react";
-import { useSecureFormValidation, storySubmissionRateLimiter, getClientIdentifier, sanitizeText } from "@/lib/security-utils";
+import { validateTextInput, validateEmail, storySubmissionRateLimiter, getClientIdentifier, sanitizeText } from "@/lib/security-utils";
 
 const StorySubmissionForm = () => {
-  console.log("StorySubmissionForm component rendering...");
-  
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -22,12 +20,42 @@ const StorySubmissionForm = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
-  
-  console.log("About to call useToast...");
   const { toast } = useToast();
-  
-  console.log("About to call useSecureFormValidation...");
-  const { validateForm } = useSecureFormValidation();
+
+  const validateForm = (data: Record<string, any>, rules: Record<string, any>) => {
+    const errors: Record<string, string> = {};
+    
+    for (const [field, value] of Object.entries(data)) {
+      const rule = rules[field];
+      if (!rule) continue;
+      
+      // Required field check
+      if (rule.required && (!value || value.toString().trim() === '')) {
+        errors[field] = `${field} is required`;
+        continue;
+      }
+      
+      // Email validation
+      if (rule.type === 'email' && value && !validateEmail(value)) {
+        errors[field] = 'Invalid email format';
+        continue;
+      }
+      
+      // Text validation
+      if (rule.type === 'text' && value) {
+        const validation = validateTextInput(value, rule.minLength, rule.maxLength);
+        if (!validation.isValid) {
+          errors[field] = validation.error!;
+          continue;
+        }
+      }
+    }
+    
+    return {
+      isValid: Object.keys(errors).length === 0,
+      errors
+    };
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;

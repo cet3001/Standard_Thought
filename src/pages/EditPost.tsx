@@ -6,12 +6,8 @@ import { useHeaderHeight } from "@/hooks/use-header-height";
 import Footer from "@/components/footer";
 
 const EditPost = () => {
-  console.log("EditPost component rendering...");
-  
   const navigate = useNavigate();
   const headerHeight = useHeaderHeight();
-
-  console.log("EditPost headerHeight:", headerHeight);
 
   useEffect(() => {
     // Redirect to home page since blog functionality has been removed

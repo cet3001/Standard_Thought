@@ -15,7 +15,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
   description = "Manage your site content, guides, and marketing campaigns"
 }) => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background text-foreground">
       <SEO 
         title={`${title} | Standardthought`}
         description={description}
@@ -27,15 +27,15 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
         <div className="flex min-h-screen w-full">
           <AdminSidebar />
           
-          <SidebarInset>
-            <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
+          <SidebarInset className="bg-background">
+            <header className="flex h-16 shrink-0 items-center gap-2 border-b border-border bg-card px-4">
               <SidebarTrigger className="-ml-1" />
               <div className="flex-1">
-                <h1 className="font-semibold text-lg">{title}</h1>
+                <h1 className="font-semibold text-lg text-card-foreground">{title}</h1>
               </div>
             </header>
             
-            <main className="flex-1 overflow-auto p-6">
+            <main className="flex-1 overflow-auto p-6 bg-background">
               <div className="max-w-7xl mx-auto">
                 {children}
               </div>

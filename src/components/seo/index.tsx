@@ -131,7 +131,14 @@ const SEO = ({
     : `${optimizedTitle} | Standardthought`;
 
   const canonicalUrl = normalizeUrl(url);
-  const fullImageUrl = getFullImageUrl(dynamicSEO?.meta_image || image);
+  
+  // Generate dynamic OG image for blog posts
+  const shouldGenerateDynamicOG = type === 'article' && title;
+  const dynamicOGImageUrl = shouldGenerateDynamicOG 
+    ? `https://zedewynjmeyhbjysnxld.supabase.co/functions/v1/generate-og-image?title=${encodeURIComponent(title)}&category=${encodeURIComponent(category || '')}`
+    : null;
+  
+  const fullImageUrl = getFullImageUrl(dynamicSEO?.meta_image || dynamicOGImageUrl || image);
   const optimizedDescription = optimizeDescription(finalDescription);
 
   // Add AEO-optimized keywords for better answer engine visibility
@@ -211,6 +218,10 @@ const SEO = ({
       {/* Enhanced Open Graph for Social Sharing */}
       <meta property="og:title" content={dynamicSEO?.og_title || fullTitle} />
       <meta property="og:description" content={dynamicSEO?.og_description || optimizedDescription} />
+      <meta property="og:image" content={fullImageUrl} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:alt" content={`${fullTitle} - Standard Thought`} />
       <meta property="og:type" content={type === 'article' ? 'article' : 'website'} />
       <meta property="og:site_name" content="Standardthought" />
       
@@ -218,6 +229,8 @@ const SEO = ({
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={dynamicSEO?.twitter_title || fullTitle} />
       <meta name="twitter:description" content={dynamicSEO?.twitter_description || optimizedDescription} />
+      <meta name="twitter:image" content={fullImageUrl} />
+      <meta name="twitter:image:alt" content={`${fullTitle} - Standard Thought`} />
       
       <RobotsDirectives noIndex={noIndex} />
       

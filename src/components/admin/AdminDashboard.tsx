@@ -94,34 +94,35 @@ export const AdminDashboard = () => {
   return (
     <div className="space-y-8">
       {/* Header */}
-      <div className="text-center">
-        <h1 className="text-4xl font-bold text-foreground mb-4">
+      <div className="text-center mb-10">
+        <h1 className="text-5xl font-bold text-foreground mb-6">
           Admin Dashboard
         </h1>
-        <p className="text-xl text-muted-foreground">
+        <p className="text-xl text-muted-foreground font-semibold">
           Manage your site content, guides, and marketing campaigns
         </p>
       </div>
 
       {/* Quick Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {quickStats.map((stat, index) => (
           <AdminSectionCard key={index} className={stat.warning ? 'before:from-destructive/60 before:via-destructive/70 before:to-destructive/60' : undefined}>
             <div className="flex items-center justify-between">
               <div className="flex-1">
-                <p className="text-muted-foreground text-sm font-medium">{stat.label}</p>
-                <div className="space-y-1">
-                  <p className="text-muted-foreground text-xs font-medium">{stat.kpiLabel}</p>
-                  <p className={`text-4xl font-bold ${stat.warning ? 'text-destructive' : 'text-primary'}`}>
+                <p className="text-muted-foreground text-base font-semibold mb-3">{stat.label}</p>
+                <div className="space-y-2">
+                  <p className="text-muted-foreground text-sm font-medium">{stat.kpiLabel}</p>
+                  <p className={`text-5xl font-bold ${stat.warning ? 'text-destructive' : 'text-primary'}`}>
                     {stat.kpi}
                   </p>
-                  <p className="text-muted-foreground text-sm">
-                    <span className="font-medium">{stat.secondaryLabel || stat.label}:</span> {stat.value}
+                  <p className="text-muted-foreground text-base mt-4">
+                    <span className="font-semibold">{stat.secondaryLabel || stat.label}:</span> 
+                    <span className="ml-2 text-foreground font-bold">{stat.value}</span>
                   </p>
                 </div>
               </div>
-              <div className={`p-3 rounded-lg ${stat.warning ? 'bg-destructive/10' : 'bg-primary/10'}`}>
-                <stat.icon className={`h-6 w-6 ${stat.warning ? 'text-destructive' : 'text-primary'}`} />
+              <div className={`p-4 rounded-lg ${stat.warning ? 'bg-destructive/10' : 'bg-primary/10'}`}>
+                <stat.icon className={`h-8 w-8 ${stat.warning ? 'text-destructive' : 'text-primary'}`} />
               </div>
             </div>
           </AdminSectionCard>
@@ -129,20 +130,20 @@ export const AdminDashboard = () => {
       </div>
 
       {/* Admin Pages Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {adminPages.map((page, index) => (
           <AdminSectionCard 
             key={index}
             title={page.title}
             description={page.description}
-            icon={<page.icon className="h-5 w-5" />}
+            icon={<page.icon className="h-6 w-6" />}
           >
-            <div className="flex items-center justify-between mb-6">
-              <p className="text-primary text-sm font-bold bg-primary/10 px-3 py-1 rounded-full">
+            <div className="flex items-center justify-between mb-8">
+              <p className="text-primary text-base font-bold bg-primary/10 px-4 py-2 rounded-full">
                 {page.stats}
               </p>
             </div>
-            <Button asChild className="w-full urban-cta">
+            <Button asChild className="w-full urban-cta text-lg py-6 font-semibold">
               <Link to={page.href}>
                 Access {page.title}
               </Link>

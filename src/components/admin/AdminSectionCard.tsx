@@ -18,7 +18,7 @@ export const AdminSectionCard = ({
 }: AdminSectionCardProps) => {
   return (
     <div className={cn(
-      "relative bg-card/95 backdrop-blur-sm",
+      "relative bg-gray-800/95 backdrop-blur-sm",
       "border-2 border-transparent rounded-xl overflow-hidden",
       "shadow-lg hover:shadow-xl transition-all duration-300",
       "group",
@@ -28,26 +28,26 @@ export const AdminSectionCard = ({
       "before:bg-[length:200%_200%] before:animate-[pearlescent_3s_ease-in-out_infinite]",
       "before:-z-10",
       // Inner background to create border effect  
-      "after:absolute after:inset-[2px] after:bg-card after:rounded-[10px] after:-z-10",
+      "after:absolute after:inset-[2px] after:bg-gray-800 after:rounded-[10px] after:-z-10",
       className
     )}>
       {/* Header section if title provided */}
       {(title || description || icon) && (
-        <div className="relative z-10 p-6 pb-4 border-b border-border/50">
-          <div className="flex items-start gap-3">
+        <div className="relative z-10 p-8 pb-5 border-b border-gray-700/50">
+          <div className="flex items-start gap-4">
             {icon && (
-              <div className="flex-shrink-0 p-2 rounded-lg bg-yellow-400/10 text-yellow-600 dark:text-yellow-400 group-hover:bg-yellow-400/20 transition-colors">
+              <div className="flex-shrink-0 p-3 rounded-lg bg-yellow-400/10 text-yellow-600 dark:text-yellow-400 group-hover:bg-yellow-400/20 transition-colors">
                 {icon}
               </div>
             )}
             <div className="flex-1">
               {title && (
-                <h3 className="text-xl font-bold text-foreground mb-1 group-hover:text-yellow-600 dark:group-hover:text-yellow-400 transition-colors">
+                <h3 className="text-2xl font-bold text-foreground mb-2 group-hover:text-yellow-600 dark:group-hover:text-yellow-400 transition-colors">
                   {title}
                 </h3>
               )}
               {description && (
-                <p className="text-sm text-muted-foreground leading-relaxed">
+                <p className="text-base text-muted-foreground leading-relaxed font-medium">
                   {description}
                 </p>
               )}
@@ -57,7 +57,7 @@ export const AdminSectionCard = ({
       )}
       
       {/* Content */}
-      <div className="relative z-10 p-6">
+      <div className="relative z-10 p-8">
         {children}
       </div>
       

@@ -97,7 +97,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
               <div className="space-y-3">
                 <Button
                   onClick={this.resetError}
-                  className="w-full bg-brand-blue hover:bg-brand-blue/90 text-white"
+                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
                 >
                   <RefreshCw className="w-4 h-4 mr-2" />
                   Try again

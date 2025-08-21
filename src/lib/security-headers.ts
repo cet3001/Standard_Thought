@@ -3,7 +3,7 @@
  */
 export const CSP_CONFIG = {
   'default-src': ["'self'"],
-  'script-src': ["'self'", "'unsafe-inline'", "'unsafe-eval'", 'https://cdnjs.cloudflare.com'],
+  'script-src': ["'self'", "'unsafe-inline'", 'https://cdnjs.cloudflare.com'],
   'style-src': ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com'],
   'img-src': ["'self'", 'data:', 'https:', 'blob:'],
   'font-src': ["'self'", 'https://fonts.gstatic.com'],

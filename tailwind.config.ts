@@ -52,15 +52,10 @@ const config: Config = {
     extend: {
       colors: {
         ...colors,
-        st_black: '#0D0D0D',
-        st_white: '#F2F2F2',
-        st_accent: '#FEEA00',
-        background: '#0D0D0D',
-        foreground: '#F2F2F2',
-        primary: {
-          DEFAULT: '#FEEA00',
-          foreground: '#0D0D0D',
-        },
+        // Convert to HSL format for consistency
+        st_black: 'hsl(0, 0%, 5%)',
+        st_white: 'hsl(0, 0%, 95%)',
+        st_accent: 'hsl(54, 100%, 50%)',
       },
       fontFamily: {
         ...fonts,

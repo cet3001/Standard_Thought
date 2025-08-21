@@ -123,6 +123,32 @@ export const useGuides = (includeInactive = false) => {
     }
   };
 
+  const deleteBulkGuides = async (ids: string[]) => {
+    try {
+      const { error } = await supabase
+        .from('guides')
+        .delete()
+        .in('id', ids);
+
+      if (error) throw error;
+
+      toast({
+        title: "Success",
+        description: `${ids.length} guides deleted successfully`,
+      });
+
+      await fetchGuides();
+    } catch (error) {
+      console.error('Error deleting guides:', error);
+      toast({
+        title: "Error", 
+        description: "Failed to delete guides",
+        variant: "destructive",
+      });
+      throw error;
+    }
+  };
+
   const uploadGuideFile = async (file: File, guideId: string) => {
     try {
       const fileExt = file.name.split('.').pop();
@@ -163,6 +189,7 @@ export const useGuides = (includeInactive = false) => {
     createGuide,
     updateGuide,
     deleteGuide,
+    deleteBulkGuides,
     uploadGuideFile,
     refetch: fetchGuides
   };

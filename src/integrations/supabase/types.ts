@@ -524,6 +524,16 @@ export type Database = {
         Args: Record<PropertyKey, never>
         Returns: string
       }
+      get_public_comments: {
+        Args: { post_id: string }
+        Returns: {
+          author_name: string
+          blog_post_id: string
+          content: string
+          created_at: string
+          id: string
+        }[]
+      }
       is_admin_user: {
         Args: Record<PropertyKey, never>
         Returns: boolean

@@ -38,12 +38,12 @@ const Hero = ({ headline, subheadline }: HeroProps) => {
             
             {/* Main Headline */}
             <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold font-inter leading-[1.1] text-brand-cream">
-              {headline}
+              <span style={{ color: 'var(--color-lovable-black)' }}>Break</span> <span className="pearlescent-text">Cycles</span>. <span style={{ color: 'var(--color-lovable-black)' }}>Build</span> <span className="pearlescent-text">Legacy</span>. <span style={{ color: 'var(--color-lovable-black)' }}>Define Your</span> <span className="pearlescent-text">Truth</span>.
             </h1>
 
             {/* Subheadline */}
             <p className="text-lg md:text-xl lg:text-2xl font-inter font-semibold text-brand-cream leading-[1.4]">
-              {subheadline}
+              You weren't handed blueprints. You inherited burdens. Now it's time to flip the script—rebuild identity, stack wealth, and transcend survival thinking.
             </p>
 
             {/* CTA Button */}

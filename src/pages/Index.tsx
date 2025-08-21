@@ -1,6 +1,8 @@
 
+import { useState, useEffect } from "react";
 import Analytics from "@/components/analytics";
 import HomepageHero from "@/components/homepage-hero";
+import { supabase } from "@/integrations/supabase/client";
 
 import ManifestoSection from "@/components/manifesto-section";
 import { NewsletterSection } from "@/components/newsletter-section";
@@ -35,16 +37,23 @@ console.log('Index.tsx: Component loaded');
 const Index = () => {
   console.log('Index.tsx: Index component rendering...');
   
+  const [heroData, setHeroData] = useState({
+    headline: "Break Cycles. Build Legacy. Define Your Truth.",
+    subheadline: "You weren't handed blueprints. You inherited burdens. Now it's time to flip the script—rebuild identity, stack wealth, and transcend survival thinking."
+  });
+  
+  const [featuresData, setFeaturesData] = useState([]);
+  
+  useEffect(() => {
+    // Since landing_page_content table doesn't exist yet, we'll use default data
+    // This structure is ready for when the table is created
+    console.log('Using default landing page content');
+  }, []);
+  
   try {
     useMobilePerformance();
     const { isAdmin } = useAuth();
     const { textureImageUrl } = useUrbanTexture();
-
-    // Use default content since landing_page_content table doesn't exist yet
-    const heroContent = {
-      headline: "Break Cycles. Build Legacy. Define Your Truth.",
-      subheadline: "You weren't handed blueprints. You inherited burdens. Now it's time to flip the script—rebuild identity, stack wealth, and transcend survival thinking."
-    };
 
     console.log('Index.tsx: Hooks initialized successfully');
 
@@ -187,7 +196,7 @@ const Index = () => {
           {/* Hero Section */}
           <HomepageHero 
             scrollToNewsletter={scrollToNewsletter} 
-            heroContent={heroContent}
+            heroContent={heroData}
           />
 
           {/* Newsletter */}

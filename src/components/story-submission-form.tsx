@@ -10,6 +10,8 @@ import { Send, User, Mail, FileText, Target } from "lucide-react";
 import { useSecureFormValidation, storySubmissionRateLimiter, getClientIdentifier, sanitizeText } from "@/lib/security-utils";
 
 const StorySubmissionForm = () => {
+  console.log("StorySubmissionForm component rendering...");
+  
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -20,7 +22,11 @@ const StorySubmissionForm = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  
+  console.log("About to call useToast...");
   const { toast } = useToast();
+  
+  console.log("About to call useSecureFormValidation...");
   const { validateForm } = useSecureFormValidation();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {

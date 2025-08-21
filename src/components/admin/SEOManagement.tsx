@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -9,7 +9,7 @@ import { Switch } from "@/components/ui/switch";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { Badge } from "@/components/ui/badge";
-import { Plus, Save, Trash, BarChart3 } from "lucide-react";
+import { Plus, Save, Trash, BarChart3, Search, ArrowUpDown, ArrowUp, ArrowDown } from "lucide-react";
 import { AdminSectionCard } from './AdminSectionCard';
 
 interface SEOSetting {
@@ -43,6 +43,37 @@ export const SEOManagement = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
+
+  // Search and Sort states
+  const [searchTerm, setSearchTerm] = useState<string>('');
+  const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
+
+  // Filtered and sorted SEO settings
+  const filteredAndSortedSettings = useMemo(() => {
+    let filteredSettings = seoSettings;
+
+    // Apply search filter
+    if (searchTerm) {
+      filteredSettings = filteredSettings.filter(setting => 
+        setting.page_type.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        setting.title.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+
+    // Apply sorting
+    return [...filteredSettings].sort((a, b) => {
+      const comparison = a.page_type.localeCompare(b.page_type);
+      return sortDirection === 'desc' ? -comparison : comparison;
+    });
+  }, [seoSettings, searchTerm, sortDirection]);
+
+  const handleSort = () => {
+    setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
+  };
+
+  const getSortIcon = () => {
+    return sortDirection === 'asc' ? <ArrowUp className="h-4 w-4" /> : <ArrowDown className="h-4 w-4" />;
+  };
 
   useEffect(() => {
     loadSEOSettings();
@@ -193,55 +224,93 @@ export const SEOManagement = () => {
         </Button>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* SEO Settings List */}
+      <div className="space-y-6">
+        {/* Search and Sort Controls */}
         <AdminSectionCard 
-          title="Existing Settings"
-          description="Click on a setting to edit or create new ones for different pages"
-          icon={<BarChart3 className="h-5 w-5" />}
+          title="Search & Sort"
+          icon={<Search className="h-5 w-5" />}
         >
-          <div className="space-y-2">
-            {seoSettings.map((setting) => (
-              <div
-                key={setting.id}
-                className={`p-3 border rounded-lg cursor-pointer hover:bg-accent transition-colors ${
-                  selectedSetting?.id === setting.id ? 'border-primary bg-accent' : ''
-                }`}
-                onClick={() => {
-                  setSelectedSetting(setting);
-                  setIsEditing(false);
-                }}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label className="text-sm font-medium text-foreground mb-2 block">Search Pages</label>
+              <Input
+                type="text"
+                placeholder="Search pages..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="bg-background border-border"
+              />
+            </div>
+            <div>
+              <label className="text-sm font-medium text-foreground mb-2 block">Sort Order</label>
+              <Button
+                variant="outline"
+                onClick={handleSort}
+                className="w-full flex items-center gap-2 justify-center bg-background border-border hover:bg-accent"
               >
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h4 className="font-medium">{setting.page_type}</h4>
-                    <p className="text-sm text-muted-foreground truncate">
-                      {setting.title}
-                    </p>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Badge variant={setting.is_active ? "default" : "secondary"}>
-                      {setting.is_active ? "Active" : "Inactive"}
-                    </Badge>
-                  </div>
-                </div>
-              </div>
-            ))}
-            {seoSettings.length === 0 && (
-              <p className="text-center text-muted-foreground py-4">
-                No SEO settings found. Create your first one!
-              </p>
-            )}
+                Page Name {getSortIcon()}
+              </Button>
+            </div>
+          </div>
+          <div className="mt-4 text-sm text-muted-foreground">
+            Showing {filteredAndSortedSettings.length} of {seoSettings.length} SEO settings
           </div>
         </AdminSectionCard>
 
-        {/* SEO Editor */}
-        {selectedSetting && (
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* SEO Settings List */}
           <AdminSectionCard 
-            title={`${isEditing ? 'Edit' : 'View'} SEO Setting`}
-            description="Configure meta tags, Open Graph, and Twitter cards"
-            icon={<Save className="h-5 w-5" />}
+            title="SEO Settings"
+            description="Click on a setting to edit or create new ones for different pages"
+            icon={<BarChart3 className="h-5 w-5" />}
           >
+            <div className="space-y-2">
+              {filteredAndSortedSettings.map((setting) => (
+                <div
+                  key={setting.id}
+                  className={`p-3 border rounded-lg cursor-pointer hover:bg-accent transition-colors ${
+                    selectedSetting?.id === setting.id ? 'border-primary bg-accent' : ''
+                  }`}
+                  onClick={() => {
+                    setSelectedSetting(setting);
+                    setIsEditing(false);
+                  }}
+                >
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <h4 className="font-medium">{setting.page_type}</h4>
+                      <p className="text-sm text-muted-foreground truncate">
+                        {setting.title}
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Badge variant={setting.is_active ? "default" : "secondary"}>
+                        {setting.is_active ? "Active" : "Inactive"}
+                      </Badge>
+                    </div>
+                  </div>
+                </div>
+              ))}
+              {filteredAndSortedSettings.length === 0 && searchTerm && (
+                <p className="text-center text-muted-foreground py-4">
+                  No SEO settings found matching "{searchTerm}". Try a different search term.
+                </p>
+              )}
+              {filteredAndSortedSettings.length === 0 && !searchTerm && (
+                <p className="text-center text-muted-foreground py-4">
+                  No SEO settings found. Create your first one!
+                </p>
+              )}
+            </div>
+          </AdminSectionCard>
+
+          {/* SEO Editor */}
+          {selectedSetting && (
+            <AdminSectionCard 
+              title={`${isEditing ? 'Edit' : 'View'} SEO Setting`}
+              description="Configure meta tags, Open Graph, and Twitter cards"
+              icon={<Save className="h-5 w-5" />}
+            >
             <div className="flex gap-2 mb-6">
               {!isEditing && (
                 <Button variant="outline" onClick={() => setIsEditing(true)}>
@@ -377,7 +446,8 @@ export const SEOManagement = () => {
               </div>
             </div>
           </AdminSectionCard>
-        )}
+          )}
+        </div>
       </div>
     </div>
   );

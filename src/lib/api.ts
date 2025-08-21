@@ -291,6 +291,9 @@ export const addSubscriber = async (email: string, name?: string) => {
 export const getComments = async (blogPostId: string) => {
   try {
     console.log('Fetching comments for post:', blogPostId);
+    
+    // Explicitly select only safe fields that can be public
+    // SECURITY: Never include author_email in public queries
     const { data, error } = await supabase
       .from('comments')
       .select('id, blog_post_id, author_name, content, created_at, approved')
@@ -307,6 +310,35 @@ export const getComments = async (blogPostId: string) => {
     return data || [];
   } catch (error) {
     console.error('getComments caught error:', error);
+    throw error;
+  }
+};
+
+// Admin-only function to get comments with email addresses for moderation
+export const getCommentsForAdmin = async (blogPostId?: string) => {
+  try {
+    console.log('Fetching comments for admin moderation');
+    
+    let query = supabase
+      .from('comments')
+      .select('id, blog_post_id, author_name, author_email, content, created_at, approved')
+      .order('created_at', { ascending: false });
+    
+    if (blogPostId) {
+      query = query.eq('blog_post_id', blogPostId);
+    }
+
+    const { data, error } = await query;
+
+    if (error) {
+      console.error('getCommentsForAdmin error:', error);
+      throw error;
+    }
+
+    console.log('Admin comments fetched successfully:', data?.length || 0);
+    return data || [];
+  } catch (error) {
+    console.error('getCommentsForAdmin caught error:', error);
     throw error;
   }
 };
@@ -340,6 +372,51 @@ export const addComment = async (commentData: {
     return data;
   } catch (error) {
     console.error('addComment caught error:', error);
+    throw error;
+  }
+};
+
+// Admin functions for comment moderation
+export const approveComment = async (commentId: string) => {
+  try {
+    console.log('Approving comment:', commentId);
+    const { data, error } = await supabase
+      .from('comments')
+      .update({ approved: true })
+      .eq('id', commentId)
+      .select()
+      .single();
+
+    if (error) {
+      console.error('approveComment error:', error);
+      throw error;
+    }
+
+    console.log('Comment approved successfully');
+    return data;
+  } catch (error) {
+    console.error('approveComment caught error:', error);
+    throw error;
+  }
+};
+
+export const rejectComment = async (commentId: string) => {
+  try {
+    console.log('Rejecting comment:', commentId);
+    const { error } = await supabase
+      .from('comments')
+      .delete()
+      .eq('id', commentId);
+
+    if (error) {
+      console.error('rejectComment error:', error);
+      throw error;
+    }
+
+    console.log('Comment rejected successfully');
+    return true;
+  } catch (error) {
+    console.error('rejectComment caught error:', error);
     throw error;
   }
 };

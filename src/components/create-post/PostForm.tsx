@@ -224,7 +224,7 @@ export const PostForm = ({
                         {tag.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
                       </SelectItem>
                     )) : 
-                    <SelectItem value="" disabled className="text-gray-500">
+                    <SelectItem value="no-category-selected" disabled className="text-gray-500">
                       Select a category first
                     </SelectItem>
                   }

@@ -44,16 +44,16 @@ const colors = {
     ring: 'hsl(var(--sidebar-ring))'
   },
   brand: {
-    black: '#0A0A0A',
-    cream: '#F7F6F3',
-    gray: '#E5E5E5',
-    blue: '#007cba'
+    black: 'hsl(0, 0%, 4%)',
+    cream: 'hsl(45, 67%, 93%)',
+    gray: 'hsl(0, 0%, 90%)',
+    blue: 'hsl(200, 100%, 37%)'
   },
   typography: {
-    primary: 'var(--text-primary)',
-    secondary: 'var(--text-secondary)',
-    muted: 'var(--text-muted)',
-    brand: 'var(--text-brand)'
+    primary: 'hsl(var(--text-primary))',
+    secondary: 'hsl(var(--text-secondary))',
+    muted: 'hsl(var(--text-muted))',
+    brand: 'hsl(var(--text-brand))'
   }
 };
 

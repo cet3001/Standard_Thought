@@ -1,32 +1,32 @@
 
 :root {
-  --brand-cream: #FDF6E3;
-  --brand-black: #0A0A0A;
-  --brand-blue: #007cba;
+  --brand-cream: 45 67% 93%;
+  --brand-black: 0 0% 4%;
+  --brand-blue: 200 100% 37%;
 }
 
 .bg-brand-cream {
-  background-color: var(--brand-cream);
+  background-color: hsl(var(--brand-cream));
 }
 
 .bg-brand-black {
-  background-color: var(--brand-black);
+  background-color: hsl(var(--brand-black));
 }
 
 .text-brand-cream {
-  color: var(--brand-cream);
+  color: hsl(var(--brand-cream));
 }
 
 .text-brand-black {
-  color: var(--brand-black);
+  color: hsl(var(--brand-black));
 }
 
 .border-brand-cream {
-  border-color: var(--brand-cream);
+  border-color: hsl(var(--brand-cream));
 }
 
 .border-brand-black {
-  border-color: var(--brand-black);
+  border-color: hsl(var(--brand-black));
 }
 
 /* Pearlescent Yellow for Urban Theme */

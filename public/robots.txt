@@ -1,28 +1,10 @@
 
-# Production robots.txt for www.standardthought.com
-# Allow all legitimate crawlers including AI crawlers - no blanket restrictions
-
-# Allow all crawlers by default
+# Allow all reputable search engines
 User-agent: *
 Allow: /
-Disallow: /auth/
+
+# Disallow crawling of the admin panel
 Disallow: /admin/
 
-# Explicitly allow major AI crawlers
-User-agent: GPTBot
-Allow: /
-
-User-agent: ChatGPT-User
-Allow: /
-
-User-agent: CCBot
-Allow: /
-
-User-agent: anthropic-ai
-Allow: /
-
-User-agent: Claude-Web
-Allow: /
-
-# Sitemap location for crawlers
-Sitemap: https://www.standardthought.com/sitemap_index.xml
+# Point crawlers to the sitemap
+Sitemap: https://www.standardthought.com/sitemap.xml

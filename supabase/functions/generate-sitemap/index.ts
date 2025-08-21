@@ -37,16 +37,23 @@ serve(async (req) => {
     const baseUrl = 'https://www.standardthought.com'
     const currentDate = new Date().toISOString()
     
+    // Get all published guides
+    const { data: guides, error: guidesError } = await supabaseClient
+      .from('guides')
+      .select('title, created_at, updated_at')
+      .eq('is_active', true)
+
+    if (guidesError) {
+      console.warn('Error fetching guides:', guidesError)
+    }
+
     // Static pages with their priorities and change frequencies
     const staticPages = [
       { url: '/', priority: '1.0', changefreq: 'daily', lastmod: currentDate },
       { url: '/about', priority: '0.8', changefreq: 'monthly', lastmod: currentDate },
       { url: '/blog', priority: '0.9', changefreq: 'daily', lastmod: currentDate },
       { url: '/sales', priority: '0.8', changefreq: 'weekly', lastmod: currentDate },
-      { url: '/cash-management', priority: '0.8', changefreq: 'monthly', lastmod: currentDate },
-      { url: '/credit', priority: '0.8', changefreq: 'monthly', lastmod: currentDate },
-      { url: '/investing', priority: '0.8', changefreq: 'monthly', lastmod: currentDate },
-      { url: '/ai-side-hustles', priority: '0.8', changefreq: 'weekly', lastmod: currentDate },
+      { url: '/manifesto', priority: '0.8', changefreq: 'monthly', lastmod: currentDate },
       { url: '/submit-story', priority: '0.6', changefreq: 'monthly', lastmod: currentDate },
       { url: '/privacy-policy', priority: '0.3', changefreq: 'yearly', lastmod: currentDate },
       { url: '/terms-of-service', priority: '0.3', changefreq: 'yearly', lastmod: currentDate },
@@ -85,6 +92,24 @@ serve(async (req) => {
     <lastmod>${lastmod}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <mobile:mobile/>
+  </url>
+`
+        }
+      }
+    }
+
+    // Add guides as individual pages (if they should be accessible via direct URLs)
+    if (guides && guides.length > 0) {
+      for (const guide of guides) {
+        if (guide.title) {
+          const slug = guide.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')
+          const lastmod = guide.updated_at || guide.created_at
+          sitemapXml += `  <url>
+    <loc>${baseUrl}/guides/${slug}</loc>
+    <lastmod>${lastmod}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
     <mobile:mobile/>
   </url>
 `

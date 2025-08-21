@@ -13,6 +13,8 @@ import { BlogPost as BlogPostType } from "@/lib/api";
 import BlogBreadcrumbs from "@/components/blog/BlogBreadcrumbs";
 import RelatedPosts from "@/components/blog/RelatedPosts";
 import { sanitizeHtml } from "@/lib/security-utils";
+import { generateArticleSchema } from "@/components/seo/schemas";
+import { Helmet } from "react-helmet";
 
 const BlogPost = () => {
   useMobilePerformance();
@@ -175,6 +177,20 @@ const BlogPost = () => {
     { name: post.title, url: `https://www.standardthought.com/blog/${post.slug}`, position: 3 }
   ];
 
+  // Generate Article structured data
+  const articleSchema = generateArticleSchema({
+    title: post.title,
+    description: post.excerpt,
+    url: `https://www.standardthought.com/blog/${post.slug}`,
+    image: post.image_url,
+    author: "Standardthought",
+    publishedTime: post.created_at,
+    modifiedTime: post.updated_at,
+    category: post.category,
+    tags: post.tags || [],
+    wordCount: Math.ceil(post.content.length / 5) // Approximate word count
+  });
+
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* Urban Background */}
@@ -213,6 +229,13 @@ const BlogPost = () => {
         wordCount={post.content.length}
         breadcrumbs={breadcrumbs}
       />
+
+      {/* Article Structured Data */}
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify(articleSchema)}
+        </script>
+      </Helmet>
 
       <Navigation />
 

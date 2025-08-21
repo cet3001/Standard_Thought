@@ -1,6 +1,7 @@
 
 /robots.txt          /robots.txt            200
 /sitemap_index.xml   /sitemap_index.xml     200
+/sitemap.xml         https://zedewynjmeyhbjysnxld.supabase.co/functions/v1/generate-sitemap 200
 
 /404.html            /404.html              404
 /*                   /index.html            200

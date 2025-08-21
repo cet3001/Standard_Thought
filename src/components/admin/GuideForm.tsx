@@ -27,7 +27,7 @@ type GuideFormData = z.infer<typeof guideSchema>;
 interface GuideFormProps {
   guide?: Guide | null;
   onClose: () => void;
-  onSuccess: () => void;
+  onSuccess: (createdGuide?: Guide) => void;
 }
 
 export const GuideForm = ({ guide, onClose, onSuccess }: GuideFormProps) => {
@@ -113,7 +113,7 @@ export const GuideForm = ({ guide, onClose, onSuccess }: GuideFormProps) => {
         await uploadGuideFile(selectedFile, savedGuide.id);
       }
 
-      onSuccess();
+      onSuccess(guide ? undefined : savedGuide);
     } catch (error) {
       console.error('Error saving guide:', error);
     } finally {

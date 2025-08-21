@@ -29,6 +29,7 @@ const TermsOfService = lazy(() => import("@/pages/TermsOfService"));
 const CookiePolicy = lazy(() => import("@/pages/CookiePolicy"));
 const ImageGeneratorPage = lazy(() => import("@/pages/ImageGenerator"));
 const PaymentSuccess = lazy(() => import("@/pages/PaymentSuccess"));
+const AdminGuideSuccess = lazy(() => import("@/pages/AdminGuideSuccess"));
 const NotFound = lazy(() => import("@/pages/NotFound"));
 const Unsubscribe = lazy(() => import("@/pages/Unsubscribe"));
 const SubmitStory = lazy(() => import("@/pages/SubmitStory"));
@@ -73,6 +74,7 @@ function AppContent() {
           <Route path="/submit-story" element={<SubmitStory />} />
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/admin/guides" element={<AdminGuides />} />
+          <Route path="/admin/guides/success/:id" element={<AdminGuideSuccess />} />
           <Route path="/admin/paid-guides" element={<AdminPaidGuides />} />
           <Route path="/admin/cta" element={<AdminCTA />} />
           <Route path="/admin/guide-forge" element={<AdminGuideForge />} />

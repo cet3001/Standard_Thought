@@ -10,13 +10,14 @@ import { GuideForm } from '@/components/admin/GuideForm';
 import { CTAManagement } from '@/components/admin/CTAManagement';
 import { Guide } from '@/hooks/use-guides';
 import { useToast } from '@/hooks/use-toast';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import SEO from "@/components/seo";
 import { useHeaderHeight } from "@/hooks/use-header-height";
 
 const AdminGuides = () => {
+  const navigate = useNavigate();
   const { isAdmin } = useAuth();
   const { guides, loading, deleteGuide, updateGuide } = useGuides(true);
   const [showForm, setShowForm] = useState(false);
@@ -61,6 +62,16 @@ const AdminGuides = () => {
   const handleFormClose = () => {
     setShowForm(false);
     setEditingGuide(null);
+  };
+
+  const handleFormSuccess = (createdGuide?: Guide) => {
+    if (createdGuide) {
+      // New guide created - navigate to success page
+      navigate(`/admin/guides/success/${createdGuide.id}`);
+    } else {
+      // Existing guide updated - just close form
+      handleFormClose();
+    }
   };
 
   if (loading) {
@@ -120,7 +131,7 @@ const AdminGuides = () => {
                 <GuideForm
                   guide={editingGuide}
                   onClose={handleFormClose}
-                  onSuccess={handleFormClose}
+                  onSuccess={handleFormSuccess}
                 />
               </div>
             )}

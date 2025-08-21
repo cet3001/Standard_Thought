@@ -52,7 +52,7 @@ const AdminGuideForge = () => {
             
             <button 
               onClick={() => {
-                const url = 'https://guide-forge-standard.lovable.app/?adminMode=true&returnUrl=' + encodeURIComponent('https://www.standardthought.com/admin');
+                const url = 'https://guide-forge-standard.lovable.app/?adminMode=true&returnUrl=' + encodeURIComponent('https://www.standardthought.com/admin/guides');
                 window.open(url, 'guideGenerator', 'width=1200,height=800,scrollbars=yes,resizable=yes');
               }}
               className="bg-primary text-primary-foreground px-8 py-4 rounded-lg font-semibold text-lg hover:bg-primary/90 transition-colors"

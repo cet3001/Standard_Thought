@@ -40,6 +40,12 @@ const Index = () => {
     const { isAdmin } = useAuth();
     const { textureImageUrl } = useUrbanTexture();
 
+    // Use default content since landing_page_content table doesn't exist yet
+    const heroContent = {
+      headline: "Break Cycles. Build Legacy. Define Your Truth.",
+      subheadline: "You weren't handed blueprints. You inherited burdens. Now it's time to flip the script—rebuild identity, stack wealth, and transcend survival thinking."
+    };
+
     console.log('Index.tsx: Hooks initialized successfully');
 
     const breadcrumbs = [
@@ -179,7 +185,10 @@ const Index = () => {
         {/* Main Content */}
         <main className="relative z-10">
           {/* Hero Section */}
-          <HomepageHero scrollToNewsletter={scrollToNewsletter} />
+          <HomepageHero 
+            scrollToNewsletter={scrollToNewsletter} 
+            heroContent={heroContent}
+          />
 
           {/* Newsletter */}
           <NewsletterSection />

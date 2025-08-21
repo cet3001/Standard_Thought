@@ -12,9 +12,13 @@ import { useUrbanTexture } from "@/hooks/use-urban-texture";
 
 interface HomepageHeroProps {
   scrollToNewsletter: () => void;
+  heroContent?: {
+    headline: string;
+    subheadline: string;
+  };
 }
 
-const HomepageHero = ({ scrollToNewsletter }: HomepageHeroProps) => {
+const HomepageHero = ({ scrollToNewsletter, heroContent }: HomepageHeroProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const headerHeight = useHeaderHeight();
   const { textureImageUrl } = useUrbanTexture();
@@ -45,7 +49,11 @@ const HomepageHero = ({ scrollToNewsletter }: HomepageHeroProps) => {
         <div className="max-w-6xl mx-auto">
           
           {/* Main Hero Content */}
-          <HeroContent isVisible={isVisible} scrollToNewsletter={scrollToNewsletter} />
+          <HeroContent 
+            isVisible={isVisible} 
+            scrollToNewsletter={scrollToNewsletter}
+            heroContent={heroContent}
+          />
 
           {/* Built For People Like Us */}
           <BuiltForPeopleLikeUsSection isVisible={isVisible} />

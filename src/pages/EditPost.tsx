@@ -7,6 +7,7 @@ import Footer from "@/components/footer";
 
 const EditPost = () => {
   const navigate = useNavigate();
+  const headerHeight = useHeaderHeight();
 
   useEffect(() => {
     // Redirect to home page since blog functionality has been removed
@@ -23,7 +24,7 @@ const EditPost = () => {
       
       <Navigation />
       
-      <main style={{ marginTop: `${useHeaderHeight()}px`, paddingTop: '3rem', paddingBottom: '4rem' }}>
+      <main style={{ marginTop: `${headerHeight}px`, paddingTop: '3rem', paddingBottom: '4rem' }}>
         <div className="container mx-auto px-6 text-center max-w-2xl">
           <h1 className="text-3xl font-bold text-black dark:text-brand-cream mb-4">
             Page Not Available
